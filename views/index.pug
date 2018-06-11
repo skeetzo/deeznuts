@@ -2,4 +2,21 @@ extends layout
 
 block content
   h1= title
-  p Welcome to #{title}
+
+  // this is a square of 18+ text
+  .row.disclaimer
+    .col-xs-12
+      p You must be 18 years or older to use #{domain}.
+  
+  // this is a square of video
+  .row
+    .col-xs-12
+      h3 Preview
+      video(src=preview_video, poster=thumbnail, autoplay, width=500, height=500)
+
+  // this is a cryptocurrency box & enter button
+  .row
+    .col-xs-12
+      a(href=bitcoin_link)
+      img(src=bitcoin_qr)
+      p bitcoin_address
