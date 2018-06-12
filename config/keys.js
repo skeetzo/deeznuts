@@ -1,6 +1,6 @@
-var fs = require('fs'),
-    google = require('googleapis'),
-    OAuth2 = google.auth.OAuth2;
+var fs = require('fs');
+    // google = require('googleapis'),
+    // OAuth2 = google.auth.OAuth2;
 
 module.exports = function() {
     var localConfig = {};
@@ -24,9 +24,12 @@ module.exports = function() {
     	}
     }
 
+    // Blockchain
+    this.blockchainKey = localConfig.blockchainKey || process.env.blockchainKey;
+
     // Google
-    this.Google_service_email = localGoogle.client_email || process.env.Google_service_email;
-    this.Google_key = localGoogle.private_key || process.env.Google_key;
+    this.Google_service_email = localConfig.client_email || process.env.Google_service_email;
+    this.Google_key = localConfig.private_key || process.env.Google_key;
     // this.Google_keyFile = localConfig.Google_keyFile || process.env.Google_keyFile;
     this.Google_Oauth_Opts = {
         "email": this.Google_service_email,

@@ -1,22 +1,47 @@
 extends layout
 
 block content
-  h1= title
+  .row
+    .col-xs-12.text-center
+      a(href='/')
+        h1= title
+      span.isLive I am: #{status}
 
-  // this is a square of 18+ text
-  .row.disclaimer
-    .col-xs-12
-      p You must be 18 years or older to use #{domain}.
+  
   
   // this is a square of video
   .row
-    .col-xs-12
+    .col-xs-12.text-center
       h3 Preview
-      video(src=preview_video, poster=thumbnail, autoplay, width=500, height=500)
+      video(src="/videos/preview.mp4", type="video/mp4", autoplay, controls, loop, width=500)
+
+  // explanation
+  .row
+    .col-xs-12.text-center
+      p  To Enter, Pay >=$1 in Bitcoin to:
 
   // this is a cryptocurrency box & enter button
   .row
-    .col-xs-12
+    .col-xs-12.text-center
       a(href=bitcoin_link)
       img(src=bitcoin_qr)
-      p bitcoin_address
+      p= bitcoin_link
+
+  // this is a square of 18+ text
+  .row.disclaimer.text-center
+    .col-xs-12
+      p You must be 
+        strong 18 years or older 
+        | to enter #{domain}
+
+  .row
+    .col-xs-12.text-center
+      if (message||error)
+        .message
+          if (message)
+            h5 #{message}
+          if (error)
+            h5 #{error}
+      a.btn.btn-primary(href='/live') Enter
+
+  //- add rates below

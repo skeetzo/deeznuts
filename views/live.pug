@@ -1,0 +1,36 @@
+extends layout
+
+block content
+  .row
+    .col-xs-12.text-center
+      a(href='/')
+        h1= title
+
+  // this is a square of video
+  .row
+    .col-xs-12.text-center
+      h3 Live
+      video#preview(controls, poster='/images/preview.jpg')
+
+  // this is a cryptocurrency box & enter button
+  .row
+    .col-xs-12.text-center
+      a(href=bitcoin_link)
+      img(src=bitcoin_qr)
+      p= bitcoin_link
+
+  script(src="https://cdn.bootcss.com/flv.js/1.4.0/flv.min.js")
+  
+  script.
+    if (flvjs.isSupported()) {
+      var videoElement = document.getElementById('preview');
+      var flvPlayer = flvjs.createPlayer({
+        type: 'flv',
+        isLive: true,
+        cors: true,
+        url: 'http://localhost:8000/live/balls.flv'
+      });
+      flvPlayer.attachMediaElement(videoElement);
+      flvPlayer.load();
+      //- flvPlayer.play();
+    }

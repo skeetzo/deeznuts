@@ -4,13 +4,14 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var sassMiddleware = require('node-sass-middleware');
-
-var indexRouter = require('./routes/index');
-var authRouter = require('./routes/auth');
-var accountRouter = require('./routes/account');
-var liveRouter = require('./routes/live');
+var config = require('./config/index');
+var _ = require('underscore');
 
 var app = express();
+
+_.forEach(_.keys(config.siteData),function(setting) {
+  app.locals[setting] = config.siteData[setting];
+});  
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -28,10 +29,41 @@ app.use(sassMiddleware({
 }));
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', indexRouter);
-app.use('/auth', authRouter);
-app.use('/account', accountRouter);
-app.use('/live', liveRouter);
+// CSURF
+var csrf = require('csurf');
+app.use(csrf({cookie: true}));
+
+// var MongoStore = require('./modules/mongo');
+var session = require('express-session');
+var maxAge = 1 * 12 * 60 * 60 * 1000; // half a day
+maxAge = 1 * 2 * 60 * 60 * 1000; // 2 hours
+var sess = {
+  name: "deek",
+  secret: "Suck my dick",
+  saveUninitialized: true,
+  resave: true,
+  cookie: {
+      secure: false,
+      // secure: 'auto',
+      // domain: ,
+      httpOnly: true,
+      maxAge: maxAge
+  },
+  ephemeral: true,
+  // store:  MongoStore,
+  proxy: true,
+};
+app.use(session(sess));
+
+// Analytics - Google
+// var nodalytics = require('nodalytics');
+// app.use(nodalytics(config.Google_Analytics));
+
+// Flash
+var flash = require('express-flash');
+app.use(flash());
+
+app.use('/', require('./routes/index'));
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

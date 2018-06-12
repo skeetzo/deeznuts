@@ -1,12 +1,8 @@
 var mongoose = require('mongoose'),
     session = require('express-session'),
     MongoDBStore = require('connect-mongodb-session')(session),
-    config = require('../config/index.js'),
+    config = require('../config/index'),
     logger = config.logger;
-
-var redis = require('ioredis'),
-    MongooseRedis = require('mongoose-with-redis'),
-    redisClient = redis.createClient(config.REDIS_URL);
 
 // squelch mpromise is deprecated warning
 mongoose.Promise = global.Promise;
@@ -25,14 +21,6 @@ mongoose.connect(config.MONGODB_URI,{
     reconnectInterval: 6000,
   },
 });
-
-var cacheOptions = {
-  cache: true,
-  expires: 60*10,
-  prefix: 'RedisCache'
-};
-
-MongooseRedis(mongoose, redisClient, cacheOptions);
 
 var store = new MongoDBStore(
     {
