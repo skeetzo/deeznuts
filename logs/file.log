@@ -90,3 +90,32 @@
 [37m06/11/2018-19:45:31.58 [39m[33mDeezNuts[39m: ::1: /GET /
 [37m06/11/2018-19:45:32.75 [39m[33mDeezNuts[39m: ::1: /GET /live
 [37m06/11/2018-19:45:55.99 [39m[33mDeezNuts[39m: ::1: /GET /
+[37m06/12/2018-18:23:12.11 [39m[33mDeezNuts[39m: ::1: /GET /
+[37m06/12/2018-18:23:17.44 [39m[33mDeezNuts[39m: ::1: /GET /live
+[37m06/12/2018-18:23:17.58 [39m[33mDeezNuts[39m: ::1: /GET /live
+[37m06/12/2018-18:23:17.97 [39m[33mDeezNuts[39m: ::1: /GET /favicon.ico
+[37m06/12/2018-18:23:20.45 [39m[33mDeezNuts[39m: [NodeEvent on postPublish] id=YQAR2LJI StreamPath=/live/ args={"ac":0,"vc":0}
+[37m06/12/2018-18:23:20.46 [39m[33mDeezNuts[39m: Updating Status hiding -> live
+[37m06/12/2018-18:23:27.45 [39m[33mDeezNuts[39m: ::1: /GET /live
+[37m06/12/2018-18:23:49.17 [39m[33mDeezNuts[39m: [NodeEvent on donePublish] id=YQAR2LJI StreamPath= args={"ac":0,"vc":0}
+[37m06/12/2018-18:23:49.17 [39m[33mDeezNuts[39m: Updating Status live -> hiding
+[37m06/12/2018-18:23:52.50 [39m[33mDeezNuts[39m: [NodeEvent on postPublish] id=CWLT5L80 StreamPath=/live/ args={"ac":0,"vc":0}
+[37m06/12/2018-18:23:52.50 [39m[33mDeezNuts[39m: Updating Status hiding -> live
+[37m06/12/2018-18:23:54.17 [39m[33mDeezNuts[39m: ::1: /GET /live
+[37m06/12/2018-18:23:56.01 [39m[33mDeezNuts[39m: ::1: /GET /
+[37m06/12/2018-18:23:57.32 [39m[33mDeezNuts[39m: ::1: /GET /live
+[37m06/12/2018-18:24:17.50 [39m[33mDeezNuts[39m: ::1: /GET /live
+[37m06/12/2018-18:24:21.45 [39m[33mDeezNuts[39m: [NodeEvent on donePublish] id=CWLT5L80 StreamPath= args={"ac":0,"vc":0}
+[37m06/12/2018-18:24:21.46 [39m[33mDeezNuts[39m: Updating Status live -> hiding
+[37m06/12/2018-18:24:22.63 [39m[33mDeezNuts[39m: ::1: /GET /
+[37m06/12/2018-18:24:25.57 [39m[33mDeezNuts[39m: [NodeEvent on postPublish] id=3KAHON0I StreamPath=/live/ args={"ac":0,"vc":0}
+[37m06/12/2018-18:24:25.58 [39m[33mDeezNuts[39m: Updating Status hiding -> live
+[37m06/12/2018-18:24:28.53 [39m[33mDeezNuts[39m: ::1: /GET /live
+[37m06/12/2018-18:24:50.57 [39m[33mDeezNuts[39m: ::1: /GET /live
+[37m06/12/2018-18:25:05.97 [39m[33mDeezNuts[39m: ::1: /GET /live
+[37m06/12/2018-18:25:19.11 [39m[33mDeezNuts[39m: ::1: /GET /live/balls
+[37m06/12/2018-18:25:37.43 [39m[33mDeezNuts[39m: [NodeEvent on donePublish] id=3KAHON0I StreamPath= args={"ac":0,"vc":0}
+[37m06/12/2018-18:25:37.43 [39m[33mDeezNuts[39m: Updating Status live -> hiding
+[37m06/12/2018-18:25:43.65 [39m[33mDeezNuts[39m: [NodeEvent on postPublish] id=76MRJLNO StreamPath=/live/balls args={"ac":0,"vc":0}
+[37m06/12/2018-18:25:43.65 [39m[33mDeezNuts[39m: Updating Status hiding -> live
+[37m06/12/2018-18:26:13.48 [39m[33mDeezNuts[39m: ::1: /GET /
