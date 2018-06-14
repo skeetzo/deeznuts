@@ -7,19 +7,9 @@ var _ = require('underscore'),
     path = require('path'),
     Viewer = require('../models/viewer');
 
-// Has Paid
-module.exports.hasPaid = function(req, res, next) {
-    if (req.session.paid||config.debugging) {
-        next();
-    } else {
-        req.flash('error','Please pay up!');
-        res.redirect('/');
-        // res.status(401).render('index', req.session.locals);
-    }
-}
 
 module.exports.findViewer = function(req, res, next) {
-    if (req.session.viewer) return next(null);
+    if (req.session.locals.viewer) return next(null);
     var ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
     Viewer.findOne({'ip':ip}, function (err, viewer) {
         if (err) logger.warn(err);
@@ -38,8 +28,19 @@ module.exports.findViewer = function(req, res, next) {
     function step() {
         req.session.viewer.save(function (err) {
             if (err) logger.warn(err);
+            req.session.locals.viewer = Viewer_(req.session.viewer);
             next(null);
         });
+    }
+}
+
+// Has Paid
+module.exports.hasPaid = function(req, res, next) {
+    if (parseInt(req.session.viewer.time)>=1||config.debugging) {
+        next();
+    } else {
+        req.flash('error','Please pay up!');
+        res.redirect('/');
     }
 }
 
@@ -88,3 +89,12 @@ module.exports.resetLocals = function(req, res, next) {
         next(null);
     });
 }
+
+var Viewer_ = function(src) {
+  return {
+    'address': 'bitcoin:'+src.address,
+    'ip': src.ip,
+    'time': src.time
+  };
+}
+module.exports.Viewer = Viewer;

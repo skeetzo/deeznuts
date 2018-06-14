@@ -1,23 +1,22 @@
 extends layout
 
 block content
-  .row
-    .col-xs-12.text-center
-      a(href='/')
-        h1= title
 
   // this is a square of video
   .row
-    .col-xs-12.text-center
-      h3 Live
+    .col-xs-12
       video#preview(controls, poster='/images/preview.jpg')
 
   // this is a cryptocurrency box & enter button
   .row
-    .col-xs-12.text-center
-      a(href=bitcoin_link)
-      img(src=bitcoin_qr)
-      p= bitcoin_link
+    .col-xs-12
+      a(href=viewer.address)= viewer.address
+      //- img(src=bitcoin_qr)
+
+  br
+  br
+  //- add rates below
+  include conversion
 
   script(src="https://cdn.bootcss.com/flv.js/1.4.0/flv.min.js")
   

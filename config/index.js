@@ -12,14 +12,14 @@ config.port = Number(process.env.PORT || 3000);
 // Site Settings
 config.title = "Alex D.'s Nuts";
 config.domain = "alexdeeznuts.com";
-config.author = "skeetzo";
+config.author = "Skeetzo";
 config.description = "Porn Star Streamer";
 config.Google_Analytics = "";
 
 config.preview_video = "vidoeo/uhh.mp4";
 config.thumbnail = "img/thumbnail.png";
 
-config.status = "hiding";
+config.status = "Not Live";
 
 // Bitcoin
 config.bitcoin_address = "abunchoflettersand123";

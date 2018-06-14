@@ -26,6 +26,7 @@ module.exports = function() {
 
     // Blockchain
     this.blockchainKey = localConfig.blockchainKey || process.env.blockchainKey;
+    this.blockchainXpub = localConfig.blockchainXpub || process.env.blockchainXpub;
 
     // Google
     this.Google_service_email = localConfig.client_email || process.env.Google_service_email;

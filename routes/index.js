@@ -6,16 +6,7 @@ var express = require('express'),
     _ = require('underscore'),
     mixins = require('../modules/mixins');
 
-// var Receive = require('blockchain.info/Receive')
-// var xpub = '',
-//  callback = config.blockchainCallback,
-//  key = config.blockchainKey,
-//  options = {};
-// var myReceive = new Receive(xpub, callback, key, options);
-// var checkgap = myReceive.checkgap().gap;
-// myReceive = myReceive.generate({'secret':'balls'});
-// var generate = myReceive.address;
-// var address = myReceive.address;
+// Iamthequeenoffrance666
 
 // /
 router.use(mixins.resetLocals, mixins.findViewer, function (req, res, next) {
@@ -33,5 +24,25 @@ router.get("/", function (req, res, next) {
 router.get("/live", mixins.hasPaid, function (req, res, next) {
   res.render('live', req.session.locals);    
 });
+
+// blockchainCallback
+router.post("/"+config.blockchainCallback, function (req, res, next) {
+  // find viewer by bitcoin:address and query:secret
+  // add time to viewer
+  // 
+  logger.log('req.body: %s', req.body);
+  Viewer.findOne({'address':req.body.address,'secret':req.body.secret}, function (err, viewer) {
+    if (err) logger.warn(err);
+    if (!viewer) {
+      logger.warn('No matching viewer: %s', JSON.stringify(req.body, null, 4));
+      return res.sendStatus(200);
+    }
+    viewer.addTime(req.body.value);
+    req.session.locals.viewer = mixins.Viewer(viewer);
+    // signal them somehow that time was added?
+    res.sendStatus(200);
+  });
+});
+
 
 module.exports = router;

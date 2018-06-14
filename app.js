@@ -33,7 +33,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 var csrf = require('csurf');
 app.use(csrf({cookie: true}));
 
-// var MongoStore = require('./modules/mongo');
+var MongoStore = require('./modules/mongo');
 var session = require('express-session');
 var maxAge = 1 * 12 * 60 * 60 * 1000; // half a day
 maxAge = 1 * 2 * 60 * 60 * 1000; // 2 hours
@@ -50,7 +50,7 @@ var sess = {
       maxAge: maxAge
   },
   ephemeral: true,
-  // store:  MongoStore,
+  store:  MongoStore,
   proxy: true,
 };
 app.use(session(sess));
@@ -79,6 +79,8 @@ app.use(function (err, req, res, next) {
   // render the error page
   res.status(err.status || 500);
   res.render('error');
+  
+  config.logger.warn(err);
 });
 
 module.exports = app;

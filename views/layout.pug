@@ -24,5 +24,17 @@ html
     // End Google Analytics
 
   body
-    .container-fluid
+    .container-fluid.text-center
+
+      //- title
+      .row
+        .col-xs-12
+          a(href='/')
+            h1= title
+          span.isLive I am: 
+            strong #{status}
+      br
+
       block content
+
+  include footer

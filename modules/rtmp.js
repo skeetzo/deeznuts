@@ -42,14 +42,14 @@ nms.run();
 
 nms.on('postPublish', (id, StreamPath, args) => {
   logger.log('[NodeEvent on postPublish]', `id=${id} StreamPath=${StreamPath} args=${JSON.stringify(args)}`);
-  logger.log('Updating Status %s -> %s', config.status, 'live');
-  config.status = 'live';
+  logger.log('Updating Status %s -> %s', config.status, 'Live');
+  config.status = 'Live';
 });
 
 nms.on('donePublish', (id, StreamPath, args) => {
   logger.log('[NodeEvent on donePublish]', `id=${id} StreamPath=${StreamPath} args=${JSON.stringify(args)}`);
-  logger.log('Updating Status %s -> %s', config.status, 'hiding');
-  config.status = 'hiding';
+  logger.log('Updating Status %s -> %s', config.status, 'Not Live');
+  config.status = 'Not Live';
 });
 
 // nms.on('prePlay', (id, StreamPath, args) => {

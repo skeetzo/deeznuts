@@ -119,3 +119,458 @@
 [37m06/12/2018-18:25:43.65 [39m[33mDeezNuts[39m: [NodeEvent on postPublish] id=76MRJLNO StreamPath=/live/balls args={"ac":0,"vc":0}
 [37m06/12/2018-18:25:43.65 [39m[33mDeezNuts[39m: Updating Status hiding -> live
 [37m06/12/2018-18:26:13.48 [39m[33mDeezNuts[39m: ::1: /GET /
+[34m[37m06/14/2018-10:30:38.42 [34m[33mDeezNuts[34m: Mongoose connection open[39m
+[34m[37m06/14/2018-10:34:43.81 [34m[33mDeezNuts[34m: Mongoose connection disconnected[39m
+[34m[37m06/14/2018-10:34:43.81 [34m[33mDeezNuts[34m: Reconnecting to MongoDB in 3000...[39m
+[34m[37m06/14/2018-10:34:43.81 [34m[33mDeezNuts[34m: Mongoose connection disconnected through app termination[39m
+[34m[37m06/14/2018-10:34:46.10 [34m[33mDeezNuts[34m: Mongoose connection open[39m
+[34m[37m06/14/2018-10:36:35.14 [34m[33mDeezNuts[34m: Mongoose connection disconnected[39m
+[34m[37m06/14/2018-10:36:35.15 [34m[33mDeezNuts[34m: Reconnecting to MongoDB in 3000...[39m
+[34m[37m06/14/2018-10:36:35.15 [34m[33mDeezNuts[34m: Mongoose connection disconnected through app termination[39m
+[34m[37m06/14/2018-10:36:37.29 [34m[33mDeezNuts[34m: Mongoose connection open[39m
+[34m[37m06/14/2018-10:38:01.95 [34m[33mDeezNuts[34m: Mongoose connection disconnected[39m
+[34m[37m06/14/2018-10:38:01.96 [34m[33mDeezNuts[34m: Reconnecting to MongoDB in 3000...[39m
+[34m[37m06/14/2018-10:38:01.96 [34m[33mDeezNuts[34m: Mongoose connection disconnected through app termination[39m
+[34m[37m06/14/2018-10:38:04.05 [34m[33mDeezNuts[34m: Mongoose connection open[39m
+[34m[37m06/14/2018-10:39:38.13 [34m[33mDeezNuts[34m: Mongoose connection disconnected[39m
+[34m[37m06/14/2018-10:39:38.13 [34m[33mDeezNuts[34m: Reconnecting to MongoDB in 3000...[39m
+[34m[37m06/14/2018-10:39:38.14 [34m[33mDeezNuts[34m: Mongoose connection disconnected through app termination[39m
+[34m[37m06/14/2018-10:39:40.36 [34m[33mDeezNuts[34m: Mongoose connection open[39m
+[34m[37m06/14/2018-10:39:58.11 [34m[33mDeezNuts[34m: Mongoose connection disconnected[39m
+[34m[37m06/14/2018-10:39:58.11 [34m[33mDeezNuts[34m: Reconnecting to MongoDB in 3000...[39m
+[34m[37m06/14/2018-10:39:58.11 [34m[33mDeezNuts[34m: Mongoose connection disconnected through app termination[39m
+[34m[37m06/14/2018-10:40:00.18 [34m[33mDeezNuts[34m: Mongoose connection open[39m
+[34m[37m06/14/2018-10:43:03.01 [34m[33mDeezNuts[34m: Mongoose connection disconnected[39m
+[34m[37m06/14/2018-10:43:03.01 [34m[33mDeezNuts[34m: Reconnecting to MongoDB in 3000...[39m
+[34m[37m06/14/2018-10:43:03.01 [34m[33mDeezNuts[34m: Mongoose connection disconnected through app termination[39m
+[34m[37m06/14/2018-10:43:05.02 [34m[33mDeezNuts[34m: Mongoose connection open[39m
+[34m[37m06/14/2018-10:44:02.99 [34m[33mDeezNuts[34m: Mongoose connection disconnected[39m
+[34m[37m06/14/2018-10:44:02.99 [34m[33mDeezNuts[34m: Reconnecting to MongoDB in 3000...[39m
+[34m[37m06/14/2018-10:44:02.99 [34m[33mDeezNuts[34m: Mongoose connection disconnected through app termination[39m
+[34m[37m06/14/2018-10:44:05.09 [34m[33mDeezNuts[34m: Mongoose connection open[39m
+[34m[37m06/14/2018-10:44:30.74 [34m[33mDeezNuts[34m: Mongoose connection disconnected[39m
+[34m[37m06/14/2018-10:44:30.74 [34m[33mDeezNuts[34m: Reconnecting to MongoDB in 3000...[39m
+[34m[37m06/14/2018-10:44:30.75 [34m[33mDeezNuts[34m: Mongoose connection disconnected through app termination[39m
+[34m[37m06/14/2018-10:44:32.66 [34m[33mDeezNuts[34m: Mongoose connection open[39m
+[34m[37m06/14/2018-10:45:20.39 [34m[33mDeezNuts[34m: Mongoose connection disconnected[39m
+[34m[37m06/14/2018-10:45:20.39 [34m[33mDeezNuts[34m: Reconnecting to MongoDB in 3000...[39m
+[34m[37m06/14/2018-10:45:20.40 [34m[33mDeezNuts[34m: Mongoose connection disconnected through app termination[39m
+[34m[37m06/14/2018-10:45:22.82 [34m[33mDeezNuts[34m: Mongoose connection open[39m
+[37m06/14/2018-10:45:24.34 [39m[33mDeezNuts[39m: ::1: /GET /
+[34m[37m06/14/2018-10:45:47.92 [34m[33mDeezNuts[34m: Mongoose connection disconnected[39m
+[34m[37m06/14/2018-10:45:47.92 [34m[33mDeezNuts[34m: Reconnecting to MongoDB in 3000...[39m
+[34m[37m06/14/2018-10:45:47.93 [34m[33mDeezNuts[34m: Mongoose connection disconnected through app termination[39m
+[34m[37m06/14/2018-10:45:57.70 [34m[33mDeezNuts[34m: Mongoose connection open[39m
+[37m06/14/2018-10:45:58.99 [39m[33mDeezNuts[39m: ::1: /GET /
+[34m[37m06/14/2018-10:48:26.21 [34m[33mDeezNuts[34m: Mongoose connection disconnected[39m
+[34m[37m06/14/2018-10:48:26.21 [34m[33mDeezNuts[34m: Reconnecting to MongoDB in 3000...[39m
+[34m[37m06/14/2018-10:48:26.22 [34m[33mDeezNuts[34m: Mongoose connection disconnected through app termination[39m
+[34m[37m06/14/2018-10:48:29.67 [34m[33mDeezNuts[34m: Mongoose connection open[39m
+[37m06/14/2018-10:48:30.61 [39m[33mDeezNuts[39m: Generated address: undefined
+[37m06/14/2018-10:48:40.66 [39m[33mDeezNuts[39m: ::1: /GET /
+[37m06/14/2018-10:50:35.18 [39m[33mDeezNuts[39m: ::1: /GET /
+[37m06/14/2018-10:50:48.49 [39m[33mDeezNuts[39m: Generated address: undefined
+[37m06/14/2018-10:50:48.56 [39m[33mDeezNuts[39m: ::1: /GET /
+[34m[37m06/14/2018-10:52:38.08 [34m[33mDeezNuts[34m: Mongoose connection disconnected[39m
+[34m[37m06/14/2018-10:52:38.08 [34m[33mDeezNuts[34m: Reconnecting to MongoDB in 3000...[39m
+[34m[37m06/14/2018-10:52:38.08 [34m[33mDeezNuts[34m: Mongoose connection disconnected through app termination[39m
+[34m[37m06/14/2018-10:52:42.06 [34m[33mDeezNuts[34m: Mongoose connection open[39m
+[37m06/14/2018-10:52:43.68 [39m[33mDeezNuts[39m: ::1: /GET /
+[37m06/14/2018-10:52:56.95 [39m[33mDeezNuts[39m: myReceive: [object Object]
+[37m06/14/2018-10:52:56.95 [39m[33mDeezNuts[39m: myReceive: {
+    "xpub": "xpub6CZnCoHLTBVjuEHVtm6Dgd266vNcSkWv5rEcb1RaEH38BhobGGe44NtEyWEFVPBe4CaNDM3mKfGgeYomCjxnahSqGmnS23VbaidYtG1YPUb",
+    "callback": "http://alexdeeznuts.herokuapp.com/tip",
+    "key": "d1d86c8a-210e-40ca-a4ac-ce98ae328a8a"
+}
+[37m06/14/2018-10:52:56.96 [39m[33mDeezNuts[39m: checkgap: [object Promise]
+[37m06/14/2018-10:52:56.96 [39m[33mDeezNuts[39m: checkgap: {
+    "isFulfilled": false,
+    "isRejected": false
+}
+[37m06/14/2018-10:52:56.96 [39m[33mDeezNuts[39m: gap: undefined
+[37m06/14/2018-10:52:56.96 [39m[33mDeezNuts[39m: gap: undefined
+[37m06/14/2018-10:52:56.96 [39m[33mDeezNuts[39m: myReceive3: [object Promise]
+[37m06/14/2018-10:52:56.96 [39m[33mDeezNuts[39m: myReceive3: {
+    "isFulfilled": false,
+    "isRejected": false
+}
+[37m06/14/2018-10:52:56.96 [39m[33mDeezNuts[39m: Generated address: undefined
+[37m06/14/2018-10:52:57.05 [39m[33mDeezNuts[39m: ::1: /GET /
+[34m[37m06/14/2018-10:55:08.46 [34m[33mDeezNuts[34m: Mongoose connection disconnected[39m
+[34m[37m06/14/2018-10:55:08.46 [34m[33mDeezNuts[34m: Reconnecting to MongoDB in 3000...[39m
+[34m[37m06/14/2018-10:55:08.46 [34m[33mDeezNuts[34m: Mongoose connection disconnected through app termination[39m
+[34m[37m06/14/2018-10:55:10.71 [34m[33mDeezNuts[34m: Mongoose connection open[39m
+[37m06/14/2018-10:55:19.71 [39m[33mDeezNuts[39m: myReceive: [object Object]
+[37m06/14/2018-10:55:19.71 [39m[33mDeezNuts[39m: myReceive: {
+    "xpub": "xpub6CZnCoHLTBVjuEHVtm6Dgd266vNcSkWv5rEcb1RaEH38BhobGGe44NtEyWEFVPBe4CaNDM3mKfGgeYomCjxnahSqGmnS23VbaidYtG1YPUb",
+    "callback": "http://alexdeeznuts.herokuapp.com/tip",
+    "key": "d1d86c8a-210e-40ca-a4ac-ce98ae328a8a"
+}
+[37m06/14/2018-10:55:19.72 [39m[33mDeezNuts[39m: checkgap: [object Promise]
+[37m06/14/2018-10:55:19.72 [39m[33mDeezNuts[39m: checkgap: {
+    "isFulfilled": false,
+    "isRejected": false
+}
+[37m06/14/2018-10:55:19.72 [39m[33mDeezNuts[39m: gap: undefined
+[37m06/14/2018-10:55:19.72 [39m[33mDeezNuts[39m: gap: undefined
+[37m06/14/2018-10:57:19.67 [39m[33mDeezNuts[39m: myReceive: [object Object]
+[37m06/14/2018-10:57:19.67 [39m[33mDeezNuts[39m: myReceive: {
+    "xpub": "xpub6CZnCoHLTBVjuEHVtm6Dgd266vNcSkWv5rEcb1RaEH38BhobGGe44NtEyWEFVPBe4CaNDM3mKfGgeYomCjxnahSqGmnS23VbaidYtG1YPUb",
+    "callback": "http://alexdeeznuts.herokuapp.com/tip",
+    "key": "d1d86c8a-210e-40ca-a4ac-ce98ae328a8a"
+}
+[37m06/14/2018-10:57:19.68 [39m[33mDeezNuts[39m: checkgap: [object Promise]
+[37m06/14/2018-10:57:19.68 [39m[33mDeezNuts[39m: checkgap: {
+    "isFulfilled": false,
+    "isRejected": false
+}
+[37m06/14/2018-10:57:19.68 [39m[33mDeezNuts[39m: gap: undefined
+[37m06/14/2018-10:57:19.68 [39m[33mDeezNuts[39m: gap: undefined
+[34m[37m06/14/2018-10:57:22.51 [34m[33mDeezNuts[34m: Mongoose connection disconnected[39m
+[34m[37m06/14/2018-10:57:22.51 [34m[33mDeezNuts[34m: Reconnecting to MongoDB in 3000...[39m
+[34m[37m06/14/2018-10:57:22.51 [34m[33mDeezNuts[34m: Mongoose connection disconnected through app termination[39m
+[34m[37m06/14/2018-10:57:25.04 [34m[33mDeezNuts[34m: Mongoose connection open[39m
+[37m06/14/2018-10:57:30.87 [39m[33mDeezNuts[39m: myReceive: [object Object]
+[37m06/14/2018-10:57:30.87 [39m[33mDeezNuts[39m: myReceive: {
+    "xpub": "xpub6CZnCoHLTBVjuEHVtm6Dgd266vNcSkWv5rEcb1RaEH38BhobGGe44NtEyWEFVPBe4CaNDM3mKfGgeYomCjxnahSqGmnS23VbaidYtG1YPUb",
+    "callback": "http://alexdeeznuts.herokuapp.com/tip",
+    "key": "d1d86c8a-210e-40ca-a4ac-ce98ae328a8a"
+}
+[37m06/14/2018-10:57:30.88 [39m[33mDeezNuts[39m: checkgap: [object Promise]
+[37m06/14/2018-10:57:30.88 [39m[33mDeezNuts[39m: checkgap: {
+    "isFulfilled": false,
+    "isRejected": false
+}
+[37m06/14/2018-10:57:30.88 [39m[33mDeezNuts[39m: gap: undefined
+[37m06/14/2018-10:57:30.88 [39m[33mDeezNuts[39m: gap: undefined
+[1m[33m[37m06/14/2018-10:57:31.30 [33m { address: '141ZATeSSaxZtj53DCpxXaVNYzyChsFwnh',[39m[22m
+[1m[33m  index: 7,[39m[22m
+[1m[33m  callback: 'http://alexdeeznuts.herokuapp.com/tip?secret=ballsacks' }[39m[22m
+[37m06/14/2018-10:57:31.31 [39m[33mDeezNuts[39m: myReceive3: [object Promise]
+[37m06/14/2018-10:57:31.31 [39m[33mDeezNuts[39m: myReceive3: {
+    "isFulfilled": false,
+    "isRejected": false
+}
+[37m06/14/2018-10:57:31.31 [39m[33mDeezNuts[39m: Generated address: undefined
+[37m06/14/2018-10:57:31.40 [39m[33mDeezNuts[39m: ::1: /GET /
+[34m[37m06/14/2018-11:02:32.50 [34m[33mDeezNuts[34m: Mongoose connection disconnected[39m
+[34m[37m06/14/2018-11:02:32.50 [34m[33mDeezNuts[34m: Reconnecting to MongoDB in 3000...[39m
+[34m[37m06/14/2018-11:02:32.50 [34m[33mDeezNuts[34m: Mongoose connection disconnected through app termination[39m
+[34m[37m06/14/2018-11:02:42.13 [34m[33mDeezNuts[34m: Mongoose connection open[39m
+[37m06/14/2018-11:02:44.14 [39m[33mDeezNuts[39m: checkgap: [object Object]
+[37m06/14/2018-11:02:44.14 [39m[33mDeezNuts[39m: checkgap: {
+    "gap": 7
+}
+[37m06/14/2018-11:02:44.14 [39m[33mDeezNuts[39m: gap: undefined
+[37m06/14/2018-11:02:44.15 [39m[33mDeezNuts[39m: gap: undefined
+[37m06/14/2018-11:02:44.15 [39m[33mDeezNuts[39m: Generated address: 1DF2jzbb4mTURucNC8T7xw4c7eUE49ScbX
+[37m06/14/2018-11:02:44.25 [39m[33mDeezNuts[39m: ::1: /GET /
+[34m[37m06/14/2018-11:04:42.06 [34m[33mDeezNuts[34m: Mongoose connection disconnected[39m
+[34m[37m06/14/2018-11:04:42.06 [34m[33mDeezNuts[34m: Reconnecting to MongoDB in 3000...[39m
+[34m[37m06/14/2018-11:04:42.06 [34m[33mDeezNuts[34m: Mongoose connection disconnected through app termination[39m
+[34m[37m06/14/2018-11:04:44.43 [34m[33mDeezNuts[34m: Mongoose connection open[39m
+[37m06/14/2018-11:04:45.21 [39m[33mDeezNuts[39m: ::1: /GET /
+[37m06/14/2018-11:05:01.39 [39m[33mDeezNuts[39m: ::1: /GET /
+[34m[37m06/14/2018-11:06:02.35 [34m[33mDeezNuts[34m: Mongoose connection disconnected[39m
+[34m[37m06/14/2018-11:06:02.35 [34m[33mDeezNuts[34m: Reconnecting to MongoDB in 3000...[39m
+[34m[37m06/14/2018-11:06:02.35 [34m[33mDeezNuts[34m: Mongoose connection disconnected through app termination[39m
+[34m[37m06/14/2018-11:06:05.02 [34m[33mDeezNuts[34m: Mongoose connection open[39m
+[37m06/14/2018-11:06:05.45 [39m[33mDeezNuts[39m: ::1: /GET /
+[37m06/14/2018-11:06:35.78 [39m[33mDeezNuts[39m: ::1: /GET /
+[37m06/14/2018-11:06:36.47 [39m[33mDeezNuts[39m: ::1: /GET /favicon.ico
+[37m06/14/2018-11:11:01.28 [39m[33mDeezNuts[39m: ::1: /GET /live
+[34m[37m06/14/2018-11:33:15.68 [34m[33mDeezNuts[34m: Mongoose connection disconnected[39m
+[34m[37m06/14/2018-11:33:15.68 [34m[33mDeezNuts[34m: Reconnecting to MongoDB in 3000...[39m
+[34m[37m06/14/2018-11:33:15.68 [34m[33mDeezNuts[34m: Mongoose connection disconnected through app termination[39m
+[34m[37m06/14/2018-11:33:48.39 [34m[33mDeezNuts[34m: Mongoose connection open[39m
+[37m06/14/2018-11:33:54.29 [39m[33mDeezNuts[39m: ::1: /GET /live
+[37m06/14/2018-11:33:59.27 [39m[33mDeezNuts[39m: ::1: /GET /
+[37m06/14/2018-11:34:04.74 [39m[33mDeezNuts[39m: ::1: /GET /live
+[37m06/14/2018-11:34:06.49 [39m[33mDeezNuts[39m: ::1: /GET /
+[34m[37m06/14/2018-11:34:08.82 [34m[33mDeezNuts[34m: Mongoose connection disconnected[39m
+[34m[37m06/14/2018-11:34:08.82 [34m[33mDeezNuts[34m: Reconnecting to MongoDB in 3000...[39m
+[34m[37m06/14/2018-11:34:08.82 [34m[33mDeezNuts[34m: Mongoose connection disconnected through app termination[39m
+[34m[37m06/14/2018-11:34:17.19 [34m[33mDeezNuts[34m: Mongoose connection open[39m
+[37m06/14/2018-11:34:18.39 [39m[33mDeezNuts[39m: ::1: /GET /
+[37m06/14/2018-11:34:20.32 [39m[33mDeezNuts[39m: ::1: /GET /live
+[34m[37m06/14/2018-11:34:52.00 [34m[33mDeezNuts[34m: Mongoose connection disconnected[39m
+[34m[37m06/14/2018-11:34:52.00 [34m[33mDeezNuts[34m: Reconnecting to MongoDB in 3000...[39m
+[34m[37m06/14/2018-11:34:52.01 [34m[33mDeezNuts[34m: Mongoose connection disconnected through app termination[39m
+[34m[37m06/14/2018-11:34:54.13 [34m[33mDeezNuts[34m: Mongoose connection open[39m
+[37m06/14/2018-11:34:55.12 [39m[33mDeezNuts[39m: ::1: /GET /live
+[34m[37m06/14/2018-11:35:21.63 [34m[33mDeezNuts[34m: Mongoose connection disconnected[39m
+[34m[37m06/14/2018-11:35:21.63 [34m[33mDeezNuts[34m: Reconnecting to MongoDB in 3000...[39m
+[34m[37m06/14/2018-11:35:21.63 [34m[33mDeezNuts[34m: Mongoose connection disconnected through app termination[39m
+[34m[37m06/14/2018-11:35:23.67 [34m[33mDeezNuts[34m: Mongoose connection open[39m
+[37m06/14/2018-11:35:24.58 [39m[33mDeezNuts[39m: ::1: /GET /live
+[34m[37m06/14/2018-11:35:54.04 [34m[33mDeezNuts[34m: Mongoose connection disconnected[39m
+[34m[37m06/14/2018-11:35:54.04 [34m[33mDeezNuts[34m: Reconnecting to MongoDB in 3000...[39m
+[34m[37m06/14/2018-11:35:54.04 [34m[33mDeezNuts[34m: Mongoose connection disconnected through app termination[39m
+[34m[37m06/14/2018-11:35:56.70 [34m[33mDeezNuts[34m: Mongoose connection open[39m
+[37m06/14/2018-11:36:04.33 [39m[33mDeezNuts[39m: gap: 8
+[37m06/14/2018-11:36:04.33 [39m[33mDeezNuts[39m: Generated address: 1DgcMgivcf48nwyAF79pvEnZ8nwaTcDKmC
+[37m06/14/2018-11:36:04.43 [39m[33mDeezNuts[39m: ::1: /GET /live
+[37m06/14/2018-11:36:06.14 [39m[33mDeezNuts[39m: ::1: /GET /
+[37m06/14/2018-11:36:08.35 [39m[33mDeezNuts[39m: ::1: /GET /live
+[34m[37m06/14/2018-11:36:44.84 [34m[33mDeezNuts[34m: Mongoose connection disconnected[39m
+[34m[37m06/14/2018-11:36:44.84 [34m[33mDeezNuts[34m: Reconnecting to MongoDB in 3000...[39m
+[34m[37m06/14/2018-11:36:44.84 [34m[33mDeezNuts[34m: Mongoose connection disconnected through app termination[39m
+[34m[37m06/14/2018-11:36:46.100 [34m[33mDeezNuts[34m: Mongoose connection open[39m
+[37m06/14/2018-11:36:47.84 [39m[33mDeezNuts[39m: ::1: /GET /live
+[37m06/14/2018-11:36:47.84 [39m[33mDeezNuts[39m: time: 0
+[37m06/14/2018-11:36:52.10 [39m[33mDeezNuts[39m: ::1: /GET /live
+[37m06/14/2018-11:36:52.10 [39m[33mDeezNuts[39m: time: 0
+[37m06/14/2018-11:36:53.13 [39m[33mDeezNuts[39m: ::1: /GET /
+[37m06/14/2018-11:36:55.08 [39m[33mDeezNuts[39m: ::1: /GET /live
+[37m06/14/2018-11:36:55.09 [39m[33mDeezNuts[39m: time: 0
+[37m06/14/2018-11:37:12.34 [39m[33mDeezNuts[39m: ::1: /GET /
+[37m06/14/2018-11:37:16.34 [39m[33mDeezNuts[39m: ::1: /GET /live
+[37m06/14/2018-11:37:16.34 [39m[33mDeezNuts[39m: time: 0
+[34m[37m06/14/2018-11:38:28.49 [34m[33mDeezNuts[34m: Mongoose connection disconnected[39m
+[34m[37m06/14/2018-11:38:28.49 [34m[33mDeezNuts[34m: Reconnecting to MongoDB in 3000...[39m
+[34m[37m06/14/2018-11:38:28.49 [34m[33mDeezNuts[34m: Mongoose connection disconnected through app termination[39m
+[34m[37m06/14/2018-11:38:30.53 [34m[33mDeezNuts[34m: Mongoose connection open[39m
+[37m06/14/2018-11:38:30.80 [39m[33mDeezNuts[39m: ::1: /GET /live
+[37m06/14/2018-11:38:30.80 [39m[33mDeezNuts[39m: whyyyyyyyyyyyyyyyyyyy
+[34m[37m06/14/2018-11:40:39.90 [34m[33mDeezNuts[34m: Mongoose connection disconnected[39m
+[34m[37m06/14/2018-11:40:39.91 [34m[33mDeezNuts[34m: Reconnecting to MongoDB in 3000...[39m
+[34m[37m06/14/2018-11:40:39.91 [34m[33mDeezNuts[34m: Mongoose connection disconnected through app termination[39m
+[34m[37m06/14/2018-11:40:41.99 [34m[33mDeezNuts[34m: Mongoose connection open[39m
+[37m06/14/2018-11:40:42.71 [39m[33mDeezNuts[39m: ::1: /GET /live
+[37m06/14/2018-11:40:42.72 [39m[33mDeezNuts[39m: true
+[37m06/14/2018-11:40:42.72 [39m[33mDeezNuts[39m: 0
+[34m[37m06/14/2018-11:41:37.14 [34m[33mDeezNuts[34m: Mongoose connection disconnected[39m
+[34m[37m06/14/2018-11:41:37.15 [34m[33mDeezNuts[34m: Reconnecting to MongoDB in 3000...[39m
+[34m[37m06/14/2018-11:41:37.15 [34m[33mDeezNuts[34m: Mongoose connection disconnected through app termination[39m
+[34m[37m06/14/2018-11:41:39.20 [34m[33mDeezNuts[34m: Mongoose connection open[39m
+[37m06/14/2018-11:41:39.80 [39m[33mDeezNuts[39m: ::1: /GET /live
+[37m06/14/2018-11:41:40.37 [39m[33mDeezNuts[39m: ::1: /GET /
+[34m[37m06/14/2018-11:45:13.37 [34m[33mDeezNuts[34m: Mongoose connection disconnected[39m
+[34m[37m06/14/2018-11:45:13.37 [34m[33mDeezNuts[34m: Reconnecting to MongoDB in 3000...[39m
+[34m[37m06/14/2018-11:45:13.37 [34m[33mDeezNuts[34m: Mongoose connection disconnected through app termination[39m
+[34m[37m06/14/2018-11:45:17.95 [34m[33mDeezNuts[34m: Mongoose connection open[39m
+[37m06/14/2018-11:45:18.45 [39m[33mDeezNuts[39m: ::1: /GET /
+[34m[37m06/14/2018-11:46:09.47 [34m[33mDeezNuts[34m: Mongoose connection disconnected[39m
+[34m[37m06/14/2018-11:46:09.47 [34m[33mDeezNuts[34m: Reconnecting to MongoDB in 3000...[39m
+[34m[37m06/14/2018-11:46:09.47 [34m[33mDeezNuts[34m: Mongoose connection disconnected through app termination[39m
+[34m[37m06/14/2018-11:46:11.61 [34m[33mDeezNuts[34m: Mongoose connection open[39m
+[37m06/14/2018-11:46:12.20 [39m[33mDeezNuts[39m: ::1: /GET /
+[34m[37m06/14/2018-11:47:18.59 [34m[33mDeezNuts[34m: Mongoose connection disconnected[39m
+[34m[37m06/14/2018-11:47:18.59 [34m[33mDeezNuts[34m: Reconnecting to MongoDB in 3000...[39m
+[34m[37m06/14/2018-11:47:18.59 [34m[33mDeezNuts[34m: Mongoose connection disconnected through app termination[39m
+[34m[37m06/14/2018-11:47:20.72 [34m[33mDeezNuts[34m: Mongoose connection open[39m
+[37m06/14/2018-11:47:21.62 [39m[33mDeezNuts[39m: ::1: /GET /
+[34m[37m06/14/2018-11:48:03.66 [34m[33mDeezNuts[34m: Mongoose connection disconnected[39m
+[34m[37m06/14/2018-11:48:03.66 [34m[33mDeezNuts[34m: Reconnecting to MongoDB in 3000...[39m
+[34m[37m06/14/2018-11:48:03.66 [34m[33mDeezNuts[34m: Mongoose connection disconnected through app termination[39m
+[34m[37m06/14/2018-11:48:07.02 [34m[33mDeezNuts[34m: Mongoose connection open[39m
+[37m06/14/2018-11:48:08.17 [39m[33mDeezNuts[39m: ::1: /GET /
+[34m[37m06/14/2018-11:48:42.45 [34m[33mDeezNuts[34m: Mongoose connection disconnected[39m
+[34m[37m06/14/2018-11:48:42.45 [34m[33mDeezNuts[34m: Reconnecting to MongoDB in 3000...[39m
+[34m[37m06/14/2018-11:48:42.45 [34m[33mDeezNuts[34m: Mongoose connection disconnected through app termination[39m
+[34m[37m06/14/2018-11:48:44.48 [34m[33mDeezNuts[34m: Mongoose connection open[39m
+[37m06/14/2018-11:48:47.60 [39m[33mDeezNuts[39m: ::1: /GET /
+[34m[37m06/14/2018-11:49:06.03 [34m[33mDeezNuts[34m: Mongoose connection disconnected[39m
+[34m[37m06/14/2018-11:49:06.03 [34m[33mDeezNuts[34m: Reconnecting to MongoDB in 3000...[39m
+[34m[37m06/14/2018-11:49:06.03 [34m[33mDeezNuts[34m: Mongoose connection disconnected through app termination[39m
+[34m[37m06/14/2018-11:49:08.10 [34m[33mDeezNuts[34m: Mongoose connection open[39m
+[37m06/14/2018-11:49:09.72 [39m[33mDeezNuts[39m: ::1: /GET /
+[34m[37m06/14/2018-11:49:32.25 [34m[33mDeezNuts[34m: Mongoose connection disconnected[39m
+[34m[37m06/14/2018-11:49:32.25 [34m[33mDeezNuts[34m: Reconnecting to MongoDB in 3000...[39m
+[34m[37m06/14/2018-11:49:32.25 [34m[33mDeezNuts[34m: Mongoose connection disconnected through app termination[39m
+[34m[37m06/14/2018-11:49:34.28 [34m[33mDeezNuts[34m: Mongoose connection open[39m
+[37m06/14/2018-11:49:35.71 [39m[33mDeezNuts[39m: ::1: /GET /
+[37m06/14/2018-11:49:51.14 [39m[33mDeezNuts[39m: ::1: /GET /live
+[37m06/14/2018-11:49:51.68 [39m[33mDeezNuts[39m: ::1: /GET /
+[34m[37m06/14/2018-11:52:30.40 [34m[33mDeezNuts[34m: Mongoose connection disconnected[39m
+[34m[37m06/14/2018-11:52:30.40 [34m[33mDeezNuts[34m: Reconnecting to MongoDB in 3000...[39m
+[34m[37m06/14/2018-11:52:30.40 [34m[33mDeezNuts[34m: Mongoose connection disconnected through app termination[39m
+[34m[37m06/14/2018-11:52:41.05 [34m[33mDeezNuts[34m: Mongoose connection open[39m
+[37m06/14/2018-11:52:41.86 [39m[33mDeezNuts[39m: ::1: /GET /
+[37m06/14/2018-11:52:46.47 [39m[33mDeezNuts[39m: ::1: /GET /live
+[34m[37m06/14/2018-11:53:51.85 [34m[33mDeezNuts[34m: Mongoose connection disconnected[39m
+[34m[37m06/14/2018-11:53:51.85 [34m[33mDeezNuts[34m: Reconnecting to MongoDB in 3000...[39m
+[34m[37m06/14/2018-11:53:51.86 [34m[33mDeezNuts[34m: Mongoose connection disconnected through app termination[39m
+[34m[37m06/14/2018-11:53:53.81 [34m[33mDeezNuts[34m: Mongoose connection open[39m
+[37m06/14/2018-11:53:54.69 [39m[33mDeezNuts[39m: ::1: /GET /live
+[37m06/14/2018-11:54:05.79 [39m[33mDeezNuts[39m: ::1: /GET /
+[34m[37m06/14/2018-11:54:21.15 [34m[33mDeezNuts[34m: Mongoose connection disconnected[39m
+[34m[37m06/14/2018-11:54:21.16 [34m[33mDeezNuts[34m: Reconnecting to MongoDB in 3000...[39m
+[34m[37m06/14/2018-11:54:21.16 [34m[33mDeezNuts[34m: Mongoose connection disconnected through app termination[39m
+[34m[37m06/14/2018-11:54:23.36 [34m[33mDeezNuts[34m: Mongoose connection open[39m
+[37m06/14/2018-11:54:24.64 [39m[33mDeezNuts[39m: ::1: /GET /
+[37m06/14/2018-11:54:27.36 [39m[33mDeezNuts[39m: ::1: /GET /
+[37m06/14/2018-11:54:28.66 [39m[33mDeezNuts[39m: ::1: /GET /live
+[37m06/14/2018-11:54:31.42 [39m[33mDeezNuts[39m: ::1: /GET /
+[37m06/14/2018-11:54:40.04 [39m[33mDeezNuts[39m: ::1: /GET /
+[37m06/14/2018-11:54:45.92 [39m[33mDeezNuts[39m: ::1: /GET /privacy-policy
+[37m06/14/2018-11:54:47.14 [39m[33mDeezNuts[39m: ::1: /GET /terms
+[37m06/14/2018-11:54:48.21 [39m[33mDeezNuts[39m: ::1: /GET /support
+[37m06/14/2018-11:54:49.17 [39m[33mDeezNuts[39m: ::1: /GET /privacy-policy
+[37m06/14/2018-11:54:53.84 [39m[33mDeezNuts[39m: ::1: /GET /
+[34m[37m06/14/2018-11:57:28.08 [34m[33mDeezNuts[34m: Mongoose connection disconnected[39m
+[34m[37m06/14/2018-11:57:28.08 [34m[33mDeezNuts[34m: Reconnecting to MongoDB in 3000...[39m
+[34m[37m06/14/2018-11:57:28.08 [34m[33mDeezNuts[34m: Mongoose connection disconnected through app termination[39m
+[34m[37m06/14/2018-11:57:44.50 [34m[33mDeezNuts[34m: Mongoose connection open[39m
+[37m06/14/2018-11:57:49.22 [39m[33mDeezNuts[39m: ::1: /GET /privacy-policy
+[1m[33m[37m06/14/2018-11:57:49.55 [33m { NotFoundError: Not Found[39m[22m
+[1m[33m    at /home/skeetzo/Projects/alexdeeznuts/app.js:70:8[39m[22m
+[1m[33m    at Layer.handle [as handle_request] (/home/skeetzo/Projects/alexdeeznuts/node_modules/express/lib/router/layer.js:95:5)[39m[22m
+[1m[33m    at trim_prefix (/home/skeetzo/Projects/alexdeeznuts/node_modules/express/lib/router/index.js:317:13)[39m[22m
+[1m[33m    at /home/skeetzo/Projects/alexdeeznuts/node_modules/express/lib/router/index.js:284:7[39m[22m
+[1m[33m    at Function.process_params (/home/skeetzo/Projects/alexdeeznuts/node_modules/express/lib/router/index.js:335:12)[39m[22m
+[1m[33m    at next (/home/skeetzo/Projects/alexdeeznuts/node_modules/express/lib/router/index.js:275:10)[39m[22m
+[1m[33m    at /home/skeetzo/Projects/alexdeeznuts/node_modules/express/lib/router/index.js:635:15[39m[22m
+[1m[33m    at next (/home/skeetzo/Projects/alexdeeznuts/node_modules/express/lib/router/index.js:260:14)[39m[22m
+[1m[33m    at /home/skeetzo/Projects/alexdeeznuts/routes/index.js:15:2[39m[22m
+[1m[33m    at Layer.handle [as handle_request] (/home/skeetzo/Projects/alexdeeznuts/node_modules/express/lib/router/layer.js:95:5)[39m[22m
+[1m[33m    at trim_prefix (/home/skeetzo/Projects/alexdeeznuts/node_modules/express/lib/router/index.js:317:13)[39m[22m
+[1m[33m    at /home/skeetzo/Projects/alexdeeznuts/node_modules/express/lib/router/index.js:284:7[39m[22m
+[1m[33m    at Function.process_params (/home/skeetzo/Projects/alexdeeznuts/node_modules/express/lib/router/index.js:335:12)[39m[22m
+[1m[33m    at next (/home/skeetzo/Projects/alexdeeznuts/node_modules/express/lib/router/index.js:275:10)[39m[22m
+[1m[33m    at module.exports.findViewer (/home/skeetzo/Projects/alexdeeznuts/modules/mixins.js:12:43)[39m[22m
+[1m[33m    at Layer.handle [as handle_request] (/home/skeetzo/Projects/alexdeeznuts/node_modules/express/lib/router/layer.js:95:5)[39m[22m
+[1m[33m    at trim_prefix (/home/skeetzo/Projects/alexdeeznuts/node_modules/express/lib/router/index.js:317:13)[39m[22m
+[1m[33m    at /home/skeetzo/Projects/alexdeeznuts/node_modules/express/lib/router/index.js:284:7[39m[22m
+[1m[33m    at Function.process_params (/home/skeetzo/Projects/alexdeeznuts/node_modules/express/lib/router/index.js:335:12)[39m[22m
+[1m[33m    at next (/home/skeetzo/Projects/alexdeeznuts/node_modules/express/lib/router/index.js:275:10)[39m[22m
+[1m[33m    at /home/skeetzo/Projects/alexdeeznuts/modules/mixins.js:89:9[39m[22m
+[1m[33m    at /home/skeetzo/Projects/alexdeeznuts/node_modules/connect-mongodb-session/index.js:176:21[39m[22m
+[1m[33m    at result (/home/skeetzo/Projects/alexdeeznuts/node_modules/mongodb/lib/utils.js:414:17)[39m[22m
+[1m[33m    at executeCallback (/home/skeetzo/Projects/alexdeeznuts/node_modules/mongodb/lib/utils.js:406:9)[39m[22m
+[1m[33m    at handleCallback (/home/skeetzo/Projects/alexdeeznuts/node_modules/mongodb/lib/utils.js:128:55)[39m[22m
+[1m[33m    at /home/skeetzo/Projects/alexdeeznuts/node_modules/mongodb/lib/collection.js:1031:5[39m[22m
+[1m[33m    at /home/skeetzo/Projects/alexdeeznuts/node_modules/mongodb-core/lib/connection/pool.js:544:18[39m[22m
+[1m[33m    at process._tickCallback (internal/process/next_tick.js:150:11) message: 'Not Found' }[39m[22m
+[34m[37m06/14/2018-11:59:27.52 [34m[33mDeezNuts[34m: Mongoose connection disconnected[39m
+[34m[37m06/14/2018-11:59:27.53 [34m[33mDeezNuts[34m: Reconnecting to MongoDB in 3000...[39m
+[34m[37m06/14/2018-11:59:27.53 [34m[33mDeezNuts[34m: Mongoose connection disconnected through app termination[39m
+[34m[37m06/14/2018-11:59:29.66 [34m[33mDeezNuts[34m: Mongoose connection open[39m
+[37m06/14/2018-11:59:30.78 [39m[33mDeezNuts[39m: ::1: /GET /privacy-policy
+[1m[33m[37m06/14/2018-11:59:31.04 [33m { NotFoundError: Not Found[39m[22m
+[1m[33m    at /home/skeetzo/Projects/alexdeeznuts/app.js:70:8[39m[22m
+[1m[33m    at Layer.handle [as handle_request] (/home/skeetzo/Projects/alexdeeznuts/node_modules/express/lib/router/layer.js:95:5)[39m[22m
+[1m[33m    at trim_prefix (/home/skeetzo/Projects/alexdeeznuts/node_modules/express/lib/router/index.js:317:13)[39m[22m
+[1m[33m    at /home/skeetzo/Projects/alexdeeznuts/node_modules/express/lib/router/index.js:284:7[39m[22m
+[1m[33m    at Function.process_params (/home/skeetzo/Projects/alexdeeznuts/node_modules/express/lib/router/index.js:335:12)[39m[22m
+[1m[33m    at next (/home/skeetzo/Projects/alexdeeznuts/node_modules/express/lib/router/index.js:275:10)[39m[22m
+[1m[33m    at /home/skeetzo/Projects/alexdeeznuts/node_modules/express/lib/router/index.js:635:15[39m[22m
+[1m[33m    at next (/home/skeetzo/Projects/alexdeeznuts/node_modules/express/lib/router/index.js:260:14)[39m[22m
+[1m[33m    at /home/skeetzo/Projects/alexdeeznuts/routes/index.js:15:2[39m[22m
+[1m[33m    at Layer.handle [as handle_request] (/home/skeetzo/Projects/alexdeeznuts/node_modules/express/lib/router/layer.js:95:5)[39m[22m
+[1m[33m    at trim_prefix (/home/skeetzo/Projects/alexdeeznuts/node_modules/express/lib/router/index.js:317:13)[39m[22m
+[1m[33m    at /home/skeetzo/Projects/alexdeeznuts/node_modules/express/lib/router/index.js:284:7[39m[22m
+[1m[33m    at Function.process_params (/home/skeetzo/Projects/alexdeeznuts/node_modules/express/lib/router/index.js:335:12)[39m[22m
+[1m[33m    at next (/home/skeetzo/Projects/alexdeeznuts/node_modules/express/lib/router/index.js:275:10)[39m[22m
+[1m[33m    at module.exports.findViewer (/home/skeetzo/Projects/alexdeeznuts/modules/mixins.js:12:43)[39m[22m
+[1m[33m    at Layer.handle [as handle_request] (/home/skeetzo/Projects/alexdeeznuts/node_modules/express/lib/router/layer.js:95:5)[39m[22m
+[1m[33m    at trim_prefix (/home/skeetzo/Projects/alexdeeznuts/node_modules/express/lib/router/index.js:317:13)[39m[22m
+[1m[33m    at /home/skeetzo/Projects/alexdeeznuts/node_modules/express/lib/router/index.js:284:7[39m[22m
+[1m[33m    at Function.process_params (/home/skeetzo/Projects/alexdeeznuts/node_modules/express/lib/router/index.js:335:12)[39m[22m
+[1m[33m    at next (/home/skeetzo/Projects/alexdeeznuts/node_modules/express/lib/router/index.js:275:10)[39m[22m
+[1m[33m    at /home/skeetzo/Projects/alexdeeznuts/modules/mixins.js:89:9[39m[22m
+[1m[33m    at /home/skeetzo/Projects/alexdeeznuts/node_modules/connect-mongodb-session/index.js:176:21[39m[22m
+[1m[33m    at result (/home/skeetzo/Projects/alexdeeznuts/node_modules/mongodb/lib/utils.js:414:17)[39m[22m
+[1m[33m    at executeCallback (/home/skeetzo/Projects/alexdeeznuts/node_modules/mongodb/lib/utils.js:406:9)[39m[22m
+[1m[33m    at handleCallback (/home/skeetzo/Projects/alexdeeznuts/node_modules/mongodb/lib/utils.js:128:55)[39m[22m
+[1m[33m    at /home/skeetzo/Projects/alexdeeznuts/node_modules/mongodb/lib/collection.js:1031:5[39m[22m
+[1m[33m    at /home/skeetzo/Projects/alexdeeznuts/node_modules/mongodb-core/lib/connection/pool.js:544:18[39m[22m
+[1m[33m    at process._tickCallback (internal/process/next_tick.js:150:11) message: 'Not Found' }[39m[22m
+[34m[37m06/14/2018-11:59:56.40 [34m[33mDeezNuts[34m: Mongoose connection disconnected[39m
+[34m[37m06/14/2018-11:59:56.40 [34m[33mDeezNuts[34m: Reconnecting to MongoDB in 3000...[39m
+[34m[37m06/14/2018-11:59:56.40 [34m[33mDeezNuts[34m: Mongoose connection disconnected through app termination[39m
+[34m[37m06/14/2018-11:59:58.41 [34m[33mDeezNuts[34m: Mongoose connection open[39m
+[37m06/14/2018-11:59:58.72 [39m[33mDeezNuts[39m: ::1: /GET /privacy-policy
+[1m[33m[37m06/14/2018-11:59:59.00 [33m { NotFoundError: Not Found[39m[22m
+[1m[33m    at /home/skeetzo/Projects/alexdeeznuts/app.js:70:8[39m[22m
+[1m[33m    at Layer.handle [as handle_request] (/home/skeetzo/Projects/alexdeeznuts/node_modules/express/lib/router/layer.js:95:5)[39m[22m
+[1m[33m    at trim_prefix (/home/skeetzo/Projects/alexdeeznuts/node_modules/express/lib/router/index.js:317:13)[39m[22m
+[1m[33m    at /home/skeetzo/Projects/alexdeeznuts/node_modules/express/lib/router/index.js:284:7[39m[22m
+[1m[33m    at Function.process_params (/home/skeetzo/Projects/alexdeeznuts/node_modules/express/lib/router/index.js:335:12)[39m[22m
+[1m[33m    at next (/home/skeetzo/Projects/alexdeeznuts/node_modules/express/lib/router/index.js:275:10)[39m[22m
+[1m[33m    at /home/skeetzo/Projects/alexdeeznuts/node_modules/express/lib/router/index.js:635:15[39m[22m
+[1m[33m    at next (/home/skeetzo/Projects/alexdeeznuts/node_modules/express/lib/router/index.js:260:14)[39m[22m
+[1m[33m    at /home/skeetzo/Projects/alexdeeznuts/routes/index.js:15:2[39m[22m
+[1m[33m    at Layer.handle [as handle_request] (/home/skeetzo/Projects/alexdeeznuts/node_modules/express/lib/router/layer.js:95:5)[39m[22m
+[1m[33m    at trim_prefix (/home/skeetzo/Projects/alexdeeznuts/node_modules/express/lib/router/index.js:317:13)[39m[22m
+[1m[33m    at /home/skeetzo/Projects/alexdeeznuts/node_modules/express/lib/router/index.js:284:7[39m[22m
+[1m[33m    at Function.process_params (/home/skeetzo/Projects/alexdeeznuts/node_modules/express/lib/router/index.js:335:12)[39m[22m
+[1m[33m    at next (/home/skeetzo/Projects/alexdeeznuts/node_modules/express/lib/router/index.js:275:10)[39m[22m
+[1m[33m    at module.exports.findViewer (/home/skeetzo/Projects/alexdeeznuts/modules/mixins.js:12:43)[39m[22m
+[1m[33m    at Layer.handle [as handle_request] (/home/skeetzo/Projects/alexdeeznuts/node_modules/express/lib/router/layer.js:95:5)[39m[22m
+[1m[33m    at trim_prefix (/home/skeetzo/Projects/alexdeeznuts/node_modules/express/lib/router/index.js:317:13)[39m[22m
+[1m[33m    at /home/skeetzo/Projects/alexdeeznuts/node_modules/express/lib/router/index.js:284:7[39m[22m
+[1m[33m    at Function.process_params (/home/skeetzo/Projects/alexdeeznuts/node_modules/express/lib/router/index.js:335:12)[39m[22m
+[1m[33m    at next (/home/skeetzo/Projects/alexdeeznuts/node_modules/express/lib/router/index.js:275:10)[39m[22m
+[1m[33m    at /home/skeetzo/Projects/alexdeeznuts/modules/mixins.js:89:9[39m[22m
+[1m[33m    at /home/skeetzo/Projects/alexdeeznuts/node_modules/connect-mongodb-session/index.js:176:21[39m[22m
+[1m[33m    at result (/home/skeetzo/Projects/alexdeeznuts/node_modules/mongodb/lib/utils.js:414:17)[39m[22m
+[1m[33m    at executeCallback (/home/skeetzo/Projects/alexdeeznuts/node_modules/mongodb/lib/utils.js:406:9)[39m[22m
+[1m[33m    at handleCallback (/home/skeetzo/Projects/alexdeeznuts/node_modules/mongodb/lib/utils.js:128:55)[39m[22m
+[1m[33m    at /home/skeetzo/Projects/alexdeeznuts/node_modules/mongodb/lib/collection.js:1031:5[39m[22m
+[1m[33m    at /home/skeetzo/Projects/alexdeeznuts/node_modules/mongodb-core/lib/connection/pool.js:544:18[39m[22m
+[1m[33m    at process._tickCallback (internal/process/next_tick.js:150:11) message: 'Not Found' }[39m[22m
+[34m[37m06/14/2018-12:00:24.74 [34m[33mDeezNuts[34m: Mongoose connection disconnected[39m
+[34m[37m06/14/2018-12:00:24.74 [34m[33mDeezNuts[34m: Reconnecting to MongoDB in 3000...[39m
+[34m[37m06/14/2018-12:00:24.74 [34m[33mDeezNuts[34m: Mongoose connection disconnected through app termination[39m
+[34m[37m06/14/2018-12:00:26.96 [34m[33mDeezNuts[34m: Mongoose connection open[39m
+[37m06/14/2018-12:00:27.42 [39m[33mDeezNuts[39m: ::1: /GET /privacy-policy
+[1m[33m[37m06/14/2018-12:00:27.73 [33m { NotFoundError: Not Found[39m[22m
+[1m[33m    at /home/skeetzo/Projects/alexdeeznuts/app.js:70:8[39m[22m
+[1m[33m    at Layer.handle [as handle_request] (/home/skeetzo/Projects/alexdeeznuts/node_modules/express/lib/router/layer.js:95:5)[39m[22m
+[1m[33m    at trim_prefix (/home/skeetzo/Projects/alexdeeznuts/node_modules/express/lib/router/index.js:317:13)[39m[22m
+[1m[33m    at /home/skeetzo/Projects/alexdeeznuts/node_modules/express/lib/router/index.js:284:7[39m[22m
+[1m[33m    at Function.process_params (/home/skeetzo/Projects/alexdeeznuts/node_modules/express/lib/router/index.js:335:12)[39m[22m
+[1m[33m    at next (/home/skeetzo/Projects/alexdeeznuts/node_modules/express/lib/router/index.js:275:10)[39m[22m
+[1m[33m    at /home/skeetzo/Projects/alexdeeznuts/node_modules/express/lib/router/index.js:635:15[39m[22m
+[1m[33m    at next (/home/skeetzo/Projects/alexdeeznuts/node_modules/express/lib/router/index.js:260:14)[39m[22m
+[1m[33m    at /home/skeetzo/Projects/alexdeeznuts/routes/index.js:15:2[39m[22m
+[1m[33m    at Layer.handle [as handle_request] (/home/skeetzo/Projects/alexdeeznuts/node_modules/express/lib/router/layer.js:95:5)[39m[22m
+[1m[33m    at trim_prefix (/home/skeetzo/Projects/alexdeeznuts/node_modules/express/lib/router/index.js:317:13)[39m[22m
+[1m[33m    at /home/skeetzo/Projects/alexdeeznuts/node_modules/express/lib/router/index.js:284:7[39m[22m
+[1m[33m    at Function.process_params (/home/skeetzo/Projects/alexdeeznuts/node_modules/express/lib/router/index.js:335:12)[39m[22m
+[1m[33m    at next (/home/skeetzo/Projects/alexdeeznuts/node_modules/express/lib/router/index.js:275:10)[39m[22m
+[1m[33m    at module.exports.findViewer (/home/skeetzo/Projects/alexdeeznuts/modules/mixins.js:12:43)[39m[22m
+[1m[33m    at Layer.handle [as handle_request] (/home/skeetzo/Projects/alexdeeznuts/node_modules/express/lib/router/layer.js:95:5)[39m[22m
+[1m[33m    at trim_prefix (/home/skeetzo/Projects/alexdeeznuts/node_modules/express/lib/router/index.js:317:13)[39m[22m
+[1m[33m    at /home/skeetzo/Projects/alexdeeznuts/node_modules/express/lib/router/index.js:284:7[39m[22m
+[1m[33m    at Function.process_params (/home/skeetzo/Projects/alexdeeznuts/node_modules/express/lib/router/index.js:335:12)[39m[22m
+[1m[33m    at next (/home/skeetzo/Projects/alexdeeznuts/node_modules/express/lib/router/index.js:275:10)[39m[22m
+[1m[33m    at /home/skeetzo/Projects/alexdeeznuts/modules/mixins.js:89:9[39m[22m
+[1m[33m    at /home/skeetzo/Projects/alexdeeznuts/node_modules/connect-mongodb-session/index.js:176:21[39m[22m
+[1m[33m    at result (/home/skeetzo/Projects/alexdeeznuts/node_modules/mongodb/lib/utils.js:414:17)[39m[22m
+[1m[33m    at executeCallback (/home/skeetzo/Projects/alexdeeznuts/node_modules/mongodb/lib/utils.js:406:9)[39m[22m
+[1m[33m    at handleCallback (/home/skeetzo/Projects/alexdeeznuts/node_modules/mongodb/lib/utils.js:128:55)[39m[22m
+[1m[33m    at /home/skeetzo/Projects/alexdeeznuts/node_modules/mongodb/lib/collection.js:1031:5[39m[22m
+[1m[33m    at /home/skeetzo/Projects/alexdeeznuts/node_modules/mongodb-core/lib/connection/pool.js:544:18[39m[22m
+[1m[33m    at process._tickCallback (internal/process/next_tick.js:150:11) message: 'Not Found' }[39m[22m
+[37m06/14/2018-12:00:30.43 [39m[33mDeezNuts[39m: ::1: /GET /
+[37m06/14/2018-12:00:32.07 [39m[33mDeezNuts[39m: ::1: /GET /live
+[34m[37m06/14/2018-12:01:15.95 [34m[33mDeezNuts[34m: Mongoose connection disconnected[39m
+[34m[37m06/14/2018-12:01:15.95 [34m[33mDeezNuts[34m: Reconnecting to MongoDB in 3000...[39m
+[34m[37m06/14/2018-12:01:15.95 [34m[33mDeezNuts[34m: Mongoose connection disconnected through app termination[39m
+[34m[37m06/14/2018-12:01:18.07 [34m[33mDeezNuts[34m: Mongoose connection open[39m
+[37m06/14/2018-12:01:19.18 [39m[33mDeezNuts[39m: ::1: /GET /live
+[34m[37m06/14/2018-12:02:04.40 [34m[33mDeezNuts[34m: Mongoose connection disconnected[39m
+[34m[37m06/14/2018-12:02:04.40 [34m[33mDeezNuts[34m: Reconnecting to MongoDB in 3000...[39m
+[34m[37m06/14/2018-12:02:04.40 [34m[33mDeezNuts[34m: Mongoose connection disconnected through app termination[39m
+[34m[37m06/14/2018-12:02:06.60 [34m[33mDeezNuts[34m: Mongoose connection open[39m
+[37m06/14/2018-12:02:08.05 [39m[33mDeezNuts[39m: ::1: /GET /live
+[34m[37m06/14/2018-12:02:30.05 [34m[33mDeezNuts[34m: Mongoose connection disconnected[39m
+[34m[37m06/14/2018-12:02:30.06 [34m[33mDeezNuts[34m: Reconnecting to MongoDB in 3000...[39m
+[34m[37m06/14/2018-12:02:30.06 [34m[33mDeezNuts[34m: Mongoose connection disconnected through app termination[39m
+[34m[37m06/14/2018-12:02:32.10 [34m[33mDeezNuts[34m: Mongoose connection open[39m
+[37m06/14/2018-12:02:32.43 [39m[33mDeezNuts[39m: ::1: /GET /live
+[37m06/14/2018-12:02:34.76 [39m[33mDeezNuts[39m: ::1: /GET /
+[37m06/14/2018-12:02:38.85 [39m[33mDeezNuts[39m: ::1: /GET /live
+[34m[37m06/14/2018-12:03:05.24 [34m[33mDeezNuts[34m: Mongoose connection disconnected[39m
+[34m[37m06/14/2018-12:03:05.24 [34m[33mDeezNuts[34m: Reconnecting to MongoDB in 3000...[39m
+[34m[37m06/14/2018-12:03:05.24 [34m[33mDeezNuts[34m: Mongoose connection disconnected through app termination[39m
+[34m[37m06/14/2018-12:03:07.48 [34m[33mDeezNuts[34m: Mongoose connection open[39m
+[37m06/14/2018-12:03:08.94 [39m[33mDeezNuts[39m: ::1: /GET /live
+[37m06/14/2018-12:03:11.51 [39m[33mDeezNuts[39m: ::1: /GET /
+[37m06/14/2018-12:03:14.41 [39m[33mDeezNuts[39m: ::1: /GET /live
+[37m06/14/2018-12:03:16.62 [39m[33mDeezNuts[39m: ::1: /GET /
+[34m[37m06/14/2018-12:03:25.72 [34m[33mDeezNuts[34m: Mongoose connection disconnected[39m
+[34m[37m06/14/2018-12:03:25.72 [34m[33mDeezNuts[34m: Reconnecting to MongoDB in 3000...[39m
+[34m[37m06/14/2018-12:03:25.72 [34m[33mDeezNuts[34m: Mongoose connection disconnected through app termination[39m

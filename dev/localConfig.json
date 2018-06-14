@@ -1,3 +1,9 @@
 {
-	"blockchainKey" : "yourmom"
+	"blockchainKey" : "d1d86c8a-210e-40ca-a4ac-ce98ae328a8a",
+	"blockchainXpub" : "xpub6CZnCoHLTBVjuEHVtm6Dgd266vNcSkWv5rEcb1RaEH38BhobGGe44NtEyWEFVPBe4CaNDM3mKfGgeYomCjxnahSqGmnS23VbaidYtG1YPUb",
+
+	"MONGODB_URI" : "mongodb://heroku_n0jsgk42:i9i3atbuabn1n2vb8urobfupe4@ds255930.mlab.com:55930/heroku_n0jsgk42"
+
+
+
 }
