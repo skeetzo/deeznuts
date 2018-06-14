@@ -3,7 +3,7 @@
 var config = {};
 
 // Debugging
-config.debugging = true;
+config.debugging = false;
 
 // App Settings
 config.botName = "DeezNuts";
