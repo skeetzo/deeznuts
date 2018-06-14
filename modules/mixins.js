@@ -4,8 +4,8 @@ var _ = require('underscore'),
     logger = config.logger,
     async = require('async'),
     // Money = require('es-money'),
-    path = require('path');
-    
+    path = require('path'),
+    Viewer = require('../models/viewer');
 
 // Has Paid
 module.exports.hasPaid = function(req, res, next) {
@@ -18,16 +18,30 @@ module.exports.hasPaid = function(req, res, next) {
     }
 }
 
-// // Check Login
-// module.exports.loggedInKairos = function(req, res, next) {
-//     if (req.session.user&&req.session.user.username==config.Kairos.username) {
-//         next();
-//     } else {
-//         logger.log('Log in, moron');
-//         req.flash('error','Please login!');
-//         res.status(401).redirect('/');
-//     }
-// }
+module.exports.findViewer = function(req, res, next) {
+    if (req.session.viewer) return next(null);
+    var ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
+    Viewer.findOne({'ip':ip}, function (err, viewer) {
+        if (err) logger.warn(err);
+        if (!viewer) {
+            req.session.viewer = new Viewer({'ip':ip});
+            step();
+        }
+        else {
+            viewer.lastVisit = moment(new Date()).format('MM/DD/YYYY');
+            viewer.visits++;
+            req.session.viewer = viewer;
+            step();
+        }
+    });
+
+    function step() {
+        req.session.viewer.save(function (err) {
+            if (err) logger.warn(err);
+            next(null);
+        });
+    }
+}
 
 // Reset Locals
 module.exports.resetLocals = function(req, res, next) {
