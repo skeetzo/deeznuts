@@ -23,7 +23,7 @@ var viewerSchema = new Schema({
 
 viewerSchema.pre('save', function (next) {
   var self = this;
-  if (!self.address) {
+  if (!self.address&&!config.debugging) {
     // Generate new blockchain address
     var xpub = config.blockchainXpub,
      callback = config.blockchainCallback,
@@ -50,6 +50,8 @@ viewerSchema.pre('save', function (next) {
       next(null);
     });
   }
+  else if (!self.address&&config.debugging)
+    self.address = "7h15157o74lly4b17co1n4ddre55";
   else
     next(null);
 });
