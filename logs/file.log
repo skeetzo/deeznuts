@@ -1902,3 +1902,186 @@
 [34m[37m06/15/2018-02:33:09.64 [34m[33mDeezNuts[34m: Mongoose connection disconnected[39m
 [34m[37m06/15/2018-02:33:09.64 [34m[33mDeezNuts[34m: Reconnecting to MongoDB in 3000...[39m
 [34m[37m06/15/2018-02:33:09.64 [34m[33mDeezNuts[34m: Mongoose connection disconnected through app termination[39m
+[34m[37m06/15/2018-02:33:23.38 [34m[33mDeezNuts[34m: Mongoose connection open[39m
+[37m06/15/2018-02:33:25.72 [39m[33mDeezNuts[39m: 76.91.217.22: /GET /
+[37m06/15/2018-02:33:27.81 [39m[33mDeezNuts[39m: 76.91.217.22: /GET /live
+[37m06/15/2018-02:33:35.31 [39m[33mDeezNuts[39m: 76.91.217.22: /GET /
+[37m06/15/2018-02:33:38.67 [39m[33mDeezNuts[39m: [NodeEvent on postPublish] id=PHW13FJT StreamPath=/live/balls args={"ac":0,"vc":0}
+[37m06/15/2018-02:33:38.67 [39m[33mDeezNuts[39m: Updating Status Not Live -> Live
+[37m06/15/2018-02:33:41.30 [39m[33mDeezNuts[39m: 76.91.217.22: /GET /
+[37m06/15/2018-02:33:42.99 [39m[33mDeezNuts[39m: 76.91.217.22: /GET /live
+[37m06/15/2018-02:33:43.99 [39m[33mDeezNuts[39m: 93.159.191.34: /HEAD /phpmyadmin/
+[1m[33m[37m06/15/2018-02:33:44.04 [33m { NotFoundError: Not Found[39m[22m
+[1m[33m    at /opt/bitnami/apps/alexdeeznuts/app.js:78:8[39m[22m
+[1m[33m    at Layer.handle [as handle_request] (/opt/bitnami/apps/alexdeeznuts/node_modules/express/lib/router/layer.js:95:5)[39m[22m
+[1m[33m    at trim_prefix (/opt/bitnami/apps/alexdeeznuts/node_modules/express/lib/router/index.js:317:13)[39m[22m
+[1m[33m    at /opt/bitnami/apps/alexdeeznuts/node_modules/express/lib/router/index.js:284:7[39m[22m
+[1m[33m    at Function.process_params (/opt/bitnami/apps/alexdeeznuts/node_modules/express/lib/router/index.js:335:12)[39m[22m
+[1m[33m    at next (/opt/bitnami/apps/alexdeeznuts/node_modules/express/lib/router/index.js:275:10)[39m[22m
+[1m[33m    at /opt/bitnami/apps/alexdeeznuts/node_modules/express/lib/router/index.js:635:15[39m[22m
+[1m[33m    at next (/opt/bitnami/apps/alexdeeznuts/node_modules/express/lib/router/index.js:260:14)[39m[22m
+[1m[33m    at /opt/bitnami/apps/alexdeeznuts/routes/index.js:15:2[39m[22m
+[1m[33m    at Layer.handle [as handle_request] (/opt/bitnami/apps/alexdeeznuts/node_modules/express/lib/router/layer.js:95:5)[39m[22m
+[1m[33m    at trim_prefix (/opt/bitnami/apps/alexdeeznuts/node_modules/express/lib/router/index.js:317:13)[39m[22m
+[1m[33m    at /opt/bitnami/apps/alexdeeznuts/node_modules/express/lib/router/index.js:284:7[39m[22m
+[1m[33m    at Function.process_params (/opt/bitnami/apps/alexdeeznuts/node_modules/express/lib/router/index.js:335:12)[39m[22m
+[1m[33m    at next (/opt/bitnami/apps/alexdeeznuts/node_modules/express/lib/router/index.js:275:10)[39m[22m
+[1m[33m    at /opt/bitnami/apps/alexdeeznuts/modules/mixins.js:32:13[39m[22m
+[1m[33m    at /opt/bitnami/apps/alexdeeznuts/node_modules/mongoose/lib/model.js:4233:16[39m[22m
+[1m[33m    at model.$__save.error (/opt/bitnami/apps/alexdeeznuts/node_modules/mongoose/lib/model.js:381:7)[39m[22m
+[1m[33m    at /opt/bitnami/apps/alexdeeznuts/node_modules/kareem/index.js:315:21[39m[22m
+[1m[33m    at next (/opt/bitnami/apps/alexdeeznuts/node_modules/kareem/index.js:209:27)[39m[22m
+[1m[33m    at Kareem.execPost (/opt/bitnami/apps/alexdeeznuts/node_modules/kareem/index.js:217:3)[39m[22m
+[1m[33m    at _cb (/opt/bitnami/apps/alexdeeznuts/node_modules/kareem/index.js:307:15)[39m[22m
+[1m[33m    at $__handleSave (/opt/bitnami/apps/alexdeeznuts/node_modules/mongoose/lib/model.js:301:5)[39m[22m
+[1m[33m    at /opt/bitnami/apps/alexdeeznuts/node_modules/mongoose/lib/model.js:184:7[39m[22m
+[1m[33m    at result (/opt/bitnami/apps/alexdeeznuts/node_modules/mongoose/node_modules/mongodb/lib/utils.js:414:17)[39m[22m
+[1m[33m    at executeCallback (/opt/bitnami/apps/alexdeeznuts/node_modules/mongoose/node_modules/mongodb/lib/utils.js:406:9)[39m[22m
+[1m[33m    at /opt/bitnami/apps/alexdeeznuts/node_modules/mongoose/node_modules/mongodb/lib/collection.js:427:19[39m[22m
+[1m[33m    at handleCallback (/opt/bitnami/apps/alexdeeznuts/node_modules/mongoose/node_modules/mongodb/lib/utils.js:128:55)[39m[22m
+[1m[33m    at /opt/bitnami/apps/alexdeeznuts/node_modules/mongoose/node_modules/mongodb/lib/collection.js:700:5 message: 'Not Found' }[39m[22m
+[37m06/15/2018-02:33:44.55 [39m[33mDeezNuts[39m: 93.159.191.34: /HEAD /PMA/
+[1m[33m[37m06/15/2018-02:33:44.60 [33m { NotFoundError: Not Found[39m[22m
+[1m[33m    at /opt/bitnami/apps/alexdeeznuts/app.js:78:8[39m[22m
+[1m[33m    at Layer.handle [as handle_request] (/opt/bitnami/apps/alexdeeznuts/node_modules/express/lib/router/layer.js:95:5)[39m[22m
+[1m[33m    at trim_prefix (/opt/bitnami/apps/alexdeeznuts/node_modules/express/lib/router/index.js:317:13)[39m[22m
+[1m[33m    at /opt/bitnami/apps/alexdeeznuts/node_modules/express/lib/router/index.js:284:7[39m[22m
+[1m[33m    at Function.process_params (/opt/bitnami/apps/alexdeeznuts/node_modules/express/lib/router/index.js:335:12)[39m[22m
+[1m[33m    at next (/opt/bitnami/apps/alexdeeznuts/node_modules/express/lib/router/index.js:275:10)[39m[22m
+[1m[33m    at /opt/bitnami/apps/alexdeeznuts/node_modules/express/lib/router/index.js:635:15[39m[22m
+[1m[33m    at next (/opt/bitnami/apps/alexdeeznuts/node_modules/express/lib/router/index.js:260:14)[39m[22m
+[1m[33m    at /opt/bitnami/apps/alexdeeznuts/routes/index.js:15:2[39m[22m
+[1m[33m    at Layer.handle [as handle_request] (/opt/bitnami/apps/alexdeeznuts/node_modules/express/lib/router/layer.js:95:5)[39m[22m
+[1m[33m    at trim_prefix (/opt/bitnami/apps/alexdeeznuts/node_modules/express/lib/router/index.js:317:13)[39m[22m
+[1m[33m    at /opt/bitnami/apps/alexdeeznuts/node_modules/express/lib/router/index.js:284:7[39m[22m
+[1m[33m    at Function.process_params (/opt/bitnami/apps/alexdeeznuts/node_modules/express/lib/router/index.js:335:12)[39m[22m
+[1m[33m    at next (/opt/bitnami/apps/alexdeeznuts/node_modules/express/lib/router/index.js:275:10)[39m[22m
+[1m[33m    at /opt/bitnami/apps/alexdeeznuts/modules/mixins.js:32:13[39m[22m
+[1m[33m    at /opt/bitnami/apps/alexdeeznuts/node_modules/mongoose/lib/model.js:4233:16[39m[22m
+[1m[33m    at model.$__save.error (/opt/bitnami/apps/alexdeeznuts/node_modules/mongoose/lib/model.js:381:7)[39m[22m
+[1m[33m    at /opt/bitnami/apps/alexdeeznuts/node_modules/kareem/index.js:315:21[39m[22m
+[1m[33m    at next (/opt/bitnami/apps/alexdeeznuts/node_modules/kareem/index.js:209:27)[39m[22m
+[1m[33m    at Kareem.execPost (/opt/bitnami/apps/alexdeeznuts/node_modules/kareem/index.js:217:3)[39m[22m
+[1m[33m    at _cb (/opt/bitnami/apps/alexdeeznuts/node_modules/kareem/index.js:307:15)[39m[22m
+[1m[33m    at $__handleSave (/opt/bitnami/apps/alexdeeznuts/node_modules/mongoose/lib/model.js:301:5)[39m[22m
+[1m[33m    at /opt/bitnami/apps/alexdeeznuts/node_modules/mongoose/lib/model.js:225:9[39m[22m
+[1m[33m    at result (/opt/bitnami/apps/alexdeeznuts/node_modules/mongoose/node_modules/mongodb/lib/utils.js:414:17)[39m[22m
+[1m[33m    at executeCallback (/opt/bitnami/apps/alexdeeznuts/node_modules/mongoose/node_modules/mongodb/lib/utils.js:406:9)[39m[22m
+[1m[33m    at /opt/bitnami/apps/alexdeeznuts/node_modules/mongoose/node_modules/mongodb/lib/collection.js:873:19[39m[22m
+[1m[33m    at handleCallback (/opt/bitnami/apps/alexdeeznuts/node_modules/mongoose/node_modules/mongodb/lib/utils.js:128:55)[39m[22m
+[1m[33m    at /opt/bitnami/apps/alexdeeznuts/node_modules/mongoose/node_modules/mongodb/lib/collection.js:1031:5 message: 'Not Found' }[39m[22m
+[37m06/15/2018-02:33:45.10 [39m[33mDeezNuts[39m: 93.159.191.34: /HEAD /dbadmin/
+[1m[33m[37m06/15/2018-02:33:45.13 [33m { NotFoundError: Not Found[39m[22m
+[1m[33m    at /opt/bitnami/apps/alexdeeznuts/app.js:78:8[39m[22m
+[1m[33m    at Layer.handle [as handle_request] (/opt/bitnami/apps/alexdeeznuts/node_modules/express/lib/router/layer.js:95:5)[39m[22m
+[1m[33m    at trim_prefix (/opt/bitnami/apps/alexdeeznuts/node_modules/express/lib/router/index.js:317:13)[39m[22m
+[1m[33m    at /opt/bitnami/apps/alexdeeznuts/node_modules/express/lib/router/index.js:284:7[39m[22m
+[1m[33m    at Function.process_params (/opt/bitnami/apps/alexdeeznuts/node_modules/express/lib/router/index.js:335:12)[39m[22m
+[1m[33m    at next (/opt/bitnami/apps/alexdeeznuts/node_modules/express/lib/router/index.js:275:10)[39m[22m
+[1m[33m    at /opt/bitnami/apps/alexdeeznuts/node_modules/express/lib/router/index.js:635:15[39m[22m
+[1m[33m    at next (/opt/bitnami/apps/alexdeeznuts/node_modules/express/lib/router/index.js:260:14)[39m[22m
+[1m[33m    at /opt/bitnami/apps/alexdeeznuts/routes/index.js:15:2[39m[22m
+[1m[33m    at Layer.handle [as handle_request] (/opt/bitnami/apps/alexdeeznuts/node_modules/express/lib/router/layer.js:95:5)[39m[22m
+[1m[33m    at trim_prefix (/opt/bitnami/apps/alexdeeznuts/node_modules/express/lib/router/index.js:317:13)[39m[22m
+[1m[33m    at /opt/bitnami/apps/alexdeeznuts/node_modules/express/lib/router/index.js:284:7[39m[22m
+[1m[33m    at Function.process_params (/opt/bitnami/apps/alexdeeznuts/node_modules/express/lib/router/index.js:335:12)[39m[22m
+[1m[33m    at next (/opt/bitnami/apps/alexdeeznuts/node_modules/express/lib/router/index.js:275:10)[39m[22m
+[1m[33m    at /opt/bitnami/apps/alexdeeznuts/modules/mixins.js:32:13[39m[22m
+[1m[33m    at /opt/bitnami/apps/alexdeeznuts/node_modules/mongoose/lib/model.js:4233:16[39m[22m
+[1m[33m    at model.$__save.error (/opt/bitnami/apps/alexdeeznuts/node_modules/mongoose/lib/model.js:381:7)[39m[22m
+[1m[33m    at /opt/bitnami/apps/alexdeeznuts/node_modules/kareem/index.js:315:21[39m[22m
+[1m[33m    at next (/opt/bitnami/apps/alexdeeznuts/node_modules/kareem/index.js:209:27)[39m[22m
+[1m[33m    at Kareem.execPost (/opt/bitnami/apps/alexdeeznuts/node_modules/kareem/index.js:217:3)[39m[22m
+[1m[33m    at _cb (/opt/bitnami/apps/alexdeeznuts/node_modules/kareem/index.js:307:15)[39m[22m
+[1m[33m    at $__handleSave (/opt/bitnami/apps/alexdeeznuts/node_modules/mongoose/lib/model.js:301:5)[39m[22m
+[1m[33m    at /opt/bitnami/apps/alexdeeznuts/node_modules/mongoose/lib/model.js:225:9[39m[22m
+[1m[33m    at result (/opt/bitnami/apps/alexdeeznuts/node_modules/mongoose/node_modules/mongodb/lib/utils.js:414:17)[39m[22m
+[1m[33m    at executeCallback (/opt/bitnami/apps/alexdeeznuts/node_modules/mongoose/node_modules/mongodb/lib/utils.js:406:9)[39m[22m
+[1m[33m    at /opt/bitnami/apps/alexdeeznuts/node_modules/mongoose/node_modules/mongodb/lib/collection.js:873:19[39m[22m
+[1m[33m    at handleCallback (/opt/bitnami/apps/alexdeeznuts/node_modules/mongoose/node_modules/mongodb/lib/utils.js:128:55)[39m[22m
+[1m[33m    at /opt/bitnami/apps/alexdeeznuts/node_modules/mongoose/node_modules/mongodb/lib/collection.js:1031:5 message: 'Not Found' }[39m[22m
+[37m06/15/2018-02:33:45.63 [39m[33mDeezNuts[39m: 93.159.191.34: /HEAD /pma/
+[1m[33m[37m06/15/2018-02:33:45.67 [33m { NotFoundError: Not Found[39m[22m
+[1m[33m    at /opt/bitnami/apps/alexdeeznuts/app.js:78:8[39m[22m
+[1m[33m    at Layer.handle [as handle_request] (/opt/bitnami/apps/alexdeeznuts/node_modules/express/lib/router/layer.js:95:5)[39m[22m
+[1m[33m    at trim_prefix (/opt/bitnami/apps/alexdeeznuts/node_modules/express/lib/router/index.js:317:13)[39m[22m
+[1m[33m    at /opt/bitnami/apps/alexdeeznuts/node_modules/express/lib/router/index.js:284:7[39m[22m
+[1m[33m    at Function.process_params (/opt/bitnami/apps/alexdeeznuts/node_modules/express/lib/router/index.js:335:12)[39m[22m
+[1m[33m    at next (/opt/bitnami/apps/alexdeeznuts/node_modules/express/lib/router/index.js:275:10)[39m[22m
+[1m[33m    at /opt/bitnami/apps/alexdeeznuts/node_modules/express/lib/router/index.js:635:15[39m[22m
+[1m[33m    at next (/opt/bitnami/apps/alexdeeznuts/node_modules/express/lib/router/index.js:260:14)[39m[22m
+[1m[33m    at /opt/bitnami/apps/alexdeeznuts/routes/index.js:15:2[39m[22m
+[1m[33m    at Layer.handle [as handle_request] (/opt/bitnami/apps/alexdeeznuts/node_modules/express/lib/router/layer.js:95:5)[39m[22m
+[1m[33m    at trim_prefix (/opt/bitnami/apps/alexdeeznuts/node_modules/express/lib/router/index.js:317:13)[39m[22m
+[1m[33m    at /opt/bitnami/apps/alexdeeznuts/node_modules/express/lib/router/index.js:284:7[39m[22m
+[1m[33m    at Function.process_params (/opt/bitnami/apps/alexdeeznuts/node_modules/express/lib/router/index.js:335:12)[39m[22m
+[1m[33m    at next (/opt/bitnami/apps/alexdeeznuts/node_modules/express/lib/router/index.js:275:10)[39m[22m
+[1m[33m    at /opt/bitnami/apps/alexdeeznuts/modules/mixins.js:32:13[39m[22m
+[1m[33m    at /opt/bitnami/apps/alexdeeznuts/node_modules/mongoose/lib/model.js:4233:16[39m[22m
+[1m[33m    at model.$__save.error (/opt/bitnami/apps/alexdeeznuts/node_modules/mongoose/lib/model.js:381:7)[39m[22m
+[1m[33m    at /opt/bitnami/apps/alexdeeznuts/node_modules/kareem/index.js:315:21[39m[22m
+[1m[33m    at next (/opt/bitnami/apps/alexdeeznuts/node_modules/kareem/index.js:209:27)[39m[22m
+[1m[33m    at Kareem.execPost (/opt/bitnami/apps/alexdeeznuts/node_modules/kareem/index.js:217:3)[39m[22m
+[1m[33m    at _cb (/opt/bitnami/apps/alexdeeznuts/node_modules/kareem/index.js:307:15)[39m[22m
+[1m[33m    at $__handleSave (/opt/bitnami/apps/alexdeeznuts/node_modules/mongoose/lib/model.js:301:5)[39m[22m
+[1m[33m    at /opt/bitnami/apps/alexdeeznuts/node_modules/mongoose/lib/model.js:225:9[39m[22m
+[1m[33m    at result (/opt/bitnami/apps/alexdeeznuts/node_modules/mongoose/node_modules/mongodb/lib/utils.js:414:17)[39m[22m
+[1m[33m    at executeCallback (/opt/bitnami/apps/alexdeeznuts/node_modules/mongoose/node_modules/mongodb/lib/utils.js:406:9)[39m[22m
+[1m[33m    at /opt/bitnami/apps/alexdeeznuts/node_modules/mongoose/node_modules/mongodb/lib/collection.js:873:19[39m[22m
+[1m[33m    at handleCallback (/opt/bitnami/apps/alexdeeznuts/node_modules/mongoose/node_modules/mongodb/lib/utils.js:128:55)[39m[22m
+[1m[33m    at /opt/bitnami/apps/alexdeeznuts/node_modules/mongoose/node_modules/mongodb/lib/collection.js:1031:5 message: 'Not Found' }[39m[22m
+[37m06/15/2018-02:33:46.16 [39m[33mDeezNuts[39m: 93.159.191.34: /HEAD /db/
+[1m[33m[37m06/15/2018-02:33:46.20 [33m { NotFoundError: Not Found[39m[22m
+[1m[33m    at /opt/bitnami/apps/alexdeeznuts/app.js:78:8[39m[22m
+[1m[33m    at Layer.handle [as handle_request] (/opt/bitnami/apps/alexdeeznuts/node_modules/express/lib/router/layer.js:95:5)[39m[22m
+[1m[33m    at trim_prefix (/opt/bitnami/apps/alexdeeznuts/node_modules/express/lib/router/index.js:317:13)[39m[22m
+[1m[33m    at /opt/bitnami/apps/alexdeeznuts/node_modules/express/lib/router/index.js:284:7[39m[22m
+[1m[33m    at Function.process_params (/opt/bitnami/apps/alexdeeznuts/node_modules/express/lib/router/index.js:335:12)[39m[22m
+[1m[33m    at next (/opt/bitnami/apps/alexdeeznuts/node_modules/express/lib/router/index.js:275:10)[39m[22m
+[1m[33m    at /opt/bitnami/apps/alexdeeznuts/node_modules/express/lib/router/index.js:635:15[39m[22m
+[1m[33m    at next (/opt/bitnami/apps/alexdeeznuts/node_modules/express/lib/router/index.js:260:14)[39m[22m
+[1m[33m    at /opt/bitnami/apps/alexdeeznuts/routes/index.js:15:2[39m[22m
+[1m[33m    at Layer.handle [as handle_request] (/opt/bitnami/apps/alexdeeznuts/node_modules/express/lib/router/layer.js:95:5)[39m[22m
+[1m[33m    at trim_prefix (/opt/bitnami/apps/alexdeeznuts/node_modules/express/lib/router/index.js:317:13)[39m[22m
+[1m[33m    at /opt/bitnami/apps/alexdeeznuts/node_modules/express/lib/router/index.js:284:7[39m[22m
+[1m[33m    at Function.process_params (/opt/bitnami/apps/alexdeeznuts/node_modules/express/lib/router/index.js:335:12)[39m[22m
+[1m[33m    at next (/opt/bitnami/apps/alexdeeznuts/node_modules/express/lib/router/index.js:275:10)[39m[22m
+[1m[33m    at /opt/bitnami/apps/alexdeeznuts/modules/mixins.js:32:13[39m[22m
+[1m[33m    at /opt/bitnami/apps/alexdeeznuts/node_modules/mongoose/lib/model.js:4233:16[39m[22m
+[1m[33m    at model.$__save.error (/opt/bitnami/apps/alexdeeznuts/node_modules/mongoose/lib/model.js:381:7)[39m[22m
+[1m[33m    at /opt/bitnami/apps/alexdeeznuts/node_modules/kareem/index.js:315:21[39m[22m
+[1m[33m    at next (/opt/bitnami/apps/alexdeeznuts/node_modules/kareem/index.js:209:27)[39m[22m
+[1m[33m    at Kareem.execPost (/opt/bitnami/apps/alexdeeznuts/node_modules/kareem/index.js:217:3)[39m[22m
+[1m[33m    at _cb (/opt/bitnami/apps/alexdeeznuts/node_modules/kareem/index.js:307:15)[39m[22m
+[1m[33m    at $__handleSave (/opt/bitnami/apps/alexdeeznuts/node_modules/mongoose/lib/model.js:301:5)[39m[22m
+[1m[33m    at /opt/bitnami/apps/alexdeeznuts/node_modules/mongoose/lib/model.js:225:9[39m[22m
+[1m[33m    at result (/opt/bitnami/apps/alexdeeznuts/node_modules/mongoose/node_modules/mongodb/lib/utils.js:414:17)[39m[22m
+[1m[33m    at executeCallback (/opt/bitnami/apps/alexdeeznuts/node_modules/mongoose/node_modules/mongodb/lib/utils.js:406:9)[39m[22m
+[1m[33m    at /opt/bitnami/apps/alexdeeznuts/node_modules/mongoose/node_modules/mongodb/lib/collection.js:873:19[39m[22m
+[1m[33m    at handleCallback (/opt/bitnami/apps/alexdeeznuts/node_modules/mongoose/node_modules/mongodb/lib/utils.js:128:55)[39m[22m
+[1m[33m    at /opt/bitnami/apps/alexdeeznuts/node_modules/mongoose/node_modules/mongodb/lib/collection.js:1031:5 message: 'Not Found' }[39m[22m
+[34m[37m06/15/2018-02:34:20.26 [34m[33mDeezNuts[34m: Mongoose connection disconnected[39m
+[34m[37m06/15/2018-02:34:20.26 [34m[33mDeezNuts[34m: Reconnecting to MongoDB in 3000...[39m
+[34m[37m06/15/2018-02:34:20.26 [34m[33mDeezNuts[34m: Mongoose connection disconnected through app termination[39m
+[34m[37m06/15/2018-02:34:41.23 [34m[33mDeezNuts[34m: Mongoose connection open[39m
+[37m06/15/2018-02:34:52.22 [39m[33mDeezNuts[39m: [NodeEvent on postPublish] id=OCBNA8P2 StreamPath=/live/balls args={"ac":10,"vc":7}
+[37m06/15/2018-02:34:52.22 [39m[33mDeezNuts[39m: Updating Status Not Live -> Live
+[37m06/15/2018-02:35:25.16 [39m[33mDeezNuts[39m: [NodeEvent on donePublish] id=OCBNA8P2 StreamPath= args={"ac":10,"vc":7}
+[37m06/15/2018-02:35:25.16 [39m[33mDeezNuts[39m: Updating Status Live -> Not Live
+[37m06/15/2018-02:35:28.08 [39m[33mDeezNuts[39m: [NodeEvent on postPublish] id=FGBAFCOZ StreamPath=/live/balls args={"ac":0,"vc":0}
+[37m06/15/2018-02:35:28.08 [39m[33mDeezNuts[39m: Updating Status Not Live -> Live
+[37m06/15/2018-02:35:31.61 [39m[33mDeezNuts[39m: 76.91.217.22: /GET /live
+[37m06/15/2018-02:35:34.51 [39m[33mDeezNuts[39m: 76.91.217.22: /GET /
+[37m06/15/2018-02:35:36.06 [39m[33mDeezNuts[39m: 76.91.217.22: /GET /live
+[37m06/15/2018-02:35:39.40 [39m[33mDeezNuts[39m: 76.91.217.22: /GET /
+[34m[37m06/15/2018-02:36:11.50 [34m[33mDeezNuts[34m: Mongoose connection disconnected[39m
+[34m[37m06/15/2018-02:36:11.50 [34m[33mDeezNuts[34m: Reconnecting to MongoDB in 3000...[39m
+[34m[37m06/15/2018-02:36:11.50 [34m[33mDeezNuts[34m: Mongoose connection disconnected through app termination[39m
+[34m[37m06/15/2018-02:36:14.55 [34m[33mDeezNuts[34m: Mongoose connection open[39m
+[37m06/15/2018-02:36:19.20 [39m[33mDeezNuts[39m: 76.91.217.22: /GET /
+[37m06/15/2018-02:36:24.26 [39m[33mDeezNuts[39m: [NodeEvent on postPublish] id=YRCAQUU9 StreamPath=/live/balls args={"ac":0,"vc":0}
+[37m06/15/2018-02:36:24.26 [39m[33mDeezNuts[39m: Updating Status Not Live -> Live
+[37m06/15/2018-02:36:25.82 [39m[33mDeezNuts[39m: 76.91.217.22: /GET /live
+[34m[37m06/15/2018-02:36:40.88 [34m[33mDeezNuts[34m: Mongoose connection disconnected[39m
+[34m[37m06/15/2018-02:36:40.88 [34m[33mDeezNuts[34m: Reconnecting to MongoDB in 3000...[39m
+[34m[37m06/15/2018-02:36:40.88 [34m[33mDeezNuts[34m: Mongoose connection disconnected through app termination[39m
