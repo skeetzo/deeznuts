@@ -4,7 +4,7 @@ var config = {};
 
 // Debugging
 config.debugging = true;
-config.debugging_live = false;
+config.debugging_live = true;
 
 // App Settings
 config.botName = "DeezNuts";
