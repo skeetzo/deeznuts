@@ -36,7 +36,7 @@ module.exports.findViewer = function(req, res, next) {
 
 // Has Paid
 module.exports.hasPaid = function(req, res, next) {
-    if (parseInt(req.session.viewer.time)>=1||config.debugging) {
+    if (parseInt(req.session.viewer.time)>=1||config.debugging_live) {
         next();
     } else {
         req.flash('error','Please pay up!');
