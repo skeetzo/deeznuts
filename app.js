@@ -63,6 +63,13 @@ app.use(session(sess));
 var flash = require('express-flash');
 app.use(flash());
 
+// Read the Certbot response from an environment variable; we'll set this later:
+// const letsEncryptReponse = process.env.CERTBOT_RESPONSE ||;
+// Return the Let's Encrypt certbot response:
+app.get('/.well-known/acme-challenge/:response', function (req, res) {
+  res.send(response);
+});
+
 app.use('/', require('./routes/index'));
 
 // catch 404 and forward to error handler
