@@ -50,8 +50,10 @@ viewerSchema.pre('save', function (next) {
       next(null);
     });
   }
-  else if (!self.address&&config.debugging)
+  else if (!self.address&&config.debugging) {
     self.address = "7h15157o74lly4b17co1n4ddre55";
+    next(null);
+  }
   else
     next(null);
 });
