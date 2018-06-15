@@ -2096,3 +2096,13 @@
 [34m[37m06/15/2018-02:38:19.31 [34m[33mDeezNuts[34m: Mongoose connection disconnected[39m
 [34m[37m06/15/2018-02:38:19.31 [34m[33mDeezNuts[34m: Reconnecting to MongoDB in 3000...[39m
 [34m[37m06/15/2018-02:38:19.31 [34m[33mDeezNuts[34m: Mongoose connection disconnected through app termination[39m
+[34m[37m06/15/2018-02:38:34.43 [34m[33mDeezNuts[34m: Mongoose connection open[39m
+[37m06/15/2018-02:38:37.96 [39m[33mDeezNuts[39m: [NodeEvent on postPublish] id=A3H9PA9T StreamPath=/live/balls args={"ac":0,"vc":0}
+[37m06/15/2018-02:38:37.97 [39m[33mDeezNuts[39m: Updating Status Not Live -> Live
+[37m06/15/2018-02:38:41.02 [39m[33mDeezNuts[39m: 76.91.217.22: /GET /
+[37m06/15/2018-02:38:42.66 [39m[33mDeezNuts[39m: 76.91.217.22: /GET /live
+[37m06/15/2018-02:39:12.03 [39m[33mDeezNuts[39m: [NodeEvent on donePublish] id=A3H9PA9T StreamPath= args={"ac":0,"vc":0}
+[37m06/15/2018-02:39:12.03 [39m[33mDeezNuts[39m: Updating Status Live -> Not Live
+[34m[37m06/15/2018-02:39:18.28 [34m[33mDeezNuts[34m: Mongoose connection disconnected[39m
+[34m[37m06/15/2018-02:39:18.28 [34m[33mDeezNuts[34m: Reconnecting to MongoDB in 3000...[39m
+[34m[37m06/15/2018-02:39:18.28 [34m[33mDeezNuts[34m: Mongoose connection disconnected through app termination[39m
