@@ -9,17 +9,19 @@ var _ = require('underscore'),
 
 
 module.exports.findViewer = function(req, res, next) {
-    if (req.session.locals.viewer) return next(null);
+    // if (req.session.locals.viewer) return next(null);
     var ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
     Viewer.findOne({'ip':ip}, function (err, viewer) {
         if (err) logger.warn(err);
         if (!viewer) {
             req.session.viewer = new Viewer({'ip':ip});
+            logger.log('Viewer created: %s', ip);
             step();
         }
         else {
+            logger.log('Viewer found: %s', ip);
             viewer.lastVisit = moment(new Date()).format('MM/DD/YYYY');
-            viewer.visits++;
+            // viewer.visits++;
             req.session.viewer = viewer;
             step();
         }

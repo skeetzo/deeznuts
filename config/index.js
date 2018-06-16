@@ -6,6 +6,8 @@ var config = {};
 config.debugging = true;
 config.debugging_live = false;
 
+config.Crons_On = true;
+
 // App Settings
 config.botName = "DeezNuts";
 config.port = Number(process.env.PORT || 3000);
@@ -21,13 +23,15 @@ config.preview_video = "vidoeo/uhh.mp4";
 config.thumbnail = "img/thumbnail.png";
 
 config.status = "Not Live";
-
+// config.status = "Live";
 // Bitcoin
 config.bitcoin_address = "abunchoflettersand123";
 config.bitcoin_qr = "http://placehold.it/150x150";
 config.bitcoin_link = "bitcoin:"+config.bitcoin_address;
 
-config.blockchainCallback = 'http://alexdeeznuts.herokuapp.com/tip';
+config.blockchainCallback = 'http://'+config.domain+'/tip';
+
+config.streamKey = "yourmom";
 
 config.siteData = 
 	{ 	
@@ -42,12 +46,13 @@ config.siteData =
 		author: config.author,
 		// logged_in: false,
 		status: config.status,
+		pay: "false",
 
 		Google_Analytics: config.Google_Analytics,
 	};
 
 require('./keys.js').call(config);
 require('./logger.js').call(config);
-// require('./crons.js').call(config);
+require('./crons.js').call(config);
 
 module.exports = config;

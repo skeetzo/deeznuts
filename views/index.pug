@@ -36,8 +36,37 @@ block content
           if (error)
             h5 #{error}
       a.btn.btn-primary(href='/live') Enter
+  
+  script.
+    $(document).ready(function () {
+      
+      //- checks for new payments
+      setInterval(function checkForTips() {
+        return Promise.resolve($.ajax({
+          type: 'GET',
+          url: '/tips',
+          data: {'_csrf':"#{_csrf}"},
+          success: function(data) {
+            alert('Time added! Available: '+data.time);
+            location.reload(true);
+          },
+          error: function(data) {
+            console.log('New Tip Not Found');
+          },
+        })).catch(function (reason) {
+          console.log(reason);
+        });
+      },10000);
 
-  br
-  br
-  //- add rates below
-  include conversion
+      //- updates time if live
+      var countdown;
+      if ("#{status}"=="Live") {
+        var time = parseInt("#{viewer.time}");
+        if (time>0)
+          countdown = setInterval(function () {
+            time--;
+            $("#time").text(time);
+            if (time<=0) clearInterval(countdown);
+          },1000);
+      }
+    });

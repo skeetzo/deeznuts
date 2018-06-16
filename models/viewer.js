@@ -7,6 +7,7 @@ var mongoose = require('mongoose'),
     // bcrypt = require('bcrypt-nodejs'),
     // crypto = require('crypto'),
     _ = require('underscore'),
+    Google = require('../modules/google'),
     Receive = require('blockchain.info/Receive');
 
 // Viewer Schema
@@ -18,6 +19,7 @@ var viewerSchema = new Schema({
   secret : { type: String }, // crypto sig
   start: { type: String, default: moment(new Date()).format('MM/DD/YYYY') },
   time: { type: Number, default: 0 }, // time allotted for live
+  time_added: { type: String },
   visits: { type: Number, default: 1 },
 });
 
@@ -75,6 +77,8 @@ viewerSchema.methods.addTime = function(amount) {
     var time = 1;
     var timeAdded = convertToTime(time);
     logger.log('time added: %s + %s = %s', self.time, timeAdded, (self.time+timeAdded));
+    Google.logTime(amount, timeAdded, time);
+    self.time_added = timeAdded;
     self.time+= timeAdded;
     self.save(function (err) {
       if (err) logger.warn(err);

@@ -1,0 +1,27 @@
+//- time remaining
+.row
+  .col-xs-12.text-center
+    p Time: 
+      span#time #{viewer.time}
+
+script.
+    $(document).ready(function () {
+      //- updates time if live
+      var countdown;
+      if ("#{status}"=="Live") {
+        var time = parseInt("#{viewer.time}"), // in milliseconds so 1000*60*60
+        	minutes = time/60,
+        	seconds = (time%minutes)/60;
+        if (time>0)
+          countdown = setInterval(function () {
+            time--;
+            seconds--;
+            $("#time").text(minutes+':'+seconds);
+            if (seconds<=0) {
+            	seconds = 60;
+            	minutes--;
+        	}    
+            if (time<=0) clearInterval(countdown);
+          },1000);
+      }
+    });
