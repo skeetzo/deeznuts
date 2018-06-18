@@ -28,7 +28,18 @@ const serverOptions = {
     play: true,
     publish: true,
     secret: config.streamKey
-  }
+  },
+  // trans: {
+  //   ffmpeg: '/usr/local/bin/ffmpeg',
+  //   tasks: [
+  //     {
+  //       app: 'vod',
+  //       ac: 'aac',
+  //       mp4: true,
+  //       mp4Flags: '[movflags=faststart]',
+  //     }
+  //   ]
+  // }
 };
 
 var nms = new NodeMediaServer(serverOptions);

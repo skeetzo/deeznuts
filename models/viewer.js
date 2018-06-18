@@ -18,7 +18,7 @@ var viewerSchema = new Schema({
   payments: { type: Array, default: [] },
   secret : { type: String }, // crypto sig
   start: { type: String, default: moment(new Date()).format('MM/DD/YYYY') },
-  time: { type: Number, default: 0 }, // time allotted for live
+  time: { type: Number, default: config.defaultTime }, // time allotted for live
   time_added: { type: String },
   visits: { type: Number, default: 1 },
 });

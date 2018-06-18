@@ -15,12 +15,14 @@ config.port = Number(process.env.PORT || 3000);
 // Site Settings
 config.title = "Alex D.'s Nuts";
 config.domain = "alexdeeznuts.com";
+if (config.debugging) config.domain = "localhost";
 config.author = "Skeetzo";
 config.description = "Porn Star Streamer";
 config.Google_Analytics = "";
 
 config.preview_video = "vidoeo/uhh.mp4";
 config.thumbnail = "img/thumbnail.png";
+config.defaultTime = 60;
 
 config.status = "Not Live";
 // config.status = "Live";
@@ -47,6 +49,7 @@ config.siteData =
 		// logged_in: false,
 		status: config.status,
 		pay: "false",
+		url: "http://"+config.domain+":8000/live/stream.flv?sign=",
 
 		Google_Analytics: config.Google_Analytics,
 	};

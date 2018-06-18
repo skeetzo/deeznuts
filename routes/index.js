@@ -23,6 +23,8 @@ router.get("/", function (req, res, next) {
 
 // /live
 router.get("/live", mixins.hasPaid, function (req, res, next) {
+  if (config.streamKeyCurrent)
+    req.session.locals.key = config.streamKeyCurrent;
   res.render('live', req.session.locals);    
 });
 
@@ -68,8 +70,11 @@ router.get("/key", function (req, res, next) {
 router.post("/key", function (req, res, next) {
   var phrase = req.body.phrase;
   if (phrase!='banana') return res.sendStatus(401);
-  var hash = md5("/live/stream-"+(Date.now() + 3600000)+"-"+config.streamKey);
-  res.status(200).send({'key':hash});
+  var md5 = require('md5');
+  var timestamp = (Date.now() + 3600000);
+  var hash = md5("/live/stream-"+timestamp+"-"+config.streamKey);
+  config.streamKeyCurrent = timestamp+"-"+hash;
+  res.status(200).send({'key':hash,'timestamp':timestamp});
 });
 
 

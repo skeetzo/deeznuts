@@ -1,11 +1,11 @@
 extends layout
 
-block content
+prepend content
 
   // this is a square of video
   .row
     .col-xs-12
-      video#preview(controls, autoplay, poster='/images/preview.jpg')
+      video#preview(controls, autoplay, poster='/images/preview.jpg', width=500, height=500)
 
   // this is a cryptocurrency box & enter button
   .row
@@ -22,7 +22,7 @@ block content
         type: 'flv',
         isLive: true,
         cors: true,
-        url: 'http://alexdeeznuts.com:8000/live/balls.flv'
+        url: "#{url}"+"#{key}"
       });
       flvPlayer.attachMediaElement(videoElement);
       flvPlayer.load();

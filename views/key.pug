@@ -15,6 +15,7 @@ block content
     .col-xs-6.col-xs-offset-3
       //- key phrase output
       p#key
+      p#timestamp
 
   script.
     function solve() {
@@ -26,6 +27,7 @@ block content
           data: {'phrase':phrase,'_csrf':"#{_csrf}"},
         success: function(data) {
           $("#key").text(data.key);
+          $("#timestamp").text(data.timestamp);
         },
         error: function(data) {},
        })).catch(function (reason) {
