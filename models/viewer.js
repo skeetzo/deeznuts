@@ -4,7 +4,6 @@ var mongoose = require('mongoose'),
     config = require('../config/index'),
     logger = config.logger,
     _ = require('underscore'),
-    md5 = require('md5'),
     Google = require('../modules/google'),
     Receive = require('blockchain.info/Receive'),
     Exchange = require('blockchain.info/exchange');
@@ -43,7 +42,7 @@ viewerSchema.pre('save', function (next) {
     });
     // generate address
     var timestamp = (Date.now() + 3600000);
-    var hash = md5(timestamp+"-"+config.blockchainHash);
+    var hash = require('md5')(timestamp+"-"+config.blockchainHash);
     self.secret = hash;
     var query = {'secret':hash};
     myReceive = myReceive.generate(query)
