@@ -3,13 +3,8 @@
 var config = {};
 
 // Debugging
-<<<<<<< HEAD
-config.debugging = true;
-config.debugging_live = true;
-=======
 config.debugging = false;
 config.debugging_live = false;
->>>>>>> 5008948bea9c65e14e193abd1573f0051057c02f
 
 config.Crons_On = true;
 
