@@ -1029,3 +1029,559 @@
 [34m[37m06/19/2018-06:35:05.37 [34m[33mDeezNuts[34m: Reconnecting to MongoDB in 3000...[39m
 [34m[37m06/19/2018-06:35:05.37 [34m[33mDeezNuts[34m: Mongoose connection disconnected through app termination[39m
 >>>>>>> 783ae495d163af5839d313a6019395c42158f47d
+[37m06/19/2018-13:38:42.20 [39m[33mDeezNuts[39m: Starting Crons
+[37m06/19/2018-13:38:42.22 [39m[33mDeezNuts[39m: started cron - Ping
+[37m06/19/2018-13:38:42.22 [39m[33mDeezNuts[39m: started cron - Midnight
+[34m[37m06/19/2018-13:38:42.67 [34m[33mDeezNuts[34m: Mongoose connection open[39m
+[37m06/19/2018-13:38:47.34 [39m[33mDeezNuts[39m: 76.91.217.22: /GET /key
+[37m06/19/2018-13:38:52.43 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /key
+[37m06/19/2018-13:38:57.62 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /key
+[37m06/19/2018-13:39:22.40 [39m[33mDeezNuts[39m: 76.91.217.22: /GET /
+[37m06/19/2018-13:39:22.50 [39m[33mDeezNuts[39m: Viewer created: 76.91.217.22
+[37m06/19/2018-13:39:23.00 [39m[33mDeezNuts[39m: Generated address: 1AnQSHWxY5mBPDJw5NdmztHGurnrLHc96C
+[37m06/19/2018-13:39:23.24 [39m[33mDeezNuts[39m: gap: 7
+[37m06/19/2018-13:39:26.51 [39m[33mDeezNuts[39m: [NodeEvent on postPublish] id=4YI19BKA StreamPath=/live/stream args={"sign":"1529419137621-a85e04f67ff7716a26f97a2eddbb2646","ac":0,"vc":0}
+[37m06/19/2018-13:39:26.51 [39m[33mDeezNuts[39m: Updating Status Not Live -> Live
+[37m06/19/2018-13:39:26.69 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-13:39:26.78 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-13:39:26.86 [39m[33mDeezNuts[39m: syncing time: 60 seconds -> 60 seconds
+[37m06/19/2018-13:39:29.69 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-13:39:29.77 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-13:39:29.85 [39m[33mDeezNuts[39m: syncing time: 60 seconds -> 60 seconds
+[37m06/19/2018-13:39:32.69 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-13:39:32.77 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-13:39:32.86 [39m[33mDeezNuts[39m: syncing time: 60 seconds -> 60 seconds
+[37m06/19/2018-13:39:35.68 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-13:39:35.77 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-13:39:35.85 [39m[33mDeezNuts[39m: syncing time: 60 seconds -> 60 seconds
+[37m06/19/2018-13:39:36.90 [39m[33mDeezNuts[39m: 76.91.217.22: /GET /live
+[37m06/19/2018-13:39:36.98 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-13:39:40.52 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-13:39:40.61 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-13:39:40.69 [39m[33mDeezNuts[39m: syncing time: 60 seconds -> 58 seconds
+[37m06/19/2018-13:39:43.56 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-13:39:43.64 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-13:39:44.03 [39m[33mDeezNuts[39m: syncing time: 58 seconds -> 55 seconds
+[37m06/19/2018-13:39:46.56 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-13:39:46.63 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-13:39:46.72 [39m[33mDeezNuts[39m: syncing time: 55 seconds -> 52 seconds
+[37m06/19/2018-13:39:49.58 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-13:39:49.66 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-13:39:49.73 [39m[33mDeezNuts[39m: syncing time: 52 seconds -> 49 seconds
+[37m06/19/2018-13:39:52.56 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-13:39:52.63 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-13:39:52.71 [39m[33mDeezNuts[39m: syncing time: 49 seconds -> 46 seconds
+[37m06/19/2018-13:39:55.56 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-13:39:55.64 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-13:39:55.71 [39m[33mDeezNuts[39m: syncing time: 46 seconds -> 43 seconds
+[37m06/19/2018-13:39:58.57 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-13:39:58.64 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-13:39:58.72 [39m[33mDeezNuts[39m: syncing time: 43 seconds -> 40 seconds
+[37m06/19/2018-13:40:01.55 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-13:40:01.63 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-13:40:01.70 [39m[33mDeezNuts[39m: syncing time: 40 seconds -> 37 seconds
+[37m06/19/2018-13:40:04.55 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-13:40:04.63 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-13:40:04.71 [39m[33mDeezNuts[39m: syncing time: 37 seconds -> 34 seconds
+[37m06/19/2018-13:40:07.55 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-13:40:07.63 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-13:40:07.70 [39m[33mDeezNuts[39m: syncing time: 34 seconds -> 31 seconds
+[37m06/19/2018-13:40:10.56 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-13:40:10.63 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-13:40:10.71 [39m[33mDeezNuts[39m: syncing time: 31 seconds -> 28 seconds
+[37m06/19/2018-13:40:13.55 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-13:40:13.63 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-13:40:13.71 [39m[33mDeezNuts[39m: syncing time: 28 seconds -> 25 seconds
+[37m06/19/2018-13:40:16.56 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-13:40:16.63 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-13:40:16.71 [39m[33mDeezNuts[39m: syncing time: 25 seconds -> 22 seconds
+[37m06/19/2018-13:40:19.56 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-13:40:19.64 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-13:40:19.71 [39m[33mDeezNuts[39m: syncing time: 22 seconds -> 19 seconds
+[37m06/19/2018-13:40:22.56 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-13:40:22.64 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-13:40:22.73 [39m[33mDeezNuts[39m: syncing time: 19 seconds -> 16 seconds
+[37m06/19/2018-13:40:25.56 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-13:40:25.64 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-13:40:25.71 [39m[33mDeezNuts[39m: syncing time: 16 seconds -> 13 seconds
+[37m06/19/2018-13:40:28.56 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-13:40:28.63 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-13:40:28.72 [39m[33mDeezNuts[39m: syncing time: 13 seconds -> 10 seconds
+[37m06/19/2018-13:40:31.56 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-13:40:31.64 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-13:40:31.72 [39m[33mDeezNuts[39m: syncing time: 10 seconds -> 7 seconds
+[37m06/19/2018-13:40:34.55 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-13:40:34.63 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-13:40:34.71 [39m[33mDeezNuts[39m: syncing time: 7 seconds -> 4 seconds
+[37m06/19/2018-13:40:37.56 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-13:40:37.64 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-13:40:37.71 [39m[33mDeezNuts[39m: syncing time: 4 seconds -> 1 seconds
+[37m06/19/2018-13:40:40.65 [39m[33mDeezNuts[39m: 76.91.217.22: /GET /
+[37m06/19/2018-13:40:40.72 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-13:40:44.30 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-13:40:44.38 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-13:40:44.45 [39m[33mDeezNuts[39m: syncing time: 1 seconds -> 1 seconds
+[37m06/19/2018-13:40:47.29 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-13:40:47.38 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-13:40:47.45 [39m[33mDeezNuts[39m: syncing time: 1 seconds -> 1 seconds
+[37m06/19/2018-13:40:48.98 [39m[33mDeezNuts[39m: 76.91.217.22: /GET /live
+[37m06/19/2018-13:40:49.06 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-13:40:52.91 [39m[33mDeezNuts[39m: 76.91.217.22: /GET /
+[37m06/19/2018-13:40:52.98 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-13:40:56.40 [39m[33mDeezNuts[39m: 76.91.217.22: /GET /live
+[37m06/19/2018-13:40:56.48 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-13:40:56.53 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-13:40:56.60 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-13:40:56.69 [39m[33mDeezNuts[39m: syncing time: 1 seconds -> 1 seconds
+[37m06/19/2018-13:41:00.20 [39m[33mDeezNuts[39m: 76.91.217.22: /GET /
+[37m06/19/2018-13:41:00.28 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-13:41:03.76 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-13:41:03.84 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-13:41:03.92 [39m[33mDeezNuts[39m: syncing time: 1 seconds -> 1 seconds
+[37m06/19/2018-13:41:06.76 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-13:41:06.84 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-13:41:06.92 [39m[33mDeezNuts[39m: syncing time: 1 seconds -> 1 seconds
+[37m06/19/2018-13:41:09.76 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-13:41:09.84 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-13:41:09.92 [39m[33mDeezNuts[39m: syncing time: 1 seconds -> 1 seconds
+[37m06/19/2018-13:41:12.73 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-13:41:12.81 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-13:41:12.88 [39m[33mDeezNuts[39m: syncing time: 1 seconds -> 1 seconds
+[37m06/19/2018-13:41:15.78 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-13:41:15.86 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-13:41:15.93 [39m[33mDeezNuts[39m: syncing time: 1 seconds -> 1 seconds
+[37m06/19/2018-13:41:18.77 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-13:41:18.85 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-13:41:18.92 [39m[33mDeezNuts[39m: syncing time: 1 seconds -> 1 seconds
+[37m06/19/2018-13:41:21.77 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-13:41:21.85 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-13:41:21.91 [39m[33mDeezNuts[39m: syncing time: 1 seconds -> 1 seconds
+[37m06/19/2018-13:41:24.77 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-13:41:24.85 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-13:41:24.92 [39m[33mDeezNuts[39m: syncing time: 1 seconds -> 1 seconds
+[37m06/19/2018-13:41:27.78 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-13:41:27.86 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-13:41:27.93 [39m[33mDeezNuts[39m: syncing time: 1 seconds -> 1 seconds
+[37m06/19/2018-13:41:30.76 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-13:41:30.84 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-13:41:30.91 [39m[33mDeezNuts[39m: syncing time: 1 seconds -> 1 seconds
+[37m06/19/2018-13:41:33.76 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-13:41:33.84 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-13:41:33.91 [39m[33mDeezNuts[39m: syncing time: 1 seconds -> 1 seconds
+[37m06/19/2018-13:41:36.77 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-13:41:36.85 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-13:41:36.92 [39m[33mDeezNuts[39m: syncing time: 1 seconds -> 1 seconds
+[37m06/19/2018-13:41:39.77 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-13:41:39.85 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-13:41:39.92 [39m[33mDeezNuts[39m: syncing time: 1 seconds -> 1 seconds
+[37m06/19/2018-13:41:42.77 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-13:41:42.85 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-13:41:42.92 [39m[33mDeezNuts[39m: syncing time: 1 seconds -> 1 seconds
+[37m06/19/2018-13:41:45.77 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-13:41:45.85 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-13:41:45.93 [39m[33mDeezNuts[39m: syncing time: 1 seconds -> 1 seconds
+[37m06/19/2018-13:41:48.77 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-13:41:48.84 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-13:41:48.92 [39m[33mDeezNuts[39m: syncing time: 1 seconds -> 1 seconds
+[37m06/19/2018-13:41:51.77 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-13:41:51.84 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-13:41:51.92 [39m[33mDeezNuts[39m: syncing time: 1 seconds -> 1 seconds
+[37m06/19/2018-13:41:54.76 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-13:41:54.83 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-13:41:54.91 [39m[33mDeezNuts[39m: syncing time: 1 seconds -> 1 seconds
+[37m06/19/2018-13:41:57.77 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-13:41:57.84 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-13:41:57.92 [39m[33mDeezNuts[39m: syncing time: 1 seconds -> 1 seconds
+[37m06/19/2018-13:42:00.77 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-13:42:00.84 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-13:42:00.92 [39m[33mDeezNuts[39m: syncing time: 1 seconds -> 1 seconds
+[37m06/19/2018-13:42:03.78 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-13:42:03.84 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-13:42:03.92 [39m[33mDeezNuts[39m: syncing time: 1 seconds -> 1 seconds
+[37m06/19/2018-13:42:06.77 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-13:42:06.84 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-13:42:06.92 [39m[33mDeezNuts[39m: syncing time: 1 seconds -> 1 seconds
+[37m06/19/2018-13:42:09.77 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-13:42:09.84 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-13:42:09.92 [39m[33mDeezNuts[39m: syncing time: 1 seconds -> 1 seconds
+[37m06/19/2018-13:42:12.76 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-13:42:12.83 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-13:42:12.91 [39m[33mDeezNuts[39m: syncing time: 1 seconds -> 1 seconds
+[37m06/19/2018-13:42:15.76 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-13:42:15.83 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-13:42:15.91 [39m[33mDeezNuts[39m: syncing time: 1 seconds -> 1 seconds
+[37m06/19/2018-13:42:18.76 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-13:42:18.82 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-13:42:18.91 [39m[33mDeezNuts[39m: syncing time: 1 seconds -> 1 seconds
+[37m06/19/2018-13:42:21.77 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-13:42:21.84 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-13:42:21.92 [39m[33mDeezNuts[39m: syncing time: 1 seconds -> 1 seconds
+[37m06/19/2018-13:42:24.78 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-13:42:24.85 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-13:42:24.93 [39m[33mDeezNuts[39m: syncing time: 1 seconds -> 1 seconds
+[37m06/19/2018-13:42:27.77 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-13:42:27.84 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-13:42:27.92 [39m[33mDeezNuts[39m: syncing time: 1 seconds -> 1 seconds
+[37m06/19/2018-13:42:30.77 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-13:42:30.84 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-13:42:30.92 [39m[33mDeezNuts[39m: syncing time: 1 seconds -> 1 seconds
+[37m06/19/2018-13:42:33.77 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-13:42:33.85 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-13:42:33.93 [39m[33mDeezNuts[39m: syncing time: 1 seconds -> 1 seconds
+[37m06/19/2018-13:42:36.77 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-13:42:36.85 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-13:42:36.93 [39m[33mDeezNuts[39m: syncing time: 1 seconds -> 1 seconds
+[37m06/19/2018-13:42:39.77 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-13:42:39.84 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-13:42:39.92 [39m[33mDeezNuts[39m: syncing time: 1 seconds -> 1 seconds
+[37m06/19/2018-13:42:42.77 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-13:42:42.85 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-13:42:42.93 [39m[33mDeezNuts[39m: syncing time: 1 seconds -> 1 seconds
+[37m06/19/2018-13:42:45.77 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-13:42:45.84 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-13:42:45.92 [39m[33mDeezNuts[39m: syncing time: 1 seconds -> 1 seconds
+[37m06/19/2018-13:42:48.77 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-13:42:48.84 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-13:42:48.92 [39m[33mDeezNuts[39m: syncing time: 1 seconds -> 1 seconds
+[37m06/19/2018-13:42:51.77 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-13:42:51.85 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-13:42:51.93 [39m[33mDeezNuts[39m: syncing time: 1 seconds -> 1 seconds
+[37m06/19/2018-13:42:54.78 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-13:42:54.85 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-13:42:54.93 [39m[33mDeezNuts[39m: syncing time: 1 seconds -> 1 seconds
+[37m06/19/2018-13:42:57.77 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-13:42:57.85 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-13:42:57.93 [39m[33mDeezNuts[39m: syncing time: 1 seconds -> 1 seconds
+[37m06/19/2018-13:43:00.78 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-13:43:00.85 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-13:43:00.93 [39m[33mDeezNuts[39m: syncing time: 1 seconds -> 1 seconds
+[37m06/19/2018-13:43:03.77 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-13:43:03.85 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-13:43:03.93 [39m[33mDeezNuts[39m: syncing time: 1 seconds -> 1 seconds
+[37m06/19/2018-13:43:06.77 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-13:43:06.85 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-13:43:06.93 [39m[33mDeezNuts[39m: syncing time: 1 seconds -> 1 seconds
+[37m06/19/2018-13:43:09.78 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-13:43:09.85 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-13:43:09.93 [39m[33mDeezNuts[39m: syncing time: 1 seconds -> 1 seconds
+[37m06/19/2018-13:43:12.79 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-13:43:12.86 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-13:43:12.94 [39m[33mDeezNuts[39m: syncing time: 1 seconds -> 1 seconds
+[37m06/19/2018-13:43:15.77 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-13:43:15.85 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-13:43:15.93 [39m[33mDeezNuts[39m: syncing time: 1 seconds -> 1 seconds
+[37m06/19/2018-13:43:18.77 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-13:43:18.85 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-13:43:18.93 [39m[33mDeezNuts[39m: syncing time: 1 seconds -> 1 seconds
+[37m06/19/2018-13:43:21.77 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-13:43:21.85 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-13:43:21.93 [39m[33mDeezNuts[39m: syncing time: 1 seconds -> 1 seconds
+[37m06/19/2018-13:43:24.77 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-13:43:24.85 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-13:43:24.93 [39m[33mDeezNuts[39m: syncing time: 1 seconds -> 1 seconds
+[37m06/19/2018-13:43:27.78 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-13:43:27.85 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-13:43:27.93 [39m[33mDeezNuts[39m: syncing time: 1 seconds -> 1 seconds
+[37m06/19/2018-13:43:30.78 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-13:43:30.85 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-13:43:30.93 [39m[33mDeezNuts[39m: syncing time: 1 seconds -> 1 seconds
+[37m06/19/2018-13:43:33.78 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-13:43:33.85 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-13:43:33.93 [39m[33mDeezNuts[39m: syncing time: 1 seconds -> 1 seconds
+[37m06/19/2018-13:43:36.77 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-13:43:36.85 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-13:43:36.93 [39m[33mDeezNuts[39m: syncing time: 1 seconds -> 1 seconds
+[37m06/19/2018-13:43:39.77 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-13:43:39.84 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-13:43:39.92 [39m[33mDeezNuts[39m: syncing time: 1 seconds -> 1 seconds
+[37m06/19/2018-13:43:42.77 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-13:43:42.85 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-13:43:42.93 [39m[33mDeezNuts[39m: syncing time: 1 seconds -> 1 seconds
+[37m06/19/2018-13:43:45.78 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-13:43:45.86 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-13:43:45.94 [39m[33mDeezNuts[39m: syncing time: 1 seconds -> 1 seconds
+[37m06/19/2018-13:43:48.78 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-13:43:48.86 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-13:43:48.94 [39m[33mDeezNuts[39m: syncing time: 1 seconds -> 1 seconds
+[37m06/19/2018-13:43:51.78 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-13:43:51.86 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-13:43:51.94 [39m[33mDeezNuts[39m: syncing time: 1 seconds -> 1 seconds
+[37m06/19/2018-13:43:54.80 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-13:43:54.89 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-13:43:54.97 [39m[33mDeezNuts[39m: syncing time: 1 seconds -> 1 seconds
+[37m06/19/2018-13:43:57.78 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-13:43:57.86 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-13:43:57.95 [39m[33mDeezNuts[39m: syncing time: 1 seconds -> 1 seconds
+[37m06/19/2018-13:44:00.82 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-13:44:00.90 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-13:44:00.98 [39m[33mDeezNuts[39m: syncing time: 1 seconds -> 1 seconds
+[37m06/19/2018-13:44:03.78 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-13:44:03.86 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-13:44:03.95 [39m[33mDeezNuts[39m: syncing time: 1 seconds -> 1 seconds
+[37m06/19/2018-13:44:06.78 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-13:44:06.86 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-13:44:06.94 [39m[33mDeezNuts[39m: syncing time: 1 seconds -> 1 seconds
+[37m06/19/2018-13:44:09.78 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-13:44:09.85 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-13:44:09.94 [39m[33mDeezNuts[39m: syncing time: 1 seconds -> 1 seconds
+[37m06/19/2018-13:44:12.78 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-13:44:12.86 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-13:44:12.94 [39m[33mDeezNuts[39m: syncing time: 1 seconds -> 1 seconds
+[37m06/19/2018-13:44:15.77 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-13:44:15.85 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-13:44:15.93 [39m[33mDeezNuts[39m: syncing time: 1 seconds -> 1 seconds
+[37m06/19/2018-13:44:18.77 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-13:44:18.85 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-13:44:18.93 [39m[33mDeezNuts[39m: syncing time: 1 seconds -> 1 seconds
+[37m06/19/2018-13:44:21.78 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-13:44:21.85 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-13:44:21.94 [39m[33mDeezNuts[39m: syncing time: 1 seconds -> 1 seconds
+[37m06/19/2018-13:44:24.77 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-13:44:24.85 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-13:44:24.93 [39m[33mDeezNuts[39m: syncing time: 1 seconds -> 1 seconds
+[37m06/19/2018-13:44:27.77 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-13:44:27.84 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-13:44:27.93 [39m[33mDeezNuts[39m: syncing time: 1 seconds -> 1 seconds
+[37m06/19/2018-13:44:30.77 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-13:44:30.84 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-13:44:30.93 [39m[33mDeezNuts[39m: syncing time: 1 seconds -> 1 seconds
+[37m06/19/2018-13:44:33.77 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-13:44:33.85 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-13:44:33.93 [39m[33mDeezNuts[39m: syncing time: 1 seconds -> 1 seconds
+[37m06/19/2018-13:44:36.77 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-13:44:36.84 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-13:44:36.93 [39m[33mDeezNuts[39m: syncing time: 1 seconds -> 1 seconds
+[37m06/19/2018-13:44:39.77 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-13:44:39.84 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-13:44:39.92 [39m[33mDeezNuts[39m: syncing time: 1 seconds -> 1 seconds
+[37m06/19/2018-13:44:42.78 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-13:44:42.85 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-13:44:42.93 [39m[33mDeezNuts[39m: syncing time: 1 seconds -> 1 seconds
+[37m06/19/2018-13:44:45.78 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-13:44:45.85 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-13:44:45.94 [39m[33mDeezNuts[39m: syncing time: 1 seconds -> 1 seconds
+[37m06/19/2018-13:44:48.77 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-13:44:48.85 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-13:44:48.94 [39m[33mDeezNuts[39m: syncing time: 1 seconds -> 1 seconds
+[37m06/19/2018-13:44:51.77 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-13:44:51.85 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-13:44:51.93 [39m[33mDeezNuts[39m: syncing time: 1 seconds -> 1 seconds
+[37m06/19/2018-13:44:54.77 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-13:44:54.85 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-13:44:54.93 [39m[33mDeezNuts[39m: syncing time: 1 seconds -> 1 seconds
+[37m06/19/2018-13:44:57.77 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-13:44:57.84 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-13:44:57.93 [39m[33mDeezNuts[39m: syncing time: 1 seconds -> 1 seconds
+[37m06/19/2018-13:45:00.77 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-13:45:00.84 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-13:45:00.93 [39m[33mDeezNuts[39m: syncing time: 1 seconds -> 1 seconds
+[37m06/19/2018-13:45:03.78 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-13:45:03.86 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-13:45:03.94 [39m[33mDeezNuts[39m: syncing time: 1 seconds -> 1 seconds
+[37m06/19/2018-13:45:06.78 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-13:45:06.86 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-13:45:06.94 [39m[33mDeezNuts[39m: syncing time: 1 seconds -> 1 seconds
+[37m06/19/2018-13:45:09.78 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-13:45:09.86 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-13:45:09.94 [39m[33mDeezNuts[39m: syncing time: 1 seconds -> 1 seconds
+[37m06/19/2018-13:45:12.76 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-13:45:12.84 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-13:45:12.92 [39m[33mDeezNuts[39m: syncing time: 1 seconds -> 1 seconds
+[37m06/19/2018-13:45:15.74 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-13:45:15.82 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-13:45:15.91 [39m[33mDeezNuts[39m: syncing time: 1 seconds -> 1 seconds
+[37m06/19/2018-13:45:18.78 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-13:45:18.86 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-13:45:18.94 [39m[33mDeezNuts[39m: syncing time: 1 seconds -> 1 seconds
+[37m06/19/2018-13:45:21.78 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-13:45:21.86 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-13:45:21.94 [39m[33mDeezNuts[39m: syncing time: 1 seconds -> 1 seconds
+[37m06/19/2018-13:45:24.77 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-13:45:24.85 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-13:45:24.93 [39m[33mDeezNuts[39m: syncing time: 1 seconds -> 1 seconds
+[37m06/19/2018-13:45:27.77 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-13:45:27.85 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-13:45:27.93 [39m[33mDeezNuts[39m: syncing time: 1 seconds -> 1 seconds
+[37m06/19/2018-13:45:30.78 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-13:45:30.86 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-13:45:30.94 [39m[33mDeezNuts[39m: syncing time: 1 seconds -> 1 seconds
+[37m06/19/2018-13:45:33.78 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-13:45:33.86 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-13:45:33.94 [39m[33mDeezNuts[39m: syncing time: 1 seconds -> 1 seconds
+[37m06/19/2018-13:45:36.78 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-13:45:36.86 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-13:45:36.94 [39m[33mDeezNuts[39m: syncing time: 1 seconds -> 1 seconds
+[37m06/19/2018-13:45:39.77 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-13:45:39.85 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-13:45:39.93 [39m[33mDeezNuts[39m: syncing time: 1 seconds -> 1 seconds
+[37m06/19/2018-13:45:42.77 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-13:45:42.84 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-13:45:42.92 [39m[33mDeezNuts[39m: syncing time: 1 seconds -> 1 seconds
+[37m06/19/2018-13:45:45.77 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-13:45:45.85 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-13:45:45.93 [39m[33mDeezNuts[39m: syncing time: 1 seconds -> 1 seconds
+[37m06/19/2018-13:45:48.77 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-13:45:48.85 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-13:45:48.93 [39m[33mDeezNuts[39m: syncing time: 1 seconds -> 1 seconds
+[37m06/19/2018-13:45:51.77 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-13:45:51.85 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-13:45:51.93 [39m[33mDeezNuts[39m: syncing time: 1 seconds -> 1 seconds
+[37m06/19/2018-13:45:54.77 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-13:45:54.85 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-13:45:54.93 [39m[33mDeezNuts[39m: syncing time: 1 seconds -> 1 seconds
+[37m06/19/2018-13:45:57.77 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-13:45:57.84 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-13:45:57.93 [39m[33mDeezNuts[39m: syncing time: 1 seconds -> 1 seconds
+[37m06/19/2018-13:46:00.77 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-13:46:00.85 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-13:46:00.93 [39m[33mDeezNuts[39m: syncing time: 1 seconds -> 1 seconds
+[37m06/19/2018-13:46:03.78 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-13:46:03.85 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-13:46:03.93 [39m[33mDeezNuts[39m: syncing time: 1 seconds -> 1 seconds
+[37m06/19/2018-13:46:06.77 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-13:46:06.85 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-13:46:06.93 [39m[33mDeezNuts[39m: syncing time: 1 seconds -> 1 seconds
+[37m06/19/2018-13:46:09.78 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-13:46:09.86 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-13:46:09.94 [39m[33mDeezNuts[39m: syncing time: 1 seconds -> 1 seconds
+[37m06/19/2018-13:46:12.77 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-13:46:12.85 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-13:46:12.93 [39m[33mDeezNuts[39m: syncing time: 1 seconds -> 1 seconds
+[37m06/19/2018-13:46:15.78 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-13:46:15.86 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-13:46:15.94 [39m[33mDeezNuts[39m: syncing time: 1 seconds -> 1 seconds
+[37m06/19/2018-13:46:18.77 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-13:46:18.85 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-13:46:18.93 [39m[33mDeezNuts[39m: syncing time: 1 seconds -> 1 seconds
+[37m06/19/2018-13:46:21.77 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-13:46:21.85 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-13:46:21.93 [39m[33mDeezNuts[39m: syncing time: 1 seconds -> 1 seconds
+[37m06/19/2018-13:46:24.77 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-13:46:24.85 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-13:46:24.93 [39m[33mDeezNuts[39m: syncing time: 1 seconds -> 1 seconds
+[37m06/19/2018-13:46:27.78 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-13:46:27.85 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-13:46:27.93 [39m[33mDeezNuts[39m: syncing time: 1 seconds -> 1 seconds
+[37m06/19/2018-13:46:30.77 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-13:46:30.85 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-13:46:30.93 [39m[33mDeezNuts[39m: syncing time: 1 seconds -> 1 seconds
+[37m06/19/2018-13:46:33.77 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-13:46:33.84 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-13:46:33.92 [39m[33mDeezNuts[39m: syncing time: 1 seconds -> 1 seconds
+[37m06/19/2018-13:46:36.77 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-13:46:36.84 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-13:46:36.92 [39m[33mDeezNuts[39m: syncing time: 1 seconds -> 1 seconds
+[37m06/19/2018-13:46:39.77 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-13:46:39.85 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-13:46:39.94 [39m[33mDeezNuts[39m: syncing time: 1 seconds -> 1 seconds
+[37m06/19/2018-13:46:42.77 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-13:46:42.85 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-13:46:42.93 [39m[33mDeezNuts[39m: syncing time: 1 seconds -> 1 seconds
+[37m06/19/2018-13:46:45.77 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-13:46:45.85 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-13:46:45.93 [39m[33mDeezNuts[39m: syncing time: 1 seconds -> 1 seconds
+[37m06/19/2018-13:46:48.77 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-13:46:48.85 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-13:46:48.93 [39m[33mDeezNuts[39m: syncing time: 1 seconds -> 1 seconds
+[37m06/19/2018-13:46:51.77 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-13:46:51.84 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-13:46:51.92 [39m[33mDeezNuts[39m: syncing time: 1 seconds -> 1 seconds
+[37m06/19/2018-13:46:54.77 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-13:46:54.85 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-13:46:54.93 [39m[33mDeezNuts[39m: syncing time: 1 seconds -> 1 seconds
+[37m06/19/2018-13:46:57.77 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-13:46:57.84 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-13:46:57.92 [39m[33mDeezNuts[39m: syncing time: 1 seconds -> 1 seconds
+[37m06/19/2018-13:47:00.78 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-13:47:00.85 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-13:47:00.93 [39m[33mDeezNuts[39m: syncing time: 1 seconds -> 1 seconds
+[37m06/19/2018-13:47:03.78 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-13:47:03.85 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-13:47:03.93 [39m[33mDeezNuts[39m: syncing time: 1 seconds -> 1 seconds
+[37m06/19/2018-13:47:06.78 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-13:47:06.86 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-13:47:06.94 [39m[33mDeezNuts[39m: syncing time: 1 seconds -> 1 seconds
+[37m06/19/2018-13:47:09.77 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-13:47:09.84 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-13:47:09.93 [39m[33mDeezNuts[39m: syncing time: 1 seconds -> 1 seconds
+[37m06/19/2018-13:47:12.78 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-13:47:12.85 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-13:47:12.93 [39m[33mDeezNuts[39m: syncing time: 1 seconds -> 1 seconds
+[37m06/19/2018-13:47:13.53 [39m[33mDeezNuts[39m: unknown, 130.211.88.31: /GET /tip?secret=ballsacks&address=16XVR2HQWMUZsp5dPCe2DVwoAGMKvEKUre&transaction_hash=534d832a3837a937085be89184b6991c527cb4c1a42cf8fd79dbb029fc563e61&value=44506&confirmations=5
+[34m[37m06/19/2018-13:47:13.53 [34m[33mDeezNuts[34m: req.query: {[39m
+[34m    "secret": "ballsacks",[39m
+[34m    "address": "16XVR2HQWMUZsp5dPCe2DVwoAGMKvEKUre",[39m
+[34m    "transaction_hash": "534d832a3837a937085be89184b6991c527cb4c1a42cf8fd79dbb029fc563e61",[39m
+[34m    "value": "44506",[39m
+[34m    "confirmations": "5"[39m
+[34m}[39m
+[1m[33m[37m06/19/2018-13:47:13.61 [33m No matching viewer: 16XVR2HQWMUZsp5dPCe2DVwoAGMKvEKUre[39m[22m
+[37m06/19/2018-13:47:15.77 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-13:47:15.85 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-13:47:15.93 [39m[33mDeezNuts[39m: syncing time: 1 seconds -> 1 seconds
+[37m06/19/2018-13:47:17.32 [39m[33mDeezNuts[39m: unknown, 192.158.30.92: /GET /tip?secret=ballsacks&address=16XVR2HQWMUZsp5dPCe2DVwoAGMKvEKUre&transaction_hash=bcc07be6b77a329a80904ec7f53f57061a0973ba577247b7836a466597211fc0&value=44248&confirmations=1
+[34m[37m06/19/2018-13:47:17.32 [34m[33mDeezNuts[34m: req.query: {[39m
+[34m    "secret": "ballsacks",[39m
+[34m    "address": "16XVR2HQWMUZsp5dPCe2DVwoAGMKvEKUre",[39m
+[34m    "transaction_hash": "bcc07be6b77a329a80904ec7f53f57061a0973ba577247b7836a466597211fc0",[39m
+[34m    "value": "44248",[39m
+[34m    "confirmations": "1"[39m
+[34m}[39m
+[1m[33m[37m06/19/2018-13:47:17.40 [33m No matching viewer: 16XVR2HQWMUZsp5dPCe2DVwoAGMKvEKUre[39m[22m
+[37m06/19/2018-13:47:18.77 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-13:47:18.85 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-13:47:18.93 [39m[33mDeezNuts[39m: syncing time: 1 seconds -> 1 seconds
+[37m06/19/2018-13:47:21.77 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-13:47:21.85 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-13:47:21.93 [39m[33mDeezNuts[39m: syncing time: 1 seconds -> 1 seconds
+[37m06/19/2018-13:47:24.77 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-13:47:24.85 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-13:47:24.93 [39m[33mDeezNuts[39m: syncing time: 1 seconds -> 1 seconds
+[37m06/19/2018-13:47:27.77 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-13:47:27.85 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-13:47:27.93 [39m[33mDeezNuts[39m: syncing time: 1 seconds -> 1 seconds
+[37m06/19/2018-13:47:30.76 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-13:47:30.84 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-13:47:30.92 [39m[33mDeezNuts[39m: syncing time: 1 seconds -> 1 seconds
+[37m06/19/2018-13:47:33.77 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-13:47:33.85 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-13:47:33.93 [39m[33mDeezNuts[39m: syncing time: 1 seconds -> 1 seconds
+[37m06/19/2018-13:47:36.77 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-13:47:36.85 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-13:47:36.93 [39m[33mDeezNuts[39m: syncing time: 1 seconds -> 1 seconds
+[37m06/19/2018-13:47:39.77 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-13:47:39.85 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-13:47:39.93 [39m[33mDeezNuts[39m: syncing time: 1 seconds -> 1 seconds
+[37m06/19/2018-13:47:42.78 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-13:47:42.86 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-13:47:42.94 [39m[33mDeezNuts[39m: syncing time: 1 seconds -> 1 seconds
+[37m06/19/2018-13:47:45.77 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-13:47:45.85 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-13:47:45.92 [39m[33mDeezNuts[39m: syncing time: 1 seconds -> 1 seconds
+[37m06/19/2018-13:47:48.77 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-13:47:48.85 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-13:47:48.93 [39m[33mDeezNuts[39m: syncing time: 1 seconds -> 1 seconds
+[37m06/19/2018-13:47:51.76 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-13:47:51.85 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-13:47:51.92 [39m[33mDeezNuts[39m: syncing time: 1 seconds -> 1 seconds
+[37m06/19/2018-13:47:54.76 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-13:47:54.84 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-13:47:54.92 [39m[33mDeezNuts[39m: syncing time: 1 seconds -> 1 seconds
+[37m06/19/2018-13:47:57.77 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-13:47:57.85 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-13:47:57.93 [39m[33mDeezNuts[39m: syncing time: 1 seconds -> 1 seconds
+[37m06/19/2018-13:48:00.78 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-13:48:00.86 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-13:48:00.93 [39m[33mDeezNuts[39m: syncing time: 1 seconds -> 1 seconds
+[37m06/19/2018-13:48:03.77 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-13:48:03.85 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-13:48:03.93 [39m[33mDeezNuts[39m: syncing time: 1 seconds -> 1 seconds
+[37m06/19/2018-13:48:06.76 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-13:48:06.84 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-13:48:06.92 [39m[33mDeezNuts[39m: syncing time: 1 seconds -> 1 seconds
+[37m06/19/2018-13:48:09.77 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-13:48:09.85 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-13:48:09.93 [39m[33mDeezNuts[39m: syncing time: 1 seconds -> 1 seconds
+[34m[37m06/19/2018-13:48:12.71 [34m[33mDeezNuts[34m: Mongoose connection disconnected[39m
+[34m[37m06/19/2018-13:48:12.72 [34m[33mDeezNuts[34m: Reconnecting to MongoDB in 3000...[39m
+[34m[37m06/19/2018-13:48:12.72 [34m[33mDeezNuts[34m: Mongoose connection disconnected through app termination[39m
