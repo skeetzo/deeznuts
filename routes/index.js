@@ -33,20 +33,20 @@ router.get(config.blockchainRoute, function (req, res, next) {
   // find viewer by bitcoin:address and query:secret
   // add time to viewerreason
   // 
-  // logger.log('req: %s', JSON.stringify(req, null, 4));
+  logger.log('req: %s', JSON.stringify(req, null, 4));
   logger.log('req.params: %s', req.params);
   logger.log('req.params: %s', JSON.stringify(req.params, null, 4));
   Viewer.findOne({'address':req.params.address,'secret':req.params.secret}, function (err, viewer) {
     if (err) logger.warn(err);
     if (!viewer) {
       logger.warn('No matching viewer: %s', JSON.stringify(req.params, null, 4));
-      return res.sendStatus(200);
+      return res.send("*ok*");
     }
     viewer.addTime(req.params.value);
     // viewer.addTransaction({'value':req.params.value,'secret':req.params.secret,'address':req.params.address,'hash':req.params.transaction_hash,'confirmations':req.params.confirmations});
     req.session.locals.viewer = mixins.Viewer(viewer);
     // signal them somehow that time was added?
-    res.sendStatus(200);
+    res.send("*ok*");
   });
 });
 
