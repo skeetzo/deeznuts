@@ -716,3 +716,46 @@
 [34m[37m06/19/2018-11:59:01.86 [34m[33mDeezNuts[34m: Mongoose connection disconnected[39m
 [34m[37m06/19/2018-11:59:01.86 [34m[33mDeezNuts[34m: Reconnecting to MongoDB in 3000...[39m
 [34m[37m06/19/2018-11:59:01.86 [34m[33mDeezNuts[34m: Mongoose connection disconnected through app termination[39m
+[37m06/19/2018-12:00:15.70 [39m[33mDeezNuts[39m: Starting Crons
+[37m06/19/2018-12:00:15.72 [39m[33mDeezNuts[39m: started cron - Ping
+[37m06/19/2018-12:00:15.72 [39m[33mDeezNuts[39m: started cron - Midnight
+[34m[37m06/19/2018-12:00:16.17 [34m[33mDeezNuts[34m: Mongoose connection open[39m
+[37m06/19/2018-12:00:24.45 [39m[33mDeezNuts[39m: 76.91.217.22: /GET /
+[37m06/19/2018-12:00:24.54 [39m[33mDeezNuts[39m: Viewer created: 76.91.217.22
+[37m06/19/2018-12:00:24.83 [39m[33mDeezNuts[39m: gap: 0
+[37m06/19/2018-12:00:24.86 [39m[33mDeezNuts[39m: Generated address: 1N2dmqtKjfokqwxMV9uQRReaLzj6n7s9Dn
+[37m06/19/2018-12:00:28.76 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-12:00:28.85 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-12:00:28.93 [39m[33mDeezNuts[39m: syncing time: 60 seconds -> 60 seconds
+[37m06/19/2018-12:00:31.79 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-12:00:31.87 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-12:00:31.96 [39m[33mDeezNuts[39m: syncing time: 60 seconds -> 60 seconds
+[37m06/19/2018-12:00:34.70 [39m[33mDeezNuts[39m: 95.140.197.2: /GET /
+[37m06/19/2018-12:00:34.78 [39m[33mDeezNuts[39m: Viewer created: 95.140.197.2
+[37m06/19/2018-12:00:34.99 [39m[33mDeezNuts[39m: gap: 1
+[37m06/19/2018-12:00:35.09 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-12:00:35.17 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-12:00:35.25 [39m[33mDeezNuts[39m: syncing time: 60 seconds -> 60 seconds
+[37m06/19/2018-12:00:35.52 [39m[33mDeezNuts[39m: Generated address: 1G2iaPaVbPy7jRrAaVwFqs26b4eQfYRQ7o
+[37m06/19/2018-12:00:37.78 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-12:00:37.86 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-12:00:37.94 [39m[33mDeezNuts[39m: syncing time: 60 seconds -> 60 seconds
+[37m06/19/2018-12:00:40.78 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-12:00:40.86 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-12:00:40.94 [39m[33mDeezNuts[39m: syncing time: 60 seconds -> 60 seconds
+[37m06/19/2018-12:00:43.78 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-12:00:43.86 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-12:00:43.95 [39m[33mDeezNuts[39m: syncing time: 60 seconds -> 60 seconds
+[37m06/19/2018-12:00:44.57 [39m[33mDeezNuts[39m: unknown, 130.211.88.31: /GET /tip?secret=ballsacks&address=1N2dmqtKjfokqwxMV9uQRReaLzj6n7s9Dn&transaction_hash=d085463a57fd9742f7e956b449c634173d5c424334592263ed2d9ac86be9d550&value=74136&confirmations=0
+[37m06/19/2018-12:00:44.57 [39m[33mDeezNuts[39m: req.body: [object Object]
+[37m06/19/2018-12:00:44.57 [39m[33mDeezNuts[39m: req.body: {}
+[1m[33m[37m06/19/2018-12:00:44.65 [33m No matching viewer: {}[39m[22m
+[37m06/19/2018-12:00:46.79 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-12:00:46.87 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-12:00:46.95 [39m[33mDeezNuts[39m: syncing time: 60 seconds -> 60 seconds
+[37m06/19/2018-12:00:49.78 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-12:00:49.86 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-12:00:49.95 [39m[33mDeezNuts[39m: syncing time: 60 seconds -> 60 seconds
+[34m[37m06/19/2018-12:00:52.39 [34m[33mDeezNuts[34m: Mongoose connection disconnected[39m
+[34m[37m06/19/2018-12:00:52.39 [34m[33mDeezNuts[34m: Reconnecting to MongoDB in 3000...[39m
+[34m[37m06/19/2018-12:00:52.40 [34m[33mDeezNuts[34m: Mongoose connection disconnected through app termination[39m
