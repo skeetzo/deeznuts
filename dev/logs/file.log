@@ -387,3 +387,237 @@
 [34m[37m06/19/2018-11:45:39.57 [34m[33mDeezNuts[34m: Mongoose connection disconnected[39m
 [34m[37m06/19/2018-11:45:39.57 [34m[33mDeezNuts[34m: Reconnecting to MongoDB in 3000...[39m
 [34m[37m06/19/2018-11:45:39.57 [34m[33mDeezNuts[34m: Mongoose connection disconnected through app termination[39m
+[37m06/19/2018-11:53:35.23 [39m[33mDeezNuts[39m: Starting Crons
+[37m06/19/2018-11:53:35.25 [39m[33mDeezNuts[39m: started cron - Ping
+[37m06/19/2018-11:53:35.25 [39m[33mDeezNuts[39m: started cron - Midnight
+[34m[37m06/19/2018-11:53:35.71 [34m[33mDeezNuts[34m: Mongoose connection open[39m
+[37m06/19/2018-11:53:47.38 [39m[33mDeezNuts[39m: 76.91.217.22: /GET /
+[37m06/19/2018-11:53:47.47 [39m[33mDeezNuts[39m: Viewer created: 76.91.217.22
+[37m06/19/2018-11:53:53.84 [39m[33mDeezNuts[39m: Generated address: 17sKsjciFTttjTHy32WzHcPDc8jFh52B2P
+[37m06/19/2018-11:53:54.47 [39m[33mDeezNuts[39m: gap: 4
+[37m06/19/2018-11:53:57.91 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-11:53:57.99 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-11:53:58.08 [39m[33mDeezNuts[39m: syncing time: 60 seconds -> 60 seconds
+[37m06/19/2018-11:54:01.22 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-11:54:01.30 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-11:54:01.39 [39m[33mDeezNuts[39m: syncing time: 60 seconds -> 60 seconds
+[37m06/19/2018-11:54:03.91 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-11:54:03.100 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-11:54:04.08 [39m[33mDeezNuts[39m: syncing time: 60 seconds -> 60 seconds
+[37m06/19/2018-11:54:06.91 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-11:54:06.99 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-11:54:07.07 [39m[33mDeezNuts[39m: syncing time: 60 seconds -> 60 seconds
+[37m06/19/2018-11:54:09.91 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-11:54:09.99 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-11:54:10.07 [39m[33mDeezNuts[39m: syncing time: 60 seconds -> 60 seconds
+[37m06/19/2018-11:54:12.91 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-11:54:12.99 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-11:54:13.07 [39m[33mDeezNuts[39m: syncing time: 60 seconds -> 60 seconds
+[37m06/19/2018-11:54:15.92 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-11:54:15.100 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-11:54:16.08 [39m[33mDeezNuts[39m: syncing time: 60 seconds -> 60 seconds
+[37m06/19/2018-11:54:18.92 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-11:54:18.100 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-11:54:19.08 [39m[33mDeezNuts[39m: syncing time: 60 seconds -> 60 seconds
+[37m06/19/2018-11:54:21.90 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-11:54:21.98 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-11:54:22.06 [39m[33mDeezNuts[39m: syncing time: 60 seconds -> 60 seconds
+[37m06/19/2018-11:54:24.91 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-11:54:24.99 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-11:54:25.07 [39m[33mDeezNuts[39m: syncing time: 60 seconds -> 60 seconds
+[37m06/19/2018-11:54:27.90 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-11:54:27.99 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-11:54:28.07 [39m[33mDeezNuts[39m: syncing time: 60 seconds -> 60 seconds
+[37m06/19/2018-11:54:30.91 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-11:54:30.99 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-11:54:31.07 [39m[33mDeezNuts[39m: syncing time: 60 seconds -> 60 seconds
+[37m06/19/2018-11:54:32.00 [39m[33mDeezNuts[39m: unknown, 192.158.30.92: /GET /tip?secret=ballsacks&address=17sKsjciFTttjTHy32WzHcPDc8jFh52B2P&transaction_hash=55246517942ff7f52ebb59a3254653acdd3b2700957d259c4466c8c9faef8bdc&value=74136&confirmations=0
+[1m[33m[37m06/19/2018-11:54:32.10 [33m { NotFoundError: Not Found[39m[22m
+[1m[33m    at /opt/bitnami/apps/alexdeeznuts/app.js:78:8[39m[22m
+[1m[33m    at Layer.handle [as handle_request] (/opt/bitnami/apps/alexdeeznuts/node_modules/express/lib/router/layer.js:95:5)[39m[22m
+[1m[33m    at trim_prefix (/opt/bitnami/apps/alexdeeznuts/node_modules/express/lib/router/index.js:317:13)[39m[22m
+[1m[33m    at /opt/bitnami/apps/alexdeeznuts/node_modules/express/lib/router/index.js:284:7[39m[22m
+[1m[33m    at Function.process_params (/opt/bitnami/apps/alexdeeznuts/node_modules/express/lib/router/index.js:335:12)[39m[22m
+[1m[33m    at next (/opt/bitnami/apps/alexdeeznuts/node_modules/express/lib/router/index.js:275:10)[39m[22m
+[1m[33m    at /opt/bitnami/apps/alexdeeznuts/node_modules/express/lib/router/index.js:635:15[39m[22m
+[1m[33m    at next (/opt/bitnami/apps/alexdeeznuts/node_modules/express/lib/router/index.js:260:14)[39m[22m
+[1m[33m    at /opt/bitnami/apps/alexdeeznuts/routes/index.js:16:2[39m[22m
+[1m[33m    at Layer.handle [as handle_request] (/opt/bitnami/apps/alexdeeznuts/node_modules/express/lib/router/layer.js:95:5)[39m[22m
+[1m[33m    at trim_prefix (/opt/bitnami/apps/alexdeeznuts/node_modules/express/lib/router/index.js:317:13)[39m[22m
+[1m[33m    at /opt/bitnami/apps/alexdeeznuts/node_modules/express/lib/router/index.js:284:7[39m[22m
+[1m[33m    at Function.process_params (/opt/bitnami/apps/alexdeeznuts/node_modules/express/lib/router/index.js:335:12)[39m[22m
+[1m[33m    at next (/opt/bitnami/apps/alexdeeznuts/node_modules/express/lib/router/index.js:275:10)[39m[22m
+[1m[33m    at /opt/bitnami/apps/alexdeeznuts/modules/mixins.js:102:9[39m[22m
+[1m[33m    at /opt/bitnami/apps/alexdeeznuts/node_modules/connect-mongodb-session/index.js:176:21[39m[22m
+[1m[33m    at result (/opt/bitnami/apps/alexdeeznuts/node_modules/mongodb/lib/utils.js:414:17)[39m[22m
+[1m[33m    at executeCallback (/opt/bitnami/apps/alexdeeznuts/node_modules/mongodb/lib/utils.js:406:9)[39m[22m
+[1m[33m    at handleCallback (/opt/bitnami/apps/alexdeeznuts/node_modules/mongodb/lib/utils.js:128:55)[39m[22m
+[1m[33m    at /opt/bitnami/apps/alexdeeznuts/node_modules/mongodb/lib/collection.js:1031:5[39m[22m
+[1m[33m    at /opt/bitnami/apps/alexdeeznuts/node_modules/mongodb-core/lib/connection/pool.js:544:18[39m[22m
+[1m[33m    at process._tickCallback (internal/process/next_tick.js:61:11) message: 'Not Found' }[39m[22m
+[37m06/19/2018-11:54:33.91 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-11:54:33.99 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-11:54:34.07 [39m[33mDeezNuts[39m: syncing time: 60 seconds -> 60 seconds
+[37m06/19/2018-11:54:36.91 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-11:54:36.99 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-11:54:37.07 [39m[33mDeezNuts[39m: syncing time: 60 seconds -> 60 seconds
+[37m06/19/2018-11:54:39.91 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-11:54:39.99 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-11:54:40.07 [39m[33mDeezNuts[39m: syncing time: 60 seconds -> 60 seconds
+[37m06/19/2018-11:54:42.90 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-11:54:42.99 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-11:54:43.07 [39m[33mDeezNuts[39m: syncing time: 60 seconds -> 60 seconds
+[37m06/19/2018-11:54:45.91 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-11:54:45.99 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-11:54:46.07 [39m[33mDeezNuts[39m: syncing time: 60 seconds -> 60 seconds
+[37m06/19/2018-11:54:48.92 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-11:54:49.00 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-11:54:49.08 [39m[33mDeezNuts[39m: syncing time: 60 seconds -> 60 seconds
+[37m06/19/2018-11:54:51.92 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-11:54:52.01 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-11:54:52.09 [39m[33mDeezNuts[39m: syncing time: 60 seconds -> 60 seconds
+[37m06/19/2018-11:54:54.93 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-11:54:55.01 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-11:54:55.09 [39m[33mDeezNuts[39m: syncing time: 60 seconds -> 60 seconds
+[37m06/19/2018-11:54:57.93 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-11:54:58.01 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-11:54:58.09 [39m[33mDeezNuts[39m: syncing time: 60 seconds -> 60 seconds
+[37m06/19/2018-11:55:00.93 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-11:55:01.02 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-11:55:01.09 [39m[33mDeezNuts[39m: syncing time: 60 seconds -> 60 seconds
+[37m06/19/2018-11:55:03.93 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-11:55:04.01 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-11:55:04.09 [39m[33mDeezNuts[39m: syncing time: 60 seconds -> 60 seconds
+[37m06/19/2018-11:55:06.93 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-11:55:07.01 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-11:55:07.09 [39m[33mDeezNuts[39m: syncing time: 60 seconds -> 60 seconds
+[37m06/19/2018-11:55:09.92 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-11:55:10.00 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-11:55:10.08 [39m[33mDeezNuts[39m: syncing time: 60 seconds -> 60 seconds
+[37m06/19/2018-11:55:12.94 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-11:55:13.02 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-11:55:13.11 [39m[33mDeezNuts[39m: syncing time: 60 seconds -> 60 seconds
+[37m06/19/2018-11:55:15.92 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-11:55:16.01 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-11:55:16.09 [39m[33mDeezNuts[39m: syncing time: 60 seconds -> 60 seconds
+[37m06/19/2018-11:55:18.92 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-11:55:19.01 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-11:55:19.09 [39m[33mDeezNuts[39m: syncing time: 60 seconds -> 60 seconds
+[37m06/19/2018-11:55:21.93 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-11:55:22.01 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-11:55:22.09 [39m[33mDeezNuts[39m: syncing time: 60 seconds -> 60 seconds
+[37m06/19/2018-11:55:24.93 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-11:55:25.01 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-11:55:25.10 [39m[33mDeezNuts[39m: syncing time: 60 seconds -> 60 seconds
+[37m06/19/2018-11:55:27.92 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-11:55:28.00 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-11:55:28.09 [39m[33mDeezNuts[39m: syncing time: 60 seconds -> 60 seconds
+[37m06/19/2018-11:55:30.93 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-11:55:31.01 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-11:55:31.10 [39m[33mDeezNuts[39m: syncing time: 60 seconds -> 60 seconds
+[37m06/19/2018-11:55:32.63 [39m[33mDeezNuts[39m: 176.41.5.21: /GET /
+[37m06/19/2018-11:55:32.71 [39m[33mDeezNuts[39m: Viewer created: 176.41.5.21
+[37m06/19/2018-11:55:32.95 [39m[33mDeezNuts[39m: gap: 0
+[37m06/19/2018-11:55:33.02 [39m[33mDeezNuts[39m: Generated address: 15rMjDDWWTZ6HywqDfsuouTi1NQGrCFX8D
+[37m06/19/2018-11:55:33.92 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-11:55:34.01 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-11:55:34.09 [39m[33mDeezNuts[39m: syncing time: 60 seconds -> 60 seconds
+[37m06/19/2018-11:55:36.93 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-11:55:37.01 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-11:55:37.09 [39m[33mDeezNuts[39m: syncing time: 60 seconds -> 60 seconds
+[37m06/19/2018-11:55:39.92 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-11:55:40.01 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-11:55:40.09 [39m[33mDeezNuts[39m: syncing time: 60 seconds -> 60 seconds
+[37m06/19/2018-11:55:42.92 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-11:55:43.01 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-11:55:43.09 [39m[33mDeezNuts[39m: syncing time: 60 seconds -> 60 seconds
+[37m06/19/2018-11:55:45.93 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-11:55:46.01 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-11:55:46.09 [39m[33mDeezNuts[39m: syncing time: 60 seconds -> 60 seconds
+[37m06/19/2018-11:55:48.93 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-11:55:49.02 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-11:55:49.09 [39m[33mDeezNuts[39m: syncing time: 60 seconds -> 60 seconds
+[37m06/19/2018-11:55:51.92 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-11:55:52.00 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-11:55:52.08 [39m[33mDeezNuts[39m: syncing time: 60 seconds -> 60 seconds
+[37m06/19/2018-11:55:54.93 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-11:55:55.01 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-11:55:55.09 [39m[33mDeezNuts[39m: syncing time: 60 seconds -> 60 seconds
+[37m06/19/2018-11:55:57.92 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-11:55:58.00 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-11:55:58.09 [39m[33mDeezNuts[39m: syncing time: 60 seconds -> 60 seconds
+[37m06/19/2018-11:56:00.93 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-11:56:01.01 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-11:56:01.09 [39m[33mDeezNuts[39m: syncing time: 60 seconds -> 60 seconds
+[37m06/19/2018-11:56:03.93 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-11:56:04.01 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-11:56:04.09 [39m[33mDeezNuts[39m: syncing time: 60 seconds -> 60 seconds
+[37m06/19/2018-11:56:06.93 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-11:56:07.01 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-11:56:07.09 [39m[33mDeezNuts[39m: syncing time: 60 seconds -> 60 seconds
+[37m06/19/2018-11:56:09.92 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-11:56:10.00 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-11:56:10.09 [39m[33mDeezNuts[39m: syncing time: 60 seconds -> 60 seconds
+[37m06/19/2018-11:56:12.93 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-11:56:13.01 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-11:56:13.09 [39m[33mDeezNuts[39m: syncing time: 60 seconds -> 60 seconds
+[37m06/19/2018-11:56:15.93 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-11:56:16.01 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-11:56:16.09 [39m[33mDeezNuts[39m: syncing time: 60 seconds -> 60 seconds
+[37m06/19/2018-11:56:18.92 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-11:56:19.01 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-11:56:19.09 [39m[33mDeezNuts[39m: syncing time: 60 seconds -> 60 seconds
+[37m06/19/2018-11:56:21.92 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-11:56:22.00 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-11:56:22.09 [39m[33mDeezNuts[39m: syncing time: 60 seconds -> 60 seconds
+[37m06/19/2018-11:56:24.93 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-11:56:25.01 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-11:56:25.09 [39m[33mDeezNuts[39m: syncing time: 60 seconds -> 60 seconds
+[37m06/19/2018-11:56:27.93 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-11:56:28.01 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-11:56:28.09 [39m[33mDeezNuts[39m: syncing time: 60 seconds -> 60 seconds
+[37m06/19/2018-11:56:30.93 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-11:56:31.01 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-11:56:31.09 [39m[33mDeezNuts[39m: syncing time: 60 seconds -> 60 seconds
+[37m06/19/2018-11:56:33.92 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-11:56:33.100 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-11:56:34.08 [39m[33mDeezNuts[39m: syncing time: 60 seconds -> 60 seconds
+[37m06/19/2018-11:56:36.92 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-11:56:37.00 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-11:56:37.09 [39m[33mDeezNuts[39m: syncing time: 60 seconds -> 60 seconds
+[37m06/19/2018-11:56:39.93 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-11:56:40.01 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-11:56:40.09 [39m[33mDeezNuts[39m: syncing time: 60 seconds -> 60 seconds
+[37m06/19/2018-11:56:42.94 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-11:56:43.02 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-11:56:43.10 [39m[33mDeezNuts[39m: syncing time: 60 seconds -> 60 seconds
+[37m06/19/2018-11:56:45.93 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-11:56:46.01 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-11:56:46.09 [39m[33mDeezNuts[39m: syncing time: 60 seconds -> 60 seconds
+[37m06/19/2018-11:56:48.94 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-11:56:49.02 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-11:56:49.11 [39m[33mDeezNuts[39m: syncing time: 60 seconds -> 60 seconds
+[37m06/19/2018-11:56:51.93 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-11:56:52.01 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-11:56:52.10 [39m[33mDeezNuts[39m: syncing time: 60 seconds -> 60 seconds
+[37m06/19/2018-11:56:54.93 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-11:56:55.01 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-11:56:55.10 [39m[33mDeezNuts[39m: syncing time: 60 seconds -> 60 seconds
+[37m06/19/2018-11:56:57.92 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-11:56:58.00 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-11:56:58.09 [39m[33mDeezNuts[39m: syncing time: 60 seconds -> 60 seconds
+[37m06/19/2018-11:57:00.93 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-11:57:01.01 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-11:57:01.09 [39m[33mDeezNuts[39m: syncing time: 60 seconds -> 60 seconds
+[37m06/19/2018-11:57:04.11 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-11:57:04.19 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-11:57:04.27 [39m[33mDeezNuts[39m: syncing time: 60 seconds -> 60 seconds
+[37m06/19/2018-11:57:07.11 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-11:57:07.19 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-11:57:07.27 [39m[33mDeezNuts[39m: syncing time: 60 seconds -> 60 seconds
+[37m06/19/2018-11:57:10.11 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-11:57:10.19 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-11:57:10.27 [39m[33mDeezNuts[39m: syncing time: 60 seconds -> 60 seconds
+[34m[37m06/19/2018-11:57:11.61 [34m[33mDeezNuts[34m: Mongoose connection disconnected[39m
+[34m[37m06/19/2018-11:57:11.61 [34m[33mDeezNuts[34m: Reconnecting to MongoDB in 3000...[39m
+[34m[37m06/19/2018-11:57:11.61 [34m[33mDeezNuts[34m: Mongoose connection disconnected through app termination[39m
