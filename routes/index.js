@@ -57,4 +57,11 @@ router.post("/sync", mixins.findViewer, function (req, res, next) {
 //   });
 // });
 
+router.post("/key", function (req, res, next) {
+  var phrase = req.body.phrase;
+  if (phrase!='banana') return res.sendStatus(401);
+  var hash = md5("/live/stream-"+(Date.now() + 3600000)+"-"+config.streamKey);
+  res.status(200).send({'key':hash});
+});
+
 module.exports = router;

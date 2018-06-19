@@ -3241,3 +3241,17 @@
 [34m[37m06/19/2018-12:52:51.53 [34m[33mDeezNuts[34m: Mongoose connection disconnected[39m
 [34m[37m06/19/2018-12:52:51.54 [34m[33mDeezNuts[34m: Reconnecting to MongoDB in 3000...[39m
 [34m[37m06/19/2018-12:52:51.54 [34m[33mDeezNuts[34m: Mongoose connection disconnected through app termination[39m
+[37m06/19/2018-06:14:33.71 [39m[33mDeezNuts[39m: Starting Crons
+[37m06/19/2018-06:14:33.73 [39m[33mDeezNuts[39m: started cron - Ping
+[37m06/19/2018-06:14:33.73 [39m[33mDeezNuts[39m: started cron - Midnight
+[34m[37m06/19/2018-06:14:34.19 [34m[33mDeezNuts[34m: Mongoose connection open[39m
+[34m[37m06/19/2018-06:14:35.17 [34m[33mDeezNuts[34m: Mongoose connection disconnected[39m
+[34m[37m06/19/2018-06:14:35.17 [34m[33mDeezNuts[34m: Reconnecting to MongoDB in 3000...[39m
+[34m[37m06/19/2018-06:14:35.17 [34m[33mDeezNuts[34m: Mongoose connection disconnected through app termination[39m
+[37m06/19/2018-06:17:46.41 [39m[33mDeezNuts[39m: Starting Crons
+[37m06/19/2018-06:17:46.43 [39m[33mDeezNuts[39m: started cron - Ping
+[37m06/19/2018-06:17:46.44 [39m[33mDeezNuts[39m: started cron - Midnight
+[34m[37m06/19/2018-06:17:46.92 [34m[33mDeezNuts[34m: Mongoose connection open[39m
+[34m[37m06/19/2018-06:17:47.47 [34m[33mDeezNuts[34m: Mongoose connection disconnected[39m
+[34m[37m06/19/2018-06:17:47.48 [34m[33mDeezNuts[34m: Reconnecting to MongoDB in 3000...[39m
+[34m[37m06/19/2018-06:17:47.48 [34m[33mDeezNuts[34m: Mongoose connection disconnected through app termination[39m

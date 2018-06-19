@@ -65,8 +65,14 @@ viewerSchema.statics.addTransaction = function(transaction, callback) {
   Viewer.findOne({'address':transaction.address,'secret':transaction.secret}, function (err, viewer) {
     if (err) return callback(err);
     if (!viewer) return callback('No matching viewer: '+transaction.address);
-    viewer.transactions.push({'value':transaction.value,'secret':transaction.secret,'address':transaction.address,'hash':transaction.transaction_hash,'confirmations':transaction.confirmations});
-    viewer.addTime(transaction.value);
+    if (_.contains(_.pluck(viewer.transactions,'transaction_hash'),transaction.transaction_hash)) {
+      var existing_transaction = _.findWhere(viewer.transactions, {'transaction_hash':transaction.transaction_hash});
+      existing_transaction.confirmations = transaction.confirmations;
+    }
+    else {
+      viewer.transactions.push({'value':transaction.value,'secret':transaction.secret,'address':transaction.address,'hash':transaction.transaction_hash,'confirmations':transaction.confirmations});
+      viewer.addTime(transaction.value);
+    }
   });
 }
 
