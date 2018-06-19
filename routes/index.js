@@ -30,20 +30,17 @@ router.get("/live", mixins.findViewer, mixins.hasPaid, function (req, res, next)
 
 // blockchainCallback
 router.get(config.blockchainRoute, function (req, res, next) {
-  // find viewer by bitcoin:address and query:secret
-  // add time to viewerreason
-  // 
-  logger.log('req: %s', JSON.stringify(req, null, 4));
-  logger.log('req.params: %s', req.params);
-  logger.log('req.params: %s', JSON.stringify(req.params, null, 4));
-  Viewer.findOne({'address':req.params.address,'secret':req.params.secret}, function (err, viewer) {
+  // logger.log('req: %s', JSON.stringify(req, null, 4));
+  logger.log('req.query: %s', req.query);
+  logger.log('req.query: %s', JSON.stringify(req.query, null, 4));
+  Viewer.findOne({'address':req.query.address,'secret':req.query.secret}, function (err, viewer) {
     if (err) logger.warn(err);
     if (!viewer) {
-      logger.warn('No matching viewer: %s', JSON.stringify(req.params, null, 4));
+      logger.warn('No matching viewer: %s', JSON.stringify(req.query, null, 4));
       return res.send("*ok*");
     }
-    viewer.addTime(req.params.value);
-    // viewer.addTransaction({'value':req.params.value,'secret':req.params.secret,'address':req.params.address,'hash':req.params.transaction_hash,'confirmations':req.params.confirmations});
+    viewer.addTime(req.query.value);
+    // viewer.addTransaction({'value':req.query.value,'secret':req.query.secret,'address':req.query.address,'hash':req.query.transaction_hash,'confirmations':req.query.confirmations});
     req.session.locals.viewer = mixins.Viewer(viewer);
     // signal them somehow that time was added?
     res.send("*ok*");
