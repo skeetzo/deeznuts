@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 [37m06/19/2018-13:50:46.71 [39m[33mDeezNuts[39m: Starting Crons
 [37m06/19/2018-13:50:46.72 [39m[33mDeezNuts[39m: started cron - Ping
 [37m06/19/2018-13:50:46.72 [39m[33mDeezNuts[39m: started cron - Midnight
@@ -2736,3 +2737,106 @@
 [37m06/19/2018-14:17:53.96 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
 [37m06/19/2018-14:17:54.05 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
 [34m[37m06/19/2018-14:17:54.13 [34m[33mDeezNuts[34m: syncing time (bug): 0 seconds -> 0 (0) seconds[39m
+=======
+[37m06/19/2018-07:01:28.94 [39m[33mDeezNuts[39m: Starting Crons
+[37m06/19/2018-07:01:28.96 [39m[33mDeezNuts[39m: started cron - Ping
+[37m06/19/2018-07:01:28.96 [39m[33mDeezNuts[39m: started cron - Midnight
+[34m[37m06/19/2018-07:01:29.44 [34m[33mDeezNuts[34m: Mongoose connection open[39m
+[37m06/19/2018-07:01:33.79 [39m[33mDeezNuts[39m: ::1: /GET /
+[37m06/19/2018-07:01:33.91 [39m[33mDeezNuts[39m: Viewer created: ::1
+[37m06/19/2018-07:01:34.22 [39m[33mDeezNuts[39m: gap: 7
+[37m06/19/2018-07:01:34.23 [39m[33mDeezNuts[39m: Generated address: 1AG6jrGubLm8NvRaxKfgdbBiHJDB2Ag6uV
+[37m06/19/2018-07:01:38.56 [39m[33mDeezNuts[39m: ::1: /POST /sync
+[37m06/19/2018-07:01:38.65 [39m[33mDeezNuts[39m: Viewer found: ::1
+[37m06/19/2018-07:01:38.74 [39m[33mDeezNuts[39m: syncing time: 60 seconds -> 60 seconds
+[37m06/19/2018-07:01:41.55 [39m[33mDeezNuts[39m: ::1: /POST /sync
+[37m06/19/2018-07:01:41.65 [39m[33mDeezNuts[39m: Viewer found: ::1
+[37m06/19/2018-07:01:41.75 [39m[33mDeezNuts[39m: syncing time: 60 seconds -> 60 seconds
+[37m06/19/2018-07:01:44.59 [39m[33mDeezNuts[39m: ::1: /POST /sync
+[37m06/19/2018-07:01:44.67 [39m[33mDeezNuts[39m: Viewer found: ::1
+[37m06/19/2018-07:01:44.76 [39m[33mDeezNuts[39m: syncing time: 60 seconds -> 60 seconds
+[37m06/19/2018-07:01:47.90 [39m[33mDeezNuts[39m: ::1: /POST /sync
+[37m06/19/2018-07:01:47.99 [39m[33mDeezNuts[39m: Viewer found: ::1
+[37m06/19/2018-07:01:48.08 [39m[33mDeezNuts[39m: syncing time: 60 seconds -> 60 seconds
+[37m06/19/2018-07:01:50.91 [39m[33mDeezNuts[39m: ::1: /POST /sync
+[37m06/19/2018-07:01:50.99 [39m[33mDeezNuts[39m: Viewer found: ::1
+[37m06/19/2018-07:01:51.08 [39m[33mDeezNuts[39m: syncing time: 60 seconds -> 60 seconds
+[37m06/19/2018-07:01:53.90 [39m[33mDeezNuts[39m: ::1: /POST /sync
+[37m06/19/2018-07:01:53.99 [39m[33mDeezNuts[39m: Viewer found: ::1
+[37m06/19/2018-07:01:54.08 [39m[33mDeezNuts[39m: syncing time: 60 seconds -> 60 seconds
+[34m[37m06/19/2018-07:01:56.10 [34m[33mDeezNuts[34m: Mongoose connection disconnected[39m
+[34m[37m06/19/2018-07:01:56.10 [34m[33mDeezNuts[34m: Reconnecting to MongoDB in 3000...[39m
+[34m[37m06/19/2018-07:01:56.10 [34m[33mDeezNuts[34m: Mongoose connection disconnected through app termination[39m
+[37m06/19/2018-07:01:59.84 [39m[33mDeezNuts[39m: Starting Crons
+[37m06/19/2018-07:01:59.87 [39m[33mDeezNuts[39m: started cron - Ping
+[37m06/19/2018-07:01:59.88 [39m[33mDeezNuts[39m: started cron - Midnight
+[34m[37m06/19/2018-07:02:00.33 [34m[33mDeezNuts[34m: Mongoose connection open[39m
+[37m06/19/2018-07:02:02.95 [39m[33mDeezNuts[39m: ::1: /GET /
+[37m06/19/2018-07:02:03.06 [39m[33mDeezNuts[39m: Viewer found: ::1
+[1m[33m[37m06/19/2018-07:02:03.57 [33m { Error: ENOENT: no such file or directory, open 'C:\Users\Schizo\Projects\GitHub\alexdeeznuts\views\favicons.pug'[39m[22m
+[1m[33m    at C:\Users\Schizo\Projects\GitHub\alexdeeznuts\views\layout.pug line 17[39m[22m
+[1m[33m    at Error (native)[39m[22m
+[1m[33m    at Object.fs.openSync (fs.js:641:18)[39m[22m
+[1m[33m    at Object.fs.readFileSync (fs.js:509:33)[39m[22m
+[1m[33m    at Function.read (C:\Users\Schizo\Projects\GitHub\alexdeeznuts\node_modules\pug-load\index.js:69:13)[39m[22m
+[1m[33m    at Object.read (C:\Users\Schizo\Projects\GitHub\alexdeeznuts\node_modules\pug\lib\index.js:147:25)[39m[22m
+[1m[33m    at C:\Users\Schizo\Projects\GitHub\alexdeeznuts\node_modules\pug-load\index.js:24:25[39m[22m
+[1m[33m    at walkAST (C:\Users\Schizo\Projects\GitHub\alexdeeznuts\node_modules\pug-walk\index.js:23:18)[39m[22m
+[1m[33m    at C:\Users\Schizo\Projects\GitHub\alexdeeznuts\node_modules\pug-walk\index.js:104:20[39m[22m
+[1m[33m    at Array.reduce (native)[39m[22m
+[1m[33m    at walkAndMergeNodes (C:\Users\Schizo\Projects\GitHub\alexdeeznuts\node_modules\pug-walk\index.js:103:18)[39m[22m
+[1m[33m    at walkAST (C:\Users\Schizo\Projects\GitHub\alexdeeznuts\node_modules\pug-walk\index.js:37:19)[39m[22m
+[1m[33m    at walkAST (C:\Users\Schizo\Projects\GitHub\alexdeeznuts\node_modules\pug-walk\index.js:48:21)[39m[22m
+[1m[33m    at C:\Users\Schizo\Projects\GitHub\alexdeeznuts\node_modules\pug-walk\index.js:104:20[39m[22m
+[1m[33m    at Array.reduce (native)[39m[22m
+[1m[33m    at walkAndMergeNodes (C:\Users\Schizo\Projects\GitHub\alexdeeznuts\node_modules\pug-walk\index.js:103:18)[39m[22m
+[1m[33m    at walkAST (C:\Users\Schizo\Projects\GitHub\alexdeeznuts\node_modules\pug-walk\index.js:37:19)[39m[22m
+[1m[33m    at walkAST (C:\Users\Schizo\Projects\GitHub\alexdeeznuts\node_modules\pug-walk\index.js:48:21)[39m[22m
+[1m[33m    at C:\Users\Schizo\Projects\GitHub\alexdeeznuts\node_modules\pug-walk\index.js:104:20[39m[22m
+[1m[33m    at Array.reduce (native)[39m[22m
+[1m[33m    at walkAndMergeNodes (C:\Users\Schizo\Projects\GitHub\alexdeeznuts\node_modules\pug-walk\index.js:103:18)[39m[22m
+[1m[33m    at walkAST (C:\Users\Schizo\Projects\GitHub\alexdeeznuts\node_modules\pug-walk\index.js:37:19)[39m[22m
+[1m[33m    at load (C:\Users\Schizo\Projects\GitHub\alexdeeznuts\node_modules\pug-load\index.js:13:10)[39m[22m
+[1m[33m    at Function.loadString [as string] (C:\Users\Schizo\Projects\GitHub\alexdeeznuts\node_modules\pug-load\index.js:46:10)[39m[22m
+[1m[33m    at C:\Users\Schizo\Projects\GitHub\alexdeeznuts\node_modules\pug-load\index.js:31:27[39m[22m
+[1m[33m    at walkAST (C:\Users\Schizo\Projects\GitHub\alexdeeznuts\node_modules\pug-walk\index.js:23:18)[39m[22m
+[1m[33m    at C:\Users\Schizo\Projects\GitHub\alexdeeznuts\node_modules\pug-walk\index.js:104:20[39m[22m
+[1m[33m    at Array.reduce (native)[39m[22m
+[1m[33m    at walkAndMergeNodes (C:\Users\Schizo\Projects\GitHub\alexdeeznuts\node_modules\pug-walk\index.js:103:18)[39m[22m
+[1m[33m  errno: -4058,[39m[22m
+[1m[33m  code: 'ENOENT',[39m[22m
+[1m[33m  syscall: 'open',[39m[22m
+[1m[33m  path: 'C:\\Users\\Schizo\\Projects\\GitHub\\alexdeeznuts\\views\\favicons.pug' }[39m[22m
+[34m[37m06/19/2018-07:02:18.81 [34m[33mDeezNuts[34m: Mongoose connection disconnected[39m
+[34m[37m06/19/2018-07:02:18.81 [34m[33mDeezNuts[34m: Reconnecting to MongoDB in 3000...[39m
+[34m[37m06/19/2018-07:02:18.82 [34m[33mDeezNuts[34m: Mongoose connection disconnected through app termination[39m
+[37m06/19/2018-07:02:22.25 [39m[33mDeezNuts[39m: Starting Crons
+[37m06/19/2018-07:02:22.27 [39m[33mDeezNuts[39m: started cron - Ping
+[37m06/19/2018-07:02:22.27 [39m[33mDeezNuts[39m: started cron - Midnight
+[34m[37m06/19/2018-07:02:22.72 [34m[33mDeezNuts[34m: Mongoose connection open[39m
+[37m06/19/2018-07:02:23.06 [39m[33mDeezNuts[39m: ::1: /GET /
+[37m06/19/2018-07:02:23.17 [39m[33mDeezNuts[39m: Viewer found: ::1
+[37m06/19/2018-07:02:25.66 [39m[33mDeezNuts[39m: ::1: /GET /
+[37m06/19/2018-07:02:25.76 [39m[33mDeezNuts[39m: Viewer found: ::1
+[34m[37m06/19/2018-07:17:13.22 [34m[33mDeezNuts[34m: Mongoose connection disconnected[39m
+[34m[37m06/19/2018-07:17:13.22 [34m[33mDeezNuts[34m: Reconnecting to MongoDB in 3000...[39m
+[34m[37m06/19/2018-07:17:13.23 [34m[33mDeezNuts[34m: Mongoose connection disconnected through app termination[39m
+>>>>>>> a2d6e48eda081eb78d97ccb248dcd765ba6b6932
+[37m06/19/2018-14:17:55.78 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-14:17:55.86 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[34m[37m06/19/2018-14:17:55.93 [34m[33mDeezNuts[34m: syncing time (bug): 0 seconds -> 0 (0) seconds[39m
+[37m06/19/2018-14:17:56.96 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-14:17:57.06 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[34m[37m06/19/2018-14:17:57.13 [34m[33mDeezNuts[34m: syncing time (bug): 0 seconds -> 0 (0) seconds[39m
+[37m06/19/2018-14:17:58.76 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-14:17:58.84 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[34m[37m06/19/2018-14:17:58.91 [34m[33mDeezNuts[34m: syncing time (bug): 0 seconds -> 0 (0) seconds[39m
+[37m06/19/2018-14:17:59.97 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-14:18:00.05 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[34m[37m06/19/2018-14:18:00.13 [34m[33mDeezNuts[34m: syncing time (bug): 0 seconds -> 0 (0) seconds[39m
+[37m06/19/2018-14:18:01.76 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-14:18:01.84 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[34m[37m06/19/2018-14:18:01.92 [34m[33mDeezNuts[34m: syncing time (bug): 0 seconds -> 0 (0) seconds[39m
+[37m06/19/2018-14:18:02.97 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-14:18:03.05 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[34m[37m06/19/2018-14:18:03.13 [34m[33mDeezNuts[34m: syncing time (bug): 0 seconds -> 0 (0) seconds[39m
