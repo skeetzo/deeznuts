@@ -1,11 +1,10 @@
 extends layout
 
 prepend content
-
   // this is a square of video
   .row
     .col-xs-12
-      video#preview(controls, autoplay, poster='/images/preview.jpg', width=500, height=500)
+      video#preview(controls, autoplay, poster='/images/preview.jpg', width=500)
 
   // this is a cryptocurrency box & enter button
   .row
@@ -13,6 +12,7 @@ prepend content
       a(href=viewer.address)= viewer.address
       //- img(src=bitcoin_qr)
 
+append javascript
   script(src="https://cdn.bootcss.com/flv.js/1.4.0/flv.min.js")
   
   script.
@@ -29,7 +29,6 @@ prepend content
       //- flvPlayer.play();
     }
 
-append javascript
   script.
     $(document).ready(function () {
       //- updates time if live

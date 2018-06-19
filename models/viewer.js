@@ -81,6 +81,10 @@ viewerSchema.statics.sync = function(data, callback) {
     if (!viewer) return 'Viewer not found: '+data.ip;
     if (Math.abs(parseInt(viewer.time)-parseInt(data.time))>5)
       logger.log('not syncing time: %s seconds -> %s seconds', viewer.time, data.time);
+    else if (data.time<=3) {
+      logger.debug('syncing time (bug): %s seconds -> %s (%s) seconds', viewer.time, 0, data.time);
+      viewer.time = 0;
+    }
     else {
       logger.log('syncing time: %s seconds -> %s seconds', viewer.time, data.time);
       viewer.time = data.time;
@@ -118,12 +122,8 @@ viewerSchema.methods.addTime = function(value_in_satoshi) {
   });
 }
 
-
-
 var Viewer = mongoose.model('viewers', viewerSchema,'viewers');
 module.exports = Viewer;
-
-
 
 
 // var options = {
