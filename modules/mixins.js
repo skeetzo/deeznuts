@@ -8,7 +8,6 @@ var _ = require('underscore'),
     md5 = require('md5'),
     Viewer = require('../models/viewer');
 
-
 module.exports.findViewer = function(req, res, next) {
     // if (req.session.locals.viewer) return next(null);
     var ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
