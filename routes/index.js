@@ -29,7 +29,7 @@ router.get("/live", mixins.findViewer, mixins.hasPaid, function (req, res, next)
 });
 
 // blockchainCallback
-router.post("/"+config.blockchainRoute, function (req, res, next) {
+router.get("/"+config.blockchainRoute, function (req, res, next) {
   // find viewer by bitcoin:address and query:secret
   // add time to viewerreason
   // 
