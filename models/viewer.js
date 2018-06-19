@@ -61,16 +61,16 @@ viewerSchema.pre('save', function (next) {
     next(null);
 });
 
-Viewer.statics.addTransaction = function(transaction, callback) {
+viewerSchema.statics.addTransaction = function(transaction, callback) {
   Viewer.findOne({'address':transaction.address,'secret':transaction.secret}, function (err, viewer) {
     if (err) return callback(err);
     if (!viewer) return callback('No matching viewer: '+transaction.address);
     viewer.transactions.push({'value':transaction.value,'secret':transaction.secret,'address':transaction.address,'hash':transaction.transaction_hash,'confirmations':transaction.confirmations});
     viewer.addTime(transaction.value);
   });
-});
+}
 
-Viewer.statics.sync = function(data, callback) {
+viewerSchema.statics.sync = function(data, callback) {
   Viewer.findOne({'ip':data.ip}, function (err, viewer) {
     if (err) return callback(err);
     if (!viewer) return 'Viewer not found: '+data.ip;

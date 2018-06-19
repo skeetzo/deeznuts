@@ -3,13 +3,11 @@ var _ = require('underscore'),
     moment = require('moment'),
     logger = config.logger,
     async = require('async'),
-    // Money = require('es-money'),
     path = require('path'),
     md5 = require('md5'),
     Viewer = require('../models/viewer');
 
 module.exports.findViewer = function(req, res, next) {
-    // if (req.session.locals.viewer) return next(null);
     var ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
     Viewer.findOne({'ip':ip}, function (err, viewer) {
         if (err) logger.warn(err);
