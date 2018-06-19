@@ -29,7 +29,8 @@ config.status = "Not Live";
 config.bitcoin_address = "7h15157o74lly4b17co1n4ddre55";
 config.bitcoin_qr = "http://placehold.it/150x150";
 config.bitcoin_link = "bitcoin:"+config.bitcoin_address;
-config.blockchainCallback = 'http://'+config.domain+'/tip';
+config.blockchainRoute = "/tip";
+config.blockchainCallback = 'http://'+config.domain+config.blockchainRoute;
 config.streamKey = "yourmotherisadirtywhore";
 
 config.siteData = 
