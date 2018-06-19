@@ -8,7 +8,7 @@ var _ = require('underscore'),
 
 
 
-function logTime(time, value_in_satoshi, timeAdded, dollar) {
+function logTime(value_in_satoshi, dollar, time, timeAdded) {
 	logger.log('GLogging: %s seconds + %s seconds (%s satoshis -> %s dollars) = %s seconds', time, timeAdded, value_in_satoshi, dollar, (time+timeAdded));
 	// save to sheet
 
