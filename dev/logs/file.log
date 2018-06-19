@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 [37m06/19/2018-13:18:21.02 [39m[33mDeezNuts[39m: Starting Crons
 [37m06/19/2018-13:18:21.04 [39m[33mDeezNuts[39m: started cron - Ping
 [37m06/19/2018-13:18:21.04 [39m[33mDeezNuts[39m: started cron - Midnight
@@ -661,3 +662,370 @@
 [34m[37m06/19/2018-13:36:30.42 [34m[33mDeezNuts[34m: Mongoose connection disconnected[39m
 [34m[37m06/19/2018-13:36:30.43 [34m[33mDeezNuts[34m: Reconnecting to MongoDB in 3000...[39m
 [34m[37m06/19/2018-13:36:30.43 [34m[33mDeezNuts[34m: Mongoose connection disconnected through app termination[39m
+=======
+[37m06/19/2018-06:27:22.66 [39m[33mDeezNuts[39m: Starting Crons
+[37m06/19/2018-06:27:22.68 [39m[33mDeezNuts[39m: started cron - Ping
+[37m06/19/2018-06:27:22.69 [39m[33mDeezNuts[39m: started cron - Midnight
+[34m[37m06/19/2018-06:27:23.14 [34m[33mDeezNuts[34m: Mongoose connection open[39m
+[37m06/19/2018-06:27:23.42 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1: /GET /
+[37m06/19/2018-06:27:23.53 [39m[33mDeezNuts[39m: Viewer created: ::ffff:127.0.0.1
+[37m06/19/2018-06:27:23.89 [39m[33mDeezNuts[39m: gap: 4
+[37m06/19/2018-06:27:23.92 [39m[33mDeezNuts[39m: Generated address: 1J7uCsQgZkNH53BCkMksHRG3b7mV3fAo7M
+[37m06/19/2018-06:27:26.60 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1: /GET /key
+[1m[33m[37m06/19/2018-06:27:26.71 [33m { NotFoundError: Not Found[39m[22m
+[1m[33m    at C:\Users\Schizo\Projects\GitHub\alexdeeznuts\app.js:78:8[39m[22m
+[1m[33m    at Layer.handle [as handle_request] (C:\Users\Schizo\Projects\GitHub\alexdeeznuts\node_modules\express\lib\router\layer.js:95:5)[39m[22m
+[1m[33m    at trim_prefix (C:\Users\Schizo\Projects\GitHub\alexdeeznuts\node_modules\express\lib\router\index.js:317:13)[39m[22m
+[1m[33m    at C:\Users\Schizo\Projects\GitHub\alexdeeznuts\node_modules\express\lib\router\index.js:284:7[39m[22m
+[1m[33m    at Function.process_params (C:\Users\Schizo\Projects\GitHub\alexdeeznuts\node_modules\express\lib\router\index.js:335:12)[39m[22m
+[1m[33m    at next (C:\Users\Schizo\Projects\GitHub\alexdeeznuts\node_modules\express\lib\router\index.js:275:10)[39m[22m
+[1m[33m    at C:\Users\Schizo\Projects\GitHub\alexdeeznuts\node_modules\express\lib\router\index.js:635:15[39m[22m
+[1m[33m    at next (C:\Users\Schizo\Projects\GitHub\alexdeeznuts\node_modules\express\lib\router\index.js:260:14)[39m[22m
+[1m[33m    at C:\Users\Schizo\Projects\GitHub\alexdeeznuts\routes\index.js:14:2[39m[22m
+[1m[33m    at Layer.handle [as handle_request] (C:\Users\Schizo\Projects\GitHub\alexdeeznuts\node_modules\express\lib\router\layer.js:95:5)[39m[22m
+[1m[33m    at trim_prefix (C:\Users\Schizo\Projects\GitHub\alexdeeznuts\node_modules\express\lib\router\index.js:317:13)[39m[22m
+[1m[33m    at C:\Users\Schizo\Projects\GitHub\alexdeeznuts\node_modules\express\lib\router\index.js:284:7[39m[22m
+[1m[33m    at Function.process_params (C:\Users\Schizo\Projects\GitHub\alexdeeznuts\node_modules\express\lib\router\index.js:335:12)[39m[22m
+[1m[33m    at next (C:\Users\Schizo\Projects\GitHub\alexdeeznuts\node_modules\express\lib\router\index.js:275:10)[39m[22m
+[1m[33m    at C:\Users\Schizo\Projects\GitHub\alexdeeznuts\modules\mixins.js:99:9[39m[22m
+[1m[33m    at C:\Users\Schizo\Projects\GitHub\alexdeeznuts\node_modules\connect-mongodb-session\index.js:176:21[39m[22m
+[1m[33m    at result (C:\Users\Schizo\Projects\GitHub\alexdeeznuts\node_modules\mongodb\lib\utils.js:414:17)[39m[22m
+[1m[33m    at executeCallback (C:\Users\Schizo\Projects\GitHub\alexdeeznuts\node_modules\mongodb\lib\utils.js:406:9)[39m[22m
+[1m[33m    at handleCallback (C:\Users\Schizo\Projects\GitHub\alexdeeznuts\node_modules\mongodb\lib\utils.js:128:55)[39m[22m
+[1m[33m    at C:\Users\Schizo\Projects\GitHub\alexdeeznuts\node_modules\mongodb\lib\collection.js:1031:5[39m[22m
+[1m[33m    at C:\Users\Schizo\Projects\GitHub\alexdeeznuts\node_modules\mongodb-core\lib\connection\pool.js:544:18[39m[22m
+[1m[33m    at _combinedTickCallback (internal/process/next_tick.js:73:7)[39m[22m
+[1m[33m    at process._tickCallback (internal/process/next_tick.js:104:9) message: 'Not Found' }[39m[22m
+[34m[37m06/19/2018-06:29:13.80 [34m[33mDeezNuts[34m: Mongoose connection disconnected[39m
+[34m[37m06/19/2018-06:29:13.81 [34m[33mDeezNuts[34m: Reconnecting to MongoDB in 3000...[39m
+[34m[37m06/19/2018-06:29:13.81 [34m[33mDeezNuts[34m: Mongoose connection disconnected through app termination[39m
+[37m06/19/2018-06:29:16.99 [39m[33mDeezNuts[39m: Starting Crons
+[37m06/19/2018-06:29:17.01 [39m[33mDeezNuts[39m: started cron - Ping
+[37m06/19/2018-06:29:17.01 [39m[33mDeezNuts[39m: started cron - Midnight
+[34m[37m06/19/2018-06:29:17.48 [34m[33mDeezNuts[34m: Mongoose connection open[39m
+[37m06/19/2018-06:29:18.07 [39m[33mDeezNuts[39m: ::1: /GET /key
+[1m[33m[37m06/19/2018-06:29:18.70 [33m { NotFoundError: Not Found[39m[22m
+[1m[33m    at C:\Users\Schizo\Projects\GitHub\alexdeeznuts\app.js:78:8[39m[22m
+[1m[33m    at Layer.handle [as handle_request] (C:\Users\Schizo\Projects\GitHub\alexdeeznuts\node_modules\express\lib\router\layer.js:95:5)[39m[22m
+[1m[33m    at trim_prefix (C:\Users\Schizo\Projects\GitHub\alexdeeznuts\node_modules\express\lib\router\index.js:317:13)[39m[22m
+[1m[33m    at C:\Users\Schizo\Projects\GitHub\alexdeeznuts\node_modules\express\lib\router\index.js:284:7[39m[22m
+[1m[33m    at Function.process_params (C:\Users\Schizo\Projects\GitHub\alexdeeznuts\node_modules\express\lib\router\index.js:335:12)[39m[22m
+[1m[33m    at next (C:\Users\Schizo\Projects\GitHub\alexdeeznuts\node_modules\express\lib\router\index.js:275:10)[39m[22m
+[1m[33m    at C:\Users\Schizo\Projects\GitHub\alexdeeznuts\node_modules\express\lib\router\index.js:635:15[39m[22m
+[1m[33m    at next (C:\Users\Schizo\Projects\GitHub\alexdeeznuts\node_modules\express\lib\router\index.js:260:14)[39m[22m
+[1m[33m    at C:\Users\Schizo\Projects\GitHub\alexdeeznuts\routes\index.js:14:2[39m[22m
+[1m[33m    at Layer.handle [as handle_request] (C:\Users\Schizo\Projects\GitHub\alexdeeznuts\node_modules\express\lib\router\layer.js:95:5)[39m[22m
+[1m[33m    at trim_prefix (C:\Users\Schizo\Projects\GitHub\alexdeeznuts\node_modules\express\lib\router\index.js:317:13)[39m[22m
+[1m[33m    at C:\Users\Schizo\Projects\GitHub\alexdeeznuts\node_modules\express\lib\router\index.js:284:7[39m[22m
+[1m[33m    at Function.process_params (C:\Users\Schizo\Projects\GitHub\alexdeeznuts\node_modules\express\lib\router\index.js:335:12)[39m[22m
+[1m[33m    at next (C:\Users\Schizo\Projects\GitHub\alexdeeznuts\node_modules\express\lib\router\index.js:275:10)[39m[22m
+[1m[33m    at C:\Users\Schizo\Projects\GitHub\alexdeeznuts\modules\mixins.js:99:9[39m[22m
+[1m[33m    at C:\Users\Schizo\Projects\GitHub\alexdeeznuts\node_modules\connect-mongodb-session\index.js:176:21[39m[22m
+[1m[33m    at result (C:\Users\Schizo\Projects\GitHub\alexdeeznuts\node_modules\mongodb\lib\utils.js:414:17)[39m[22m
+[1m[33m    at executeCallback (C:\Users\Schizo\Projects\GitHub\alexdeeznuts\node_modules\mongodb\lib\utils.js:406:9)[39m[22m
+[1m[33m    at handleCallback (C:\Users\Schizo\Projects\GitHub\alexdeeznuts\node_modules\mongodb\lib\utils.js:128:55)[39m[22m
+[1m[33m    at C:\Users\Schizo\Projects\GitHub\alexdeeznuts\node_modules\mongodb\lib\collection.js:1031:5[39m[22m
+[1m[33m    at C:\Users\Schizo\Projects\GitHub\alexdeeznuts\node_modules\mongodb-core\lib\connection\pool.js:544:18[39m[22m
+[1m[33m    at _combinedTickCallback (internal/process/next_tick.js:73:7)[39m[22m
+[1m[33m    at process._tickCallback (internal/process/next_tick.js:104:9) message: 'Not Found' }[39m[22m
+[34m[37m06/19/2018-06:29:51.38 [34m[33mDeezNuts[34m: Mongoose connection disconnected[39m
+[34m[37m06/19/2018-06:29:51.38 [34m[33mDeezNuts[34m: Reconnecting to MongoDB in 3000...[39m
+[34m[37m06/19/2018-06:29:51.39 [34m[33mDeezNuts[34m: Mongoose connection disconnected through app termination[39m
+[37m06/19/2018-06:29:55.00 [39m[33mDeezNuts[39m: Starting Crons
+[37m06/19/2018-06:29:55.02 [39m[33mDeezNuts[39m: started cron - Ping
+[37m06/19/2018-06:29:55.03 [39m[33mDeezNuts[39m: started cron - Midnight
+[34m[37m06/19/2018-06:29:55.50 [34m[33mDeezNuts[34m: Mongoose connection open[39m
+[37m06/19/2018-06:30:00.34 [39m[33mDeezNuts[39m: ::1: /GET /key
+[1m[33m[37m06/19/2018-06:30:00.97 [33m { NotFoundError: Not Found[39m[22m
+[1m[33m    at C:\Users\Schizo\Projects\GitHub\alexdeeznuts\app.js:78:8[39m[22m
+[1m[33m    at Layer.handle [as handle_request] (C:\Users\Schizo\Projects\GitHub\alexdeeznuts\node_modules\express\lib\router\layer.js:95:5)[39m[22m
+[1m[33m    at trim_prefix (C:\Users\Schizo\Projects\GitHub\alexdeeznuts\node_modules\express\lib\router\index.js:317:13)[39m[22m
+[1m[33m    at C:\Users\Schizo\Projects\GitHub\alexdeeznuts\node_modules\express\lib\router\index.js:284:7[39m[22m
+[1m[33m    at Function.process_params (C:\Users\Schizo\Projects\GitHub\alexdeeznuts\node_modules\express\lib\router\index.js:335:12)[39m[22m
+[1m[33m    at next (C:\Users\Schizo\Projects\GitHub\alexdeeznuts\node_modules\express\lib\router\index.js:275:10)[39m[22m
+[1m[33m    at C:\Users\Schizo\Projects\GitHub\alexdeeznuts\node_modules\express\lib\router\index.js:635:15[39m[22m
+[1m[33m    at next (C:\Users\Schizo\Projects\GitHub\alexdeeznuts\node_modules\express\lib\router\index.js:260:14)[39m[22m
+[1m[33m    at C:\Users\Schizo\Projects\GitHub\alexdeeznuts\routes\index.js:14:2[39m[22m
+[1m[33m    at Layer.handle [as handle_request] (C:\Users\Schizo\Projects\GitHub\alexdeeznuts\node_modules\express\lib\router\layer.js:95:5)[39m[22m
+[1m[33m    at trim_prefix (C:\Users\Schizo\Projects\GitHub\alexdeeznuts\node_modules\express\lib\router\index.js:317:13)[39m[22m
+[1m[33m    at C:\Users\Schizo\Projects\GitHub\alexdeeznuts\node_modules\express\lib\router\index.js:284:7[39m[22m
+[1m[33m    at Function.process_params (C:\Users\Schizo\Projects\GitHub\alexdeeznuts\node_modules\express\lib\router\index.js:335:12)[39m[22m
+[1m[33m    at next (C:\Users\Schizo\Projects\GitHub\alexdeeznuts\node_modules\express\lib\router\index.js:275:10)[39m[22m
+[1m[33m    at C:\Users\Schizo\Projects\GitHub\alexdeeznuts\modules\mixins.js:99:9[39m[22m
+[1m[33m    at C:\Users\Schizo\Projects\GitHub\alexdeeznuts\node_modules\connect-mongodb-session\index.js:176:21[39m[22m
+[1m[33m    at result (C:\Users\Schizo\Projects\GitHub\alexdeeznuts\node_modules\mongodb\lib\utils.js:414:17)[39m[22m
+[1m[33m    at executeCallback (C:\Users\Schizo\Projects\GitHub\alexdeeznuts\node_modules\mongodb\lib\utils.js:406:9)[39m[22m
+[1m[33m    at handleCallback (C:\Users\Schizo\Projects\GitHub\alexdeeznuts\node_modules\mongodb\lib\utils.js:128:55)[39m[22m
+[1m[33m    at C:\Users\Schizo\Projects\GitHub\alexdeeznuts\node_modules\mongodb\lib\collection.js:1031:5[39m[22m
+[1m[33m    at C:\Users\Schizo\Projects\GitHub\alexdeeznuts\node_modules\mongodb-core\lib\connection\pool.js:544:18[39m[22m
+[1m[33m    at _combinedTickCallback (internal/process/next_tick.js:73:7)[39m[22m
+[1m[33m    at process._tickCallback (internal/process/next_tick.js:104:9) message: 'Not Found' }[39m[22m
+[34m[37m06/19/2018-06:30:32.28 [34m[33mDeezNuts[34m: Mongoose connection disconnected[39m
+[34m[37m06/19/2018-06:30:32.29 [34m[33mDeezNuts[34m: Reconnecting to MongoDB in 3000...[39m
+[34m[37m06/19/2018-06:30:32.29 [34m[33mDeezNuts[34m: Mongoose connection disconnected through app termination[39m
+[37m06/19/2018-06:30:35.57 [39m[33mDeezNuts[39m: Starting Crons
+[37m06/19/2018-06:30:35.59 [39m[33mDeezNuts[39m: started cron - Ping
+[37m06/19/2018-06:30:35.59 [39m[33mDeezNuts[39m: started cron - Midnight
+[34m[37m06/19/2018-06:30:36.09 [34m[33mDeezNuts[34m: Mongoose connection open[39m
+[37m06/19/2018-06:30:36.47 [39m[33mDeezNuts[39m: ::1: /GET /key
+[1m[33m[37m06/19/2018-06:30:37.11 [33m { NotFoundError: Not Found[39m[22m
+[1m[33m    at C:\Users\Schizo\Projects\GitHub\alexdeeznuts\app.js:78:8[39m[22m
+[1m[33m    at Layer.handle [as handle_request] (C:\Users\Schizo\Projects\GitHub\alexdeeznuts\node_modules\express\lib\router\layer.js:95:5)[39m[22m
+[1m[33m    at trim_prefix (C:\Users\Schizo\Projects\GitHub\alexdeeznuts\node_modules\express\lib\router\index.js:317:13)[39m[22m
+[1m[33m    at C:\Users\Schizo\Projects\GitHub\alexdeeznuts\node_modules\express\lib\router\index.js:284:7[39m[22m
+[1m[33m    at Function.process_params (C:\Users\Schizo\Projects\GitHub\alexdeeznuts\node_modules\express\lib\router\index.js:335:12)[39m[22m
+[1m[33m    at next (C:\Users\Schizo\Projects\GitHub\alexdeeznuts\node_modules\express\lib\router\index.js:275:10)[39m[22m
+[1m[33m    at C:\Users\Schizo\Projects\GitHub\alexdeeznuts\node_modules\express\lib\router\index.js:635:15[39m[22m
+[1m[33m    at next (C:\Users\Schizo\Projects\GitHub\alexdeeznuts\node_modules\express\lib\router\index.js:260:14)[39m[22m
+[1m[33m    at C:\Users\Schizo\Projects\GitHub\alexdeeznuts\routes\index.js:14:2[39m[22m
+[1m[33m    at Layer.handle [as handle_request] (C:\Users\Schizo\Projects\GitHub\alexdeeznuts\node_modules\express\lib\router\layer.js:95:5)[39m[22m
+[1m[33m    at trim_prefix (C:\Users\Schizo\Projects\GitHub\alexdeeznuts\node_modules\express\lib\router\index.js:317:13)[39m[22m
+[1m[33m    at C:\Users\Schizo\Projects\GitHub\alexdeeznuts\node_modules\express\lib\router\index.js:284:7[39m[22m
+[1m[33m    at Function.process_params (C:\Users\Schizo\Projects\GitHub\alexdeeznuts\node_modules\express\lib\router\index.js:335:12)[39m[22m
+[1m[33m    at next (C:\Users\Schizo\Projects\GitHub\alexdeeznuts\node_modules\express\lib\router\index.js:275:10)[39m[22m
+[1m[33m    at C:\Users\Schizo\Projects\GitHub\alexdeeznuts\modules\mixins.js:99:9[39m[22m
+[1m[33m    at C:\Users\Schizo\Projects\GitHub\alexdeeznuts\node_modules\connect-mongodb-session\index.js:176:21[39m[22m
+[1m[33m    at result (C:\Users\Schizo\Projects\GitHub\alexdeeznuts\node_modules\mongodb\lib\utils.js:414:17)[39m[22m
+[1m[33m    at executeCallback (C:\Users\Schizo\Projects\GitHub\alexdeeznuts\node_modules\mongodb\lib\utils.js:406:9)[39m[22m
+[1m[33m    at handleCallback (C:\Users\Schizo\Projects\GitHub\alexdeeznuts\node_modules\mongodb\lib\utils.js:128:55)[39m[22m
+[1m[33m    at C:\Users\Schizo\Projects\GitHub\alexdeeznuts\node_modules\mongodb\lib\collection.js:1031:5[39m[22m
+[1m[33m    at C:\Users\Schizo\Projects\GitHub\alexdeeznuts\node_modules\mongodb-core\lib\connection\pool.js:544:18[39m[22m
+[1m[33m    at _combinedTickCallback (internal/process/next_tick.js:73:7)[39m[22m
+[1m[33m    at process._tickCallback (internal/process/next_tick.js:104:9) message: 'Not Found' }[39m[22m
+[34m[37m06/19/2018-06:32:04.92 [34m[33mDeezNuts[34m: Mongoose connection disconnected[39m
+[34m[37m06/19/2018-06:32:04.93 [34m[33mDeezNuts[34m: Reconnecting to MongoDB in 3000...[39m
+[34m[37m06/19/2018-06:32:04.93 [34m[33mDeezNuts[34m: Mongoose connection disconnected through app termination[39m
+[37m06/19/2018-06:32:08.99 [39m[33mDeezNuts[39m: Starting Crons
+[37m06/19/2018-06:32:09.01 [39m[33mDeezNuts[39m: started cron - Ping
+[37m06/19/2018-06:32:09.01 [39m[33mDeezNuts[39m: started cron - Midnight
+[34m[37m06/19/2018-06:32:09.51 [34m[33mDeezNuts[34m: Mongoose connection open[39m
+[37m06/19/2018-06:32:11.25 [39m[33mDeezNuts[39m: ::1: /GET /key
+[37m06/19/2018-06:32:15.27 [39m[33mDeezNuts[39m: ::1: /POST /sync
+[37m06/19/2018-06:32:15.38 [39m[33mDeezNuts[39m: Viewer created: ::1
+[37m06/19/2018-06:32:15.67 [39m[33mDeezNuts[39m: gap: 6
+[37m06/19/2018-06:32:15.67 [39m[33mDeezNuts[39m: Generated address: 1EGMQZz2Kw4aCPJic6G7s8zVELuz1JJkft
+[37m06/19/2018-06:32:15.86 [39m[33mDeezNuts[39m: syncing time: 60 seconds ->  seconds
+[37m06/19/2018-06:32:18.24 [39m[33mDeezNuts[39m: ::1: /POST /sync
+[37m06/19/2018-06:32:18.32 [39m[33mDeezNuts[39m: Viewer found: ::1
+[37m06/19/2018-06:32:18.41 [39m[33mDeezNuts[39m: syncing time: null seconds ->  seconds
+[37m06/19/2018-06:32:21.70 [39m[33mDeezNuts[39m: ::1: /POST /sync
+[37m06/19/2018-06:32:21.79 [39m[33mDeezNuts[39m: Viewer found: ::1
+[37m06/19/2018-06:32:21.87 [39m[33mDeezNuts[39m: syncing time: null seconds ->  seconds
+[37m06/19/2018-06:32:24.23 [39m[33mDeezNuts[39m: ::1: /POST /sync
+[37m06/19/2018-06:32:24.32 [39m[33mDeezNuts[39m: Viewer found: ::1
+[37m06/19/2018-06:32:24.42 [39m[33mDeezNuts[39m: syncing time: null seconds ->  seconds
+[37m06/19/2018-06:32:27.24 [39m[33mDeezNuts[39m: ::1: /POST /sync
+[37m06/19/2018-06:32:27.33 [39m[33mDeezNuts[39m: Viewer found: ::1
+[37m06/19/2018-06:32:27.42 [39m[33mDeezNuts[39m: syncing time: null seconds ->  seconds
+[37m06/19/2018-06:32:29.90 [39m[33mDeezNuts[39m: ::1: /POST /key
+[1m[33m[37m06/19/2018-06:32:30.09 [33m ReferenceError: md5 is not defined[39m[22m
+[1m[33m    at C:\Users\Schizo\Projects\GitHub\alexdeeznuts\routes\index.js:67:14[39m[22m
+[1m[33m    at Layer.handle [as handle_request] (C:\Users\Schizo\Projects\GitHub\alexdeeznuts\node_modules\express\lib\router\layer.js:95:5)[39m[22m
+[1m[33m    at next (C:\Users\Schizo\Projects\GitHub\alexdeeznuts\node_modules\express\lib\router\route.js:137:13)[39m[22m
+[1m[33m    at Route.dispatch (C:\Users\Schizo\Projects\GitHub\alexdeeznuts\node_modules\express\lib\router\route.js:112:3)[39m[22m
+[1m[33m    at Layer.handle [as handle_request] (C:\Users\Schizo\Projects\GitHub\alexdeeznuts\node_modules\express\lib\router\layer.js:95:5)[39m[22m
+[1m[33m    at C:\Users\Schizo\Projects\GitHub\alexdeeznuts\node_modules\express\lib\router\index.js:281:22[39m[22m
+[1m[33m    at Function.process_params (C:\Users\Schizo\Projects\GitHub\alexdeeznuts\node_modules\express\lib\router\index.js:335:12)[39m[22m
+[1m[33m    at next (C:\Users\Schizo\Projects\GitHub\alexdeeznuts\node_modules\express\lib\router\index.js:275:10)[39m[22m
+[1m[33m    at C:\Users\Schizo\Projects\GitHub\alexdeeznuts\routes\index.js:14:2[39m[22m
+[1m[33m    at Layer.handle [as handle_request] (C:\Users\Schizo\Projects\GitHub\alexdeeznuts\node_modules\express\lib\router\layer.js:95:5)[39m[22m
+[1m[33m    at trim_prefix (C:\Users\Schizo\Projects\GitHub\alexdeeznuts\node_modules\express\lib\router\index.js:317:13)[39m[22m
+[1m[33m    at C:\Users\Schizo\Projects\GitHub\alexdeeznuts\node_modules\express\lib\router\index.js:284:7[39m[22m
+[1m[33m    at Function.process_params (C:\Users\Schizo\Projects\GitHub\alexdeeznuts\node_modules\express\lib\router\index.js:335:12)[39m[22m
+[1m[33m    at next (C:\Users\Schizo\Projects\GitHub\alexdeeznuts\node_modules\express\lib\router\index.js:275:10)[39m[22m
+[1m[33m    at C:\Users\Schizo\Projects\GitHub\alexdeeznuts\modules\mixins.js:99:9[39m[22m
+[1m[33m    at C:\Users\Schizo\Projects\GitHub\alexdeeznuts\node_modules\connect-mongodb-session\index.js:176:21[39m[22m
+[1m[33m    at result (C:\Users\Schizo\Projects\GitHub\alexdeeznuts\node_modules\mongodb\lib\utils.js:414:17)[39m[22m
+[1m[33m    at executeCallback (C:\Users\Schizo\Projects\GitHub\alexdeeznuts\node_modules\mongodb\lib\utils.js:406:9)[39m[22m
+[1m[33m    at handleCallback (C:\Users\Schizo\Projects\GitHub\alexdeeznuts\node_modules\mongodb\lib\utils.js:128:55)[39m[22m
+[1m[33m    at C:\Users\Schizo\Projects\GitHub\alexdeeznuts\node_modules\mongodb\lib\collection.js:1031:5[39m[22m
+[1m[33m    at C:\Users\Schizo\Projects\GitHub\alexdeeznuts\node_modules\mongodb-core\lib\connection\pool.js:544:18[39m[22m
+[1m[33m    at _combinedTickCallback (internal/process/next_tick.js:73:7)[39m[22m
+[1m[33m    at process._tickCallback (internal/process/next_tick.js:104:9)[39m[22m
+[37m06/19/2018-06:32:30.26 [39m[33mDeezNuts[39m: ::1: /POST /sync
+[37m06/19/2018-06:32:30.35 [39m[33mDeezNuts[39m: Viewer found: ::1
+[37m06/19/2018-06:32:30.44 [39m[33mDeezNuts[39m: syncing time: null seconds ->  seconds
+[37m06/19/2018-06:32:33.32 [39m[33mDeezNuts[39m: ::1: /POST /sync
+[37m06/19/2018-06:32:33.40 [39m[33mDeezNuts[39m: Viewer found: ::1
+[37m06/19/2018-06:32:33.49 [39m[33mDeezNuts[39m: syncing time: null seconds ->  seconds
+[37m06/19/2018-06:32:36.24 [39m[33mDeezNuts[39m: ::1: /POST /sync
+[37m06/19/2018-06:32:36.33 [39m[33mDeezNuts[39m: Viewer found: ::1
+[37m06/19/2018-06:32:36.43 [39m[33mDeezNuts[39m: syncing time: null seconds ->  seconds
+[37m06/19/2018-06:32:39.24 [39m[33mDeezNuts[39m: ::1: /POST /sync
+[37m06/19/2018-06:32:39.33 [39m[33mDeezNuts[39m: Viewer found: ::1
+[37m06/19/2018-06:32:39.43 [39m[33mDeezNuts[39m: syncing time: null seconds ->  seconds
+[37m06/19/2018-06:32:42.25 [39m[33mDeezNuts[39m: ::1: /POST /sync
+[37m06/19/2018-06:32:42.34 [39m[33mDeezNuts[39m: Viewer found: ::1
+[37m06/19/2018-06:32:42.42 [39m[33mDeezNuts[39m: syncing time: null seconds ->  seconds
+[37m06/19/2018-06:32:45.23 [39m[33mDeezNuts[39m: ::1: /POST /sync
+[37m06/19/2018-06:32:45.33 [39m[33mDeezNuts[39m: Viewer found: ::1
+[37m06/19/2018-06:32:45.42 [39m[33mDeezNuts[39m: syncing time: null seconds ->  seconds
+[37m06/19/2018-06:32:48.24 [39m[33mDeezNuts[39m: ::1: /POST /sync
+[37m06/19/2018-06:32:48.34 [39m[33mDeezNuts[39m: Viewer found: ::1
+[37m06/19/2018-06:32:48.43 [39m[33mDeezNuts[39m: syncing time: null seconds ->  seconds
+[37m06/19/2018-06:32:51.25 [39m[33mDeezNuts[39m: ::1: /POST /sync
+[37m06/19/2018-06:32:51.34 [39m[33mDeezNuts[39m: Viewer found: ::1
+[37m06/19/2018-06:32:51.43 [39m[33mDeezNuts[39m: syncing time: null seconds ->  seconds
+[37m06/19/2018-06:32:54.24 [39m[33mDeezNuts[39m: ::1: /POST /sync
+[37m06/19/2018-06:32:54.32 [39m[33mDeezNuts[39m: Viewer found: ::1
+[37m06/19/2018-06:32:54.41 [39m[33mDeezNuts[39m: syncing time: null seconds ->  seconds
+[37m06/19/2018-06:32:57.24 [39m[33mDeezNuts[39m: ::1: /POST /sync
+[37m06/19/2018-06:32:57.33 [39m[33mDeezNuts[39m: Viewer found: ::1
+[37m06/19/2018-06:32:57.42 [39m[33mDeezNuts[39m: syncing time: null seconds ->  seconds
+[37m06/19/2018-06:33:00.24 [39m[33mDeezNuts[39m: ::1: /POST /sync
+[37m06/19/2018-06:33:00.33 [39m[33mDeezNuts[39m: Viewer found: ::1
+[37m06/19/2018-06:33:00.42 [39m[33mDeezNuts[39m: syncing time: null seconds ->  seconds
+[37m06/19/2018-06:33:03.24 [39m[33mDeezNuts[39m: ::1: /POST /sync
+[37m06/19/2018-06:33:03.33 [39m[33mDeezNuts[39m: Viewer found: ::1
+[37m06/19/2018-06:33:03.42 [39m[33mDeezNuts[39m: syncing time: null seconds ->  seconds
+[37m06/19/2018-06:33:06.23 [39m[33mDeezNuts[39m: ::1: /POST /sync
+[37m06/19/2018-06:33:06.32 [39m[33mDeezNuts[39m: Viewer found: ::1
+[37m06/19/2018-06:33:06.41 [39m[33mDeezNuts[39m: syncing time: null seconds ->  seconds
+[37m06/19/2018-06:33:09.24 [39m[33mDeezNuts[39m: ::1: /POST /sync
+[37m06/19/2018-06:33:09.33 [39m[33mDeezNuts[39m: Viewer found: ::1
+[37m06/19/2018-06:33:09.42 [39m[33mDeezNuts[39m: syncing time: null seconds ->  seconds
+[37m06/19/2018-06:33:12.23 [39m[33mDeezNuts[39m: ::1: /POST /sync
+[37m06/19/2018-06:33:12.32 [39m[33mDeezNuts[39m: Viewer found: ::1
+[37m06/19/2018-06:33:12.41 [39m[33mDeezNuts[39m: syncing time: null seconds ->  seconds
+[37m06/19/2018-06:33:15.24 [39m[33mDeezNuts[39m: ::1: /POST /sync
+[37m06/19/2018-06:33:15.33 [39m[33mDeezNuts[39m: Viewer found: ::1
+[37m06/19/2018-06:33:15.69 [39m[33mDeezNuts[39m: syncing time: null seconds ->  seconds
+[37m06/19/2018-06:33:18.24 [39m[33mDeezNuts[39m: ::1: /POST /sync
+[37m06/19/2018-06:33:18.33 [39m[33mDeezNuts[39m: Viewer found: ::1
+[37m06/19/2018-06:33:18.43 [39m[33mDeezNuts[39m: syncing time: null seconds ->  seconds
+[37m06/19/2018-06:33:21.23 [39m[33mDeezNuts[39m: ::1: /POST /sync
+[37m06/19/2018-06:33:21.32 [39m[33mDeezNuts[39m: Viewer found: ::1
+[37m06/19/2018-06:33:21.41 [39m[33mDeezNuts[39m: syncing time: null seconds ->  seconds
+[37m06/19/2018-06:33:24.23 [39m[33mDeezNuts[39m: ::1: /POST /sync
+[37m06/19/2018-06:33:24.32 [39m[33mDeezNuts[39m: Viewer found: ::1
+[37m06/19/2018-06:33:24.42 [39m[33mDeezNuts[39m: syncing time: null seconds ->  seconds
+[34m[37m06/19/2018-06:33:24.79 [34m[33mDeezNuts[34m: Mongoose connection disconnected[39m
+[34m[37m06/19/2018-06:33:24.80 [34m[33mDeezNuts[34m: Reconnecting to MongoDB in 3000...[39m
+[34m[37m06/19/2018-06:33:24.80 [34m[33mDeezNuts[34m: Mongoose connection disconnected through app termination[39m
+[37m06/19/2018-06:33:28.49 [39m[33mDeezNuts[39m: Starting Crons
+[37m06/19/2018-06:33:28.51 [39m[33mDeezNuts[39m: started cron - Ping
+[37m06/19/2018-06:33:28.51 [39m[33mDeezNuts[39m: started cron - Midnight
+[34m[37m06/19/2018-06:33:28.100 [34m[33mDeezNuts[34m: Mongoose connection open[39m
+[37m06/19/2018-06:33:29.23 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1: /POST /sync
+[37m06/19/2018-06:33:29.34 [39m[33mDeezNuts[39m: Viewer found: ::ffff:127.0.0.1
+[37m06/19/2018-06:33:29.44 [39m[33mDeezNuts[39m: syncing time: 60 seconds ->  seconds
+[37m06/19/2018-06:33:30.24 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1: /POST /sync
+[37m06/19/2018-06:33:30.32 [39m[33mDeezNuts[39m: Viewer found: ::ffff:127.0.0.1
+[37m06/19/2018-06:33:30.41 [39m[33mDeezNuts[39m: syncing time: null seconds ->  seconds
+[37m06/19/2018-06:33:30.94 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1: /GET /key
+[37m06/19/2018-06:33:34.92 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1: /POST /sync
+[37m06/19/2018-06:33:35.01 [39m[33mDeezNuts[39m: Viewer found: ::ffff:127.0.0.1
+[37m06/19/2018-06:33:35.10 [39m[33mDeezNuts[39m: syncing time: null seconds ->  seconds
+[37m06/19/2018-06:33:35.24 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1: /POST /key
+[37m06/19/2018-06:33:37.94 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1: /POST /sync
+[37m06/19/2018-06:33:38.03 [39m[33mDeezNuts[39m: Viewer found: ::ffff:127.0.0.1
+[37m06/19/2018-06:33:38.12 [39m[33mDeezNuts[39m: syncing time: null seconds ->  seconds
+[37m06/19/2018-06:33:40.95 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1: /POST /sync
+[37m06/19/2018-06:33:41.04 [39m[33mDeezNuts[39m: Viewer found: ::ffff:127.0.0.1
+[37m06/19/2018-06:33:41.13 [39m[33mDeezNuts[39m: syncing time: null seconds ->  seconds
+[37m06/19/2018-06:33:43.93 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1: /POST /sync
+[37m06/19/2018-06:33:44.05 [39m[33mDeezNuts[39m: Viewer found: ::ffff:127.0.0.1
+[37m06/19/2018-06:33:44.14 [39m[33mDeezNuts[39m: syncing time: null seconds ->  seconds
+[37m06/19/2018-06:33:46.94 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1: /POST /sync
+[37m06/19/2018-06:33:47.03 [39m[33mDeezNuts[39m: Viewer found: ::ffff:127.0.0.1
+[37m06/19/2018-06:33:47.12 [39m[33mDeezNuts[39m: syncing time: null seconds ->  seconds
+[37m06/19/2018-06:33:49.92 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1: /POST /sync
+[37m06/19/2018-06:33:50.01 [39m[33mDeezNuts[39m: Viewer found: ::ffff:127.0.0.1
+[37m06/19/2018-06:33:50.09 [39m[33mDeezNuts[39m: syncing time: null seconds ->  seconds
+[37m06/19/2018-06:33:52.93 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1: /POST /sync
+[37m06/19/2018-06:33:53.02 [39m[33mDeezNuts[39m: Viewer found: ::ffff:127.0.0.1
+[37m06/19/2018-06:33:53.11 [39m[33mDeezNuts[39m: syncing time: null seconds ->  seconds
+[37m06/19/2018-06:33:55.93 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1: /POST /sync
+[37m06/19/2018-06:33:56.02 [39m[33mDeezNuts[39m: Viewer found: ::ffff:127.0.0.1
+[37m06/19/2018-06:33:56.10 [39m[33mDeezNuts[39m: syncing time: null seconds ->  seconds
+[37m06/19/2018-06:33:58.95 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1: /POST /sync
+[37m06/19/2018-06:33:59.04 [39m[33mDeezNuts[39m: Viewer found: ::ffff:127.0.0.1
+[37m06/19/2018-06:33:59.14 [39m[33mDeezNuts[39m: syncing time: null seconds ->  seconds
+[37m06/19/2018-06:34:01.93 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1: /POST /sync
+[37m06/19/2018-06:34:02.02 [39m[33mDeezNuts[39m: Viewer found: ::ffff:127.0.0.1
+[37m06/19/2018-06:34:02.11 [39m[33mDeezNuts[39m: syncing time: null seconds ->  seconds
+[37m06/19/2018-06:34:04.93 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1: /POST /sync
+[37m06/19/2018-06:34:05.02 [39m[33mDeezNuts[39m: Viewer found: ::ffff:127.0.0.1
+[37m06/19/2018-06:34:05.11 [39m[33mDeezNuts[39m: syncing time: null seconds ->  seconds
+[37m06/19/2018-06:34:07.94 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1: /POST /sync
+[37m06/19/2018-06:34:08.03 [39m[33mDeezNuts[39m: Viewer found: ::ffff:127.0.0.1
+[37m06/19/2018-06:34:08.12 [39m[33mDeezNuts[39m: syncing time: null seconds ->  seconds
+[37m06/19/2018-06:34:10.94 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1: /POST /sync
+[37m06/19/2018-06:34:11.03 [39m[33mDeezNuts[39m: Viewer found: ::ffff:127.0.0.1
+[37m06/19/2018-06:34:11.12 [39m[33mDeezNuts[39m: syncing time: null seconds ->  seconds
+[37m06/19/2018-06:34:13.93 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1: /POST /sync
+[37m06/19/2018-06:34:14.02 [39m[33mDeezNuts[39m: Viewer found: ::ffff:127.0.0.1
+[37m06/19/2018-06:34:14.11 [39m[33mDeezNuts[39m: syncing time: null seconds ->  seconds
+[37m06/19/2018-06:34:16.93 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1: /POST /sync
+[37m06/19/2018-06:34:17.02 [39m[33mDeezNuts[39m: Viewer found: ::ffff:127.0.0.1
+[37m06/19/2018-06:34:17.11 [39m[33mDeezNuts[39m: syncing time: null seconds ->  seconds
+[37m06/19/2018-06:34:19.93 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1: /POST /sync
+[37m06/19/2018-06:34:20.02 [39m[33mDeezNuts[39m: Viewer found: ::ffff:127.0.0.1
+[37m06/19/2018-06:34:20.11 [39m[33mDeezNuts[39m: syncing time: null seconds ->  seconds
+[37m06/19/2018-06:34:22.94 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1: /POST /sync
+[37m06/19/2018-06:34:23.03 [39m[33mDeezNuts[39m: Viewer found: ::ffff:127.0.0.1
+[37m06/19/2018-06:34:23.12 [39m[33mDeezNuts[39m: syncing time: null seconds ->  seconds
+[34m[37m06/19/2018-06:34:23.46 [34m[33mDeezNuts[34m: Mongoose connection disconnected[39m
+[34m[37m06/19/2018-06:34:23.47 [34m[33mDeezNuts[34m: Reconnecting to MongoDB in 3000...[39m
+[34m[37m06/19/2018-06:34:23.47 [34m[33mDeezNuts[34m: Mongoose connection disconnected through app termination[39m
+[37m06/19/2018-06:34:26.66 [39m[33mDeezNuts[39m: Starting Crons
+[37m06/19/2018-06:34:26.68 [39m[33mDeezNuts[39m: started cron - Ping
+[37m06/19/2018-06:34:26.69 [39m[33mDeezNuts[39m: started cron - Midnight
+[34m[37m06/19/2018-06:34:27.17 [34m[33mDeezNuts[34m: Mongoose connection open[39m
+[37m06/19/2018-06:34:27.44 [39m[33mDeezNuts[39m: ::1: /POST /sync
+[37m06/19/2018-06:34:27.54 [39m[33mDeezNuts[39m: Viewer found: ::1
+[37m06/19/2018-06:34:27.64 [39m[33mDeezNuts[39m: syncing time: null seconds ->  seconds
+[37m06/19/2018-06:34:28.43 [39m[33mDeezNuts[39m: ::1: /GET /key
+[37m06/19/2018-06:34:29.27 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1: /POST /sync
+[37m06/19/2018-06:34:29.36 [39m[33mDeezNuts[39m: Viewer found: ::ffff:127.0.0.1
+[37m06/19/2018-06:34:29.46 [39m[33mDeezNuts[39m: syncing time: null seconds ->  seconds
+[37m06/19/2018-06:34:31.36 [39m[33mDeezNuts[39m: ::1: /POST /key
+[37m06/19/2018-06:34:32.45 [39m[33mDeezNuts[39m: ::1: /POST /sync
+[37m06/19/2018-06:34:32.54 [39m[33mDeezNuts[39m: Viewer found: ::1
+[37m06/19/2018-06:34:32.63 [39m[33mDeezNuts[39m: syncing time: null seconds ->  seconds
+[37m06/19/2018-06:34:35.30 [39m[33mDeezNuts[39m: ::1: /GET /
+[37m06/19/2018-06:34:35.39 [39m[33mDeezNuts[39m: Viewer found: ::1
+[37m06/19/2018-06:34:35.92 [39m[33mDeezNuts[39m: ::1: /POST /sync
+[37m06/19/2018-06:34:36.00 [39m[33mDeezNuts[39m: Viewer found: ::1
+[37m06/19/2018-06:34:36.09 [39m[33mDeezNuts[39m: syncing time: null seconds ->  seconds
+[37m06/19/2018-06:34:38.90 [39m[33mDeezNuts[39m: ::1: /POST /sync
+[37m06/19/2018-06:34:38.98 [39m[33mDeezNuts[39m: Viewer found: ::1
+[37m06/19/2018-06:34:39.08 [39m[33mDeezNuts[39m: syncing time: null seconds -> NaN seconds
+[1m[33m[37m06/19/2018-06:34:39.08 [33m { ValidationError: viewers validation failed: time: Cast to Number failed for value "NaN" at path "time"[39m[22m
+[1m[33m    at MongooseError.ValidationError (C:\Users\Schizo\Projects\GitHub\alexdeeznuts\node_modules\mongoose\lib\error\validation.js:27:11)[39m[22m
+[1m[33m    at model.Document.invalidate (C:\Users\Schizo\Projects\GitHub\alexdeeznuts\node_modules\mongoose\lib\document.js:1861:32)[39m[22m
+[1m[33m    at model.$set (C:\Users\Schizo\Projects\GitHub\alexdeeznuts\node_modules\mongoose\lib\document.js:874:10)[39m[22m
+[1m[33m    at model.set [as time] (C:\Users\Schizo\Projects\GitHub\alexdeeznuts\node_modules\mongoose\lib\services\document\compile.js:129:26)[39m[22m
+[1m[33m    at C:\Users\Schizo\Projects\GitHub\alexdeeznuts\models\viewer.js:86:19[39m[22m
+[1m[33m    at C:\Users\Schizo\Projects\GitHub\alexdeeznuts\node_modules\mongoose\lib\model.js:4233:16[39m[22m
+[1m[33m    at process.nextTick (C:\Users\Schizo\Projects\GitHub\alexdeeznuts\node_modules\mongoose\lib\query.js:2053:28)[39m[22m
+[1m[33m    at _combinedTickCallback (internal/process/next_tick.js:73:7)[39m[22m
+[1m[33m    at process._tickCallback (internal/process/next_tick.js:104:9)[39m[22m
+[1m[33m  errors: [39m[22m
+[1m[33m   { time: [39m[22m
+[1m[33m      { CastError: Cast to Number failed for value "NaN" at path "time"[39m[22m
+[1m[33m          at MongooseError.CastError (C:\Users\Schizo\Projects\GitHub\alexdeeznuts\node_modules\mongoose\lib\error\cast.js:27:11)[39m[22m
+[1m[33m          at model.$set (C:\Users\Schizo\Projects\GitHub\alexdeeznuts\node_modules\mongoose\lib\document.js:875:7)[39m[22m
+[1m[33m          at model.set [as time] (C:\Users\Schizo\Projects\GitHub\alexdeeznuts\node_modules\mongoose\lib\services\document\compile.js:129:26)[39m[22m
+[1m[33m          at C:\Users\Schizo\Projects\GitHub\alexdeeznuts\models\viewer.js:86:19[39m[22m
+[1m[33m          at C:\Users\Schizo\Projects\GitHub\alexdeeznuts\node_modules\mongoose\lib\model.js:4233:16[39m[22m
+[1m[33m          at process.nextTick (C:\Users\Schizo\Projects\GitHub\alexdeeznuts\node_modules\mongoose\lib\query.js:2053:28)[39m[22m
+[1m[33m          at _combinedTickCallback (internal/process/next_tick.js:73:7)[39m[22m
+[1m[33m          at process._tickCallback (internal/process/next_tick.js:104:9)[39m[22m
+[1m[33m        message: 'Cast to Number failed for value "NaN" at path "time"',[39m[22m
+[1m[33m        name: 'CastError',[39m[22m
+[1m[33m        stringValue: '"NaN"',[39m[22m
+[1m[33m        kind: 'Number',[39m[22m
+[1m[33m        value: 'NaN',[39m[22m
+[1m[33m        path: 'time',[39m[22m
+[1m[33m        reason: [Object] } },[39m[22m
+[1m[33m  _message: 'viewers validation failed',[39m[22m
+[1m[33m  name: 'ValidationError' }[39m[22m
+[37m06/19/2018-06:34:57.11 [39m[33mDeezNuts[39m: [NodeEvent on postPublish] id=HO3SBJAB StreamPath=/live/stream args={"ac":0,"vc":0}
+[37m06/19/2018-06:34:57.11 [39m[33mDeezNuts[39m: Updating Status Not Live -> Live
+[37m06/19/2018-06:35:02.55 [39m[33mDeezNuts[39m: [NodeEvent on donePublish] id=HO3SBJAB StreamPath= args={"ac":0,"vc":0}
+[37m06/19/2018-06:35:02.56 [39m[33mDeezNuts[39m: Updating Status Live -> Not Live
+[34m[37m06/19/2018-06:35:05.37 [34m[33mDeezNuts[34m: Mongoose connection disconnected[39m
+[34m[37m06/19/2018-06:35:05.37 [34m[33mDeezNuts[34m: Reconnecting to MongoDB in 3000...[39m
+[34m[37m06/19/2018-06:35:05.37 [34m[33mDeezNuts[34m: Mongoose connection disconnected through app termination[39m
+>>>>>>> 783ae495d163af5839d313a6019395c42158f47d
