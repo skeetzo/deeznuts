@@ -3,8 +3,15 @@
 var config = {};
 
 // Debugging
+<<<<<<< HEAD
 config.debugging = true;
 config.debugging_live = true;
+=======
+config.debugging = false;
+config.debugging_live = false;
+>>>>>>> 5008948bea9c65e14e193abd1573f0051057c02f
+
+config.Crons_On = true;
 
 // App Settings
 config.botName = "DeezNuts";
@@ -13,41 +20,35 @@ config.port = Number(process.env.PORT || 3000);
 // Site Settings
 config.title = "Alex D.'s Nuts";
 config.domain = "alexdeeznuts.com";
+if (config.debugging) config.domain = "localhost";
 config.author = "Skeetzo";
 config.description = "Porn Star Streamer";
 config.Google_Analytics = "";
 
-config.preview_video = "vidoeo/uhh.mp4";
-config.thumbnail = "img/thumbnail.png";
-
+// DeezNuts Settings
+config.conversionRate = 6; // $1 per 6 minutes
+config.defaultTime = 60; // time in seconds
+if (config.debugging) config.defaultTime = 60*60*23+45*60;
 config.status = "Not Live";
-
-// Bitcoin
-config.bitcoin_address = "abunchoflettersand123";
+// Bitcoin & Blockchain
+config.bitcoin_address = "7h15157o74lly4b17co1n4ddre55";
 config.bitcoin_qr = "http://placehold.it/150x150";
 config.bitcoin_link = "bitcoin:"+config.bitcoin_address;
-
-config.blockchainCallback = 'http://alexdeeznuts.herokuapp.com/tip';
+config.blockchainCallback = 'http://'+config.domain+'/tip';
+config.streamKey = "yourmotherisadirtywhore";
 
 config.siteData = 
 	{ 	
 		title: config.title,
 		domain: config.domain,
-		preview_video: config.preview_video,
-		thumbnail: config.thumbnail,
-		bitcoin_link: config.bitcoin_link,
-		bitcoin_qr: config.bitcoin_qr,
-		bitcoin_address: config.bitcoin_address,
-		description: config.description,
 		author: config.author,
-		// logged_in: false,
-		status: config.status,
-
+		description: config.description,
 		Google_Analytics: config.Google_Analytics,
+		status: config.status
 	};
 
 require('./keys.js').call(config);
 require('./logger.js').call(config);
-// require('./crons.js').call(config);
+require('./crons.js').call(config);
 
 module.exports = config;

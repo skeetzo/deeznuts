@@ -32,9 +32,21 @@ html
           a(href='/')
             h1= title
           span.isLive I am: 
-            strong #{status}
-      br
+            strong#status #{status}
 
       block content
 
-  include footer
+        br
+
+        include time
+
+        br
+
+        include conversion
+
+        br
+
+      block javascript
+        include js
+
+    include footer

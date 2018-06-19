@@ -1,22 +1,17 @@
 extends layout
 
-block content
+prepend content
 
   // this is a square of video
   .row
     .col-xs-12
-      video#preview(controls, autoplay, poster='/images/preview.jpg')
+      video#preview(controls, autoplay, poster='/images/preview.jpg', width=500, height=500)
 
   // this is a cryptocurrency box & enter button
   .row
     .col-xs-12
       a(href=viewer.address)= viewer.address
       //- img(src=bitcoin_qr)
-
-  br
-  br
-  //- add rates below
-  include conversion
 
   script(src="https://cdn.bootcss.com/flv.js/1.4.0/flv.min.js")
   
@@ -27,9 +22,28 @@ block content
         type: 'flv',
         isLive: true,
         cors: true,
-        url: 'http://alexdeeznuts.com:8000/live/balls.flv'
+        url: "http://#{domain}:8000/live/stream.flv?sign=#{key}"
       });
       flvPlayer.attachMediaElement(videoElement);
       flvPlayer.load();
       //- flvPlayer.play();
     }
+
+append javascript
+  script.
+    $(document).ready(function () {
+      //- updates time if live
+      var countdown = setInterval(function () {
+        var seconds = parseInt($("#timeseconds").text());
+        if ($("#status").text()=="Live"&&seconds>0) {
+          seconds--;
+          $("#time").text(toTime(seconds));
+          $("#timeseconds").text(seconds);   
+        }
+        else if (seconds<=0) {
+          clearInterval(countdown);
+          alert('Times up!');
+          window.location.replace("http://#{domain}/");
+        }
+      },1000);
+    });

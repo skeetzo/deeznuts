@@ -8,6 +8,7 @@ var app = require('../app');
 var debug = require('debug')('alexdeeznuts:server');
 var http = require('http');
 var rtmp = require('../modules/rtmp');
+var cron = require('../modules/cron').start();
 
 /**
  * Get port from environment and store in Express.

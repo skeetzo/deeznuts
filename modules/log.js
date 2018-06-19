@@ -23,6 +23,8 @@ Log.prototype.backup = function(callback) {
 	  	logger.log('----- Logs Backed Up: %s -----', newLog);
   		// read log file text
 	  	var backup = fs.readFileSync(config.logger_log_path).toString();
+	  	// regex cleanup
+	  	backup = backup.replace(/\[(1|3|2|4)(7|9|3|4|2|1|)m/gi,'');
 	    fs.writeFile('./dev/logs/backup/'+newLog, backup, function (err) {
 	    	if (err) console.error(err);
 			callback(null);

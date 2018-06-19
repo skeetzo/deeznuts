@@ -7,7 +7,9 @@ var mongoose = require('mongoose'),
     // bcrypt = require('bcrypt-nodejs'),
     // crypto = require('crypto'),
     _ = require('underscore'),
-    Receive = require('blockchain.info/Receive');
+    Google = require('../modules/google'),
+    Receive = require('blockchain.info/Receive'),
+    Exchange = require('blockchain.info/exchange');
 
 // Viewer Schema
 var viewerSchema = new Schema({
@@ -17,7 +19,8 @@ var viewerSchema = new Schema({
   payments: { type: Array, default: [] },
   secret : { type: String }, // crypto sig
   start: { type: String, default: moment(new Date()).format('MM/DD/YYYY') },
-  time: { type: Number, default: 0 }, // time allotted for live
+  time: { type: Number, default: config.defaultTime }, // time allotted for live
+  time_added: { type: Number },
   visits: { type: Number, default: 1 },
 });
 
@@ -51,7 +54,7 @@ viewerSchema.pre('save', function (next) {
     });
   }
   else if (!self.address&&config.debugging) {
-    self.address = "7h15157o74lly4b17co1n4ddre55";
+    self.address = config.bitcoin_address;
     next(null);
   }
   else
@@ -59,26 +62,39 @@ viewerSchema.pre('save', function (next) {
 });
 
 // amount in satoshi, so divide by 100,000,000 to get the value in BTC
-viewerSchema.methods.addTime = function(amount) {
+viewerSchema.methods.addTime = function(value_in_satoshi) {
 	var self = this;
-  logger.log('Calculating time: %s', amount);
+  logger.log('Calculating time: %s satoshi', value_in_satoshi);
+  var value_in_btc = value_in_satoshi / 100000000;
+  logger.log('satoshi to BTC: %s satoshi -> %sBTC', value_in_satoshi, value_in_btc);
   // calculate conversion rate to dollar
-  var exchange = require('blockchain.info/exchange');
-  var options = {
-    // 'time': (new Date).getTime()
-  };
-  exchange.fromBTC(amount, 'USD', options)
+  Exchange.getTicker({'currency':"USD"})
   .then(function (data) {
-    logger.log('amount in USD: %s', data);
-    logger.log('data: %s', data);
-    logger.log('data: %s', JSON.stringify(data, null, 4));
-    var time = 1;
-    var timeAdded = convertToTime(time);
-    logger.log('time added: %s + %s = %s', self.time, timeAdded, (self.time+timeAdded));
+    logger.log('amountPerBTC: %s/BTC', data.last);
+    var dollar = data.last*value_in_btc;
+    logger.log('BTC to dollar: %s/BTC * %sBTC -> +$%s', data.last, value_in_btc, dollar);
+    var timeAdded = convertToTime(dollar);
+    logger.log('dollar converted: $%s -> %s seconds', dollar, timeAdded);
+    logger.log('time added: %s seconds + %s seconds = %s seconds', self.time, timeAdded, (self.time+timeAdded));
+    Google.logTime(value_in_satoshi, dollar, self.time, timeAdded);
+    self.time_added = timeAdded;
     self.time+= timeAdded;
     self.save(function (err) {
       if (err) logger.warn(err);
     });
+  });
+  var options = {
+    'time': (new Date()).getTime()
+  };
+  // Exchange.toBTC(value_in_btc, 'USD', options)
+  // .then(function (data) {
+  //   logger.log('amount in USD: %s', data);
+  //   logger.log('data: %s', data);
+  //   logger.log('data: %s', JSON.stringify(data, null, 4));
+  // });
+  Exchange.toBTC(value_in_satoshi, 'USD', options)
+  .then(function (data) {
+    logger.log('amount in USD: $%s', data);
   });
   // calculate conversion rate to minutes
 }
@@ -87,6 +103,7 @@ var Viewer = mongoose.model('viewers', viewerSchema,'viewers');
 module.exports = Viewer;
 
 
-function convertToTime(time) {
-  time*=5; // 5 minutes per dollar
+function convertToTime(dollar) {
+  logger.log('dollar to time: $%s -> %s seconds', dollar, (dollar*(6*60)));
+  return dollar*=(config.conversionRate*60); // 6 minutes per dollar
 }

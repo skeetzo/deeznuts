@@ -5,21 +5,24 @@ var _ = require('underscore'),
     async = require('async'),
     // Money = require('es-money'),
     path = require('path'),
+    md5 = require('md5'),
     Viewer = require('../models/viewer');
 
 
 module.exports.findViewer = function(req, res, next) {
-    if (req.session.locals.viewer) return next(null);
+    // if (req.session.locals.viewer) return next(null);
     var ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
     Viewer.findOne({'ip':ip}, function (err, viewer) {
         if (err) logger.warn(err);
         if (!viewer) {
             req.session.viewer = new Viewer({'ip':ip});
+            logger.log('Viewer created: %s', ip);
             step();
         }
         else {
+            logger.log('Viewer found: %s', ip);
             viewer.lastVisit = moment(new Date()).format('MM/DD/YYYY');
-            viewer.visits++;
+            // viewer.visits++;
             req.session.viewer = viewer;
             step();
         }
@@ -36,9 +39,14 @@ module.exports.findViewer = function(req, res, next) {
 
 // Has Paid
 module.exports.hasPaid = function(req, res, next) {
-    if (parseInt(req.session.viewer.time)>=1||config.debugging_live) {
+    if ((parseInt(req.session.viewer.time)>=1&&config.status=='Live')||config.debugging_live) {
         next();
-    } else {
+    } 
+    else if (config.status!='Live') {
+        req.flash('error','Please wait until I am live!');
+        res.redirect('/');
+    }
+    else {
         req.flash('error','Please pay up!');
         res.redirect('/');
     }
@@ -82,6 +90,11 @@ module.exports.resetLocals = function(req, res, next) {
 
     if (!req.session.locals._csrf)
         req.session.locals._csrf = req.csrfToken();
+
+    // rtmp auth
+    var timestamp = (Date.now() + 3600000);
+    var hash = md5("/live/stream-"+timestamp+"-"+config.streamKey);
+    req.session.locals.key = timestamp+"-"+hash;
     
     req.session.save(function (err) {
         if (err) logger.warn(err);

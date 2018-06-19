@@ -4,7 +4,8 @@ var express = require('express'),
     logger = config.logger,
     async = require('async'),
     _ = require('underscore'),
-    mixins = require('../modules/mixins');
+    mixins = require('../modules/mixins'),
+    Viewer = require('../models/viewer');
 
 // Iamthequeenoffrance666
 
@@ -22,15 +23,19 @@ router.get("/", function (req, res, next) {
 
 // /live
 router.get("/live", mixins.hasPaid, function (req, res, next) {
+  if (config.streamKeyCurrent)
+    req.session.locals.key = config.streamKeyCurrent;
   res.render('live', req.session.locals);    
 });
 
 // blockchainCallback
 router.post("/"+config.blockchainCallback, function (req, res, next) {
   // find viewer by bitcoin:address and query:secret
-  // add time to viewer
+  // add time to viewerreason
   // 
+  logger.log('req: %s', JSON.stringify(req, null, 4));
   logger.log('req.body: %s', req.body);
+  logger.log('req.body: %s', JSON.stringify(req.body));
   Viewer.findOne({'address':req.body.address,'secret':req.body.secret}, function (err, viewer) {
     if (err) logger.warn(err);
     if (!viewer) {
@@ -44,5 +49,34 @@ router.post("/"+config.blockchainCallback, function (req, res, next) {
   });
 });
 
+// check for recent tips
+router.post("/sync", function (req, res, next) {
+  Viewer.findOne({'ip':req.session.viewer.ip}, function (err, viewer) {
+    if (err) logger.warn(err);
+    if (!viewer) return res.sendStatus(404);
+    if (Math.abs(parseInt(viewer.time)-parseInt(req.body.time))>5)
+      logger.log('not syncing time: %s seconds -> %s seconds', viewer.time, req.body.time);
+    else {
+      logger.log('syncing time: %s seconds -> %s seconds', viewer.time, req.body.time);
+      viewer.time = req.body.time;
+    }
+    var added = viewer.time_added || false;
+    viewer.time_added = false;
+    viewer.save(function (err) {
+      if (err) logger.warn(err);
+      res.status(200).send({'time':viewer.time,'added':added,'status':config.status});
+    });
+  });
+});
+
+router.get("/add", function (req, res, next) {
+  Viewer.findOne({'ip':req.session.viewer.ip}, function (err, viewer) {
+    if (err) logger.warn(err);
+    if (!viewer) return res.sendStatus(404);
+    // viewer.time_added = 60;
+    var oneDollarInBTC = 0.00015;
+    viewer.addTime(100000000*oneDollarInBTC*6);
+  });
+});
 
 module.exports = router;

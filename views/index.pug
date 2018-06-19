@@ -1,6 +1,6 @@
 extends layout  
 
-block content
+prepend content
   
   // this is a square of video
   .row
@@ -36,8 +36,20 @@ block content
           if (error)
             h5 #{error}
       a.btn.btn-primary(href='/live') Enter
+      button.btn.btn-primary(onclick="addTime()") Add Time
 
-  br
-  br
-  //- add rates below
-  include conversion
+      script.
+        function addTime() {
+          return Promise.resolve($.ajax({
+            type: 'GET',
+            url: '/add',
+            data: {'_csrf':"#{_csrf}"},
+            success: function(data) {
+              
+            },
+            error: function(data) {
+            },
+          })).catch(function (reason) {
+            console.log(reason);
+          });
+        }

@@ -3,7 +3,11 @@ var config = require('../config/index'),
 
 const NodeMediaServer = require('node-media-server');
 
+
+
 const serverOptions = {
+  logType: 3,
+
   rtmp: {
     port: 1935,
     chunk_size: 60000,
@@ -14,16 +18,37 @@ const serverOptions = {
   http: {
     port: 8000,
     allow_origin: '*'
-  }
+  },
+  // https: {
+    // port: 8443,
+    // key:'./privatekey.pem',
+    // cert:'./certificate.pem',
+  // },
+  auth: {
+    play: true,
+    publish: true,
+    secret: config.streamKey
+  },
+  // trans: {
+  //   ffmpeg: '/usr/local/bin/ffmpeg',
+  //   tasks: [
+  //     {
+  //       app: 'vod',
+  //       ac: 'aac',
+  //       mp4: true,
+  //       mp4Flags: '[movflags=faststart]',
+  //     }
+  //   ]
+  // }
 };
 
 var nms = new NodeMediaServer(serverOptions);
 nms.run();
 
 // nms.on('preConnect', (id, args) => {
-//   console.log('[NodeEvent on preConnect]', `id=${id} args=${JSON.stringify(args)}`);
-//   // let session = nms.getSession(id);
-//   // session.reject();
+  // console.log('[NodeEvent on preConnect]', `id=${id} args=${JSON.stringify(args)}`);
+  // let session = nms.getSession(id);
+  // session.reject();
 // });
 
 // nms.on('postConnect', (id, args) => {
