@@ -37,7 +37,8 @@ router.get(config.blockchainRoute, function (req, res, next) {
 
 // check for recent tips
 router.post("/sync", mixins.findViewer, function (req, res, next) {
-  Viewer.sync(req.session.viewer, req.body, function (err, synced) {
+  req.body.ip = req.session.viewer.ip;
+  Viewer.sync(req.body, function (err, synced) {
     if (err) {
       logger.warn(err);
       res.sendStatus(404);
