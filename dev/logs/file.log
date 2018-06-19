@@ -621,3 +621,98 @@
 [34m[37m06/19/2018-11:57:11.61 [34m[33mDeezNuts[34m: Mongoose connection disconnected[39m
 [34m[37m06/19/2018-11:57:11.61 [34m[33mDeezNuts[34m: Reconnecting to MongoDB in 3000...[39m
 [34m[37m06/19/2018-11:57:11.61 [34m[33mDeezNuts[34m: Mongoose connection disconnected through app termination[39m
+[37m06/19/2018-11:57:37.55 [39m[33mDeezNuts[39m: Starting Crons
+[37m06/19/2018-11:57:37.57 [39m[33mDeezNuts[39m: started cron - Ping
+[37m06/19/2018-11:57:37.57 [39m[33mDeezNuts[39m: started cron - Midnight
+[34m[37m06/19/2018-11:57:38.01 [34m[33mDeezNuts[34m: Mongoose connection open[39m
+[37m06/19/2018-11:57:57.63 [39m[33mDeezNuts[39m: 76.91.217.22: /GET /
+[37m06/19/2018-11:57:57.72 [39m[33mDeezNuts[39m: Viewer created: 76.91.217.22
+[37m06/19/2018-11:57:59.19 [39m[33mDeezNuts[39m: gap: 1
+[37m06/19/2018-11:57:59.21 [39m[33mDeezNuts[39m: Generated address: 1Nnbh5y3ZdB41hnNcx2orLbVdooDtP8HrQ
+[37m06/19/2018-11:58:03.47 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-11:58:03.55 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-11:58:03.63 [39m[33mDeezNuts[39m: syncing time: 60 seconds -> 60 seconds
+[37m06/19/2018-11:58:06.15 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-11:58:06.23 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-11:58:06.31 [39m[33mDeezNuts[39m: syncing time: 60 seconds -> 60 seconds
+[37m06/19/2018-11:58:09.15 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-11:58:09.23 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-11:58:09.32 [39m[33mDeezNuts[39m: syncing time: 60 seconds -> 60 seconds
+[37m06/19/2018-11:58:12.15 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-11:58:12.23 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-11:58:12.31 [39m[33mDeezNuts[39m: syncing time: 60 seconds -> 60 seconds
+[37m06/19/2018-11:58:15.15 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-11:58:15.23 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-11:58:15.31 [39m[33mDeezNuts[39m: syncing time: 60 seconds -> 60 seconds
+[37m06/19/2018-11:58:18.15 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-11:58:18.23 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-11:58:18.31 [39m[33mDeezNuts[39m: syncing time: 60 seconds -> 60 seconds
+[37m06/19/2018-11:58:21.15 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-11:58:21.23 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-11:58:21.31 [39m[33mDeezNuts[39m: syncing time: 60 seconds -> 60 seconds
+[37m06/19/2018-11:58:24.14 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-11:58:24.23 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-11:58:24.31 [39m[33mDeezNuts[39m: syncing time: 60 seconds -> 60 seconds
+[37m06/19/2018-11:58:25.36 [39m[33mDeezNuts[39m: unknown, 130.211.88.31: /GET /tip?secret=ballsacks&address=1Nnbh5y3ZdB41hnNcx2orLbVdooDtP8HrQ&transaction_hash=c332ffdd60d777fec0f25bd0b5dcca861528acc9dad568b585d26f3274a6f485&value=74136&confirmations=0
+[1m[33m[37m06/19/2018-11:58:25.46 [33m { NotFoundError: Not Found[39m[22m
+[1m[33m    at /opt/bitnami/apps/alexdeeznuts/app.js:78:8[39m[22m
+[1m[33m    at Layer.handle [as handle_request] (/opt/bitnami/apps/alexdeeznuts/node_modules/express/lib/router/layer.js:95:5)[39m[22m
+[1m[33m    at trim_prefix (/opt/bitnami/apps/alexdeeznuts/node_modules/express/lib/router/index.js:317:13)[39m[22m
+[1m[33m    at /opt/bitnami/apps/alexdeeznuts/node_modules/express/lib/router/index.js:284:7[39m[22m
+[1m[33m    at Function.process_params (/opt/bitnami/apps/alexdeeznuts/node_modules/express/lib/router/index.js:335:12)[39m[22m
+[1m[33m    at next (/opt/bitnami/apps/alexdeeznuts/node_modules/express/lib/router/index.js:275:10)[39m[22m
+[1m[33m    at /opt/bitnami/apps/alexdeeznuts/node_modules/express/lib/router/index.js:635:15[39m[22m
+[1m[33m    at next (/opt/bitnami/apps/alexdeeznuts/node_modules/express/lib/router/index.js:260:14)[39m[22m
+[1m[33m    at /opt/bitnami/apps/alexdeeznuts/routes/index.js:16:2[39m[22m
+[1m[33m    at Layer.handle [as handle_request] (/opt/bitnami/apps/alexdeeznuts/node_modules/express/lib/router/layer.js:95:5)[39m[22m
+[1m[33m    at trim_prefix (/opt/bitnami/apps/alexdeeznuts/node_modules/express/lib/router/index.js:317:13)[39m[22m
+[1m[33m    at /opt/bitnami/apps/alexdeeznuts/node_modules/express/lib/router/index.js:284:7[39m[22m
+[1m[33m    at Function.process_params (/opt/bitnami/apps/alexdeeznuts/node_modules/express/lib/router/index.js:335:12)[39m[22m
+[1m[33m    at next (/opt/bitnami/apps/alexdeeznuts/node_modules/express/lib/router/index.js:275:10)[39m[22m
+[1m[33m    at /opt/bitnami/apps/alexdeeznuts/modules/mixins.js:102:9[39m[22m
+[1m[33m    at /opt/bitnami/apps/alexdeeznuts/node_modules/connect-mongodb-session/index.js:176:21[39m[22m
+[1m[33m    at result (/opt/bitnami/apps/alexdeeznuts/node_modules/mongodb/lib/utils.js:414:17)[39m[22m
+[1m[33m    at executeCallback (/opt/bitnami/apps/alexdeeznuts/node_modules/mongodb/lib/utils.js:406:9)[39m[22m
+[1m[33m    at handleCallback (/opt/bitnami/apps/alexdeeznuts/node_modules/mongodb/lib/utils.js:128:55)[39m[22m
+[1m[33m    at /opt/bitnami/apps/alexdeeznuts/node_modules/mongodb/lib/collection.js:1031:5[39m[22m
+[1m[33m    at /opt/bitnami/apps/alexdeeznuts/node_modules/mongodb-core/lib/connection/pool.js:544:18[39m[22m
+[1m[33m    at process._tickCallback (internal/process/next_tick.js:61:11) message: 'Not Found' }[39m[22m
+[37m06/19/2018-11:58:27.15 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-11:58:27.23 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-11:58:27.31 [39m[33mDeezNuts[39m: syncing time: 60 seconds -> 60 seconds
+[37m06/19/2018-11:58:30.14 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-11:58:30.22 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-11:58:30.30 [39m[33mDeezNuts[39m: syncing time: 60 seconds -> 60 seconds
+[37m06/19/2018-11:58:33.15 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-11:58:33.23 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-11:58:33.31 [39m[33mDeezNuts[39m: syncing time: 60 seconds -> 60 seconds
+[37m06/19/2018-11:58:36.15 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-11:58:36.23 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-11:58:36.31 [39m[33mDeezNuts[39m: syncing time: 60 seconds -> 60 seconds
+[37m06/19/2018-11:58:39.14 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-11:58:39.23 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-11:58:39.31 [39m[33mDeezNuts[39m: syncing time: 60 seconds -> 60 seconds
+[37m06/19/2018-11:58:42.15 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-11:58:42.23 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-11:58:42.31 [39m[33mDeezNuts[39m: syncing time: 60 seconds -> 60 seconds
+[37m06/19/2018-11:58:45.15 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-11:58:45.23 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-11:58:45.31 [39m[33mDeezNuts[39m: syncing time: 60 seconds -> 60 seconds
+[37m06/19/2018-11:58:48.15 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-11:58:48.23 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-11:58:48.31 [39m[33mDeezNuts[39m: syncing time: 60 seconds -> 60 seconds
+[37m06/19/2018-11:58:51.15 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-11:58:51.23 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-11:58:51.31 [39m[33mDeezNuts[39m: syncing time: 60 seconds -> 60 seconds
+[37m06/19/2018-11:58:54.15 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-11:58:54.23 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-11:58:54.31 [39m[33mDeezNuts[39m: syncing time: 60 seconds -> 60 seconds
+[37m06/19/2018-11:58:57.16 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-11:58:57.24 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-11:58:57.32 [39m[33mDeezNuts[39m: syncing time: 60 seconds -> 60 seconds
+[37m06/19/2018-11:59:00.18 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-11:59:00.27 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-11:59:00.35 [39m[33mDeezNuts[39m: syncing time: 60 seconds -> 60 seconds
+[34m[37m06/19/2018-11:59:01.86 [34m[33mDeezNuts[34m: Mongoose connection disconnected[39m
+[34m[37m06/19/2018-11:59:01.86 [34m[33mDeezNuts[34m: Reconnecting to MongoDB in 3000...[39m
+[34m[37m06/19/2018-11:59:01.86 [34m[33mDeezNuts[34m: Mongoose connection disconnected through app termination[39m
