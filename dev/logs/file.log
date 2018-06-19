@@ -759,3 +759,69 @@
 [34m[37m06/19/2018-12:00:52.39 [34m[33mDeezNuts[34m: Mongoose connection disconnected[39m
 [34m[37m06/19/2018-12:00:52.39 [34m[33mDeezNuts[34m: Reconnecting to MongoDB in 3000...[39m
 [34m[37m06/19/2018-12:00:52.40 [34m[33mDeezNuts[34m: Mongoose connection disconnected through app termination[39m
+[37m06/19/2018-12:03:08.24 [39m[33mDeezNuts[39m: Starting Crons
+[37m06/19/2018-12:03:08.26 [39m[33mDeezNuts[39m: started cron - Ping
+[37m06/19/2018-12:03:08.26 [39m[33mDeezNuts[39m: started cron - Midnight
+[34m[37m06/19/2018-12:03:08.72 [34m[33mDeezNuts[34m: Mongoose connection open[39m
+[37m06/19/2018-12:03:16.36 [39m[33mDeezNuts[39m: 76.91.217.22: /GET /
+[37m06/19/2018-12:03:16.46 [39m[33mDeezNuts[39m: Viewer created: 76.91.217.22
+[37m06/19/2018-12:03:16.73 [39m[33mDeezNuts[39m: gap: 1
+[37m06/19/2018-12:03:18.11 [39m[33mDeezNuts[39m: Generated address: 1KgdHnANZB6ZCgtgxK6NALnREZJ8mAsSXU
+[37m06/19/2018-12:03:22.04 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-12:03:22.13 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-12:03:22.21 [39m[33mDeezNuts[39m: syncing time: 60 seconds -> 60 seconds
+[37m06/19/2018-12:03:25.05 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-12:03:25.13 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-12:03:25.21 [39m[33mDeezNuts[39m: syncing time: 60 seconds -> 60 seconds
+[37m06/19/2018-12:03:28.03 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-12:03:28.12 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-12:03:28.20 [39m[33mDeezNuts[39m: syncing time: 60 seconds -> 60 seconds
+[37m06/19/2018-12:03:31.03 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-12:03:31.12 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-12:03:31.20 [39m[33mDeezNuts[39m: syncing time: 60 seconds -> 60 seconds
+[37m06/19/2018-12:03:34.03 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-12:03:34.12 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-12:03:34.20 [39m[33mDeezNuts[39m: syncing time: 60 seconds -> 60 seconds
+[37m06/19/2018-12:03:37.04 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-12:03:37.12 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-12:03:37.20 [39m[33mDeezNuts[39m: syncing time: 60 seconds -> 60 seconds
+[37m06/19/2018-12:03:40.03 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-12:03:40.12 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-12:03:40.20 [39m[33mDeezNuts[39m: syncing time: 60 seconds -> 60 seconds
+[37m06/19/2018-12:03:43.03 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-12:03:43.11 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-12:03:43.20 [39m[33mDeezNuts[39m: syncing time: 60 seconds -> 60 seconds
+[37m06/19/2018-12:03:44.94 [39m[33mDeezNuts[39m: unknown, 192.158.30.92: /GET /tip?secret=ballsacks&address=1KgdHnANZB6ZCgtgxK6NALnREZJ8mAsSXU&transaction_hash=eba29cf1aee58ea386ff3cb368511ba80a4c039d2e4df869cf145f138f94d178&value=74253&confirmations=0
+[37m06/19/2018-12:03:44.94 [39m[33mDeezNuts[39m: req.params: [object Object]
+[37m06/19/2018-12:03:44.94 [39m[33mDeezNuts[39m: req.params: {}
+[1m[33m[37m06/19/2018-12:03:45.03 [33m No matching viewer: {}[39m[22m
+[37m06/19/2018-12:03:46.04 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-12:03:46.12 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-12:03:46.21 [39m[33mDeezNuts[39m: syncing time: 60 seconds -> 60 seconds
+[37m06/19/2018-12:03:49.03 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-12:03:49.11 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-12:03:49.47 [39m[33mDeezNuts[39m: syncing time: 60 seconds -> 60 seconds
+[37m06/19/2018-12:03:52.00 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-12:03:52.09 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-12:03:52.17 [39m[33mDeezNuts[39m: syncing time: 60 seconds -> 60 seconds
+[37m06/19/2018-12:03:55.01 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-12:03:55.09 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-12:03:55.18 [39m[33mDeezNuts[39m: syncing time: 60 seconds -> 60 seconds
+[37m06/19/2018-12:03:58.01 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-12:03:58.09 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-12:03:58.18 [39m[33mDeezNuts[39m: syncing time: 60 seconds -> 60 seconds
+[37m06/19/2018-12:04:01.01 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-12:04:01.09 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-12:04:01.17 [39m[33mDeezNuts[39m: syncing time: 60 seconds -> 60 seconds
+[37m06/19/2018-12:04:04.01 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-12:04:04.09 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-12:04:04.17 [39m[33mDeezNuts[39m: syncing time: 60 seconds -> 60 seconds
+[37m06/19/2018-12:04:07.01 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-12:04:07.09 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-12:04:07.17 [39m[33mDeezNuts[39m: syncing time: 60 seconds -> 60 seconds
+[37m06/19/2018-12:04:10.00 [39m[33mDeezNuts[39m: 76.91.217.22: /POST /sync
+[37m06/19/2018-12:04:10.09 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/19/2018-12:04:10.17 [39m[33mDeezNuts[39m: syncing time: 60 seconds -> 60 seconds
+[34m[37m06/19/2018-12:04:10.37 [34m[33mDeezNuts[34m: Mongoose connection disconnected[39m
+[34m[37m06/19/2018-12:04:10.37 [34m[33mDeezNuts[34m: Reconnecting to MongoDB in 3000...[39m
+[34m[37m06/19/2018-12:04:10.37 [34m[33mDeezNuts[34m: Mongoose connection disconnected through app termination[39m
