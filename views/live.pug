@@ -6,11 +6,7 @@ prepend content
     .col-xs-12
       video#preview(controls, autoplay, poster='/images/preview.jpg', width=500)
 
-  // this is a cryptocurrency box & enter button
-  .row
-    .col-xs-12
-      a(href=viewer.address)= viewer.address
-      img(src=viewer.address_qr)
+  include crypto
 
 append javascript
   script(src="https://cdn.bootcss.com/flv.js/1.4.0/flv.min.js")

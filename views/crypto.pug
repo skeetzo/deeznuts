@@ -1,0 +1,26 @@
+.row
+  .col-xs-12
+    if (viewer.address_qr)
+      //- explanation
+      p  To Enter, Pay >=$1 in Bitcoin to:
+      //- link
+      img(src=viewer.address_qr,style="display:block;margin-left:auto;margin-right:auto;")
+      a(href=viewer.address)= viewer.address
+    else
+      button.btn.btn-primary(onclick="generateAddress()") Generate Address
+
+      script.
+        function generateAddress() {
+          return Promise.resolve($.ajax({
+            type: 'GET',
+            url: '/address',
+            data: {'_csrf':"#{_csrf}"},
+            success: function(data) {
+              location.reload();
+            },
+            error: function(data) {
+            },
+          })).catch(function (reason) {
+            console.log(reason);
+          });
+        }
