@@ -1,0 +1,17 @@
+[37m06/19/2018-23:04:18.83 [39m[33mDeezNuts[39m: Starting Crons
+[37m06/19/2018-23:04:18.84 [39m[33mDeezNuts[39m: started cron - Ping
+[37m06/19/2018-23:04:18.85 [39m[33mDeezNuts[39m: started cron - Midnight
+[34m[37m06/19/2018-23:04:19.34 [34m[33mDeezNuts[34m: Mongoose connection open[39m
+[37m06/19/2018-23:04:25.26 [39m[33mDeezNuts[39m: ::1: /GET /
+[37m06/19/2018-23:04:25.38 [39m[33mDeezNuts[39m: Viewer found: ::1
+[37m06/19/2018-23:04:29.63 [39m[33mDeezNuts[39m: ::1: /POST /sync
+[37m06/19/2018-23:04:29.72 [39m[33mDeezNuts[39m: Viewer found: ::1
+[34m[37m06/19/2018-23:04:29.81 [34m[33mDeezNuts[34m: syncing time (bug): 0 seconds -> 0 (0) seconds[39m
+[37m06/19/2018-23:04:30.81 [39m[33mDeezNuts[39m: ::1: /GET /
+[37m06/19/2018-23:04:30.91 [39m[33mDeezNuts[39m: Viewer found: ::1
+[37m06/19/2018-23:04:34.53 [39m[33mDeezNuts[39m: ::1: /POST /sync
+[37m06/19/2018-23:04:34.62 [39m[33mDeezNuts[39m: Viewer found: ::1
+[34m[37m06/19/2018-23:04:34.71 [34m[33mDeezNuts[34m: syncing time (bug): 0 seconds -> 0 (0) seconds[39m
+[34m[37m06/19/2018-23:04:36.02 [34m[33mDeezNuts[34m: Mongoose connection disconnected[39m
+[34m[37m06/19/2018-23:04:36.02 [34m[33mDeezNuts[34m: Reconnecting to MongoDB in 3000...[39m
+[34m[37m06/19/2018-23:04:36.03 [34m[33mDeezNuts[34m: Mongoose connection disconnected through app termination[39m

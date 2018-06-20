@@ -18,9 +18,14 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 
 app.use(logger('dev'));
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
-app.use(cookieParser());
+app.use(require('helmet')());
+// Body Parsers
+// parse application/x-www-form-urlencoded
+var bodyParser = require('body-parser');
+app.use(bodyParser.urlencoded({extended:true}));
+// parse application/json
+app.use(bodyParser.json());
+app.use(cookieParser('suckafatone'));
 app.use(sassMiddleware({
   src: path.join(__dirname, 'public'),
   dest: path.join(__dirname, 'public'),
