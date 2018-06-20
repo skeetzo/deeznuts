@@ -33,6 +33,7 @@ app.use(sassMiddleware({
   sourceMap: true
 }));
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(__dirname, { dotfiles: 'allow' } ));
 
 // CSURF
 var csrf = require('csurf');
@@ -72,8 +73,11 @@ app.use(flash());
 // const letsEncryptReponse = process.env.CERTBOT_RESPONSE ||;
 // Return the Let's Encrypt certbot response:
 app.get('/.well-known/acme-challenge/:response', function (req, res) {
+
+  config.logger.log('params: %s', req.params);
   config.logger.log('params: %s', JSON.stringify(req.params));
-  res.send(req.params.response);
+  config.logger.log('resp: %s', req.param('response'));
+  res.send(req.param('response'));
 });
 
 app.use('/', require('./routes/index'));
