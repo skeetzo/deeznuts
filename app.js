@@ -22,9 +22,10 @@ app.use(require('helmet')());
 // Body Parsers
 // parse application/x-www-form-urlencoded
 var bodyParser = require('body-parser');
-app.use(bodyParser.urlencoded({extended:true}));
 // parse application/json
 app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended:true}));
+
 app.use(cookieParser('suckafatone'));
 app.use(sassMiddleware({
   src: path.join(__dirname, 'public'),
@@ -72,11 +73,23 @@ app.use(flash());
 // Read the Certbot response from an environment variable; we'll set this later:
 // const letsEncryptReponse = process.env.CERTBOT_RESPONSE ||;
 // Return the Let's Encrypt certbot response:
+app.param('response', function (req, res, next, response) {
+  config.logger.log('reponse: %s',response);
+  next();
+});
+
 app.get('/.well-known/acme-challenge/:response', function (req, res) {
 
+
+  config.logger.log('req: %s', JSON.stringify(req,null,4));
   config.logger.log('params: %s', req.params);
   config.logger.log('params: %s', JSON.stringify(req.params));
+  config.logger.log('params: %s', req.params[0]);
+  config.logger.log('params: %s', JSON.stringify(req.params[0]));
   config.logger.log('resp: %s', req.param('response'));
+
+  config.logger.log('body: %s', req.body);
+  config.logger.log('body: %s', JSON.stringify(req.body));
   res.send(req.param('response'));
 });
 
