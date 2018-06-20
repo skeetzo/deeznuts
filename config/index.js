@@ -13,6 +13,7 @@ config.port = Number(process.env.PORT || 3000);
 
 // Site Settings
 config.title = "Alex D.'s Nuts";
+config.siteTitle = "AlexDeezNuts.com";
 config.domain = "alexdeeznuts.com";
 if (config.debugging) config.domain = "localhost";
 config.author = "Skeetzo";
@@ -36,6 +37,7 @@ config.streamKey = "yourmotherisadirtywhore";
 config.siteData = 
 	{ 	
 		title: config.title,
+		siteTitle: config.siteTitle,
 		domain: config.domain,
 		author: config.author,
 		description: config.description,

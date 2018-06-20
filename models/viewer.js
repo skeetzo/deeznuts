@@ -15,7 +15,6 @@ var viewerSchema = new Schema({
   address_qr: { type: String },
   ip: { type: String },
   lastVisit: { type: Date, default: moment(new Date()).format('MM/DD/YYYY') },
-  payments: { type: Array, default: [] },
   qr: { type: String },
   secret : { type: String }, // crypto sig
   start: { type: String, default: moment(new Date()).format('MM/DD/YYYY') },
@@ -23,7 +22,6 @@ var viewerSchema = new Schema({
   time_added: { type: Number },
   transactions: { type: Array, default: [] },
   visits: { type: Number, default: 1 },
-
 });
 
 viewerSchema.pre('save', function (next) {
