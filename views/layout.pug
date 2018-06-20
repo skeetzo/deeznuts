@@ -38,15 +38,44 @@ html
 
         br
 
-        include time
+        //- time remaining
+        .row
+          .col-xs-12.text-center
+            p Time: 
+              span#time
+              span#timeseconds(style="display:none;")
 
         br
 
-        include conversion
+        //- conversion rates
+        .row
+          .col-xs-12.text-center
+            p $1 = 6 minutes
+            p $5 = 30 minutes
+            p $10 = 60 minutes
 
         br
 
       block javascript
         include js
 
-    include footer
+    //-  Footer
+    footer(style="margin-top:100px;").text-center
+      //- .row
+      //-   .col-xs-12
+      //-     // this is a square of 18+ text
+      //-     p You must be 
+      //-       strong 18 years or older 
+      //-       | to use #{domain}
+      .row
+        .col-xs-12
+          p
+            a(href="/privacy-policy") Privacy Policy
+            span  |  
+            a(href="/terms") Terms & Conditions
+            span  |  
+            a(href="/support") Support
+          p 
+            a(href='//github.com/skeetzo',target="_blank") #{author}
+            |  &copy; 2018
+      //- include ../include/2257-compliance

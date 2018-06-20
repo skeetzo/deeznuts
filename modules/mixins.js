@@ -103,6 +103,7 @@ module.exports.resetLocals = function(req, res, next) {
 var Viewer_ = function(src) {
   return {
     'address': 'bitcoin:'+src.address,
+    'address_qr': src.address_qr,
     'ip': src.ip,
     'time': src.time
   };

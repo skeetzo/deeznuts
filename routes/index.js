@@ -7,6 +7,8 @@ var express = require('express'),
     mixins = require('../modules/mixins'),
     Viewer = require('../models/viewer');
 
+
+
 // /
 router.use(mixins.resetLocals, function (req, res, next) {
 	var ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
@@ -32,6 +34,16 @@ router.get(config.blockchainRoute, function (req, res, next) {
   Viewer.addTransaction(req.query, function (err) {
     if (err) logger.warn(err);
     res.send("*ok*");
+  });
+});
+
+router.get("/address", mixins.findViewer, function (req, res, next) {
+  Viewer.generateAddress(req.session.viewer, function (err) {
+    if (err) {
+      logger.warn(err);
+      res.sendStatus(404);
+    }
+    res.sendStatus(200);
   });
 });
 
