@@ -67,7 +67,7 @@ app.use(flash());
 // const letsEncryptReponse = process.env.CERTBOT_RESPONSE ||;
 // Return the Let's Encrypt certbot response:
 app.get('/.well-known/acme-challenge/:response', function (req, res) {
-  logger.log('params: %s', JSON.stringify(req.params));
+  config.logger.log('params: %s', JSON.stringify(req.params));
   res.send(req.params.response);
 });
 
