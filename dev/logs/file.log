@@ -44,3 +44,17 @@
 [1m[33m    at /opt/bitnami/apps/alexdeeznuts/node_modules/mongodb/lib/collection.js:1031:5[39m[22m
 [1m[33m    at /opt/bitnami/apps/alexdeeznuts/node_modules/mongodb-core/lib/connection/pool.js:544:18[39m[22m
 [1m[33m    at process._tickCallback (internal/process/next_tick.js:61:11) message: 'Not Found' }[39m[22m
+[37m06/20/2018-11:22:04.18 [39m[33mDeezNuts[39m: Starting Crons
+[37m06/20/2018-11:22:04.20 [39m[33mDeezNuts[39m: started cron - Ping
+[37m06/20/2018-11:22:04.20 [39m[33mDeezNuts[39m: started cron - Midnight
+[34m[37m06/20/2018-11:22:04.71 [34m[33mDeezNuts[34m: Mongoose connection open[39m
+[34m[37m06/20/2018-11:22:21.26 [34m[33mDeezNuts[34m: Mongoose connection disconnected[39m
+[34m[37m06/20/2018-11:22:21.27 [34m[33mDeezNuts[34m: Reconnecting to MongoDB in 3000...[39m
+[34m[37m06/20/2018-11:22:21.27 [34m[33mDeezNuts[34m: Mongoose connection disconnected through app termination[39m
+[37m06/20/2018-11:22:26.29 [39m[33mDeezNuts[39m: Starting Crons
+[37m06/20/2018-11:22:26.31 [39m[33mDeezNuts[39m: started cron - Ping
+[37m06/20/2018-11:22:26.31 [39m[33mDeezNuts[39m: started cron - Midnight
+[34m[37m06/20/2018-11:22:26.84 [34m[33mDeezNuts[34m: Mongoose connection open[39m
+[34m[37m06/20/2018-11:22:29.43 [34m[33mDeezNuts[34m: Mongoose connection disconnected[39m
+[34m[37m06/20/2018-11:22:29.43 [34m[33mDeezNuts[34m: Reconnecting to MongoDB in 3000...[39m
+[34m[37m06/20/2018-11:22:29.43 [34m[33mDeezNuts[34m: Mongoose connection disconnected through app termination[39m
