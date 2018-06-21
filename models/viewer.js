@@ -49,7 +49,7 @@ viewerSchema.statics.addTransaction = function(transaction, callback) {
 }
 
 viewerSchema.statics.generateAddress = function(viewer, callback) {
-  logger.log('Generating Address: %s', req.session.viewer.ip);
+  logger.log('Generating Address: %s', viewer.ip);
   Viewer.findOne({'ip':viewer.ip}, function (err, viewer) {
     if (err) return callback(err);
     if (viewer.address) return callback('Address already generated: '+viewer.ip);
