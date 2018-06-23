@@ -70,13 +70,14 @@ app.use(session(sess));
 var flash = require('express-flash');
 app.use(flash());
 
+// Passport
+var passport = require('./modules/passport');
+app.use(passport.initialize());
+app.use(passport.session());
+
 // Read the Certbot response from an environment variable; we'll set this later:
 // const letsEncryptReponse = process.env.CERTBOT_RESPONSE ||;
 // Return the Let's Encrypt certbot response:
-app.param('response', function (req, res, next, response) {
-  config.logger.log('reponse: %s',response);
-  next();
-});
 
 app.get('/.well-known/acme-challenge/:response', function (req, res) {
 

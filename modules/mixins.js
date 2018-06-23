@@ -7,36 +7,9 @@ var _ = require('underscore'),
     md5 = require('md5'),
     Viewer = require('../models/viewer');
 
-module.exports.findViewer = function(req, res, next) {
-    var ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
-    Viewer.findOne({'ip':ip}, function (err, viewer) {
-        if (err) logger.warn(err);
-        if (!viewer) {
-            req.session.viewer = new Viewer({'ip':ip});
-            logger.log('Viewer created: %s', ip);
-            step();
-        }
-        else {
-            logger.log('Viewer found: %s', ip);
-            viewer.lastVisit = moment(new Date()).format('MM/DD/YYYY');
-            // viewer.visits++;
-            req.session.viewer = viewer;
-            step();
-        }
-    });
-
-    function step() {
-        req.session.viewer.save(function (err) {
-            if (err) logger.warn(err);
-            req.session.locals.viewer = Viewer_(req.session.viewer);
-            next(null);
-        });
-    }
-}
-
 // Has Paid
 module.exports.hasPaid = function(req, res, next) {
-    if ((parseInt(req.session.viewer.time)>=1&&config.status=='Live')||config.debugging_live) {
+    if ((parseInt(req.session.user.time)>=1&&config.status=='Live')||config.debugging_live) {
         next();
     } 
     else if (config.status!='Live') {
@@ -46,6 +19,17 @@ module.exports.hasPaid = function(req, res, next) {
     else {
         req.flash('error','Please pay up!');
         res.redirect('/');
+    }
+}
+
+// Check Login
+module.exports.loggedIn = function(req, res, next) {
+    if (req.session.user) {
+        next();
+    } else {
+        // req.flash('error','Please login!');
+        req.session.locals.error = 'Please login!';
+        res.status(401).render('index', req.session.locals);
     }
 }
 

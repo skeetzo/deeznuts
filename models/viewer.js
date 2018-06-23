@@ -7,6 +7,7 @@ var mongoose = require('mongoose'),
     Google = require('../modules/google'),
     Receive = require('blockchain.info/Receive'),
     Exchange = require('blockchain.info/exchange'),
+    bcrypt = require('bcrypt-nodejs'),
     QRCode = require('qrcode');
 
 // Viewer Schema
@@ -15,18 +16,30 @@ var viewerSchema = new Schema({
   address_qr: { type: String },
   ip: { type: String },
   lastVisit: { type: Date, default: moment(new Date()).format('MM/DD/YYYY') },
+  logins: { type: Number, default: 0 },
+  password: { type: String },
   qr: { type: String },
   secret : { type: String }, // crypto sig
   start: { type: String, default: moment(new Date()).format('MM/DD/YYYY') },
   time: { type: Number, default: config.defaultTime }, // time allotted for live
   time_added: { type: Number },
   transactions: { type: Array, default: [] },
+  username: { type: String },
   visits: { type: Number, default: 1 },
 });
 
 viewerSchema.pre('save', function (next) {
   var self = this;
-  next(null);
+  if (!self.isModified('password')) return next();
+  var SALT_FACTOR = 5;
+  bcrypt.genSalt(SALT_FACTOR, function(err, salt) {
+    if (err) return next(err);
+    bcrypt.hash(self.password, salt, null, function(err, hash) {
+      if (err) return next(err);
+      self.password = hash;
+      next();
+    });
+  });
 });
 
 
@@ -93,9 +106,9 @@ viewerSchema.statics.generateAddress = function(viewer, callback) {
 }
 
 viewerSchema.statics.sync = function(data, callback) {
-  Viewer.findOne({'ip':data.ip}, function (err, viewer) {
+  Viewer.findById(data._id, function (err, viewer) {
     if (err) return callback(err);
-    if (!viewer) return 'Viewer not found: '+data.ip;
+    if (!viewer) return 'Viewer not found: '+data._id;
     if (Math.abs(parseInt(viewer.time)-parseInt(data.time))>5)
       logger.log('not syncing time: %s seconds -> %s seconds', viewer.time, data.time);
     else if (data.time<=3) {
@@ -103,12 +116,12 @@ viewerSchema.statics.sync = function(data, callback) {
       viewer.time = 0;
     }
     else {
-      // logger.log('syncing time: %s seconds -> %s seconds', viewer.time, data.time);
+      logger.log('syncing time: %s seconds -> %s seconds', viewer.time, data.time);
       viewer.time = data.time;
     }
     var added = viewer.time_added || false;
     viewer.time_added = false;
-    viewer.save(function (err) {
+    viewer.save(function (err) {viewer
       callback(err,{'time':viewer.time,'added':added,'status':config.status});
     });
   });
@@ -138,6 +151,12 @@ viewerSchema.methods.addTime = function(value_in_satoshi) {
     });
   });
 }
+
+viewerSchema.methods.verifyPassword = function(candidatePassword, callback) {
+  bcrypt.compare(candidatePassword, this.password, function (err, isMatch) {
+    callback(err, isMatch);
+  });
+};
 
 var Viewer = mongoose.model('viewers', viewerSchema,'viewers');
 module.exports = Viewer;

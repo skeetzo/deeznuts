@@ -17,16 +17,16 @@ html
     include favicons
     // Google Analytics
     script.
-        window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-        ga('create', '#{Google_Analytics}', 'auto');
-        ga('send', 'pageview');
+      window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+      ga('create', '#{Google_Analytics}', 'auto');
+      ga('send', 'pageview');
     script(async='', src='https://www.google-analytics.com/analytics.js')
     // End Google Analytics
 
   body
     .container-fluid.text-center
 
-      //- title
+      // title
       .row
         .col-xs-12
           a(href='/')
@@ -38,7 +38,7 @@ html
 
         br
 
-        //- time remaining
+        // time remaining
         .row
           .col-xs-12.text-center
             p Time: 
@@ -47,7 +47,7 @@ html
 
         br
 
-        //- conversion rates
+        // conversion rates
         .row
           .col-xs-12.text-center
             p $1 = 6 minutes
@@ -55,6 +55,12 @@ html
             p $10 = 60 minutes
 
         br
+
+        if (!loggedIn)
+          include login
+        else
+          a(href="/logout", title='Logout')
+            i.fas.fa-sign-out-alt Logout
 
       block javascript
         include js

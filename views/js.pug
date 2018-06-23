@@ -1,8 +1,8 @@
-if (viewer)
+if (user)
   script.
     $(document).ready(function () {
       //- set time
-      var seconds = parseInt("#{viewer.time}"); // in seconds so 60
+      var seconds = parseInt("#{user.time}"); // in seconds so 60
       $("#time").text(toTime(seconds));
       $("#timeseconds").text(seconds);
       //- syncs with server every 10 seconds
@@ -32,32 +32,39 @@ if (viewer)
         });
       },3000);
     });
+else
+  script.
+    $(document).ready(function () {
+      //- set time
+      var seconds = 60;
+      $("#time").text(toTime(seconds));
+      $("#timeseconds").text(seconds);
+    });
 
-    // time in seconds
-    function toTime(seconds) {
-      var days, hours, minutes;
-      minutes = Math.floor(seconds / 60);
-      seconds = seconds % 60;
-      hours = Math.floor(minutes / 60);
-      minutes = minutes % 60;
-      days = Math.floor(hours / 24);
-      hours = hours % 24;
-      //- days = days < 10 ? "0" + days : days;
-      hours = hours < 10 ? "0" + hours : hours;
-      minutes = minutes < 10 ? "0" + minutes : minutes;
-      seconds = seconds < 10 ? "0" + seconds : seconds;
-      return days+":"+hours+":"+ minutes+":"+seconds;
-    }
+script.
+  // time in seconds
+  function toTime(seconds) {
+    var days, hours, minutes;
+    minutes = Math.floor(seconds / 60);
+    seconds = seconds % 60;
+    hours = Math.floor(minutes / 60);
+    minutes = minutes % 60;
+    days = Math.floor(hours / 24);
+    hours = hours % 24;
+    //- days = days < 10 ? "0" + days : days;
+    hours = hours < 10 ? "0" + hours : hours;
+    minutes = minutes < 10 ? "0" + minutes : minutes;
+    seconds = seconds < 10 ? "0" + seconds : seconds;
+    return days+":"+hours+":"+ minutes+":"+seconds;
+  }
 
-    function toCalendar(seconds) {
-      var days, hours, minutes;
-      minutes = Math.floor(seconds / 60);
-      seconds = seconds % 60;
-      hours = Math.floor(minutes / 60);
-      minutes = minutes % 60;
-      days = Math.floor(hours / 24);
-      hours = hours % 24;
-      return days+" day(s) "+hours+" hours "+ minutes+" minutes "+seconds+" seconds";
-    }
-
-      
+  function toCalendar(seconds) {
+    var days, hours, minutes;
+    minutes = Math.floor(seconds / 60);
+    seconds = seconds % 60;
+    hours = Math.floor(minutes / 60);
+    minutes = minutes % 60;
+    days = Math.floor(hours / 24);
+    hours = hours % 24;
+    return days+" day(s) "+hours+" hours "+ minutes+" minutes "+seconds+" seconds";
+  }
