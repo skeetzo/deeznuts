@@ -9,14 +9,14 @@ var express = require('express'),
     Viewer = require('../models/viewer');
 
 // /
-router.use(mixins.resetLocals, function (req, res, next) {
+router.use(mixins.resetLocals, mixins.findViewer, function (req, res, next) {
 	var ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
   logger.log("%s: /%s %s",ip, req.method, req.url);
 	next(null);
 });
 
 // /index
-router.get("/", mixins.findViewer, function (req, res, next) {
+router.get("/", function (req, res, next) {
   res.render('index', req.session.locals);
 });
 
@@ -40,14 +40,14 @@ router.get("/address", mixins.loggedIn, function (req, res, next) {
   Viewer.generateAddress(req.session.user, function (err) {
     if (err) {
       logger.warn(err);
-      res.sendStatus(404);
+      return res.sendStatus(404);
     }
     res.sendStatus(200);
   });
 });
 
 // check for recent tips
-router.post("/sync", mixins.loggedIn, function (req, res, next) {
+router.post("/sync", mixins.hasViewer, function (req, res, next) {
   // logger.debug('req.session.user: %s', JSON.stringify(req.session.user, null, 4));
   req.body._id = req.session.user._id;
   Viewer.sync(req.body, function (err, synced) {
@@ -132,12 +132,12 @@ router.post("/login", signUpLimiter, [
     req.session.user = mixins.Viewer(req.user);
     req.session.user.logins++;
     req.session.locals.loggedIn = true;
-    req.session.locals.user = req.session.user;
+    req.session.locals.user = mixins.Viewer(req.session.user);
     logger.log('login successful (local): %s', req.user._id);
     req.session.save(function(err) {
-        if (err) logger.warn(err);
-        res.redirect('/');
-      });
+      if (err) logger.warn(err);
+      res.redirect('/');
+    });
   }
 );
 

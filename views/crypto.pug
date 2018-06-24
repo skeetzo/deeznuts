@@ -19,8 +19,9 @@
               location.reload();
             },
             error: function(data) {
+              alert("Please login or create an account!");
             },
           })).catch(function (reason) {
-            console.log(reason);
+            //- console.log(reason);
           });
         }

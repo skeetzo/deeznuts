@@ -9,31 +9,41 @@ var _ = require('underscore'),
 
 
 module.exports.findViewer = function(req, res, next) {
-    if (req.session.locals.viewer) return next(null);
+    if (req.session.user) {
+        req.session.locals.user = Viewer_(req.session.user);
+        return step(null);
+    }
     var ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress,
-        // id = req.session.viewer._id || null;
-        id = req.session.viewer ? req.session.viewer._id : null;
+        // id = req.session.user._id || null;
+        id = req.session.user ? req.session.user._id : null;
 
     Viewer.findOne({'$or':[{'ip':ip},{'_id':id}]}, function (err, viewer) {
         if (err) logger.warn(err);
         if (!viewer) {
-            logger.log('New Visitor: %s', ip);
-            req.session.viewer = new Viewer({'ip':ip});
-            step();
+            req.session.user = new Viewer({'ip':ip});
+            logger.log('New Visitor: %s || %s', ip, req.session.user._id);
+            req.session.user.save(function (err) {
+                if (err) logger.warn(err);
+                step();
+            });
         }
         else {
-            logger.log('Return Visitor: %s || %s', ip, req.session.viewer._id);
+            logger.log('Return Visitor: %s || %s', ip, id);
             viewer.lastVisit = moment(new Date()).format('MM/DD/YYYY');
             viewer.visits++;
-            req.session.viewer = viewer;
-            step();
+            viewer.save(function (err) {
+                if (err) logger.warn(err);
+                req.session.user = viewer;
+                step();
+            });
         }
     });
 
     function step() {
-        req.session.viewer.save(function (err) {
+        req.session.user = Viewer_(req.session.user);
+        req.session.locals.user = req.session.user;
+        req.session.save(function (err) {
             if (err) logger.warn(err);
-            req.session.locals.viewer = Viewer_(req.session.viewer);
             next(null);
         });
     }
@@ -54,9 +64,14 @@ module.exports.hasPaid = function(req, res, next) {
     }
 }
 
+module.exports.hasViewer = function(req, res, next) {
+    if (!req.session.user) return res.sendStatus(401);
+    next();
+}
+
 // Check Login
 module.exports.loggedIn = function(req, res, next) {
-    if (req.session.user)
+    if (req.session.user&&req.session.locals.loggedIn)
         next();
     else {
         // req.flash('error','Please login!');

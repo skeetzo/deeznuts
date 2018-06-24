@@ -14,7 +14,9 @@
  - blockchain.info
 **0.0.7 : 6/22/2018**
  - user login
-
+**0.0.8 : 6/24/2018**
+ - usability fixes
+ - testing
 
 
 **1.0.0 : Live : 6/25/2018**

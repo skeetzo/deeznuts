@@ -1,48 +1,48 @@
-if (user)
-  script.
-    $(document).ready(function () {
-      //- set time
-      var seconds = parseInt("#{user.time}"); // in seconds so 60
-      $("#time").text(toTime(seconds));
-      $("#timeseconds").text(seconds);
-      //- syncs with server every 10 seconds
-      setInterval(function sync() {
-        console.log('seconds: %s',$("#timeseconds").text());
-        return Promise.resolve($.ajax({
-          type: 'POST',
-          url: '/sync',
-          data: {'time':$("#timeseconds").text(),'_csrf':"#{_csrf}"},
-          success: function(data) {
-            //- returns {status, time, added}
-            if (data.added) {
-              //- alert('Time added! Added: '+(data.added/60)+' seconds');
-              var seconds = parseInt(data.time),
-                  time = toTime(data.added);
-              $("#time").text(toTime(seconds));
-              $("#timeseconds").text(seconds);
-              alert('Time added! Added: '+(time.substring(0,time.indexOf('.'))));
-            }
-            $("#status").text(data.status);
-          },
-          error: function(data) {
-            //- console.log('New Tip Not Found');
-            window.location.replace("http://#{domain}/");
-          },
-        })).catch(function (reason) {
-          console.log(reason);
-        });
-      },3000);
-    });
-else
-  script.
-    $(document).ready(function () {
-      //- set time
-      var seconds = 60;
-      $("#time").text(toTime(seconds));
-      $("#timeseconds").text(seconds);
-    });
+script.
+  $(document).ready(function () {
+    //- set time
+    var seconds = parseInt("#{user.time}"); // in seconds so 60
+    $("#time").text(toTime(seconds));
+    $("#timeseconds").text(seconds);
+    //- syncs with server every 10 seconds
+    setInterval(function sync() {
+      console.log('seconds: %s',$("#timeseconds").text());
+      return Promise.resolve($.ajax({
+        type: 'POST',
+        url: '/sync',
+        data: {'time':$("#timeseconds").text(),'_csrf':"#{_csrf}"},
+        success: function(data) {
+          //- returns {status, time, added}
+          if (data.added) {
+            //- alert('Time added! Added: '+(data.added/60)+' seconds');
+            var seconds = parseInt(data.time),
+                time = toTime(data.added);
+            $("#time").text(toTime(seconds));
+            $("#timeseconds").text(seconds);
+            alert('Time added! Added: '+(time.substring(0,time.indexOf('.'))));
+          }
+          updateStatus(data.status);
+        },
+        error: function(data) {
+        },
+      })).catch(function (reason) {
+        //- console.log(reason);
+      });
+    },3000);
+  });
 
 script.
+  function updateStatus(status) {
+    var status_ = $("#status").text();
+    console.log('status: %s -> %s', status_, status);
+    $("#status").text(status);
+    if (status_=="Not Live"&&status=="Live")
+      alert('I\'ve gone live!');
+    else if (status_=="Live"&&status=="Not Live") {
+      alert('I\'ve gone offline!');
+      window.location.replace("http://#{domain}/");
+    }
+  }
   // time in seconds
   function toTime(seconds) {
     var days, hours, minutes;
