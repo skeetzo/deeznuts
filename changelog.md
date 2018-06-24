@@ -19,7 +19,14 @@
  - testing
 
 
+
+
+
+
+ - writeup
+
 **1.0.0 : Live : 6/25/2018**
+ - social media: twitter & instagram links
 
 **1.0.1**
  - next live @ & schedule
