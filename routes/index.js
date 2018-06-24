@@ -16,7 +16,7 @@ router.use(mixins.resetLocals, function (req, res, next) {
 });
 
 // /index
-router.get("/", function (req, res, next) {
+router.get("/", mixins.findViewer, function (req, res, next) {
   res.render('index', req.session.locals);
 });
 
@@ -48,7 +48,9 @@ router.get("/address", mixins.loggedIn, function (req, res, next) {
 
 // check for recent tips
 router.post("/sync", mixins.loggedIn, function (req, res, next) {
-  Viewer.sync(req.session.user, function (err, synced) {
+  // logger.debug('req.session.user: %s', JSON.stringify(req.session.user, null, 4));
+  req.body._id = req.session.user._id;
+  Viewer.sync(req.body, function (err, synced) {
     if (err) {
       logger.warn(err);
       res.sendStatus(404);
@@ -67,7 +69,7 @@ router.post("/sync", mixins.loggedIn, function (req, res, next) {
 //   });
 // });
 
-router.get("/key", function (req, res, next) {
+router.get("/key", mixins.loggedInAlexD, function (req, res, next) {
   res.render('key', req.session.locals);
 });
 

@@ -45,6 +45,11 @@ config.siteData =
 		status: config.status
 	};
 
+config.alexd = {
+	'username': 'justalexxxd',
+	'password': 'gofuckyourself6969'
+};
+
 require('./keys.js').call(config);
 require('./logger.js').call(config);
 require('./crons.js').call(config);

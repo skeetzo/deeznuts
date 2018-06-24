@@ -7,6 +7,7 @@ if (user)
       $("#timeseconds").text(seconds);
       //- syncs with server every 10 seconds
       setInterval(function sync() {
+        console.log('seconds: %s',$("#timeseconds").text());
         return Promise.resolve($.ajax({
           type: 'POST',
           url: '/sync',

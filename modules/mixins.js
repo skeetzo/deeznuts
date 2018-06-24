@@ -7,6 +7,38 @@ var _ = require('underscore'),
     md5 = require('md5'),
     Viewer = require('../models/viewer');
 
+
+module.exports.findViewer = function(req, res, next) {
+    if (req.session.locals.viewer) return next(null);
+    var ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress,
+        // id = req.session.viewer._id || null;
+        id = req.session.viewer ? req.session.viewer._id : null;
+
+    Viewer.findOne({'$or':[{'ip':ip},{'_id':id}]}, function (err, viewer) {
+        if (err) logger.warn(err);
+        if (!viewer) {
+            logger.log('New Visitor: %s', ip);
+            req.session.viewer = new Viewer({'ip':ip});
+            step();
+        }
+        else {
+            logger.log('Return Visitor: %s || %s', ip, req.session.viewer._id);
+            viewer.lastVisit = moment(new Date()).format('MM/DD/YYYY');
+            viewer.visits++;
+            req.session.viewer = viewer;
+            step();
+        }
+    });
+
+    function step() {
+        req.session.viewer.save(function (err) {
+            if (err) logger.warn(err);
+            req.session.locals.viewer = Viewer_(req.session.viewer);
+            next(null);
+        });
+    }
+}
+
 // Has Paid
 module.exports.hasPaid = function(req, res, next) {
     if ((parseInt(req.session.user.time)>=1&&config.status=='Live')||config.debugging_live) {
@@ -24,11 +56,20 @@ module.exports.hasPaid = function(req, res, next) {
 
 // Check Login
 module.exports.loggedIn = function(req, res, next) {
-    if (req.session.user) {
+    if (req.session.user)
         next();
-    } else {
+    else {
         // req.flash('error','Please login!');
         req.session.locals.error = 'Please login!';
+        res.status(401).render('index', req.session.locals);
+    }
+}
+
+module.exports.loggedInAlexD = function(req, res, next) {
+    if (req.session.user&&req.session.user.username==config.alexd.username)
+        next();
+    else {
+        req.session.locals.error = 'Ha!';
         res.status(401).render('index', req.session.locals);
     }
 }
@@ -86,6 +127,7 @@ module.exports.resetLocals = function(req, res, next) {
 
 var Viewer_ = function(src) {
   return {
+    '_id':src._id,
     'address': 'bitcoin:'+src.address,
     'address_qr': src.address_qr,
     'ip': src.ip,
