@@ -2,7 +2,7 @@
 var config = {};
 
 // Debugging
-config.debugging = true;
+config.debugging = false;
 config.debugging_live = false;
 
 config.Crons_On = true;
