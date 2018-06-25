@@ -2,7 +2,7 @@
 var config = {};
 
 // Debugging
-config.debugging = process.env.npm_package_config_debugging || false;
+config.debugging = true;
 config.debugging_live = false;
 
 config.Crons_On = true;
@@ -44,6 +44,11 @@ config.siteData =
 		Google_Analytics: config.Google_Analytics,
 		status: config.status
 	};
+
+config.alexd = {
+	'username': 'justalexxxd',
+	'password': 'gofuckyourself6969'
+};
 
 require('./keys.js').call(config);
 require('./logger.js').call(config);

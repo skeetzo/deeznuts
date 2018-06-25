@@ -5,39 +5,55 @@ var _ = require('underscore'),
     async = require('async'),
     path = require('path'),
     md5 = require('md5'),
-    Viewer = require('../models/viewer');
+    User = require('../models/user');
 
-module.exports.findViewer = function(req, res, next) {
-    var ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
-    Viewer.findOne({'ip':ip}, function (err, viewer) {
+
+module.exports.findUser = function(req, res, next) {
+    // if (req.session.user) {
+    //     req.session.locals.user = User_(req.session.user);
+    //     return step(null);
+    // }
+    // else if (req.session.locals.user)
+    //     return step(null);
+    var ip = req.connection.remoteAddress,
+        id = req.session.user ? req.session.user._id : null;
+        // ips = req.ips || [];
+    // ips.push(req.connection.remoteAddress);
+    // if (req.headers['x-forwarded-for'])
+        // ips.push(req.headers['x-forwarded-for']);
+    // User.findOne({'ip': { '$in': ips }}, function (err, user) {
+    User.findOne({'$or':[{'_id':id},{'ip':ip}]}, function (err, user) {
         if (err) logger.warn(err);
-        if (!viewer) {
-            req.session.viewer = new Viewer({'ip':ip});
-            logger.log('Viewer created: %s', ip);
-            step();
+        if (!user) {
+            req.session.locals.user = new User({'ip':ip});
+            logger.log('New Visitor: %s || %s', ip, id);
+            req.session.locals.user.save(function (err) {
+                if (err) logger.warn(err);
+                step();
+            });
         }
         else {
-            logger.log('Viewer found: %s', ip);
-            viewer.lastVisit = moment(new Date()).format('MM/DD/YYYY');
-            // viewer.visits++;
-            req.session.viewer = viewer;
-            step();
+            logger.log('Return Visitor: %s || %s', ip, user._id);
+            user.lastVisit = moment(new Date()).format('MM/DD/YYYY');
+            user.visits++;
+            user.save(function (err) {
+                if (err) logger.warn(err);
+                req.session.locals.user = user;
+                step();
+            });
         }
     });
 
     function step() {
-        req.session.viewer.save(function (err) {
-            if (err) logger.warn(err);
-            req.session.locals.viewer = Viewer_(req.session.viewer);
-            next(null);
-        });
+        req.session.locals.user = User_(req.session.locals.user);
+        next(null);
     }
 }
 
 // Has Paid
 module.exports.hasPaid = function(req, res, next) {
-    if ((parseInt(req.session.viewer.time)>=1&&config.status=='Live')||config.debugging_live) {
-        next();
+    if ((parseInt(req.session.user.time)>=1&&config.status=='Live')||config.debugging_live) {
+        next(null);
     } 
     else if (config.status!='Live') {
         req.flash('error','Please wait until I am live!');
@@ -46,6 +62,26 @@ module.exports.hasPaid = function(req, res, next) {
     else {
         req.flash('error','Please pay up!');
         res.redirect('/');
+    }
+}
+
+// Check Login
+module.exports.loggedIn = function(req, res, next) {
+    if (req.session.user&&req.session.locals.loggedIn)
+        next(null);
+    else {
+        // req.flash('error','Please login!');
+        req.session.locals.error = 'Please login!';
+        res.status(401).render('index', req.session.locals);
+    }
+}
+
+module.exports.loggedInAlexD = function(req, res, next) {
+    if (req.session.user&&req.session.locals.loggedIn&&req.session.user.username==config.alexd.username)
+        next(null);
+    else {
+        req.session.locals.error = 'Ha!';
+        res.status(401).render('index', req.session.locals);
     }
 }
 
@@ -100,12 +136,12 @@ module.exports.resetLocals = function(req, res, next) {
     });
 }
 
-var Viewer_ = function(src) {
+var User_ = function(src) {
   return {
-    'address': 'bitcoin:'+src.address,
+    '_id': src._id,
+    'address': src.address,
     'address_qr': src.address_qr,
-    'ip': src.ip,
     'time': src.time
   };
 }
-module.exports.Viewer = Viewer;
+module.exports.User = User;

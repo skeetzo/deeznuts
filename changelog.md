@@ -12,14 +12,25 @@
  - aws
 **0.0.6 : 6/20/2018**
  - blockchain.info
+**0.0.7 : 6/22/2018**
+ - user login
+**0.0.8 : 6/24/2018**
+ - usability fixes
+ - testing
+
+
+
+
+
+
+ - writeup
 
 **1.0.0 : Live : 6/25/2018**
+ - social media: twitter & instagram links, snap
 
 **1.0.1**
  - next live @ & schedule
 **1.1.0**
  - chat log
-**1.2.0**
- - user login
 **2.0.0 : Android App : ??/??/??**
  - android rtmp relay?
