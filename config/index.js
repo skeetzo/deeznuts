@@ -2,7 +2,7 @@
 var config = {};
 
 // Debugging
-config.debugging = false;
+config.debugging = process.env.npm_package_config_debugging || false;
 config.debugging_live = false;
 
 config.Crons_On = true;
