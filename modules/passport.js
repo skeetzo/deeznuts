@@ -2,53 +2,53 @@ var passport = require('passport'),
     LocalStrategy = require('passport-local').Strategy,
     _ = require('underscore'),
     // Gmail = require('../mods/gmail'),
-    Viewer = require('../models/viewer'),
+    User = require('../models/user'),
     config = require('../config/index'),
     logger = config.logger;
 
 const { check, validationResult } = require('express-validator/check');
 
-// Local for Viewers
+// Local for Users
 passport.use(new LocalStrategy({
     passReqToCallback: true,
   },
   function (req, username, password, callback) {
-    Viewer.findOne({'username':username}, function (err, viewer) {
+    User.findOne({'username':username}, function (err, user) {
       if (err) logger.warn(err);
       // Create if missing
-      if (!viewer) { 
+      if (!user) { 
         // validation
         const errors = validationResult(req);
         if (!errors.isEmpty()) {
           var err = errors.array({ 'onlyFirstError': true })[0].msg;
-          // if (err.indexOf('Cannot read property')>-1) err = 'Viewername format error!';
+          // if (err.indexOf('Cannot read property')>-1) err = 'Username format error!';
           req.flash('error', err);
-          logger.warn('Viewer signup not allowed: %s- %s', username, err);
+          logger.warn('User signup not allowed: %s- %s', username, err);
           return next(null, false);
         }
 
-        logger.log('Creating new viewer: %s', username);
-        viewer = new Viewer({'username':username,'password':password});
-        viewer.logins++;
-        viewer.save(function(err) {
+        logger.log('Creating new user: %s', username);
+        user = new User({'username':username,'password':password});
+        user.logins++;
+        user.save(function(err) {
           if (err) return logger.warn(err);
           req.flash('message','Account created!');
-          return next(null, viewer);
+          return next(null, user);
         }); 
         // Gmail.notifyNewAccount(function (err) {
         //   if (err) logger.warn(err);
         // });
       }
       else {
-        logger.log('Viewer found: %s', viewer.username);
-        viewer.verifyPassword(password, function (err, isMatch) {
+        logger.log('User found: %s', user.username);
+        user.verifyPassword(password, function (err, isMatch) {
           if (err) logger.warn(err);
           if (isMatch) {
-            viewer.logins++;
-            viewer.save(function (err) {
+            user.logins++;
+            user.save(function (err) {
               if (err) logger.warn(err);
-              req.flash('message','Welcome back '+viewer.username+'!');
-              return next(null, viewer);
+              req.flash('message','Welcome back '+user.username+'!');
+              return next(null, user);
             }); 
           }
           else {
@@ -59,24 +59,24 @@ passport.use(new LocalStrategy({
         });
       }
     });
-    function next(err, viewer) {
+    function next(err, user) {
       if (err) {
         logger.warn(err);
         req.flash('error','There was an error!');
       }
-      callback(err, viewer)
+      callback(err, user)
     }
 }));
 
 // Serialize
-passport.serializeUser(function (viewer, callback) {
-  callback(null, viewer.id);
+passport.serializeUser(function (user, callback) {
+  callback(null, user._id);
 });
 
 // Deserialize
-passport.deserializeUser(function (viewer, callback) {
-  Viewer.findById(viewer.id, function (err, viewer) { 
-    callback(err, viewer); 
+passport.deserializeUser(function (user, callback) {
+  User.findById(user._id, function (err, user) { 
+    callback(err, user); 
   });
 });
 

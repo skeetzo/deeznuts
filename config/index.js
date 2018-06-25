@@ -3,7 +3,7 @@ var config = {};
 
 // Debugging
 config.debugging = true;
-config.debugging_live = true;
+config.debugging_live = false;
 
 config.Crons_On = true;
 
@@ -15,7 +15,7 @@ config.port = Number(process.env.PORT || 3000);
 config.title = "Alex D.'s Nuts";
 config.siteTitle = "AlexDeezNuts.com";
 config.domain = "alexdeeznuts.com";
-if (config.debugging) config.domain = "localhost:3000";
+if (config.debugging) config.domain = "localhost";
 config.author = "Skeetzo";
 config.description = "Porn Star Streamer";
 config.Google_Analytics = "";

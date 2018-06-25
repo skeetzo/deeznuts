@@ -9,7 +9,7 @@ var debug = require('debug')('alexdeeznuts:server');
 var http = require('http');
 var rtmp = require('../modules/rtmp');
 var cron = require('../modules/cron').start();
-var alexd = require('../models/viewer');
+var alexd = require('../models/user');
 alexd.findOne({'username':config.alexd.username}, function (err, alexd_) {
   if (err) return config.logger.warn(err);
   if (!alexd_) {

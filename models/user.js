@@ -10,11 +10,11 @@ var mongoose = require('mongoose'),
     bcrypt = require('bcrypt-nodejs'),
     QRCode = require('qrcode');
 
-// Viewer Schema
-var viewerSchema = new Schema({
+// User Schema
+var userSchema = new Schema({
   address: { type: String },
   address_qr: { type: String },
-  ip: { type: String },
+  ip: { type: String, default: '' },
   lastVisit: { type: Date, default: moment(new Date()).format('MM/DD/YYYY') },
   logins: { type: Number, default: 0 },
   password: { type: String },
@@ -28,7 +28,7 @@ var viewerSchema = new Schema({
   visits: { type: Number, default: 1 },
 });
 
-viewerSchema.pre('save', function (next) {
+userSchema.pre('save', function (next) {
   var self = this;
   if (!self.isModified('password')) return next();
   var SALT_FACTOR = 5;
@@ -43,31 +43,31 @@ viewerSchema.pre('save', function (next) {
 });
 
 
-viewerSchema.statics.addTransaction = function(transaction, callback) {
+userSchema.statics.addTransaction = function(transaction, callback) {
   logger.log('Adding Transaction: %s -> %s (%s)', transaction.value, transaction.address, transaction.hash);
-  Viewer.findOne({'address':transaction.address,'secret':transaction.secret}, function (err, viewer) {
+  User.findOne({'address':transaction.address,'secret':transaction.secret}, function (err, user) {
     if (err) return callback(err);
-    if (!viewer) return callback('No matching viewer: '+transaction.address);
+    if (!user) return callback('No matching user: '+transaction.address);
     logger.log('transaction.transaction_hash: %s', transaction.transaction_hash);
-    logger.log('viewer.transactions: %s', _.pluck(viewer.transactions,'transaction_hash'));
-    if (_.contains(_.pluck(viewer.transactions,'transaction_hash'),transaction.transaction_hash)) {
-      var existing_transaction = _.findWhere(viewer.transactions, {'transaction_hash':transaction.transaction_hash});
-      logger.log('Confirmed Existing Transaction: %s -> %s (%s:%s)', existing_transaction.confirmations, transaction.confirmations, transaction.hash, viewer._id);
+    logger.log('user.transactions: %s', _.pluck(user.transactions,'transaction_hash'));
+    if (_.contains(_.pluck(user.transactions,'transaction_hash'),transaction.transaction_hash)) {
+      var existing_transaction = _.findWhere(user.transactions, {'transaction_hash':transaction.transaction_hash});
+      logger.log('Confirmed Existing Transaction: %s -> %s (%s:%s)', existing_transaction.confirmations, transaction.confirmations, transaction.hash, user._id);
       existing_transaction.confirmations = transaction.confirmations;
     }
     else {
-      logger.log('Added Transaction: %s -> %s (%s:%s)', transaction.value, transaction.address, transaction.hash, viewer._id);
-      viewer.transactions.push({'value':transaction.value,'secret':transaction.secret,'address':transaction.address,'hash':transaction.transaction_hash,'confirmations':transaction.confirmations});
-      viewer.addTime(transaction.value);
+      logger.log('Added Transaction: %s -> %s (%s:%s)', transaction.value, transaction.address, transaction.hash, user._id);
+      user.transactions.push({'value':transaction.value,'secret':transaction.secret,'address':transaction.address,'hash':transaction.transaction_hash,'confirmations':transaction.confirmations});
+      user.addTime(transaction.value);
     }
   });
 }
 
-viewerSchema.statics.generateAddress = function(viewer, callback) {
-  logger.log('Generating Address: %s', viewer.ip);
-  Viewer.findById(viewer._id, function (err, viewer) {
+userSchema.statics.generateAddress = function(user, callback) {
+  logger.log('Generating Address: %s', user.ip);
+  User.findById(user._id, function (err, user) {
     if (err) return callback(err);
-    if (viewer.address) return callback('Address already generated: '+viewer.ip);
+    if (user.address) return callback('Address already generated: '+user.ip);
     if (config.debugging) return callback('Skipping Address- Debugging');
     // Generate new blockchain address
     var xpub = config.blockchainXpub,
@@ -89,17 +89,17 @@ viewerSchema.statics.generateAddress = function(viewer, callback) {
     // generate address
     var timestamp = (Date.now() + 3600000);
     var hash = require('md5')(timestamp+"-"+config.blockchainHash);
-    viewer.secret = hash;
+    user.secret = hash;
     var query = {'secret':hash};
     myReceive = myReceive.generate(query)
     .then(function (data) {
       logger.log('Generated Address: %s', data.address);
-      viewer.address = data.address;
+      user.address = data.address;
       QRCode.toDataURL(data.address, function (err, url) {
         if (err) logger.warn(err);
-        viewer.address_qr = url;
+        user.address_qr = url;
         // logger.debug('address_qr: %s', url);
-        viewer.save(function (err) {
+        user.save(function (err) {
           callback(err);
         });
       });
@@ -107,30 +107,30 @@ viewerSchema.statics.generateAddress = function(viewer, callback) {
   });
 }
 
-viewerSchema.statics.sync = function(data, callback) {
-  Viewer.findById(data._id, function (err, viewer) {
+userSchema.statics.sync = function(data, callback) {
+  User.findById(data._id, function (err, user) {
     if (err) return callback(err);
-    if (!viewer) return 'Viewer not found: '+data._id;
-    if (Math.abs(parseInt(viewer.time)-parseInt(data.time))>5)
-      logger.log('not syncing time: %s seconds -> %s seconds', viewer.time, data.time);
+    if (!user) return 'User not found: '+data._id;
+    if (Math.abs(parseInt(user.time)-parseInt(data.time))>5)
+      logger.log('not syncing time: %s seconds -> %s seconds', user.time, data.time);
     else if (data.time<=3) {
-      logger.debug('syncing time (bug): %s seconds -> %s (%s) seconds', viewer.time, 0, data.time);
-      viewer.time = 0;
+      logger.debug('syncing time (bug): %s seconds -> %s (%s) seconds', user.time, 0, data.time);
+      user.time = 0;
     }
     else {
-      logger.log('syncing time: %s seconds -> %s seconds', viewer.time, data.time);
-      viewer.time = data.time;
+      logger.log('syncing time: %s seconds -> %s seconds', user.time, data.time);
+      user.time = data.time;
     }
-    var added = viewer.time_added || false;
-    viewer.time_added = false;
-    viewer.save(function (err) {
-      callback(err,{'time':viewer.time,'added':added,'status':config.status});
+    var added = user.time_added || false;
+    user.time_added = false;
+    user.save(function (err) {
+      callback(err,{'time':user.time,'added':added,'status':config.status});
     });
   });
 }
 
 // amount in satoshi, so divide by 100,000,000 to get the value in BTC
-viewerSchema.methods.addTime = function(value_in_satoshi) {
+userSchema.methods.addTime = function(value_in_satoshi) {
 	var self = this;
   logger.log('Calculating time: %s satoshi', value_in_satoshi);
   var value_in_btc = value_in_satoshi / 100000000;
@@ -154,14 +154,14 @@ viewerSchema.methods.addTime = function(value_in_satoshi) {
   });
 }
 
-viewerSchema.methods.verifyPassword = function(candidatePassword, callback) {
+userSchema.methods.verifyPassword = function(candidatePassword, callback) {
   bcrypt.compare(candidatePassword, this.password, function (err, isMatch) {
     callback(err, isMatch);
   });
 };
 
-var Viewer = mongoose.model('viewers', viewerSchema,'viewers');
-module.exports = Viewer;
+var User = mongoose.model('users', userSchema,'users');
+module.exports = User;
 
 
 // var options = {

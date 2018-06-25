@@ -84,7 +84,6 @@ app.use(passport.session());
 // const letsEncryptReponse = process.env.CERTBOT_RESPONSE ||;
 // Return the Let's Encrypt certbot response:
 app.get('/.well-known/acme-challenge/:response', function (req, res) {
-app.get('/.well-known/acme-challenge/:response', function (req, res) {
   config.logger.log('req: %s', JSON.stringify(req,null,4));
   config.logger.log('params: %s', req.params);
   config.logger.log('params: %s', JSON.stringify(req.params));
