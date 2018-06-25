@@ -27,10 +27,13 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:true}));
 
 app.use(cookieParser('suckafatone'));
+var outputStyle = 'minified';
+if (config.debugging) outputStyle = 'extended';
 app.use(sassMiddleware({
   src: path.join(__dirname, 'public'),
   dest: path.join(__dirname, 'public'),
-  indentedSyntax: false, // true = .sass and false = .scss
+  outputStyle: outputStyle,
+  indentedSyntax: true, // true = .sass and false = .scss
   sourceMap: true
 }));
 app.use(express.static(path.join(__dirname, 'public')));
@@ -39,6 +42,8 @@ app.use(express.static(__dirname, { dotfiles: 'allow' } ));
 // CSURF
 var csrf = require('csurf');
 app.use(csrf({cookie: true}));
+
+// app.enable('trust proxy');
 
 var MongoStore = require('./modules/mongo');
 var session = require('express-session');
@@ -80,8 +85,6 @@ app.use(passport.session());
 // Return the Let's Encrypt certbot response:
 
 app.get('/.well-known/acme-challenge/:response', function (req, res) {
-
-
   config.logger.log('req: %s', JSON.stringify(req,null,4));
   config.logger.log('params: %s', req.params);
   config.logger.log('params: %s', JSON.stringify(req.params));

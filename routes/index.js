@@ -10,8 +10,11 @@ var express = require('express'),
 
 // /
 router.use(mixins.resetLocals, mixins.findViewer, function (req, res, next) {
-	var ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
-  logger.log("%s: /%s %s",ip, req.method, req.url);
+	var ips = req.ips || [];
+  ips.push(req.connection.remoteAddress);
+  if (req.headers['x-forwarded-for'])
+    ips.push(req.headers['x-forwarded-for']);
+  logger.log("%s /%s %s", ips, req.method, req.url);
 	next(null);
 });
 
@@ -53,7 +56,7 @@ router.post("/sync", mixins.hasViewer, function (req, res, next) {
   Viewer.sync(req.body, function (err, synced) {
     if (err) {
       logger.warn(err);
-      res.sendStatus(404);
+      return res.sendStatus(404);
     }
     res.status(200).send(synced);
   });

@@ -48,13 +48,15 @@ viewerSchema.statics.addTransaction = function(transaction, callback) {
   Viewer.findOne({'address':transaction.address,'secret':transaction.secret}, function (err, viewer) {
     if (err) return callback(err);
     if (!viewer) return callback('No matching viewer: '+transaction.address);
+    logger.log('transaction.transaction_hash: %s', transaction.transaction_hash);
+    logger.log('viewer.transactions: %s', _.pluck(viewer.transactions,'transaction_hash'));
     if (_.contains(_.pluck(viewer.transactions,'transaction_hash'),transaction.transaction_hash)) {
       var existing_transaction = _.findWhere(viewer.transactions, {'transaction_hash':transaction.transaction_hash});
-      logger.log('Confirmed Existing Transaction: %s -> %s (%s)', existing_transaction.confirmations, transaction.confirmations, transaction.hash);
+      logger.log('Confirmed Existing Transaction: %s -> %s (%s:%s)', existing_transaction.confirmations, transaction.confirmations, transaction.hash, viewer._id);
       existing_transaction.confirmations = transaction.confirmations;
     }
     else {
-      logger.log('Added Transaction: %s -> %s (%s)', transaction.value, transaction.address, transaction.hash);
+      logger.log('Added Transaction: %s -> %s (%s:%s)', transaction.value, transaction.address, transaction.hash, viewer._id);
       viewer.transactions.push({'value':transaction.value,'secret':transaction.secret,'address':transaction.address,'hash':transaction.transaction_hash,'confirmations':transaction.confirmations});
       viewer.addTime(transaction.value);
     }
@@ -121,7 +123,7 @@ viewerSchema.statics.sync = function(data, callback) {
     }
     var added = viewer.time_added || false;
     viewer.time_added = false;
-    viewer.save(function (err) {viewer
+    viewer.save(function (err) {
       callback(err,{'time':viewer.time,'added':added,'status':config.status});
     });
   });
