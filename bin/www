@@ -3,12 +3,25 @@
 /**
  * Module dependencies.
  */
-
+var config = require('../config/index');
 var app = require('../app');
 var debug = require('debug')('alexdeeznuts:server');
 var http = require('http');
 var rtmp = require('../modules/rtmp');
 var cron = require('../modules/cron').start();
+var alexd = require('../models/viewer');
+alexd.findOne({'username':config.alexd.username}, function (err, alexd_) {
+  if (err) return config.logger.warn(err);
+  if (!alexd_) {
+    config.logger.log('Prepping bot: %s', config.alexd.username);
+    alexd = new alexd(config.alexd);
+    alexd.save(function (err) {
+      if (err) config.logger.warn(err);
+    });
+  }
+  else
+    config.logger.log('Bot found: %s', alexd_.username);
+});
 
 /**
  * Get port from environment and store in Express.

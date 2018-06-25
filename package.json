@@ -1,10 +1,11 @@
 {
   "name": "alexdeeznuts",
-  "version": "0.0.0",
+  "version": "0.0.6",
   "private": true,
   "scripts": {
     "start": "node ./bin/www"
   },
+  "author": "Skeetzo",
   "dependencies": {
     "async": "^2.6.1",
     "bcrypt-nodejs": "0.0.3",
@@ -18,7 +19,9 @@
     "debug": "~2.6.9",
     "express": "~4.16.0",
     "express-flash": "0.0.2",
+    "express-rate-limit": "^2.11.0",
     "express-session": "^1.15.6",
+    "express-validator": "^5.2.0",
     "helmet": "^3.12.1",
     "http-errors": "~1.6.2",
     "md5": "^2.2.1",
@@ -27,6 +30,8 @@
     "morgan": "~1.9.0",
     "node-media-server": "^1.3.5",
     "node-sass-middleware": "0.11.0",
+    "passport": "^0.4.0",
+    "passport-local": "^1.0.0",
     "pug": "2.0.0-beta11",
     "qrcode": "^1.2.0",
     "tracer": "^0.8.15",

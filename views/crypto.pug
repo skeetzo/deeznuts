@@ -1,11 +1,11 @@
 .row
   .col-xs-12
-    if (viewer.address_qr)
+    if (user&&user.address_qr)
       //- explanation
       p  To Enter, Pay >=$1 in Bitcoin to:
       //- link
-      img(src=viewer.address_qr,style="display:block;margin-left:auto;margin-right:auto;")
-      a(href=viewer.address)= viewer.address
+      img(src=user.address_qr,style="display:block;margin-left:auto;margin-right:auto;")
+      a(href=user.address) bitcoin:#{user.address}
     else
       button.btn.btn-primary(onclick="generateAddress()") Generate Address
 
@@ -19,8 +19,9 @@
               location.reload();
             },
             error: function(data) {
+              alert("Please login or create an account!");
             },
           })).catch(function (reason) {
-            console.log(reason);
+            //- console.log(reason);
           });
         }

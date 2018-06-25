@@ -7,6 +7,7 @@ var mongoose = require('mongoose'),
     Google = require('../modules/google'),
     Receive = require('blockchain.info/Receive'),
     Exchange = require('blockchain.info/exchange'),
+    bcrypt = require('bcrypt-nodejs'),
     QRCode = require('qrcode');
 
 // Viewer Schema
@@ -15,18 +16,30 @@ var viewerSchema = new Schema({
   address_qr: { type: String },
   ip: { type: String },
   lastVisit: { type: Date, default: moment(new Date()).format('MM/DD/YYYY') },
+  logins: { type: Number, default: 0 },
+  password: { type: String },
   qr: { type: String },
   secret : { type: String }, // crypto sig
   start: { type: String, default: moment(new Date()).format('MM/DD/YYYY') },
   time: { type: Number, default: config.defaultTime }, // time allotted for live
   time_added: { type: Number },
   transactions: { type: Array, default: [] },
+  username: { type: String },
   visits: { type: Number, default: 1 },
 });
 
 viewerSchema.pre('save', function (next) {
   var self = this;
-  next(null);
+  if (!self.isModified('password')) return next();
+  var SALT_FACTOR = 5;
+  bcrypt.genSalt(SALT_FACTOR, function(err, salt) {
+    if (err) return next(err);
+    bcrypt.hash(self.password, salt, null, function(err, hash) {
+      if (err) return next(err);
+      self.password = hash;
+      next();
+    });
+  });
 });
 
 
@@ -35,13 +48,15 @@ viewerSchema.statics.addTransaction = function(transaction, callback) {
   Viewer.findOne({'address':transaction.address,'secret':transaction.secret}, function (err, viewer) {
     if (err) return callback(err);
     if (!viewer) return callback('No matching viewer: '+transaction.address);
+    logger.log('transaction.transaction_hash: %s', transaction.transaction_hash);
+    logger.log('viewer.transactions: %s', _.pluck(viewer.transactions,'transaction_hash'));
     if (_.contains(_.pluck(viewer.transactions,'transaction_hash'),transaction.transaction_hash)) {
       var existing_transaction = _.findWhere(viewer.transactions, {'transaction_hash':transaction.transaction_hash});
-      logger.log('Confirmed Existing Transaction: %s -> %s (%s)', existing_transaction.confirmations, transaction.confirmations, transaction.hash);
+      logger.log('Confirmed Existing Transaction: %s -> %s (%s:%s)', existing_transaction.confirmations, transaction.confirmations, transaction.hash, viewer._id);
       existing_transaction.confirmations = transaction.confirmations;
     }
     else {
-      logger.log('Added Transaction: %s -> %s (%s)', transaction.value, transaction.address, transaction.hash);
+      logger.log('Added Transaction: %s -> %s (%s:%s)', transaction.value, transaction.address, transaction.hash, viewer._id);
       viewer.transactions.push({'value':transaction.value,'secret':transaction.secret,'address':transaction.address,'hash':transaction.transaction_hash,'confirmations':transaction.confirmations});
       viewer.addTime(transaction.value);
     }
@@ -49,8 +64,8 @@ viewerSchema.statics.addTransaction = function(transaction, callback) {
 }
 
 viewerSchema.statics.generateAddress = function(viewer, callback) {
-  logger.log('Generating Address: %s', req.session.viewer.ip);
-  Viewer.findOne({'ip':viewer.ip}, function (err, viewer) {
+  logger.log('Generating Address: %s', viewer.ip);
+  Viewer.findById(viewer._id, function (err, viewer) {
     if (err) return callback(err);
     if (viewer.address) return callback('Address already generated: '+viewer.ip);
     if (config.debugging) return callback('Skipping Address- Debugging');
@@ -93,9 +108,9 @@ viewerSchema.statics.generateAddress = function(viewer, callback) {
 }
 
 viewerSchema.statics.sync = function(data, callback) {
-  Viewer.findOne({'ip':data.ip}, function (err, viewer) {
+  Viewer.findById(data._id, function (err, viewer) {
     if (err) return callback(err);
-    if (!viewer) return 'Viewer not found: '+data.ip;
+    if (!viewer) return 'Viewer not found: '+data._id;
     if (Math.abs(parseInt(viewer.time)-parseInt(data.time))>5)
       logger.log('not syncing time: %s seconds -> %s seconds', viewer.time, data.time);
     else if (data.time<=3) {
@@ -103,7 +118,7 @@ viewerSchema.statics.sync = function(data, callback) {
       viewer.time = 0;
     }
     else {
-      // logger.log('syncing time: %s seconds -> %s seconds', viewer.time, data.time);
+      logger.log('syncing time: %s seconds -> %s seconds', viewer.time, data.time);
       viewer.time = data.time;
     }
     var added = viewer.time_added || false;
@@ -138,6 +153,12 @@ viewerSchema.methods.addTime = function(value_in_satoshi) {
     });
   });
 }
+
+viewerSchema.methods.verifyPassword = function(candidatePassword, callback) {
+  bcrypt.compare(candidatePassword, this.password, function (err, isMatch) {
+    callback(err, isMatch);
+  });
+};
 
 var Viewer = mongoose.model('viewers', viewerSchema,'viewers');
 module.exports = Viewer;
