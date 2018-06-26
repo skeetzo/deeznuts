@@ -130,7 +130,6 @@ router.post("/login", signUpLimiter, [
   }),
     function (req, res) {
     req.session.user = mixins.User(req.user);
-    req.session.user.logins++;
     req.session.locals.loggedIn = true;
     req.session.locals.user = mixins.User(req.session.user);
     logger.log('login successful (local): %s', req.user._id);
