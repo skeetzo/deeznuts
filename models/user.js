@@ -111,13 +111,13 @@ userSchema.statics.sync = function(data, callback) {
     if (err) return callback(err);
     if (!user) return 'User not found: '+data._id;
     if (Math.abs(parseInt(user.time)-parseInt(data.time))>5)
-      logger.log('not syncing time: %s seconds -> %s seconds', user.time, data.time);
+      logger.log('syncing (ignore): %s seconds -> %s seconds (%s)', user.time, data.time, data._id);
     else if (data.time<=3) {
-      logger.debug('syncing time (bug): %s seconds -> %s (%s) seconds', user.time, 0, data.time);
+      logger.debug('syncing (bug): %s seconds -> %s (%s) seconds (%s)', user.time, 0, data.time, data._id);
       user.time = 0;
     }
     else {
-      logger.log('syncing time: %s seconds -> %s seconds', user.time, data.time);
+      logger.log('syncing (success): %s seconds -> %s seconds (%s)', user.time, data.time, data._id);
       user.time = data.time;
     }
     var added = user.time_added || false;
