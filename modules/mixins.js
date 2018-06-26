@@ -9,19 +9,8 @@ var _ = require('underscore'),
 
 
 module.exports.findUser = function(req, res, next) {
-    // if (req.session.user) {
-    //     req.session.locals.user = User_(req.session.user);
-    //     return step(null);
-    // }
-    // else if (req.session.locals.user)
-    //     return step(null);
     var ip = req.connection.remoteAddress,
         id = req.session.user ? req.session.user._id : null;
-        // ips = req.ips || [];
-    // ips.push(req.connection.remoteAddress);
-    // if (req.headers['x-forwarded-for'])
-        // ips.push(req.headers['x-forwarded-for']);
-    // User.findOne({'ip': { '$in': ips }}, function (err, user) {
     User.findOne({'$or':[{'_id':id},{'ip':ip}]}, function (err, user) {
         if (err) logger.warn(err);
         if (!user) {
@@ -43,7 +32,6 @@ module.exports.findUser = function(req, res, next) {
             });
         }
     });
-
     function step() {
         req.session.locals.user = User_(req.session.locals.user);
         next(null);
@@ -70,7 +58,6 @@ module.exports.loggedIn = function(req, res, next) {
     if (req.session.user&&req.session.locals.loggedIn)
         next(null);
     else {
-        // req.flash('error','Please login!');
         req.session.locals.error = 'Please login!';
         res.status(401).render('index', req.session.locals);
     }
