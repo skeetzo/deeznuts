@@ -41,13 +41,13 @@ var privateKey  = fs.readFileSync('/opt/bitnami/apache2/conf/server.key', 'utf8'
 var certificate = fs.readFileSync('/opt/bitnami/apache2/conf/server.crt', 'utf8');
 var credentials = {'key': privateKey, 'cert': certificate};
 
-var httpServer = http.createServer(app);
+// var httpServer = http.createServer(app);
 var httpsServer = https.createServer(credentials, app);
 // var httpPort = 8080;
 // var httpsPort = 8443;
-httpServer.listen(port);
-httpServer.on('error', onError);
-httpServer.on('listening', onListening);
+// httpServer.listen(port);
+// httpServer.on('error', onError);
+// httpServer.on('listening', onListening);
 httpsServer.listen(port);
 httpsServer.on('error', onError);
 httpsServer.on('listening', onListeningS);
