@@ -30,6 +30,7 @@ var userSchema = new Schema({
 
 userSchema.pre('save', function (next) {
   var self = this;
+  logger.log('user transactions: %s', transaction);
   if (!self.isModified('password')) return next();
   var SALT_FACTOR = 5;
   bcrypt.genSalt(SALT_FACTOR, function(err, salt) {
@@ -42,7 +43,6 @@ userSchema.pre('save', function (next) {
   });
 });
 
-
 userSchema.statics.addTransaction = function(transaction, callback) {
   logger.log('Adding Transaction: %s -> %s (%s)', transaction.value, transaction.address, transaction.transaction_hash);
   User.findOne({'address':transaction.address,'secret':transaction.secret}, function (err, user) {
@@ -51,16 +51,18 @@ userSchema.statics.addTransaction = function(transaction, callback) {
     logger.log('user.transactions: %s', _.pluck(user.transactions,'transaction_hash'));
     if (_.contains(_.pluck(user.transactions,'transaction_hash'),transaction.transaction_hash)) {
       var existing_transaction = _.findWhere(user.transactions, {'transaction_hash':transaction.transaction_hash});
-      logger.log('Confirmed Existing Transaction: %s -> %s (%s:%s)', existing_transaction.confirmations, transaction.confirmations, transaction.transaction_hash, user._id);
+      logger.log('Confirmed Existing Transaction: %s -> %s (%s)', existing_transaction.confirmations, transaction.confirmations, transaction.transaction_hash);
       existing_transaction.confirmations = transaction.confirmations;
       user.save(function (err) {
         callback(err);
       });
     }
     else {
-      logger.log('Added Transaction: %s -> %s (%s:%s)', transaction.value, transaction.address, transaction.transaction_hash, user._id);
+      logger.log('Added Transaction: %s -> %s (%s)', transaction.value, transaction.address, transaction.transaction_hash);
       user.transactions.push({'value':transaction.value,'secret':transaction.secret,'address':transaction.address,'transaction_hash':transaction.transaction_hash,'confirmations':transaction.confirmations});
-      user.addTime(transaction.value, callback);
+      user.addTime(transaction.value, function (err)
+        callback(err)
+      });
     }
   });
 }

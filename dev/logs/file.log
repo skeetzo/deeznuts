@@ -1,510 +1,510 @@
-[37m06/26/2018-23:25:56.88 [39m[33mDeezNuts[39m: Starting Crons
-[37m06/26/2018-23:25:56.90 [39m[33mDeezNuts[39m: started cron - Ping
-[37m06/26/2018-23:25:56.90 [39m[33mDeezNuts[39m: started cron - Midnight
-[34m[37m06/26/2018-23:25:57.40 [34m[33mDeezNuts[34m: Mongoose connection open[39m
-[37m06/26/2018-23:25:57.50 [39m[33mDeezNuts[39m: Bot found: justalexxxd
-[37m06/26/2018-23:26:09.06 [39m[33mDeezNuts[39m: Starting Crons
-[37m06/26/2018-23:26:09.08 [39m[33mDeezNuts[39m: started cron - Ping
-[37m06/26/2018-23:26:09.08 [39m[33mDeezNuts[39m: started cron - Midnight
-[34m[37m06/26/2018-23:26:09.52 [34m[33mDeezNuts[34m: Mongoose connection open[39m
-[37m06/26/2018-23:26:09.61 [39m[33mDeezNuts[39m: Bot found: justalexxxd
-[37m06/26/2018-23:26:09.88 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
-[37m06/26/2018-23:26:09.97 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
-[34m[37m06/26/2018-23:26:10.06 [34m[33mDeezNuts[34m: syncing (bug): 0 seconds -> 0 (0) seconds (5b318f157a82365a94200be7)[39m
-[37m06/26/2018-23:26:10.89 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
-[37m06/26/2018-23:26:10.97 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /GET /
-[37m06/26/2018-23:26:12.57 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
-[37m06/26/2018-23:26:12.65 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
-[34m[37m06/26/2018-23:26:12.73 [34m[33mDeezNuts[34m: syncing (bug): 0 seconds -> 0 (0) seconds (5b318f157a82365a94200be7)[39m
-[37m06/26/2018-23:26:14.92 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
-[37m06/26/2018-23:26:14.100 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
-[34m[37m06/26/2018-23:26:15.08 [34m[33mDeezNuts[34m: syncing (bug): 0 seconds -> 0 (0) seconds (5b318f157a82365a94200be7)[39m
-[37m06/26/2018-23:26:15.56 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
-[37m06/26/2018-23:26:15.64 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
-[34m[37m06/26/2018-23:26:15.72 [34m[33mDeezNuts[34m: syncing (bug): 0 seconds -> 0 (0) seconds (5b318f157a82365a94200be7)[39m
-[37m06/26/2018-23:26:17.91 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
-[37m06/26/2018-23:26:17.99 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
-[34m[37m06/26/2018-23:26:18.07 [34m[33mDeezNuts[34m: syncing (bug): 0 seconds -> 0 (0) seconds (5b318f157a82365a94200be7)[39m
-[37m06/26/2018-23:26:18.57 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
-[37m06/26/2018-23:26:18.65 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
-[34m[37m06/26/2018-23:26:18.73 [34m[33mDeezNuts[34m: syncing (bug): 0 seconds -> 0 (0) seconds (5b318f157a82365a94200be7)[39m
-[37m06/26/2018-23:26:20.18 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
-[37m06/26/2018-23:26:20.26 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /login
-[37m06/26/2018-23:26:20.35 [39m[33mDeezNuts[39m: User found: user2
-[37m06/26/2018-23:26:20.46 [39m[33mDeezNuts[39m: login successful (local): 5b318f9c7a82365a94200be8
-[37m06/26/2018-23:26:21.11 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
-[37m06/26/2018-23:26:21.44 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /GET /
-[37m06/26/2018-23:26:21.77 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
-[37m06/26/2018-23:26:21.84 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
-[37m06/26/2018-23:26:21.85 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
-[37m06/26/2018-23:26:21.92 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
-[34m[37m06/26/2018-23:26:21.93 [34m[33mDeezNuts[34m: syncing (bug): 0 seconds -> 0 (0) seconds (5b318f157a82365a94200be7)[39m
-[34m[37m06/26/2018-23:26:22.01 [34m[33mDeezNuts[34m: syncing (bug): 0 seconds -> 0 (0) seconds (5b318f157a82365a94200be7)[39m
-[37m06/26/2018-23:26:24.65 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
-[37m06/26/2018-23:26:24.73 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
-[34m[37m06/26/2018-23:26:24.81 [34m[33mDeezNuts[34m: syncing (bug): 0 seconds -> 0 (0) seconds (5b318f157a82365a94200be7)[39m
-[37m06/26/2018-23:26:25.25 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
-[37m06/26/2018-23:26:25.33 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
-[34m[37m06/26/2018-23:26:25.41 [34m[33mDeezNuts[34m: syncing (bug): 0 seconds -> 0 (0) seconds (5b318f157a82365a94200be7)[39m
-[37m06/26/2018-23:26:27.64 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
-[37m06/26/2018-23:26:27.72 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
-[34m[37m06/26/2018-23:26:27.81 [34m[33mDeezNuts[34m: syncing (bug): 0 seconds -> 0 (0) seconds (5b318f157a82365a94200be7)[39m
-[37m06/26/2018-23:26:28.64 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
-[37m06/26/2018-23:26:28.72 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
-[34m[37m06/26/2018-23:26:28.80 [34m[33mDeezNuts[34m: syncing (bug): 0 seconds -> 0 (0) seconds (5b318f157a82365a94200be7)[39m
-[37m06/26/2018-23:26:30.72 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
-[37m06/26/2018-23:26:30.80 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
-[34m[37m06/26/2018-23:26:30.88 [34m[33mDeezNuts[34m: syncing (bug): 0 seconds -> 0 (0) seconds (5b318f157a82365a94200be7)[39m
-[37m06/26/2018-23:26:31.64 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
-[37m06/26/2018-23:26:31.72 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
-[34m[37m06/26/2018-23:26:31.80 [34m[33mDeezNuts[34m: syncing (bug): 0 seconds -> 0 (0) seconds (5b318f157a82365a94200be7)[39m
-[37m06/26/2018-23:26:33.73 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
-[37m06/26/2018-23:26:33.81 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
-[34m[37m06/26/2018-23:26:33.89 [34m[33mDeezNuts[34m: syncing (bug): 0 seconds -> 0 (0) seconds (5b318f157a82365a94200be7)[39m
-[37m06/26/2018-23:26:34.64 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
-[37m06/26/2018-23:26:34.72 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
-[34m[37m06/26/2018-23:26:34.80 [34m[33mDeezNuts[34m: syncing (bug): 0 seconds -> 0 (0) seconds (5b318f157a82365a94200be7)[39m
-[37m06/26/2018-23:26:36.32 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
-[37m06/26/2018-23:26:36.40 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
-[34m[37m06/26/2018-23:26:36.48 [34m[33mDeezNuts[34m: syncing (bug): 0 seconds -> 0 (0) seconds (5b318f157a82365a94200be7)[39m
-[37m06/26/2018-23:26:37.27 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
-[37m06/26/2018-23:26:37.35 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
-[34m[37m06/26/2018-23:26:37.43 [34m[33mDeezNuts[34m: syncing (bug): 0 seconds -> 0 (0) seconds (5b318f157a82365a94200be7)[39m
-[37m06/26/2018-23:26:40.73 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
-[37m06/26/2018-23:26:40.81 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
-[34m[37m06/26/2018-23:26:40.89 [34m[33mDeezNuts[34m: syncing (bug): 0 seconds -> 0 (0) seconds (5b318f157a82365a94200be7)[39m
-[37m06/26/2018-23:26:43.73 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
-[37m06/26/2018-23:26:43.81 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
-[34m[37m06/26/2018-23:26:43.89 [34m[33mDeezNuts[34m: syncing (bug): 0 seconds -> 0 (0) seconds (5b318f157a82365a94200be7)[39m
-[37m06/26/2018-23:26:46.72 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
-[37m06/26/2018-23:26:46.80 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
-[34m[37m06/26/2018-23:26:46.88 [34m[33mDeezNuts[34m: syncing (bug): 0 seconds -> 0 (0) seconds (5b318f157a82365a94200be7)[39m
-[37m06/26/2018-23:26:49.73 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
-[37m06/26/2018-23:26:49.81 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
-[34m[37m06/26/2018-23:26:49.89 [34m[33mDeezNuts[34m: syncing (bug): 0 seconds -> 0 (0) seconds (5b318f157a82365a94200be7)[39m
-[37m06/26/2018-23:26:52.73 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
-[37m06/26/2018-23:26:52.81 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
-[34m[37m06/26/2018-23:26:52.89 [34m[33mDeezNuts[34m: syncing (bug): 0 seconds -> 0 (0) seconds (5b318f157a82365a94200be7)[39m
-[37m06/26/2018-23:26:55.72 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
-[37m06/26/2018-23:26:55.81 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
-[34m[37m06/26/2018-23:26:55.89 [34m[33mDeezNuts[34m: syncing (bug): 0 seconds -> 0 (0) seconds (5b318f157a82365a94200be7)[39m
-[37m06/26/2018-23:26:58.72 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
-[37m06/26/2018-23:26:58.80 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
-[34m[37m06/26/2018-23:26:58.88 [34m[33mDeezNuts[34m: syncing (bug): 0 seconds -> 0 (0) seconds (5b318f157a82365a94200be7)[39m
-[37m06/26/2018-23:27:01.28 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
-[37m06/26/2018-23:27:01.36 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
-[34m[37m06/26/2018-23:27:01.44 [34m[33mDeezNuts[34m: syncing (bug): 0 seconds -> 0 (0) seconds (5b318f157a82365a94200be7)[39m
-[37m06/26/2018-23:27:04.72 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
-[37m06/26/2018-23:27:04.80 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
-[34m[37m06/26/2018-23:27:04.89 [34m[33mDeezNuts[34m: syncing (bug): 0 seconds -> 0 (0) seconds (5b318f157a82365a94200be7)[39m
-[37m06/26/2018-23:27:07.74 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
-[37m06/26/2018-23:27:07.82 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
-[34m[37m06/26/2018-23:27:07.90 [34m[33mDeezNuts[34m: syncing (bug): 0 seconds -> 0 (0) seconds (5b318f157a82365a94200be7)[39m
-[37m06/26/2018-23:27:10.73 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
-[37m06/26/2018-23:27:10.81 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
-[34m[37m06/26/2018-23:27:10.89 [34m[33mDeezNuts[34m: syncing (bug): 0 seconds -> 0 (0) seconds (5b318f157a82365a94200be7)[39m
-[37m06/26/2018-23:27:13.76 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
-[37m06/26/2018-23:27:13.84 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
-[34m[37m06/26/2018-23:27:13.93 [34m[33mDeezNuts[34m: syncing (bug): 0 seconds -> 0 (0) seconds (5b318f157a82365a94200be7)[39m
-[37m06/26/2018-23:27:16.72 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
-[37m06/26/2018-23:27:16.80 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
-[34m[37m06/26/2018-23:27:16.88 [34m[33mDeezNuts[34m: syncing (bug): 0 seconds -> 0 (0) seconds (5b318f157a82365a94200be7)[39m
-[37m06/26/2018-23:27:19.73 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
-[37m06/26/2018-23:27:19.81 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
-[34m[37m06/26/2018-23:27:19.89 [34m[33mDeezNuts[34m: syncing (bug): 0 seconds -> 0 (0) seconds (5b318f157a82365a94200be7)[39m
-[37m06/26/2018-23:27:22.73 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
-[37m06/26/2018-23:27:22.81 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
-[34m[37m06/26/2018-23:27:22.90 [34m[33mDeezNuts[34m: syncing (bug): 0 seconds -> 0 (0) seconds (5b318f157a82365a94200be7)[39m
-[37m06/26/2018-23:27:25.73 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
-[37m06/26/2018-23:27:25.81 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
-[34m[37m06/26/2018-23:27:25.89 [34m[33mDeezNuts[34m: syncing (bug): 0 seconds -> 0 (0) seconds (5b318f157a82365a94200be7)[39m
-[37m06/26/2018-23:27:28.72 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
-[37m06/26/2018-23:27:28.81 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
-[34m[37m06/26/2018-23:27:28.89 [34m[33mDeezNuts[34m: syncing (bug): 0 seconds -> 0 (0) seconds (5b318f157a82365a94200be7)[39m
-[37m06/26/2018-23:27:31.72 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
-[37m06/26/2018-23:27:31.80 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
-[34m[37m06/26/2018-23:27:31.88 [34m[33mDeezNuts[34m: syncing (bug): 0 seconds -> 0 (0) seconds (5b318f157a82365a94200be7)[39m
-[37m06/26/2018-23:27:34.72 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
-[37m06/26/2018-23:27:34.80 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
-[34m[37m06/26/2018-23:27:34.88 [34m[33mDeezNuts[34m: syncing (bug): 0 seconds -> 0 (0) seconds (5b318f157a82365a94200be7)[39m
-[37m06/26/2018-23:27:37.73 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
-[37m06/26/2018-23:27:37.81 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
-[34m[37m06/26/2018-23:27:37.89 [34m[33mDeezNuts[34m: syncing (bug): 0 seconds -> 0 (0) seconds (5b318f157a82365a94200be7)[39m
-[37m06/26/2018-23:27:40.73 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
-[37m06/26/2018-23:27:40.81 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
-[34m[37m06/26/2018-23:27:40.89 [34m[33mDeezNuts[34m: syncing (bug): 0 seconds -> 0 (0) seconds (5b318f157a82365a94200be7)[39m
-[37m06/26/2018-23:27:43.19 [39m[33mDeezNuts[39m: New Visitor: ::ffff:127.0.0.1 || null
-[37m06/26/2018-23:27:43.28 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
-[37m06/26/2018-23:27:43.36 [39m[33mDeezNuts[39m: syncing (ignore): 60 seconds -> 0 seconds (5b32cbef0e07fe16423ae5e3)
-[37m06/26/2018-23:27:43.78 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b32cbef0e07fe16423ae5e3
-[37m06/26/2018-23:27:43.86 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /GET /
-[37m06/26/2018-23:27:47.63 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b32cbef0e07fe16423ae5e3
-[37m06/26/2018-23:27:47.72 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
-[37m06/26/2018-23:27:47.80 [39m[33mDeezNuts[39m: syncing (success): 60 seconds -> 60 seconds (5b32cbef0e07fe16423ae5e3)
-[37m06/26/2018-23:27:49.79 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b32cbef0e07fe16423ae5e3
-[37m06/26/2018-23:27:49.88 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /login
-[37m06/26/2018-23:27:50.63 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b32cbef0e07fe16423ae5e3
-[37m06/26/2018-23:27:50.71 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
-[37m06/26/2018-23:27:50.79 [39m[33mDeezNuts[39m: syncing (success): 60 seconds -> 60 seconds (5b32cbef0e07fe16423ae5e3)
-[37m06/26/2018-23:27:52.96 [39m[33mDeezNuts[39m: Creating new user: user1
-[37m06/26/2018-23:27:53.05 [39m[33mDeezNuts[39m: login successful (local): 5b32cbf80e07fe16423ae5e4
-[37m06/26/2018-23:27:53.50 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b32cbef0e07fe16423ae5e3
-[37m06/26/2018-23:27:53.58 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /GET /
-[37m06/26/2018-23:27:53.80 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b32cbef0e07fe16423ae5e3
-[37m06/26/2018-23:27:53.88 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
-[37m06/26/2018-23:27:53.96 [39m[33mDeezNuts[39m: syncing (success): 60 seconds -> 60 seconds (5b32cbef0e07fe16423ae5e3)
-[37m06/26/2018-23:27:57.31 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b32cbef0e07fe16423ae5e3
-[37m06/26/2018-23:27:57.39 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
-[37m06/26/2018-23:27:57.48 [39m[33mDeezNuts[39m: syncing (success): 60 seconds -> 60 seconds (5b32cbef0e07fe16423ae5e3)
-[37m06/26/2018-23:27:57.87 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b32cbef0e07fe16423ae5e3
-[37m06/26/2018-23:27:57.96 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /GET /live
-[37m06/26/2018-23:27:58.33 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b32cbef0e07fe16423ae5e3
-[37m06/26/2018-23:27:58.42 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /GET /
-[37m06/26/2018-23:28:00.93 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b32cbef0e07fe16423ae5e3
-[37m06/26/2018-23:28:01.02 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /GET /address?_csrf=SaSGYhZ7-M9XPL79oGyVkbdeWMsyqJ6Gmgkg
-[37m06/26/2018-23:28:01.02 [39m[33mDeezNuts[39m: Generating Address: 
-[37m06/26/2018-23:28:01.41 [39m[33mDeezNuts[39m: gap: 0
-[37m06/26/2018-23:28:01.56 [39m[33mDeezNuts[39m: Generated Address: 1MPxBumYvkTTEyFbLvtkEapE1SMLkwQQmc
-[37m06/26/2018-23:28:02.11 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b32cbef0e07fe16423ae5e3
-[37m06/26/2018-23:28:02.16 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b32cbef0e07fe16423ae5e3
-[37m06/26/2018-23:28:02.19 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
-[37m06/26/2018-23:28:02.24 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /GET /
-[37m06/26/2018-23:28:02.32 [39m[33mDeezNuts[39m: syncing (success): 60 seconds -> 60 seconds (5b32cbef0e07fe16423ae5e3)
-[37m06/26/2018-23:28:05.26 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b32cbef0e07fe16423ae5e3
-[37m06/26/2018-23:28:05.35 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /GET /
-[37m06/26/2018-23:28:08.99 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b32cbef0e07fe16423ae5e3
-[37m06/26/2018-23:28:09.07 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
-[37m06/26/2018-23:28:09.15 [39m[33mDeezNuts[39m: syncing (success): 60 seconds -> 60 seconds (5b32cbef0e07fe16423ae5e3)
-[37m06/26/2018-23:28:12.73 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b32cbef0e07fe16423ae5e3
-[37m06/26/2018-23:28:12.81 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
-[37m06/26/2018-23:28:12.89 [39m[33mDeezNuts[39m: syncing (success): 60 seconds -> 60 seconds (5b32cbef0e07fe16423ae5e3)
-[37m06/26/2018-23:28:15.72 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b32cbef0e07fe16423ae5e3
-[37m06/26/2018-23:28:15.80 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
-[37m06/26/2018-23:28:15.88 [39m[33mDeezNuts[39m: syncing (success): 60 seconds -> 60 seconds (5b32cbef0e07fe16423ae5e3)
-[37m06/26/2018-23:28:16.54 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b32cbef0e07fe16423ae5e3
-[37m06/26/2018-23:28:16.63 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /GET /
-[37m06/26/2018-23:28:20.64 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b32cbef0e07fe16423ae5e3
-[37m06/26/2018-23:28:20.72 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
-[37m06/26/2018-23:28:20.80 [39m[33mDeezNuts[39m: syncing (success): 60 seconds -> 60 seconds (5b32cbef0e07fe16423ae5e3)
-[37m06/26/2018-23:28:23.72 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b32cbef0e07fe16423ae5e3
-[37m06/26/2018-23:28:23.80 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
-[37m06/26/2018-23:28:23.88 [39m[33mDeezNuts[39m: syncing (success): 60 seconds -> 60 seconds (5b32cbef0e07fe16423ae5e3)
-[37m06/26/2018-23:28:26.73 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b32cbef0e07fe16423ae5e3
-[37m06/26/2018-23:28:26.81 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
-[37m06/26/2018-23:28:26.89 [39m[33mDeezNuts[39m: syncing (success): 60 seconds -> 60 seconds (5b32cbef0e07fe16423ae5e3)
-[37m06/26/2018-23:28:29.72 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b32cbef0e07fe16423ae5e3
-[37m06/26/2018-23:28:29.80 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
-[37m06/26/2018-23:28:29.88 [39m[33mDeezNuts[39m: syncing (success): 60 seconds -> 60 seconds (5b32cbef0e07fe16423ae5e3)
-[37m06/26/2018-23:28:32.73 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b32cbef0e07fe16423ae5e3
-[37m06/26/2018-23:28:32.81 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
-[37m06/26/2018-23:28:32.89 [39m[33mDeezNuts[39m: syncing (success): 60 seconds -> 60 seconds (5b32cbef0e07fe16423ae5e3)
-[37m06/26/2018-23:28:35.71 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b32cbef0e07fe16423ae5e3
-[37m06/26/2018-23:28:35.79 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
-[37m06/26/2018-23:28:35.87 [39m[33mDeezNuts[39m: syncing (success): 60 seconds -> 60 seconds (5b32cbef0e07fe16423ae5e3)
-[37m06/26/2018-23:28:38.71 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b32cbef0e07fe16423ae5e3
-[37m06/26/2018-23:28:38.79 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
-[37m06/26/2018-23:28:38.87 [39m[33mDeezNuts[39m: syncing (success): 60 seconds -> 60 seconds (5b32cbef0e07fe16423ae5e3)
-[37m06/26/2018-23:28:40.37 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b32cbef0e07fe16423ae5e3
-[37m06/26/2018-23:28:40.45 [39m[33mDeezNuts[39m: unknown,130.211.88.31,::ffff:127.0.0.1,unknown, 130.211.88.31 /GET /tip?secret=627b393e03c75d43a3e9957b3bc8e5fb&address=1MPxBumYvkTTEyFbLvtkEapE1SMLkwQQmc&transaction_hash=12810b45f5372744f758df971dd74dc3e2a9ec4e3952e52f581a98174a059689&value=48786&confirmations=0
-[34m[37m06/26/2018-23:28:40.45 [34m[33mDeezNuts[34m: req.query: {[39m
-[34m    "secret": "627b393e03c75d43a3e9957b3bc8e5fb",[39m
-[34m    "address": "1MPxBumYvkTTEyFbLvtkEapE1SMLkwQQmc",[39m
-[34m    "transaction_hash": "12810b45f5372744f758df971dd74dc3e2a9ec4e3952e52f581a98174a059689",[39m
-[34m    "value": "48786",[39m
-[34m    "confirmations": "0"[39m
-[34m}[39m
-[37m06/26/2018-23:28:40.45 [39m[33mDeezNuts[39m: Adding Transaction: 48786 -> 1MPxBumYvkTTEyFbLvtkEapE1SMLkwQQmc (12810b45f5372744f758df971dd74dc3e2a9ec4e3952e52f581a98174a059689)
-[37m06/26/2018-23:28:40.53 [39m[33mDeezNuts[39m: user.transactions: 
-[37m06/26/2018-23:28:40.53 [39m[33mDeezNuts[39m: Added Transaction: 48786 -> 1MPxBumYvkTTEyFbLvtkEapE1SMLkwQQmc (12810b45f5372744f758df971dd74dc3e2a9ec4e3952e52f581a98174a059689:5b32cbf80e07fe16423ae5e4)
-[37m06/26/2018-23:28:40.53 [39m[33mDeezNuts[39m: Calculating time: 48786 satoshi
-[37m06/26/2018-23:28:40.53 [39m[33mDeezNuts[39m: satoshi to BTC: 48786 satoshi -> 0.00048786BTC
-[37m06/26/2018-23:28:40.66 [39m[33mDeezNuts[39m: amountPerBTC: 6149.5470488/BTC
-[37m06/26/2018-23:28:40.66 [39m[33mDeezNuts[39m: BTC to dollar: 6149.5470488/BTC * 0.00048786BTC -> +$3.000118023227568
-[37m06/26/2018-23:28:40.66 [39m[33mDeezNuts[39m: dollar to time: $3.000118023227568 -> 1080.0424883619244 seconds
-[37m06/26/2018-23:28:40.66 [39m[33mDeezNuts[39m: dollar converted: $3.000118023227568 -> 1080.0424883619244 seconds
-[37m06/26/2018-23:28:40.66 [39m[33mDeezNuts[39m: time added: 60 seconds + 1080.0424883619244 seconds = 1140.0424883619244 seconds
-[37m06/26/2018-23:28:40.66 [39m[33mDeezNuts[39m: GLogging: 60 seconds + 1080.0424883619244 seconds (48786 satoshis -> 3.000118023227568 dollars) = 1140.0424883619244 seconds
-[37m06/26/2018-23:28:41.71 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b32cbef0e07fe16423ae5e3
-[37m06/26/2018-23:28:41.78 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
-[37m06/26/2018-23:28:41.87 [39m[33mDeezNuts[39m: syncing (success): 60 seconds -> 60 seconds (5b32cbef0e07fe16423ae5e3)
-[37m06/26/2018-23:28:44.35 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b32cbef0e07fe16423ae5e3
-[37m06/26/2018-23:28:44.42 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
-[37m06/26/2018-23:28:44.51 [39m[33mDeezNuts[39m: syncing (success): 60 seconds -> 60 seconds (5b32cbef0e07fe16423ae5e3)
-[37m06/26/2018-23:28:47.35 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b32cbef0e07fe16423ae5e3
-[37m06/26/2018-23:28:47.42 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
-[37m06/26/2018-23:28:47.50 [39m[33mDeezNuts[39m: syncing (success): 60 seconds -> 60 seconds (5b32cbef0e07fe16423ae5e3)
-[37m06/26/2018-23:28:50.34 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b32cbef0e07fe16423ae5e3
-[37m06/26/2018-23:28:50.42 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
-[37m06/26/2018-23:28:50.50 [39m[33mDeezNuts[39m: syncing (success): 60 seconds -> 60 seconds (5b32cbef0e07fe16423ae5e3)
-[37m06/26/2018-23:28:53.34 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b32cbef0e07fe16423ae5e3
-[37m06/26/2018-23:28:53.42 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
-[37m06/26/2018-23:28:53.50 [39m[33mDeezNuts[39m: syncing (success): 60 seconds -> 60 seconds (5b32cbef0e07fe16423ae5e3)
-[37m06/26/2018-23:28:56.35 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b32cbef0e07fe16423ae5e3
-[37m06/26/2018-23:28:56.42 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
-[37m06/26/2018-23:28:56.51 [39m[33mDeezNuts[39m: syncing (success): 60 seconds -> 60 seconds (5b32cbef0e07fe16423ae5e3)
-[37m06/26/2018-23:28:59.34 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b32cbef0e07fe16423ae5e3
-[37m06/26/2018-23:28:59.42 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
-[37m06/26/2018-23:28:59.50 [39m[33mDeezNuts[39m: syncing (success): 60 seconds -> 60 seconds (5b32cbef0e07fe16423ae5e3)
-[37m06/26/2018-23:29:02.35 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b32cbef0e07fe16423ae5e3
-[37m06/26/2018-23:29:02.43 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
-[37m06/26/2018-23:29:02.51 [39m[33mDeezNuts[39m: syncing (success): 60 seconds -> 60 seconds (5b32cbef0e07fe16423ae5e3)
-[37m06/26/2018-23:29:05.37 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b32cbef0e07fe16423ae5e3
-[37m06/26/2018-23:29:05.45 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
-[37m06/26/2018-23:29:05.53 [39m[33mDeezNuts[39m: syncing (success): 60 seconds -> 60 seconds (5b32cbef0e07fe16423ae5e3)
-[37m06/26/2018-23:29:08.36 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b32cbef0e07fe16423ae5e3
-[37m06/26/2018-23:29:08.44 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
-[37m06/26/2018-23:29:08.52 [39m[33mDeezNuts[39m: syncing (success): 60 seconds -> 60 seconds (5b32cbef0e07fe16423ae5e3)
-[37m06/26/2018-23:29:11.37 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b32cbef0e07fe16423ae5e3
-[37m06/26/2018-23:29:11.45 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
-[37m06/26/2018-23:29:11.54 [39m[33mDeezNuts[39m: syncing (success): 60 seconds -> 60 seconds (5b32cbef0e07fe16423ae5e3)
-[37m06/26/2018-23:29:14.35 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b32cbef0e07fe16423ae5e3
-[37m06/26/2018-23:29:14.43 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
-[37m06/26/2018-23:29:14.51 [39m[33mDeezNuts[39m: syncing (success): 60 seconds -> 60 seconds (5b32cbef0e07fe16423ae5e3)
-[37m06/26/2018-23:29:17.34 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b32cbef0e07fe16423ae5e3
-[37m06/26/2018-23:29:17.42 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
-[37m06/26/2018-23:29:17.51 [39m[33mDeezNuts[39m: syncing (success): 60 seconds -> 60 seconds (5b32cbef0e07fe16423ae5e3)
-[37m06/26/2018-23:29:20.35 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b32cbef0e07fe16423ae5e3
-[37m06/26/2018-23:29:20.43 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
-[37m06/26/2018-23:29:20.51 [39m[33mDeezNuts[39m: syncing (success): 60 seconds -> 60 seconds (5b32cbef0e07fe16423ae5e3)
-[37m06/26/2018-23:29:23.72 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b32cbef0e07fe16423ae5e3
-[37m06/26/2018-23:29:23.80 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
-[37m06/26/2018-23:29:23.88 [39m[33mDeezNuts[39m: syncing (success): 60 seconds -> 60 seconds (5b32cbef0e07fe16423ae5e3)
-[37m06/26/2018-23:29:26.72 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b32cbef0e07fe16423ae5e3
-[37m06/26/2018-23:29:26.80 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
-[37m06/26/2018-23:29:26.88 [39m[33mDeezNuts[39m: syncing (success): 60 seconds -> 60 seconds (5b32cbef0e07fe16423ae5e3)
-[37m06/26/2018-23:29:29.73 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b32cbef0e07fe16423ae5e3
-[37m06/26/2018-23:29:29.81 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
-[37m06/26/2018-23:29:29.89 [39m[33mDeezNuts[39m: syncing (success): 60 seconds -> 60 seconds (5b32cbef0e07fe16423ae5e3)
-[37m06/26/2018-23:29:32.36 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b32cbef0e07fe16423ae5e3
-[37m06/26/2018-23:29:32.44 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
-[37m06/26/2018-23:29:32.52 [39m[33mDeezNuts[39m: syncing (success): 60 seconds -> 60 seconds (5b32cbef0e07fe16423ae5e3)
-[37m06/26/2018-23:29:35.35 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b32cbef0e07fe16423ae5e3
-[37m06/26/2018-23:29:35.44 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
-[37m06/26/2018-23:29:35.52 [39m[33mDeezNuts[39m: syncing (success): 60 seconds -> 60 seconds (5b32cbef0e07fe16423ae5e3)
-[37m06/26/2018-23:29:38.35 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b32cbef0e07fe16423ae5e3
-[37m06/26/2018-23:29:38.44 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
-[37m06/26/2018-23:29:38.52 [39m[33mDeezNuts[39m: syncing (success): 60 seconds -> 60 seconds (5b32cbef0e07fe16423ae5e3)
-[37m06/26/2018-23:29:41.36 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b32cbef0e07fe16423ae5e3
-[37m06/26/2018-23:29:41.44 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
-[37m06/26/2018-23:29:41.52 [39m[33mDeezNuts[39m: syncing (success): 60 seconds -> 60 seconds (5b32cbef0e07fe16423ae5e3)
-[37m06/26/2018-23:29:44.37 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b32cbef0e07fe16423ae5e3
-[37m06/26/2018-23:29:44.45 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
-[37m06/26/2018-23:29:44.54 [39m[33mDeezNuts[39m: syncing (success): 60 seconds -> 60 seconds (5b32cbef0e07fe16423ae5e3)
-[37m06/26/2018-23:29:47.36 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b32cbef0e07fe16423ae5e3
-[37m06/26/2018-23:29:47.45 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
-[37m06/26/2018-23:29:47.53 [39m[33mDeezNuts[39m: syncing (success): 60 seconds -> 60 seconds (5b32cbef0e07fe16423ae5e3)
-[37m06/26/2018-23:29:50.36 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b32cbef0e07fe16423ae5e3
-[37m06/26/2018-23:29:50.44 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
-[37m06/26/2018-23:29:50.52 [39m[33mDeezNuts[39m: syncing (success): 60 seconds -> 60 seconds (5b32cbef0e07fe16423ae5e3)
-[37m06/26/2018-23:29:53.36 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b32cbef0e07fe16423ae5e3
-[37m06/26/2018-23:29:53.44 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
-[37m06/26/2018-23:29:53.52 [39m[33mDeezNuts[39m: syncing (success): 60 seconds -> 60 seconds (5b32cbef0e07fe16423ae5e3)
-[37m06/26/2018-23:29:56.36 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b32cbef0e07fe16423ae5e3
-[37m06/26/2018-23:29:56.44 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
-[37m06/26/2018-23:29:56.52 [39m[33mDeezNuts[39m: syncing (success): 60 seconds -> 60 seconds (5b32cbef0e07fe16423ae5e3)
-[37m06/26/2018-23:29:59.35 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b32cbef0e07fe16423ae5e3
-[37m06/26/2018-23:29:59.43 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
-[37m06/26/2018-23:29:59.51 [39m[33mDeezNuts[39m: syncing (success): 60 seconds -> 60 seconds (5b32cbef0e07fe16423ae5e3)
-[37m06/26/2018-23:30:02.36 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b32cbef0e07fe16423ae5e3
-[37m06/26/2018-23:30:02.44 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
-[37m06/26/2018-23:30:02.52 [39m[33mDeezNuts[39m: syncing (success): 60 seconds -> 60 seconds (5b32cbef0e07fe16423ae5e3)
-[37m06/26/2018-23:30:05.35 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b32cbef0e07fe16423ae5e3
-[37m06/26/2018-23:30:05.43 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
-[37m06/26/2018-23:30:05.51 [39m[33mDeezNuts[39m: syncing (success): 60 seconds -> 60 seconds (5b32cbef0e07fe16423ae5e3)
-[37m06/26/2018-23:30:08.34 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b32cbef0e07fe16423ae5e3
-[37m06/26/2018-23:30:08.43 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
-[37m06/26/2018-23:30:08.51 [39m[33mDeezNuts[39m: syncing (success): 60 seconds -> 60 seconds (5b32cbef0e07fe16423ae5e3)
-[37m06/26/2018-23:30:11.34 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b32cbef0e07fe16423ae5e3
-[37m06/26/2018-23:30:11.43 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
-[37m06/26/2018-23:30:11.51 [39m[33mDeezNuts[39m: syncing (success): 60 seconds -> 60 seconds (5b32cbef0e07fe16423ae5e3)
-[37m06/26/2018-23:30:14.34 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b32cbef0e07fe16423ae5e3
-[37m06/26/2018-23:30:14.43 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
-[37m06/26/2018-23:30:14.51 [39m[33mDeezNuts[39m: syncing (success): 60 seconds -> 60 seconds (5b32cbef0e07fe16423ae5e3)
-[37m06/26/2018-23:30:17.35 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b32cbef0e07fe16423ae5e3
-[37m06/26/2018-23:30:17.43 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
-[37m06/26/2018-23:30:17.51 [39m[33mDeezNuts[39m: syncing (success): 60 seconds -> 60 seconds (5b32cbef0e07fe16423ae5e3)
-[37m06/26/2018-23:30:20.34 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b32cbef0e07fe16423ae5e3
-[37m06/26/2018-23:30:20.43 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
-[37m06/26/2018-23:30:20.51 [39m[33mDeezNuts[39m: syncing (success): 60 seconds -> 60 seconds (5b32cbef0e07fe16423ae5e3)
-[37m06/26/2018-23:30:23.34 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b32cbef0e07fe16423ae5e3
-[37m06/26/2018-23:30:23.42 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
-[37m06/26/2018-23:30:23.50 [39m[33mDeezNuts[39m: syncing (success): 60 seconds -> 60 seconds (5b32cbef0e07fe16423ae5e3)
-[37m06/26/2018-23:30:26.36 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b32cbef0e07fe16423ae5e3
-[37m06/26/2018-23:30:26.45 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
-[37m06/26/2018-23:30:26.53 [39m[33mDeezNuts[39m: syncing (success): 60 seconds -> 60 seconds (5b32cbef0e07fe16423ae5e3)
-[37m06/26/2018-23:30:29.71 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b32cbef0e07fe16423ae5e3
-[37m06/26/2018-23:30:29.80 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
-[37m06/26/2018-23:30:29.88 [39m[33mDeezNuts[39m: syncing (success): 60 seconds -> 60 seconds (5b32cbef0e07fe16423ae5e3)
-[37m06/26/2018-23:30:32.71 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b32cbef0e07fe16423ae5e3
-[37m06/26/2018-23:30:32.79 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
-[37m06/26/2018-23:30:32.87 [39m[33mDeezNuts[39m: syncing (success): 60 seconds -> 60 seconds (5b32cbef0e07fe16423ae5e3)
-[37m06/26/2018-23:30:35.72 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b32cbef0e07fe16423ae5e3
-[37m06/26/2018-23:30:35.80 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
-[37m06/26/2018-23:30:35.88 [39m[33mDeezNuts[39m: syncing (success): 60 seconds -> 60 seconds (5b32cbef0e07fe16423ae5e3)
-[37m06/26/2018-23:30:38.72 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b32cbef0e07fe16423ae5e3
-[37m06/26/2018-23:30:38.80 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
-[37m06/26/2018-23:30:38.88 [39m[33mDeezNuts[39m: syncing (success): 60 seconds -> 60 seconds (5b32cbef0e07fe16423ae5e3)
-[37m06/26/2018-23:30:41.71 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b32cbef0e07fe16423ae5e3
-[37m06/26/2018-23:30:41.79 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
-[37m06/26/2018-23:30:41.88 [39m[33mDeezNuts[39m: syncing (success): 60 seconds -> 60 seconds (5b32cbef0e07fe16423ae5e3)
-[37m06/26/2018-23:30:44.72 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b32cbef0e07fe16423ae5e3
-[37m06/26/2018-23:30:44.80 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
-[37m06/26/2018-23:30:44.88 [39m[33mDeezNuts[39m: syncing (success): 60 seconds -> 60 seconds (5b32cbef0e07fe16423ae5e3)
-[37m06/26/2018-23:30:47.72 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b32cbef0e07fe16423ae5e3
-[37m06/26/2018-23:30:47.80 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
-[37m06/26/2018-23:30:47.88 [39m[33mDeezNuts[39m: syncing (success): 60 seconds -> 60 seconds (5b32cbef0e07fe16423ae5e3)
-[37m06/26/2018-23:30:50.72 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b32cbef0e07fe16423ae5e3
-[37m06/26/2018-23:30:50.80 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
-[37m06/26/2018-23:30:50.89 [39m[33mDeezNuts[39m: syncing (success): 60 seconds -> 60 seconds (5b32cbef0e07fe16423ae5e3)
-[37m06/26/2018-23:30:53.72 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b32cbef0e07fe16423ae5e3
-[37m06/26/2018-23:30:53.80 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
-[37m06/26/2018-23:30:53.88 [39m[33mDeezNuts[39m: syncing (success): 60 seconds -> 60 seconds (5b32cbef0e07fe16423ae5e3)
-[37m06/26/2018-23:30:56.45 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b32cbef0e07fe16423ae5e3
-[37m06/26/2018-23:30:56.53 [39m[33mDeezNuts[39m: unknown,130.211.88.31,::ffff:127.0.0.1,unknown, 130.211.88.31 /GET /tip?secret=627b393e03c75d43a3e9957b3bc8e5fb&address=1MPxBumYvkTTEyFbLvtkEapE1SMLkwQQmc&transaction_hash=12810b45f5372744f758df971dd74dc3e2a9ec4e3952e52f581a98174a059689&value=48786&confirmations=1
-[34m[37m06/26/2018-23:30:56.54 [34m[33mDeezNuts[34m: req.query: {[39m
-[34m    "secret": "627b393e03c75d43a3e9957b3bc8e5fb",[39m
-[34m    "address": "1MPxBumYvkTTEyFbLvtkEapE1SMLkwQQmc",[39m
-[34m    "transaction_hash": "12810b45f5372744f758df971dd74dc3e2a9ec4e3952e52f581a98174a059689",[39m
-[34m    "value": "48786",[39m
-[34m    "confirmations": "1"[39m
-[34m}[39m
-[37m06/26/2018-23:30:56.54 [39m[33mDeezNuts[39m: Adding Transaction: 48786 -> 1MPxBumYvkTTEyFbLvtkEapE1SMLkwQQmc (12810b45f5372744f758df971dd74dc3e2a9ec4e3952e52f581a98174a059689)
-[37m06/26/2018-23:30:56.62 [39m[33mDeezNuts[39m: user.transactions: 12810b45f5372744f758df971dd74dc3e2a9ec4e3952e52f581a98174a059689
-[37m06/26/2018-23:30:56.62 [39m[33mDeezNuts[39m: Confirmed Existing Transaction: 0 -> 1 (12810b45f5372744f758df971dd74dc3e2a9ec4e3952e52f581a98174a059689:5b32cbf80e07fe16423ae5e4)
-[37m06/26/2018-23:30:56.73 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b32cbef0e07fe16423ae5e3
-[37m06/26/2018-23:30:56.81 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
-[37m06/26/2018-23:30:56.89 [39m[33mDeezNuts[39m: syncing (success): 60 seconds -> 60 seconds (5b32cbef0e07fe16423ae5e3)
-[37m06/26/2018-23:30:59.72 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b32cbef0e07fe16423ae5e3
-[37m06/26/2018-23:30:59.80 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
-[37m06/26/2018-23:30:59.89 [39m[33mDeezNuts[39m: syncing (success): 60 seconds -> 60 seconds (5b32cbef0e07fe16423ae5e3)
-[37m06/26/2018-23:31:02.73 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b32cbef0e07fe16423ae5e3
-[37m06/26/2018-23:31:02.81 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
-[37m06/26/2018-23:31:02.89 [39m[33mDeezNuts[39m: syncing (success): 60 seconds -> 60 seconds (5b32cbef0e07fe16423ae5e3)
-[37m06/26/2018-23:31:05.75 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b32cbef0e07fe16423ae5e3
-[37m06/26/2018-23:31:05.83 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
-[37m06/26/2018-23:31:05.91 [39m[33mDeezNuts[39m: syncing (success): 60 seconds -> 60 seconds (5b32cbef0e07fe16423ae5e3)
-[37m06/26/2018-23:31:08.72 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b32cbef0e07fe16423ae5e3
-[37m06/26/2018-23:31:08.80 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
-[37m06/26/2018-23:31:08.89 [39m[33mDeezNuts[39m: syncing (success): 60 seconds -> 60 seconds (5b32cbef0e07fe16423ae5e3)
-[37m06/26/2018-23:31:11.73 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b32cbef0e07fe16423ae5e3
-[37m06/26/2018-23:31:11.81 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
-[37m06/26/2018-23:31:11.89 [39m[33mDeezNuts[39m: syncing (success): 60 seconds -> 60 seconds (5b32cbef0e07fe16423ae5e3)
-[37m06/26/2018-23:31:14.72 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b32cbef0e07fe16423ae5e3
-[37m06/26/2018-23:31:14.81 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
-[37m06/26/2018-23:31:14.89 [39m[33mDeezNuts[39m: syncing (success): 60 seconds -> 60 seconds (5b32cbef0e07fe16423ae5e3)
-[37m06/26/2018-23:31:17.72 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b32cbef0e07fe16423ae5e3
-[37m06/26/2018-23:31:17.80 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
-[37m06/26/2018-23:31:17.88 [39m[33mDeezNuts[39m: syncing (success): 60 seconds -> 60 seconds (5b32cbef0e07fe16423ae5e3)
-[37m06/26/2018-23:31:20.72 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b32cbef0e07fe16423ae5e3
-[37m06/26/2018-23:31:20.80 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
-[37m06/26/2018-23:31:20.88 [39m[33mDeezNuts[39m: syncing (success): 60 seconds -> 60 seconds (5b32cbef0e07fe16423ae5e3)
-[37m06/26/2018-23:31:23.72 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b32cbef0e07fe16423ae5e3
-[37m06/26/2018-23:31:23.80 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
-[37m06/26/2018-23:31:23.88 [39m[33mDeezNuts[39m: syncing (success): 60 seconds -> 60 seconds (5b32cbef0e07fe16423ae5e3)
-[37m06/26/2018-23:31:26.72 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b32cbef0e07fe16423ae5e3
-[37m06/26/2018-23:31:26.80 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
-[37m06/26/2018-23:31:26.89 [39m[33mDeezNuts[39m: syncing (success): 60 seconds -> 60 seconds (5b32cbef0e07fe16423ae5e3)
-[37m06/26/2018-23:31:29.72 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b32cbef0e07fe16423ae5e3
-[37m06/26/2018-23:31:29.80 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
-[37m06/26/2018-23:31:29.89 [39m[33mDeezNuts[39m: syncing (success): 60 seconds -> 60 seconds (5b32cbef0e07fe16423ae5e3)
-[37m06/26/2018-23:31:32.72 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b32cbef0e07fe16423ae5e3
-[37m06/26/2018-23:31:32.80 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
-[37m06/26/2018-23:31:32.89 [39m[33mDeezNuts[39m: syncing (success): 60 seconds -> 60 seconds (5b32cbef0e07fe16423ae5e3)
-[37m06/26/2018-23:31:35.73 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b32cbef0e07fe16423ae5e3
-[37m06/26/2018-23:31:35.81 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
-[37m06/26/2018-23:31:35.90 [39m[33mDeezNuts[39m: syncing (success): 60 seconds -> 60 seconds (5b32cbef0e07fe16423ae5e3)
-[37m06/26/2018-23:31:38.73 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b32cbef0e07fe16423ae5e3
-[37m06/26/2018-23:31:38.81 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
-[37m06/26/2018-23:31:38.89 [39m[33mDeezNuts[39m: syncing (success): 60 seconds -> 60 seconds (5b32cbef0e07fe16423ae5e3)
-[37m06/26/2018-23:31:41.72 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b32cbef0e07fe16423ae5e3
-[37m06/26/2018-23:31:41.80 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
-[37m06/26/2018-23:31:41.88 [39m[33mDeezNuts[39m: syncing (success): 60 seconds -> 60 seconds (5b32cbef0e07fe16423ae5e3)
-[37m06/26/2018-23:31:44.71 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b32cbef0e07fe16423ae5e3
-[37m06/26/2018-23:31:44.80 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
-[37m06/26/2018-23:31:44.88 [39m[33mDeezNuts[39m: syncing (success): 60 seconds -> 60 seconds (5b32cbef0e07fe16423ae5e3)
-[37m06/26/2018-23:31:47.72 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b32cbef0e07fe16423ae5e3
-[37m06/26/2018-23:31:47.80 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
-[37m06/26/2018-23:31:47.88 [39m[33mDeezNuts[39m: syncing (success): 60 seconds -> 60 seconds (5b32cbef0e07fe16423ae5e3)
-[37m06/26/2018-23:31:50.69 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b32cbef0e07fe16423ae5e3
-[37m06/26/2018-23:31:50.77 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
-[37m06/26/2018-23:31:50.85 [39m[33mDeezNuts[39m: syncing (success): 60 seconds -> 60 seconds (5b32cbef0e07fe16423ae5e3)
-[37m06/26/2018-23:31:51.38 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b32cbef0e07fe16423ae5e3
-[37m06/26/2018-23:31:51.46 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /GET /
-[37m06/26/2018-23:31:55.13 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b32cbef0e07fe16423ae5e3
-[37m06/26/2018-23:31:55.21 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
-[37m06/26/2018-23:31:55.28 [39m[33mDeezNuts[39m: syncing (success): 60 seconds -> 60 seconds (5b32cbef0e07fe16423ae5e3)
-[37m06/26/2018-23:31:58.21 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b32cbef0e07fe16423ae5e3
-[37m06/26/2018-23:31:58.29 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b32cbef0e07fe16423ae5e3
-[37m06/26/2018-23:31:58.30 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /GET /logout
-[37m06/26/2018-23:31:58.30 [39m[33mDeezNuts[39m: logging out: 5b32cbf80e07fe16423ae5e4
-[37m06/26/2018-23:31:58.36 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
-[37m06/26/2018-23:31:58.37 [39m[33mDeezNuts[39m: logout successful: 5b32cbf80e07fe16423ae5e4
-[37m06/26/2018-23:31:58.44 [39m[33mDeezNuts[39m: syncing (success): 60 seconds -> 60 seconds (5b32cbef0e07fe16423ae5e3)
-[37m06/26/2018-23:31:58.66 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b32cbef0e07fe16423ae5e3
-[37m06/26/2018-23:31:58.74 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /GET /
-[37m06/26/2018-23:32:02.02 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b32cbef0e07fe16423ae5e3
-[37m06/26/2018-23:32:02.10 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /login
-[37m06/26/2018-23:32:02.39 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b32cbef0e07fe16423ae5e3
-[37m06/26/2018-23:32:02.47 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
-[37m06/26/2018-23:32:02.54 [39m[33mDeezNuts[39m: syncing (success): 60 seconds -> 60 seconds (5b32cbef0e07fe16423ae5e3)
-[37m06/26/2018-23:32:05.40 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b32cbef0e07fe16423ae5e3
-[37m06/26/2018-23:32:05.48 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
-[37m06/26/2018-23:32:05.56 [39m[33mDeezNuts[39m: syncing (success): 60 seconds -> 60 seconds (5b32cbef0e07fe16423ae5e3)
-[37m06/26/2018-23:32:08.18 [39m[33mDeezNuts[39m: User found: user1
-[37m06/26/2018-23:32:08.27 [39m[33mDeezNuts[39m: login successful (local): 5b32cbf80e07fe16423ae5e4
-[37m06/26/2018-23:32:08.40 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b32cbef0e07fe16423ae5e3
-[37m06/26/2018-23:32:08.48 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
-[37m06/26/2018-23:32:08.56 [39m[33mDeezNuts[39m: syncing (success): 60 seconds -> 60 seconds (5b32cbef0e07fe16423ae5e3)
-[37m06/26/2018-23:32:08.73 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b32cbef0e07fe16423ae5e3
-[37m06/26/2018-23:32:08.81 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /GET /
-[37m06/26/2018-23:32:12.55 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b32cbef0e07fe16423ae5e3
-[37m06/26/2018-23:32:12.63 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
-[37m06/26/2018-23:32:12.71 [39m[33mDeezNuts[39m: syncing (success): 60 seconds -> 60 seconds (5b32cbef0e07fe16423ae5e3)
-[37m06/26/2018-23:32:15.73 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b32cbef0e07fe16423ae5e3
-[37m06/26/2018-23:32:15.81 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
-[37m06/26/2018-23:32:15.89 [39m[33mDeezNuts[39m: syncing (success): 60 seconds -> 60 seconds (5b32cbef0e07fe16423ae5e3)
-[37m06/26/2018-23:32:18.73 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b32cbef0e07fe16423ae5e3
-[37m06/26/2018-23:32:18.81 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
-[37m06/26/2018-23:32:18.89 [39m[33mDeezNuts[39m: syncing (success): 60 seconds -> 60 seconds (5b32cbef0e07fe16423ae5e3)
-[37m06/26/2018-23:32:21.73 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b32cbef0e07fe16423ae5e3
-[37m06/26/2018-23:32:21.82 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
-[37m06/26/2018-23:32:21.90 [39m[33mDeezNuts[39m: syncing (success): 60 seconds -> 60 seconds (5b32cbef0e07fe16423ae5e3)
-[37m06/26/2018-23:32:24.73 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b32cbef0e07fe16423ae5e3
-[37m06/26/2018-23:32:24.81 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
-[37m06/26/2018-23:32:24.89 [39m[33mDeezNuts[39m: syncing (success): 60 seconds -> 60 seconds (5b32cbef0e07fe16423ae5e3)
-[37m06/26/2018-23:32:27.72 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b32cbef0e07fe16423ae5e3
-[37m06/26/2018-23:32:27.81 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
-[37m06/26/2018-23:32:27.89 [39m[33mDeezNuts[39m: syncing (success): 60 seconds -> 60 seconds (5b32cbef0e07fe16423ae5e3)
-[37m06/26/2018-23:32:30.74 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b32cbef0e07fe16423ae5e3
-[37m06/26/2018-23:32:30.82 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
-[37m06/26/2018-23:32:30.90 [39m[33mDeezNuts[39m: syncing (success): 60 seconds -> 60 seconds (5b32cbef0e07fe16423ae5e3)
-[37m06/26/2018-23:32:33.72 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b32cbef0e07fe16423ae5e3
-[37m06/26/2018-23:32:33.81 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
-[37m06/26/2018-23:32:33.89 [39m[33mDeezNuts[39m: syncing (success): 60 seconds -> 60 seconds (5b32cbef0e07fe16423ae5e3)
-[37m06/26/2018-23:32:36.74 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b32cbef0e07fe16423ae5e3
-[37m06/26/2018-23:32:36.82 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
-[37m06/26/2018-23:32:36.90 [39m[33mDeezNuts[39m: syncing (success): 60 seconds -> 60 seconds (5b32cbef0e07fe16423ae5e3)
-[37m06/26/2018-23:32:39.72 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b32cbef0e07fe16423ae5e3
-[37m06/26/2018-23:32:39.81 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
-[37m06/26/2018-23:32:39.89 [39m[33mDeezNuts[39m: syncing (success): 60 seconds -> 60 seconds (5b32cbef0e07fe16423ae5e3)
-[37m06/26/2018-23:32:42.73 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b32cbef0e07fe16423ae5e3
-[37m06/26/2018-23:32:42.81 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
-[37m06/26/2018-23:32:42.89 [39m[33mDeezNuts[39m: syncing (success): 60 seconds -> 60 seconds (5b32cbef0e07fe16423ae5e3)
-[37m06/26/2018-23:32:45.72 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b32cbef0e07fe16423ae5e3
-[37m06/26/2018-23:32:45.80 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
-[37m06/26/2018-23:32:45.88 [39m[33mDeezNuts[39m: syncing (success): 60 seconds -> 60 seconds (5b32cbef0e07fe16423ae5e3)
-[37m06/26/2018-23:32:48.73 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b32cbef0e07fe16423ae5e3
-[37m06/26/2018-23:32:48.81 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
-[37m06/26/2018-23:32:48.89 [39m[33mDeezNuts[39m: syncing (success): 60 seconds -> 60 seconds (5b32cbef0e07fe16423ae5e3)
-[37m06/26/2018-23:32:51.72 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b32cbef0e07fe16423ae5e3
-[37m06/26/2018-23:32:51.80 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
-[37m06/26/2018-23:32:51.89 [39m[33mDeezNuts[39m: syncing (success): 60 seconds -> 60 seconds (5b32cbef0e07fe16423ae5e3)
-[37m06/26/2018-23:32:54.73 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b32cbef0e07fe16423ae5e3
-[37m06/26/2018-23:32:54.81 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
-[37m06/26/2018-23:32:54.89 [39m[33mDeezNuts[39m: syncing (success): 60 seconds -> 60 seconds (5b32cbef0e07fe16423ae5e3)
-[37m06/26/2018-23:32:57.72 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b32cbef0e07fe16423ae5e3
-[37m06/26/2018-23:32:57.80 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
-[37m06/26/2018-23:32:57.88 [39m[33mDeezNuts[39m: syncing (success): 60 seconds -> 60 seconds (5b32cbef0e07fe16423ae5e3)
-[37m06/26/2018-23:33:00.54 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b32cbef0e07fe16423ae5e3
-[37m06/26/2018-23:33:00.62 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
-[37m06/26/2018-23:33:00.70 [39m[33mDeezNuts[39m: syncing (success): 60 seconds -> 60 seconds (5b32cbef0e07fe16423ae5e3)
+06/26/2018-23:25:56.88 DeezNuts: Starting Crons
+06/26/2018-23:25:56.90 DeezNuts: started cron - Ping
+06/26/2018-23:25:56.90 DeezNuts: started cron - Midnight
+06/26/2018-23:25:57.40 DeezNuts: Mongoose connection open
+06/26/2018-23:25:57.50 DeezNuts: Bot found: justalexxxd
+06/26/2018-23:26:09.06 DeezNuts: Starting Crons
+06/26/2018-23:26:09.08 DeezNuts: started cron - Ping
+06/26/2018-23:26:09.08 DeezNuts: started cron - Midnight
+06/26/2018-23:26:09.52 DeezNuts: Mongoose connection open
+06/26/2018-23:26:09.61 DeezNuts: Bot found: justalexxxd
+06/26/2018-23:26:09.88 DeezNuts: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+06/26/2018-23:26:09.97 DeezNuts: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+06/26/2018-23:26:10.06 DeezNuts: syncing (bug): 0 seconds -> 0 (0) seconds (5b318f157a82365a94200be7)
+06/26/2018-23:26:10.89 DeezNuts: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+06/26/2018-23:26:10.97 DeezNuts: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /GET /
+06/26/2018-23:26:12.57 DeezNuts: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+06/26/2018-23:26:12.65 DeezNuts: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+06/26/2018-23:26:12.73 DeezNuts: syncing (bug): 0 seconds -> 0 (0) seconds (5b318f157a82365a94200be7)
+06/26/2018-23:26:14.92 DeezNuts: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+06/26/2018-23:26:14.100 DeezNuts: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+06/26/2018-23:26:15.08 DeezNuts: syncing (bug): 0 seconds -> 0 (0) seconds (5b318f157a82365a94200be7)
+06/26/2018-23:26:15.56 DeezNuts: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+06/26/2018-23:26:15.64 DeezNuts: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+06/26/2018-23:26:15.72 DeezNuts: syncing (bug): 0 seconds -> 0 (0) seconds (5b318f157a82365a94200be7)
+06/26/2018-23:26:17.91 DeezNuts: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+06/26/2018-23:26:17.99 DeezNuts: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+06/26/2018-23:26:18.07 DeezNuts: syncing (bug): 0 seconds -> 0 (0) seconds (5b318f157a82365a94200be7)
+06/26/2018-23:26:18.57 DeezNuts: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+06/26/2018-23:26:18.65 DeezNuts: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+06/26/2018-23:26:18.73 DeezNuts: syncing (bug): 0 seconds -> 0 (0) seconds (5b318f157a82365a94200be7)
+06/26/2018-23:26:20.18 DeezNuts: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+06/26/2018-23:26:20.26 DeezNuts: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /login
+06/26/2018-23:26:20.35 DeezNuts: User found: user2
+06/26/2018-23:26:20.46 DeezNuts: login successful (local): 5b318f9c7a82365a94200be8
+06/26/2018-23:26:21.11 DeezNuts: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+06/26/2018-23:26:21.44 DeezNuts: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /GET /
+06/26/2018-23:26:21.77 DeezNuts: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+06/26/2018-23:26:21.84 DeezNuts: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+06/26/2018-23:26:21.85 DeezNuts: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+06/26/2018-23:26:21.92 DeezNuts: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+06/26/2018-23:26:21.93 DeezNuts: syncing (bug): 0 seconds -> 0 (0) seconds (5b318f157a82365a94200be7)
+06/26/2018-23:26:22.01 DeezNuts: syncing (bug): 0 seconds -> 0 (0) seconds (5b318f157a82365a94200be7)
+06/26/2018-23:26:24.65 DeezNuts: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+06/26/2018-23:26:24.73 DeezNuts: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+06/26/2018-23:26:24.81 DeezNuts: syncing (bug): 0 seconds -> 0 (0) seconds (5b318f157a82365a94200be7)
+06/26/2018-23:26:25.25 DeezNuts: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+06/26/2018-23:26:25.33 DeezNuts: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+06/26/2018-23:26:25.41 DeezNuts: syncing (bug): 0 seconds -> 0 (0) seconds (5b318f157a82365a94200be7)
+06/26/2018-23:26:27.64 DeezNuts: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+06/26/2018-23:26:27.72 DeezNuts: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+06/26/2018-23:26:27.81 DeezNuts: syncing (bug): 0 seconds -> 0 (0) seconds (5b318f157a82365a94200be7)
+06/26/2018-23:26:28.64 DeezNuts: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+06/26/2018-23:26:28.72 DeezNuts: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+06/26/2018-23:26:28.80 DeezNuts: syncing (bug): 0 seconds -> 0 (0) seconds (5b318f157a82365a94200be7)
+06/26/2018-23:26:30.72 DeezNuts: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+06/26/2018-23:26:30.80 DeezNuts: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+06/26/2018-23:26:30.88 DeezNuts: syncing (bug): 0 seconds -> 0 (0) seconds (5b318f157a82365a94200be7)
+06/26/2018-23:26:31.64 DeezNuts: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+06/26/2018-23:26:31.72 DeezNuts: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+06/26/2018-23:26:31.80 DeezNuts: syncing (bug): 0 seconds -> 0 (0) seconds (5b318f157a82365a94200be7)
+06/26/2018-23:26:33.73 DeezNuts: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+06/26/2018-23:26:33.81 DeezNuts: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+06/26/2018-23:26:33.89 DeezNuts: syncing (bug): 0 seconds -> 0 (0) seconds (5b318f157a82365a94200be7)
+06/26/2018-23:26:34.64 DeezNuts: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+06/26/2018-23:26:34.72 DeezNuts: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+06/26/2018-23:26:34.80 DeezNuts: syncing (bug): 0 seconds -> 0 (0) seconds (5b318f157a82365a94200be7)
+06/26/2018-23:26:36.32 DeezNuts: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+06/26/2018-23:26:36.40 DeezNuts: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+06/26/2018-23:26:36.48 DeezNuts: syncing (bug): 0 seconds -> 0 (0) seconds (5b318f157a82365a94200be7)
+06/26/2018-23:26:37.27 DeezNuts: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+06/26/2018-23:26:37.35 DeezNuts: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+06/26/2018-23:26:37.43 DeezNuts: syncing (bug): 0 seconds -> 0 (0) seconds (5b318f157a82365a94200be7)
+06/26/2018-23:26:40.73 DeezNuts: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+06/26/2018-23:26:40.81 DeezNuts: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+06/26/2018-23:26:40.89 DeezNuts: syncing (bug): 0 seconds -> 0 (0) seconds (5b318f157a82365a94200be7)
+06/26/2018-23:26:43.73 DeezNuts: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+06/26/2018-23:26:43.81 DeezNuts: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+06/26/2018-23:26:43.89 DeezNuts: syncing (bug): 0 seconds -> 0 (0) seconds (5b318f157a82365a94200be7)
+06/26/2018-23:26:46.72 DeezNuts: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+06/26/2018-23:26:46.80 DeezNuts: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+06/26/2018-23:26:46.88 DeezNuts: syncing (bug): 0 seconds -> 0 (0) seconds (5b318f157a82365a94200be7)
+06/26/2018-23:26:49.73 DeezNuts: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+06/26/2018-23:26:49.81 DeezNuts: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+06/26/2018-23:26:49.89 DeezNuts: syncing (bug): 0 seconds -> 0 (0) seconds (5b318f157a82365a94200be7)
+06/26/2018-23:26:52.73 DeezNuts: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+06/26/2018-23:26:52.81 DeezNuts: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+06/26/2018-23:26:52.89 DeezNuts: syncing (bug): 0 seconds -> 0 (0) seconds (5b318f157a82365a94200be7)
+06/26/2018-23:26:55.72 DeezNuts: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+06/26/2018-23:26:55.81 DeezNuts: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+06/26/2018-23:26:55.89 DeezNuts: syncing (bug): 0 seconds -> 0 (0) seconds (5b318f157a82365a94200be7)
+06/26/2018-23:26:58.72 DeezNuts: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+06/26/2018-23:26:58.80 DeezNuts: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+06/26/2018-23:26:58.88 DeezNuts: syncing (bug): 0 seconds -> 0 (0) seconds (5b318f157a82365a94200be7)
+06/26/2018-23:27:01.28 DeezNuts: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+06/26/2018-23:27:01.36 DeezNuts: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+06/26/2018-23:27:01.44 DeezNuts: syncing (bug): 0 seconds -> 0 (0) seconds (5b318f157a82365a94200be7)
+06/26/2018-23:27:04.72 DeezNuts: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+06/26/2018-23:27:04.80 DeezNuts: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+06/26/2018-23:27:04.89 DeezNuts: syncing (bug): 0 seconds -> 0 (0) seconds (5b318f157a82365a94200be7)
+06/26/2018-23:27:07.74 DeezNuts: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+06/26/2018-23:27:07.82 DeezNuts: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+06/26/2018-23:27:07.90 DeezNuts: syncing (bug): 0 seconds -> 0 (0) seconds (5b318f157a82365a94200be7)
+06/26/2018-23:27:10.73 DeezNuts: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+06/26/2018-23:27:10.81 DeezNuts: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+06/26/2018-23:27:10.89 DeezNuts: syncing (bug): 0 seconds -> 0 (0) seconds (5b318f157a82365a94200be7)
+06/26/2018-23:27:13.76 DeezNuts: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+06/26/2018-23:27:13.84 DeezNuts: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+06/26/2018-23:27:13.93 DeezNuts: syncing (bug): 0 seconds -> 0 (0) seconds (5b318f157a82365a94200be7)
+06/26/2018-23:27:16.72 DeezNuts: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+06/26/2018-23:27:16.80 DeezNuts: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+06/26/2018-23:27:16.88 DeezNuts: syncing (bug): 0 seconds -> 0 (0) seconds (5b318f157a82365a94200be7)
+06/26/2018-23:27:19.73 DeezNuts: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+06/26/2018-23:27:19.81 DeezNuts: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+06/26/2018-23:27:19.89 DeezNuts: syncing (bug): 0 seconds -> 0 (0) seconds (5b318f157a82365a94200be7)
+06/26/2018-23:27:22.73 DeezNuts: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+06/26/2018-23:27:22.81 DeezNuts: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+06/26/2018-23:27:22.90 DeezNuts: syncing (bug): 0 seconds -> 0 (0) seconds (5b318f157a82365a94200be7)
+06/26/2018-23:27:25.73 DeezNuts: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+06/26/2018-23:27:25.81 DeezNuts: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+06/26/2018-23:27:25.89 DeezNuts: syncing (bug): 0 seconds -> 0 (0) seconds (5b318f157a82365a94200be7)
+06/26/2018-23:27:28.72 DeezNuts: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+06/26/2018-23:27:28.81 DeezNuts: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+06/26/2018-23:27:28.89 DeezNuts: syncing (bug): 0 seconds -> 0 (0) seconds (5b318f157a82365a94200be7)
+06/26/2018-23:27:31.72 DeezNuts: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+06/26/2018-23:27:31.80 DeezNuts: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+06/26/2018-23:27:31.88 DeezNuts: syncing (bug): 0 seconds -> 0 (0) seconds (5b318f157a82365a94200be7)
+06/26/2018-23:27:34.72 DeezNuts: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+06/26/2018-23:27:34.80 DeezNuts: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+06/26/2018-23:27:34.88 DeezNuts: syncing (bug): 0 seconds -> 0 (0) seconds (5b318f157a82365a94200be7)
+06/26/2018-23:27:37.73 DeezNuts: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+06/26/2018-23:27:37.81 DeezNuts: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+06/26/2018-23:27:37.89 DeezNuts: syncing (bug): 0 seconds -> 0 (0) seconds (5b318f157a82365a94200be7)
+06/26/2018-23:27:40.73 DeezNuts: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+06/26/2018-23:27:40.81 DeezNuts: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+06/26/2018-23:27:40.89 DeezNuts: syncing (bug): 0 seconds -> 0 (0) seconds (5b318f157a82365a94200be7)
+06/26/2018-23:27:43.19 DeezNuts: New Visitor: ::ffff:127.0.0.1 || null
+06/26/2018-23:27:43.28 DeezNuts: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+06/26/2018-23:27:43.36 DeezNuts: syncing (ignore): 60 seconds -> 0 seconds (5b32cbef0e07fe16423ae5e3)
+06/26/2018-23:27:43.78 DeezNuts: Return Visitor: ::ffff:127.0.0.1 || 5b32cbef0e07fe16423ae5e3
+06/26/2018-23:27:43.86 DeezNuts: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /GET /
+06/26/2018-23:27:47.63 DeezNuts: Return Visitor: ::ffff:127.0.0.1 || 5b32cbef0e07fe16423ae5e3
+06/26/2018-23:27:47.72 DeezNuts: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+06/26/2018-23:27:47.80 DeezNuts: syncing (success): 60 seconds -> 60 seconds (5b32cbef0e07fe16423ae5e3)
+06/26/2018-23:27:49.79 DeezNuts: Return Visitor: ::ffff:127.0.0.1 || 5b32cbef0e07fe16423ae5e3
+06/26/2018-23:27:49.88 DeezNuts: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /login
+06/26/2018-23:27:50.63 DeezNuts: Return Visitor: ::ffff:127.0.0.1 || 5b32cbef0e07fe16423ae5e3
+06/26/2018-23:27:50.71 DeezNuts: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+06/26/2018-23:27:50.79 DeezNuts: syncing (success): 60 seconds -> 60 seconds (5b32cbef0e07fe16423ae5e3)
+06/26/2018-23:27:52.96 DeezNuts: Creating new user: user1
+06/26/2018-23:27:53.05 DeezNuts: login successful (local): 5b32cbf80e07fe16423ae5e4
+06/26/2018-23:27:53.50 DeezNuts: Return Visitor: ::ffff:127.0.0.1 || 5b32cbef0e07fe16423ae5e3
+06/26/2018-23:27:53.58 DeezNuts: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /GET /
+06/26/2018-23:27:53.80 DeezNuts: Return Visitor: ::ffff:127.0.0.1 || 5b32cbef0e07fe16423ae5e3
+06/26/2018-23:27:53.88 DeezNuts: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+06/26/2018-23:27:53.96 DeezNuts: syncing (success): 60 seconds -> 60 seconds (5b32cbef0e07fe16423ae5e3)
+06/26/2018-23:27:57.31 DeezNuts: Return Visitor: ::ffff:127.0.0.1 || 5b32cbef0e07fe16423ae5e3
+06/26/2018-23:27:57.39 DeezNuts: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+06/26/2018-23:27:57.48 DeezNuts: syncing (success): 60 seconds -> 60 seconds (5b32cbef0e07fe16423ae5e3)
+06/26/2018-23:27:57.87 DeezNuts: Return Visitor: ::ffff:127.0.0.1 || 5b32cbef0e07fe16423ae5e3
+06/26/2018-23:27:57.96 DeezNuts: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /GET /live
+06/26/2018-23:27:58.33 DeezNuts: Return Visitor: ::ffff:127.0.0.1 || 5b32cbef0e07fe16423ae5e3
+06/26/2018-23:27:58.42 DeezNuts: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /GET /
+06/26/2018-23:28:00.93 DeezNuts: Return Visitor: ::ffff:127.0.0.1 || 5b32cbef0e07fe16423ae5e3
+06/26/2018-23:28:01.02 DeezNuts: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /GET /address?_csrf=SaSGYhZ7-M9XPL79oGyVkbdeWMsyqJ6Gmgkg
+06/26/2018-23:28:01.02 DeezNuts: Generating Address: 
+06/26/2018-23:28:01.41 DeezNuts: gap: 0
+06/26/2018-23:28:01.56 DeezNuts: Generated Address: 1MPxBumYvkTTEyFbLvtkEapE1SMLkwQQmc
+06/26/2018-23:28:02.11 DeezNuts: Return Visitor: ::ffff:127.0.0.1 || 5b32cbef0e07fe16423ae5e3
+06/26/2018-23:28:02.16 DeezNuts: Return Visitor: ::ffff:127.0.0.1 || 5b32cbef0e07fe16423ae5e3
+06/26/2018-23:28:02.19 DeezNuts: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+06/26/2018-23:28:02.24 DeezNuts: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /GET /
+06/26/2018-23:28:02.32 DeezNuts: syncing (success): 60 seconds -> 60 seconds (5b32cbef0e07fe16423ae5e3)
+06/26/2018-23:28:05.26 DeezNuts: Return Visitor: ::ffff:127.0.0.1 || 5b32cbef0e07fe16423ae5e3
+06/26/2018-23:28:05.35 DeezNuts: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /GET /
+06/26/2018-23:28:08.99 DeezNuts: Return Visitor: ::ffff:127.0.0.1 || 5b32cbef0e07fe16423ae5e3
+06/26/2018-23:28:09.07 DeezNuts: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+06/26/2018-23:28:09.15 DeezNuts: syncing (success): 60 seconds -> 60 seconds (5b32cbef0e07fe16423ae5e3)
+06/26/2018-23:28:12.73 DeezNuts: Return Visitor: ::ffff:127.0.0.1 || 5b32cbef0e07fe16423ae5e3
+06/26/2018-23:28:12.81 DeezNuts: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+06/26/2018-23:28:12.89 DeezNuts: syncing (success): 60 seconds -> 60 seconds (5b32cbef0e07fe16423ae5e3)
+06/26/2018-23:28:15.72 DeezNuts: Return Visitor: ::ffff:127.0.0.1 || 5b32cbef0e07fe16423ae5e3
+06/26/2018-23:28:15.80 DeezNuts: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+06/26/2018-23:28:15.88 DeezNuts: syncing (success): 60 seconds -> 60 seconds (5b32cbef0e07fe16423ae5e3)
+06/26/2018-23:28:16.54 DeezNuts: Return Visitor: ::ffff:127.0.0.1 || 5b32cbef0e07fe16423ae5e3
+06/26/2018-23:28:16.63 DeezNuts: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /GET /
+06/26/2018-23:28:20.64 DeezNuts: Return Visitor: ::ffff:127.0.0.1 || 5b32cbef0e07fe16423ae5e3
+06/26/2018-23:28:20.72 DeezNuts: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+06/26/2018-23:28:20.80 DeezNuts: syncing (success): 60 seconds -> 60 seconds (5b32cbef0e07fe16423ae5e3)
+06/26/2018-23:28:23.72 DeezNuts: Return Visitor: ::ffff:127.0.0.1 || 5b32cbef0e07fe16423ae5e3
+06/26/2018-23:28:23.80 DeezNuts: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+06/26/2018-23:28:23.88 DeezNuts: syncing (success): 60 seconds -> 60 seconds (5b32cbef0e07fe16423ae5e3)
+06/26/2018-23:28:26.73 DeezNuts: Return Visitor: ::ffff:127.0.0.1 || 5b32cbef0e07fe16423ae5e3
+06/26/2018-23:28:26.81 DeezNuts: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+06/26/2018-23:28:26.89 DeezNuts: syncing (success): 60 seconds -> 60 seconds (5b32cbef0e07fe16423ae5e3)
+06/26/2018-23:28:29.72 DeezNuts: Return Visitor: ::ffff:127.0.0.1 || 5b32cbef0e07fe16423ae5e3
+06/26/2018-23:28:29.80 DeezNuts: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+06/26/2018-23:28:29.88 DeezNuts: syncing (success): 60 seconds -> 60 seconds (5b32cbef0e07fe16423ae5e3)
+06/26/2018-23:28:32.73 DeezNuts: Return Visitor: ::ffff:127.0.0.1 || 5b32cbef0e07fe16423ae5e3
+06/26/2018-23:28:32.81 DeezNuts: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+06/26/2018-23:28:32.89 DeezNuts: syncing (success): 60 seconds -> 60 seconds (5b32cbef0e07fe16423ae5e3)
+06/26/2018-23:28:35.71 DeezNuts: Return Visitor: ::ffff:127.0.0.1 || 5b32cbef0e07fe16423ae5e3
+06/26/2018-23:28:35.79 DeezNuts: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+06/26/2018-23:28:35.87 DeezNuts: syncing (success): 60 seconds -> 60 seconds (5b32cbef0e07fe16423ae5e3)
+06/26/2018-23:28:38.71 DeezNuts: Return Visitor: ::ffff:127.0.0.1 || 5b32cbef0e07fe16423ae5e3
+06/26/2018-23:28:38.79 DeezNuts: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+06/26/2018-23:28:38.87 DeezNuts: syncing (success): 60 seconds -> 60 seconds (5b32cbef0e07fe16423ae5e3)
+06/26/2018-23:28:40.37 DeezNuts: Return Visitor: ::ffff:127.0.0.1 || 5b32cbef0e07fe16423ae5e3
+06/26/2018-23:28:40.45 DeezNuts: unknown,130.211.88.31,::ffff:127.0.0.1,unknown, 130.211.88.31 /GET /tip?secret=627b393e03c75d43a3e9957b3bc8e5fb&address=1MPxBumYvkTTEyFbLvtkEapE1SMLkwQQmc&transaction_hash=12810b45f5372744f758df971dd74dc3e2a9ec4e3952e52f581a98174a059689&value=48786&confirmations=0
+06/26/2018-23:28:40.45 DeezNuts: req.query: {
+    "secret": "627b393e03c75d43a3e9957b3bc8e5fb",
+    "address": "1MPxBumYvkTTEyFbLvtkEapE1SMLkwQQmc",
+    "transaction_hash": "12810b45f5372744f758df971dd74dc3e2a9ec4e3952e52f581a98174a059689",
+    "value": "48786",
+    "confirmations": "0"
+}
+06/26/2018-23:28:40.45 DeezNuts: Adding Transaction: 48786 -> 1MPxBumYvkTTEyFbLvtkEapE1SMLkwQQmc (12810b45f5372744f758df971dd74dc3e2a9ec4e3952e52f581a98174a059689)
+06/26/2018-23:28:40.53 DeezNuts: user.transactions: 
+06/26/2018-23:28:40.53 DeezNuts: Added Transaction: 48786 -> 1MPxBumYvkTTEyFbLvtkEapE1SMLkwQQmc (12810b45f5372744f758df971dd74dc3e2a9ec4e3952e52f581a98174a059689:5b32cbf80e07fe16423ae5e4)
+06/26/2018-23:28:40.53 DeezNuts: Calculating time: 48786 satoshi
+06/26/2018-23:28:40.53 DeezNuts: satoshi to BTC: 48786 satoshi -> 0.00048786BTC
+06/26/2018-23:28:40.66 DeezNuts: amountPerBTC: 6149.5470488/BTC
+06/26/2018-23:28:40.66 DeezNuts: BTC to dollar: 6149.5470488/BTC * 0.00048786BTC -> +$3.000118023227568
+06/26/2018-23:28:40.66 DeezNuts: dollar to time: $3.000118023227568 -> 1080.0424883619244 seconds
+06/26/2018-23:28:40.66 DeezNuts: dollar converted: $3.000118023227568 -> 1080.0424883619244 seconds
+06/26/2018-23:28:40.66 DeezNuts: time added: 60 seconds + 1080.0424883619244 seconds = 1140.0424883619244 seconds
+06/26/2018-23:28:40.66 DeezNuts: GLogging: 60 seconds + 1080.0424883619244 seconds (48786 satoshis -> 3.000118023227568 dollars) = 1140.0424883619244 seconds
+06/26/2018-23:28:41.71 DeezNuts: Return Visitor: ::ffff:127.0.0.1 || 5b32cbef0e07fe16423ae5e3
+06/26/2018-23:28:41.78 DeezNuts: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+06/26/2018-23:28:41.87 DeezNuts: syncing (success): 60 seconds -> 60 seconds (5b32cbef0e07fe16423ae5e3)
+06/26/2018-23:28:44.35 DeezNuts: Return Visitor: ::ffff:127.0.0.1 || 5b32cbef0e07fe16423ae5e3
+06/26/2018-23:28:44.42 DeezNuts: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+06/26/2018-23:28:44.51 DeezNuts: syncing (success): 60 seconds -> 60 seconds (5b32cbef0e07fe16423ae5e3)
+06/26/2018-23:28:47.35 DeezNuts: Return Visitor: ::ffff:127.0.0.1 || 5b32cbef0e07fe16423ae5e3
+06/26/2018-23:28:47.42 DeezNuts: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+06/26/2018-23:28:47.50 DeezNuts: syncing (success): 60 seconds -> 60 seconds (5b32cbef0e07fe16423ae5e3)
+06/26/2018-23:28:50.34 DeezNuts: Return Visitor: ::ffff:127.0.0.1 || 5b32cbef0e07fe16423ae5e3
+06/26/2018-23:28:50.42 DeezNuts: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+06/26/2018-23:28:50.50 DeezNuts: syncing (success): 60 seconds -> 60 seconds (5b32cbef0e07fe16423ae5e3)
+06/26/2018-23:28:53.34 DeezNuts: Return Visitor: ::ffff:127.0.0.1 || 5b32cbef0e07fe16423ae5e3
+06/26/2018-23:28:53.42 DeezNuts: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+06/26/2018-23:28:53.50 DeezNuts: syncing (success): 60 seconds -> 60 seconds (5b32cbef0e07fe16423ae5e3)
+06/26/2018-23:28:56.35 DeezNuts: Return Visitor: ::ffff:127.0.0.1 || 5b32cbef0e07fe16423ae5e3
+06/26/2018-23:28:56.42 DeezNuts: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+06/26/2018-23:28:56.51 DeezNuts: syncing (success): 60 seconds -> 60 seconds (5b32cbef0e07fe16423ae5e3)
+06/26/2018-23:28:59.34 DeezNuts: Return Visitor: ::ffff:127.0.0.1 || 5b32cbef0e07fe16423ae5e3
+06/26/2018-23:28:59.42 DeezNuts: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+06/26/2018-23:28:59.50 DeezNuts: syncing (success): 60 seconds -> 60 seconds (5b32cbef0e07fe16423ae5e3)
+06/26/2018-23:29:02.35 DeezNuts: Return Visitor: ::ffff:127.0.0.1 || 5b32cbef0e07fe16423ae5e3
+06/26/2018-23:29:02.43 DeezNuts: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+06/26/2018-23:29:02.51 DeezNuts: syncing (success): 60 seconds -> 60 seconds (5b32cbef0e07fe16423ae5e3)
+06/26/2018-23:29:05.37 DeezNuts: Return Visitor: ::ffff:127.0.0.1 || 5b32cbef0e07fe16423ae5e3
+06/26/2018-23:29:05.45 DeezNuts: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+06/26/2018-23:29:05.53 DeezNuts: syncing (success): 60 seconds -> 60 seconds (5b32cbef0e07fe16423ae5e3)
+06/26/2018-23:29:08.36 DeezNuts: Return Visitor: ::ffff:127.0.0.1 || 5b32cbef0e07fe16423ae5e3
+06/26/2018-23:29:08.44 DeezNuts: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+06/26/2018-23:29:08.52 DeezNuts: syncing (success): 60 seconds -> 60 seconds (5b32cbef0e07fe16423ae5e3)
+06/26/2018-23:29:11.37 DeezNuts: Return Visitor: ::ffff:127.0.0.1 || 5b32cbef0e07fe16423ae5e3
+06/26/2018-23:29:11.45 DeezNuts: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+06/26/2018-23:29:11.54 DeezNuts: syncing (success): 60 seconds -> 60 seconds (5b32cbef0e07fe16423ae5e3)
+06/26/2018-23:29:14.35 DeezNuts: Return Visitor: ::ffff:127.0.0.1 || 5b32cbef0e07fe16423ae5e3
+06/26/2018-23:29:14.43 DeezNuts: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+06/26/2018-23:29:14.51 DeezNuts: syncing (success): 60 seconds -> 60 seconds (5b32cbef0e07fe16423ae5e3)
+06/26/2018-23:29:17.34 DeezNuts: Return Visitor: ::ffff:127.0.0.1 || 5b32cbef0e07fe16423ae5e3
+06/26/2018-23:29:17.42 DeezNuts: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+06/26/2018-23:29:17.51 DeezNuts: syncing (success): 60 seconds -> 60 seconds (5b32cbef0e07fe16423ae5e3)
+06/26/2018-23:29:20.35 DeezNuts: Return Visitor: ::ffff:127.0.0.1 || 5b32cbef0e07fe16423ae5e3
+06/26/2018-23:29:20.43 DeezNuts: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+06/26/2018-23:29:20.51 DeezNuts: syncing (success): 60 seconds -> 60 seconds (5b32cbef0e07fe16423ae5e3)
+06/26/2018-23:29:23.72 DeezNuts: Return Visitor: ::ffff:127.0.0.1 || 5b32cbef0e07fe16423ae5e3
+06/26/2018-23:29:23.80 DeezNuts: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+06/26/2018-23:29:23.88 DeezNuts: syncing (success): 60 seconds -> 60 seconds (5b32cbef0e07fe16423ae5e3)
+06/26/2018-23:29:26.72 DeezNuts: Return Visitor: ::ffff:127.0.0.1 || 5b32cbef0e07fe16423ae5e3
+06/26/2018-23:29:26.80 DeezNuts: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+06/26/2018-23:29:26.88 DeezNuts: syncing (success): 60 seconds -> 60 seconds (5b32cbef0e07fe16423ae5e3)
+06/26/2018-23:29:29.73 DeezNuts: Return Visitor: ::ffff:127.0.0.1 || 5b32cbef0e07fe16423ae5e3
+06/26/2018-23:29:29.81 DeezNuts: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+06/26/2018-23:29:29.89 DeezNuts: syncing (success): 60 seconds -> 60 seconds (5b32cbef0e07fe16423ae5e3)
+06/26/2018-23:29:32.36 DeezNuts: Return Visitor: ::ffff:127.0.0.1 || 5b32cbef0e07fe16423ae5e3
+06/26/2018-23:29:32.44 DeezNuts: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+06/26/2018-23:29:32.52 DeezNuts: syncing (success): 60 seconds -> 60 seconds (5b32cbef0e07fe16423ae5e3)
+06/26/2018-23:29:35.35 DeezNuts: Return Visitor: ::ffff:127.0.0.1 || 5b32cbef0e07fe16423ae5e3
+06/26/2018-23:29:35.44 DeezNuts: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+06/26/2018-23:29:35.52 DeezNuts: syncing (success): 60 seconds -> 60 seconds (5b32cbef0e07fe16423ae5e3)
+06/26/2018-23:29:38.35 DeezNuts: Return Visitor: ::ffff:127.0.0.1 || 5b32cbef0e07fe16423ae5e3
+06/26/2018-23:29:38.44 DeezNuts: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+06/26/2018-23:29:38.52 DeezNuts: syncing (success): 60 seconds -> 60 seconds (5b32cbef0e07fe16423ae5e3)
+06/26/2018-23:29:41.36 DeezNuts: Return Visitor: ::ffff:127.0.0.1 || 5b32cbef0e07fe16423ae5e3
+06/26/2018-23:29:41.44 DeezNuts: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+06/26/2018-23:29:41.52 DeezNuts: syncing (success): 60 seconds -> 60 seconds (5b32cbef0e07fe16423ae5e3)
+06/26/2018-23:29:44.37 DeezNuts: Return Visitor: ::ffff:127.0.0.1 || 5b32cbef0e07fe16423ae5e3
+06/26/2018-23:29:44.45 DeezNuts: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+06/26/2018-23:29:44.54 DeezNuts: syncing (success): 60 seconds -> 60 seconds (5b32cbef0e07fe16423ae5e3)
+06/26/2018-23:29:47.36 DeezNuts: Return Visitor: ::ffff:127.0.0.1 || 5b32cbef0e07fe16423ae5e3
+06/26/2018-23:29:47.45 DeezNuts: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+06/26/2018-23:29:47.53 DeezNuts: syncing (success): 60 seconds -> 60 seconds (5b32cbef0e07fe16423ae5e3)
+06/26/2018-23:29:50.36 DeezNuts: Return Visitor: ::ffff:127.0.0.1 || 5b32cbef0e07fe16423ae5e3
+06/26/2018-23:29:50.44 DeezNuts: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+06/26/2018-23:29:50.52 DeezNuts: syncing (success): 60 seconds -> 60 seconds (5b32cbef0e07fe16423ae5e3)
+06/26/2018-23:29:53.36 DeezNuts: Return Visitor: ::ffff:127.0.0.1 || 5b32cbef0e07fe16423ae5e3
+06/26/2018-23:29:53.44 DeezNuts: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+06/26/2018-23:29:53.52 DeezNuts: syncing (success): 60 seconds -> 60 seconds (5b32cbef0e07fe16423ae5e3)
+06/26/2018-23:29:56.36 DeezNuts: Return Visitor: ::ffff:127.0.0.1 || 5b32cbef0e07fe16423ae5e3
+06/26/2018-23:29:56.44 DeezNuts: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+06/26/2018-23:29:56.52 DeezNuts: syncing (success): 60 seconds -> 60 seconds (5b32cbef0e07fe16423ae5e3)
+06/26/2018-23:29:59.35 DeezNuts: Return Visitor: ::ffff:127.0.0.1 || 5b32cbef0e07fe16423ae5e3
+06/26/2018-23:29:59.43 DeezNuts: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+06/26/2018-23:29:59.51 DeezNuts: syncing (success): 60 seconds -> 60 seconds (5b32cbef0e07fe16423ae5e3)
+06/26/2018-23:30:02.36 DeezNuts: Return Visitor: ::ffff:127.0.0.1 || 5b32cbef0e07fe16423ae5e3
+06/26/2018-23:30:02.44 DeezNuts: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+06/26/2018-23:30:02.52 DeezNuts: syncing (success): 60 seconds -> 60 seconds (5b32cbef0e07fe16423ae5e3)
+06/26/2018-23:30:05.35 DeezNuts: Return Visitor: ::ffff:127.0.0.1 || 5b32cbef0e07fe16423ae5e3
+06/26/2018-23:30:05.43 DeezNuts: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+06/26/2018-23:30:05.51 DeezNuts: syncing (success): 60 seconds -> 60 seconds (5b32cbef0e07fe16423ae5e3)
+06/26/2018-23:30:08.34 DeezNuts: Return Visitor: ::ffff:127.0.0.1 || 5b32cbef0e07fe16423ae5e3
+06/26/2018-23:30:08.43 DeezNuts: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+06/26/2018-23:30:08.51 DeezNuts: syncing (success): 60 seconds -> 60 seconds (5b32cbef0e07fe16423ae5e3)
+06/26/2018-23:30:11.34 DeezNuts: Return Visitor: ::ffff:127.0.0.1 || 5b32cbef0e07fe16423ae5e3
+06/26/2018-23:30:11.43 DeezNuts: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+06/26/2018-23:30:11.51 DeezNuts: syncing (success): 60 seconds -> 60 seconds (5b32cbef0e07fe16423ae5e3)
+06/26/2018-23:30:14.34 DeezNuts: Return Visitor: ::ffff:127.0.0.1 || 5b32cbef0e07fe16423ae5e3
+06/26/2018-23:30:14.43 DeezNuts: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+06/26/2018-23:30:14.51 DeezNuts: syncing (success): 60 seconds -> 60 seconds (5b32cbef0e07fe16423ae5e3)
+06/26/2018-23:30:17.35 DeezNuts: Return Visitor: ::ffff:127.0.0.1 || 5b32cbef0e07fe16423ae5e3
+06/26/2018-23:30:17.43 DeezNuts: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+06/26/2018-23:30:17.51 DeezNuts: syncing (success): 60 seconds -> 60 seconds (5b32cbef0e07fe16423ae5e3)
+06/26/2018-23:30:20.34 DeezNuts: Return Visitor: ::ffff:127.0.0.1 || 5b32cbef0e07fe16423ae5e3
+06/26/2018-23:30:20.43 DeezNuts: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+06/26/2018-23:30:20.51 DeezNuts: syncing (success): 60 seconds -> 60 seconds (5b32cbef0e07fe16423ae5e3)
+06/26/2018-23:30:23.34 DeezNuts: Return Visitor: ::ffff:127.0.0.1 || 5b32cbef0e07fe16423ae5e3
+06/26/2018-23:30:23.42 DeezNuts: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+06/26/2018-23:30:23.50 DeezNuts: syncing (success): 60 seconds -> 60 seconds (5b32cbef0e07fe16423ae5e3)
+06/26/2018-23:30:26.36 DeezNuts: Return Visitor: ::ffff:127.0.0.1 || 5b32cbef0e07fe16423ae5e3
+06/26/2018-23:30:26.45 DeezNuts: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+06/26/2018-23:30:26.53 DeezNuts: syncing (success): 60 seconds -> 60 seconds (5b32cbef0e07fe16423ae5e3)
+06/26/2018-23:30:29.71 DeezNuts: Return Visitor: ::ffff:127.0.0.1 || 5b32cbef0e07fe16423ae5e3
+06/26/2018-23:30:29.80 DeezNuts: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+06/26/2018-23:30:29.88 DeezNuts: syncing (success): 60 seconds -> 60 seconds (5b32cbef0e07fe16423ae5e3)
+06/26/2018-23:30:32.71 DeezNuts: Return Visitor: ::ffff:127.0.0.1 || 5b32cbef0e07fe16423ae5e3
+06/26/2018-23:30:32.79 DeezNuts: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+06/26/2018-23:30:32.87 DeezNuts: syncing (success): 60 seconds -> 60 seconds (5b32cbef0e07fe16423ae5e3)
+06/26/2018-23:30:35.72 DeezNuts: Return Visitor: ::ffff:127.0.0.1 || 5b32cbef0e07fe16423ae5e3
+06/26/2018-23:30:35.80 DeezNuts: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+06/26/2018-23:30:35.88 DeezNuts: syncing (success): 60 seconds -> 60 seconds (5b32cbef0e07fe16423ae5e3)
+06/26/2018-23:30:38.72 DeezNuts: Return Visitor: ::ffff:127.0.0.1 || 5b32cbef0e07fe16423ae5e3
+06/26/2018-23:30:38.80 DeezNuts: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+06/26/2018-23:30:38.88 DeezNuts: syncing (success): 60 seconds -> 60 seconds (5b32cbef0e07fe16423ae5e3)
+06/26/2018-23:30:41.71 DeezNuts: Return Visitor: ::ffff:127.0.0.1 || 5b32cbef0e07fe16423ae5e3
+06/26/2018-23:30:41.79 DeezNuts: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+06/26/2018-23:30:41.88 DeezNuts: syncing (success): 60 seconds -> 60 seconds (5b32cbef0e07fe16423ae5e3)
+06/26/2018-23:30:44.72 DeezNuts: Return Visitor: ::ffff:127.0.0.1 || 5b32cbef0e07fe16423ae5e3
+06/26/2018-23:30:44.80 DeezNuts: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+06/26/2018-23:30:44.88 DeezNuts: syncing (success): 60 seconds -> 60 seconds (5b32cbef0e07fe16423ae5e3)
+06/26/2018-23:30:47.72 DeezNuts: Return Visitor: ::ffff:127.0.0.1 || 5b32cbef0e07fe16423ae5e3
+06/26/2018-23:30:47.80 DeezNuts: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+06/26/2018-23:30:47.88 DeezNuts: syncing (success): 60 seconds -> 60 seconds (5b32cbef0e07fe16423ae5e3)
+06/26/2018-23:30:50.72 DeezNuts: Return Visitor: ::ffff:127.0.0.1 || 5b32cbef0e07fe16423ae5e3
+06/26/2018-23:30:50.80 DeezNuts: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+06/26/2018-23:30:50.89 DeezNuts: syncing (success): 60 seconds -> 60 seconds (5b32cbef0e07fe16423ae5e3)
+06/26/2018-23:30:53.72 DeezNuts: Return Visitor: ::ffff:127.0.0.1 || 5b32cbef0e07fe16423ae5e3
+06/26/2018-23:30:53.80 DeezNuts: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+06/26/2018-23:30:53.88 DeezNuts: syncing (success): 60 seconds -> 60 seconds (5b32cbef0e07fe16423ae5e3)
+06/26/2018-23:30:56.45 DeezNuts: Return Visitor: ::ffff:127.0.0.1 || 5b32cbef0e07fe16423ae5e3
+06/26/2018-23:30:56.53 DeezNuts: unknown,130.211.88.31,::ffff:127.0.0.1,unknown, 130.211.88.31 /GET /tip?secret=627b393e03c75d43a3e9957b3bc8e5fb&address=1MPxBumYvkTTEyFbLvtkEapE1SMLkwQQmc&transaction_hash=12810b45f5372744f758df971dd74dc3e2a9ec4e3952e52f581a98174a059689&value=48786&confirmations=1
+06/26/2018-23:30:56.54 DeezNuts: req.query: {
+    "secret": "627b393e03c75d43a3e9957b3bc8e5fb",
+    "address": "1MPxBumYvkTTEyFbLvtkEapE1SMLkwQQmc",
+    "transaction_hash": "12810b45f5372744f758df971dd74dc3e2a9ec4e3952e52f581a98174a059689",
+    "value": "48786",
+    "confirmations": "1"
+}
+06/26/2018-23:30:56.54 DeezNuts: Adding Transaction: 48786 -> 1MPxBumYvkTTEyFbLvtkEapE1SMLkwQQmc (12810b45f5372744f758df971dd74dc3e2a9ec4e3952e52f581a98174a059689)
+06/26/2018-23:30:56.62 DeezNuts: user.transactions: 12810b45f5372744f758df971dd74dc3e2a9ec4e3952e52f581a98174a059689
+06/26/2018-23:30:56.62 DeezNuts: Confirmed Existing Transaction: 0 -> 1 (12810b45f5372744f758df971dd74dc3e2a9ec4e3952e52f581a98174a059689:5b32cbf80e07fe16423ae5e4)
+06/26/2018-23:30:56.73 DeezNuts: Return Visitor: ::ffff:127.0.0.1 || 5b32cbef0e07fe16423ae5e3
+06/26/2018-23:30:56.81 DeezNuts: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+06/26/2018-23:30:56.89 DeezNuts: syncing (success): 60 seconds -> 60 seconds (5b32cbef0e07fe16423ae5e3)
+06/26/2018-23:30:59.72 DeezNuts: Return Visitor: ::ffff:127.0.0.1 || 5b32cbef0e07fe16423ae5e3
+06/26/2018-23:30:59.80 DeezNuts: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+06/26/2018-23:30:59.89 DeezNuts: syncing (success): 60 seconds -> 60 seconds (5b32cbef0e07fe16423ae5e3)
+06/26/2018-23:31:02.73 DeezNuts: Return Visitor: ::ffff:127.0.0.1 || 5b32cbef0e07fe16423ae5e3
+06/26/2018-23:31:02.81 DeezNuts: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+06/26/2018-23:31:02.89 DeezNuts: syncing (success): 60 seconds -> 60 seconds (5b32cbef0e07fe16423ae5e3)
+06/26/2018-23:31:05.75 DeezNuts: Return Visitor: ::ffff:127.0.0.1 || 5b32cbef0e07fe16423ae5e3
+06/26/2018-23:31:05.83 DeezNuts: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+06/26/2018-23:31:05.91 DeezNuts: syncing (success): 60 seconds -> 60 seconds (5b32cbef0e07fe16423ae5e3)
+06/26/2018-23:31:08.72 DeezNuts: Return Visitor: ::ffff:127.0.0.1 || 5b32cbef0e07fe16423ae5e3
+06/26/2018-23:31:08.80 DeezNuts: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+06/26/2018-23:31:08.89 DeezNuts: syncing (success): 60 seconds -> 60 seconds (5b32cbef0e07fe16423ae5e3)
+06/26/2018-23:31:11.73 DeezNuts: Return Visitor: ::ffff:127.0.0.1 || 5b32cbef0e07fe16423ae5e3
+06/26/2018-23:31:11.81 DeezNuts: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+06/26/2018-23:31:11.89 DeezNuts: syncing (success): 60 seconds -> 60 seconds (5b32cbef0e07fe16423ae5e3)
+06/26/2018-23:31:14.72 DeezNuts: Return Visitor: ::ffff:127.0.0.1 || 5b32cbef0e07fe16423ae5e3
+06/26/2018-23:31:14.81 DeezNuts: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+06/26/2018-23:31:14.89 DeezNuts: syncing (success): 60 seconds -> 60 seconds (5b32cbef0e07fe16423ae5e3)
+06/26/2018-23:31:17.72 DeezNuts: Return Visitor: ::ffff:127.0.0.1 || 5b32cbef0e07fe16423ae5e3
+06/26/2018-23:31:17.80 DeezNuts: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+06/26/2018-23:31:17.88 DeezNuts: syncing (success): 60 seconds -> 60 seconds (5b32cbef0e07fe16423ae5e3)
+06/26/2018-23:31:20.72 DeezNuts: Return Visitor: ::ffff:127.0.0.1 || 5b32cbef0e07fe16423ae5e3
+06/26/2018-23:31:20.80 DeezNuts: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+06/26/2018-23:31:20.88 DeezNuts: syncing (success): 60 seconds -> 60 seconds (5b32cbef0e07fe16423ae5e3)
+06/26/2018-23:31:23.72 DeezNuts: Return Visitor: ::ffff:127.0.0.1 || 5b32cbef0e07fe16423ae5e3
+06/26/2018-23:31:23.80 DeezNuts: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+06/26/2018-23:31:23.88 DeezNuts: syncing (success): 60 seconds -> 60 seconds (5b32cbef0e07fe16423ae5e3)
+06/26/2018-23:31:26.72 DeezNuts: Return Visitor: ::ffff:127.0.0.1 || 5b32cbef0e07fe16423ae5e3
+06/26/2018-23:31:26.80 DeezNuts: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+06/26/2018-23:31:26.89 DeezNuts: syncing (success): 60 seconds -> 60 seconds (5b32cbef0e07fe16423ae5e3)
+06/26/2018-23:31:29.72 DeezNuts: Return Visitor: ::ffff:127.0.0.1 || 5b32cbef0e07fe16423ae5e3
+06/26/2018-23:31:29.80 DeezNuts: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+06/26/2018-23:31:29.89 DeezNuts: syncing (success): 60 seconds -> 60 seconds (5b32cbef0e07fe16423ae5e3)
+06/26/2018-23:31:32.72 DeezNuts: Return Visitor: ::ffff:127.0.0.1 || 5b32cbef0e07fe16423ae5e3
+06/26/2018-23:31:32.80 DeezNuts: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+06/26/2018-23:31:32.89 DeezNuts: syncing (success): 60 seconds -> 60 seconds (5b32cbef0e07fe16423ae5e3)
+06/26/2018-23:31:35.73 DeezNuts: Return Visitor: ::ffff:127.0.0.1 || 5b32cbef0e07fe16423ae5e3
+06/26/2018-23:31:35.81 DeezNuts: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+06/26/2018-23:31:35.90 DeezNuts: syncing (success): 60 seconds -> 60 seconds (5b32cbef0e07fe16423ae5e3)
+06/26/2018-23:31:38.73 DeezNuts: Return Visitor: ::ffff:127.0.0.1 || 5b32cbef0e07fe16423ae5e3
+06/26/2018-23:31:38.81 DeezNuts: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+06/26/2018-23:31:38.89 DeezNuts: syncing (success): 60 seconds -> 60 seconds (5b32cbef0e07fe16423ae5e3)
+06/26/2018-23:31:41.72 DeezNuts: Return Visitor: ::ffff:127.0.0.1 || 5b32cbef0e07fe16423ae5e3
+06/26/2018-23:31:41.80 DeezNuts: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+06/26/2018-23:31:41.88 DeezNuts: syncing (success): 60 seconds -> 60 seconds (5b32cbef0e07fe16423ae5e3)
+06/26/2018-23:31:44.71 DeezNuts: Return Visitor: ::ffff:127.0.0.1 || 5b32cbef0e07fe16423ae5e3
+06/26/2018-23:31:44.80 DeezNuts: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+06/26/2018-23:31:44.88 DeezNuts: syncing (success): 60 seconds -> 60 seconds (5b32cbef0e07fe16423ae5e3)
+06/26/2018-23:31:47.72 DeezNuts: Return Visitor: ::ffff:127.0.0.1 || 5b32cbef0e07fe16423ae5e3
+06/26/2018-23:31:47.80 DeezNuts: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+06/26/2018-23:31:47.88 DeezNuts: syncing (success): 60 seconds -> 60 seconds (5b32cbef0e07fe16423ae5e3)
+06/26/2018-23:31:50.69 DeezNuts: Return Visitor: ::ffff:127.0.0.1 || 5b32cbef0e07fe16423ae5e3
+06/26/2018-23:31:50.77 DeezNuts: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+06/26/2018-23:31:50.85 DeezNuts: syncing (success): 60 seconds -> 60 seconds (5b32cbef0e07fe16423ae5e3)
+06/26/2018-23:31:51.38 DeezNuts: Return Visitor: ::ffff:127.0.0.1 || 5b32cbef0e07fe16423ae5e3
+06/26/2018-23:31:51.46 DeezNuts: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /GET /
+06/26/2018-23:31:55.13 DeezNuts: Return Visitor: ::ffff:127.0.0.1 || 5b32cbef0e07fe16423ae5e3
+06/26/2018-23:31:55.21 DeezNuts: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+06/26/2018-23:31:55.28 DeezNuts: syncing (success): 60 seconds -> 60 seconds (5b32cbef0e07fe16423ae5e3)
+06/26/2018-23:31:58.21 DeezNuts: Return Visitor: ::ffff:127.0.0.1 || 5b32cbef0e07fe16423ae5e3
+06/26/2018-23:31:58.29 DeezNuts: Return Visitor: ::ffff:127.0.0.1 || 5b32cbef0e07fe16423ae5e3
+06/26/2018-23:31:58.30 DeezNuts: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /GET /logout
+06/26/2018-23:31:58.30 DeezNuts: logging out: 5b32cbf80e07fe16423ae5e4
+06/26/2018-23:31:58.36 DeezNuts: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+06/26/2018-23:31:58.37 DeezNuts: logout successful: 5b32cbf80e07fe16423ae5e4
+06/26/2018-23:31:58.44 DeezNuts: syncing (success): 60 seconds -> 60 seconds (5b32cbef0e07fe16423ae5e3)
+06/26/2018-23:31:58.66 DeezNuts: Return Visitor: ::ffff:127.0.0.1 || 5b32cbef0e07fe16423ae5e3
+06/26/2018-23:31:58.74 DeezNuts: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /GET /
+06/26/2018-23:32:02.02 DeezNuts: Return Visitor: ::ffff:127.0.0.1 || 5b32cbef0e07fe16423ae5e3
+06/26/2018-23:32:02.10 DeezNuts: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /login
+06/26/2018-23:32:02.39 DeezNuts: Return Visitor: ::ffff:127.0.0.1 || 5b32cbef0e07fe16423ae5e3
+06/26/2018-23:32:02.47 DeezNuts: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+06/26/2018-23:32:02.54 DeezNuts: syncing (success): 60 seconds -> 60 seconds (5b32cbef0e07fe16423ae5e3)
+06/26/2018-23:32:05.40 DeezNuts: Return Visitor: ::ffff:127.0.0.1 || 5b32cbef0e07fe16423ae5e3
+06/26/2018-23:32:05.48 DeezNuts: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+06/26/2018-23:32:05.56 DeezNuts: syncing (success): 60 seconds -> 60 seconds (5b32cbef0e07fe16423ae5e3)
+06/26/2018-23:32:08.18 DeezNuts: User found: user1
+06/26/2018-23:32:08.27 DeezNuts: login successful (local): 5b32cbf80e07fe16423ae5e4
+06/26/2018-23:32:08.40 DeezNuts: Return Visitor: ::ffff:127.0.0.1 || 5b32cbef0e07fe16423ae5e3
+06/26/2018-23:32:08.48 DeezNuts: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+06/26/2018-23:32:08.56 DeezNuts: syncing (success): 60 seconds -> 60 seconds (5b32cbef0e07fe16423ae5e3)
+06/26/2018-23:32:08.73 DeezNuts: Return Visitor: ::ffff:127.0.0.1 || 5b32cbef0e07fe16423ae5e3
+06/26/2018-23:32:08.81 DeezNuts: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /GET /
+06/26/2018-23:32:12.55 DeezNuts: Return Visitor: ::ffff:127.0.0.1 || 5b32cbef0e07fe16423ae5e3
+06/26/2018-23:32:12.63 DeezNuts: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+06/26/2018-23:32:12.71 DeezNuts: syncing (success): 60 seconds -> 60 seconds (5b32cbef0e07fe16423ae5e3)
+06/26/2018-23:32:15.73 DeezNuts: Return Visitor: ::ffff:127.0.0.1 || 5b32cbef0e07fe16423ae5e3
+06/26/2018-23:32:15.81 DeezNuts: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+06/26/2018-23:32:15.89 DeezNuts: syncing (success): 60 seconds -> 60 seconds (5b32cbef0e07fe16423ae5e3)
+06/26/2018-23:32:18.73 DeezNuts: Return Visitor: ::ffff:127.0.0.1 || 5b32cbef0e07fe16423ae5e3
+06/26/2018-23:32:18.81 DeezNuts: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+06/26/2018-23:32:18.89 DeezNuts: syncing (success): 60 seconds -> 60 seconds (5b32cbef0e07fe16423ae5e3)
+06/26/2018-23:32:21.73 DeezNuts: Return Visitor: ::ffff:127.0.0.1 || 5b32cbef0e07fe16423ae5e3
+06/26/2018-23:32:21.82 DeezNuts: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+06/26/2018-23:32:21.90 DeezNuts: syncing (success): 60 seconds -> 60 seconds (5b32cbef0e07fe16423ae5e3)
+06/26/2018-23:32:24.73 DeezNuts: Return Visitor: ::ffff:127.0.0.1 || 5b32cbef0e07fe16423ae5e3
+06/26/2018-23:32:24.81 DeezNuts: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+06/26/2018-23:32:24.89 DeezNuts: syncing (success): 60 seconds -> 60 seconds (5b32cbef0e07fe16423ae5e3)
+06/26/2018-23:32:27.72 DeezNuts: Return Visitor: ::ffff:127.0.0.1 || 5b32cbef0e07fe16423ae5e3
+06/26/2018-23:32:27.81 DeezNuts: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+06/26/2018-23:32:27.89 DeezNuts: syncing (success): 60 seconds -> 60 seconds (5b32cbef0e07fe16423ae5e3)
+06/26/2018-23:32:30.74 DeezNuts: Return Visitor: ::ffff:127.0.0.1 || 5b32cbef0e07fe16423ae5e3
+06/26/2018-23:32:30.82 DeezNuts: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+06/26/2018-23:32:30.90 DeezNuts: syncing (success): 60 seconds -> 60 seconds (5b32cbef0e07fe16423ae5e3)
+06/26/2018-23:32:33.72 DeezNuts: Return Visitor: ::ffff:127.0.0.1 || 5b32cbef0e07fe16423ae5e3
+06/26/2018-23:32:33.81 DeezNuts: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+06/26/2018-23:32:33.89 DeezNuts: syncing (success): 60 seconds -> 60 seconds (5b32cbef0e07fe16423ae5e3)
+06/26/2018-23:32:36.74 DeezNuts: Return Visitor: ::ffff:127.0.0.1 || 5b32cbef0e07fe16423ae5e3
+06/26/2018-23:32:36.82 DeezNuts: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+06/26/2018-23:32:36.90 DeezNuts: syncing (success): 60 seconds -> 60 seconds (5b32cbef0e07fe16423ae5e3)
+06/26/2018-23:32:39.72 DeezNuts: Return Visitor: ::ffff:127.0.0.1 || 5b32cbef0e07fe16423ae5e3
+06/26/2018-23:32:39.81 DeezNuts: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+06/26/2018-23:32:39.89 DeezNuts: syncing (success): 60 seconds -> 60 seconds (5b32cbef0e07fe16423ae5e3)
+06/26/2018-23:32:42.73 DeezNuts: Return Visitor: ::ffff:127.0.0.1 || 5b32cbef0e07fe16423ae5e3
+06/26/2018-23:32:42.81 DeezNuts: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+06/26/2018-23:32:42.89 DeezNuts: syncing (success): 60 seconds -> 60 seconds (5b32cbef0e07fe16423ae5e3)
+06/26/2018-23:32:45.72 DeezNuts: Return Visitor: ::ffff:127.0.0.1 || 5b32cbef0e07fe16423ae5e3
+06/26/2018-23:32:45.80 DeezNuts: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+06/26/2018-23:32:45.88 DeezNuts: syncing (success): 60 seconds -> 60 seconds (5b32cbef0e07fe16423ae5e3)
+06/26/2018-23:32:48.73 DeezNuts: Return Visitor: ::ffff:127.0.0.1 || 5b32cbef0e07fe16423ae5e3
+06/26/2018-23:32:48.81 DeezNuts: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+06/26/2018-23:32:48.89 DeezNuts: syncing (success): 60 seconds -> 60 seconds (5b32cbef0e07fe16423ae5e3)
+06/26/2018-23:32:51.72 DeezNuts: Return Visitor: ::ffff:127.0.0.1 || 5b32cbef0e07fe16423ae5e3
+06/26/2018-23:32:51.80 DeezNuts: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+06/26/2018-23:32:51.89 DeezNuts: syncing (success): 60 seconds -> 60 seconds (5b32cbef0e07fe16423ae5e3)
+06/26/2018-23:32:54.73 DeezNuts: Return Visitor: ::ffff:127.0.0.1 || 5b32cbef0e07fe16423ae5e3
+06/26/2018-23:32:54.81 DeezNuts: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+06/26/2018-23:32:54.89 DeezNuts: syncing (success): 60 seconds -> 60 seconds (5b32cbef0e07fe16423ae5e3)
+06/26/2018-23:32:57.72 DeezNuts: Return Visitor: ::ffff:127.0.0.1 || 5b32cbef0e07fe16423ae5e3
+06/26/2018-23:32:57.80 DeezNuts: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+06/26/2018-23:32:57.88 DeezNuts: syncing (success): 60 seconds -> 60 seconds (5b32cbef0e07fe16423ae5e3)
+06/26/2018-23:33:00.54 DeezNuts: Return Visitor: ::ffff:127.0.0.1 || 5b32cbef0e07fe16423ae5e3
+06/26/2018-23:33:00.62 DeezNuts: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+06/26/2018-23:33:00.70 DeezNuts: syncing (success): 60 seconds -> 60 seconds (5b32cbef0e07fe16423ae5e3)
