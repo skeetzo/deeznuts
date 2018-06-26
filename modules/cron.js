@@ -66,7 +66,7 @@ crons.prototype = {
         logger.log('--- Midnight ---');
         async.series([
             function (step) {
-                var Log = require('../mods/log');
+                var Log = require('../modules/log');
                 Log.reset(function (err) {
                     if (err) logger.log(err);
                     step(null);
