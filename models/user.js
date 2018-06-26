@@ -33,7 +33,7 @@ userSchema.pre('save', function (next) {
   var self = this;
   if (self.ip)
     self.ip = self.ips[0];
-  logger.log('user transactions: %s', self.transactions);
+  logger.log('user transactions: %s', JSON.stringify(self.transactions,null,4));
   if (!self.isModified('password')) return next();
   var SALT_FACTOR = 5;
   bcrypt.genSalt(SALT_FACTOR, function(err, salt) {
