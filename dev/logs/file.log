@@ -12,3 +12,11 @@
 [34m[37m06/26/2018-21:32:02.02 [34m[33mDeezNuts[34m: Mongoose connection disconnected[39m
 [34m[37m06/26/2018-21:32:02.02 [34m[33mDeezNuts[34m: Reconnecting to MongoDB in 3000...[39m
 [34m[37m06/26/2018-21:32:02.02 [34m[33mDeezNuts[34m: Mongoose connection disconnected through app termination[39m
+[37m06/26/2018-21:32:08.67 [39m[33mDeezNuts[39m: Starting Crons
+[37m06/26/2018-21:32:08.68 [39m[33mDeezNuts[39m: started cron - Ping
+[37m06/26/2018-21:32:08.68 [39m[33mDeezNuts[39m: started cron - Midnight
+[34m[37m06/26/2018-21:32:09.12 [34m[33mDeezNuts[34m: Mongoose connection open[39m
+[37m06/26/2018-21:32:09.20 [39m[33mDeezNuts[39m: Bot found: justalexxxd
+[34m[37m06/26/2018-21:33:06.65 [34m[33mDeezNuts[34m: Mongoose connection disconnected[39m
+[34m[37m06/26/2018-21:33:06.65 [34m[33mDeezNuts[34m: Reconnecting to MongoDB in 3000...[39m
+[34m[37m06/26/2018-21:33:06.66 [34m[33mDeezNuts[34m: Mongoose connection disconnected through app termination[39m
