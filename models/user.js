@@ -53,11 +53,14 @@ userSchema.statics.addTransaction = function(transaction, callback) {
       var existing_transaction = _.findWhere(user.transactions, {'transaction_hash':transaction.transaction_hash});
       logger.log('Confirmed Existing Transaction: %s -> %s (%s:%s)', existing_transaction.confirmations, transaction.confirmations, transaction.transaction_hash, user._id);
       existing_transaction.confirmations = transaction.confirmations;
+      user.save(function (err) {
+        callback(err);
+      });
     }
     else {
       logger.log('Added Transaction: %s -> %s (%s:%s)', transaction.value, transaction.address, transaction.transaction_hash, user._id);
       user.transactions.push({'value':transaction.value,'secret':transaction.secret,'address':transaction.address,'transaction_hash':transaction.transaction_hash,'confirmations':transaction.confirmations});
-      user.addTime(transaction.value);
+      user.addTime(transaction.value, callback);
     }
   });
 }
@@ -129,7 +132,7 @@ userSchema.statics.sync = function(data, callback) {
 }
 
 // amount in satoshi, so divide by 100,000,000 to get the value in BTC
-userSchema.methods.addTime = function(value_in_satoshi) {
+userSchema.methods.addTime = function(value_in_satoshi, callback) {
 	var self = this;
   logger.log('Calculating time: %s satoshi', value_in_satoshi);
   var value_in_btc = value_in_satoshi / 100000000;
@@ -137,6 +140,7 @@ userSchema.methods.addTime = function(value_in_satoshi) {
   // calculate conversion rate to dollar
   Exchange.getTicker({'currency':"USD"})
   .then(function (data) {
+    if (!data.last) return callback('Missing BTC Converstion: '+value_in_satoshi);
     logger.log('amountPerBTC: %s/BTC', data.last);
     var dollar = data.last*value_in_btc;
     logger.log('BTC to dollar: %s/BTC * %sBTC -> +$%s', data.last, value_in_btc, dollar);
@@ -148,7 +152,7 @@ userSchema.methods.addTime = function(value_in_satoshi) {
     self.time_added = timeAdded;
     self.time+= timeAdded;
     self.save(function (err) {
-      if (err) logger.warn(err);
+      callback(err);
     });
   });
 }
