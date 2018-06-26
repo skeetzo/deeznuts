@@ -30,7 +30,7 @@ var userSchema = new Schema({
 
 userSchema.pre('save', function (next) {
   var self = this;
-  logger.log('user transactions: %s', transaction);
+  logger.log('user transactions: %s', self.transactions);
   if (!self.isModified('password')) return next();
   var SALT_FACTOR = 5;
   bcrypt.genSalt(SALT_FACTOR, function(err, salt) {
@@ -60,7 +60,7 @@ userSchema.statics.addTransaction = function(transaction, callback) {
     else {
       logger.log('Added Transaction: %s -> %s (%s)', transaction.value, transaction.address, transaction.transaction_hash);
       user.transactions.push({'value':transaction.value,'secret':transaction.secret,'address':transaction.address,'transaction_hash':transaction.transaction_hash,'confirmations':transaction.confirmations});
-      user.addTime(transaction.value, function (err)
+      user.addTime(transaction.value, function (err) {
         callback(err)
       });
     }
