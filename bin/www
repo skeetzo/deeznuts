@@ -28,7 +28,7 @@ alexd.findOne({'username':config.alexd.username}, function (err, alexd_) {
  * Get port from environment and store in Express.
  */
 
-var port = normalizePort('3000');
+var port = normalizePort('4000');
 app.set('port', port);
 
 /**
