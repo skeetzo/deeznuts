@@ -25067,3 +25067,755 @@
 >>>>>>> bbbeb1ca4b536d15774f160d19b3be164e3e3eb1
 =======
 >>>>>>> 8a4b561c2a6f2720d190e90ed5e7f28bf268077d
+[37m06/26/2018-02:51:09.09 [39m[33mDeezNuts[39m: Starting Crons
+[37m06/26/2018-02:51:09.11 [39m[33mDeezNuts[39m: started cron - Ping
+[37m06/26/2018-02:51:09.11 [39m[33mDeezNuts[39m: started cron - Midnight
+[34m[37m06/26/2018-02:51:09.58 [34m[33mDeezNuts[34m: Mongoose connection open[39m
+[37m06/26/2018-02:51:09.67 [39m[33mDeezNuts[39m: Bot found: justalexxxd
+[37m06/26/2018-02:51:11.83 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+[37m06/26/2018-02:51:11.92 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[34m[37m06/26/2018-02:51:12.00 [34m[33mDeezNuts[34m: syncing time (bug): 0 seconds -> 0 (0) seconds[39m
+[37m06/26/2018-02:51:14.80 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+[37m06/26/2018-02:51:14.88 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[34m[37m06/26/2018-02:51:14.97 [34m[33mDeezNuts[34m: syncing time (bug): 0 seconds -> 0 (0) seconds[39m
+[37m06/26/2018-02:51:17.15 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+[37m06/26/2018-02:51:17.46 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+[37m06/26/2018-02:51:17.47 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[37m06/26/2018-02:51:17.55 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1,76.91.217.22 /GET /
+[34m[37m06/26/2018-02:51:18.25 [34m[33mDeezNuts[34m: syncing time (bug): 0 seconds -> 0 (0) seconds[39m
+[37m06/26/2018-02:51:21.09 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+[37m06/26/2018-02:51:21.18 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1,unknown, 192.158.30.92 /GET /tip?secret=9dd811ee5a5edc5c0826eb4fdb3b990c&address=16DBbZmP4eiAZd9fUYKeDbdXxLET99Ym4k&transaction_hash=bbdfaa92c16b92e34285a7a3bd5253b5949be6c78870c982a914b8b89e900c32&value=48051&confirmations=2
+[34m[37m06/26/2018-02:51:21.18 [34m[33mDeezNuts[34m: req.query: {[39m
+[34m    "secret": "9dd811ee5a5edc5c0826eb4fdb3b990c",[39m
+[34m    "address": "16DBbZmP4eiAZd9fUYKeDbdXxLET99Ym4k",[39m
+[34m    "transaction_hash": "bbdfaa92c16b92e34285a7a3bd5253b5949be6c78870c982a914b8b89e900c32",[39m
+[34m    "value": "48051",[39m
+[34m    "confirmations": "2"[39m
+[34m}[39m
+[37m06/26/2018-02:51:21.18 [39m[33mDeezNuts[39m: Adding Transaction: 48051 -> 16DBbZmP4eiAZd9fUYKeDbdXxLET99Ym4k (bbdfaa92c16b92e34285a7a3bd5253b5949be6c78870c982a914b8b89e900c32)
+[37m06/26/2018-02:51:21.26 [39m[33mDeezNuts[39m: user.transactions: ,
+[37m06/26/2018-02:51:21.26 [39m[33mDeezNuts[39m: Added Transaction: 48051 -> 16DBbZmP4eiAZd9fUYKeDbdXxLET99Ym4k (bbdfaa92c16b92e34285a7a3bd5253b5949be6c78870c982a914b8b89e900c32:5b318f9c7a82365a94200be8)
+[37m06/26/2018-02:51:21.26 [39m[33mDeezNuts[39m: Calculating time: 48051 satoshi
+[37m06/26/2018-02:51:21.26 [39m[33mDeezNuts[39m: satoshi to BTC: 48051 satoshi -> 0.00048051BTC
+[37m06/26/2018-02:51:21.88 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+[37m06/26/2018-02:51:21.97 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[34m[37m06/26/2018-02:51:22.06 [34m[33mDeezNuts[34m: syncing time (bug): 0 seconds -> 0 (0) seconds[39m
+[37m06/26/2018-02:51:23.25 [39m[33mDeezNuts[39m: amountPerBTC: 6241.71/BTC
+[37m06/26/2018-02:51:23.25 [39m[33mDeezNuts[39m: BTC to dollar: 6241.71/BTC * 0.00048051BTC -> +$2.9992040721
+[37m06/26/2018-02:51:23.25 [39m[33mDeezNuts[39m: dollar to time: $2.9992040721 -> 1079.713465956 seconds
+[37m06/26/2018-02:51:23.25 [39m[33mDeezNuts[39m: dollar converted: $2.9992040721 -> 1079.713465956 seconds
+[37m06/26/2018-02:51:23.25 [39m[33mDeezNuts[39m: time added: 2218.971985044 seconds + 1079.713465956 seconds = 3298.6854510000003 seconds
+[37m06/26/2018-02:51:23.25 [39m[33mDeezNuts[39m: GLogging: 2218.971985044 seconds + 1079.713465956 seconds (48051 satoshis -> 2.9992040721 dollars) = 3298.6854510000003 seconds
+[37m06/26/2018-02:51:24.94 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+[37m06/26/2018-02:51:24.96 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+[37m06/26/2018-02:51:25.03 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[37m06/26/2018-02:51:25.06 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1,223.197.175.195 /HEAD /
+[34m[37m06/26/2018-02:51:25.22 [34m[33mDeezNuts[34m: syncing time (bug): 0 seconds -> 0 (0) seconds[39m
+[37m06/26/2018-02:51:27.88 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+[37m06/26/2018-02:51:27.96 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[34m[37m06/26/2018-02:51:28.05 [34m[33mDeezNuts[34m: syncing time (bug): 0 seconds -> 0 (0) seconds[39m
+[37m06/26/2018-02:51:30.87 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+[37m06/26/2018-02:51:30.95 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[34m[37m06/26/2018-02:51:31.05 [34m[33mDeezNuts[34m: syncing time (bug): 0 seconds -> 0 (0) seconds[39m
+[37m06/26/2018-02:51:33.88 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+[37m06/26/2018-02:51:33.96 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[34m[37m06/26/2018-02:51:34.05 [34m[33mDeezNuts[34m: syncing time (bug): 0 seconds -> 0 (0) seconds[39m
+[37m06/26/2018-02:51:37.80 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+[37m06/26/2018-02:51:37.90 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[34m[37m06/26/2018-02:51:37.98 [34m[33mDeezNuts[34m: syncing time (bug): 0 seconds -> 0 (0) seconds[39m
+[37m06/26/2018-02:51:40.80 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+[37m06/26/2018-02:51:40.89 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[34m[37m06/26/2018-02:51:40.97 [34m[33mDeezNuts[34m: syncing time (bug): 0 seconds -> 0 (0) seconds[39m
+[37m06/26/2018-02:51:43.79 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+[37m06/26/2018-02:51:43.89 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[34m[37m06/26/2018-02:51:43.97 [34m[33mDeezNuts[34m: syncing time (bug): 0 seconds -> 0 (0) seconds[39m
+[37m06/26/2018-02:51:46.79 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+[37m06/26/2018-02:51:46.89 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[34m[37m06/26/2018-02:51:46.97 [34m[33mDeezNuts[34m: syncing time (bug): 0 seconds -> 0 (0) seconds[39m
+[37m06/26/2018-02:51:49.79 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+[37m06/26/2018-02:51:49.88 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[34m[37m06/26/2018-02:51:49.96 [34m[33mDeezNuts[34m: syncing time (bug): 0 seconds -> 0 (0) seconds[39m
+[37m06/26/2018-02:51:52.79 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+[37m06/26/2018-02:51:52.87 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[34m[37m06/26/2018-02:51:52.96 [34m[33mDeezNuts[34m: syncing time (bug): 0 seconds -> 0 (0) seconds[39m
+[37m06/26/2018-02:51:55.80 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+[37m06/26/2018-02:51:55.88 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[34m[37m06/26/2018-02:51:55.98 [34m[33mDeezNuts[34m: syncing time (bug): 0 seconds -> 0 (0) seconds[39m
+[37m06/26/2018-02:51:58.79 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+[37m06/26/2018-02:51:58.88 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[34m[37m06/26/2018-02:51:58.97 [34m[33mDeezNuts[34m: syncing time (bug): 0 seconds -> 0 (0) seconds[39m
+[37m06/26/2018-02:52:01.80 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+[37m06/26/2018-02:52:01.88 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[34m[37m06/26/2018-02:52:01.97 [34m[33mDeezNuts[34m: syncing time (bug): 0 seconds -> 0 (0) seconds[39m
+[37m06/26/2018-02:52:04.95 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+[37m06/26/2018-02:52:05.03 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[34m[37m06/26/2018-02:52:05.12 [34m[33mDeezNuts[34m: syncing time (bug): 0 seconds -> 0 (0) seconds[39m
+[37m06/26/2018-02:52:07.79 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+[37m06/26/2018-02:52:07.88 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[34m[37m06/26/2018-02:52:07.97 [34m[33mDeezNuts[34m: syncing time (bug): 0 seconds -> 0 (0) seconds[39m
+[37m06/26/2018-02:52:10.81 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+[37m06/26/2018-02:52:10.89 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[34m[37m06/26/2018-02:52:10.99 [34m[33mDeezNuts[34m: syncing time (bug): 0 seconds -> 0 (0) seconds[39m
+[37m06/26/2018-02:52:12.89 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+[37m06/26/2018-02:52:12.97 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[34m[37m06/26/2018-02:52:13.06 [34m[33mDeezNuts[34m: syncing time (bug): 0 seconds -> 0 (0) seconds[39m
+[37m06/26/2018-02:52:13.87 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+[37m06/26/2018-02:52:13.95 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1,76.91.217.22 /GET /
+[37m06/26/2018-02:52:16.07 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+[37m06/26/2018-02:52:16.16 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1,76.91.217.22 /GET /logout
+[37m06/26/2018-02:52:16.16 [39m[33mDeezNuts[39m: logging out: 5b318f9c7a82365a94200be8
+[37m06/26/2018-02:52:16.25 [39m[33mDeezNuts[39m: logout successful: 5b318f9c7a82365a94200be8
+[37m06/26/2018-02:52:16.54 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+[37m06/26/2018-02:52:16.63 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1,76.91.217.22 /GET /
+[37m06/26/2018-02:52:20.29 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+[37m06/26/2018-02:52:20.38 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[34m[37m06/26/2018-02:52:20.47 [34m[33mDeezNuts[34m: syncing time (bug): 0 seconds -> 0 (0) seconds[39m
+[37m06/26/2018-02:52:22.46 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+[37m06/26/2018-02:52:22.54 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1,76.91.217.22 /GET /live
+[37m06/26/2018-02:52:25.13 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+[37m06/26/2018-02:52:25.21 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1,76.91.217.22 /POST /login
+[37m06/26/2018-02:52:25.31 [39m[33mDeezNuts[39m: User found: user2
+[37m06/26/2018-02:52:25.42 [39m[33mDeezNuts[39m: login successful (local): 5b318f9c7a82365a94200be8
+[37m06/26/2018-02:52:25.89 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+[37m06/26/2018-02:52:25.98 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1,76.91.217.22 /GET /
+[37m06/26/2018-02:52:26.32 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+[37m06/26/2018-02:52:26.40 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[34m[37m06/26/2018-02:52:26.49 [34m[33mDeezNuts[34m: syncing time (bug): 0 seconds -> 0 (0) seconds[39m
+[37m06/26/2018-02:52:29.68 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+[37m06/26/2018-02:52:29.76 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[34m[37m06/26/2018-02:52:29.85 [34m[33mDeezNuts[34m: syncing time (bug): 0 seconds -> 0 (0) seconds[39m
+[37m06/26/2018-02:52:32.67 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+[37m06/26/2018-02:52:32.75 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[34m[37m06/26/2018-02:52:32.85 [34m[33mDeezNuts[34m: syncing time (bug): 0 seconds -> 0 (0) seconds[39m
+[37m06/26/2018-02:52:35.67 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+[37m06/26/2018-02:52:35.75 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[34m[37m06/26/2018-02:52:35.83 [34m[33mDeezNuts[34m: syncing time (bug): 0 seconds -> 0 (0) seconds[39m
+[37m06/26/2018-02:52:38.67 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+[37m06/26/2018-02:52:38.76 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[34m[37m06/26/2018-02:52:38.85 [34m[33mDeezNuts[34m: syncing time (bug): 0 seconds -> 0 (0) seconds[39m
+[37m06/26/2018-02:52:41.67 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+[37m06/26/2018-02:52:41.76 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[34m[37m06/26/2018-02:52:41.85 [34m[33mDeezNuts[34m: syncing time (bug): 0 seconds -> 0 (0) seconds[39m
+[37m06/26/2018-02:52:44.68 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+[37m06/26/2018-02:52:44.77 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[34m[37m06/26/2018-02:52:44.85 [34m[33mDeezNuts[34m: syncing time (bug): 0 seconds -> 0 (0) seconds[39m
+[37m06/26/2018-02:52:47.70 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+[37m06/26/2018-02:52:47.79 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[34m[37m06/26/2018-02:52:47.87 [34m[33mDeezNuts[34m: syncing time (bug): 0 seconds -> 0 (0) seconds[39m
+[37m06/26/2018-02:52:50.68 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+[37m06/26/2018-02:52:50.77 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[34m[37m06/26/2018-02:52:50.86 [34m[33mDeezNuts[34m: syncing time (bug): 0 seconds -> 0 (0) seconds[39m
+[37m06/26/2018-02:52:53.68 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+[37m06/26/2018-02:52:53.77 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[34m[37m06/26/2018-02:52:53.85 [34m[33mDeezNuts[34m: syncing time (bug): 0 seconds -> 0 (0) seconds[39m
+[37m06/26/2018-02:52:56.67 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+[37m06/26/2018-02:52:56.76 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[34m[37m06/26/2018-02:52:56.85 [34m[33mDeezNuts[34m: syncing time (bug): 0 seconds -> 0 (0) seconds[39m
+[37m06/26/2018-02:52:59.68 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+[37m06/26/2018-02:52:59.77 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[34m[37m06/26/2018-02:52:59.85 [34m[33mDeezNuts[34m: syncing time (bug): 0 seconds -> 0 (0) seconds[39m
+[37m06/26/2018-02:53:02.70 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+[37m06/26/2018-02:53:02.79 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[34m[37m06/26/2018-02:53:02.87 [34m[33mDeezNuts[34m: syncing time (bug): 0 seconds -> 0 (0) seconds[39m
+[37m06/26/2018-02:53:05.66 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+[37m06/26/2018-02:53:05.74 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[34m[37m06/26/2018-02:53:05.82 [34m[33mDeezNuts[34m: syncing time (bug): 0 seconds -> 0 (0) seconds[39m
+[37m06/26/2018-02:53:08.65 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+[37m06/26/2018-02:53:08.72 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[34m[37m06/26/2018-02:53:08.81 [34m[33mDeezNuts[34m: syncing time (bug): 0 seconds -> 0 (0) seconds[39m
+[37m06/26/2018-02:53:11.66 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+[37m06/26/2018-02:53:11.74 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[34m[37m06/26/2018-02:53:11.82 [34m[33mDeezNuts[34m: syncing time (bug): 0 seconds -> 0 (0) seconds[39m
+[37m06/26/2018-02:53:14.65 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+[37m06/26/2018-02:53:14.73 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[34m[37m06/26/2018-02:53:14.82 [34m[33mDeezNuts[34m: syncing time (bug): 0 seconds -> 0 (0) seconds[39m
+[37m06/26/2018-02:53:17.66 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+[37m06/26/2018-02:53:17.74 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[34m[37m06/26/2018-02:53:17.82 [34m[33mDeezNuts[34m: syncing time (bug): 0 seconds -> 0 (0) seconds[39m
+[37m06/26/2018-02:53:20.65 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+[37m06/26/2018-02:53:20.73 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[34m[37m06/26/2018-02:53:20.82 [34m[33mDeezNuts[34m: syncing time (bug): 0 seconds -> 0 (0) seconds[39m
+[37m06/26/2018-02:53:23.64 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+[37m06/26/2018-02:53:23.72 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[34m[37m06/26/2018-02:53:23.80 [34m[33mDeezNuts[34m: syncing time (bug): 0 seconds -> 0 (0) seconds[39m
+[37m06/26/2018-02:53:26.65 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+[37m06/26/2018-02:53:26.72 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[34m[37m06/26/2018-02:53:26.81 [34m[33mDeezNuts[34m: syncing time (bug): 0 seconds -> 0 (0) seconds[39m
+[37m06/26/2018-02:53:29.64 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+[37m06/26/2018-02:53:29.71 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[34m[37m06/26/2018-02:53:29.79 [34m[33mDeezNuts[34m: syncing time (bug): 0 seconds -> 0 (0) seconds[39m
+[37m06/26/2018-02:53:32.65 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+[37m06/26/2018-02:53:32.73 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[34m[37m06/26/2018-02:53:32.81 [34m[33mDeezNuts[34m: syncing time (bug): 0 seconds -> 0 (0) seconds[39m
+[37m06/26/2018-02:53:35.64 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+[37m06/26/2018-02:53:35.71 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[34m[37m06/26/2018-02:53:35.80 [34m[33mDeezNuts[34m: syncing time (bug): 0 seconds -> 0 (0) seconds[39m
+[37m06/26/2018-02:53:38.63 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+[37m06/26/2018-02:53:38.71 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[34m[37m06/26/2018-02:53:38.79 [34m[33mDeezNuts[34m: syncing time (bug): 0 seconds -> 0 (0) seconds[39m
+[37m06/26/2018-02:53:41.64 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+[37m06/26/2018-02:53:41.71 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[34m[37m06/26/2018-02:53:41.80 [34m[33mDeezNuts[34m: syncing time (bug): 0 seconds -> 0 (0) seconds[39m
+[37m06/26/2018-02:53:44.64 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+[37m06/26/2018-02:53:44.72 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[34m[37m06/26/2018-02:53:44.80 [34m[33mDeezNuts[34m: syncing time (bug): 0 seconds -> 0 (0) seconds[39m
+[37m06/26/2018-02:53:47.65 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+[37m06/26/2018-02:53:47.73 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[34m[37m06/26/2018-02:53:47.80 [34m[33mDeezNuts[34m: syncing time (bug): 0 seconds -> 0 (0) seconds[39m
+[37m06/26/2018-02:53:49.25 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+[37m06/26/2018-02:53:49.32 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1,unknown, 192.158.30.92 /GET /tip?secret=9dd811ee5a5edc5c0826eb4fdb3b990c&address=16DBbZmP4eiAZd9fUYKeDbdXxLET99Ym4k&transaction_hash=bbdfaa92c16b92e34285a7a3bd5253b5949be6c78870c982a914b8b89e900c32&value=48051&confirmations=3
+[34m[37m06/26/2018-02:53:49.32 [34m[33mDeezNuts[34m: req.query: {[39m
+[34m    "secret": "9dd811ee5a5edc5c0826eb4fdb3b990c",[39m
+[34m    "address": "16DBbZmP4eiAZd9fUYKeDbdXxLET99Ym4k",[39m
+[34m    "transaction_hash": "bbdfaa92c16b92e34285a7a3bd5253b5949be6c78870c982a914b8b89e900c32",[39m
+[34m    "value": "48051",[39m
+[34m    "confirmations": "3"[39m
+[34m}[39m
+[37m06/26/2018-02:53:49.32 [39m[33mDeezNuts[39m: Adding Transaction: 48051 -> 16DBbZmP4eiAZd9fUYKeDbdXxLET99Ym4k (bbdfaa92c16b92e34285a7a3bd5253b5949be6c78870c982a914b8b89e900c32)
+[37m06/26/2018-02:53:49.40 [39m[33mDeezNuts[39m: user.transactions: bbdfaa92c16b92e34285a7a3bd5253b5949be6c78870c982a914b8b89e900c32
+[37m06/26/2018-02:53:49.41 [39m[33mDeezNuts[39m: Confirmed Existing Transaction: 0 -> 3 (bbdfaa92c16b92e34285a7a3bd5253b5949be6c78870c982a914b8b89e900c32:5b318f9c7a82365a94200be8)
+[37m06/26/2018-02:53:50.64 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+[37m06/26/2018-02:53:50.72 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[34m[37m06/26/2018-02:53:50.80 [34m[33mDeezNuts[34m: syncing time (bug): 0 seconds -> 0 (0) seconds[39m
+[37m06/26/2018-02:53:53.65 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+[37m06/26/2018-02:53:53.73 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[34m[37m06/26/2018-02:53:53.81 [34m[33mDeezNuts[34m: syncing time (bug): 0 seconds -> 0 (0) seconds[39m
+[37m06/26/2018-02:53:56.66 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+[37m06/26/2018-02:53:56.74 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[34m[37m06/26/2018-02:53:56.82 [34m[33mDeezNuts[34m: syncing time (bug): 0 seconds -> 0 (0) seconds[39m
+[37m06/26/2018-02:53:59.65 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+[37m06/26/2018-02:53:59.72 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[34m[37m06/26/2018-02:53:59.81 [34m[33mDeezNuts[34m: syncing time (bug): 0 seconds -> 0 (0) seconds[39m
+[37m06/26/2018-02:54:02.65 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+[37m06/26/2018-02:54:02.73 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[34m[37m06/26/2018-02:54:02.81 [34m[33mDeezNuts[34m: syncing time (bug): 0 seconds -> 0 (0) seconds[39m
+[37m06/26/2018-02:54:05.66 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+[37m06/26/2018-02:54:05.73 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[34m[37m06/26/2018-02:54:05.81 [34m[33mDeezNuts[34m: syncing time (bug): 0 seconds -> 0 (0) seconds[39m
+[37m06/26/2018-02:54:08.65 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+[37m06/26/2018-02:54:08.73 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[34m[37m06/26/2018-02:54:08.81 [34m[33mDeezNuts[34m: syncing time (bug): 0 seconds -> 0 (0) seconds[39m
+[37m06/26/2018-02:54:11.65 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+[37m06/26/2018-02:54:11.73 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[34m[37m06/26/2018-02:54:11.81 [34m[33mDeezNuts[34m: syncing time (bug): 0 seconds -> 0 (0) seconds[39m
+[37m06/26/2018-02:54:14.65 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+[37m06/26/2018-02:54:14.73 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[34m[37m06/26/2018-02:54:14.81 [34m[33mDeezNuts[34m: syncing time (bug): 0 seconds -> 0 (0) seconds[39m
+[37m06/26/2018-02:54:17.65 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+[37m06/26/2018-02:54:17.73 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[34m[37m06/26/2018-02:54:17.81 [34m[33mDeezNuts[34m: syncing time (bug): 0 seconds -> 0 (0) seconds[39m
+[37m06/26/2018-02:54:20.65 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+[37m06/26/2018-02:54:20.72 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[34m[37m06/26/2018-02:54:20.80 [34m[33mDeezNuts[34m: syncing time (bug): 0 seconds -> 0 (0) seconds[39m
+[37m06/26/2018-02:54:23.65 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+[37m06/26/2018-02:54:23.72 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[34m[37m06/26/2018-02:54:23.80 [34m[33mDeezNuts[34m: syncing time (bug): 0 seconds -> 0 (0) seconds[39m
+[37m06/26/2018-02:54:26.65 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+[37m06/26/2018-02:54:26.73 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[34m[37m06/26/2018-02:54:26.81 [34m[33mDeezNuts[34m: syncing time (bug): 0 seconds -> 0 (0) seconds[39m
+[37m06/26/2018-02:54:29.65 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+[37m06/26/2018-02:54:29.73 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[34m[37m06/26/2018-02:54:29.81 [34m[33mDeezNuts[34m: syncing time (bug): 0 seconds -> 0 (0) seconds[39m
+[37m06/26/2018-02:54:32.66 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+[37m06/26/2018-02:54:32.74 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[34m[37m06/26/2018-02:54:32.82 [34m[33mDeezNuts[34m: syncing time (bug): 0 seconds -> 0 (0) seconds[39m
+[37m06/26/2018-02:54:35.65 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+[37m06/26/2018-02:54:35.73 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[34m[37m06/26/2018-02:54:35.81 [34m[33mDeezNuts[34m: syncing time (bug): 0 seconds -> 0 (0) seconds[39m
+[37m06/26/2018-02:54:38.66 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+[37m06/26/2018-02:54:38.73 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[34m[37m06/26/2018-02:54:38.81 [34m[33mDeezNuts[34m: syncing time (bug): 0 seconds -> 0 (0) seconds[39m
+[37m06/26/2018-02:54:41.65 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+[37m06/26/2018-02:54:41.73 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[34m[37m06/26/2018-02:54:41.81 [34m[33mDeezNuts[34m: syncing time (bug): 0 seconds -> 0 (0) seconds[39m
+[37m06/26/2018-02:54:44.65 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+[37m06/26/2018-02:54:44.72 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[34m[37m06/26/2018-02:54:44.80 [34m[33mDeezNuts[34m: syncing time (bug): 0 seconds -> 0 (0) seconds[39m
+[37m06/26/2018-02:54:47.66 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+[37m06/26/2018-02:54:47.74 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[34m[37m06/26/2018-02:54:47.82 [34m[33mDeezNuts[34m: syncing time (bug): 0 seconds -> 0 (0) seconds[39m
+[37m06/26/2018-02:54:50.65 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+[37m06/26/2018-02:54:50.73 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[34m[37m06/26/2018-02:54:50.81 [34m[33mDeezNuts[34m: syncing time (bug): 0 seconds -> 0 (0) seconds[39m
+[37m06/26/2018-02:54:53.65 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+[37m06/26/2018-02:54:53.73 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[34m[37m06/26/2018-02:54:53.81 [34m[33mDeezNuts[34m: syncing time (bug): 0 seconds -> 0 (0) seconds[39m
+[37m06/26/2018-02:54:56.65 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+[37m06/26/2018-02:54:56.73 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[34m[37m06/26/2018-02:54:56.80 [34m[33mDeezNuts[34m: syncing time (bug): 0 seconds -> 0 (0) seconds[39m
+[37m06/26/2018-02:54:59.65 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+[37m06/26/2018-02:54:59.73 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[34m[37m06/26/2018-02:54:59.81 [34m[33mDeezNuts[34m: syncing time (bug): 0 seconds -> 0 (0) seconds[39m
+[37m06/26/2018-02:55:02.66 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+[37m06/26/2018-02:55:02.74 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[34m[37m06/26/2018-02:55:02.82 [34m[33mDeezNuts[34m: syncing time (bug): 0 seconds -> 0 (0) seconds[39m
+[37m06/26/2018-02:55:05.66 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+[37m06/26/2018-02:55:05.74 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[34m[37m06/26/2018-02:55:05.81 [34m[33mDeezNuts[34m: syncing time (bug): 0 seconds -> 0 (0) seconds[39m
+[37m06/26/2018-02:55:08.65 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+[37m06/26/2018-02:55:08.73 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[34m[37m06/26/2018-02:55:08.80 [34m[33mDeezNuts[34m: syncing time (bug): 0 seconds -> 0 (0) seconds[39m
+[37m06/26/2018-02:55:11.65 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+[37m06/26/2018-02:55:11.73 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[34m[37m06/26/2018-02:55:11.81 [34m[33mDeezNuts[34m: syncing time (bug): 0 seconds -> 0 (0) seconds[39m
+[37m06/26/2018-02:55:14.65 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+[37m06/26/2018-02:55:14.73 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[34m[37m06/26/2018-02:55:14.81 [34m[33mDeezNuts[34m: syncing time (bug): 0 seconds -> 0 (0) seconds[39m
+[37m06/26/2018-02:55:17.78 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+[37m06/26/2018-02:55:17.86 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[34m[37m06/26/2018-02:55:17.94 [34m[33mDeezNuts[34m: syncing time (bug): 0 seconds -> 0 (0) seconds[39m
+[37m06/26/2018-02:55:20.81 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+[37m06/26/2018-02:55:20.90 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[34m[37m06/26/2018-02:55:20.97 [34m[33mDeezNuts[34m: syncing time (bug): 0 seconds -> 0 (0) seconds[39m
+[37m06/26/2018-02:55:23.91 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+[37m06/26/2018-02:55:23.99 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[34m[37m06/26/2018-02:55:24.07 [34m[33mDeezNuts[34m: syncing time (bug): 0 seconds -> 0 (0) seconds[39m
+[37m06/26/2018-02:55:26.77 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+[37m06/26/2018-02:55:26.85 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[34m[37m06/26/2018-02:55:26.93 [34m[33mDeezNuts[34m: syncing time (bug): 0 seconds -> 0 (0) seconds[39m
+[37m06/26/2018-02:55:29.79 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+[37m06/26/2018-02:55:29.88 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[34m[37m06/26/2018-02:55:29.97 [34m[33mDeezNuts[34m: syncing time (bug): 0 seconds -> 0 (0) seconds[39m
+[37m06/26/2018-02:55:30.70 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+[37m06/26/2018-02:55:30.78 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1,76.91.217.22 /GET /
+[37m06/26/2018-02:55:33.59 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+[37m06/26/2018-02:55:33.69 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1,76.91.217.22 /GET /logout
+[37m06/26/2018-02:55:33.69 [39m[33mDeezNuts[39m: logging out: 5b318f9c7a82365a94200be8
+[37m06/26/2018-02:55:33.76 [39m[33mDeezNuts[39m: logout successful: 5b318f9c7a82365a94200be8
+[37m06/26/2018-02:55:34.06 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+[37m06/26/2018-02:55:34.15 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1,76.91.217.22 /GET /
+[37m06/26/2018-02:55:34.45 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+[37m06/26/2018-02:55:34.54 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[34m[37m06/26/2018-02:55:34.62 [34m[33mDeezNuts[34m: syncing time (bug): 0 seconds -> 0 (0) seconds[39m
+[37m06/26/2018-02:55:37.77 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+[37m06/26/2018-02:55:37.85 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[34m[37m06/26/2018-02:55:37.94 [34m[33mDeezNuts[34m: syncing time (bug): 0 seconds -> 0 (0) seconds[39m
+[37m06/26/2018-02:55:40.07 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+[37m06/26/2018-02:55:40.16 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1,76.91.217.22 /GET /
+[37m06/26/2018-02:55:44.41 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+[37m06/26/2018-02:55:44.50 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[34m[37m06/26/2018-02:55:44.58 [34m[33mDeezNuts[34m: syncing time (bug): 0 seconds -> 0 (0) seconds[39m
+[37m06/26/2018-02:55:47.42 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+[37m06/26/2018-02:55:47.50 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[34m[37m06/26/2018-02:55:47.59 [34m[33mDeezNuts[34m: syncing time (bug): 0 seconds -> 0 (0) seconds[39m
+[37m06/26/2018-02:55:50.45 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+[37m06/26/2018-02:55:50.54 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[34m[37m06/26/2018-02:55:50.62 [34m[33mDeezNuts[34m: syncing time (bug): 0 seconds -> 0 (0) seconds[39m
+[37m06/26/2018-02:55:53.56 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+[37m06/26/2018-02:55:53.65 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[34m[37m06/26/2018-02:55:53.74 [34m[33mDeezNuts[34m: syncing time (bug): 0 seconds -> 0 (0) seconds[39m
+[37m06/26/2018-02:55:56.62 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+[37m06/26/2018-02:55:56.71 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[34m[37m06/26/2018-02:55:56.79 [34m[33mDeezNuts[34m: syncing time (bug): 0 seconds -> 0 (0) seconds[39m
+[37m06/26/2018-02:55:59.46 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+[37m06/26/2018-02:55:59.54 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[34m[37m06/26/2018-02:55:59.63 [34m[33mDeezNuts[34m: syncing time (bug): 0 seconds -> 0 (0) seconds[39m
+[37m06/26/2018-02:56:02.46 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+[37m06/26/2018-02:56:02.56 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[34m[37m06/26/2018-02:56:02.64 [34m[33mDeezNuts[34m: syncing time (bug): 0 seconds -> 0 (0) seconds[39m
+[37m06/26/2018-02:56:05.46 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+[37m06/26/2018-02:56:05.54 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[34m[37m06/26/2018-02:56:05.63 [34m[33mDeezNuts[34m: syncing time (bug): 0 seconds -> 0 (0) seconds[39m
+[37m06/26/2018-02:56:08.46 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+[37m06/26/2018-02:56:08.55 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[34m[37m06/26/2018-02:56:08.63 [34m[33mDeezNuts[34m: syncing time (bug): 0 seconds -> 0 (0) seconds[39m
+[37m06/26/2018-02:56:11.46 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+[37m06/26/2018-02:56:11.54 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[34m[37m06/26/2018-02:56:11.63 [34m[33mDeezNuts[34m: syncing time (bug): 0 seconds -> 0 (0) seconds[39m
+[37m06/26/2018-02:56:14.45 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+[37m06/26/2018-02:56:14.54 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[34m[37m06/26/2018-02:56:14.63 [34m[33mDeezNuts[34m: syncing time (bug): 0 seconds -> 0 (0) seconds[39m
+[37m06/26/2018-02:56:17.46 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+[37m06/26/2018-02:56:17.54 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[34m[37m06/26/2018-02:56:17.63 [34m[33mDeezNuts[34m: syncing time (bug): 0 seconds -> 0 (0) seconds[39m
+[37m06/26/2018-02:56:20.53 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+[37m06/26/2018-02:56:20.62 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[34m[37m06/26/2018-02:56:20.71 [34m[33mDeezNuts[34m: syncing time (bug): 0 seconds -> 0 (0) seconds[39m
+[37m06/26/2018-02:56:23.45 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+[37m06/26/2018-02:56:23.53 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[34m[37m06/26/2018-02:56:23.62 [34m[33mDeezNuts[34m: syncing time (bug): 0 seconds -> 0 (0) seconds[39m
+[37m06/26/2018-02:56:26.45 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+[37m06/26/2018-02:56:26.55 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[34m[37m06/26/2018-02:56:26.63 [34m[33mDeezNuts[34m: syncing time (bug): 0 seconds -> 0 (0) seconds[39m
+[37m06/26/2018-02:56:29.45 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+[37m06/26/2018-02:56:29.54 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[34m[37m06/26/2018-02:56:29.63 [34m[33mDeezNuts[34m: syncing time (bug): 0 seconds -> 0 (0) seconds[39m
+[37m06/26/2018-02:56:32.77 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+[37m06/26/2018-02:56:32.85 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[34m[37m06/26/2018-02:56:32.94 [34m[33mDeezNuts[34m: syncing time (bug): 0 seconds -> 0 (0) seconds[39m
+[37m06/26/2018-02:56:35.45 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+[37m06/26/2018-02:56:35.54 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[34m[37m06/26/2018-02:56:35.62 [34m[33mDeezNuts[34m: syncing time (bug): 0 seconds -> 0 (0) seconds[39m
+[37m06/26/2018-02:56:38.60 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+[37m06/26/2018-02:56:38.68 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[34m[37m06/26/2018-02:56:38.78 [34m[33mDeezNuts[34m: syncing time (bug): 0 seconds -> 0 (0) seconds[39m
+[37m06/26/2018-02:56:41.45 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+[37m06/26/2018-02:56:41.54 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[34m[37m06/26/2018-02:56:41.63 [34m[33mDeezNuts[34m: syncing time (bug): 0 seconds -> 0 (0) seconds[39m
+[37m06/26/2018-02:56:44.46 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+[37m06/26/2018-02:56:44.55 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[34m[37m06/26/2018-02:56:44.64 [34m[33mDeezNuts[34m: syncing time (bug): 0 seconds -> 0 (0) seconds[39m
+[37m06/26/2018-02:56:47.44 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+[37m06/26/2018-02:56:47.53 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[34m[37m06/26/2018-02:56:47.61 [34m[33mDeezNuts[34m: syncing time (bug): 0 seconds -> 0 (0) seconds[39m
+[37m06/26/2018-02:56:50.45 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+[37m06/26/2018-02:56:50.53 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[34m[37m06/26/2018-02:56:50.62 [34m[33mDeezNuts[34m: syncing time (bug): 0 seconds -> 0 (0) seconds[39m
+[37m06/26/2018-02:56:52.03 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+[37m06/26/2018-02:56:52.12 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1,76.91.217.22 /POST /login
+[37m06/26/2018-02:56:53.44 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+[37m06/26/2018-02:56:53.53 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[34m[37m06/26/2018-02:56:53.61 [34m[33mDeezNuts[34m: syncing time (bug): 0 seconds -> 0 (0) seconds[39m
+[37m06/26/2018-02:56:55.22 [39m[33mDeezNuts[39m: User found: user2
+[37m06/26/2018-02:56:55.31 [39m[33mDeezNuts[39m: login successful (local): 5b318f9c7a82365a94200be8
+[37m06/26/2018-02:56:55.77 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+[37m06/26/2018-02:56:55.86 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1,76.91.217.22 /GET /
+[37m06/26/2018-02:56:58.74 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+[37m06/26/2018-02:56:58.83 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1,190.226.81.139 /HEAD /
+[37m06/26/2018-02:56:59.69 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+[37m06/26/2018-02:56:59.77 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[34m[37m06/26/2018-02:56:59.84 [34m[33mDeezNuts[34m: syncing time (bug): 0 seconds -> 0 (0) seconds[39m
+[37m06/26/2018-02:57:02.67 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+[37m06/26/2018-02:57:02.74 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[34m[37m06/26/2018-02:57:02.81 [34m[33mDeezNuts[34m: syncing time (bug): 0 seconds -> 0 (0) seconds[39m
+[37m06/26/2018-02:57:05.67 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+[37m06/26/2018-02:57:05.74 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[34m[37m06/26/2018-02:57:05.82 [34m[33mDeezNuts[34m: syncing time (bug): 0 seconds -> 0 (0) seconds[39m
+[37m06/26/2018-02:57:08.67 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+[37m06/26/2018-02:57:08.74 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[34m[37m06/26/2018-02:57:08.82 [34m[33mDeezNuts[34m: syncing time (bug): 0 seconds -> 0 (0) seconds[39m
+[37m06/26/2018-02:57:11.67 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+[37m06/26/2018-02:57:11.74 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[34m[37m06/26/2018-02:57:11.82 [34m[33mDeezNuts[34m: syncing time (bug): 0 seconds -> 0 (0) seconds[39m
+[37m06/26/2018-02:57:14.66 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+[37m06/26/2018-02:57:14.74 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[34m[37m06/26/2018-02:57:14.81 [34m[33mDeezNuts[34m: syncing time (bug): 0 seconds -> 0 (0) seconds[39m
+[37m06/26/2018-02:57:17.66 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+[37m06/26/2018-02:57:17.74 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[34m[37m06/26/2018-02:57:17.81 [34m[33mDeezNuts[34m: syncing time (bug): 0 seconds -> 0 (0) seconds[39m
+[37m06/26/2018-02:57:20.67 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+[37m06/26/2018-02:57:20.74 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[34m[37m06/26/2018-02:57:20.81 [34m[33mDeezNuts[34m: syncing time (bug): 0 seconds -> 0 (0) seconds[39m
+[37m06/26/2018-02:57:23.80 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+[37m06/26/2018-02:57:23.87 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[34m[37m06/26/2018-02:57:23.95 [34m[33mDeezNuts[34m: syncing time (bug): 0 seconds -> 0 (0) seconds[39m
+[37m06/26/2018-02:57:26.66 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+[37m06/26/2018-02:57:26.74 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[34m[37m06/26/2018-02:57:26.81 [34m[33mDeezNuts[34m: syncing time (bug): 0 seconds -> 0 (0) seconds[39m
+[37m06/26/2018-02:57:29.67 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+[37m06/26/2018-02:57:29.74 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[34m[37m06/26/2018-02:57:29.81 [34m[33mDeezNuts[34m: syncing time (bug): 0 seconds -> 0 (0) seconds[39m
+[37m06/26/2018-02:57:32.68 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+[37m06/26/2018-02:57:32.76 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[34m[37m06/26/2018-02:57:32.83 [34m[33mDeezNuts[34m: syncing time (bug): 0 seconds -> 0 (0) seconds[39m
+[37m06/26/2018-02:57:35.67 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+[37m06/26/2018-02:57:35.76 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[34m[37m06/26/2018-02:57:35.83 [34m[33mDeezNuts[34m: syncing time (bug): 0 seconds -> 0 (0) seconds[39m
+[37m06/26/2018-02:57:38.67 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+[37m06/26/2018-02:57:38.76 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[34m[37m06/26/2018-02:57:38.83 [34m[33mDeezNuts[34m: syncing time (bug): 0 seconds -> 0 (0) seconds[39m
+[37m06/26/2018-02:57:41.84 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+[37m06/26/2018-02:57:41.93 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[34m[37m06/26/2018-02:57:41.100 [34m[33mDeezNuts[34m: syncing time (bug): 0 seconds -> 0 (0) seconds[39m
+[37m06/26/2018-02:57:44.67 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+[37m06/26/2018-02:57:44.76 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[34m[37m06/26/2018-02:57:44.83 [34m[33mDeezNuts[34m: syncing time (bug): 0 seconds -> 0 (0) seconds[39m
+[37m06/26/2018-02:57:47.68 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+[37m06/26/2018-02:57:47.76 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[34m[37m06/26/2018-02:57:47.84 [34m[33mDeezNuts[34m: syncing time (bug): 0 seconds -> 0 (0) seconds[39m
+[37m06/26/2018-02:57:50.80 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+[37m06/26/2018-02:57:50.89 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[34m[37m06/26/2018-02:57:50.96 [34m[33mDeezNuts[34m: syncing time (bug): 0 seconds -> 0 (0) seconds[39m
+[37m06/26/2018-02:57:51.58 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+[37m06/26/2018-02:57:51.66 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1,unknown, 130.211.88.31 /GET /tip?secret=9dd811ee5a5edc5c0826eb4fdb3b990c&address=16DBbZmP4eiAZd9fUYKeDbdXxLET99Ym4k&transaction_hash=bbdfaa92c16b92e34285a7a3bd5253b5949be6c78870c982a914b8b89e900c32&value=48051&confirmations=4
+[34m[37m06/26/2018-02:57:51.66 [34m[33mDeezNuts[34m: req.query: {[39m
+[34m    "secret": "9dd811ee5a5edc5c0826eb4fdb3b990c",[39m
+[34m    "address": "16DBbZmP4eiAZd9fUYKeDbdXxLET99Ym4k",[39m
+[34m    "transaction_hash": "bbdfaa92c16b92e34285a7a3bd5253b5949be6c78870c982a914b8b89e900c32",[39m
+[34m    "value": "48051",[39m
+[34m    "confirmations": "4"[39m
+[34m}[39m
+[37m06/26/2018-02:57:51.66 [39m[33mDeezNuts[39m: Adding Transaction: 48051 -> 16DBbZmP4eiAZd9fUYKeDbdXxLET99Ym4k (bbdfaa92c16b92e34285a7a3bd5253b5949be6c78870c982a914b8b89e900c32)
+[37m06/26/2018-02:57:51.74 [39m[33mDeezNuts[39m: user.transactions: bbdfaa92c16b92e34285a7a3bd5253b5949be6c78870c982a914b8b89e900c32
+[37m06/26/2018-02:57:51.74 [39m[33mDeezNuts[39m: Confirmed Existing Transaction: 0 -> 4 (bbdfaa92c16b92e34285a7a3bd5253b5949be6c78870c982a914b8b89e900c32:5b318f9c7a82365a94200be8)
+[37m06/26/2018-02:57:53.67 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+[37m06/26/2018-02:57:53.75 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[34m[37m06/26/2018-02:57:53.83 [34m[33mDeezNuts[34m: syncing time (bug): 0 seconds -> 0 (0) seconds[39m
+[37m06/26/2018-02:57:56.67 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+[37m06/26/2018-02:57:56.75 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[34m[37m06/26/2018-02:57:56.83 [34m[33mDeezNuts[34m: syncing time (bug): 0 seconds -> 0 (0) seconds[39m
+[37m06/26/2018-02:57:59.89 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+[37m06/26/2018-02:57:59.97 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[34m[37m06/26/2018-02:58:00.05 [34m[33mDeezNuts[34m: syncing time (bug): 0 seconds -> 0 (0) seconds[39m
+[37m06/26/2018-02:58:02.63 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+[37m06/26/2018-02:58:02.71 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[34m[37m06/26/2018-02:58:02.79 [34m[33mDeezNuts[34m: syncing time (bug): 0 seconds -> 0 (0) seconds[39m
+[37m06/26/2018-02:58:05.68 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+[37m06/26/2018-02:58:05.76 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[34m[37m06/26/2018-02:58:05.85 [34m[33mDeezNuts[34m: syncing time (bug): 0 seconds -> 0 (0) seconds[39m
+[37m06/26/2018-02:58:08.82 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+[37m06/26/2018-02:58:08.90 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[34m[37m06/26/2018-02:58:08.98 [34m[33mDeezNuts[34m: syncing time (bug): 0 seconds -> 0 (0) seconds[39m
+[37m06/26/2018-02:58:11.77 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+[37m06/26/2018-02:58:11.84 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[34m[37m06/26/2018-02:58:11.92 [34m[33mDeezNuts[34m: syncing time (bug): 0 seconds -> 0 (0) seconds[39m
+[37m06/26/2018-02:58:14.67 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+[37m06/26/2018-02:58:14.75 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[34m[37m06/26/2018-02:58:14.83 [34m[33mDeezNuts[34m: syncing time (bug): 0 seconds -> 0 (0) seconds[39m
+[37m06/26/2018-02:58:17.85 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+[37m06/26/2018-02:58:17.93 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[34m[37m06/26/2018-02:58:18.01 [34m[33mDeezNuts[34m: syncing time (bug): 0 seconds -> 0 (0) seconds[39m
+[37m06/26/2018-02:58:20.69 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+[37m06/26/2018-02:58:20.76 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[34m[37m06/26/2018-02:58:20.85 [34m[33mDeezNuts[34m: syncing time (bug): 0 seconds -> 0 (0) seconds[39m
+[37m06/26/2018-02:58:23.68 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+[37m06/26/2018-02:58:23.75 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[34m[37m06/26/2018-02:58:23.84 [34m[33mDeezNuts[34m: syncing time (bug): 0 seconds -> 0 (0) seconds[39m
+[37m06/26/2018-02:58:26.80 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+[37m06/26/2018-02:58:26.88 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[34m[37m06/26/2018-02:58:26.96 [34m[33mDeezNuts[34m: syncing time (bug): 0 seconds -> 0 (0) seconds[39m
+[37m06/26/2018-02:58:29.68 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+[37m06/26/2018-02:58:29.75 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[34m[37m06/26/2018-02:58:29.83 [34m[33mDeezNuts[34m: syncing time (bug): 0 seconds -> 0 (0) seconds[39m
+[37m06/26/2018-02:58:32.67 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+[37m06/26/2018-02:58:32.75 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[34m[37m06/26/2018-02:58:32.83 [34m[33mDeezNuts[34m: syncing time (bug): 0 seconds -> 0 (0) seconds[39m
+[37m06/26/2018-02:58:35.81 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+[37m06/26/2018-02:58:35.89 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[34m[37m06/26/2018-02:58:35.98 [34m[33mDeezNuts[34m: syncing time (bug): 0 seconds -> 0 (0) seconds[39m
+[37m06/26/2018-02:58:38.68 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+[37m06/26/2018-02:58:38.75 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[34m[37m06/26/2018-02:58:38.84 [34m[33mDeezNuts[34m: syncing time (bug): 0 seconds -> 0 (0) seconds[39m
+[37m06/26/2018-02:58:41.68 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+[37m06/26/2018-02:58:41.75 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[34m[37m06/26/2018-02:58:41.84 [34m[33mDeezNuts[34m: syncing time (bug): 0 seconds -> 0 (0) seconds[39m
+[37m06/26/2018-02:58:44.83 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+[37m06/26/2018-02:58:44.90 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[34m[37m06/26/2018-02:58:44.99 [34m[33mDeezNuts[34m: syncing time (bug): 0 seconds -> 0 (0) seconds[39m
+[37m06/26/2018-02:58:47.68 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+[37m06/26/2018-02:58:47.75 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[34m[37m06/26/2018-02:58:47.85 [34m[33mDeezNuts[34m: syncing time (bug): 0 seconds -> 0 (0) seconds[39m
+[37m06/26/2018-02:58:50.70 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+[37m06/26/2018-02:58:50.77 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[34m[37m06/26/2018-02:58:50.86 [34m[33mDeezNuts[34m: syncing time (bug): 0 seconds -> 0 (0) seconds[39m
+[37m06/26/2018-02:58:53.83 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+[37m06/26/2018-02:58:53.90 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[34m[37m06/26/2018-02:58:53.100 [34m[33mDeezNuts[34m: syncing time (bug): 0 seconds -> 0 (0) seconds[39m
+[37m06/26/2018-02:58:56.66 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+[37m06/26/2018-02:58:56.73 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[34m[37m06/26/2018-02:58:56.80 [34m[33mDeezNuts[34m: syncing time (bug): 0 seconds -> 0 (0) seconds[39m
+[37m06/26/2018-02:58:59.67 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+[37m06/26/2018-02:58:59.76 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[34m[37m06/26/2018-02:58:59.83 [34m[33mDeezNuts[34m: syncing time (bug): 0 seconds -> 0 (0) seconds[39m
+[37m06/26/2018-02:59:02.81 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+[37m06/26/2018-02:59:02.90 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[34m[37m06/26/2018-02:59:02.97 [34m[33mDeezNuts[34m: syncing time (bug): 0 seconds -> 0 (0) seconds[39m
+[37m06/26/2018-02:59:05.67 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+[37m06/26/2018-02:59:05.77 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[34m[37m06/26/2018-02:59:05.83 [34m[33mDeezNuts[34m: syncing time (bug): 0 seconds -> 0 (0) seconds[39m
+[37m06/26/2018-02:59:08.67 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+[37m06/26/2018-02:59:08.76 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[34m[37m06/26/2018-02:59:08.83 [34m[33mDeezNuts[34m: syncing time (bug): 0 seconds -> 0 (0) seconds[39m
+[37m06/26/2018-02:59:11.70 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+[37m06/26/2018-02:59:11.79 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[34m[37m06/26/2018-02:59:11.86 [34m[33mDeezNuts[34m: syncing time (bug): 0 seconds -> 0 (0) seconds[39m
+[37m06/26/2018-02:59:14.68 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+[37m06/26/2018-02:59:14.77 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[34m[37m06/26/2018-02:59:14.84 [34m[33mDeezNuts[34m: syncing time (bug): 0 seconds -> 0 (0) seconds[39m
+[37m06/26/2018-02:59:17.67 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+[37m06/26/2018-02:59:17.76 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[34m[37m06/26/2018-02:59:17.83 [34m[33mDeezNuts[34m: syncing time (bug): 0 seconds -> 0 (0) seconds[39m
+[37m06/26/2018-02:59:20.81 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+[37m06/26/2018-02:59:20.91 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[34m[37m06/26/2018-02:59:20.98 [34m[33mDeezNuts[34m: syncing time (bug): 0 seconds -> 0 (0) seconds[39m
+[37m06/26/2018-02:59:23.69 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+[37m06/26/2018-02:59:23.79 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[34m[37m06/26/2018-02:59:23.85 [34m[33mDeezNuts[34m: syncing time (bug): 0 seconds -> 0 (0) seconds[39m
+[37m06/26/2018-02:59:26.69 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+[37m06/26/2018-02:59:26.79 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[34m[37m06/26/2018-02:59:26.86 [34m[33mDeezNuts[34m: syncing time (bug): 0 seconds -> 0 (0) seconds[39m
+[37m06/26/2018-02:59:29.83 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+[37m06/26/2018-02:59:29.93 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[34m[37m06/26/2018-02:59:29.100 [34m[33mDeezNuts[34m: syncing time (bug): 0 seconds -> 0 (0) seconds[39m
+[37m06/26/2018-02:59:32.68 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+[37m06/26/2018-02:59:32.78 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[34m[37m06/26/2018-02:59:32.85 [34m[33mDeezNuts[34m: syncing time (bug): 0 seconds -> 0 (0) seconds[39m
+[37m06/26/2018-02:59:35.68 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+[37m06/26/2018-02:59:35.78 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[34m[37m06/26/2018-02:59:35.85 [34m[33mDeezNuts[34m: syncing time (bug): 0 seconds -> 0 (0) seconds[39m
+[37m06/26/2018-02:59:38.73 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+[37m06/26/2018-02:59:38.83 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[34m[37m06/26/2018-02:59:38.90 [34m[33mDeezNuts[34m: syncing time (bug): 0 seconds -> 0 (0) seconds[39m
+[37m06/26/2018-02:59:41.69 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+[37m06/26/2018-02:59:41.79 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[34m[37m06/26/2018-02:59:41.85 [34m[33mDeezNuts[34m: syncing time (bug): 0 seconds -> 0 (0) seconds[39m
+[37m06/26/2018-02:59:44.68 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+[37m06/26/2018-02:59:44.78 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[34m[37m06/26/2018-02:59:44.85 [34m[33mDeezNuts[34m: syncing time (bug): 0 seconds -> 0 (0) seconds[39m
+[37m06/26/2018-02:59:47.71 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+[37m06/26/2018-02:59:47.78 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[34m[37m06/26/2018-02:59:47.88 [34m[33mDeezNuts[34m: syncing time (bug): 0 seconds -> 0 (0) seconds[39m
+[37m06/26/2018-02:59:50.67 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+[37m06/26/2018-02:59:50.74 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[34m[37m06/26/2018-02:59:50.83 [34m[33mDeezNuts[34m: syncing time (bug): 0 seconds -> 0 (0) seconds[39m
+[37m06/26/2018-02:59:53.67 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+[37m06/26/2018-02:59:53.74 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[34m[37m06/26/2018-02:59:53.83 [34m[33mDeezNuts[34m: syncing time (bug): 0 seconds -> 0 (0) seconds[39m
+[37m06/26/2018-02:59:56.80 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+[37m06/26/2018-02:59:56.87 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[34m[37m06/26/2018-02:59:56.96 [34m[33mDeezNuts[34m: syncing time (bug): 0 seconds -> 0 (0) seconds[39m
+[37m06/26/2018-02:59:59.96 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+[37m06/26/2018-03:00:00.03 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[37m06/26/2018-03:00:00.11 [39m[33mDeezNuts[39m: -- Ping -- 
+[34m[37m06/26/2018-03:00:00.12 [34m[33mDeezNuts[34m: syncing time (bug): 0 seconds -> 0 (0) seconds[39m
+[37m06/26/2018-03:00:02.68 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+[37m06/26/2018-03:00:02.75 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[34m[37m06/26/2018-03:00:02.82 [34m[33mDeezNuts[34m: syncing time (bug): 0 seconds -> 0 (0) seconds[39m
+[37m06/26/2018-03:00:05.67 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+[37m06/26/2018-03:00:05.73 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[34m[37m06/26/2018-03:00:05.82 [34m[33mDeezNuts[34m: syncing time (bug): 0 seconds -> 0 (0) seconds[39m
+[37m06/26/2018-03:00:08.66 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+[37m06/26/2018-03:00:08.73 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[34m[37m06/26/2018-03:00:08.82 [34m[33mDeezNuts[34m: syncing time (bug): 0 seconds -> 0 (0) seconds[39m
+[37m06/26/2018-03:00:11.66 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+[37m06/26/2018-03:00:11.73 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[34m[37m06/26/2018-03:00:11.82 [34m[33mDeezNuts[34m: syncing time (bug): 0 seconds -> 0 (0) seconds[39m
+[37m06/26/2018-03:00:14.66 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+[37m06/26/2018-03:00:14.73 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[34m[37m06/26/2018-03:00:14.82 [34m[33mDeezNuts[34m: syncing time (bug): 0 seconds -> 0 (0) seconds[39m
+[37m06/26/2018-03:00:17.67 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+[37m06/26/2018-03:00:17.74 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[34m[37m06/26/2018-03:00:17.83 [34m[33mDeezNuts[34m: syncing time (bug): 0 seconds -> 0 (0) seconds[39m
+[37m06/26/2018-03:00:20.69 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+[37m06/26/2018-03:00:20.77 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[34m[37m06/26/2018-03:00:20.86 [34m[33mDeezNuts[34m: syncing time (bug): 0 seconds -> 0 (0) seconds[39m
+[37m06/26/2018-03:00:23.67 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+[37m06/26/2018-03:00:23.74 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[34m[37m06/26/2018-03:00:23.83 [34m[33mDeezNuts[34m: syncing time (bug): 0 seconds -> 0 (0) seconds[39m
+[37m06/26/2018-03:00:26.68 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+[37m06/26/2018-03:00:26.75 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[34m[37m06/26/2018-03:00:26.86 [34m[33mDeezNuts[34m: syncing time (bug): 0 seconds -> 0 (0) seconds[39m
+[37m06/26/2018-03:00:29.68 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+[37m06/26/2018-03:00:29.75 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[34m[37m06/26/2018-03:00:29.85 [34m[33mDeezNuts[34m: syncing time (bug): 0 seconds -> 0 (0) seconds[39m
+[37m06/26/2018-03:00:32.77 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+[37m06/26/2018-03:00:32.84 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[34m[37m06/26/2018-03:00:32.94 [34m[33mDeezNuts[34m: syncing time (bug): 0 seconds -> 0 (0) seconds[39m
+[37m06/26/2018-03:00:35.69 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+[37m06/26/2018-03:00:35.75 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[34m[37m06/26/2018-03:00:35.85 [34m[33mDeezNuts[34m: syncing time (bug): 0 seconds -> 0 (0) seconds[39m
+[37m06/26/2018-03:00:38.67 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+[37m06/26/2018-03:00:38.74 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[34m[37m06/26/2018-03:00:38.83 [34m[33mDeezNuts[34m: syncing time (bug): 0 seconds -> 0 (0) seconds[39m
+[37m06/26/2018-03:01:17.06 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+[37m06/26/2018-03:01:17.15 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1,84.127.100.87 /GET /
+[37m06/26/2018-03:01:21.68 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+[37m06/26/2018-03:01:21.77 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1,84.127.100.87 /POST /sync
+[34m[37m06/26/2018-03:01:21.86 [34m[33mDeezNuts[34m: syncing time (bug): 0 seconds -> 0 (0) seconds[39m
+[37m06/26/2018-03:01:25.34 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+[37m06/26/2018-03:01:25.43 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1,84.127.100.87 /POST /sync
+[34m[37m06/26/2018-03:01:25.52 [34m[33mDeezNuts[34m: syncing time (bug): 0 seconds -> 0 (0) seconds[39m
+[37m06/26/2018-03:02:20.98 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+[37m06/26/2018-03:02:21.08 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1,84.127.100.87 /POST /sync
+[34m[37m06/26/2018-03:02:21.16 [34m[33mDeezNuts[34m: syncing time (bug): 0 seconds -> 0 (0) seconds[39m
+[37m06/26/2018-03:02:21.71 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+[37m06/26/2018-03:02:21.79 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1,84.127.100.87 /POST /sync
+[34m[37m06/26/2018-03:02:21.88 [34m[33mDeezNuts[34m: syncing time (bug): 0 seconds -> 0 (0) seconds[39m
+[37m06/26/2018-03:02:22.42 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+[37m06/26/2018-03:02:22.51 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1,84.127.100.87 /POST /sync
+[34m[37m06/26/2018-03:02:22.59 [34m[33mDeezNuts[34m: syncing time (bug): 0 seconds -> 0 (0) seconds[39m
+[37m06/26/2018-03:02:22.62 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+[37m06/26/2018-03:02:22.71 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1,84.127.100.87 /POST /sync
+[34m[37m06/26/2018-03:02:22.80 [34m[33mDeezNuts[34m: syncing time (bug): 0 seconds -> 0 (0) seconds[39m
+[37m06/26/2018-03:02:23.05 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+[37m06/26/2018-03:02:23.13 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+[37m06/26/2018-03:02:23.14 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1,84.127.100.87 /POST /sync
+[37m06/26/2018-03:02:23.22 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1,84.127.100.87 /POST /sync
+[34m[37m06/26/2018-03:02:23.22 [34m[33mDeezNuts[34m: syncing time (bug): 0 seconds -> 0 (0) seconds[39m
+[34m[37m06/26/2018-03:02:23.31 [34m[33mDeezNuts[34m: syncing time (bug): 0 seconds -> 0 (0) seconds[39m
+[37m06/26/2018-03:02:23.33 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+[37m06/26/2018-03:02:23.42 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1,84.127.100.87 /GET /address?_csrf=3sVG8wkx-lWPtv8IA8KfJRp28FMYgjoLFtM4
+[37m06/26/2018-03:02:23.75 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+[37m06/26/2018-03:02:23.84 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+[37m06/26/2018-03:02:23.84 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1,84.127.100.87 /POST /sync
+[37m06/26/2018-03:02:23.92 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1,84.127.100.87 /POST /sync
+[34m[37m06/26/2018-03:02:23.93 [34m[33mDeezNuts[34m: syncing time (bug): 0 seconds -> 0 (0) seconds[39m
+[34m[37m06/26/2018-03:02:23.100 [34m[33mDeezNuts[34m: syncing time (bug): 0 seconds -> 0 (0) seconds[39m
+[37m06/26/2018-03:02:24.03 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+[37m06/26/2018-03:02:24.13 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1,84.127.100.87 /POST /sync
+[34m[37m06/26/2018-03:02:24.21 [34m[33mDeezNuts[34m: syncing time (bug): 0 seconds -> 0 (0) seconds[39m
+[37m06/26/2018-03:02:24.47 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+[37m06/26/2018-03:02:24.53 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+[37m06/26/2018-03:02:24.57 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1,84.127.100.87 /POST /sync
+[37m06/26/2018-03:02:24.61 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1,84.127.100.87 /POST /sync
+[34m[37m06/26/2018-03:02:24.66 [34m[33mDeezNuts[34m: syncing time (bug): 0 seconds -> 0 (0) seconds[39m
+[34m[37m06/26/2018-03:02:24.69 [34m[33mDeezNuts[34m: syncing time (bug): 0 seconds -> 0 (0) seconds[39m
+[37m06/26/2018-03:02:24.75 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+[37m06/26/2018-03:02:24.83 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1,84.127.100.87 /POST /sync
+[34m[37m06/26/2018-03:02:24.92 [34m[33mDeezNuts[34m: syncing time (bug): 0 seconds -> 0 (0) seconds[39m
+[37m06/26/2018-03:02:25.87 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+[37m06/26/2018-03:02:25.88 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+[37m06/26/2018-03:02:26.22 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+[37m06/26/2018-03:02:26.22 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+[37m06/26/2018-03:02:26.23 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1,84.127.100.87 /POST /sync
+[37m06/26/2018-03:02:26.56 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1,84.127.100.87 /POST /sync
+[37m06/26/2018-03:02:26.56 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1,84.127.100.87 /POST /sync
+[34m[37m06/26/2018-03:02:26.56 [34m[33mDeezNuts[34m: syncing time (bug): 0 seconds -> 0 (0) seconds[39m
+[37m06/26/2018-03:02:26.57 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1,84.127.100.87 /POST /sync
+[34m[37m06/26/2018-03:02:26.64 [34m[33mDeezNuts[34m: syncing time (bug): 0 seconds -> 0 (0) seconds[39m
+[34m[37m06/26/2018-03:02:26.64 [34m[33mDeezNuts[34m: syncing time (bug): 0 seconds -> 0 (0) seconds[39m
+[34m[37m06/26/2018-03:02:26.66 [34m[33mDeezNuts[34m: syncing time (bug): 0 seconds -> 0 (0) seconds[39m
+[37m06/26/2018-03:02:27.14 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+[37m06/26/2018-03:02:27.23 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1,84.127.100.87 /POST /sync
+[34m[37m06/26/2018-03:02:27.31 [34m[33mDeezNuts[34m: syncing time (bug): 0 seconds -> 0 (0) seconds[39m
+[37m06/26/2018-03:02:27.38 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+[37m06/26/2018-03:02:27.46 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1,84.127.100.87 /POST /sync
+[34m[37m06/26/2018-03:02:27.55 [34m[33mDeezNuts[34m: syncing time (bug): 0 seconds -> 0 (0) seconds[39m
+[37m06/26/2018-03:02:28.56 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+[37m06/26/2018-03:02:28.64 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1,84.127.100.87 /POST /sync
+[34m[37m06/26/2018-03:02:28.72 [34m[33mDeezNuts[34m: syncing time (bug): 0 seconds -> 0 (0) seconds[39m
+[37m06/26/2018-03:02:30.39 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+[37m06/26/2018-03:02:30.47 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1,84.127.100.87 /POST /sync
+[34m[37m06/26/2018-03:02:30.56 [34m[33mDeezNuts[34m: syncing time (bug): 0 seconds -> 0 (0) seconds[39m
+[37m06/26/2018-03:02:33.36 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+[37m06/26/2018-03:02:33.44 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1,84.127.100.87 /POST /sync
+[34m[37m06/26/2018-03:02:33.52 [34m[33mDeezNuts[34m: syncing time (bug): 0 seconds -> 0 (0) seconds[39m
+[37m06/26/2018-03:02:36.37 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+[37m06/26/2018-03:02:36.45 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1,84.127.100.87 /POST /sync
+[34m[37m06/26/2018-03:02:36.55 [34m[33mDeezNuts[34m: syncing time (bug): 0 seconds -> 0 (0) seconds[39m
+[37m06/26/2018-03:02:39.37 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+[37m06/26/2018-03:02:39.45 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1,84.127.100.87 /POST /sync
+[34m[37m06/26/2018-03:02:39.53 [34m[33mDeezNuts[34m: syncing time (bug): 0 seconds -> 0 (0) seconds[39m
+[37m06/26/2018-03:02:42.36 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+[37m06/26/2018-03:02:42.44 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1,84.127.100.87 /POST /sync
+[34m[37m06/26/2018-03:02:42.53 [34m[33mDeezNuts[34m: syncing time (bug): 0 seconds -> 0 (0) seconds[39m
+[37m06/26/2018-03:02:45.38 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+[37m06/26/2018-03:02:45.46 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1,84.127.100.87 /POST /sync
+[34m[37m06/26/2018-03:02:45.54 [34m[33mDeezNuts[34m: syncing time (bug): 0 seconds -> 0 (0) seconds[39m
+[37m06/26/2018-03:02:48.37 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+[37m06/26/2018-03:02:48.45 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1,84.127.100.87 /POST /sync
+[34m[37m06/26/2018-03:02:48.54 [34m[33mDeezNuts[34m: syncing time (bug): 0 seconds -> 0 (0) seconds[39m
+[37m06/26/2018-03:02:51.36 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+[37m06/26/2018-03:02:51.45 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1,84.127.100.87 /POST /sync
+[34m[37m06/26/2018-03:02:51.53 [34m[33mDeezNuts[34m: syncing time (bug): 0 seconds -> 0 (0) seconds[39m
+[37m06/26/2018-03:02:54.37 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+[37m06/26/2018-03:02:54.46 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1,84.127.100.87 /POST /sync
+[34m[37m06/26/2018-03:02:54.55 [34m[33mDeezNuts[34m: syncing time (bug): 0 seconds -> 0 (0) seconds[39m
+[37m06/26/2018-03:02:57.38 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+[37m06/26/2018-03:02:57.47 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1,84.127.100.87 /POST /sync
+[34m[37m06/26/2018-03:02:57.55 [34m[33mDeezNuts[34m: syncing time (bug): 0 seconds -> 0 (0) seconds[39m
+[37m06/26/2018-03:03:00.36 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+[37m06/26/2018-03:03:00.45 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1,84.127.100.87 /POST /sync
+[34m[37m06/26/2018-03:03:00.54 [34m[33mDeezNuts[34m: syncing time (bug): 0 seconds -> 0 (0) seconds[39m
+[37m06/26/2018-03:03:03.38 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+[37m06/26/2018-03:03:03.47 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1,84.127.100.87 /POST /sync
+[34m[37m06/26/2018-03:03:03.55 [34m[33mDeezNuts[34m: syncing time (bug): 0 seconds -> 0 (0) seconds[39m
+[37m06/26/2018-03:03:06.38 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+[37m06/26/2018-03:03:06.46 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1,84.127.100.87 /POST /sync
+[34m[37m06/26/2018-03:03:06.53 [34m[33mDeezNuts[34m: syncing time (bug): 0 seconds -> 0 (0) seconds[39m
+[37m06/26/2018-03:03:09.36 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+[37m06/26/2018-03:03:09.44 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1,84.127.100.87 /POST /sync
+[34m[37m06/26/2018-03:03:09.53 [34m[33mDeezNuts[34m: syncing time (bug): 0 seconds -> 0 (0) seconds[39m
+[37m06/26/2018-03:03:12.36 [39m[33mDeezNuts[39m: Return Visitor: ::ffff:127.0.0.1 || 5b318f157a82365a94200be7
+[37m06/26/2018-03:03:12.44 [39m[33mDeezNuts[39m: ::ffff:127.0.0.1,84.127.100.87 /POST /sync
+[34m[37m06/26/2018-03:03:12.51 [34m[33mDeezNuts[34m: syncing time (bug): 0 seconds -> 0 (0) seconds[39m
