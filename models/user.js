@@ -44,20 +44,19 @@ userSchema.pre('save', function (next) {
 
 
 userSchema.statics.addTransaction = function(transaction, callback) {
-  logger.log('Adding Transaction: %s -> %s (%s)', transaction.value, transaction.address, transaction.hash);
+  logger.log('Adding Transaction: %s -> %s (%s)', transaction.value, transaction.address, transaction.transaction_hash);
   User.findOne({'address':transaction.address,'secret':transaction.secret}, function (err, user) {
     if (err) return callback(err);
     if (!user) return callback('No matching user: '+transaction.address);
-    logger.log('transaction.transaction_hash: %s', transaction.transaction_hash);
     logger.log('user.transactions: %s', _.pluck(user.transactions,'transaction_hash'));
     if (_.contains(_.pluck(user.transactions,'transaction_hash'),transaction.transaction_hash)) {
       var existing_transaction = _.findWhere(user.transactions, {'transaction_hash':transaction.transaction_hash});
-      logger.log('Confirmed Existing Transaction: %s -> %s (%s:%s)', existing_transaction.confirmations, transaction.confirmations, transaction.hash, user._id);
+      logger.log('Confirmed Existing Transaction: %s -> %s (%s:%s)', existing_transaction.confirmations, transaction.confirmations, transaction.transaction_hash, user._id);
       existing_transaction.confirmations = transaction.confirmations;
     }
     else {
-      logger.log('Added Transaction: %s -> %s (%s:%s)', transaction.value, transaction.address, transaction.hash, user._id);
-      user.transactions.push({'value':transaction.value,'secret':transaction.secret,'address':transaction.address,'hash':transaction.transaction_hash,'confirmations':transaction.confirmations});
+      logger.log('Added Transaction: %s -> %s (%s:%s)', transaction.value, transaction.address, transaction.transaction_hash, user._id);
+      user.transactions.push({'value':transaction.value,'secret':transaction.secret,'address':transaction.address,'transaction_hash':transaction.transaction_hash,'confirmations':transaction.confirmations});
       user.addTime(transaction.value);
     }
   });
