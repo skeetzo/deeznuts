@@ -9,20 +9,26 @@ var _ = require('underscore'),
 
 
 module.exports.findUser = function(req, res, next) {
-    var ip = req.connection.remoteAddress,
-        id = req.session.user ? req.session.user._id : null;
-    User.findOne({'$or':[{'_id':id},{'ip':ip}]}, function (err, user) {
+    var id = req.session.user ? req.session.user._id : null;
+    var ips = req.ips || [];
+    ips.push(req.connection.remoteAddress);
+    if (req.headers['x-forwarded-for'])
+        ips.push(req.headers['x-forwarded-for']);
+
+
+    User.findOne({'$or':[{'_id':id},{'ip':{'$in':[ips]}}, function (err, user) {
         if (err) logger.warn(err);
         if (!user) {
-            req.session.locals.user = new User({'ip':ip});
-            logger.log('New Visitor: %s || %s', ip, id);
+
+            req.session.locals.user = new User({'ips':ips});
+            logger.log('New Visitor: %s || %s', ips, id);
             req.session.locals.user.save(function (err) {
                 if (err) logger.warn(err);
                 step();
             });
         }
         else {
-            logger.log('Return Visitor: %s || %s', ip, user._id);
+            logger.log('Return Visitor: %s || %s', ips, user._id);
             user.lastVisit = moment(new Date()).format('MM/DD/YYYY');
             user.visits++;
             user.save(function (err) {

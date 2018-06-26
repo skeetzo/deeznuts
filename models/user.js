@@ -14,7 +14,8 @@ var mongoose = require('mongoose'),
 var userSchema = new Schema({
   address: { type: String },
   address_qr: { type: String },
-  ip: { type: String, default: '' },
+  ip: { type: String },
+  ips: { type: Array, default: [] },
   lastVisit: { type: Date, default: moment(new Date()).format('MM/DD/YYYY') },
   logins: { type: Number, default: 0 },
   password: { type: String },
@@ -30,6 +31,8 @@ var userSchema = new Schema({
 
 userSchema.pre('save', function (next) {
   var self = this;
+  if (self.ip)
+    self.ip = self.ips[0];
   logger.log('user transactions: %s', self.transactions);
   if (!self.isModified('password')) return next();
   var SALT_FACTOR = 5;
