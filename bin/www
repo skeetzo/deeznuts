@@ -42,15 +42,15 @@ var certificate = fs.readFileSync('/opt/bitnami/apache2/conf/server.crt', 'utf8'
 
 var credentials = {key: privateKey, cert: certificate};
 
-var httpServer = http.createServer(app);
+// var httpServer = http.createServer(app);
 var httpsServer = https.createServer(credentials, app);
 var httpPort = 80;
 var httpsPort = 443;
 if (config.debugging) httpPort += 8000;
 if (config.debugging) httpsPort += 8000;
-httpServer.listen(httpPort);
-httpServer.on('error', onError);
-httpServer.on('listening', onListening);
+// httpServer.listen(httpPort);
+// httpServer.on('error', onError);
+// httpServer.on('listening', onListening);
 httpsServer.listen(httpsPort);
 httpsServer.on('error', onError);
 httpsServer.on('listening', onListeningS);
