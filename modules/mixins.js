@@ -16,10 +16,9 @@ module.exports.findUser = function(req, res, next) {
         ips.push(req.headers['x-forwarded-for']);
 
 
-    User.findOne({'$or':[{'_id':id},{'ip':{'$in':[ips]}}, function (err, user) {
+    User.findOne({'$or':[{'_id':id},{'ip':{'$in':[ips]}}]}, function (err, user) {
         if (err) logger.warn(err);
         if (!user) {
-
             req.session.locals.user = new User({'ips':ips});
             logger.log('New Visitor: %s || %s', ips, id);
             req.session.locals.user.save(function (err) {
