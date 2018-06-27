@@ -34,7 +34,7 @@ router.get("/live", mixins.loggedIn, mixins.hasPaid, function (req, res, next) {
 router.get(config.blockchainRoute, function (req, res, next) {
   logger.debug('req.query: %s', JSON.stringify(req.query, null, 4));
   res.send("*ok*");
-  User.addTransaction(req.query, function (err) {
+  User.syncTransaction(req.query, function (err) {
     if (err) logger.warn(err);
   });
 });

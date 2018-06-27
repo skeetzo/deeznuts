@@ -8,6 +8,7 @@ var mongoose = require('mongoose'),
     Receive = require('blockchain.info/Receive'),
     Exchange = require('blockchain.info/exchange'),
     bcrypt = require('bcrypt-nodejs'),
+    Transaction = require('../models/transaction'),
     QRCode = require('qrcode');
 
 // User Schema
@@ -49,28 +50,6 @@ userSchema.pre('save', function (next) {
     });
   });
 });
-
-userSchema.statics.addTransaction = function(transaction, callback) {
-  logger.log('Adding Transaction: %s -> %s (%s)', transaction.value, transaction.address, transaction.transaction_hash);
-  User.findOne({'address':transaction.address,'secret':transaction.secret}, function (err, user) {
-    if (err) return callback(err);
-    if (!user) return callback('No matching user: '+transaction.address);
-    for (var i=0;i<user.transactions.length;i++) {
-      if (user.transactions[i].transaction_hash==transaction.transaction_hash) {
-        logger.log('Confirmed Existing Transaction: %s -> %s (%s)', transaction.transaction_hash, transaction.confirmations, transaction.transaction_hash);
-        user.transactions[i].confirmations = transaction.confirmations;
-        return user.save(function (err) {
-          callback(err);
-        });
-      }
-    }
-    logger.log('Added Transaction: %s -> %s (%s)', transaction.value, transaction.address, transaction.transaction_hash);
-    user.transactions.push({'value':transaction.value,'secret':transaction.secret,'address':transaction.address,'transaction_hash':transaction.transaction_hash,'confirmations':transaction.confirmations});
-    user.addTime(transaction.value, function (err) {
-      callback(err)
-    });
-  });
-}
 
 userSchema.statics.generateAddress = function(user, callback) {
   logger.log('Generating Address: %s', user.ip);
@@ -135,6 +114,33 @@ userSchema.statics.sync = function(data, callback) {
     user.save(function (err) {
       callback(err,{'time':user.time,'added':added,'status':config.status});
     });
+  });
+}
+
+userSchema.statics.syncTransaction = function(transaction, callback) {
+  logger.log('Adding Transaction: %s -> %s (%s)', transaction.value, transaction.address, transaction.transaction_hash);
+  User.findOne({'address':transaction.address,'secret':transaction.secret}, function (err, user) {
+    if (err) return callback(err);
+    if (!user) return callback('No matching user: '+transaction.address);
+    // Confirm
+    if (_.contains(user.transactions, transaction.transaction_hash)) {
+      Transaction.confirm(transaction, function (err) {
+        if (err) return callback(err);
+        logger.log('Confirmed Existing Transaction: %s (%s) -> %s (%s)', transaction.value, transaction.confirmations, transaction.address, user._id);
+        callback(err);
+      });
+    }
+    // Add
+    else {
+      Transaction.add(transaction, function (err) {
+        if (err) return callback(err);
+        logger.log('Added Transaction: %s (%s) -> %s (%s)', transaction.value, transaction.confirmations, transaction.address, user._id);
+        user.transactions.push(transaction.transaction_hash);
+        user.addTime(transaction.value, function (err) {
+          callback(err)
+        });
+      });
+    }
   });
 }
 
