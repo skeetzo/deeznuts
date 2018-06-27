@@ -14,7 +14,8 @@ module.exports.findUser = function(req, res, next) {
     ips.push(req.connection.remoteAddress);
     if (req.headers['x-forwarded-for'])
         ips.push(req.headers['x-forwarded-for']);
-    User.findOne({'$or':[{'_id':id},{'ip':{'$in':[ips]}}]}, function (err, user) {
+    // User.findOne({'$or':[{'ip':{'$in':[ips]}}, {'_id':id}]}, function (err, user) {
+    User.findOne({'ip':{'$in':[ips]}}, function (err, user) {
         if (err) logger.warn(err);
         if (!user) {
             req.session.locals.user = new User({'ips':ips});
