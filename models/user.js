@@ -127,7 +127,7 @@ userSchema.statics.syncTransaction = function(transaction, callback) {
       Transaction.confirm(transaction, function (err_) {
         if (err_) return callback(err_);
         logger.log('Confirmed Existing Transaction: %s (%s) -> %s (%s)', transaction.value, transaction.confirmations, transaction.address, user._id);
-        if (transaction.confirmations==config.blockchainConfirmationLimit)
+        if (transaction.confirmations>=config.blockchainConfirmationLimit)
           callback(null, true);
         else
           callback(null, false);
