@@ -51,9 +51,9 @@ userSchema.pre('save', function (next) {
   });
 });
 
-userSchema.statics.generateAddress = function(user, callback) {
-  logger.log('Generating Address: %s', user.ip);
-  User.findById(user._id, function (err, user) {
+userSchema.statics.generateAddress = function(user_, callback) {
+  logger.log('Generating Address: %s', user_.ip);
+  User.findById(user_._id, function (err, user) {
     if (err) return callback(err);
     if (user.address) return callback('Address already generated: '+user.ip);
     if (config.debugging) return callback('Skipping Address- Debugging');
@@ -83,12 +83,12 @@ userSchema.statics.generateAddress = function(user, callback) {
     .then(function (data) {
       logger.log('Generated Address: %s', data.address);
       user.address = data.address;
-      QRCode.toDataURL(data.address, function (err, url) {
-        if (err) logger.warn(err);
-        user.address_qr = url;
+      QRCode.toDataURL(data.address, function (err_, url) {
+        if (err_) logger.warn(err_);
+        else user.address_qr = url;
         // logger.debug('address_qr: %s', url);
-        user.save(function (err) {
-          callback(err);
+        user.save(function (err__) {
+          callback(err__);
         });
       });
     });
@@ -111,8 +111,8 @@ userSchema.statics.sync = function(data, callback) {
     }
     var added = user.time_added || false;
     user.time_added = false;
-    user.save(function (err) {
-      callback(err,{'time':user.time,'added':added,'status':config.status});
+    user.save(function (err_) {
+      callback(err_,{'time':user.time,'added':added,'status':config.status});
     });
   });
 }
@@ -124,23 +124,23 @@ userSchema.statics.syncTransaction = function(transaction, callback) {
     if (!user) return callback('No matching user: '+transaction.address);
     // Confirm
     if (_.contains(user.transactions, transaction.transaction_hash)) {
-      Transaction.confirm(transaction, function (err) {
-        if (err) return callback(err);
+      Transaction.confirm(transaction, function (err_) {
+        if (err_) return callback(err_);
         logger.log('Confirmed Existing Transaction: %s (%s) -> %s (%s)', transaction.value, transaction.confirmations, transaction.address, user._id);
         if (transaction.confirmations==config.blockchainConfirmationLimit)
-          callback(err, true);
+          callback(null, true);
         else
-          callback(err, false);
+          callback(null, false);
       });
     }
     // Add
     else {
-      Transaction.add(transaction, function (err) {
-        if (err) return callback(err);
+      Transaction.add(transaction, function (err_) {
+        if (err_) return callback(err_);
         logger.log('Added Transaction: %s (%s) -> %s (%s)', transaction.value, transaction.confirmations, transaction.address, user._id);
         user.transactions.push(transaction.transaction_hash);
-        user.addTime(transaction.value, function (err) {
-          callback(err, false)
+        user.addTime(transaction.value, function (err__) {
+          callback(err__, false)
         });
       });
     }
