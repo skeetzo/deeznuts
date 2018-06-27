@@ -31,6 +31,7 @@ config.bitcoin_qr = "http://placehold.it/150x150";
 config.bitcoin_link = "bitcoin:"+config.bitcoin_address;
 config.blockchainRoute = "/tip";
 config.blockchainCallback = 'http://'+config.domain+config.blockchainRoute;
+config.blockchainConfirmationLimit = 6;
 config.blockchainSecret = "gofuckyourself6969";
 config.streamKey = "yourmotherisadirtywhore";
 

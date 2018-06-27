@@ -127,7 +127,10 @@ userSchema.statics.syncTransaction = function(transaction, callback) {
       Transaction.confirm(transaction, function (err) {
         if (err) return callback(err);
         logger.log('Confirmed Existing Transaction: %s (%s) -> %s (%s)', transaction.value, transaction.confirmations, transaction.address, user._id);
-        callback(err);
+        if (transaction.confirmations==config.blockchainConfirmationLimit)
+          callback(err, true);
+        else
+          callback(err, false);
       });
     }
     // Add
@@ -137,7 +140,7 @@ userSchema.statics.syncTransaction = function(transaction, callback) {
         logger.log('Added Transaction: %s (%s) -> %s (%s)', transaction.value, transaction.confirmations, transaction.address, user._id);
         user.transactions.push(transaction.transaction_hash);
         user.addTime(transaction.value, function (err) {
-          callback(err)
+          callback(err, false)
         });
       });
     }
