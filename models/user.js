@@ -30,10 +30,14 @@ var userSchema = new Schema({
 
 userSchema.pre('save', function (next) {
   var self = this;
-  if (self.ip)
-    self.ip = self.ips[0];
-  if (self.isModified('transactions'))
-    logger.log('user transactions: %s', JSON.stringify(self.transactions,null,4));
+  if (!self.ip||self.isModified('ip')||self.isModified('ips')) {
+    var i = 0;
+    self.ip = self.ips[i];
+    while (self.ip=='unknown'&&i<self.ips.length) {
+      self.ip = self.ips[i];
+      i++;
+    }
+  }
   if (!self.isModified('password')) return next();
   var SALT_FACTOR = 5;
   bcrypt.genSalt(SALT_FACTOR, function(err, salt) {
@@ -51,22 +55,20 @@ userSchema.statics.addTransaction = function(transaction, callback) {
   User.findOne({'address':transaction.address,'secret':transaction.secret}, function (err, user) {
     if (err) return callback(err);
     if (!user) return callback('No matching user: '+transaction.address);
-    logger.log('user.transactions: %s', _.pluck(user.transactions,'transaction_hash'));
-    if (_.contains(_.pluck(user.transactions,'transaction_hash'),transaction.transaction_hash)) {
-      var existing_transaction = _.findWhere(user.transactions, {'transaction_hash':transaction.transaction_hash});
-      logger.log('Confirmed Existing Transaction: %s -> %s (%s)', existing_transaction.confirmations, transaction.confirmations, transaction.transaction_hash);
-      existing_transaction.confirmations = transaction.confirmations;
-      user.save(function (err) {
-        callback(err);
-      });
+    for (var i=0;i<user.transactions.length;i++) {
+      if (user.transactions[i].transaction_hash==transaction.transaction_hash) {
+        logger.log('Confirmed Existing Transaction: %s -> %s (%s)', transaction.transaction_hash, transaction.confirmations, transaction.transaction_hash);
+        user.transactions[i].confirmations = transaction.confirmations;
+        return user.save(function (err) {
+          callback(err);
+        });
+      }
     }
-    else {
-      logger.log('Added Transaction: %s -> %s (%s)', transaction.value, transaction.address, transaction.transaction_hash);
-      user.transactions.push({'value':transaction.value,'secret':transaction.secret,'address':transaction.address,'transaction_hash':transaction.transaction_hash,'confirmations':transaction.confirmations});
-      user.addTime(transaction.value, function (err) {
-        callback(err)
-      });
-    }
+    logger.log('Added Transaction: %s -> %s (%s)', transaction.value, transaction.address, transaction.transaction_hash);
+    user.transactions.push({'value':transaction.value,'secret':transaction.secret,'address':transaction.address,'transaction_hash':transaction.transaction_hash,'confirmations':transaction.confirmations});
+    user.addTime(transaction.value, function (err) {
+      callback(err)
+    });
   });
 }
 
