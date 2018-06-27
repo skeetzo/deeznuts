@@ -1223,3 +1223,19 @@
 [34m[37m06/27/2018-03:29:29.67 [34m[33mDeezNuts[34m: Mongoose connection disconnected[39m
 [34m[37m06/27/2018-03:29:29.67 [34m[33mDeezNuts[34m: Reconnecting to MongoDB in 3000...[39m
 [34m[37m06/27/2018-03:29:29.67 [34m[33mDeezNuts[34m: Mongoose connection disconnected through app termination[39m
+[37m06/27/2018-03:31:33.32 [39m[33mDeezNuts[39m: Starting Crons
+[37m06/27/2018-03:31:33.33 [39m[33mDeezNuts[39m: started cron - Ping
+[37m06/27/2018-03:31:33.33 [39m[33mDeezNuts[39m: started cron - Midnight
+[34m[37m06/27/2018-03:31:33.80 [34m[33mDeezNuts[34m: Mongoose connection open[39m
+[37m06/27/2018-03:31:33.89 [39m[33mDeezNuts[39m: Bot found: justalexxxd
+[37m06/27/2018-03:31:36.37 [39m[33mDeezNuts[39m: ips: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22
+[37m06/27/2018-03:31:36.45 [39m[33mDeezNuts[39m: New Visitor: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 || null
+[37m06/27/2018-03:31:36.54 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[37m06/27/2018-03:31:36.62 [39m[33mDeezNuts[39m: syncing (ignore): 60 seconds -> 1141 seconds (5b33051836614c1ef10724fc)
+[37m06/27/2018-03:31:39.34 [39m[33mDeezNuts[39m: ips: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22
+[37m06/27/2018-03:31:39.42 [39m[33mDeezNuts[39m: New Visitor: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 || null
+[37m06/27/2018-03:31:39.50 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[37m06/27/2018-03:31:39.58 [39m[33mDeezNuts[39m: syncing (ignore): 60 seconds -> 1141 seconds (5b33051b36614c1ef10724fd)
+[34m[37m06/27/2018-03:31:40.70 [34m[33mDeezNuts[34m: Mongoose connection disconnected[39m
+[34m[37m06/27/2018-03:31:40.70 [34m[33mDeezNuts[34m: Reconnecting to MongoDB in 3000...[39m
+[34m[37m06/27/2018-03:31:40.70 [34m[33mDeezNuts[34m: Mongoose connection disconnected through app termination[39m
