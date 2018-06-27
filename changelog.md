@@ -17,8 +17,10 @@
 **0.0.8 : 6/24/2018**
  - usability fixes
  - testing
-
-
+**0.0.9 : 6/26/2018**
+ - SSL
+ - blockchain testing
+ - model: transaction
 
 
 

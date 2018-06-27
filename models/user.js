@@ -62,7 +62,7 @@ userSchema.statics.generateAddress = function(user_, callback) {
      cb = config.blockchainCallback,
      key = config.blockchainKey,
      options = {
-      '__unsafe__gapLimit':50
+      '__unsafe__gapLimit':config.blockchainGapLimit
      };
     // myReceive is the blockchain Object for the new address's generation
     var myReceive = new Receive(xpub, cb, key, options);

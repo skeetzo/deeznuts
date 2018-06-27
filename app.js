@@ -86,17 +86,17 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 // SSL
-// app.use (function (req, res, next) {
-//   if (req.secure) {
-//     config.logger.log('secure: %s', req.secure);
-//     // request was via https, so do no special handling
-//     next();
-//   } else {
-//     config.logger.log('not secure: %s', req.secure);
-//     // request was via http, so redirect to https
-//     res.redirect('https://' + req.headers.host + req.url);
-//   }
-// });
+app.use (function (req, res, next) {
+  if (req.secure) {
+    // config.logger.log('secure: %s', req.secure);
+    // request was via https, so do no special handling
+    next();
+  } else {
+    // config.logger.log('not secure: %s', req.secure);
+    // request was via http, so redirect to https
+    res.redirect('https://' + req.headers.host + req.url);
+  }
+});
 
 // /
 app.use('/', require('./routes/index'));
@@ -116,7 +116,7 @@ app.use(function (err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
   
-  config.logger.warn(err);
+  config.logger.warn(err.message);
 });
 
 module.exports = app;
