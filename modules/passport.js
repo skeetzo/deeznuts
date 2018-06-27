@@ -26,15 +26,32 @@ passport.use(new LocalStrategy({
           logger.warn('User signup not allowed: %s- %s', username, err);
           return next(null, false);
         }
-
-        logger.log('Creating new user: %s', username);
-        user = new User({'username':username,'password':password});
-        user.logins++;
-        user.save(function(err) {
-          if (err) return logger.warn(err);
-          req.flash('message','Account created!');
-          return next(null, user);
-        }); 
+        var ips = req.ips || [];
+        ips.push(req.connection.remoteAddress);
+        if (req.headers['x-forwarded-for'])
+            ips.push(req.headers['x-forwarded-for']);
+        User.findOne({'ip':{'$in':ips}}, function (err, user_) {
+          if (err) logger.warn(err);
+          if (user_) {
+            logger.log('User Associated: %s -> %s', ips, user_._id);
+            user_.username = username;
+            user_.password = password;
+            return user_.save(function (err) {
+              if (err) logger.warn(err);
+              req.flash('message','Account created!');
+              next(null, user_);
+            });
+          }
+          logger.log('Creating new user: %s || %s', ips, username);
+          user = new User({'username':username,'password':password,'ips':ips});
+          user.logins++;
+          user.save(function(err) {
+            if (err) return logger.warn(err);
+            req.flash('message','Account created!');
+            return next(null, user);
+          }); 
+        });
+        
         // Gmail.notifyNewAccount(function (err) {
         //   if (err) logger.warn(err);
         // });
