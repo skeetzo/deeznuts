@@ -25,27 +25,27 @@ module.exports.findUser = function(req, res, next) {
                 step(null, user);
             });
         },
-        function (user, step) {
-            if (user) return step(null, user);
-            User.findOne({'ip':{'$in':ips}}, function (err, user) {
-                if (err) return step(err);
-                if (!user) return step(null, null);
-                logger.log('Return Visitor (ip): %s || %s', ips, user._id);
-                user.lastVisit = moment(new Date()).format('MM/DD/YYYY');
-                step(null, user);
-            });
-        },
-        function (user, step) {
-            if (user) return step(null, user);
-            user = new User({'ips':ips});
-            logger.log('New Visitor: %s || %s', ips, user._id);
-            step(null, user);
-        },
-        function (user, step) {
-            user.save(function (err) {
-                step(err, user);
-            });
-        }
+        // function (user, step) {
+        //     if (user) return step(null, user);
+        //     User.findOne({'ip':{'$in':ips}}, function (err, user) {
+        //         if (err) return step(err);
+        //         if (!user) return step(null, null);
+        //         logger.log('Return Visitor (ip): %s || %s', ips, user._id);
+        //         user.lastVisit = moment(new Date()).format('MM/DD/YYYY');
+        //         step(null, user);
+        //     });
+        // },
+        // function (user, step) {
+        //     if (user) return step(null, user);
+        //     user = new User({'ips':ips});
+        //     logger.log('Visitor: %s || %s', ips, user._id);
+        //     step(null, user);
+        // },
+        // function (user, step) {
+        //     user.save(function (err) {
+        //         step(err, user);
+        //     });
+        // }
     ], function (err, user) {
         if (err) {
             logger.warn(err);
