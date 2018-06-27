@@ -15,6 +15,7 @@ module.exports.findUser = function(req, res, next) {
     if (req.headers['x-forwarded-for'])
         ips.push(req.headers['x-forwarded-for']);
     // User.findOne({'$or':[{'ip':{'$in':[ips]}}, {'_id':id}]}, function (err, user) {
+    logger.log('ips: %s', ips);
     User.findOne({'ip':{'$in':[ips]}}, function (err, user) {
         if (err) logger.warn(err);
         if (!user) {
