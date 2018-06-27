@@ -9,7 +9,7 @@ prepend content
   include crypto
 
   append javascript
-    script(src="https://cdn.bootcss.com/flv.js/1.4.0/flv.min.js")
+    script(src="//cdn.bootcss.com/flv.js/1.4.0/flv.min.js")
     
     script.
       if (flvjs.isSupported()) {
@@ -18,7 +18,7 @@ prepend content
           type: 'flv',
           isLive: true,
           cors: true,
-          url: "http://#{domain}:8000/live/stream.flv?sign=#{key}"
+          url: "https://#{domain}:8000/live/stream.flv?sign=#{key}"
         });
         flvPlayer.attachMediaElement(videoElement);
         flvPlayer.load();
@@ -38,7 +38,7 @@ prepend content
           else if (seconds<=0) {
             clearInterval(countdown);
             alert('Times up!');
-            window.location.replace("http://#{domain}/");
+            window.location.replace("https://#{domain}/");
           }
         },1000);
       });
