@@ -22,7 +22,7 @@
  - blockchain testing
  - model: transaction
 
-
+ - wait for money to actually go through?
 
  - writeup
 

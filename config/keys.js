@@ -60,7 +60,7 @@ module.exports = function() {
     // Mongo
     this.MONGODB_URI = localConfig.MONGODB_URI || process.env.MONGODB_URI;
     this.MONGODB_URI = localConfig.MONGODB_URI_local;
-    console.log('uri: %s', this.MONGODB_URI);
+
     // Twitter
 	this.Twitter_consumer_key = localConfig.Twitter_AlexsDBot_consumer_key || process.env.Twitter_consumer_key; 
 	this.Twitter_consumer_secret = localConfig.Twitter_AlexsDBot_consumer_secret || process.env.Twitter_consumer_secret;

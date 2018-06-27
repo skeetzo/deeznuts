@@ -32,14 +32,13 @@ router.get("/live", mixins.loggedIn, mixins.hasPaid, function (req, res, next) {
 
 // blockchainCallback
 router.get(config.blockchainRoute, function (req, res, next) {
-  res.send("*ok*");
   logger.debug('req.query: %s', JSON.stringify(req.query, null, 4));
-  User.syncTransaction(req.query, function (err, confirm) {
+  User.syncTransaction(req.query, function (err) {
     if (err) logger.warn(err);
-    // if (confirm)
-      // res.send("*ok*");
-    // else
-      // res.sendStatus(200);
+    if (req.query.confirmations>=config.blockchainConfirmationLimit)
+      res.send("*ok*");
+    else
+      res.sendStatus(200);
   });
 });
 
