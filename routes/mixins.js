@@ -96,6 +96,7 @@ module.exports.resetLocals = function(req, res, next) {
 
 module.exports.syncUser = function (req, res, next) {
     if (!req.session.user) return next();
+    // logger.debug('Syncing User: %s', req.session.user._id);
     User.findById(req.session.user._id, function (err, user) {
         if (err) {
             logger.warn(err);
