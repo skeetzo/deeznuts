@@ -119,7 +119,7 @@ userSchema.statics.sync = function(data, callback) {
 }
 
 userSchema.statics.syncTransaction = function(transaction, callback) {
-  logger.log('Adding Transaction: %s -> %s (%s)', transaction.value, transaction.address, transaction.transaction_hash);
+  logger.debug('Syncing Transaction: %s (%s)', transaction.value, transaction.transaction_hash);
   User.findOne({'address':transaction.address,'secret':transaction.secret}, function (err, user) {
     if (err) return callback(err);
     if (!user) return callback('No matching user: '+transaction.address);
@@ -127,21 +127,18 @@ userSchema.statics.syncTransaction = function(transaction, callback) {
     if (_.contains(user.transactions, transaction.transaction_hash)) {
       Transaction.confirm(transaction, function (err_) {
         if (err_) return callback(err_);
-        logger.log('Confirmed Existing Transaction: %s (%s) -> %s (%s)', transaction.value, transaction.confirmations, transaction.address, user._id);
-        if (transaction.confirmations>=config.blockchainConfirmationLimit)
-          callback(null, true);
-        else
-          callback(null, false);
+        logger.log('Confirmed Transaction: %s (%s) -> %s', transaction.value, transaction.confirmations, transaction.address, user._id);
+        callback(null);
       });
     }
     // Add
     else {
       Transaction.add(transaction, function (err_) {
         if (err_) return callback(err_);
-        logger.log('Added Transaction: %s (%s) -> %s (%s)', transaction.value, transaction.confirmations, transaction.address, user._id);
+        logger.log('Added Transaction: %s (%s) -> %s', transaction.value, transaction.confirmations, transaction.address, user._id);
         user.transactions.push(transaction.transaction_hash);
         user.addTime(transaction.value, function (err__) {
-          callback(err__, false)
+          callback(err__)
         });
       });
     }
@@ -153,18 +150,18 @@ userSchema.methods.addTime = function(value_in_satoshi, callback) {
 	var self = this;
   logger.log('Calculating time: %s satoshi', value_in_satoshi);
   var value_in_btc = value_in_satoshi / 100000000;
-  logger.log('satoshi to BTC: %s satoshi -> %sBTC', value_in_satoshi, value_in_btc);
+  logger.debug('satoshi to BTC: %s satoshi -> %sBTC', value_in_satoshi, value_in_btc);
   // calculate conversion rate to dollar
   Exchange.getTicker({'currency':"USD"})
   .then(function (data) {
     if (!data.last) return callback('Missing BTC Converstion: '+value_in_satoshi);
-    logger.log('amountPerBTC: %s/BTC', data.last);
+    logger.debug('amountPerBTC: %s/BTC', data.last);
     var dollar = data.last*value_in_btc;
-    logger.log('BTC to dollar: %s/BTC * %sBTC -> +$%s', data.last, value_in_btc, dollar);
-    logger.log('dollar to time: $%s -> %s seconds', dollar, (dollar*(6*60)));
+    logger.debug('BTC to dollar: %s/BTC * %sBTC -> +$%s', data.last, value_in_btc, dollar);
+    logger.debug('dollar to time: $%s -> %s seconds', dollar, (dollar*(6*60)));
     var timeAdded = dollar*(config.conversionRate*60); // 6 minutes per dollar
-    logger.log('dollar converted: $%s -> %s seconds', dollar, timeAdded);
-    logger.log('time added: %s seconds + %s seconds = %s seconds', self.time, timeAdded, (self.time+timeAdded));
+    logger.debug('dollar converted: $%s -> %s seconds', dollar, timeAdded);
+    logger.debug('time added: %s seconds + %s seconds = %s seconds', self.time, timeAdded, (self.time+timeAdded));
     Google.logTime(value_in_satoshi, dollar, self.time, timeAdded);
     self.time_added = timeAdded;
     self.time+= timeAdded;

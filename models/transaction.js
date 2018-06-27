@@ -20,7 +20,7 @@ transactionSchema.pre('save', function (next) {
 });
 
 transactionSchema.statics.add = function(newTransaction, callback) {
-  logger.log('Adding Transaction: %s (%s) -> %s', newTransaction.value, newTransaction.confirmations, newTransaction.address);
+  logger.debug('Adding Transaction: %s (%s) -> %s', newTransaction.value, newTransaction.transaction_hash.substring(0,6), newTransaction.address);
   Transaction.findOne({'address':newTransaction.address,'transaction_hash':newTransaction.transaction_hash,'secret':newTransaction.secret}, function (err, transaction) {
     if (err) return callback(err);
     if (transaction) return callback('Existing Transaction: '+transaction.address+'-'+transaction.transaction_hash);
@@ -32,7 +32,7 @@ transactionSchema.statics.add = function(newTransaction, callback) {
 }
 
 transactionSchema.statics.confirm = function(existingTransaction, callback) {
-  logger.log('Confirmed Existing Transaction: %s (%s) -> %s', existingTransaction.value, existingTransaction.confirmations, existingTransaction.address);
+  logger.debug('Confirming Existing Transaction: %s (%s) -> %s', existingTransaction.value, newTransaction.transaction_hash.substring(0,6), existingTransaction.address);
   Transaction.findOne({'address':existingTransaction.address,'transaction_hash':existingTransaction.transaction_hash,'secret':existingTransaction.secret}, function (err, transaction) {
     if (err) return callback(err);
     if (!transaction) return callback('Missing Transaction: '+existingTransaction.address+'-'+existingTransaction.transaction_hash);
