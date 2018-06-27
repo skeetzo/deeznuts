@@ -4,6 +4,7 @@ var config = {};
 // Debugging
 config.debugging = false;
 config.debugging_live = false;
+config.local = false;
 
 config.Crons_On = true;
 
