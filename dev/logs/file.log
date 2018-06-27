@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 [37m06/27/2018-17:46:47.73 [39m[33mDeezNuts[39m: Starting Crons
 [37m06/27/2018-17:46:47.75 [39m[33mDeezNuts[39m: started cron - Ping
 [37m06/27/2018-17:46:47.75 [39m[33mDeezNuts[39m: started cron - Midnight
@@ -1587,3 +1588,9 @@
 [37m06/27/2018-20:08:41.99 [39m[33mDeezNuts[39m: started cron - Ping
 [37m06/27/2018-20:08:41.99 [39m[33mDeezNuts[39m: started cron - Midnight
 [34m[37m06/27/2018-20:08:43.88 [34m[33mDeezNuts[34m: Mongoose connection disconnected through app termination[39m
+=======
+>>>>>>> c815d3d7cc647e619931ff903dbc7661c45b186c
+[37m06/27/2018-20:13:07.29 [39m[33mDeezNuts[39m: Starting Crons
+[37m06/27/2018-20:13:07.30 [39m[33mDeezNuts[39m: started cron - Ping
+[37m06/27/2018-20:13:07.30 [39m[33mDeezNuts[39m: started cron - Midnight
+[34m[37m06/27/2018-20:13:08.71 [34m[33mDeezNuts[34m: Mongoose connection disconnected through app termination[39m
