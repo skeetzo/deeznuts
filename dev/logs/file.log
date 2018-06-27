@@ -1594,3 +1594,53 @@
 [37m06/27/2018-20:13:07.30 [39m[33mDeezNuts[39m: started cron - Ping
 [37m06/27/2018-20:13:07.30 [39m[33mDeezNuts[39m: started cron - Midnight
 [34m[37m06/27/2018-20:13:08.71 [34m[33mDeezNuts[34m: Mongoose connection disconnected through app termination[39m
+[37m06/27/2018-20:14:38.58 [39m[33mDeezNuts[39m: Starting Crons
+[37m06/27/2018-20:14:38.60 [39m[33mDeezNuts[39m: started cron - Ping
+[37m06/27/2018-20:14:38.60 [39m[33mDeezNuts[39m: started cron - Midnight
+[34m[37m06/27/2018-20:14:39.27 [34m[33mDeezNuts[34m: Mongoose connection disconnected through app termination[39m
+[37m06/27/2018-20:15:19.19 [39m[33mDeezNuts[39m: Starting Crons
+[37m06/27/2018-20:15:19.20 [39m[33mDeezNuts[39m: started cron - Ping
+[37m06/27/2018-20:15:19.20 [39m[33mDeezNuts[39m: started cron - Midnight
+[34m[37m06/27/2018-20:15:19.26 [34m[33mDeezNuts[34m: Mongoose connection open[39m
+[37m06/27/2018-20:15:19.28 [39m[33mDeezNuts[39m: Prepping bot: justalexxxd
+[37m06/27/2018-20:15:35.54 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /GET /
+[37m06/27/2018-20:15:39.52 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /login
+[37m06/27/2018-20:15:39.54 [39m[33mDeezNuts[39m: Creating new user: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 || user2
+[37m06/27/2018-20:15:39.55 [39m[33mDeezNuts[39m: login successful (local): 5b33f06bdb0bb13cc3125df5
+[37m06/27/2018-20:15:39.62 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /GET /
+[37m06/27/2018-20:15:43.11 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[37m06/27/2018-20:15:43.11 [39m[33mDeezNuts[39m: syncing (success): 60 seconds -> 60 seconds (5b33f06bdb0bb13cc3125df5)
+[37m06/27/2018-20:15:46.02 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[37m06/27/2018-20:15:46.02 [39m[33mDeezNuts[39m: syncing (success): 60 seconds -> 60 seconds (5b33f06bdb0bb13cc3125df5)
+[37m06/27/2018-20:15:49.13 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[37m06/27/2018-20:15:49.14 [39m[33mDeezNuts[39m: syncing (success): 60 seconds -> 60 seconds (5b33f06bdb0bb13cc3125df5)
+[37m06/27/2018-20:15:50.54 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /GET /live
+[37m06/27/2018-20:15:50.63 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /GET /
+[37m06/27/2018-20:15:52.22 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /GET /
+[37m06/27/2018-20:15:55.63 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[37m06/27/2018-20:15:55.64 [39m[33mDeezNuts[39m: syncing (success): 60 seconds -> 60 seconds (5b33f06bdb0bb13cc3125df5)
+[37m06/27/2018-20:15:58.62 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[37m06/27/2018-20:15:58.63 [39m[33mDeezNuts[39m: syncing (success): 60 seconds -> 60 seconds (5b33f06bdb0bb13cc3125df5)
+[37m06/27/2018-20:16:01.63 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[37m06/27/2018-20:16:01.63 [39m[33mDeezNuts[39m: syncing (success): 60 seconds -> 60 seconds (5b33f06bdb0bb13cc3125df5)
+[37m06/27/2018-20:16:04.48 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /GET /logout
+[37m06/27/2018-20:16:04.48 [39m[33mDeezNuts[39m: logging out: 5b33f06bdb0bb13cc3125df5
+[37m06/27/2018-20:16:04.48 [39m[33mDeezNuts[39m: logout successful: 5b33f06bdb0bb13cc3125df5
+[37m06/27/2018-20:16:04.53 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[37m06/27/2018-20:16:04.58 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /GET /
+[37m06/27/2018-20:16:07.11 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /GET /live
+[37m06/27/2018-20:16:08.41 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /GET /
+[37m06/27/2018-20:18:38.47 [39m[33mDeezNuts[39m: unknown,130.211.88.31,::ffff:127.0.0.1,unknown, 130.211.88.31 /GET /tip?secret=032a6737374ffcbbe19726c5e84b1460&address=1EnizKEwH5vUxa5gPqJSmJPN6dkHdHPhQN&transaction_hash=0c06311c692a0ee39b0929d118cc63b14d0a6105835bb6348a73a8bdcee3e824&value=49092&confirmations=4
+[34m[37m06/27/2018-20:18:38.48 [34m[33mDeezNuts[34m: req.query: {[39m
+[34m    "secret": "032a6737374ffcbbe19726c5e84b1460",[39m
+[34m    "address": "1EnizKEwH5vUxa5gPqJSmJPN6dkHdHPhQN",[39m
+[34m    "transaction_hash": "0c06311c692a0ee39b0929d118cc63b14d0a6105835bb6348a73a8bdcee3e824",[39m
+[34m    "value": "49092",[39m
+[34m    "confirmations": "4"[39m
+[34m}[39m
+[37m06/27/2018-20:18:38.48 [39m[33mDeezNuts[39m: Adding Transaction: 49092 -> 1EnizKEwH5vUxa5gPqJSmJPN6dkHdHPhQN (0c06311c692a0ee39b0929d118cc63b14d0a6105835bb6348a73a8bdcee3e824)
+[1m[33m[37m06/27/2018-20:18:38.48 [33m No matching user: 1EnizKEwH5vUxa5gPqJSmJPN6dkHdHPhQN[39m[22m
+[37m06/27/2018-20:19:17.52 [39m[33mDeezNuts[39m: 175.141.168.113,::ffff:127.0.0.1,175.141.168.113 /HEAD /
+[34m[37m06/27/2018-20:28:46.45 [34m[33mDeezNuts[34m: Mongoose connection disconnected[39m
+[34m[37m06/27/2018-20:28:46.45 [34m[33mDeezNuts[34m: Reconnecting to MongoDB in 3000...[39m
+[34m[37m06/27/2018-20:28:46.45 [34m[33mDeezNuts[34m: Mongoose connection disconnected through app termination[39m
