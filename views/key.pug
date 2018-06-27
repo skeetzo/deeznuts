@@ -16,20 +16,20 @@ block content
       //- key phrase output
       p#key
 
-append javascript
-  script.
-    function solve() {
-      var phrase = $("#phrase").val();
-      console.log(phrase);
-      return Promise.resolve($.ajax({
-          type: 'POST',
-          url: '/key',
-          data: {'phrase':phrase,'_csrf':"#{_csrf}"},
-        success: function(data) {
-          $("#key").text(data.key);
-        },
-        error: function(data) {},
-       })).catch(function (reason) {
-         console.log(reason);
-       });
-    }
+  append javascript
+    script.
+      function solve() {
+        var phrase = $("#phrase").val();
+        console.log(phrase);
+        return Promise.resolve($.ajax({
+            type: 'POST',
+            url: '/key',
+            data: {'phrase':phrase,'_csrf':"#{_csrf}"},
+          success: function(data) {
+            $("#key").text(data.key);
+          },
+          error: function(data) {},
+         })).catch(function (reason) {
+           console.log(reason);
+         });
+      }

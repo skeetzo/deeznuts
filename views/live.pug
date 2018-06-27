@@ -8,37 +8,37 @@ prepend content
 
   include crypto
 
-append javascript
-  script(src="https://cdn.bootcss.com/flv.js/1.4.0/flv.min.js")
-  
-  script.
-    if (flvjs.isSupported()) {
-      var videoElement = document.getElementById('preview');
-      var flvPlayer = flvjs.createPlayer({
-        type: 'flv',
-        isLive: true,
-        cors: true,
-        url: "http://#{domain}:8000/live/stream.flv?sign=#{key}"
-      });
-      flvPlayer.attachMediaElement(videoElement);
-      flvPlayer.load();
-      //- flvPlayer.play();
-    }
+  append javascript
+    script(src="https://cdn.bootcss.com/flv.js/1.4.0/flv.min.js")
+    
+    script.
+      if (flvjs.isSupported()) {
+        var videoElement = document.getElementById('preview');
+        var flvPlayer = flvjs.createPlayer({
+          type: 'flv',
+          isLive: true,
+          cors: true,
+          url: "http://#{domain}:8000/live/stream.flv?sign=#{key}"
+        });
+        flvPlayer.attachMediaElement(videoElement);
+        flvPlayer.load();
+        //- flvPlayer.play();
+      }
 
-  script.
-    $(document).ready(function () {
-      //- updates time if live
-      var countdown = setInterval(function () {
-        var seconds = parseInt($("#timeseconds").text());
-        if ($("#status").text()=="Live"&&seconds>0) {
-          seconds--;
-          $("#time").text(toTime(seconds));
-          $("#timeseconds").text(seconds);   
-        }
-        else if (seconds<=0) {
-          clearInterval(countdown);
-          alert('Times up!');
-          window.location.replace("http://#{domain}/");
-        }
-      },1000);
-    });
+    script.
+      $(document).ready(function () {
+        //- updates time if live
+        var countdown = setInterval(function () {
+          var seconds = parseInt($("#timeseconds").text());
+          if ($("#status").text()=="Live"&&seconds>0) {
+            seconds--;
+            $("#time").text(toTime(seconds));
+            $("#timeseconds").text(seconds);   
+          }
+          else if (seconds<=0) {
+            clearInterval(countdown);
+            alert('Times up!');
+            window.location.replace("http://#{domain}/");
+          }
+        },1000);
+      });

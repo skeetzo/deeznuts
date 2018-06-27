@@ -35,12 +35,12 @@ module.exports.findUser = function(req, res, next) {
         //         step(null, user);
         //     });
         // },
-        // function (user, step) {
-        //     if (user) return step(null, user);
-        //     user = new User({'ips':ips});
-        //     logger.log('Visitor: %s || %s', ips, user._id);
-        //     step(null, user);
-        // },
+        function (user, step) {
+            if (user) return step(null, user);
+            user = new User({'ips':ips});
+            logger.log('Visitor: %s || %s', ips, user._id);
+            step(null, user);
+        },
         // function (user, step) {
         //     user.save(function (err) {
         //         step(err, user);
