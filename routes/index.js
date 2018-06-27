@@ -55,7 +55,7 @@ router.get("/address", mixins.loggedIn, function (req, res, next) {
 // check for recent tips
 router.post("/sync", function (req, res, next) {
   // logger.debug('req.session.user: %s', JSON.stringify(req.session.user, null, 4));
-  req.body._id = req.session.user._id;
+  req.body._id = req.session.locals.user._id ? req.session.locals.user._id : null;
   User.sync(req.body, function (err, synced) {
     if (err) {
       logger.warn(err);

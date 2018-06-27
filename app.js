@@ -62,7 +62,7 @@ var sess = {
       sameSite: 'strict',
       maxAge: maxAge
   },
-  ephemeral: true,
+  // ephemeral: true,
   store:  MongoStore,
   proxy: true,
 };
