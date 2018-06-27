@@ -18,7 +18,7 @@ prepend content
           type: 'flv',
           isLive: true,
           cors: true,
-          url: "https://#{domain}:8443/live/stream.flv"
+          url: "https://#{domain}:443/live/stream.flv?sign=#{key}"
         });
         flvPlayer.attachMediaElement(videoElement);
         flvPlayer.load();

@@ -20,7 +20,7 @@ const serverOptions = {
     allow_origin: '*'
   },
   https: {
-    port: 8443,
+    port: 443,
     key:'./dev/privatekey.pem',
     cert:'./dev/certificate.pem',
   },
@@ -28,6 +28,11 @@ const serverOptions = {
     play: true,
     publish: true,
     secret: config.streamKey
+  },
+  auth: {
+    api : true,
+    api_user: 'admin',
+    api_pass: 'rtmpsucksdeeck',
   },
   // trans: {
   //   ffmpeg: '/usr/local/bin/ffmpeg',
