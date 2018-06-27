@@ -3,7 +3,7 @@
 	"blockchainXpub" : "xpub6CZnCoHLTBVjuEHVtm6Dgd266vNcSkWv5rEcb1RaEH38BhobGGe44NtEyWEFVPBe4CaNDM3mKfGgeYomCjxnahSqGmnS23VbaidYtG1YPUb",
 
 	"MONGODB_URI" : "mongodb://heroku_n0jsgk42:i9i3atbuabn1n2vb8urobfupe4@ds255930.mlab.com:55930/heroku_n0jsgk42",
-	"MONGODB_URI_local" : "mongodb://127.0.0.1:27017/deeznuts",
+	"MONGODB_URI_local" : "mongodb://127.0.0.1:27017/local",
 
 
 }
