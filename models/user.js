@@ -100,7 +100,7 @@ userSchema.statics.sync = function(data, callback) {
   User.findById(data._id, function (err, user) {
     if (err) return callback(err);
     if (!user) return 'User not found: '+data._id;
-    if (Math.abs(parseInt(user.time)-parseInt(data.time))>5)
+    if (Math.abs(parseInt(user.time)-parseInt(data.time))>9)
       logger.log('syncing (ignore): %s seconds -> %s seconds (%s)', user.time, data.time, data._id);
     else if (data.time<=3) {
       logger.debug('syncing (bug): %s seconds -> %s (%s) seconds (%s)', user.time, 0, data.time, data._id);

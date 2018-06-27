@@ -4,58 +4,7 @@ var _ = require('underscore'),
     logger = config.logger,
     async = require('async'),
     path = require('path'),
-    md5 = require('md5'),
-    User = require('../models/user');
-
-
-module.exports.findUser = function(req, res, next) {
-    var id = req.session.user ? req.session.user._id : null;
-    var ips = req.ips || [];
-    ips.push(req.connection.remoteAddress);
-    if (req.headers['x-forwarded-for'])
-        ips.push(req.headers['x-forwarded-for']);
-    async.waterfall([
-        function (step) {
-            if (!id) return step(null, null);
-            User.findById(id, function (err, user) {
-                if (err) return step(err);
-                if (!user) return step(null, null);
-                logger.log('Return Visitor (id): %s || %s', ips, user._id);
-                user.lastVisit = moment(new Date()).format('MM/DD/YYYY');
-                step(null, user);
-            });
-        },
-        // function (user, step) {
-        //     if (user) return step(null, user);
-        //     User.findOne({'ip':{'$in':ips}}, function (err, user) {
-        //         if (err) return step(err);
-        //         if (!user) return step(null, null);
-        //         logger.log('Return Visitor (ip): %s || %s', ips, user._id);
-        //         user.lastVisit = moment(new Date()).format('MM/DD/YYYY');
-        //         step(null, user);
-        //     });
-        // },
-        // function (user, step) {
-        //     if (user) return step(null, user);
-        //     user = new User({'ips':ips});
-        //     logger.log('Visitor: %s || %s', ips, user._id);
-        //     step(null, user);
-        // },
-        // function (user, step) {
-        //     user.save(function (err) {
-        //         step(err, user);
-        //     });
-        // }
-    ], function (err, user) {
-        if (err) {
-            logger.warn(err);
-            user = new User();
-        }
-        req.session.locals.user = User_(user);
-        req.session.locals.time = user.time;
-        next(null);
-    });
-}
+    md5 = require('md5');
 
 // Has Paid
 module.exports.hasPaid = function(req, res, next) {
@@ -130,11 +79,13 @@ module.exports.resetLocals = function(req, res, next) {
     if (!req.session.locals._csrf)
         req.session.locals._csrf = req.csrfToken();
 
-    // rtmp auth
-    var timestamp = (Date.now() + 3600000);
-    var hash = md5("/live/stream-"+timestamp+"-"+config.streamKey);
-    req.session.locals.key = timestamp+"-"+hash;
-    
+    // rtmp key
+    if (!req.session.locals.key) {
+        var timestamp = (Date.now() + config.streamKeyExpire);
+        var hash = md5("/live/stream-"+timestamp+"-"+config.streamKey);
+        req.session.locals.key = timestamp+"-"+hash;
+    }
+
     req.session.save(function (err) {
         if (err) logger.warn(err);
         // logger.debug('locals updated');

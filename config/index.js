@@ -34,7 +34,9 @@ config.blockchainCallback = 'http://'+config.domain+config.blockchainRoute;
 config.blockchainConfirmationLimit = 6;
 config.blockchainGapLimit = 20;
 config.blockchainSecret = "gofuckyourself6969";
+// RTMP Stream
 config.streamKey = "yourmotherisadirtywhore";
+config.streamKeyExpire = 3600000;
 
 config.siteData = 
 	{ 	
