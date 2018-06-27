@@ -15,14 +15,14 @@ const serverOptions = {
     ping: 60,
     ping_timeout: 30
   },
-  http: {
-    port: 8000,
-    allow_origin: '*'
-  },
+  // http: {
+  //   port: 8000,
+  //   allow_origin: '*'
+  // },
   https: {
-    port: 8443,
-    key:'../dev/privatekey.pem',
-    cert:'../dev/certificate.pem',
+    port: 8000,
+    key:'./dev/privatekey.pem',
+    cert:'./dev/certificate.pem',
   },
   auth: {
     play: true,
