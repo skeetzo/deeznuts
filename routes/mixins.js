@@ -105,8 +105,8 @@ module.exports.syncUser = function (req, res, next) {
         req.session.save(function (err) {
             if (err) logger.warn(err);
             next();
-        }
-    })
+        });
+    });
 }
 
 var User_ = function(src) {
