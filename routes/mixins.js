@@ -101,4 +101,4 @@ var User_ = function(src) {
     'time': src.time
   };
 }
-module.exports.User = User;
+module.exports.User = User_;
