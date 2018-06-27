@@ -102,6 +102,7 @@ module.exports.syncUser = function (req, res, next) {
             return next();
         }
         req.session.user = User_(user);
+        req.session.locals.user = User_(user);
         req.session.save(function (err) {
             if (err) logger.warn(err);
             next();
