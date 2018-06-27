@@ -43,7 +43,7 @@ module.exports.findUser = function(req, res, next) {
         },
         function (user, step) {
             user.save(function (err) {
-                step(err);
+                step(err, user);
             });
         }
     ], function (err, user) {
