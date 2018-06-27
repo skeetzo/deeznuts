@@ -5,7 +5,7 @@ var express = require('express'),
     async = require('async'),
     _ = require('underscore'),
     passport = require('passport'),
-    mixins = require('../modules/mixins'),
+    mixins = require('../routes/mixins'),
     User = require('../models/user');
 
 // /
@@ -54,8 +54,9 @@ router.get("/address", mixins.loggedIn, function (req, res, next) {
 
 // check for recent tips
 router.post("/sync", function (req, res, next) {
+  if (!req.session.user) return res.sendStatus(204);
   // logger.debug('req.session.user: %s', JSON.stringify(req.session.user, null, 4));
-  req.body._id = req.session.locals.user._id ? req.session.locals.user._id : null;
+  req.body._id = req.session.user._id ? req.session.user._id : null;
   User.sync(req.body, function (err, synced) {
     if (err) {
       logger.warn(err);

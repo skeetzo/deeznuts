@@ -96,6 +96,7 @@ userSchema.statics.generateAddress = function(user_, callback) {
 }
 
 userSchema.statics.sync = function(data, callback) {
+  // logger.debug('Syncing: %s', data._id);
   User.findById(data._id, function (err, user) {
     if (err) return callback(err);
     if (!user) return 'User not found: '+data._id;
