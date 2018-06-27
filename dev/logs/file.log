@@ -1203,3 +1203,23 @@
 [37m06/27/2018-03:28:12.50 [39m[33mDeezNuts[39m: Return Visitor: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 || 5b32f0478bcf5d1cf9a9625f
 [37m06/27/2018-03:28:12.50 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
 [37m06/27/2018-03:28:12.58 [39m[33mDeezNuts[39m: syncing (success): 1141 seconds -> 1141 seconds (5b32f0478bcf5d1cf9a9625f)
+[37m06/27/2018-03:29:17.45 [39m[33mDeezNuts[39m: Starting Crons
+[37m06/27/2018-03:29:17.47 [39m[33mDeezNuts[39m: started cron - Ping
+[37m06/27/2018-03:29:17.47 [39m[33mDeezNuts[39m: started cron - Midnight
+[34m[37m06/27/2018-03:29:17.93 [34m[33mDeezNuts[34m: Mongoose connection open[39m
+[37m06/27/2018-03:29:18.01 [39m[33mDeezNuts[39m: Prepping bot: justalexxxd
+[37m06/27/2018-03:29:18.46 [39m[33mDeezNuts[39m: New Visitor: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 || null
+[37m06/27/2018-03:29:18.54 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[37m06/27/2018-03:29:18.62 [39m[33mDeezNuts[39m: syncing (ignore): 60 seconds -> 1141 seconds (5b33048e9b8b6a1e9eb91877)
+[37m06/27/2018-03:29:21.44 [39m[33mDeezNuts[39m: New Visitor: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 || null
+[37m06/27/2018-03:29:21.51 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[37m06/27/2018-03:29:21.59 [39m[33mDeezNuts[39m: syncing (ignore): 60 seconds -> 1141 seconds (5b3304919b8b6a1e9eb91878)
+[37m06/27/2018-03:29:24.43 [39m[33mDeezNuts[39m: New Visitor: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 || null
+[37m06/27/2018-03:29:24.51 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[37m06/27/2018-03:29:24.59 [39m[33mDeezNuts[39m: syncing (ignore): 60 seconds -> 1141 seconds (5b3304949b8b6a1e9eb91879)
+[37m06/27/2018-03:29:27.43 [39m[33mDeezNuts[39m: New Visitor: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 || null
+[37m06/27/2018-03:29:27.50 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[37m06/27/2018-03:29:27.58 [39m[33mDeezNuts[39m: syncing (ignore): 60 seconds -> 1141 seconds (5b3304979b8b6a1e9eb9187a)
+[34m[37m06/27/2018-03:29:29.67 [34m[33mDeezNuts[34m: Mongoose connection disconnected[39m
+[34m[37m06/27/2018-03:29:29.67 [34m[33mDeezNuts[34m: Reconnecting to MongoDB in 3000...[39m
+[34m[37m06/27/2018-03:29:29.67 [34m[33mDeezNuts[34m: Mongoose connection disconnected through app termination[39m
