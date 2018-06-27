@@ -14,30 +14,46 @@ module.exports.findUser = function(req, res, next) {
     ips.push(req.connection.remoteAddress);
     if (req.headers['x-forwarded-for'])
         ips.push(req.headers['x-forwarded-for']);
-    User.findOne({'$or':[{'_id':id},{'ip':{'$in':ips}}]}, function (err, user) {
-        if (err) logger.warn(err);
-        if (!user) {
-            req.session.locals.user = new User({'ips':ips});
-            logger.log('New Visitor: %s || %s', ips, id);
-            req.session.locals.user.save(function (err) {
-                if (err) logger.warn(err);
-                step();
+    async.waterfall([
+        function (step) {
+            if (!id) return step(null, null);
+            User.findById(id, function (err, user) {
+                if (err) return step(err);
+                if (!user) return step(null, null);
+                logger.log('Return Visitor (id): %s || %s', ips, user._id);
+                user.lastVisit = moment(new Date()).format('MM/DD/YYYY');
+                step(null, user);
             });
-        }
-        else {
-            logger.log('Return Visitor: %s || %s', ips, user._id);
-            user.lastVisit = moment(new Date()).format('MM/DD/YYYY');
+        },
+        function (user, step) {
+            if (user) return step(null, user);
+            User.findOne({'ip':{'$in':ips}}, function (err, user) {
+                if (err) return step(err);
+                if (!user) return step(null, null);
+                logger.log('Return Visitor (ip): %s || %s', ips, user._id);
+                user.lastVisit = moment(new Date()).format('MM/DD/YYYY');
+                step(null, user);
+            });
+        },
+        function (user, step) {
+            if (user) return step(null, user);
+            user = new User({'ips':ips});
+            logger.log('New Visitor: %s || %s', ips, user._id);
+            step(null, user);
+        },
+        function (user, step) {
             user.save(function (err) {
-                if (err) logger.warn(err);
-                req.session.locals.user = user;
-                step();
+                step(err);
             });
         }
-    });
-    function step() {
-        req.session.locals.user = User_(req.session.locals.user);
+    ], function (err, user) {
+        if (err) {
+            logger.warn(err);
+            user = new User();
+        }
+        req.session.locals.user = User_(user);
         next(null);
-    }
+    });
 }
 
 // Has Paid
