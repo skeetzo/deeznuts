@@ -21,8 +21,8 @@ const serverOptions = {
   },
   https: {
     port: 8443,
-    key:'./dev/privatekey.pem',
-    cert:'./dev/certificate.pem',
+    key:'../dev/privatekey.pem',
+    cert:'../dev/certificate.pem',
   },
   auth: {
     play: true,
