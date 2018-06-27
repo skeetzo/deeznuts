@@ -19,11 +19,11 @@ const serverOptions = {
     port: 8000,
     allow_origin: '*'
   },
-  // https: {
-    // port: 8443,
-    // key:'./privatekey.pem',
-    // cert:'./certificate.pem',
-  // },
+  https: {
+    port: 8443,
+    key:'./dev/privatekey.pem',
+    cert:'./dev/certificate.pem',
+  },
   auth: {
     play: true,
     publish: true,
