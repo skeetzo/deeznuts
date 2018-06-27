@@ -9,7 +9,7 @@ var _ = require('underscore'),
 
 // Has Paid
 module.exports.hasPaid = function(req, res, next) {
-    if ((parseInt(req.session.user.time)>=1&&config.status=='Live')||config.debugging_live) {
+    if (req.session.user&&(parseInt(req.session.user.time)>=1&&config.status=='Live')||config.debugging_live) {
         next(null);
     } 
     else if (config.status!='Live') {
