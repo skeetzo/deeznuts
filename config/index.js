@@ -19,7 +19,7 @@ config.domain = "alexdeeznuts.com";
 if (config.debugging) config.domain = "localhost";
 config.author = "Skeetzo";
 config.description = "Porn Star Streamer";
-config.Google_Analytics = "";
+config.Google_Analytics = "UA-82463743-8";
 
 // DeezNuts Settings
 config.conversionRate = 6; // $1 per 6 minutes
