@@ -26,7 +26,6 @@ var userSchema = new Schema({
   time_added: { type: Number },
   transactions: { type: Array, default: [] },
   username: { type: String },
-  visits: { type: Number, default: 1 },
 });
 
 userSchema.pre('save', function (next) {
