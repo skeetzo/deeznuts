@@ -9,7 +9,7 @@ var express = require('express'),
     User = require('../models/user');
 
 // /
-router.use(mixins.resetLocals, mixins.findUser, function (req, res, next) {
+router.use(mixins.resetLocals, function (req, res, next) {
 	var ips = req.ips || [];
   ips.push(req.connection.remoteAddress);
   if (req.headers['x-forwarded-for'])
