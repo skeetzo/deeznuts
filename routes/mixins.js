@@ -4,7 +4,8 @@ var _ = require('underscore'),
     logger = config.logger,
     async = require('async'),
     path = require('path'),
-    md5 = require('md5');
+    md5 = require('md5'),
+    User = require('../models/user');
 
 // Has Paid
 module.exports.hasPaid = function(req, res, next) {
@@ -91,6 +92,21 @@ module.exports.resetLocals = function(req, res, next) {
         // logger.debug('locals updated');
         next(null);
     });
+}
+
+module.exports.syncUser = function (req, res, next) {
+    if (!req.session.user) return next();
+    User.findById(req.session.user._id, function (err, user) {
+        if (err) {
+            logger.warn(err);
+            return next();
+        }
+        req.session.user = User_(user);
+        req.session.save(function (err) {
+            if (err) logger.warn(err);
+            next();
+        }
+    })
 }
 
 var User_ = function(src) {
