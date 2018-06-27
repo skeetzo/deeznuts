@@ -30,7 +30,7 @@ passport.use(new LocalStrategy({
         ips.push(req.connection.remoteAddress);
         if (req.headers['x-forwarded-for'])
             ips.push(req.headers['x-forwarded-for']);
-        User.findOne({'ip':{'$in':ips}}, function (err, user_) {
+        User.findOne({'ip':{'$in':ips},'username':{'$eq':null}}, function (err, user_) {
           if (err) logger.warn(err);
           if (user_) {
             logger.log('User Associated: %s -> %s', ips, user_._id);
