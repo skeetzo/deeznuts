@@ -20,7 +20,7 @@ const serverOptions = {
     allow_origin: '*'
   },
   https: {
-    port: 443,
+    port: 8443,
     key:'./dev/privatekey.pem',
     cert:'./dev/certificate.pem',
   },

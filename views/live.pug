@@ -17,8 +17,8 @@ prepend content
         var flvPlayer = flvjs.createPlayer({
           type: 'flv',
           isLive: true,
-          cors: true,
-          url: "https://#{domain}:443/live/stream.flv?sign=#{key}"
+          cors: false,
+          url: "//#{domain}:8443/live/stream.flv?sign=#{key}"
         });
         flvPlayer.attachMediaElement(videoElement);
         flvPlayer.load();
