@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 [37m06/27/2018-00:29:00.63 [39m[33mDeezNuts[39m: Starting Crons
 [37m06/27/2018-00:29:00.64 [39m[33mDeezNuts[39m: started cron - Ping
 [37m06/27/2018-00:29:00.65 [39m[33mDeezNuts[39m: started cron - Midnight
@@ -169,3 +170,25 @@
 [37m06/27/2018-00:30:47.67 [39m[33mDeezNuts[39m: Return Visitor: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 || 5b32cbf80e07fe16423ae5e4
 [37m06/27/2018-00:30:47.67 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
 [37m06/27/2018-00:30:47.76 [39m[33mDeezNuts[39m: syncing (success): 1500 seconds -> 1500 seconds (5b32cbf80e07fe16423ae5e4)
+=======
+[37m06/26/2018-17:30:18.69 [39m[33mDeezNuts[39m: Starting Crons
+[37m06/26/2018-17:30:18.70 [39m[33mDeezNuts[39m: started cron - Ping
+[37m06/26/2018-17:30:18.71 [39m[33mDeezNuts[39m: started cron - Midnight
+[34m[37m06/26/2018-17:30:19.24 [34m[33mDeezNuts[34m: Mongoose connection open[39m
+[37m06/26/2018-17:30:19.35 [39m[33mDeezNuts[39m: Bot found: justalexxxd
+[34m[37m06/26/2018-17:30:26.79 [34m[33mDeezNuts[34m: Mongoose connection disconnected[39m
+[34m[37m06/26/2018-17:30:26.81 [34m[33mDeezNuts[34m: Reconnecting to MongoDB in 3000...[39m
+[34m[37m06/26/2018-17:30:26.81 [34m[33mDeezNuts[34m: Mongoose connection disconnected through app termination[39m
+>>>>>>> 4e3760c9ff91bf674afc27295e75d1b58605e051
+[37m06/27/2018-00:30:50.67 [39m[33mDeezNuts[39m: Return Visitor: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 || 5b32cbf80e07fe16423ae5e4
+[37m06/27/2018-00:30:50.67 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[37m06/27/2018-00:30:50.75 [39m[33mDeezNuts[39m: syncing (success): 1500 seconds -> 1500 seconds (5b32cbf80e07fe16423ae5e4)
+[37m06/27/2018-00:30:53.66 [39m[33mDeezNuts[39m: Return Visitor: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 || 5b32cbf80e07fe16423ae5e4
+[37m06/27/2018-00:30:53.67 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[37m06/27/2018-00:30:53.75 [39m[33mDeezNuts[39m: syncing (success): 1500 seconds -> 1500 seconds (5b32cbf80e07fe16423ae5e4)
+[37m06/27/2018-00:30:56.67 [39m[33mDeezNuts[39m: Return Visitor: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 || 5b32cbf80e07fe16423ae5e4
+[37m06/27/2018-00:30:56.67 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[37m06/27/2018-00:30:56.75 [39m[33mDeezNuts[39m: syncing (success): 1500 seconds -> 1500 seconds (5b32cbf80e07fe16423ae5e4)
+[37m06/27/2018-00:30:59.68 [39m[33mDeezNuts[39m: Return Visitor: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 || 5b32cbf80e07fe16423ae5e4
+[37m06/27/2018-00:30:59.68 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[37m06/27/2018-00:30:59.76 [39m[33mDeezNuts[39m: syncing (success): 1500 seconds -> 1500 seconds (5b32cbf80e07fe16423ae5e4)
