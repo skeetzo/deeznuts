@@ -3,8 +3,6 @@ var config = require('../config/index'),
 
 const NodeMediaServer = require('node-media-server');
 
-
-
 const serverOptions = {
   logType: 3,
 
