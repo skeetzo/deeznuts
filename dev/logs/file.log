@@ -7449,3 +7449,601 @@
 [34m[37m06/27/2018-09:39:51.31 [34m[33mDeezNuts[34m: Mongoose connection disconnected[39m
 [34m[37m06/27/2018-09:39:51.31 [34m[33mDeezNuts[34m: Reconnecting to MongoDB in 3000...[39m
 [34m[37m06/27/2018-09:39:51.31 [34m[33mDeezNuts[34m: Mongoose connection disconnected through app termination[39m
+[37m06/27/2018-09:41:11.50 [39m[33mDeezNuts[39m: Starting Crons
+[37m06/27/2018-09:41:11.52 [39m[33mDeezNuts[39m: started cron - Ping
+[37m06/27/2018-09:41:11.52 [39m[33mDeezNuts[39m: started cron - Midnight
+[34m[37m06/27/2018-09:41:11.95 [34m[33mDeezNuts[34m: Mongoose connection open[39m
+[37m06/27/2018-09:41:12.03 [39m[33mDeezNuts[39m: Bot found: justalexxxd
+[37m06/27/2018-09:41:15.50 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[37m06/27/2018-09:41:15.58 [39m[33mDeezNuts[39m: syncing (success): 45 seconds -> 45 seconds (5b330f2c2bfc5b20f5bc998a)
+[37m06/27/2018-09:41:31.90 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /GET /
+[37m06/27/2018-09:41:33.73 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /GET /
+[37m06/27/2018-09:41:37.46 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[37m06/27/2018-09:41:37.54 [39m[33mDeezNuts[39m: syncing (success): 45 seconds -> 45 seconds (5b330f2c2bfc5b20f5bc998a)
+[37m06/27/2018-09:41:40.80 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[37m06/27/2018-09:41:40.87 [39m[33mDeezNuts[39m: syncing (success): 45 seconds -> 45 seconds (5b330f2c2bfc5b20f5bc998a)
+[37m06/27/2018-09:41:41.75 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[37m06/27/2018-09:41:41.82 [39m[33mDeezNuts[39m: syncing (success): 45 seconds -> 45 seconds (5b330f2c2bfc5b20f5bc998a)
+[37m06/27/2018-09:41:46.87 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[37m06/27/2018-09:41:46.94 [39m[33mDeezNuts[39m: syncing (success): 45 seconds -> 45 seconds (5b330f2c2bfc5b20f5bc998a)
+[37m06/27/2018-09:41:48.12 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[37m06/27/2018-09:41:48.19 [39m[33mDeezNuts[39m: syncing (success): 45 seconds -> 45 seconds (5b330f2c2bfc5b20f5bc998a)
+[37m06/27/2018-09:41:49.86 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[37m06/27/2018-09:41:49.93 [39m[33mDeezNuts[39m: syncing (success): 45 seconds -> 45 seconds (5b330f2c2bfc5b20f5bc998a)
+[37m06/27/2018-09:41:53.11 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[37m06/27/2018-09:41:53.18 [39m[33mDeezNuts[39m: syncing (success): 45 seconds -> 45 seconds (5b330f2c2bfc5b20f5bc998a)
+[37m06/27/2018-09:41:55.46 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[37m06/27/2018-09:41:55.53 [39m[33mDeezNuts[39m: syncing (success): 45 seconds -> 45 seconds (5b330f2c2bfc5b20f5bc998a)
+[37m06/27/2018-09:41:58.86 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[37m06/27/2018-09:41:58.94 [39m[33mDeezNuts[39m: syncing (success): 45 seconds -> 45 seconds (5b330f2c2bfc5b20f5bc998a)
+[37m06/27/2018-09:42:01.32 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /GET /
+[37m06/27/2018-09:42:02.62 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[37m06/27/2018-09:42:02.69 [39m[33mDeezNuts[39m: syncing (success): 45 seconds -> 45 seconds (5b330f2c2bfc5b20f5bc998a)
+[37m06/27/2018-09:42:04.19 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /GET /
+[37m06/27/2018-09:42:09.92 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /GET /logout
+[37m06/27/2018-09:42:09.92 [39m[33mDeezNuts[39m: logging out: 5b330f2c2bfc5b20f5bc998a
+[37m06/27/2018-09:42:10.00 [39m[33mDeezNuts[39m: logout successful: 5b330f2c2bfc5b20f5bc998a
+[37m06/27/2018-09:42:15.37 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /GET /
+[37m06/27/2018-09:42:15.69 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[1m[33m[37m06/27/2018-09:42:15.73 [33m Cannot read property '_id' of null[39m[22m
+[37m06/27/2018-09:42:22.68 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[1m[33m[37m06/27/2018-09:42:22.74 [33m Cannot read property '_id' of null[39m[22m
+[37m06/27/2018-09:42:27.62 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[1m[33m[37m06/27/2018-09:42:27.67 [33m Cannot read property '_id' of null[39m[22m
+[34m[37m06/27/2018-09:42:31.57 [34m[33mDeezNuts[34m: Mongoose connection disconnected[39m
+[34m[37m06/27/2018-09:42:31.58 [34m[33mDeezNuts[34m: Reconnecting to MongoDB in 3000...[39m
+[34m[37m06/27/2018-09:42:31.58 [34m[33mDeezNuts[34m: Mongoose connection disconnected through app termination[39m
+[37m06/27/2018-09:42:43.44 [39m[33mDeezNuts[39m: Starting Crons
+[37m06/27/2018-09:42:43.45 [39m[33mDeezNuts[39m: started cron - Ping
+[37m06/27/2018-09:42:43.45 [39m[33mDeezNuts[39m: started cron - Midnight
+[34m[37m06/27/2018-09:42:43.89 [34m[33mDeezNuts[34m: Mongoose connection open[39m
+[37m06/27/2018-09:42:43.97 [39m[33mDeezNuts[39m: Prepping bot: justalexxxd
+[37m06/27/2018-09:42:47.88 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /GET /
+[37m06/27/2018-09:42:50.96 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /login
+[37m06/27/2018-09:42:51.05 [39m[33mDeezNuts[39m: User found: justalexxxd
+[37m06/27/2018-09:42:51.14 [39m[33mDeezNuts[39m: login successful (local): 5b335c13fa7eab2a05125744
+[37m06/27/2018-09:42:51.49 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /GET /
+[37m06/27/2018-09:42:54.86 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /GET /key
+[37m06/27/2018-09:42:58.86 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /key
+[37m06/27/2018-09:43:17.79 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /GET /
+[37m06/27/2018-09:43:20.73 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /GET /logout
+[37m06/27/2018-09:43:20.73 [39m[33mDeezNuts[39m: logging out: 5b335c13fa7eab2a05125744
+[37m06/27/2018-09:43:20.80 [39m[33mDeezNuts[39m: logout successful: 5b335c13fa7eab2a05125744
+[37m06/27/2018-09:43:20.98 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /GET /
+[37m06/27/2018-09:43:24.60 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /login
+[37m06/27/2018-09:43:27.68 [39m[33mDeezNuts[39m: Creating new user: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 || user1
+[37m06/27/2018-09:43:27.77 [39m[33mDeezNuts[39m: login successful (local): 5b335c3ffa7eab2a05125747
+[37m06/27/2018-09:43:28.10 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /GET /
+[37m06/27/2018-09:43:31.63 [39m[33mDeezNuts[39m: [NodeEvent on postPublish] id=5TGNWILC StreamPath=/live/stream args={"sign":"1530096178861-e9c95317a88de0a2dcdd85543601aa5a","ac":0,"vc":0}
+[37m06/27/2018-09:43:31.63 [39m[33mDeezNuts[39m: Updating Status Not Live -> Live
+[37m06/27/2018-09:43:31.74 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[37m06/27/2018-09:43:31.82 [39m[33mDeezNuts[39m: syncing (success): 60 seconds -> 60 seconds (5b335c3ffa7eab2a05125747)
+[37m06/27/2018-09:43:36.37 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /GET /live
+[37m06/27/2018-09:43:39.91 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[37m06/27/2018-09:43:39.99 [39m[33mDeezNuts[39m: syncing (success): 60 seconds -> 55 seconds (5b335c3ffa7eab2a05125747)
+[37m06/27/2018-09:43:42.99 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[37m06/27/2018-09:43:43.07 [39m[33mDeezNuts[39m: syncing (ignore): 55 seconds -> 49 seconds (5b335c3ffa7eab2a05125747)
+[37m06/27/2018-09:43:45.100 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[37m06/27/2018-09:43:46.07 [39m[33mDeezNuts[39m: syncing (ignore): 55 seconds -> 43 seconds (5b335c3ffa7eab2a05125747)
+[37m06/27/2018-09:43:48.91 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[37m06/27/2018-09:43:48.99 [39m[33mDeezNuts[39m: syncing (ignore): 55 seconds -> 37 seconds (5b335c3ffa7eab2a05125747)
+[37m06/27/2018-09:43:51.99 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[37m06/27/2018-09:43:52.07 [39m[33mDeezNuts[39m: syncing (ignore): 55 seconds -> 31 seconds (5b335c3ffa7eab2a05125747)
+[37m06/27/2018-09:43:54.99 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[37m06/27/2018-09:43:55.07 [39m[33mDeezNuts[39m: syncing (ignore): 55 seconds -> 25 seconds (5b335c3ffa7eab2a05125747)
+[37m06/27/2018-09:43:57.100 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[37m06/27/2018-09:43:58.07 [39m[33mDeezNuts[39m: syncing (ignore): 55 seconds -> 19 seconds (5b335c3ffa7eab2a05125747)
+[37m06/27/2018-09:44:00.100 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[37m06/27/2018-09:44:01.07 [39m[33mDeezNuts[39m: syncing (ignore): 55 seconds -> 13 seconds (5b335c3ffa7eab2a05125747)
+[37m06/27/2018-09:44:03.99 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[37m06/27/2018-09:44:04.07 [39m[33mDeezNuts[39m: syncing (ignore): 55 seconds -> 7 seconds (5b335c3ffa7eab2a05125747)
+[37m06/27/2018-09:44:07.01 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[37m06/27/2018-09:44:07.09 [39m[33mDeezNuts[39m: syncing (ignore): 55 seconds -> 1 seconds (5b335c3ffa7eab2a05125747)
+[37m06/27/2018-09:45:08.68 [39m[33mDeezNuts[39m: [NodeEvent on donePublish] id=5TGNWILC StreamPath= args={"sign":"1530096178861-e9c95317a88de0a2dcdd85543601aa5a","ac":0,"vc":0}
+[37m06/27/2018-09:45:08.68 [39m[33mDeezNuts[39m: Updating Status Live -> Not Live
+[37m06/27/2018-09:45:26.07 [39m[33mDeezNuts[39m: [NodeEvent on postPublish] id=JVQ6BKON StreamPath=/live/stream args={"sign":"1530096178861-e9c95317a88de0a2dcdd85543601aa5a","ac":0,"vc":0}
+[37m06/27/2018-09:45:26.07 [39m[33mDeezNuts[39m: Updating Status Not Live -> Live
+[37m06/27/2018-09:48:17.96 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /GET /
+[37m06/27/2018-09:48:18.04 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /GET /
+[37m06/27/2018-09:48:24.98 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[37m06/27/2018-09:48:25.05 [39m[33mDeezNuts[39m: syncing (success): 55 seconds -> 60 seconds (5b335c3ffa7eab2a05125747)
+[37m06/27/2018-09:48:25.13 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[37m06/27/2018-09:48:25.20 [39m[33mDeezNuts[39m: syncing (success): 60 seconds -> 60 seconds (5b335c3ffa7eab2a05125747)
+[37m06/27/2018-09:48:27.100 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[37m06/27/2018-09:48:29.76 [39m[33mDeezNuts[39m: syncing (success): 60 seconds -> 60 seconds (5b335c3ffa7eab2a05125747)
+[37m06/27/2018-09:48:30.90 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[37m06/27/2018-09:48:32.78 [39m[33mDeezNuts[39m: syncing (success): 60 seconds -> 60 seconds (5b335c3ffa7eab2a05125747)
+[37m06/27/2018-09:48:33.98 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[37m06/27/2018-09:48:36.76 [39m[33mDeezNuts[39m: syncing (success): 60 seconds -> 60 seconds (5b335c3ffa7eab2a05125747)
+[37m06/27/2018-09:48:37.01 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[37m06/27/2018-09:48:37.02 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /GET /
+[37m06/27/2018-09:48:37.17 [39m[33mDeezNuts[39m: syncing (success): 60 seconds -> 60 seconds (5b335c3ffa7eab2a05125747)
+[37m06/27/2018-09:48:41.79 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[37m06/27/2018-09:48:41.87 [39m[33mDeezNuts[39m: syncing (success): 60 seconds -> 60 seconds (5b335c3ffa7eab2a05125747)
+[37m06/27/2018-09:48:42.23 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /GET /live
+[37m06/27/2018-09:48:55.26 [39m[33mDeezNuts[39m: [NodeEvent on donePublish] id=JVQ6BKON StreamPath= args={"sign":"1530096178861-e9c95317a88de0a2dcdd85543601aa5a","ac":0,"vc":0}
+[37m06/27/2018-09:48:55.26 [39m[33mDeezNuts[39m: Updating Status Live -> Not Live
+[34m[37m06/27/2018-09:48:59.31 [34m[33mDeezNuts[34m: Mongoose connection disconnected[39m
+[34m[37m06/27/2018-09:48:59.31 [34m[33mDeezNuts[34m: Reconnecting to MongoDB in 3000...[39m
+[34m[37m06/27/2018-09:48:59.31 [34m[33mDeezNuts[34m: Mongoose connection disconnected through app termination[39m
+[37m06/27/2018-09:49:01.84 [39m[33mDeezNuts[39m: Starting Crons
+[37m06/27/2018-09:49:01.86 [39m[33mDeezNuts[39m: started cron - Ping
+[37m06/27/2018-09:49:01.86 [39m[33mDeezNuts[39m: started cron - Midnight
+[34m[37m06/27/2018-09:49:02.27 [34m[33mDeezNuts[34m: Mongoose connection open[39m
+[37m06/27/2018-09:49:02.35 [39m[33mDeezNuts[39m: Bot found: justalexxxd
+[37m06/27/2018-09:49:02.57 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[37m06/27/2018-09:49:02.64 [39m[33mDeezNuts[39m: syncing (success): 60 seconds -> 60 seconds (5b335c3ffa7eab2a05125747)
+[37m06/27/2018-09:49:04.44 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /GET /
+[37m06/27/2018-09:49:08.46 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[37m06/27/2018-09:49:08.54 [39m[33mDeezNuts[39m: syncing (success): 60 seconds -> 60 seconds (5b335c3ffa7eab2a05125747)
+[37m06/27/2018-09:49:08.56 [39m[33mDeezNuts[39m: [NodeEvent on postPublish] id=ADH1K3R8 StreamPath=/live/stream args={"sign":"1530096178861-e9c95317a88de0a2dcdd85543601aa5a","ac":0,"vc":0}
+[37m06/27/2018-09:49:08.56 [39m[33mDeezNuts[39m: Updating Status Not Live -> Live
+[37m06/27/2018-09:49:11.46 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[37m06/27/2018-09:49:11.53 [39m[33mDeezNuts[39m: syncing (success): 60 seconds -> 60 seconds (5b335c3ffa7eab2a05125747)
+[37m06/27/2018-09:49:14.20 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /GET /live
+[37m06/27/2018-09:49:18.13 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[37m06/27/2018-09:49:18.20 [39m[33mDeezNuts[39m: syncing (success): 60 seconds -> 55 seconds (5b335c3ffa7eab2a05125747)
+[37m06/27/2018-09:49:21.24 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[37m06/27/2018-09:49:21.31 [39m[33mDeezNuts[39m: syncing (ignore): 55 seconds -> 49 seconds (5b335c3ffa7eab2a05125747)
+[37m06/27/2018-09:49:24.21 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[37m06/27/2018-09:49:24.28 [39m[33mDeezNuts[39m: syncing (ignore): 55 seconds -> 43 seconds (5b335c3ffa7eab2a05125747)
+[37m06/27/2018-09:49:27.21 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[37m06/27/2018-09:49:27.28 [39m[33mDeezNuts[39m: syncing (ignore): 55 seconds -> 37 seconds (5b335c3ffa7eab2a05125747)
+[37m06/27/2018-09:49:30.21 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[37m06/27/2018-09:49:30.28 [39m[33mDeezNuts[39m: syncing (ignore): 55 seconds -> 31 seconds (5b335c3ffa7eab2a05125747)
+[37m06/27/2018-09:49:33.21 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[37m06/27/2018-09:49:33.30 [39m[33mDeezNuts[39m: syncing (ignore): 55 seconds -> 25 seconds (5b335c3ffa7eab2a05125747)
+[37m06/27/2018-09:49:36.23 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[37m06/27/2018-09:49:36.32 [39m[33mDeezNuts[39m: syncing (ignore): 55 seconds -> 19 seconds (5b335c3ffa7eab2a05125747)
+[37m06/27/2018-09:49:39.22 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[37m06/27/2018-09:49:39.31 [39m[33mDeezNuts[39m: syncing (ignore): 55 seconds -> 13 seconds (5b335c3ffa7eab2a05125747)
+[37m06/27/2018-09:49:42.25 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[37m06/27/2018-09:49:42.33 [39m[33mDeezNuts[39m: syncing (ignore): 55 seconds -> 7 seconds (5b335c3ffa7eab2a05125747)
+[37m06/27/2018-09:49:45.23 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[37m06/27/2018-09:49:45.32 [39m[33mDeezNuts[39m: syncing (ignore): 55 seconds -> 1 seconds (5b335c3ffa7eab2a05125747)
+[37m06/27/2018-09:50:47.47 [39m[33mDeezNuts[39m: [NodeEvent on donePublish] id=ADH1K3R8 StreamPath= args={"sign":"1530096178861-e9c95317a88de0a2dcdd85543601aa5a","ac":0,"vc":0}
+[37m06/27/2018-09:50:47.47 [39m[33mDeezNuts[39m: Updating Status Live -> Not Live
+[37m06/27/2018-09:55:48.13 [39m[33mDeezNuts[39m: Starting Crons
+[37m06/27/2018-09:55:48.15 [39m[33mDeezNuts[39m: started cron - Ping
+[37m06/27/2018-09:55:48.15 [39m[33mDeezNuts[39m: started cron - Midnight
+[34m[37m06/27/2018-09:55:48.55 [34m[33mDeezNuts[34m: Mongoose connection open[39m
+[37m06/27/2018-09:55:48.63 [39m[33mDeezNuts[39m: Bot found: justalexxxd
+[37m06/27/2018-09:55:51.51 [39m[33mDeezNuts[39m: [NodeEvent on postPublish] id=48L0IQJY StreamPath=/live/stream args={"sign":"1530096178861-e9c95317a88de0a2dcdd85543601aa5a","ac":0,"vc":0}
+[37m06/27/2018-09:55:51.51 [39m[33mDeezNuts[39m: Updating Status Not Live -> Live
+[37m06/27/2018-09:55:56.01 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /GET /
+[37m06/27/2018-09:55:56.67 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /GET /
+[37m06/27/2018-09:55:58.69 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /GET /live
+[37m06/27/2018-09:56:02.50 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[37m06/27/2018-09:56:02.57 [39m[33mDeezNuts[39m: syncing (success): 55 seconds -> 55 seconds (5b335c3ffa7eab2a05125747)
+[37m06/27/2018-09:56:05.56 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[37m06/27/2018-09:56:05.63 [39m[33mDeezNuts[39m: syncing (ignore): 55 seconds -> 49 seconds (5b335c3ffa7eab2a05125747)
+[37m06/27/2018-09:56:08.55 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[37m06/27/2018-09:56:08.68 [39m[33mDeezNuts[39m: syncing (ignore): 55 seconds -> 43 seconds (5b335c3ffa7eab2a05125747)
+[37m06/27/2018-09:56:11.57 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[37m06/27/2018-09:56:11.64 [39m[33mDeezNuts[39m: syncing (ignore): 55 seconds -> 37 seconds (5b335c3ffa7eab2a05125747)
+[37m06/27/2018-09:56:14.56 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[37m06/27/2018-09:56:14.63 [39m[33mDeezNuts[39m: syncing (ignore): 55 seconds -> 31 seconds (5b335c3ffa7eab2a05125747)
+[37m06/27/2018-09:56:17.55 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[37m06/27/2018-09:56:17.63 [39m[33mDeezNuts[39m: syncing (ignore): 55 seconds -> 25 seconds (5b335c3ffa7eab2a05125747)
+[37m06/27/2018-09:56:20.55 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[37m06/27/2018-09:56:20.64 [39m[33mDeezNuts[39m: syncing (ignore): 55 seconds -> 19 seconds (5b335c3ffa7eab2a05125747)
+[37m06/27/2018-09:56:23.56 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[37m06/27/2018-09:56:23.63 [39m[33mDeezNuts[39m: syncing (ignore): 55 seconds -> 13 seconds (5b335c3ffa7eab2a05125747)
+[37m06/27/2018-09:56:26.55 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[37m06/27/2018-09:56:26.62 [39m[33mDeezNuts[39m: syncing (ignore): 55 seconds -> 7 seconds (5b335c3ffa7eab2a05125747)
+[37m06/27/2018-09:56:29.56 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[37m06/27/2018-09:56:29.63 [39m[33mDeezNuts[39m: syncing (ignore): 55 seconds -> 1 seconds (5b335c3ffa7eab2a05125747)
+[37m06/27/2018-09:57:46.44 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /GET /
+[37m06/27/2018-09:57:51.06 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[37m06/27/2018-09:57:51.13 [39m[33mDeezNuts[39m: syncing (success): 55 seconds -> 60 seconds (5b335c3ffa7eab2a05125747)
+[37m06/27/2018-09:57:54.06 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[37m06/27/2018-09:57:54.13 [39m[33mDeezNuts[39m: syncing (success): 60 seconds -> 60 seconds (5b335c3ffa7eab2a05125747)
+[37m06/27/2018-09:57:57.05 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[37m06/27/2018-09:57:57.13 [39m[33mDeezNuts[39m: syncing (success): 60 seconds -> 60 seconds (5b335c3ffa7eab2a05125747)
+[37m06/27/2018-09:57:59.97 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[37m06/27/2018-09:58:00.05 [39m[33mDeezNuts[39m: syncing (success): 60 seconds -> 60 seconds (5b335c3ffa7eab2a05125747)
+[37m06/27/2018-09:58:03.06 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[37m06/27/2018-09:58:03.13 [39m[33mDeezNuts[39m: syncing (success): 60 seconds -> 60 seconds (5b335c3ffa7eab2a05125747)
+[37m06/27/2018-09:58:06.05 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[37m06/27/2018-09:58:06.12 [39m[33mDeezNuts[39m: syncing (success): 60 seconds -> 60 seconds (5b335c3ffa7eab2a05125747)
+[37m06/27/2018-09:58:08.21 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[37m06/27/2018-09:58:08.28 [39m[33mDeezNuts[39m: syncing (success): 60 seconds -> 60 seconds (5b335c3ffa7eab2a05125747)
+[37m06/27/2018-09:58:08.71 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /GET /
+[37m06/27/2018-09:58:12.44 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[37m06/27/2018-09:58:12.51 [39m[33mDeezNuts[39m: syncing (success): 60 seconds -> 60 seconds (5b335c3ffa7eab2a05125747)
+[37m06/27/2018-09:58:12.59 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /GET /live
+[37m06/27/2018-09:58:16.20 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[37m06/27/2018-09:58:16.26 [39m[33mDeezNuts[39m: syncing (success): 60 seconds -> 55 seconds (5b335c3ffa7eab2a05125747)
+[37m06/27/2018-09:58:19.28 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[37m06/27/2018-09:58:19.36 [39m[33mDeezNuts[39m: syncing (ignore): 55 seconds -> 49 seconds (5b335c3ffa7eab2a05125747)
+[37m06/27/2018-09:58:22.30 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[37m06/27/2018-09:58:22.38 [39m[33mDeezNuts[39m: syncing (ignore): 55 seconds -> 43 seconds (5b335c3ffa7eab2a05125747)
+[37m06/27/2018-09:58:25.28 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[37m06/27/2018-09:58:25.35 [39m[33mDeezNuts[39m: syncing (ignore): 55 seconds -> 37 seconds (5b335c3ffa7eab2a05125747)
+[37m06/27/2018-09:58:28.28 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[37m06/27/2018-09:58:28.36 [39m[33mDeezNuts[39m: syncing (ignore): 55 seconds -> 31 seconds (5b335c3ffa7eab2a05125747)
+[37m06/27/2018-09:58:31.30 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[37m06/27/2018-09:58:31.38 [39m[33mDeezNuts[39m: syncing (ignore): 55 seconds -> 25 seconds (5b335c3ffa7eab2a05125747)
+[37m06/27/2018-09:58:34.28 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[37m06/27/2018-09:58:34.36 [39m[33mDeezNuts[39m: syncing (ignore): 55 seconds -> 19 seconds (5b335c3ffa7eab2a05125747)
+[37m06/27/2018-09:58:37.29 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[37m06/27/2018-09:58:37.36 [39m[33mDeezNuts[39m: syncing (ignore): 55 seconds -> 13 seconds (5b335c3ffa7eab2a05125747)
+[37m06/27/2018-09:58:40.28 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[37m06/27/2018-09:58:40.35 [39m[33mDeezNuts[39m: syncing (ignore): 55 seconds -> 7 seconds (5b335c3ffa7eab2a05125747)
+[37m06/27/2018-09:58:43.29 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[37m06/27/2018-09:58:43.36 [39m[33mDeezNuts[39m: syncing (ignore): 55 seconds -> 1 seconds (5b335c3ffa7eab2a05125747)
+[37m06/27/2018-09:58:46.88 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /GET /
+[37m06/27/2018-09:58:47.60 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /GET /
+[37m06/27/2018-09:58:49.89 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /GET /logout
+[37m06/27/2018-09:58:49.89 [39m[33mDeezNuts[39m: logging out: 5b335c3ffa7eab2a05125747
+[37m06/27/2018-09:58:49.96 [39m[33mDeezNuts[39m: logout successful: 5b335c3ffa7eab2a05125747
+[37m06/27/2018-09:58:50.17 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /GET /
+[37m06/27/2018-09:58:53.44 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /login
+[37m06/27/2018-09:58:53.52 [39m[33mDeezNuts[39m: User found: justalexxxd
+[37m06/27/2018-09:58:53.61 [39m[33mDeezNuts[39m: login successful (local): 5b335c13fa7eab2a05125744
+[37m06/27/2018-09:58:53.95 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /GET /
+[37m06/27/2018-09:58:56.45 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /GET /key
+[37m06/27/2018-09:59:00.13 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /key
+[37m06/27/2018-09:59:05.79 [39m[33mDeezNuts[39m: [NodeEvent on donePublish] id=48L0IQJY StreamPath= args={"sign":"1530096178861-e9c95317a88de0a2dcdd85543601aa5a","ac":0,"vc":0}
+[37m06/27/2018-09:59:05.79 [39m[33mDeezNuts[39m: Updating Status Live -> Not Live
+[37m06/27/2018-09:59:26.41 [39m[33mDeezNuts[39m: [NodeEvent on postPublish] id=YMAM6MR1 StreamPath=/live/stream args={"sign":"1530097140130-3d7dfd7a6af4f5dbf8c507ed77be22d1","ac":0,"vc":0}
+[37m06/27/2018-09:59:26.41 [39m[33mDeezNuts[39m: Updating Status Not Live -> Live
+[37m06/27/2018-09:59:43.14 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /GET /
+[37m06/27/2018-09:59:43.21 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /GET /
+[37m06/27/2018-09:59:46.90 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[37m06/27/2018-09:59:46.91 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /GET /live
+[37m06/27/2018-09:59:47.03 [39m[33mDeezNuts[39m: syncing (success): 60 seconds -> 60 seconds (5b335c13fa7eab2a05125744)
+[37m06/27/2018-09:59:51.74 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[37m06/27/2018-09:59:51.81 [39m[33mDeezNuts[39m: syncing (success): 60 seconds -> 55 seconds (5b335c13fa7eab2a05125744)
+[37m06/27/2018-09:59:56.48 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[37m06/27/2018-09:59:56.48 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[37m06/27/2018-09:59:56.55 [39m[33mDeezNuts[39m: syncing (ignore): 55 seconds -> 49 seconds (5b335c13fa7eab2a05125744)
+[37m06/27/2018-09:59:56.55 [39m[33mDeezNuts[39m: syncing (ignore): 55 seconds -> 43 seconds (5b335c13fa7eab2a05125744)
+[37m06/27/2018-09:59:59.48 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[37m06/27/2018-10:00:00.15 [39m[33mDeezNuts[39m: -- Ping -- 
+[37m06/27/2018-10:00:00.15 [39m[33mDeezNuts[39m: syncing (ignore): 55 seconds -> 37 seconds (5b335c13fa7eab2a05125744)
+[37m06/27/2018-10:00:03.67 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[37m06/27/2018-10:00:05.26 [39m[33mDeezNuts[39m: syncing (ignore): 55 seconds -> 31 seconds (5b335c13fa7eab2a05125744)
+[37m06/27/2018-10:00:05.55 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[37m06/27/2018-10:00:06.55 [39m[33mDeezNuts[39m: syncing (ignore): 55 seconds -> 25 seconds (5b335c13fa7eab2a05125744)
+[37m06/27/2018-10:00:10.34 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[37m06/27/2018-10:00:11.83 [39m[33mDeezNuts[39m: syncing (ignore): 55 seconds -> 19 seconds (5b335c13fa7eab2a05125744)
+[37m06/27/2018-10:00:12.05 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[37m06/27/2018-10:00:13.26 [39m[33mDeezNuts[39m: syncing (ignore): 55 seconds -> 13 seconds (5b335c13fa7eab2a05125744)
+[37m06/27/2018-10:00:16.91 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[37m06/27/2018-10:00:17.25 [39m[33mDeezNuts[39m: syncing (ignore): 55 seconds -> 7 seconds (5b335c13fa7eab2a05125744)
+[37m06/27/2018-10:00:17.47 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[37m06/27/2018-10:00:21.75 [39m[33mDeezNuts[39m: syncing (ignore): 55 seconds -> 1 seconds (5b335c13fa7eab2a05125744)
+[37m06/27/2018-10:01:16.27 [39m[33mDeezNuts[39m: 46.238.228.247,::ffff:127.0.0.1,46.238.228.247 /HEAD /
+[34m[37m06/27/2018-10:04:16.99 [34m[33mDeezNuts[34m: Mongoose connection disconnected[39m
+[34m[37m06/27/2018-10:04:16.99 [34m[33mDeezNuts[34m: Reconnecting to MongoDB in 3000...[39m
+[34m[37m06/27/2018-10:04:16.99 [34m[33mDeezNuts[34m: Mongoose connection disconnected through app termination[39m
+[37m06/27/2018-17:03:17.32 [39m[33mDeezNuts[39m: Starting Crons
+[37m06/27/2018-17:03:17.33 [39m[33mDeezNuts[39m: started cron - Ping
+[37m06/27/2018-17:03:17.33 [39m[33mDeezNuts[39m: started cron - Midnight
+[34m[37m06/27/2018-17:03:17.79 [34m[33mDeezNuts[34m: Mongoose connection open[39m
+[37m06/27/2018-17:03:17.88 [39m[33mDeezNuts[39m: Bot found: justalexxxd
+[37m06/27/2018-17:03:19.51 [39m[33mDeezNuts[39m: [NodeEvent on postPublish] id=UKJIMFWU StreamPath=/live/stream args={"sign":"1530097140130-3d7dfd7a6af4f5dbf8c507ed77be22d1","ac":0,"vc":0}
+[37m06/27/2018-17:03:19.51 [39m[33mDeezNuts[39m: Updating Status Not Live -> Live
+[37m06/27/2018-17:03:28.35 [39m[33mDeezNuts[39m: [NodeEvent on donePublish] id=UKJIMFWU StreamPath= args={"sign":"1530097140130-3d7dfd7a6af4f5dbf8c507ed77be22d1","ac":0,"vc":0}
+[37m06/27/2018-17:03:28.35 [39m[33mDeezNuts[39m: Updating Status Live -> Not Live
+[37m06/27/2018-17:05:20.61 [39m[33mDeezNuts[39m: [NodeEvent on postPublish] id=BMGFSV12 StreamPath=/live/stream args={"sign":"1530097140130-3d7dfd7a6af4f5dbf8c507ed77be22d1","ac":0,"vc":0}
+[37m06/27/2018-17:05:20.61 [39m[33mDeezNuts[39m: Updating Status Not Live -> Live
+[37m06/27/2018-17:05:50.16 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /GET /api/streams
+[1m[33m[37m06/27/2018-17:05:50.57 [33m Not Found[39m[22m
+[37m06/27/2018-17:05:55.66 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /GET /api/streams:8000
+[1m[33m[37m06/27/2018-17:05:55.76 [33m Not Found[39m[22m
+[37m06/27/2018-17:07:29.78 [39m[33mDeezNuts[39m: 137.226.113.28,::ffff:127.0.0.1,137.226.113.28 /GET /
+[37m06/27/2018-17:07:38.93 [39m[33mDeezNuts[39m: [NodeEvent on donePublish] id=BMGFSV12 StreamPath= args={"sign":"1530097140130-3d7dfd7a6af4f5dbf8c507ed77be22d1","ac":0,"vc":0}
+[37m06/27/2018-17:07:38.94 [39m[33mDeezNuts[39m: Updating Status Live -> Not Live
+[37m06/27/2018-17:09:28.79 [39m[33mDeezNuts[39m: 2605:e000:1703:43b8:14cc:649:c420:62c2,66.102.6.202,::ffff:127.0.0.1,2605:e000:1703:43b8:14cc:649:c420:62c2, 66.102.6.202 /GET /
+[37m06/27/2018-17:13:34.15 [39m[33mDeezNuts[39m: [NodeEvent on postPublish] id=Y4YCE99G StreamPath=/live/stream args={"sign":"1530097140130-3d7dfd7a6af4f5dbf8c507ed77be22d1","ac":0,"vc":0}
+[37m06/27/2018-17:13:34.15 [39m[33mDeezNuts[39m: Updating Status Not Live -> Live
+[37m06/27/2018-17:13:35.71 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /GET /
+[37m06/27/2018-17:13:38.09 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /GET /live
+[37m06/27/2018-17:13:51.99 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /login
+[37m06/27/2018-17:13:52.07 [39m[33mDeezNuts[39m: User found: user1
+[37m06/27/2018-17:13:52.23 [39m[33mDeezNuts[39m: login successful (local): 5b335c3ffa7eab2a05125747
+[37m06/27/2018-17:13:52.58 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /GET /
+[37m06/27/2018-17:13:56.28 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[37m06/27/2018-17:13:56.62 [39m[33mDeezNuts[39m: syncing (success): 55 seconds -> 55 seconds (5b335c3ffa7eab2a05125747)
+[37m06/27/2018-17:13:56.69 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /GET /live
+[37m06/27/2018-17:14:00.32 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[37m06/27/2018-17:14:00.40 [39m[33mDeezNuts[39m: syncing (success): 55 seconds -> 50 seconds (5b335c3ffa7eab2a05125747)
+[37m06/27/2018-17:14:03.30 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[37m06/27/2018-17:14:03.38 [39m[33mDeezNuts[39m: syncing (ignore): 50 seconds -> 44 seconds (5b335c3ffa7eab2a05125747)
+[37m06/27/2018-17:14:06.21 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[37m06/27/2018-17:14:06.29 [39m[33mDeezNuts[39m: syncing (ignore): 50 seconds -> 38 seconds (5b335c3ffa7eab2a05125747)
+[37m06/27/2018-17:14:09.30 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[37m06/27/2018-17:14:09.39 [39m[33mDeezNuts[39m: syncing (ignore): 50 seconds -> 32 seconds (5b335c3ffa7eab2a05125747)
+[37m06/27/2018-17:14:12.30 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[37m06/27/2018-17:14:12.38 [39m[33mDeezNuts[39m: syncing (ignore): 50 seconds -> 26 seconds (5b335c3ffa7eab2a05125747)
+[37m06/27/2018-17:14:15.29 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[37m06/27/2018-17:14:15.38 [39m[33mDeezNuts[39m: syncing (ignore): 50 seconds -> 20 seconds (5b335c3ffa7eab2a05125747)
+[37m06/27/2018-17:14:18.30 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[37m06/27/2018-17:14:18.38 [39m[33mDeezNuts[39m: syncing (ignore): 50 seconds -> 14 seconds (5b335c3ffa7eab2a05125747)
+[37m06/27/2018-17:14:21.30 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[37m06/27/2018-17:14:21.39 [39m[33mDeezNuts[39m: syncing (ignore): 50 seconds -> 8 seconds (5b335c3ffa7eab2a05125747)
+[37m06/27/2018-17:14:24.32 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[37m06/27/2018-17:14:24.40 [39m[33mDeezNuts[39m: syncing (ignore): 50 seconds -> 2 seconds (5b335c3ffa7eab2a05125747)
+[37m06/27/2018-17:15:13.98 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /GET /
+[37m06/27/2018-17:15:16.97 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /GET /favicon.ico
+[1m[33m[37m06/27/2018-17:15:17.00 [33m Not Found[39m[22m
+[37m06/27/2018-17:15:18.54 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[37m06/27/2018-17:15:18.62 [39m[33mDeezNuts[39m: syncing (success): 50 seconds -> 55 seconds (5b335c3ffa7eab2a05125747)
+[37m06/27/2018-17:15:21.53 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[37m06/27/2018-17:15:21.61 [39m[33mDeezNuts[39m: syncing (success): 55 seconds -> 55 seconds (5b335c3ffa7eab2a05125747)
+[37m06/27/2018-17:15:24.53 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[37m06/27/2018-17:15:24.60 [39m[33mDeezNuts[39m: syncing (success): 55 seconds -> 55 seconds (5b335c3ffa7eab2a05125747)
+[37m06/27/2018-17:15:27.62 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[37m06/27/2018-17:15:27.70 [39m[33mDeezNuts[39m: syncing (success): 55 seconds -> 55 seconds (5b335c3ffa7eab2a05125747)
+[37m06/27/2018-17:15:27.93 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /GET /live
+[37m06/27/2018-17:15:30.54 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[37m06/27/2018-17:15:30.61 [39m[33mDeezNuts[39m: syncing (success): 55 seconds -> 55 seconds (5b335c3ffa7eab2a05125747)
+[37m06/27/2018-17:15:33.54 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[37m06/27/2018-17:15:33.61 [39m[33mDeezNuts[39m: syncing (success): 55 seconds -> 55 seconds (5b335c3ffa7eab2a05125747)
+[37m06/27/2018-17:15:36.83 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[37m06/27/2018-17:15:36.90 [39m[33mDeezNuts[39m: syncing (success): 55 seconds -> 55 seconds (5b335c3ffa7eab2a05125747)
+[37m06/27/2018-17:15:39.65 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[37m06/27/2018-17:15:39.73 [39m[33mDeezNuts[39m: syncing (success): 55 seconds -> 55 seconds (5b335c3ffa7eab2a05125747)
+[37m06/27/2018-17:15:42.62 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[37m06/27/2018-17:15:42.69 [39m[33mDeezNuts[39m: syncing (success): 55 seconds -> 55 seconds (5b335c3ffa7eab2a05125747)
+[37m06/27/2018-17:15:45.65 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[37m06/27/2018-17:15:45.72 [39m[33mDeezNuts[39m: syncing (success): 55 seconds -> 55 seconds (5b335c3ffa7eab2a05125747)
+[37m06/27/2018-17:15:48.64 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[37m06/27/2018-17:15:48.71 [39m[33mDeezNuts[39m: syncing (success): 55 seconds -> 55 seconds (5b335c3ffa7eab2a05125747)
+[37m06/27/2018-17:15:51.62 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[37m06/27/2018-17:15:51.70 [39m[33mDeezNuts[39m: syncing (success): 55 seconds -> 55 seconds (5b335c3ffa7eab2a05125747)
+[37m06/27/2018-17:15:54.63 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[37m06/27/2018-17:15:56.70 [39m[33mDeezNuts[39m: syncing (success): 55 seconds -> 55 seconds (5b335c3ffa7eab2a05125747)
+[37m06/27/2018-17:15:57.53 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[37m06/27/2018-17:15:57.61 [39m[33mDeezNuts[39m: syncing (success): 55 seconds -> 55 seconds (5b335c3ffa7eab2a05125747)
+[37m06/27/2018-17:16:00.63 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[37m06/27/2018-17:16:00.71 [39m[33mDeezNuts[39m: syncing (success): 55 seconds -> 55 seconds (5b335c3ffa7eab2a05125747)
+[37m06/27/2018-17:16:03.63 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[37m06/27/2018-17:16:03.70 [39m[33mDeezNuts[39m: syncing (success): 55 seconds -> 55 seconds (5b335c3ffa7eab2a05125747)
+[37m06/27/2018-17:16:06.62 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[37m06/27/2018-17:16:06.69 [39m[33mDeezNuts[39m: syncing (success): 55 seconds -> 55 seconds (5b335c3ffa7eab2a05125747)
+[37m06/27/2018-17:16:09.62 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[37m06/27/2018-17:16:09.70 [39m[33mDeezNuts[39m: syncing (success): 55 seconds -> 55 seconds (5b335c3ffa7eab2a05125747)
+[37m06/27/2018-17:16:12.62 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[37m06/27/2018-17:16:12.69 [39m[33mDeezNuts[39m: syncing (success): 55 seconds -> 55 seconds (5b335c3ffa7eab2a05125747)
+[37m06/27/2018-17:16:15.62 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[37m06/27/2018-17:16:15.69 [39m[33mDeezNuts[39m: syncing (success): 55 seconds -> 55 seconds (5b335c3ffa7eab2a05125747)
+[37m06/27/2018-17:16:18.62 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[37m06/27/2018-17:16:18.70 [39m[33mDeezNuts[39m: syncing (success): 55 seconds -> 55 seconds (5b335c3ffa7eab2a05125747)
+[37m06/27/2018-17:16:21.62 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[37m06/27/2018-17:16:21.70 [39m[33mDeezNuts[39m: syncing (success): 55 seconds -> 55 seconds (5b335c3ffa7eab2a05125747)
+[37m06/27/2018-17:16:24.62 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[37m06/27/2018-17:16:24.70 [39m[33mDeezNuts[39m: syncing (success): 55 seconds -> 55 seconds (5b335c3ffa7eab2a05125747)
+[37m06/27/2018-17:16:27.62 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[37m06/27/2018-17:16:27.69 [39m[33mDeezNuts[39m: syncing (success): 55 seconds -> 55 seconds (5b335c3ffa7eab2a05125747)
+[37m06/27/2018-17:16:30.61 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[37m06/27/2018-17:16:30.69 [39m[33mDeezNuts[39m: syncing (success): 55 seconds -> 55 seconds (5b335c3ffa7eab2a05125747)
+[37m06/27/2018-17:16:33.62 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[37m06/27/2018-17:16:33.70 [39m[33mDeezNuts[39m: syncing (success): 55 seconds -> 55 seconds (5b335c3ffa7eab2a05125747)
+[37m06/27/2018-17:16:36.62 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[37m06/27/2018-17:16:36.70 [39m[33mDeezNuts[39m: syncing (success): 55 seconds -> 55 seconds (5b335c3ffa7eab2a05125747)
+[37m06/27/2018-17:16:39.62 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[37m06/27/2018-17:16:39.69 [39m[33mDeezNuts[39m: syncing (success): 55 seconds -> 55 seconds (5b335c3ffa7eab2a05125747)
+[37m06/27/2018-17:16:42.62 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[37m06/27/2018-17:16:42.70 [39m[33mDeezNuts[39m: syncing (success): 55 seconds -> 55 seconds (5b335c3ffa7eab2a05125747)
+[37m06/27/2018-17:16:45.61 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[37m06/27/2018-17:16:45.69 [39m[33mDeezNuts[39m: syncing (success): 55 seconds -> 55 seconds (5b335c3ffa7eab2a05125747)
+[37m06/27/2018-17:16:48.61 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[37m06/27/2018-17:16:48.68 [39m[33mDeezNuts[39m: syncing (success): 55 seconds -> 55 seconds (5b335c3ffa7eab2a05125747)
+[37m06/27/2018-17:16:51.61 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[37m06/27/2018-17:16:51.69 [39m[33mDeezNuts[39m: syncing (success): 55 seconds -> 55 seconds (5b335c3ffa7eab2a05125747)
+[34m[37m06/27/2018-17:16:51.74 [34m[33mDeezNuts[34m: Mongoose connection disconnected[39m
+[34m[37m06/27/2018-17:16:51.74 [34m[33mDeezNuts[34m: Reconnecting to MongoDB in 3000...[39m
+[34m[37m06/27/2018-17:16:51.74 [34m[33mDeezNuts[34m: Mongoose connection disconnected through app termination[39m
+[37m06/27/2018-17:17:23.75 [39m[33mDeezNuts[39m: Starting Crons
+[37m06/27/2018-17:17:23.76 [39m[33mDeezNuts[39m: started cron - Ping
+[37m06/27/2018-17:17:23.77 [39m[33mDeezNuts[39m: started cron - Midnight
+[34m[37m06/27/2018-17:17:24.23 [34m[33mDeezNuts[34m: Mongoose connection open[39m
+[37m06/27/2018-17:17:24.32 [39m[33mDeezNuts[39m: Bot found: justalexxxd
+[37m06/27/2018-17:17:24.66 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[37m06/27/2018-17:17:24.73 [39m[33mDeezNuts[39m: [NodeEvent on postPublish] id=KRO6PGGY StreamPath=/live/stream args={"sign":"1530097140130-3d7dfd7a6af4f5dbf8c507ed77be22d1","ac":0,"vc":0}
+[37m06/27/2018-17:17:24.73 [39m[33mDeezNuts[39m: Updating Status Not Live -> Live
+[37m06/27/2018-17:17:24.74 [39m[33mDeezNuts[39m: syncing (success): 55 seconds -> 55 seconds (5b335c3ffa7eab2a05125747)
+[37m06/27/2018-17:17:27.63 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[37m06/27/2018-17:17:27.71 [39m[33mDeezNuts[39m: syncing (success): 55 seconds -> 55 seconds (5b335c3ffa7eab2a05125747)
+[37m06/27/2018-17:17:30.62 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[37m06/27/2018-17:17:30.70 [39m[33mDeezNuts[39m: syncing (success): 55 seconds -> 55 seconds (5b335c3ffa7eab2a05125747)
+[37m06/27/2018-17:17:33.62 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[37m06/27/2018-17:17:33.70 [39m[33mDeezNuts[39m: syncing (success): 55 seconds -> 55 seconds (5b335c3ffa7eab2a05125747)
+[37m06/27/2018-17:17:36.62 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[37m06/27/2018-17:17:36.69 [39m[33mDeezNuts[39m: syncing (success): 55 seconds -> 55 seconds (5b335c3ffa7eab2a05125747)
+[37m06/27/2018-17:17:39.62 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[37m06/27/2018-17:17:39.69 [39m[33mDeezNuts[39m: syncing (success): 55 seconds -> 55 seconds (5b335c3ffa7eab2a05125747)
+[37m06/27/2018-17:17:42.61 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[37m06/27/2018-17:17:42.69 [39m[33mDeezNuts[39m: syncing (success): 55 seconds -> 55 seconds (5b335c3ffa7eab2a05125747)
+[37m06/27/2018-17:17:45.62 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[37m06/27/2018-17:17:45.70 [39m[33mDeezNuts[39m: syncing (success): 55 seconds -> 55 seconds (5b335c3ffa7eab2a05125747)
+[37m06/27/2018-17:17:48.62 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[37m06/27/2018-17:17:48.70 [39m[33mDeezNuts[39m: syncing (success): 55 seconds -> 55 seconds (5b335c3ffa7eab2a05125747)
+[37m06/27/2018-17:17:51.62 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[37m06/27/2018-17:17:51.69 [39m[33mDeezNuts[39m: syncing (success): 55 seconds -> 55 seconds (5b335c3ffa7eab2a05125747)
+[37m06/27/2018-17:17:54.68 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[37m06/27/2018-17:17:54.75 [39m[33mDeezNuts[39m: syncing (success): 55 seconds -> 55 seconds (5b335c3ffa7eab2a05125747)
+[37m06/27/2018-17:17:57.61 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[37m06/27/2018-17:17:57.69 [39m[33mDeezNuts[39m: syncing (success): 55 seconds -> 55 seconds (5b335c3ffa7eab2a05125747)
+[37m06/27/2018-17:18:00.61 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[37m06/27/2018-17:18:00.69 [39m[33mDeezNuts[39m: syncing (success): 55 seconds -> 55 seconds (5b335c3ffa7eab2a05125747)
+[37m06/27/2018-17:18:03.62 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[37m06/27/2018-17:18:03.69 [39m[33mDeezNuts[39m: syncing (success): 55 seconds -> 55 seconds (5b335c3ffa7eab2a05125747)
+[37m06/27/2018-17:18:06.61 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[37m06/27/2018-17:18:06.69 [39m[33mDeezNuts[39m: syncing (success): 55 seconds -> 55 seconds (5b335c3ffa7eab2a05125747)
+[37m06/27/2018-17:18:09.62 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[37m06/27/2018-17:18:09.73 [39m[33mDeezNuts[39m: syncing (success): 55 seconds -> 55 seconds (5b335c3ffa7eab2a05125747)
+[37m06/27/2018-17:18:12.62 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[37m06/27/2018-17:18:12.69 [39m[33mDeezNuts[39m: syncing (success): 55 seconds -> 55 seconds (5b335c3ffa7eab2a05125747)
+[37m06/27/2018-17:18:15.62 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[37m06/27/2018-17:18:15.69 [39m[33mDeezNuts[39m: syncing (success): 55 seconds -> 55 seconds (5b335c3ffa7eab2a05125747)
+[37m06/27/2018-17:18:17.76 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[37m06/27/2018-17:18:17.83 [39m[33mDeezNuts[39m: syncing (success): 55 seconds -> 55 seconds (5b335c3ffa7eab2a05125747)
+[37m06/27/2018-17:18:18.11 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /GET /live
+[37m06/27/2018-17:18:22.63 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /GET /live
+[37m06/27/2018-17:18:23.15 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[37m06/27/2018-17:18:23.23 [39m[33mDeezNuts[39m: syncing (success): 55 seconds -> 50 seconds (5b335c3ffa7eab2a05125747)
+[37m06/27/2018-17:18:25.55 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[37m06/27/2018-17:18:25.62 [39m[33mDeezNuts[39m: syncing (ignore): 50 seconds -> 44 seconds (5b335c3ffa7eab2a05125747)
+[37m06/27/2018-17:18:28.54 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[37m06/27/2018-17:18:28.62 [39m[33mDeezNuts[39m: syncing (ignore): 50 seconds -> 38 seconds (5b335c3ffa7eab2a05125747)
+[37m06/27/2018-17:18:31.55 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[37m06/27/2018-17:18:31.63 [39m[33mDeezNuts[39m: syncing (ignore): 50 seconds -> 32 seconds (5b335c3ffa7eab2a05125747)
+[37m06/27/2018-17:18:34.63 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[37m06/27/2018-17:18:34.71 [39m[33mDeezNuts[39m: syncing (ignore): 50 seconds -> 26 seconds (5b335c3ffa7eab2a05125747)
+[37m06/27/2018-17:18:37.63 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[37m06/27/2018-17:18:37.70 [39m[33mDeezNuts[39m: syncing (ignore): 50 seconds -> 20 seconds (5b335c3ffa7eab2a05125747)
+[37m06/27/2018-17:18:40.63 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[37m06/27/2018-17:18:40.72 [39m[33mDeezNuts[39m: syncing (ignore): 50 seconds -> 14 seconds (5b335c3ffa7eab2a05125747)
+[37m06/27/2018-17:18:43.40 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[37m06/27/2018-17:18:43.49 [39m[33mDeezNuts[39m: syncing (ignore): 50 seconds -> 8 seconds (5b335c3ffa7eab2a05125747)
+[37m06/27/2018-17:18:46.39 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[37m06/27/2018-17:18:46.47 [39m[33mDeezNuts[39m: syncing (ignore): 50 seconds -> 2 seconds (5b335c3ffa7eab2a05125747)
+[37m06/27/2018-17:19:26.71 [39m[33mDeezNuts[39m: 221.9.146.69,::ffff:127.0.0.1,221.9.146.69 /HEAD /
+[37m06/27/2018-17:29:12.83 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /GET /live
+[37m06/27/2018-17:33:38.39 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[37m06/27/2018-17:33:38.47 [39m[33mDeezNuts[39m: syncing (ignore): 50 seconds -> 0 seconds (5b335c3ffa7eab2a05125747)
+[37m06/27/2018-17:33:38.73 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /GET /
+[37m06/27/2018-17:33:38.95 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /GET /
+[37m06/27/2018-17:33:41.04 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /GET /live
+[37m06/27/2018-17:33:44.84 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[37m06/27/2018-17:33:44.93 [39m[33mDeezNuts[39m: syncing (success): 50 seconds -> 50 seconds (5b335c3ffa7eab2a05125747)
+[37m06/27/2018-17:33:47.91 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[37m06/27/2018-17:33:48.00 [39m[33mDeezNuts[39m: syncing (ignore): 50 seconds -> 44 seconds (5b335c3ffa7eab2a05125747)
+[37m06/27/2018-17:33:50.90 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[37m06/27/2018-17:33:50.99 [39m[33mDeezNuts[39m: syncing (ignore): 50 seconds -> 38 seconds (5b335c3ffa7eab2a05125747)
+[37m06/27/2018-17:33:53.93 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[37m06/27/2018-17:33:54.02 [39m[33mDeezNuts[39m: syncing (ignore): 50 seconds -> 32 seconds (5b335c3ffa7eab2a05125747)
+[37m06/27/2018-17:33:56.91 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[37m06/27/2018-17:33:57.01 [39m[33mDeezNuts[39m: syncing (ignore): 50 seconds -> 26 seconds (5b335c3ffa7eab2a05125747)
+[37m06/27/2018-17:33:59.90 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[37m06/27/2018-17:33:59.100 [39m[33mDeezNuts[39m: syncing (ignore): 50 seconds -> 20 seconds (5b335c3ffa7eab2a05125747)
+[37m06/27/2018-17:34:02.91 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[37m06/27/2018-17:34:02.100 [39m[33mDeezNuts[39m: syncing (ignore): 50 seconds -> 14 seconds (5b335c3ffa7eab2a05125747)
+[37m06/27/2018-17:34:05.91 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[37m06/27/2018-17:34:06.01 [39m[33mDeezNuts[39m: syncing (ignore): 50 seconds -> 8 seconds (5b335c3ffa7eab2a05125747)
+[37m06/27/2018-17:34:08.91 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[37m06/27/2018-17:34:09.00 [39m[33mDeezNuts[39m: syncing (ignore): 50 seconds -> 2 seconds (5b335c3ffa7eab2a05125747)
+[37m06/27/2018-17:34:12.68 [39m[33mDeezNuts[39m: [NodeEvent on donePublish] id=KRO6PGGY StreamPath= args={"sign":"1530097140130-3d7dfd7a6af4f5dbf8c507ed77be22d1","ac":0,"vc":0}
+[37m06/27/2018-17:34:12.68 [39m[33mDeezNuts[39m: Updating Status Live -> Not Live
+[37m06/27/2018-17:34:14.70 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /GET /
+[37m06/27/2018-17:34:18.51 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[37m06/27/2018-17:34:20.72 [39m[33mDeezNuts[39m: syncing (success): 50 seconds -> 55 seconds (5b335c3ffa7eab2a05125747)
+[37m06/27/2018-17:34:23.03 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[37m06/27/2018-17:34:23.19 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /GET /
+[37m06/27/2018-17:34:23.27 [39m[33mDeezNuts[39m: syncing (success): 55 seconds -> 55 seconds (5b335c3ffa7eab2a05125747)
+[37m06/27/2018-17:34:28.52 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[37m06/27/2018-17:34:28.60 [39m[33mDeezNuts[39m: syncing (success): 55 seconds -> 55 seconds (5b335c3ffa7eab2a05125747)
+[37m06/27/2018-17:34:29.97 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[37m06/27/2018-17:34:30.81 [39m[33mDeezNuts[39m: syncing (success): 55 seconds -> 55 seconds (5b335c3ffa7eab2a05125747)
+[37m06/27/2018-17:34:32.96 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[37m06/27/2018-17:34:33.05 [39m[33mDeezNuts[39m: syncing (success): 55 seconds -> 55 seconds (5b335c3ffa7eab2a05125747)
+[37m06/27/2018-17:34:35.100 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[37m06/27/2018-17:34:37.72 [39m[33mDeezNuts[39m: syncing (success): 55 seconds -> 55 seconds (5b335c3ffa7eab2a05125747)
+[37m06/27/2018-17:34:39.80 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[37m06/27/2018-17:34:42.42 [39m[33mDeezNuts[39m: syncing (success): 55 seconds -> 55 seconds (5b335c3ffa7eab2a05125747)
+[37m06/27/2018-17:34:45.45 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[37m06/27/2018-17:34:45.61 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[37m06/27/2018-17:34:45.70 [39m[33mDeezNuts[39m: syncing (success): 55 seconds -> 55 seconds (5b335c3ffa7eab2a05125747)
+[37m06/27/2018-17:34:45.70 [39m[33mDeezNuts[39m: syncing (success): 55 seconds -> 55 seconds (5b335c3ffa7eab2a05125747)
+[37m06/27/2018-17:34:50.78 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[37m06/27/2018-17:34:51.38 [39m[33mDeezNuts[39m: syncing (success): 55 seconds -> 55 seconds (5b335c3ffa7eab2a05125747)
+[37m06/27/2018-17:34:54.45 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[37m06/27/2018-17:34:54.52 [39m[33mDeezNuts[39m: syncing (success): 55 seconds -> 55 seconds (5b335c3ffa7eab2a05125747)
+[37m06/27/2018-17:34:56.46 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[37m06/27/2018-17:34:57.37 [39m[33mDeezNuts[39m: syncing (success): 55 seconds -> 55 seconds (5b335c3ffa7eab2a05125747)
+[37m06/27/2018-17:34:59.61 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[37m06/27/2018-17:35:00.38 [39m[33mDeezNuts[39m: syncing (success): 55 seconds -> 55 seconds (5b335c3ffa7eab2a05125747)
+[37m06/27/2018-17:35:00.62 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[37m06/27/2018-17:35:02.38 [39m[33mDeezNuts[39m: syncing (success): 55 seconds -> 55 seconds (5b335c3ffa7eab2a05125747)
+[37m06/27/2018-17:35:03.54 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[37m06/27/2018-17:35:05.38 [39m[33mDeezNuts[39m: syncing (success): 55 seconds -> 55 seconds (5b335c3ffa7eab2a05125747)
+[37m06/27/2018-17:35:09.46 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[37m06/27/2018-17:35:09.54 [39m[33mDeezNuts[39m: syncing (success): 55 seconds -> 55 seconds (5b335c3ffa7eab2a05125747)
+[37m06/27/2018-17:35:09.63 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[37m06/27/2018-17:35:12.38 [39m[33mDeezNuts[39m: syncing (success): 55 seconds -> 55 seconds (5b335c3ffa7eab2a05125747)
+[37m06/27/2018-17:35:12.64 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[37m06/27/2018-17:35:13.98 [39m[33mDeezNuts[39m: [NodeEvent on postPublish] id=GB7OD6ZL StreamPath=/live/stream args={"sign":"1530097140130-3d7dfd7a6af4f5dbf8c507ed77be22d1","ac":0,"vc":0}
+[37m06/27/2018-17:35:13.98 [39m[33mDeezNuts[39m: Updating Status Not Live -> Live
+[37m06/27/2018-17:35:14.55 [39m[33mDeezNuts[39m: syncing (success): 55 seconds -> 55 seconds (5b335c3ffa7eab2a05125747)
+[37m06/27/2018-17:35:16.05 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[37m06/27/2018-17:35:17.38 [39m[33mDeezNuts[39m: syncing (success): 55 seconds -> 55 seconds (5b335c3ffa7eab2a05125747)
+[37m06/27/2018-17:35:17.97 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /GET /live
+[37m06/27/2018-17:35:23.86 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[37m06/27/2018-17:35:24.59 [39m[33mDeezNuts[39m: syncing (success): 55 seconds -> 50 seconds (5b335c3ffa7eab2a05125747)
+[37m06/27/2018-17:35:24.90 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[37m06/27/2018-17:35:27.59 [39m[33mDeezNuts[39m: syncing (ignore): 50 seconds -> 44 seconds (5b335c3ffa7eab2a05125747)
+[37m06/27/2018-17:35:29.75 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[37m06/27/2018-17:35:30.59 [39m[33mDeezNuts[39m: syncing (ignore): 50 seconds -> 38 seconds (5b335c3ffa7eab2a05125747)
+[37m06/27/2018-17:35:32.68 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[37m06/27/2018-17:35:33.21 [39m[33mDeezNuts[39m: syncing (ignore): 50 seconds -> 32 seconds (5b335c3ffa7eab2a05125747)
+[37m06/27/2018-17:35:33.75 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[37m06/27/2018-17:35:35.60 [39m[33mDeezNuts[39m: syncing (ignore): 50 seconds -> 26 seconds (5b335c3ffa7eab2a05125747)
+[37m06/27/2018-17:35:39.86 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[37m06/27/2018-17:35:39.96 [39m[33mDeezNuts[39m: syncing (ignore): 50 seconds -> 14 seconds (5b335c3ffa7eab2a05125747)
+[37m06/27/2018-17:35:40.03 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[37m06/27/2018-17:35:40.12 [39m[33mDeezNuts[39m: syncing (ignore): 50 seconds -> 20 seconds (5b335c3ffa7eab2a05125747)
+[37m06/27/2018-17:35:42.84 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[37m06/27/2018-17:35:45.12 [39m[33mDeezNuts[39m: syncing (ignore): 50 seconds -> 8 seconds (5b335c3ffa7eab2a05125747)
+[37m06/27/2018-17:35:45.75 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[37m06/27/2018-17:35:47.98 [39m[33mDeezNuts[39m: syncing (ignore): 50 seconds -> 2 seconds (5b335c3ffa7eab2a05125747)
+[37m06/27/2018-17:36:26.34 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /GET /
+[34m[37m06/27/2018-17:36:45.42 [34m[33mDeezNuts[34m: Mongoose connection disconnected[39m
+[34m[37m06/27/2018-17:36:45.42 [34m[33mDeezNuts[34m: Reconnecting to MongoDB in 3000...[39m
+[34m[37m06/27/2018-17:36:45.42 [34m[33mDeezNuts[34m: Mongoose connection disconnected through app termination[39m
+[37m06/27/2018-17:36:47.60 [39m[33mDeezNuts[39m: Starting Crons
+[37m06/27/2018-17:36:47.61 [39m[33mDeezNuts[39m: started cron - Ping
+[37m06/27/2018-17:36:47.62 [39m[33mDeezNuts[39m: started cron - Midnight
+[34m[37m06/27/2018-17:36:48.08 [34m[33mDeezNuts[34m: Mongoose connection open[39m
+[37m06/27/2018-17:36:48.17 [39m[33mDeezNuts[39m: Bot found: justalexxxd
+[37m06/27/2018-17:36:54.08 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /GET /
+[37m06/27/2018-17:36:58.99 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /login
+[37m06/27/2018-17:36:59.08 [39m[33mDeezNuts[39m: User found: justalexxxd
+[37m06/27/2018-17:36:59.20 [39m[33mDeezNuts[39m: login successful (local): 5b335c13fa7eab2a05125744
+[37m06/27/2018-17:36:59.58 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /GET /
+[37m06/27/2018-17:37:03.40 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[37m06/27/2018-17:37:03.48 [39m[33mDeezNuts[39m: syncing (success): 55 seconds -> 55 seconds (5b335c13fa7eab2a05125744)
+[37m06/27/2018-17:37:03.90 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /GET /key
+[37m06/27/2018-17:37:07.81 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /key
+[37m06/27/2018-17:37:12.41 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /GET /
+[37m06/27/2018-17:37:16.18 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[37m06/27/2018-17:37:16.26 [39m[33mDeezNuts[39m: syncing (success): 55 seconds -> 55 seconds (5b335c13fa7eab2a05125744)
+[37m06/27/2018-17:37:19.18 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[37m06/27/2018-17:37:19.26 [39m[33mDeezNuts[39m: syncing (success): 55 seconds -> 55 seconds (5b335c13fa7eab2a05125744)
+[37m06/27/2018-17:37:22.20 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[37m06/27/2018-17:37:22.28 [39m[33mDeezNuts[39m: syncing (success): 55 seconds -> 55 seconds (5b335c13fa7eab2a05125744)
+[37m06/27/2018-17:37:25.19 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[37m06/27/2018-17:37:25.27 [39m[33mDeezNuts[39m: syncing (success): 55 seconds -> 55 seconds (5b335c13fa7eab2a05125744)
+[37m06/27/2018-17:37:28.19 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[37m06/27/2018-17:37:28.27 [39m[33mDeezNuts[39m: syncing (success): 55 seconds -> 55 seconds (5b335c13fa7eab2a05125744)
+[37m06/27/2018-17:37:28.50 [39m[33mDeezNuts[39m: [NodeEvent on postPublish] id=1KGSHKKM StreamPath=/live/stream args={"sign":"1530124627805-48a2eeb2951618ffc1ea9c967bbc50a8","ac":0,"vc":0}
+[37m06/27/2018-17:37:28.51 [39m[33mDeezNuts[39m: Updating Status Not Live -> Live
+[37m06/27/2018-17:37:31.18 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[37m06/27/2018-17:37:31.26 [39m[33mDeezNuts[39m: syncing (success): 55 seconds -> 55 seconds (5b335c13fa7eab2a05125744)
+[37m06/27/2018-17:37:35.34 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[37m06/27/2018-17:37:35.42 [39m[33mDeezNuts[39m: syncing (success): 55 seconds -> 55 seconds (5b335c13fa7eab2a05125744)
+[37m06/27/2018-17:37:36.95 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /GET /live
+[37m06/27/2018-17:37:40.69 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[37m06/27/2018-17:37:40.77 [39m[33mDeezNuts[39m: syncing (success): 55 seconds -> 50 seconds (5b335c13fa7eab2a05125744)
+[37m06/27/2018-17:37:43.77 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[37m06/27/2018-17:37:44.07 [39m[33mDeezNuts[39m: syncing (ignore): 50 seconds -> 44 seconds (5b335c13fa7eab2a05125744)
+[37m06/27/2018-17:37:46.77 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[37m06/27/2018-17:37:46.85 [39m[33mDeezNuts[39m: syncing (ignore): 50 seconds -> 38 seconds (5b335c13fa7eab2a05125744)
+[37m06/27/2018-17:37:49.78 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[37m06/27/2018-17:37:49.86 [39m[33mDeezNuts[39m: syncing (ignore): 50 seconds -> 32 seconds (5b335c13fa7eab2a05125744)
+[37m06/27/2018-17:37:52.76 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[37m06/27/2018-17:37:52.84 [39m[33mDeezNuts[39m: syncing (ignore): 50 seconds -> 26 seconds (5b335c13fa7eab2a05125744)
+[37m06/27/2018-17:37:55.79 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[37m06/27/2018-17:37:55.87 [39m[33mDeezNuts[39m: syncing (ignore): 50 seconds -> 20 seconds (5b335c13fa7eab2a05125744)
+[37m06/27/2018-17:37:58.77 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[37m06/27/2018-17:37:58.85 [39m[33mDeezNuts[39m: syncing (ignore): 50 seconds -> 14 seconds (5b335c13fa7eab2a05125744)
+[37m06/27/2018-17:38:01.77 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[37m06/27/2018-17:38:01.85 [39m[33mDeezNuts[39m: syncing (ignore): 50 seconds -> 8 seconds (5b335c13fa7eab2a05125744)
+[37m06/27/2018-17:38:04.76 [39m[33mDeezNuts[39m: 76.91.217.22,::ffff:127.0.0.1,76.91.217.22 /POST /sync
+[37m06/27/2018-17:38:04.84 [39m[33mDeezNuts[39m: syncing (ignore): 50 seconds -> 2 seconds (5b335c13fa7eab2a05125744)
+[34m[37m06/27/2018-17:40:28.10 [34m[33mDeezNuts[34m: Mongoose connection disconnected[39m
+[34m[37m06/27/2018-17:40:28.10 [34m[33mDeezNuts[34m: Reconnecting to MongoDB in 3000...[39m
+[34m[37m06/27/2018-17:40:28.10 [34m[33mDeezNuts[34m: Mongoose connection disconnected through app termination[39m
