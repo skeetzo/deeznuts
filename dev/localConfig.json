@@ -1,6 +1,6 @@
 {
 	"blockchainKey" : "d1d86c8a-210e-40ca-a4ac-ce98ae328a8a",
-	"blockchainXpub" : "xpub6CZnCoHLTBVjuEHVtm6Dgd266vNcSkWv5rEcb1RaEH38BhobGGe44NtEyWEFVPBe4CaNDM3mKfGgeYomCjxnahSqGmnS23VbaidYtG1YPUb",
+	"blockchainXpub" : "xpub6CZnCoHLTBVjwiC65vF7bSERUt12SkGUSLGwhDyRBzkieLAdznq44KHR4XTuc1aTPmxLza9kGg51SEdN9Gwone2Pp3Du9hTco3uSoc9jJZH",
 
 	"MONGODB_URI" : "mongodb://heroku_n0jsgk42:i9i3atbuabn1n2vb8urobfupe4@ds255930.mlab.com:55930/heroku_n0jsgk42",
 	"MONGODB_URI_local" : "mongodb://127.0.0.1:27017/local"

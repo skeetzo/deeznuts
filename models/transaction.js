@@ -2,12 +2,14 @@ var mongoose = require('mongoose'),
     Schema = mongoose.Schema,
     config = require('../config/index'),
     logger = config.logger,
+    moment = require('moment'),
     _ = require('underscore');
 
 // User Schema
 var transactionSchema = new Schema({
   address: { type: String },
   confirmations: { type: Number, default: 0 },
+  date: { type: Date, default: moment(new Date()).format('MM/DD/YYYY-hh:mm:ss') },
   secret: { type: String },
   transaction_hash: { type: String },
   value: { type: Number },
