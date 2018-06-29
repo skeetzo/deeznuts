@@ -35,7 +35,7 @@ router.get(config.blockchainRoute, function (req, res, next) {
   logger.debug('req.query: %s', JSON.stringify(req.query, null, 4));
   User.syncTransaction(req.query, function (err) {
     if (err) logger.warn(err);
-    if (req.query.confirmations>=config.blockchainConfirmationLimit)
+    if (parseInt(req.query.confirmations, 10)>=config.blockchainConfirmationLimit)
       res.send("*ok*");
     else
       res.sendStatus(200);
