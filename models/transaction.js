@@ -34,7 +34,7 @@ transactionSchema.statics.add = function(newTransaction, callback) {
 }
 
 transactionSchema.statics.confirm = function(existingTransaction, callback) {
-  logger.debug('Confirming Existing Transaction: %s (%s) -> %s', existingTransaction.value, newTransaction.transaction_hash.substring(0,6), existingTransaction.address);
+  logger.debug('Confirming Existing Transaction: %s (%s) -> %s', existingTransaction.value, existingTransaction.transaction_hash.substring(0,6), existingTransaction.address);
   Transaction.findOne({'address':existingTransaction.address,'transaction_hash':existingTransaction.transaction_hash,'secret':existingTransaction.secret}, function (err, transaction) {
     if (err) return callback(err);
     if (!transaction) return callback('Missing Transaction: '+existingTransaction.address+'-'+existingTransaction.transaction_hash);
