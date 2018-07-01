@@ -19,7 +19,7 @@ prepend content
     .col-xs-12
       p You must be 
         strong 18 years or older 
-        | to enter #{domain}
+        | to enter #{siteTitle}
 
   //- enter
   .row
@@ -31,6 +31,8 @@ prepend content
           if (error)
             h5 #{error}
       a.btn.btn-primary(href='/live') Enter
+
+      //- Debugging - Add Time
       //- button.btn.btn-primary(onclick="addTime()") Add Time
 
       //- script.

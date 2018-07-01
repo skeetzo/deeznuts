@@ -25,8 +25,6 @@ router.get("/", function (req, res, next) {
 
 // /live
 router.get("/live", mixins.loggedIn, mixins.hasPaid, function (req, res, next) {
-  if (config.streamKeyCurrent)
-    req.session.locals.key = config.streamKeyCurrent;
   res.render('live', req.session.locals);    
 });
 
@@ -35,7 +33,7 @@ router.get(config.blockchainRoute, function (req, res, next) {
   logger.debug('req.query: %s', JSON.stringify(req.query, null, 4));
   User.syncTransaction(req.query, function (err) {
     if (err) logger.warn(err);
-    if (req.query.confirmations>=config.blockchainConfirmationLimit)
+    if (parseInt(req.query.confirmations, 10)>=config.blockchainConfirmationLimit)
       res.send("*ok*");
     else
       res.sendStatus(200);
@@ -76,7 +74,7 @@ router.post("/sync", function (req, res, next) {
 //   });
 // });
 
-router.get("/key", mixins.loggedInAlexD, function (req, res, next) {
+router.get("/key", mixins.loggedIn, mixins.loggedInAlexD, function (req, res, next) {
   res.render('key', req.session.locals);
 });
 

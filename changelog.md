@@ -22,8 +22,7 @@
  - blockchain testing
  - model: transaction
 
- - wait for money to actually go through?
-
+ - debugging settings
  - writeup
 
 **1.0.0 : Live : 6/25/2018**

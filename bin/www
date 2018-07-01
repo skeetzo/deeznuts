@@ -6,7 +6,7 @@
 var config = require('../config/index');
 var app = require('../app');
 var debug = require('debug')('alexdeeznuts:server');
-// var http = require('http');
+var http = require('http');
 var https = require('https');
 var rtmp = require('../modules/rtmp');
 var cron = require('../modules/cron').start();
@@ -31,15 +31,20 @@ alexd.findOne({'username':config.alexd.username}, function (err, alexd_) {
 var port = normalizePort('3000');
 app.set('port', port);
 
-/**
- * Create HTTPS server.
- */
-var fs = require('fs');
-var privateKey  = fs.readFileSync('/opt/bitnami/apache2/conf/server.key', 'utf8');
-var certificate = fs.readFileSync('/opt/bitnami/apache2/conf/server.crt', 'utf8');
-var credentials = {'key': privateKey, 'cert': certificate};
-var server = https.createServer(credentials, app);
-
+var server;
+if (!config.debugging) {
+  /**
+   * Create HTTPS server.
+   */
+  var fs = require('fs');
+  var privateKey  = fs.readFileSync('/opt/bitnami/apache2/conf/server.key', 'utf8');
+  var certificate = fs.readFileSync('/opt/bitnami/apache2/conf/server.crt', 'utf8');
+  var credentials = {'key': privateKey, 'cert': certificate};
+  server = https.createServer(credentials, app);
+}
+else {
+  server = http.createServer(app);
+}
 
 /**
  * Listen on provided port, on all network interfaces.

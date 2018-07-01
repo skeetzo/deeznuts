@@ -18,7 +18,7 @@ prepend content
           type: 'flv',
           isLive: true,
           cors: true,
-          url: "https://#{domain}:8443/live/stream.flv?sign=#{key}"
+          url: "#{live_url}#{key}"
         });
         flvPlayer.attachMediaElement(videoElement);
         flvPlayer.load();
@@ -38,7 +38,7 @@ prepend content
           else if (seconds<=0) {
             clearInterval(countdown);
             alert('Times up!');
-            window.location.replace("https://#{domain}/");
+            window.location.replace("#{domain}/");
           }
         },1000);
       });

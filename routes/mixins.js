@@ -33,12 +33,14 @@ module.exports.loggedIn = function(req, res, next) {
 }
 
 module.exports.loggedInAlexD = function(req, res, next) {
-    if (req.session.user&&req.session.locals.loggedIn&&req.session.user.username==config.alexd.username)
+    User.findOne({'_id':req.session.user._id,'username':config.alexd.username}, function (err, user) {
+        if (err) {
+            logger.warn(err);
+            req.session.locals.error = 'Ha!';
+            return res.status(401).render('index', req.session.locals); 
+        }
         next(null);
-    else {
-        req.session.locals.error = 'Ha!';
-        res.status(401).render('index', req.session.locals);
-    }
+    });
 }
 
 // Reset Locals
@@ -81,7 +83,7 @@ module.exports.resetLocals = function(req, res, next) {
         req.session.locals._csrf = req.csrfToken();
 
     // rtmp key
-    if (!req.session.locals.key) {
+    if (!req.session.locals.key&&!config.debugging) {
         var timestamp = (Date.now() + config.streamKeyExpire);
         var hash = md5("/live/stream-"+timestamp+"-"+config.streamKey);
         req.session.locals.key = timestamp+"-"+hash;

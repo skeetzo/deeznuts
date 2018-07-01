@@ -85,18 +85,18 @@ var passport = require('./modules/passport');
 app.use(passport.initialize());
 app.use(passport.session());
 
-// SSL
-app.use (function (req, res, next) {
-  if (req.secure) {
-    // config.logger.log('secure: %s', req.secure);
-    // request was via https, so do no special handling
-    next();
-  } else {
-    // config.logger.log('not secure: %s', req.secure);
-    // request was via http, so redirect to https
-    res.redirect('https://' + req.headers.host + req.url);
-  }
-});
+
+// force SSL
+if (!config.debugging)
+  app.use (function (req, res, next) {
+    if (req.secure) {
+      // config.logger.log('secure: %s', req.secure);
+      next();
+    } else {
+      // config.logger.log('not secure: %s', req.secure);
+      res.redirect('https://' + req.headers.host + req.url);
+    }
+  });
 
 // /
 app.use('/', require('./routes/index'));
