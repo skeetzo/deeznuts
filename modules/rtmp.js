@@ -3,31 +3,19 @@ var config = require('../config/index'),
 
 const NodeMediaServer = require('node-media-server');
 
+var serverOptions = {
+  'logType': 3,
 
-
-const serverOptions = {
-  logType: 3,
-
-  rtmp: {
-    port: 1935,
-    chunk_size: 60000,
-    gop_cache: true,
-    ping: 60,
-    ping_timeout: 30
+  'rtmp': {
+    'port': 1935,
+    'chunk_size': 60000,
+    'gop_cache': true,
+    'ping': 60,
+    'ping_timeout': 30
   },
-  http: {
-    port: 8000,
-    allow_origin: '*'
-  },
-  // https: {
-    // port: 8443,
-    // key:'./privatekey.pem',
-    // cert:'./certificate.pem',
-  // },
-  auth: {
-    play: true,
-    publish: true,
-    secret: config.streamKey
+  'http': {
+    'port': 8000,
+    'allow_origin': '*'
   },
   // trans: {
   //   ffmpeg: '/usr/local/bin/ffmpeg',
@@ -41,6 +29,19 @@ const serverOptions = {
   //   ]
   // }
 };
+
+if (!config.debugging) {
+  serverOptions.https = {
+    'port': 8443,
+    'key':'./dev/privatekey.pem',
+    'cert':'./dev/certificate.pem'
+  };
+  serverOptions.auth = {
+    'api' : true,
+    'api_user': 'admin',
+    'api_pass': 'rtmpsucksdeeck'
+  };
+}
 
 var nms = new NodeMediaServer(serverOptions);
 nms.run();

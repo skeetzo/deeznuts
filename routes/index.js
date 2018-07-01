@@ -5,11 +5,11 @@ var express = require('express'),
     async = require('async'),
     _ = require('underscore'),
     passport = require('passport'),
-    mixins = require('../modules/mixins'),
-    Viewer = require('../models/viewer');
+    mixins = require('../routes/mixins'),
+    User = require('../models/user');
 
 // /
-router.use(mixins.resetLocals, mixins.findViewer, function (req, res, next) {
+router.use(mixins.resetLocals, mixins.syncUser, function (req, res, next) {
 	var ips = req.ips || [];
   ips.push(req.connection.remoteAddress);
   if (req.headers['x-forwarded-for'])
@@ -25,22 +25,23 @@ router.get("/", function (req, res, next) {
 
 // /live
 router.get("/live", mixins.loggedIn, mixins.hasPaid, function (req, res, next) {
-  if (config.streamKeyCurrent)
-    req.session.locals.key = config.streamKeyCurrent;
   res.render('live', req.session.locals);    
 });
 
 // blockchainCallback
 router.get(config.blockchainRoute, function (req, res, next) {
   logger.debug('req.query: %s', JSON.stringify(req.query, null, 4));
-  Viewer.addTransaction(req.query, function (err) {
+  User.syncTransaction(req.query, function (err) {
     if (err) logger.warn(err);
-    res.send("*ok*");
+    if (parseInt(req.query.confirmations, 10)>=config.blockchainConfirmationLimit)
+      res.send("*ok*");
+    else
+      res.sendStatus(200);
   });
 });
 
 router.get("/address", mixins.loggedIn, function (req, res, next) {
-  Viewer.generateAddress(req.session.user, function (err) {
+  User.generateAddress(req.session.user, function (err) {
     if (err) {
       logger.warn(err);
       return res.sendStatus(404);
@@ -50,10 +51,11 @@ router.get("/address", mixins.loggedIn, function (req, res, next) {
 });
 
 // check for recent tips
-router.post("/sync", mixins.hasViewer, function (req, res, next) {
+router.post("/sync", function (req, res, next) {
+  if (!req.session.user) return res.sendStatus(204);
   // logger.debug('req.session.user: %s', JSON.stringify(req.session.user, null, 4));
-  req.body._id = req.session.user._id;
-  Viewer.sync(req.body, function (err, synced) {
+  req.body._id = req.session.user._id ? req.session.user._id : null;
+  User.sync(req.body, function (err, synced) {
     if (err) {
       logger.warn(err);
       return res.sendStatus(404);
@@ -63,16 +65,16 @@ router.post("/sync", mixins.hasViewer, function (req, res, next) {
 });
 
 // router.get("/add", mixins.loggedIn,  function (req, res, next) {
-//   Viewer.findOne({'ip':req.session.user.ip}, function (err, viewer) {
+//   User.findOne({'ip':req.session.user.ip}, function (err, user) {
 //     if (err) logger.warn(err);
-//     if (!viewer) return res.sendStatus(404);
-//     // viewer.time_added = 60;
+//     if (!user) return res.sendStatus(404);
+//     // user.time_added = 60;
 //     var oneDollarInBTC = 0.00015;
-//     viewer.addTime(100000000*oneDollarInBTC*6);
+//     user.addTime(100000000*oneDollarInBTC*6);
 //   });
 // });
 
-router.get("/key", mixins.loggedInAlexD, function (req, res, next) {
+router.get("/key", mixins.loggedIn, mixins.loggedInAlexD, function (req, res, next) {
   res.render('key', req.session.locals);
 });
 
@@ -95,9 +97,6 @@ router.get("/support", function (req, res, next) {
 router.get("/privacy", function (req, res, next) {
   res.render('privacy', req.session.locals);
 });
-
-
-
 
 // Auth
 
@@ -132,10 +131,9 @@ router.post("/login", signUpLimiter, [
     failureRedirect: '/',
   }),
     function (req, res) {
-    req.session.user = mixins.Viewer(req.user);
-    req.session.user.logins++;
+    req.session.user = mixins.User(req.user);
     req.session.locals.loggedIn = true;
-    req.session.locals.user = mixins.Viewer(req.session.user);
+    req.session.locals.user = mixins.User(req.session.user);
     logger.log('login successful (local): %s', req.user._id);
     req.session.save(function(err) {
       if (err) logger.warn(err);

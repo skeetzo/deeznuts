@@ -43,7 +43,7 @@ app.use(express.static(__dirname, { dotfiles: 'allow' } ));
 var csrf = require('csurf');
 app.use(csrf({cookie: true}));
 
-// app.enable('trust proxy');
+app.enable('trust proxy');
 
 var MongoStore = require('./modules/mongo');
 var session = require('express-session');
@@ -52,24 +52,29 @@ maxAge = 1 * 2 * 60 * 60 * 1000; // 2 hours
 var sess = {
   name: "deek",
   secret: "Suck my dick",
-  saveUninitialized: true,
+  saveUninitialized: false,
   resave: true,
   cookie: {
       secure: false,
       // secure: 'auto',
       // domain: ,
       httpOnly: true,
+      sameSite: 'strict',
       maxAge: maxAge
   },
-  ephemeral: true,
+  // ephemeral: true,
   store:  MongoStore,
   proxy: true,
 };
+if (app.get('env') === 'production') {
+  app.set('trust proxy', 1) // trust first proxy
+  sess.cookie.secure = true // serve secure cookies
+}
 app.use(session(sess));
 
 // Analytics - Google
-// var nodalytics = require('nodalytics');
-// app.use(nodalytics(config.Google_Analytics));
+var nodalytics = require('nodalytics');
+app.use(nodalytics(config.Google_Analytics));
 
 // Flash
 var flash = require('express-flash');
@@ -80,23 +85,20 @@ var passport = require('./modules/passport');
 app.use(passport.initialize());
 app.use(passport.session());
 
-// Read the Certbot response from an environment variable; we'll set this later:
-// const letsEncryptReponse = process.env.CERTBOT_RESPONSE ||;
-// Return the Let's Encrypt certbot response:
 
-app.get('/.well-known/acme-challenge/:response', function (req, res) {
-  config.logger.log('req: %s', JSON.stringify(req,null,4));
-  config.logger.log('params: %s', req.params);
-  config.logger.log('params: %s', JSON.stringify(req.params));
-  config.logger.log('params: %s', req.params[0]);
-  config.logger.log('params: %s', JSON.stringify(req.params[0]));
-  config.logger.log('resp: %s', req.param('response'));
+// force SSL
+if (!config.debugging)
+  app.use (function (req, res, next) {
+    if (req.secure) {
+      // config.logger.log('secure: %s', req.secure);
+      next();
+    } else {
+      // config.logger.log('not secure: %s', req.secure);
+      res.redirect('https://' + req.headers.host + req.url);
+    }
+  });
 
-  config.logger.log('body: %s', req.body);
-  config.logger.log('body: %s', JSON.stringify(req.body));
-  res.send(req.param('response'));
-});
-
+// /
 app.use('/', require('./routes/index'));
 
 // catch 404 and forward to error handler
@@ -114,7 +116,7 @@ app.use(function (err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
   
-  config.logger.warn(err);
+  config.logger.warn(err.message);
 });
 
 module.exports = app;
