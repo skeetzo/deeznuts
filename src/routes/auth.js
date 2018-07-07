@@ -1,6 +1,6 @@
 var config = require('../config/index'),
     logger = config.logger,
-    passport = require('passports'),
+    passport = require('passport'),
     mixins = require('../modules/mixins');
 
 module.exports = function homeRoutes(router) {

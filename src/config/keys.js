@@ -6,7 +6,7 @@ module.exports = function() {
     var localConfig = {};
 
     try {
-        localConfig = fs.readFileSync('./dev/localConfig.json').toString();
+        localConfig = fs.readFileSync(this.local_keys_path).toString();
         localConfig = JSON.parse(localConfig);
     }
     catch (err) {
