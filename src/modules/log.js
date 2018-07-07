@@ -6,10 +6,6 @@ var config = require('../config/index'),
     async = require('async'),
     _ = require('underscore');
 
-
-// config.logger_log_path
-
-
 var Log = function() {
 
 }
@@ -17,15 +13,15 @@ var Log = function() {
 Log.prototype.backup = function(callback) {
 	// write to dev logs backup
 	var newLog = moment(new Date()).format('MM-DD-YYYY');
-	fss.ensureDir('./dev/logs/backup', err => {
+	fss.ensureDir(config.logs_backupDir, err => {
 	    if (err) return callback(err);
 	  	// dir has now been created, including the directory it is to be placed in
 	  	logger.log('----- Logs Backed Up: %s -----', newLog);
   		// read log file text
-	  	var backup = fs.readFileSync(config.logger_log_path).toString();
+	  	var backup = fs.readFileSync(config.logs_file).toString();
 	  	// regex cleanup
 	  	backup = backup.replace(/\[(1|3|2|4)(7|9|3|4|2|1|)m/gi,'');
-	    fs.writeFile('./dev/logs/backup/'+newLog, backup, function (err) {
+	    fs.writeFile(config.logs_backupDir+"/"+newLog, backup, function (err) {
 	    	if (err) console.error(err);
 			callback(null);
 		});
@@ -46,10 +42,10 @@ Log.prototype.reset = function(callback) {
 }
 
 Log.prototype.clear = function(callback) {
-	fs.unlink('./dev/logs/file.log', function (err) {
+	fs.unlink(config.logs_file, function (err) {
         if (err) logger.warn(err);
         console.log('Logs Cleared');
-        fss.ensureFileSync(config.logger_log_path);
+        fss.ensureFileSync(config.logs_file);
         callback(null);
     });
 }

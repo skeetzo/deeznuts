@@ -1,7 +1,7 @@
 var config = require('../config/index'),
     logger = config.logger;
 
-const NodeMediaServer = require('node-media-server');
+const { NodeMediaServer } = require('node-media-server');
 
 var serverOptions = {
   'logType': 3,
@@ -30,18 +30,20 @@ var serverOptions = {
   // }
 };
 
-if (!config.debugging) {
+if (config.ssl)
   serverOptions.https = {
     'port': 8443,
     'key':'./dev/privatekey.pem',
     'cert':'./dev/certificate.pem'
   };
+
+if (config.debugging)
   serverOptions.auth = {
     'api' : true,
     'api_user': 'admin',
     'api_pass': 'rtmpsucksdeeck'
   };
-}
+
 
 var nms = new NodeMediaServer(serverOptions);
 nms.run();

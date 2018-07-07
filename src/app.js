@@ -1,6 +1,7 @@
 var config = require('./config/index'),
     logger = config.logger,
     path = require('path'),
+    createError = require('http-errors'),
     _ = require('underscore'),
     crypto = require('crypto'),
     express = require('express'),
@@ -122,19 +123,21 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 // force SSL
-if (!config.ssl)
+if (config.ssl)
   app.use (function (req, res, next) {
     if (req.secure) {
-      // config.logger.log('secure: %s', req.secure);
+      // logger.log('secure: %s', req.secure);
       next();
     } else {
-      // config.logger.log('not secure: %s', req.secure);
+      // logger.log('not secure: %s', req.secure);
       res.redirect('https://' + req.headers.host + req.url);
     }
   });
 
 // /
-app.use('/', require('./routes/index'));
+var router = express.Router();
+require('./routes/index')(router);
+app.use("/", router);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
@@ -151,7 +154,7 @@ app.use(function (err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
   
-  config.logger.warn(err.message);
+  logger.warn(err.message);
 });
 
 module.exports = app;

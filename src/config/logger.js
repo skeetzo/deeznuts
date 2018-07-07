@@ -42,7 +42,7 @@ module.exports = function() {
                 },
                 function (data) {
                   // Static
-                  fs.appendFileSync('./dev/logs/file.log', data.output + '\n');
+                  fs.appendFileSync(self.logs_file, data.output + '\n');
                 },
             ]
         });

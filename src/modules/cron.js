@@ -13,9 +13,7 @@ var crons = function() {
 crons.prototype = {
     start : function () {
         var self = this;
-        if (!config.Crons_On) {
-            return logger.debug('Skipping Crons');
-        }
+        if (!config.Crons_On) return logger.debug('Skipping Crons');
         logger.log('Starting Crons');
 
         var jobs = [];

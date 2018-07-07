@@ -12,14 +12,14 @@ module.exports = function homeRoutes(router) {
     if (req.headers['x-forwarded-for'])
       ips.push(req.headers['x-forwarded-for']);
     logger.log("%s /%s %s", ips, req.method, req.url);
+    // misc pages redirect
+    if (_.contains(config.pages, req.url.replace('/','')))
+      return res.render(req.url.replace('/',''), req.session.locals);
   	next(null);
   });
 
   // /index
   router.get("/", function (req, res, next) {
-    // misc pages redirect
-    if (_.contains(config.pages,req.url.replace('/','')))
-      return render(req.url);
     res.render('index', req.session.locals);
   });
 }

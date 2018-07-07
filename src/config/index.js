@@ -66,8 +66,16 @@ config.alexd = {
 	'password': 'gofuckyourself6969'
 };
 
-require('./keys.js').call(config);
-require('./logger.js').call(config);
-require('./crons.js').call(config);
+config.local_keys_path = './src/dev/localConfig.json';
+// config.local_google_keys_path = './src/dev/kairosnaps-google.json';
+// config.local_data_path = './src/dev/localData.json';
+
+config.logs_backupDir = './src/dev/logs/backup';
+config.logs_file = './src/dev/logs/file.log';
+
+
+require('./keys').call(config);
+require('./logger').call(config);
+require('./crons').call(config);
 
 module.exports = config;
