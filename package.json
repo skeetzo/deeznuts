@@ -1,11 +1,27 @@
 {
   "name": "alexdeeznuts",
+  "description": "Performers' Live Streaming w/ Blockchain",
   "version": "0.0.9",
   "private": true,
+  "author": "Skeetzo",
+  "main": "src/app.js",
   "scripts": {
     "start": "node ./bin/www"
   },
-  "author": "Skeetzo",
+  "engines": {
+    "node": "9.4.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/skeetzo/alexdeeznuts.git"
+  },
+  "keywords": [
+    "rtmp",
+    "live",
+    "streaming",
+    "bitcoin",
+    "blockchain"
+  ],
   "dependencies": {
     "async": "^2.6.1",
     "bcrypt-nodejs": "0.0.3",

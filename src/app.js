@@ -1,24 +1,28 @@
-var createError = require('http-errors');
-var express = require('express');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
-var sassMiddleware = require('node-sass-middleware');
-var config = require('./config/index');
-var _ = require('underscore');
-
-var app = express();
+var config = require('./config/index'),
+    logger = config.logger,
+    path = require('path'),
+    _ = require('underscore'),
+    crypto = require('crypto'),
+    express = require('express'),
+    app = express();
 
 _.forEach(_.keys(config.siteData),function(setting) {
   app.locals[setting] = config.siteData[setting];
 });  
 
-// view engine setup
+app.locals.pretty = true;
+// app.locals.basedir = __dirname + '/views/pages/';
+app.locals.cache = true;
+app.locals.debug = false;
+
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
+// app.set('view options',{layout:false});
 
-app.use(logger('dev'));
+var morgan = require('morgan');
+app.use(morgan('dev'));
 app.use(require('helmet')());
+
 // Body Parsers
 // parse application/x-www-form-urlencoded
 var bodyParser = require('body-parser');
@@ -26,18 +30,47 @@ var bodyParser = require('body-parser');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:true}));
 
-app.use(cookieParser('suckafatone'));
+// Validator & Sanitizer
+// var expressValidator = require('express-validator');
+// app.use(expressValidator()); // this line must be immediately after any of the bodyParser middlewares!
+
+// Cookie Parser
+var cookieParser = require('cookie-parser');
+app.use(cookieParser('Suck my dick'));
+
+// Sass
 var outputStyle = 'minified';
 if (config.debugging) outputStyle = 'extended';
-app.use(sassMiddleware({
+var sass = require('node-sass-middleware');
+app.use(sass({
   src: path.join(__dirname, 'public'),
   dest: path.join(__dirname, 'public'),
   outputStyle: outputStyle,
+  debug: false,   
   indentedSyntax: true, // true = .sass and false = .scss
   sourceMap: true
+  // prefix:  '/public'  // Where prefix is at <link rel="stylesheets" href="prefix/style.css"/>
 }));
+
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(__dirname, { dotfiles: 'allow' } ));
+
+// var multer = require('multer');
+// // app.use(multer({dest:'./src/tmp/images'}));
+// var storage = multer.diskStorage({
+//   destination: function (req, file, cb) {
+//     cb(null, './public/tmp/images')
+//   },
+//   filename: function (req, file, cb) {
+//     crypto.pseudoRandomBytes(16, function (err, raw) {
+//       if (err) return cb(err);
+//       var fileName = raw.toString('hex').substring(0,6) + path.extname(file.originalname);
+//       logger.log('File Uploaded: %s',fileName);
+//       cb(null, fileName);
+//     });
+//   }
+// });
+// app.use(multer({ 'storage': storage }).single('file')); //Beware, you need to match .single() with whatever name="" of your file upload field in html
 
 // CSURF
 var csrf = require('csurf');
@@ -47,8 +80,11 @@ app.enable('trust proxy');
 
 var MongoStore = require('./modules/mongo');
 var session = require('express-session');
+
 var maxAge = 1 * 12 * 60 * 60 * 1000; // half a day
 maxAge = 1 * 2 * 60 * 60 * 1000; // 2 hours
+if (config.debugging) maxAge = 5 * 60 * 1000; // five minutes
+
 var sess = {
   name: "deek",
   secret: "Suck my dick",
@@ -66,7 +102,7 @@ var sess = {
   store:  MongoStore,
   proxy: true,
 };
-if (app.get('env') === 'production') {
+if (!config.debugging) {
   app.set('trust proxy', 1) // trust first proxy
   sess.cookie.secure = true // serve secure cookies
 }
@@ -81,13 +117,12 @@ var flash = require('express-flash');
 app.use(flash());
 
 // Passport
-var passport = require('./modules/passport');
+var passport = require('./modules/passports');
 app.use(passport.initialize());
 app.use(passport.session());
 
-
 // force SSL
-if (!config.debugging)
+if (!config.ssl)
   app.use (function (req, res, next) {
     if (req.secure) {
       // config.logger.log('secure: %s', req.secure);

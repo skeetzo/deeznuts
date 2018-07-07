@@ -2,7 +2,8 @@
 var config = {};
 
 // Debugging
-config.debugging = false;
+config.debugging = true;
+config.ssl = false;
 config.debugging_live = false;
 config.local = false;
 
@@ -10,7 +11,7 @@ config.Crons_On = true;
 
 // App Settings
 config.botName = "DeezNuts";
-config.port = Number(process.env.PORT || 3000);
+config.port = Number(process.env.PORT || 3020);
 
 // Site Settings
 config.title = "Alex D.'s Nuts";
@@ -22,6 +23,10 @@ else config.domain = "https://"+config.domain;
 config.author = "Skeetzo";
 config.description = "Porn Star Streamer";
 config.Google_Analytics = "UA-82463743-8";
+
+config.port = 3020;
+
+config.pages = ['privacy','terms','support'];
 
 // DeezNuts Settings
 config.conversionRate = 6; // $1 per 6 minutes

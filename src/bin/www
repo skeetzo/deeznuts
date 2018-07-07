@@ -10,6 +10,7 @@ var http = require('http');
 var https = require('https');
 var rtmp = require('../modules/rtmp');
 var cron = require('../modules/cron').start();
+
 var alexd = require('../models/user');
 alexd.findOne({'username':config.alexd.username}, function (err, alexd_) {
   if (err) return config.logger.warn(err);
@@ -28,17 +29,17 @@ alexd.findOne({'username':config.alexd.username}, function (err, alexd_) {
  * Get port from environment and store in Express.
  */
 
-var port = normalizePort('3000');
+var port = normalizePort(config.port);
 app.set('port', port);
 
 var server;
-if (!config.debugging) {
+if (!config.ssl) {
   /**
    * Create HTTPS server.
    */
   var fs = require('fs');
-  var privateKey  = fs.readFileSync('/opt/bitnami/apache2/conf/server.key', 'utf8');
-  var certificate = fs.readFileSync('/opt/bitnami/apache2/conf/server.crt', 'utf8');
+  var privateKey  = fs.readFileSync('/etc/nginx/ssl/nginx.key', 'utf8');
+  var certificate = fs.readFileSync('/etc/nginx/ssl/nginx.crt', 'utf8');
   var credentials = {'key': privateKey, 'cert': certificate};
   server = https.createServer(credentials, app);
 }
