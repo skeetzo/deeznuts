@@ -3,7 +3,7 @@ var config = {};
 
 // Debugging
 config.debugging = true;
-config.ssl = false;
+config.ssl = true;
 config.debugging_live = false;
 config.local = false;
 
