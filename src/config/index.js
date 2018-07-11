@@ -2,10 +2,7 @@
 var config = {};
 
 // Debugging
-config.debugging = true;
-config.ssl = true;
-config.debugging_live = false;
-config.local = false;
+
 
 config.Crons_On = true;
 
@@ -66,6 +63,14 @@ config.alexd = {
 	'password': 'gofuckyourself6969'
 };
 
+function deploy(environment) {
+config.debugging = true;
+config.ssl = true;
+config.debugging_live = false;
+config.local = false;
+
+}
+
 config.local_keys_path = './src/dev/localConfig.json';
 // config.local_google_keys_path = './src/dev/kairosnaps-google.json';
 // config.local_data_path = './src/dev/localData.json';
@@ -73,6 +78,7 @@ config.local_keys_path = './src/dev/localConfig.json';
 config.logs_backupDir = './src/dev/logs/backup';
 config.logs_file = './src/dev/logs/file.log';
 
+deploy(process.env.NODE_ENV).call(config);
 
 require('./keys').call(config);
 require('./logger').call(config);
