@@ -1,34 +1,33 @@
 // Config file
 var config = {};
 
+// Deploy
+deploy(process.env.NODE_ENV);
+
 // Debugging
-
-
 config.Crons_On = true;
 
 // App Settings
 config.botName = "DeezNuts";
-config.port = Number(process.env.PORT || 3020);
+config.port = Number(process.env.PORT || 3000);
 
 // Site Settings
 config.title = "Alex D.'s Nuts";
 config.siteTitle = "AlexDeezNuts.com";
 config.domain = "alexdeeznuts.com";
 if (config.local) config.domain = "localhost";
-if (config.debugging) config.domain = "http://"+config.domain;
+if (!config.ssl) config.domain = "http://"+config.domain;
 else config.domain = "https://"+config.domain;
-config.author = "Skeetzo";
+// config.subtitle = "While Performers Snap";
 config.description = "Porn Star Streamer";
+config.keywords = 'rtmp, live, stream, bitcoin, blockchain';
+config.author = "Skeetzo";
 config.Google_Analytics = "UA-82463743-8";
-
-config.port = 3020;
-
 config.pages = ['privacy','terms','support'];
 
-// DeezNuts Settings
+// Live
 config.conversionRate = 6; // $1 per 6 minutes
 config.defaultTime = 60; // time in seconds
-if (config.debugging) config.defaultTime = 60*60*23+45*60;
 config.status = "Not Live";
 // Bitcoin & Blockchain
 config.bitcoin_address = "7h15157o74lly4b17co1n4ddre55";
@@ -64,11 +63,27 @@ config.alexd = {
 };
 
 function deploy(environment) {
-config.debugging = true;
-config.ssl = true;
-config.debugging_live = false;
-config.local = false;
+	console.log('deploying - %s', environment);
 
+	if (environment=='development') {
+		config.debugging = true;
+		config.ssl = false;
+		config.local = true;
+		config.defaultTime = 60*60*23+45*60;
+		config.debugging_live = true;
+	}
+	else if (environment=='staging') {
+		config.debugging = false;
+		config.ssl = true;
+		config.debugging_live = false;
+	}
+	else if (environment=='production') {
+		config.debugging = false;
+		config.ssl = true;
+		config.local = false;
+		config.debugging_live = false;
+
+	}
 }
 
 config.local_keys_path = './src/dev/localConfig.json';
@@ -78,7 +93,7 @@ config.local_keys_path = './src/dev/localConfig.json';
 config.logs_backupDir = './src/dev/logs/backup';
 config.logs_file = './src/dev/logs/file.log';
 
-deploy(process.env.NODE_ENV).call(config);
+
 
 require('./keys').call(config);
 require('./logger').call(config);
