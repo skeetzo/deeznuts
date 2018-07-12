@@ -3,12 +3,11 @@ var config = {};
 
 // Debugging
 
-
 config.Crons_On = true;
 
 // App Settings
 config.botName = "DeezNuts";
-config.port = Number(process.env.PORT || 3020);
+config.port = Number(process.env.PORT || 3000);
 
 // Site Settings
 config.title = "Alex D.'s Nuts";
@@ -20,9 +19,6 @@ else config.domain = "https://"+config.domain;
 config.author = "Skeetzo";
 config.description = "Porn Star Streamer";
 config.Google_Analytics = "UA-82463743-8";
-
-config.port = 3020;
-
 config.pages = ['privacy','terms','support'];
 
 // DeezNuts Settings
@@ -64,11 +60,24 @@ config.alexd = {
 };
 
 function deploy(environment) {
-config.debugging = true;
-config.ssl = true;
-config.debugging_live = false;
-config.local = false;
-
+	if (environment=='development') {
+		config.debugging = true;
+		config.ssl = false;
+		config.debugging_live = true;
+		config.local = false;
+	}
+	else if (environment=='staging') {
+		config.debugging = true;
+		config.ssl = true;
+		config.debugging_live = false;
+		config.local = false;
+	}
+	else if (environment=='production') {
+		config.debugging = false;
+		config.ssl = true;
+		config.debugging_live = false;
+		config.local = true;
+	}
 }
 
 config.local_keys_path = './src/dev/localConfig.json';
@@ -78,7 +87,7 @@ config.local_keys_path = './src/dev/localConfig.json';
 config.logs_backupDir = './src/dev/logs/backup';
 config.logs_file = './src/dev/logs/file.log';
 
-deploy(process.env.NODE_ENV).call(config);
+deploy(process.env.NODE_ENV);
 
 require('./keys').call(config);
 require('./logger').call(config);
