@@ -5,6 +5,8 @@ module.exports = {
     script    : 'npm',
     args      : 'start',
     cwd       : './alexdeeznuts',
+    instances : "max",
+    exec_mode : "cluster",
     env: {
       NODE_ENV: 'development'
     },
