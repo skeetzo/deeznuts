@@ -22,15 +22,10 @@ module.exports = {
     name      : 'deeznuts',
     script    : 'npm',
     args      : 'start',
-<<<<<<< HEAD
-    cwd       : './alexdeeznuts',
-    instances : "max",
-    exec_mode : "cluster",
-=======
     cwd       : '/var/www/apps/alexdeeznuts/source',
     exec_mode : "cluster_mode",
     instances : 2,
->>>>>>> 067129d5d8bbf772008881f951111bade83387de
+
     env: {
       NODE_ENV: 'development',
       PORT: "3020"
