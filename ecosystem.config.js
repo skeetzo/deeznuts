@@ -60,7 +60,7 @@ module.exports = {
       // Can be multiple commands separated by the character ";"
       // "pre-deploy-local" : "echo 'Yo Bitch I think it\'s working",
       // Commands to be executed on the server after the repo has been cloned
-      "post-deploy" : "npm install && pm2 startOrRestart ecosystem.config.js --env development",
+      "post-deploy" : "npm install && pm2 startOrRestart ecosystem.config.js",
       // "post-deploy" : "npm install && pm2 startOrRestart",
       // Environment variables that must be injected in all applications on this env
       env  : {
