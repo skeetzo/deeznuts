@@ -28,7 +28,7 @@ module.exports = {
       ref  : "origin/development",
       repo : "git@github.com:skeetzo/deeznuts-hades.git",
       path : "/var/www/apps/alexdeeznuts",
-      "post-deploy" : "npm install && pm2 startOrRestart ecosystem.config.js",
+      "post-deploy" : "npm install && pm2 startOrRestart ecosystem.config.js --only deeznuts",
       env  : {
         NODE_ENV: "development"
       }
@@ -39,7 +39,7 @@ module.exports = {
       ref  : "origin/staging",
       repo : "git@github.com:skeetzo/deeznuts-hades.git",
       path : "/var/www/apps/alexdeeznuts",
-      "post-deploy" : "npm install && pm2 startOrRestart ecosystem.config.js --env staging",
+      "post-deploy" : "npm install && pm2 startOrRestart ecosystem.config.js --env staging --only deeznuts",
       env  : {
         NODE_ENV: "staging"
       }
@@ -50,7 +50,7 @@ module.exports = {
       ref  : "origin/production",
       repo : "git@github.com:skeetzo/deeznuts-hades.git",
       path : "/var/www/apps/alexdeeznuts",
-      "post-deploy" : "npm install && pm2 startOrRestart ecosystem.config.js --env production",
+      "post-deploy" : "npm install && pm2 startOrRestart ecosystem.config.js --env production --only deeznuts",
       env  : {
         NODE_ENV: "production"
       }
