@@ -6,7 +6,7 @@ module.exports = {
     args      : 'start',
     cwd       : '/var/www/apps/alexdeeznuts/source',
     // exec_mode : "cluster_mode",
-    instances : 1,
+    // instances : 1,
     env: {
       NODE_ENV: 'development',
       PORT: "3020"
