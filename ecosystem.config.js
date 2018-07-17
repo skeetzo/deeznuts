@@ -25,6 +25,7 @@ module.exports = {
     cwd       : '/var/www/apps/alexdeeznuts/source',
     exec_mode : "cluster_mode",
     instances : 2,
+
     env: {
       NODE_ENV: 'development',
       PORT: "3020"
