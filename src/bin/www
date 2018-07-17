@@ -54,6 +54,7 @@ else {
 
 server.listen(port, function () {
   logger.log("Live at Port %s", port);
+  process.send('ready');
 });
 server.on('error', onError);
 server.on('listening', onListening);
