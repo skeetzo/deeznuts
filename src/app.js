@@ -129,7 +129,7 @@ if (config.ssl)
       // logger.log('secure: %s', req.secure);
       next();
     } else {
-      // logger.log('not secure: %s', req.secure);
+      logger.log('REDIRECTING: %s', req.secure);
       res.redirect('https://' + req.headers.host + req.url);
     }
   });
