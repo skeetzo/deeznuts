@@ -24,6 +24,9 @@ config.keywords = 'rtmp, live, stream, bitcoin, blockchain';
 config.author = "Skeetzo";
 config.Google_Analytics = "UA-82463743-8";
 config.pages = ['privacy','terms','support'];
+config.ssl = false;
+config.ssl_key = '/etc/letsencrypt/live/alexdeeznuts.com/privkey.pem';
+config.ssl_cert = '/etc/letsencrypt/live/alexdeeznuts.com/fullchain.pem';
 
 // Live
 config.conversionRate = 6; // $1 per 6 minutes

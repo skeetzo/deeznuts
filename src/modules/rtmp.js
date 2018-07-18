@@ -33,8 +33,8 @@ var serverOptions = {
 if (config.ssl)
   serverOptions.https = {
     'port': 8443,
-    'key':'./dev/privatekey.pem',
-    'cert':'./dev/certificate.pem'
+    'key': config.ssl_key,
+    'cert': config.ssl_cert
   };
 
 if (config.debugging)
