@@ -39,8 +39,8 @@ if (config.ssl) {
    * Create HTTPS server.
    */
   var fs = require('fs');
-  var privateKey  = fs.readFileSync('/etc/letsencrypt/live/alexdeeznuts.com/privkey.pem', 'utf8');
-  var certificate = fs.readFileSync('/etc/letsencrypt/live/alexdeeznuts.com/cert.pem', 'utf8');
+  var privateKey  = fs.readFileSync(config.ssl_key, 'utf8');
+  var certificate = fs.readFileSync(config.ssl_cert, 'utf8');
   var credentials = {'key': privateKey, 'cert': certificate};
   server = https.createServer(credentials, app);
 }
