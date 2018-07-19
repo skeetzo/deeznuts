@@ -2,6 +2,7 @@
 var config = {};
 
 // Debugging
+deploy(process.env.NODE_ENV);
 
 config.Crons_On = true;
 
@@ -14,8 +15,8 @@ config.title = "Alex D.'s Nuts";
 config.siteTitle = "AlexDeezNuts.com";
 config.domain = "alexdeeznuts.com";
 if (config.local) config.domain = "localhost";
-if (config.debugging) config.domain = "http://"+config.domain;
-else config.domain = "https://"+config.domain;
+if (config.ssl) config.domain = "https://"+config.domain;
+else config.domain = "http://"+config.domain;
 config.author = "Skeetzo";
 config.description = "Porn Star Streamer";
 config.Google_Analytics = "UA-82463743-8";
@@ -76,7 +77,8 @@ function deploy(environment) {
 		config.debugging = false;
 		config.ssl = true;
 		config.debugging_live = false;
-		config.local = true;
+		config.local = false;
+		config.localDatabase = true;
 	}
 }
 
@@ -86,8 +88,6 @@ config.local_keys_path = './src/dev/localConfig.json';
 
 config.logs_backupDir = './src/dev/logs/backup';
 config.logs_file = './src/dev/logs/file.log';
-
-deploy(process.env.NODE_ENV);
 
 require('./keys').call(config);
 require('./logger').call(config);

@@ -52,7 +52,7 @@ else {
  * Listen on provided port, on all network interfaces.
  */
 
-server.listen(port, function () {
+server.listen(port, "127.0.0.1", function () {
   logger.log("Live at Port %s", port);
 });
 server.on('error', onError);
