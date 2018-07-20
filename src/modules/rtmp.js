@@ -8,14 +8,15 @@ var serverOptions = {
 
   'rtmp': {
     'port': 1935,
-    'chunk_size': 60000,
+    'chunk_size': 60000,  
     'gop_cache': true,
     'ping': 60,
     'ping_timeout': 30
   },
   'http': {
     'port': 8000,
-    'allow_origin': '*'
+    'allow_origin': '*',
+    'mediaroot': './media'
   }
 };
 
@@ -37,14 +38,23 @@ if (config.streamRecording)
   // record to mp4
   serverOptions.trans = {
     'ffmpeg': '/usr/bin/ffmpeg',
-    'tasks': [
-      {
-        'app': 'vod',
-        'ac': 'aac',
-        'mp4': true,
-        'mp4Flags': '[movflags=faststart]',
-      }
+    'tasks': [{
+      app: 'live',
+      ac: 'aac',
+      hls: true,
+      hlsFlags: '[hls_time=2:hls_list_size=3:hls_flags=delete_segments]',
+      dash: true,
+      dashFlags: '[f=dash:window_size=3:extra_window_size=5]'
+    }
     ]
+    // 'tasks': [
+    //   {
+    //     'app': 'live',
+    //     'ac': 'aac',
+    //     'mp4': true,
+    //     'mp4Flags': '[movflags=faststart]',
+    //   }
+    // ]
   }
 
 

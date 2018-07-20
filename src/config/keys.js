@@ -8,9 +8,12 @@ module.exports = function() {
     try {
         localConfig = fs.readFileSync(this.local_keys_path).toString();
         localConfig = JSON.parse(localConfig);
+        console.log('Local Keys Loaded; Loading Environment: %s', process.env.NODE_ENV);
     }
     catch (err) {
-        this.localConfig = {};
+        console.log('Local Keys Not Found');
+        process.exit(1);
+        return;
     }
 
     // Amazon S3

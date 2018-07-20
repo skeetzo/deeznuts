@@ -2,6 +2,7 @@
 var config = {};
 
 // Debugging
+if (!process.env.NODE_ENV) process.env.NODE_ENV = "development";
 deploy(process.env.NODE_ENV);
 
 config.Crons_On = true;
@@ -41,9 +42,9 @@ config.blockchainSecret = "gofuckyourself6969";
 // RTMP Stream
 config.streamKey = "yourmotherisadirtywhore";
 config.streamKeyExpire = 3600000;
-config.streamRecording = false;
+config.streamRecording = true;
 
-var live_url = config.domain+":8443/live/stream.flv?sign=";
+var live_url = config.domain+":8443/live/stream.flv";
 if (config.debugging) live_url = config.domain+":8000/live/stream.flv";
 
 config.siteData = 
@@ -64,17 +65,12 @@ config.alexd = {
 };
 
 function deploy(environment) {
-	if (environment=='development') {
-		config.debugging = true;
-		config.ssl = false;
-		config.debugging_live = true;
-		config.local = false;
-	}
-	else if (environment=='staging') {
+	if (environment=='staging') {
 		config.debugging = true;
 		config.ssl = true;
-		config.debugging_live = false;
+		config.debugging_live = true;
 		config.local = false;
+		config.localDatabse = false;
 	}
 	else if (environment=='production') {
 		config.debugging = false;
@@ -82,6 +78,13 @@ function deploy(environment) {
 		config.debugging_live = false;
 		config.local = false;
 		config.localDatabase = true;
+	}
+	else {
+		config.debugging = true;
+		config.ssl = false;
+		config.debugging_live = true;
+		config.local = true;
+		config.localDatabase = false;
 	}
 }
 
