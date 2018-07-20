@@ -16,18 +16,7 @@ var serverOptions = {
   'http': {
     'port': 8000,
     'allow_origin': '*'
-  },
-  // trans: {
-  //   ffmpeg: '/usr/local/bin/ffmpeg',
-  //   tasks: [
-  //     {
-  //       app: 'vod',
-  //       ac: 'aac',
-  //       mp4: true,
-  //       mp4Flags: '[movflags=faststart]',
-  //     }
-  //   ]
-  // }
+  }
 };
 
 if (config.ssl)
@@ -43,6 +32,20 @@ if (config.debugging)
     'api_user': 'admin',
     'api_pass': 'rtmpsucksdeeck'
   };
+
+if (config.streamRecording)
+  // record to mp4
+  serverOptions.trans = {
+    'ffmpeg': '/usr/bin/ffmpeg',
+    'tasks': [
+      {
+        'app': 'vod',
+        'ac': 'aac',
+        'mp4': true,
+        'mp4Flags': '[movflags=faststart]',
+      }
+    ]
+  }
 
 
 var nms = new NodeMediaServer(serverOptions);
