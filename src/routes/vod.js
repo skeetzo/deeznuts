@@ -11,14 +11,14 @@ module.exports = function homeRoutes(router) {
     Video.find({'_id':{'$in':req.session.user.videos}}, function (err, videos) {
       if (err) logger.warn(err);
       req.session.locals.videos = mixins.Videos(videos);
-      Video.find({}, function (err, videos) {
+      Video.find({'original':true}, function (err, videos_all) {
         if (err) logger.warn(err);
-        if (videos.length==0) {
-          var example = new Video({'title':'example','performers':['Myself','Your Mom']});
-          videos.push(example);
+        if (videos_all.length==0) {
+          var example = new Video({'title':'example','performers':['Myself','Your Mom'],'original':true});
+          videos_all.push(example);
           example.save();
         }
-        req.session.locals.videos_all = mixins.Videos(videos);
+        req.session.locals.videos_all = mixins.Videos(videos_all);
         res.render('videos', req.session.locals);
       });
     });

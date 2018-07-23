@@ -6,12 +6,22 @@ var mongoose = require('mongoose'),
     _ = require('underscore');
 
 // Video Schema
+/*
+
+  a 'new Video()' is created for each User for each Video
+    each video has a separate address generated attached to their User
+
+  a single instance of each Video exists from which videos_all is populated
+
+*/
 var videoSchema = new Schema({
   address: { type: String },
   address_qr: { type: String },
   description: { type: String, default: '' },
+  original: { type: Boolean, default: false },
+  paid: { type: Number, default: 0 },
   performers: { type: Array, default: [] },
-  price: { type: String, default: '$5.00' },
+  price: { type: Number, default: config.defaultPrice },
   title: { type: String }
 });
 

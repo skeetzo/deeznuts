@@ -27,6 +27,7 @@ config.ssl_cert = '/etc/letsencrypt/live/alexdeeznuts.com-0001/fullchain.pem';
 
 // DeezNuts Settings
 config.conversionRate = 6; // $1 per 6 minutes
+config.defaultPrice = 5;
 config.defaultTime = 60; // time in seconds
 if (config.debugging) config.defaultTime = 60*60*23+45*60;
 config.status = "Not Live";

@@ -60,7 +60,7 @@ userSchema.statics.generateAddress = function(data, callback) {
   logger.log('Generating Address: %s', data._id);
   User.findById(data._id, function (err, user) {
     if (err) return callback(err);
-    if (user.address) return callback('Address already generated: '+user._id);
+    if (data.reason=='live'&&user.address) return callback('Live Address already generated: '+user._id);
     if (config.debugging&&!config.debugging_address) return callback('Skipping Address- Debugging');
     // Generate new blockchain address
     var xpub = config.blockchainXpub,
@@ -101,14 +101,16 @@ userSchema.statics.generateAddress = function(data, callback) {
         });
       });
     }
-    else {
-      Video.findOne({'title':data.video}, function (err, video) {
+    else if (data.reason=='vod') {
+      Video.findOne({'title':data.video,'original':true}, function (err, video) {
         if (err) return callback(err);
         if (!video) return callback('Missing video');
         query.video = video.title;
         myReceive = myReceive.generate(query)
         .then(function (generated) {
           logger.log('Generated Address for Video: %s (%s)', generated.address, video.title);
+          video = new Video(video);
+          video.original = false;
           video.address = generated.address;
           user.addresses.push(generated.address);
           QRCode.toDataURL(generated.address, function (err_, url) {
@@ -173,14 +175,17 @@ userSchema.statics.syncTransaction = function(transaction, callback) {
       Transaction.add(transaction, function (err_) {
         if (err_) return callback(err_);
         logger.log('Added Transaction: %s (%s) -> %s', transaction.value, transaction.confirmations, transaction.address, user._id);
-        user.transactions.push(transaction.transaction_hash);
         if (transaction.reason=='vod'&&transaction.video)
-          user.addVideo(transaction.video, function (err__) {
-            callback(err__);
+          user.addVideo(transaction, function (err__) {
+            if (err__) return callback(err__);
+            user.transactions.push(transaction.transaction_hash);
+            callback(null);
           });
         else if (transaction.reason=='live')
           user.addTime(transaction.value, function (err__) {
-            callback(err__);
+            if (err__) return callback(err__);
+            user.transactions.push(transaction.transaction_hash);
+            callback(null);
           });
         else
           callback('Transaction Error');
@@ -190,9 +195,74 @@ userSchema.statics.syncTransaction = function(transaction, callback) {
 }
 
 // amount in satoshi, so divide by 100,000,000 to get the value in BTC
-userSchema.methods.addTime = function(value_in_satoshi, callback) {
+userSchema.methods.addTime = function(transaction, callback) {
 	var self = this;
-  logger.log('Calculating time: %s satoshi', value_in_satoshi);
+  logger.log('Calculating time: %s satoshi', transaction.value);
+  convertBTCtoDollar(transaction.value, function (err, dollar) {
+    if (err) return callback(err);
+    var timeAdded = dollar*(config.conversionRate*60); // 6 minutes per dollar
+    logger.debug('dollar to seconds: $%s -> %s seconds', dollar, timeAdded);
+    logger.log('Time Added: %s seconds + %s seconds = %s seconds', self.time, timeAdded, (self.time+timeAdded));
+    // Google.logTime(value_in_satoshi, dollar, self.time, timeAdded);
+    self.time_added = timeAdded;
+    self.time+= timeAdded;
+    self.save(function (err) {
+      callback(err);
+    });
+  });
+}
+
+userSchema.methods.addVideo = function(transaction, callback) {
+  var self = this;
+  if (!transaction.video) return callback('Missing video title!');
+  Video.findOne({'title':transaction.video,'original':false,'_id':{'$in':self.videos}}, function (err, video) {
+    if (err) return callback(err);
+    if (video&&video.paid>=config.defaultPrice) return callback('Video already paid for!');
+    else if (video&&video.paid<config.defaultPrice) {
+      convert(video);
+    }
+    else {
+      Video.findOne({'title':transaction.video,'original':true}, function (err, video) {
+        if (err) return callback(err);
+        if (!video) return callback('Missing Video: %s', transaction.video); 
+        var video_copy = new Video(video);
+        video_copy.original = false;
+        convert(video_copy);
+      });
+    }
+    function convert(video) {
+      convertBTCtoDollar(transaction.value, function (err, dollar) {
+        if (err) return callback(err);
+        logger.log('Payment for video: %s -> %s', dollar, video.title);
+        video.paid+=dollar;
+        video.save(function (err) {
+          if (err) logger.warn(err);
+          self.videos.push(video._id);
+          if (video.paid<=video.price) {
+            return self.save(function (err) {
+              callback('Video still unpaid!');
+            });
+          }
+          self.video_added = video._id;
+          logger.log('Video added: %s -> %s', video.title, self._id);
+          // add video to list of videos user has access to 
+          self.save(function (err) {
+            callback(err);
+          });
+        });
+      });
+    }
+  });
+}
+
+userSchema.methods.verifyPassword = function(candidatePassword, callback) {
+  bcrypt.compare(candidatePassword, this.password, function (err, isMatch) {
+    callback(err, isMatch);
+  });
+};
+
+function convertBTCtoDollar(value_in_satoshi, callback) {
+  logger.log('Converting satoshi to Dollar: %s', value_in_satoshi);
   var value_in_btc = value_in_satoshi / 100000000;
   logger.debug('satoshi to BTC: %s satoshi -> %sBTC', value_in_satoshi, value_in_btc);
   // calculate conversion rate to dollar
@@ -202,41 +272,9 @@ userSchema.methods.addTime = function(value_in_satoshi, callback) {
     logger.debug('amountPerBTC: %s/BTC', data.last);
     var dollar = data.last*value_in_btc;
     logger.debug('BTC to dollar: %s/BTC * %sBTC -> +$%s', data.last, value_in_btc, dollar);
-    logger.debug('dollar to time: $%s -> %s seconds', dollar, (dollar*(6*60)));
-    var timeAdded = dollar*(config.conversionRate*60); // 6 minutes per dollar
-    logger.debug('dollar converted: $%s -> %s seconds', dollar, timeAdded);
-    logger.debug('time added: %s seconds + %s seconds = %s seconds', self.time, timeAdded, (self.time+timeAdded));
-    Google.logTime(value_in_satoshi, dollar, self.time, timeAdded);
-    self.time_added = timeAdded;
-    self.time+= timeAdded;
-    self.save(function (err) {
-      callback(err);
-    });
+    callback(null, dollar);
   });
 }
-
-userSchema.methods.addVideo = function(video, callback) {
-  var self = this;
-  if (!video||video=='') return callback('Missing Video!'); 
-  if (_.contains(self.videos, video)) return callback('Video already owned!');
-  // add video to list of videos user has access to
-  Video.find({'title':video}, function (err, video) {
-    if (err) return callback(err);
-    self.videos.push(video);
-    self.video_added = video;
-    logger.log('Video added: %s -> %s', video, self._id);
-    self.save(function (err) {
-      callback(err);
-    });
-  });
-  
-}
-
-userSchema.methods.verifyPassword = function(candidatePassword, callback) {
-  bcrypt.compare(candidatePassword, this.password, function (err, isMatch) {
-    callback(err, isMatch);
-  });
-};
 
 var User = mongoose.model('users', userSchema,'users');
 module.exports = User;
