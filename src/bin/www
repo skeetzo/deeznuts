@@ -9,7 +9,7 @@ var app = require('../app');
 var debug = require('debug')('alexdeeznuts:server');
 var http = require('http');
 var https = require('https');
-var rtmp = require('../modules/rtmp');
+// var rtmp = require('../modules/rtmp');
 var cron = require('../modules/cron').start();
 
 var alexd = require('../models/user');
@@ -52,7 +52,7 @@ else {
  * Listen on provided port, on all network interfaces.
  */
 
-server.listen(port, function () {
+server.listen(port, "127.0.0.1", function () {
   logger.log("Live at Port %s", port);
 });
 server.on('error', onError);

@@ -8,9 +8,12 @@ module.exports = function() {
     try {
         localConfig = fs.readFileSync(this.local_keys_path).toString();
         localConfig = JSON.parse(localConfig);
+        console.log('Local Keys Loaded; Loading Environment: %s', process.env.NODE_ENV);
     }
     catch (err) {
-        this.localConfig = {};
+        console.log('Local Keys Not Found');
+        process.exit(1);
+        return;
     }
 
     // Amazon S3
@@ -60,7 +63,6 @@ module.exports = function() {
     // Mongo
     this.MONGODB_URI = localConfig.MONGODB_URI || process.env.MONGODB_URI;
     if (this.localDatabase) this.MONGODB_URI = localConfig.MONGODB_URI_local;
-    if (this.debugging&&(this.debugging&&this.localDatabase)) this.MONGODB_URI = localConfig.MONGODB_URI_local_debugging;
 
     // Twitter
 	this.Twitter_consumer_key = localConfig.Twitter_AlexsDBot_consumer_key || process.env.Twitter_consumer_key; 

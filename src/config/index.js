@@ -1,10 +1,10 @@
 // Config file
 var config = {};
 
-// Deploy
+// Debugging
+if (!process.env.NODE_ENV) process.env.NODE_ENV = "development";
 deploy(process.env.NODE_ENV);
 
-// Debugging
 config.Crons_On = true;
 
 // App Settings
@@ -16,21 +16,19 @@ config.title = "Alex D.'s Nuts";
 config.siteTitle = "AlexDeezNuts.com";
 config.domain = "alexdeeznuts.com";
 if (config.local) config.domain = "localhost";
-if (!config.ssl) config.domain = "http://"+config.domain;
-else config.domain = "https://"+config.domain;
-// config.subtitle = "While Performers Snap";
-config.description = "Porn Star Streamer";
-config.keywords = 'rtmp, live, stream, bitcoin, blockchain';
+if (config.ssl) config.domain = "https://"+config.domain;
+else config.domain = "http://"+config.domain;
 config.author = "Skeetzo";
+config.description = "Porn Star Streamer";
 config.Google_Analytics = "UA-82463743-8";
 config.pages = ['privacy','terms','support'];
-config.ssl = false;
 config.ssl_key = '/etc/letsencrypt/live/alexdeeznuts.com-0001/privkey.pem';
 config.ssl_cert = '/etc/letsencrypt/live/alexdeeznuts.com-0001/fullchain.pem';
 
-// Live
+// DeezNuts Settings
 config.conversionRate = 6; // $1 per 6 minutes
 config.defaultTime = 60; // time in seconds
+if (config.debugging) config.defaultTime = 60*60*23+45*60;
 config.status = "Not Live";
 // Bitcoin & Blockchain
 config.bitcoin_address = "7h15157o74lly4b17co1n4ddre55";
@@ -44,8 +42,9 @@ config.blockchainSecret = "gofuckyourself6969";
 // RTMP Stream
 config.streamKey = "yourmotherisadirtywhore";
 config.streamKeyExpire = 3600000;
+config.streamRecording = true;
 
-var live_url = config.domain+":8443/live/stream.flv?sign=";
+var live_url = config.domain+":8443/live/stream.flv";
 if (config.debugging) live_url = config.domain+":8000/live/stream.flv";
 
 config.siteData = 
@@ -66,24 +65,26 @@ config.alexd = {
 };
 
 function deploy(environment) {
-	if (environment=='development') {
+	if (environment=='staging') {
 		config.debugging = true;
-		config.ssl = false;
-		config.local = true;
-		config.defaultTime = 60*60*23+45*60;
-		config.debugging_live = true;
-	}
-	else if (environment=='staging') {
-		config.debugging = false;
 		config.ssl = true;
-		config.debugging_live = false;
+		config.debugging_live = true;
 		config.local = false;
+		config.localDatabse = false;
 	}
 	else if (environment=='production') {
 		config.debugging = false;
 		config.ssl = true;
-		config.local = true;
 		config.debugging_live = false;
+		config.local = false;
+		config.localDatabase = true;
+	}
+	else {
+		config.debugging = true;
+		config.ssl = false;
+		config.debugging_live = true;
+		config.local = true;
+		config.localDatabase = false;
 	}
 }
 

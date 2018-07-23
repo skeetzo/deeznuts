@@ -5,7 +5,7 @@ var mongoose = require('mongoose'),
     moment = require('moment'),
     _ = require('underscore');
 
-// User Schema
+// Transaction Schema
 var transactionSchema = new Schema({
   address: { type: String },
   confirmations: { type: Number, default: 0 },
