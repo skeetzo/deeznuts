@@ -16,7 +16,7 @@ app.locals.pretty = true;
 app.locals.cache = true;
 app.locals.debug = false;
 
-app.set('views', path.join(__dirname, 'views'));
+app.set('views', path.join(__dirname, 'views/pages'));
 app.set('view engine', 'pug');
 // app.set('view options',{layout:false});
 

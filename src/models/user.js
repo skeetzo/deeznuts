@@ -9,25 +9,29 @@ var mongoose = require('mongoose'),
     Exchange = require('blockchain.info/exchange'),
     bcrypt = require('bcrypt-nodejs'),
     Transaction = require('../models/transaction'),
+    Video = require('../models/video'),
     QRCode = require('qrcode');
 
 // User Schema
 var userSchema = new Schema({
   address: { type: String },
+  addresses: { type: Array, default: [String] },
   address_qr: { type: String },
   ip: { type: String },
   ips: { type: Array, default: [] },
   lastVisit: { type: Date, default: moment(new Date()).format('MM/DD/YYYY') },
   logins: { type: Number, default: 0 },
   password: { type: String },
-  qr: { type: String },
-  secret : { type: String }, // crypto sig
+  // qr: { type: String },
+  // secret : { type: String }, // crypto sig
+  secrets : { type: Array, default: [String] }, // crypto sigs
   start: { type: String, default: moment(new Date()).format('MM/DD/YYYY') },
   time: { type: Number, default: config.defaultTime }, // time allotted for live
   time_added: { type: Number },
   transactions: { type: Array, default: [] },
   username: { type: String },
-  videos: { type: Array }
+  videos: { type: Array, default: [] },
+  video_added: { type: String }
 });
 
 userSchema.pre('save', function (next) {
@@ -52,12 +56,12 @@ userSchema.pre('save', function (next) {
   });
 });
 
-userSchema.statics.generateAddress = function(user_, reason, callback) {
-  logger.log('Generating Address: %s', user_.ip);
-  User.findById(user_._id, function (err, user) {
+userSchema.statics.generateAddress = function(data, callback) {
+  logger.log('Generating Address: %s', data._id);
+  User.findById(data._id, function (err, user) {
     if (err) return callback(err);
-    if (user.address) return callback('Address already generated: '+user.ip);
-    if (config.debugging) return callback('Skipping Address- Debugging');
+    if (user.address) return callback('Address already generated: '+user._id);
+    if (config.debugging&&!config.debugging_address) return callback('Skipping Address- Debugging');
     // Generate new blockchain address
     var xpub = config.blockchainXpub,
      cb = config.blockchainCallback,
@@ -78,21 +82,50 @@ userSchema.statics.generateAddress = function(user_, reason, callback) {
     // generate address
     var timestamp = (Date.now() + 3600000);
     var hash = require('md5')(timestamp+"-"+config.blockchainHash);
-    user.secret = hash;
-    var query = {'secret':hash,'transaction':reason};
-    myReceive = myReceive.generate(query)
-    .then(function (data) {
-      logger.log('Generated Address: %s', data.address);
-      user.address = data.address;
-      QRCode.toDataURL(data.address, function (err_, url) {
-        if (err_) logger.warn(err_);
-        else user.address_qr = url;
-        // logger.debug('address_qr: %s', url);
-        user.save(function (err__) {
-          callback(err__);
+    // user.secret = hash;
+    user.secrets.push(hash);
+    var query = {'secret':hash,'transaction':data.reason};
+    if (data.reason=='live') {
+      myReceive = myReceive.generate(query)
+      .then(function (generated) {
+        logger.log('Generated Address: %s', generated.address);
+        user.address = generated.address;
+        user.addresses.push(generated.address);
+        QRCode.toDataURL(generated.address, function (err_, url) {
+          if (err_) logger.warn(err_);
+          else user.address_qr = url;
+          // logger.debug('address_qr: %s', url);
+          user.save(function (err__) {
+            callback(err__);
+          });
         });
       });
-    });
+    }
+    else {
+      Video.findOne({'title':data.video}, function (err, video) {
+        if (err) return callback(err);
+        if (!video) return callback('Missing video');
+        query.video = video.title;
+        myReceive = myReceive.generate(query)
+        .then(function (generated) {
+          logger.log('Generated Address for Video: %s (%s)', generated.address, video.title);
+          video.address = generated.address;
+          user.addresses.push(generated.address);
+          QRCode.toDataURL(generated.address, function (err_, url) {
+            if (err_) logger.warn(err_);
+            else video.address_qr = url;
+            video.save(function (err) {
+              if (err) logger.warn(err);
+              user.videos.push(video._id);
+              user.save(function (err__) {
+                callback(err__);
+              });
+            });
+          });
+        });
+      });
+    }
+
   });
 }
 
@@ -111,17 +144,20 @@ userSchema.statics.sync = function(data, callback) {
       logger.log('syncing (success): %s seconds -> %s seconds (%s)', user.time, data.time, data._id);
       user.time = data.time;
     }
-    var added = user.time_added || false;
-    user.time_added = false;
+    var time_added = user.time_added || false;
+    user.time_added = null;
+    var video_added = user.video_added || false;
+    user.video_added = null;
     user.save(function (err_) {
-      callback(err_,{'time':user.time,'added':added,'status':config.status});
+      callback(err_,{'time':user.time,'time_added':time_added,'video_added':video_added,'status':config.status});
     });
   });
 }
 
 userSchema.statics.syncTransaction = function(transaction, callback) {
   logger.debug('Syncing Transaction: %s (%s)', transaction.value, transaction.transaction_hash);
-  User.findOne({'address':transaction.address,'secret':transaction.secret}, function (err, user) {
+  // User.findOne({'address':transaction.address,'secret':transaction.secret}, function (err, user) {
+  User.findOne({'addresses':transaction.address,'secrets':transaction.secret}, function (err, user) {
     if (err) return callback(err);
     if (!user) return callback('No matching user: '+transaction.address);
     // Confirm
@@ -138,7 +174,7 @@ userSchema.statics.syncTransaction = function(transaction, callback) {
         if (err_) return callback(err_);
         logger.log('Added Transaction: %s (%s) -> %s', transaction.value, transaction.confirmations, transaction.address, user._id);
         user.transactions.push(transaction.transaction_hash);
-        if (transaction.reason=='vod')
+        if (transaction.reason=='vod'&&transaction.video)
           user.addVideo(transaction.video, function (err__) {
             callback(err__);
           });
@@ -180,14 +216,20 @@ userSchema.methods.addTime = function(value_in_satoshi, callback) {
 }
 
 userSchema.methods.addVideo = function(video, callback) {
+  var self = this;
   if (!video||video=='') return callback('Missing Video!'); 
-  if (_.contains(this.videos, video)) return callback('Video already owned!');
+  if (_.contains(self.videos, video)) return callback('Video already owned!');
   // add video to list of videos user has access to
-  this.videos.push(video);
-  logger.log('Video added: %s -> %s', video, this._id);
-  this.save(function (err) {
-    callback(err);
+  Video.find({'title':video}, function (err, video) {
+    if (err) return callback(err);
+    self.videos.push(video);
+    self.video_added = video;
+    logger.log('Video added: %s -> %s', video, self._id);
+    self.save(function (err) {
+      callback(err);
+    });
   });
+  
 }
 
 userSchema.methods.verifyPassword = function(candidatePassword, callback) {

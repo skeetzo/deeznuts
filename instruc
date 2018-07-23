@@ -1,0 +1,5 @@
+include /etc/letsencrypt/options-ssl-nginx.conf
+ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem;
+
+sudo chmod 755 /etc/letsencrypt/live/
+sudo chmod 755 /etc/letsencrypt/archive/

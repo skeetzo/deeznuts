@@ -7,6 +7,8 @@ var mongoose = require('mongoose'),
 
 // Video Schema
 var videoSchema = new Schema({
+  address: { type: String },
+  address_qr: { type: String },
   description: { type: String, default: '' },
   performers: { type: Array, default: [] },
   price: { type: String, default: '$5.00' },

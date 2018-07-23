@@ -1,0 +1,35 @@
+extends ../layout/page
+
+block content
+  .row
+    .col-xs-6.col-xs-offset-3
+      //- input box
+      input#phrase.form-control(type="text")
+  br
+  .row
+    .col-xs-6.col-xs-offset-3
+      //- button
+      button(onclick="solve()") Solve
+  br
+  .row
+    .col-xs-6.col-xs-offset-3
+      //- key phrase output
+      p#key
+
+  append javascript
+    script.
+      function solve() {
+        var phrase = $("#phrase").val();
+        console.log(phrase);
+        return Promise.resolve($.ajax({
+            type: 'POST',
+            url: '/key',
+            data: {'phrase':phrase,'_csrf':"#{_csrf}"},
+          success: function(data) {
+            $("#key").text(data.key);
+          },
+          error: function(data) {},
+         })).catch(function (reason) {
+           console.log(reason);
+         });
+      }

@@ -114,11 +114,31 @@ module.exports.syncUser = function (req, res, next) {
 }
 
 var User_ = function(src) {
-  return {
+  var user = {
     '_id': src._id,
     'address': src.address,
     'address_qr': src.address_qr,
     'time': src.time
   };
+  return user;
 }
 module.exports.User = User_;
+
+var Video_ = function(src) {
+  return {
+    '_id': src._id,
+    'title': src.title,
+    'performers': src.performers,
+    'description': src.description,
+    'price': src.price
+  };
+}
+module.exports.Video = Video_;
+
+var Videos_ = function(src) {
+  var videos = [];
+  for (var i=0;i<src.length;i++)
+    videos.push(Video_(src[i]));
+  return videos;
+}
+module.exports.Videos = Videos_;
