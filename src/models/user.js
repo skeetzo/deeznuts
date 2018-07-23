@@ -27,6 +27,7 @@ var userSchema = new Schema({
   time_added: { type: Number },
   transactions: { type: Array, default: [] },
   username: { type: String },
+  videos: { type: Array }
 });
 
 userSchema.pre('save', function (next) {
@@ -51,7 +52,7 @@ userSchema.pre('save', function (next) {
   });
 });
 
-userSchema.statics.generateAddress = function(user_, callback) {
+userSchema.statics.generateAddress = function(user_, reason, callback) {
   logger.log('Generating Address: %s', user_.ip);
   User.findById(user_._id, function (err, user) {
     if (err) return callback(err);
@@ -78,7 +79,7 @@ userSchema.statics.generateAddress = function(user_, callback) {
     var timestamp = (Date.now() + 3600000);
     var hash = require('md5')(timestamp+"-"+config.blockchainHash);
     user.secret = hash;
-    var query = {'secret':hash};
+    var query = {'secret':hash,'transaction':reason};
     myReceive = myReceive.generate(query)
     .then(function (data) {
       logger.log('Generated Address: %s', data.address);
@@ -137,9 +138,16 @@ userSchema.statics.syncTransaction = function(transaction, callback) {
         if (err_) return callback(err_);
         logger.log('Added Transaction: %s (%s) -> %s', transaction.value, transaction.confirmations, transaction.address, user._id);
         user.transactions.push(transaction.transaction_hash);
-        user.addTime(transaction.value, function (err__) {
-          callback(err__)
-        });
+        if (transaction.reason=='vod')
+          user.addVideo(transaction.video, function (err__) {
+            callback(err__);
+          });
+        else if (transaction.reason=='live')
+          user.addTime(transaction.value, function (err__) {
+            callback(err__);
+          });
+        else
+          callback('Transaction Error');
       });
     }
   });
@@ -168,6 +176,17 @@ userSchema.methods.addTime = function(value_in_satoshi, callback) {
     self.save(function (err) {
       callback(err);
     });
+  });
+}
+
+userSchema.methods.addVideo = function(video, callback) {
+  if (!video||video=='') return callback('Missing Video!'); 
+  if (_.contains(this.videos, video)) return callback('Video already owned!');
+  // add video to list of videos user has access to
+  this.videos.push(video);
+  logger.log('Video added: %s -> %s', video, this._id);
+  this.save(function (err) {
+    callback(err);
   });
 }
 

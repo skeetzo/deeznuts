@@ -23,8 +23,18 @@ module.exports = function homeRoutes(router) {
     });
   });
 
-  router.get("/address", mixins.loggedIn, function (req, res, next) {
-    User.generateAddress(req.session.user, function (err) {
+  router.get("/address-live", mixins.loggedIn, function (req, res, next) {
+    User.generateAddress(req.session.user, 'live', function (err) {
+      if (err) {
+        logger.warn(err);
+        return res.sendStatus(404);
+      }
+      res.sendStatus(200);
+    });
+  });
+
+  router.get("/address-vod", mixins.loggedIn, function (req, res, next) {
+    User.generateAddress(req.session.user, 'vod', function (err) {
       if (err) {
         logger.warn(err);
         return res.sendStatus(404);

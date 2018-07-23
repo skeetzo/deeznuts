@@ -10,9 +10,11 @@ var transactionSchema = new Schema({
   address: { type: String },
   confirmations: { type: Number, default: 0 },
   date: { type: Date, default: moment(new Date()).format('MM/DD/YYYY-hh:mm:ss') },
+  reason: { type: String, default: 'live'},
   secret: { type: String },
   transaction_hash: { type: String },
   value: { type: Number },
+  video: { type: String }
 });
 
 transactionSchema.pre('save', function (next) {
@@ -46,4 +48,4 @@ transactionSchema.statics.confirm = function(existingTransaction, callback) {
 }
 
 var Transaction = mongoose.model('transactions', transactionSchema,'transactions');
-module.exports = Transaction
+module.exports = Transaction;
