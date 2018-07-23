@@ -29,7 +29,11 @@ config.ssl_cert = '/etc/letsencrypt/live/alexdeeznuts.com-0001/fullchain.pem';
 config.conversionRate = 6; // $1 per 6 minutes
 config.defaultPrice = 5;
 config.defaultTime = 60; // time in seconds
-if (config.debugging) config.defaultTime = 60*60*23+45*60;
+config.syncInterval = 3000;
+if (config.debugging) {
+	config.defaultTime = 60*60*23+45*60;
+	config.syncInterval = config.syncInterval*3;
+}
 config.status = "Not Live";
 // Bitcoin & Blockchain
 config.bitcoin_address = "7h15157o74lly4b17co1n4ddre55";
@@ -57,7 +61,8 @@ config.siteData =
 		description: config.description,
 		Google_Analytics: config.Google_Analytics,
 		status: config.status,
-		live_url: live_url
+		live_url: live_url,
+		syncInterval: config.syncInterval
 	};
 
 config.alexd = {

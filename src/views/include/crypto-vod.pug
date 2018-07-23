@@ -7,22 +7,4 @@
       img(src=video.address_qr,style="display:block;margin-left:auto;margin-right:auto;")
       a(href="bitcoin:"+video.address, target="_blank") bitcoin:#{video.address}
     else
-      button.btn.btn-primary(onclick="generateVoDAddress(\""+video.title+"\")") Generate Address
-
-      script.
-        function generateVoDAddress(video) {
-          console.log('video: %s', video);
-          return Promise.resolve($.ajax({
-            type: 'GET',
-            url: '/address-vod',
-            data: {'_csrf':"#{_csrf}",'video':video},
-            success: function(data) {
-              location.reload();
-            },
-            error: function(data) {
-              alert("Please login or create an account!");
-            },
-          })).catch(function (reason) {
-            //- console.log(reason);
-          });
-        }
+      button.btn.btn-primary(onclick="generateVoDAddress(\'"+video.title+"\')") Generate Address
