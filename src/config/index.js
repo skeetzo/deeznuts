@@ -76,6 +76,7 @@ function deploy(environment) {
 		config.ssl = true;
 		config.debugging_live = false;
 		config.debugging_address = false;
+		config.debugging_sync = false;
 		config.local = false;
 		config.localDatabse = false;
 	}
@@ -84,6 +85,7 @@ function deploy(environment) {
 		config.ssl = true;
 		config.debugging_live = false;
 		config.debugging_address = false;
+		config.debugging_sync = false;
 		config.local = false;
 		config.localDatabase = true;
 	}
@@ -92,6 +94,7 @@ function deploy(environment) {
 		config.ssl = false;
 		config.debugging_live = true;
 		config.debugging_address = true;
+		config.debugging_sync = true;
 		config.local = true;
 		config.localDatabase = false;
 	}

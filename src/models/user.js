@@ -136,14 +136,16 @@ userSchema.statics.sync = function(data, callback) {
   User.findById(data._id, function (err, user) {
     if (err) return callback(err);
     if (!user) return 'User not found: '+data._id;
-    if (Math.abs(parseInt(user.time)-parseInt(data.time))>9)
-      logger.log('syncing (ignore): %s seconds -> %s seconds (%s)', user.time, data.time, data._id);
+    if (Math.abs(parseInt(user.time)-parseInt(data.time))>9&&config.debugging_sync)
+      logger.debug('syncing (ignore): %s seconds -> %s seconds (%s)', user.time, data.time, data._id);
     else if (data.time<=0) {
-      logger.debug('syncing (bug): %s seconds -> %s (%s) seconds (%s)', user.time, 0, data.time, data._id);
+      if (config.debugging_sync)
+        logger.debug('syncing (bug): %s seconds -> %s (%s) seconds (%s)', user.time, 0, data.time, data._id);
       user.time = 0;
     }
     else {
-      logger.log('syncing (success): %s seconds -> %s seconds (%s)', user.time, data.time, data._id);
+      if (config.debugging_sync)
+        logger.debug('syncing (success): %s seconds -> %s seconds (%s)', user.time, data.time, data._id);
       user.time = data.time;
     }
     var time_added = user.time_added || false;
