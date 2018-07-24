@@ -10,14 +10,12 @@ prepend content
       for video in videos
         .col-xs-4
           video(controls, poster='/images/'+video.title+'.jpg', type="video/mp4", width=250, src="/videos/"+video.title+".mp4")
-
           include ../include/crypto-vod
     //- all videos
     if (videos_all)
       for video in videos_all
         .col-xs-4
           video(controls, poster='/images/'+video.title+'.jpg', type="video/mp4", width=250, src="/videos/"+video.title+"-preview.mp4")
-
           include ../include/crypto-vod
 
 prepend javascript
