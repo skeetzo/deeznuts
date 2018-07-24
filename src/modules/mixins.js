@@ -127,6 +127,8 @@ module.exports.User = User_;
 var Video_ = function(src) {
   return {
     '_id': src._id,
+    'address': src.address,
+    'address_qr': src.address_qr,
     'title': src.title,
     'performers': src.performers,
     'description': src.description,
