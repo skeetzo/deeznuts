@@ -118,7 +118,8 @@ var User_ = function(src) {
     '_id': src._id,
     'address': src.address,
     'address_qr': src.address_qr,
-    'time': src.time
+    'time': src.time,
+    'videos': src.videos
   };
   return user;
 }
