@@ -8,9 +8,10 @@ var config = require('../config/index'),
 module.exports = function homeRoutes(router) {
 
   router.get("/videos", mixins.loggedIn, function (req, res, next) {
+    logger.debug('video ids: %s', req.session.user.videos);
     Video.find({'_id':{'$in':req.session.user.videos}}, function (err, videos) {
       if (err) logger.warn(err);
-      logger.debug('videos: %s',JSON.stringify(videos,null,4));
+      logger.debug('videos: %s', JSON.stringify(videos, null, 4));
       req.session.locals.videos = mixins.Videos(videos);
       Video.find({'original':true}, function (err, videos_all) {
         if (err) logger.warn(err);
