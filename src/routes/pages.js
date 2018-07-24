@@ -1,7 +1,8 @@
 var config = require('../config/index'),
     logger = config.logger,
     _ = require('underscore'),
-    mixins = require('../modules/mixins');
+    mixins = require('../modules/mixins'),
+    User = require('../models/user');
 
 module.exports = function homeRoutes(router) {
 
@@ -23,7 +24,7 @@ module.exports = function homeRoutes(router) {
     res.render('index', req.session.locals);
   });
 
-  
+
   // check for recent tips
   router.post("/sync", function (req, res, next) {
     if (!req.session.user) return res.sendStatus(204);
