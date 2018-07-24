@@ -5,14 +5,19 @@ prepend content
   p 
   // this is a list of videos
   h3 Purchased
+  hr
   .row
     //- users videos
     if (videos)
       for video in videos
         .col-xs-4
-          video(controls, poster='/images/'+video.title+'.jpg', type="video/mp4", width=250, src="/videos/"+video.title+".mp4")
+          if (video.paid>=video.price)
+            video(controls, poster='/images/'+video.title+'.jpg', type="video/mp4", width=250, src="/videos/"+video.title+".mp4")
+          else
+            video(controls, poster='/images/'+video.title+'.jpg', type="video/mp4", width=250, src="/videos/"+video.title+"-preview.mp4")
           include ../include/crypto-vod
   h3 Archive
+  hr
   .row
     //- all videos
     if (videos_all)

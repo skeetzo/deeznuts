@@ -133,6 +133,7 @@ var Video_ = function(src) {
     'title': src.title,
     'performers': src.performers,
     'description': src.description,
+    'paid': src.paid,
     'price': src.price
   };
 }
