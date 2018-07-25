@@ -34,12 +34,12 @@ module.exports = function homeRoutes(router) {
     });
   });
 
-  router.get("/on_connect", function (req, res, next) {
+  router.post("/on_play", function (req, res, next) {
     config.status = 'Live';
     res.sendStatus(200);
   });
 
-  router.get("/on_disconnect", function (req, res, next) {
+  router.post("/on_done", function (req, res, next) {
     config.status = 'Not Live';
     res.sendStatus(200);
   });
