@@ -35,13 +35,19 @@ module.exports = function homeRoutes(router) {
   });
 
   router.post("/on_play", function (req, res, next) {
-    logger.log('--- Stream Connected ---');
+    logger.log('--- Stream Playing ---');
     config.status = 'Live';
     res.sendStatus(200);
   });
 
   router.post("/on_done", function (req, res, next) {
-    logger.log('--- Stream Disconnected ---');
+    logger.log('--- Stream Done ---');
+    config.status = 'Not Live';
+    res.sendStatus(200);
+  });
+
+  router.post("/on_connect", function (req, res, next) {
+    logger.log('--- Stream Connected ---');
     config.status = 'Not Live';
     res.sendStatus(200);
   });
