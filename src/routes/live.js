@@ -34,21 +34,21 @@ module.exports = function homeRoutes(router) {
     });
   });
 
-  router.post("/on_play", function (req, res, next) {
+  router.get("/on_play", function (req, res, next) {
     logger.log('--- Stream Playing ---');
     config.status = 'Live';
-    res.status(200).end();
+    res.status(200).send();
   });
 
-  router.post("/on_done", function (req, res, next) {
+  router.get("/on_done", function (req, res, next) {
     logger.log('--- Stream Done ---');
     config.status = 'Not Live';
-    res.status(200).end();
+    res.status(200).send();
   });
 
-  router.post("/on_connect", function (req, res, next) {
+  router.get("/on_connect", function (req, res, next) {
     logger.log('--- Stream Connected ---');
     config.status = 'Not Live';
-    res.status(200).end();
+    res.status(200).send();
   });
 }
