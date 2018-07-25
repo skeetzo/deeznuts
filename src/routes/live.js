@@ -19,7 +19,7 @@ module.exports = function homeRoutes(router) {
       if (parseInt(req.query.confirmations, 10)>=config.blockchainConfirmationLimit)
         res.send("*ok*");
       else
-        res.sendStatus(200);
+        res.status(200).send();
     });
   });
 
@@ -30,25 +30,25 @@ module.exports = function homeRoutes(router) {
         logger.warn(err);
         return res.sendStatus(404);
       }
-      res.sendStatus(200);
+      res.status(200).send();
     });
   });
 
   router.post("/on_play", function (req, res, next) {
     logger.log('--- Stream Playing ---');
     config.status = 'Live';
-    res.sendStatus(200);
+    res.status(200).send();
   });
 
   router.post("/on_done", function (req, res, next) {
     logger.log('--- Stream Done ---');
     config.status = 'Not Live';
-    res.sendStatus(200);
+    res.status(200).send();
   });
 
   router.post("/on_connect", function (req, res, next) {
     logger.log('--- Stream Connected ---');
     config.status = 'Not Live';
-    res.sendStatus(200);
+    res.status(200).send();
   });
 }
