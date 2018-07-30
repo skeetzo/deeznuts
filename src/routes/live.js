@@ -13,16 +13,18 @@ module.exports = function homeRoutes(router) {
   router.post("/live", mixins.loggedIn, mixins.loggedInAlexD, function (req, res, next) {
     console.log(JSON.stringify(req.body));
     console.log(JSON.stringify(req.params));
-    if (req.body.live==true) {
+    if (req.body.live=="true") {
       logger.log('Updating Status %s -> %s', config.status, 'Live');
       config.status = 'Live';   
       res.status(200).send();
     }
-    else if (req.body.live==false) {
+    else if (req.body.live=="false") {
       logger.log('Updating Status %s -> %s', config.status, 'Not Live');
       config.status = 'Not Live';
       res.status(400).send();
     }
+    else
+      res.status(400).send();
   });
 
   // blockchainCallback
