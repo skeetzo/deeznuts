@@ -49,6 +49,7 @@ block content
           },
           error: function(data) {},
          })).catch(function (reason) {
+            alert('You\'ve gone offline!');
            console.log(reason);
          });
       }
