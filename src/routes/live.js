@@ -11,9 +11,9 @@ module.exports = function homeRoutes(router) {
   });
 
   router.post("/live", mixins.loggedIn, mixins.loggedInAlexD, function (req, res, next) {
-    console.log(JSON.stringify(req.query));
+    console.log(JSON.stringify(req.body));
     console.log(JSON.stringify(req.params));
-    if (req.query.live) {
+    if (req.body.live) {
       logger.log('Updating Status %s -> %s', config.status, 'Live');
       config.status = 'Live';   
       res.status(200).send();
