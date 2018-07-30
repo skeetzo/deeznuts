@@ -10,6 +10,17 @@ module.exports = function homeRoutes(router) {
     res.render('live', req.session.locals);    
   });
 
+  router.post("/live", mixins.loggedIn, mixins.loggedInAlexD, function (req, res, next) {
+    if (req.query.live) {
+      logger.log('Updating Status %s -> %s', config.status, 'Live');
+      config.status = 'Live';   
+    }
+    else {
+      logger.log('Updating Status %s -> %s', config.status, 'Not Live');
+      config.status = 'Not Live';
+    }
+  });
+
   // blockchainCallback
   //- /tip
   router.get(config.blockchainRoute, function (req, res, next) {

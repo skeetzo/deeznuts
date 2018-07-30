@@ -13,6 +13,11 @@ block content
   br
   .row
     .col-xs-6.col-xs-offset-3
+      button(onclick="goLive(true)") Go Live
+      button(onclick="goLive(false)") Go Offline
+  br
+  .row
+    .col-xs-6.col-xs-offset-3
       //- key phrase output
       p#key
 
@@ -27,6 +32,20 @@ block content
             data: {'phrase':phrase,'_csrf':"#{_csrf}"},
           success: function(data) {
             $("#key").text(data.key);
+          },
+          error: function(data) {},
+         })).catch(function (reason) {
+           console.log(reason);
+         });
+      }
+
+      function goLive(live) {
+        return Promise.resolve($.ajax({
+            type: 'POST',
+            url: '/live',
+            data: {'live':live,'_csrf':"#{_csrf}"},
+          success: function(data) {
+            alert('You\'ve gone live!');
           },
           error: function(data) {},
          })).catch(function (reason) {
