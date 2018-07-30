@@ -13,8 +13,8 @@ block content
   br
   .row
     .col-xs-6.col-xs-offset-3
-      button(onclick="goLive(\"true\")") Go Live
-      button(onclick="goLive(\"false\")") Go Offline
+      button(onclick="goLive(true)") Go Live
+      button(onclick="goLive(false)") Go Offline
   br
   .row
     .col-xs-6.col-xs-offset-3
@@ -46,9 +46,9 @@ block content
             data: {'live':live,'_csrf':"#{_csrf}"},
           success: function(data) {
             
-            if (jqXHR.status == 200)
+            if (data.status == 200)
               alert('You\'ve gone live!');
-            else if (jqXHR.status == 400) 
+            else if (data.status == 400) 
               alert('You\'ve gone offline!');
           },
           error: function(data) {},
