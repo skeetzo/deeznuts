@@ -45,11 +45,14 @@ block content
             url: '/live',
             data: {'live':live,'_csrf':"#{_csrf}"},
           success: function(data) {
-            alert('You\'ve gone live!');
+            
+            if (jqXHR.status == 200)
+              alert('You\'ve gone live!');
+            else if (jqXHR.status == 400) 
+              alert('You\'ve gone offline!');
           },
           error: function(data) {},
          })).catch(function (reason) {
-            alert('You\'ve gone offline!');
            console.log(reason);
          });
       }
