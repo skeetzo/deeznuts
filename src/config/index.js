@@ -72,9 +72,9 @@ config.alexd = {
 
 function deploy(environment) {
 	if (environment=='staging') {
-		config.debugging = false;
+		config.debugging = true;
 		config.ssl = true;
-		config.debugging_live = false;
+		config.debugging_live = true;
 		config.debugging_address = false;
 		config.debugging_sync = false;
 		config.local = false;
