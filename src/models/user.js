@@ -103,7 +103,7 @@ userSchema.statics.generateAddress = function(data, callback) {
       });
     }
     else if (data.reason=='vod') {
-      Video.findOne({'title':data.video,'isOriginal':true}, function (err, video) {
+      Video.findOne({'title':data.video,'isOriginal':true,'isPreview':false}, function (err, video) {
         if (err) return callback(err);
         if (!video) return callback('Missing video');
         query.video = video.title;

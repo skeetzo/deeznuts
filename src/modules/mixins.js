@@ -133,9 +133,9 @@ var Video_ = function(src) {
     'title': src.title,
     'performers': src.performers,
     'description': src.description,
-    'paid': src.paid,
-    'price': src.price,
-    'time': src.time
+    'isPaid': src.isPaid,
+    // 'isPaid': true,
+    'price': src.price
   };
 }
 module.exports.Video = Video_;
