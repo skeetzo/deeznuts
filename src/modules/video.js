@@ -1,20 +1,22 @@
-var async = require('async'),
+var config = require('../config/index'),
+	logger = config.logger,
+	async = require('async'),
 	FFmpeg = require('fluent-ffmpeg'),
 	path = require('path'),
 	fs = require('fs');
 
 // edit video into 10 sec preview with watermark
 function convert(fileName, callback) {
-	var filename = video.filename;
-	var dir = path.join(__dirname, fileName);
-	console.log('dir: %s', dir);
 	console.log('--- Converting: %s', fileName);
+	fileName = path.join(__dirname, '../public/videos', fileName);
+	logger.log(fileName);
 	FFmpeg.ffprobe(fileName, function (err, metadata) {
+		if (err) return callback(err);
 	    console.dir(metadata);
 	    // return;
 	    if (metadata) console.log('Probing Metadata');
 	    // if (err) return console.error(err);
-	    if (!metadata||(metadata&&!metadata.format)) return console.log('Missing File');
+	    if (!metadata||(metadata&&!metadata.format)) return callback('Missing File')
 		async.waterfall([
 			function (step) {
 				console.log('--- Extracting ---');

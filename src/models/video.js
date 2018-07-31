@@ -4,6 +4,7 @@ var mongoose = require('mongoose'),
     logger = config.logger,
     moment = require('moment'),
     convert = require('../modules/video').convert,
+    async = require('async'),
     _ = require('underscore');
 
 // Video Schema
@@ -23,6 +24,7 @@ var videoSchema = new Schema({
   isPreview: { type: Boolean, default: false },
   isOriginal: { type: Boolean, default: false },
   paid: { type: Number, default: 0 },
+  path: { type: String },
   performers: { type: Array, default: [] },
   price: { type: Number, default: config.defaultPrice },
   title: { type: String }
@@ -31,11 +33,12 @@ var videoSchema = new Schema({
 videoSchema.pre('save', function (next) {
   var self = this;
   self.description = [self.performers.slice(0, -1).join(', '), self.performers.slice(-1)[0]].join(self.performers.length < 2 ? '' : ' and ');
+  self.path = self.title+'.mp4';
   logger.debug('Video Saved: %s', self.title);
   next();
 });
 
-videoSchema.static.createPreviews = function(callback) {
+videoSchema.statics.createPreviews = function(callback) {
   logger.log('Creating Video Previews');
   Video.find({'isOriginal':true,'isPreview':false,'hasPreview':false}, function (err, videos) {
     if (err) return callback(err);
@@ -65,7 +68,7 @@ videoSchema.methods.createPreview = function(callback) {
   // get file at location
   // convert to preview
   // save ref
-  convert(self.title, function (err) {
+  convert(self.path, function (err) {
     if (err) return callback(err);
     self.hasPreview = true;
     self.save(function (err) {
