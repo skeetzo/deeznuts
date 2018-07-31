@@ -55,11 +55,11 @@ async.series([
     });
   },
   // double checks all originals have a preview
-  function (step) {
-    Video.createPreviews(function (err) {
-      step(err);
-    });
-  },
+  // function (step) {
+  //   Video.createPreviews(function (err) {
+  //     step(err);
+  //   });
+  // },
   function (step) {
     if (config.ssl) {
       /**
