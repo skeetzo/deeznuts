@@ -85,9 +85,8 @@ function extract(video, callback) {
 		.saveToFile(newFile);
 }
 
-function watermark(fileName, callback) {
-	logger.log('Watermarking: %s', fileName);
-	var file = path.join(__dirname, '../public/videos', fileName);
+function watermark(file, callback) {
+	logger.log('Watermarking: %s', file);
 	var conversion_process = new FFmpeg({ 'source': file, 'timeout': 0 });
 	conversion_process
 	    .input("watermark.png")
