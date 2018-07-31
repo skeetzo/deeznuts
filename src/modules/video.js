@@ -52,7 +52,7 @@ function extract(video, callback) {
 	
 	var filename = video.filename;
 	filename = path.join(__dirname, '../public/videos', filename);
-	var newFile = filename+"-preview.mp4";
+	var newFile = filename.replace(".mp4","-preview.mp4");
 
 	logger.log('File: %s', filename);
 	logger.log('New File: %s', newFile);
