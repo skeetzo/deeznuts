@@ -50,17 +50,13 @@ function extract(video, callback) {
 	const duration = Math.round(video.duration);
 	logger.log('Duration: %s', duration);
 	
-	var filename;
-	filename = path.join(__dirname, '../public/videos');
-	filename = path.join(filename, video.filename);
-	var newFile = filename.replace(".mp4","-preview.mp4");
-	logger.log('File: %s', filename);
+	var newFile = video.filename.replace(".mp4","-preview.mp4");
 	logger.log('New File: %s', newFile);
 
 	return callback(null, newFile);
 
 	// Convert
-	var conversion_process = new FFmpeg({ 'source': filename, 'timeout': 0 });
+	var conversion_process = new FFmpeg({ 'source': video.filename, 'timeout': 0 });
 	conversion_process
 	    // .input("watermark.png")
 	    .withVideoBitrate(1024)
