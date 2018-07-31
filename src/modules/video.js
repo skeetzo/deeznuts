@@ -93,11 +93,10 @@ function extract(video, callback) {
 		.saveToFile(newFile);
 }
 
-function watermark(file, callback) {
-	var dir = args.folderName,
-		filename = file[videoNum-1];
-	logger.log('Watermarking: %s', filename);
-	var conversion_process = new FFmpeg({ 'source': file[videoNum-1], 'timeout': 0 });
+function watermark(fileName, callback) {
+	logger.log('Watermarking: %s', fileName);
+	var file = path.join(__dirname, '../public/videos', fileName);
+	var conversion_process = new FFmpeg({ 'source': file, 'timeout': 0 });
 	conversion_process
 	    .input("watermark.png")
 		.complexFilter([
@@ -146,10 +145,10 @@ function watermark(file, callback) {
 		})
 		.on('end', function () {
 			logger.log("Watermarking Finished");
-			logger.log('--- Watermarked: %s', filename);
+			logger.log('--- Watermarked: %s', fileName);
 			step(null);
 		})
-		.saveToFile(filename);	
+		.saveToFile(file);	
 }
 
 
