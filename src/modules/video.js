@@ -53,7 +53,7 @@ function extract(video, callback) {
 	var newFile = video.filename.replace(".mp4","-preview.mp4");
 	logger.log('New File: %s', newFile);
 
-	return callback(null, newFile);
+	// return callback(null, newFile);
 
 	// Convert
 	var conversion_process = new FFmpeg({ 'source': video.filename, 'timeout': 0 });
