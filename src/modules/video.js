@@ -27,14 +27,11 @@ function convert(fileName, callback) {
 				});
 			},
 			function (file, step) {
-				// if (args.watermark) {
-					logger.log('--- Watermarking ---');
-					watermark(file, function (err) {
-						if (err) logger.log(err);
-						step(null, file);
-					});
-				// }
-				// else step(null, file);
+				logger.log('--- Watermarking ---');
+				watermark(file, function (err) {
+					if (err) logger.log(err);
+					step(null, file);
+				});
 			},
 			function (step) {
 				logger.log('--- Conversion Complete: %s', fileName);
