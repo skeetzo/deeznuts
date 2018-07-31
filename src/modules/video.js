@@ -12,7 +12,7 @@ function convert(fileName, callback) {
 	logger.log(fileName);
 	FFmpeg.ffprobe(fileName, function (err, metadata) {
 		if (err) return callback(err);
-	    logger.dir(metadata);
+	    logger.log(JSON.stringify(metadata,null,4));
 	    // return;
 	    if (metadata) logger.log('Probing Metadata');
 	    // if (err) return logger.error(err);
