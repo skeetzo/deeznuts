@@ -4,6 +4,7 @@ var mongoose = require('mongoose'),
     config = require('../config/index'),
     logger = config.logger,
     _ = require('underscore'),
+    async = require('async'),
     Google = require('../modules/google'),
     Receive = require('blockchain.info/Receive'),
     Exchange = require('blockchain.info/exchange'),
@@ -102,7 +103,7 @@ userSchema.statics.generateAddress = function(data, callback) {
       });
     }
     else if (data.reason=='vod') {
-      Video.findOne({'title':data.video,'original':true}, function (err, video) {
+      Video.findOne({'title':data.video,'isOriginal':true}, function (err, video) {
         if (err) return callback(err);
         if (!video) return callback('Missing video');
         query.video = video.title;
@@ -110,7 +111,7 @@ userSchema.statics.generateAddress = function(data, callback) {
         .then(function (generated) {
           logger.log('Generated Address for Video: %s (%s)', generated.address, video.title);
           video = new Video(video);
-          video.original = false;
+          video.isOriginal = false;
           video.address = generated.address;
           user.addresses.push(generated.address);
           QRCode.toDataURL(generated.address, function (err_, url) {
@@ -217,44 +218,55 @@ userSchema.methods.addTime = function(transaction, callback) {
 userSchema.methods.addVideo = function(transaction, callback) {
   var self = this;
   if (!transaction.video) return callback('Missing video title!');
-  Video.findOne({'title':transaction.video,'original':false,'_id':{'$in':self.videos}}, function (err, video) {
-    if (err) return callback(err);
-    if (video&&video.paid>=config.defaultPrice) return callback('Video already paid for!');
-    else if (video&&video.paid<config.defaultPrice) {
-      convert(video);
-    }
-    else {
-      Video.findOne({'title':transaction.video,'original':true}, function (err, video) {
-        if (err) return callback(err);
-        if (!video) return callback('Missing Video: %s', transaction.video); 
-        var video_copy = new Video(video);
-        video_copy.original = false;
-        convert(video_copy);
+  async.waterfall([
+    function (step) {
+      logger.debug('checking for existing paid video');
+      // check for existing paid video
+      Video.findOne({'title':transaction.video,'isOriginal':false,'_id':{'$in':self.videos}}, function (err, video) {
+        if (err) return step(err);
+        if (video&&video.isPaid) return step('Video already paid for!');
+        else if (video) return step(null, video);
+        else return step(null, null);
       });
-    }
-    function convert(video) {
+    },
+    function (video, step) {
+      if (video) return step(null, video);
+      logger.debug('fetching original video for copy');
+      Video.findOne({'title':transaction.video,'isOriginal':true}, function (err, video) {
+        if (err) return step(err);
+        if (!video) return step('Missing Original Video: %s', transaction.video); 
+        var video_copy = new Video(video);
+        video_copy.isOriginal = false;
+        step(null, video_copy);
+      });
+    },
+
+    function (video, step) {
+      logger.debug('calculating btc to payment towards video');
       convertBTCtoDollar(transaction.value, function (err, dollar) {
-        if (err) return callback(err);
+        if (err) return step(err);
         logger.log('Payment for video: %s -> %s', dollar, video.title);
         video.paid+=dollar;
         video.save(function (err) {
-          if (err) logger.warn(err);
+          if (err) return step(err);
           self.videos.push(video._id);
-          if (video.paid<=video.price) {
+          if (!video.isPaid) {
             return self.save(function (err) {
               callback('Video still unpaid!');
             });
           }
           self.video_added = video._id;
-          logger.log('Video added: %s -> %s', video.title, self._id);
+          logger.log('Video paid and added: %s -> %s', video.title, self._id);
           // add video to list of videos user has access to 
           self.save(function (err) {
             callback(err);
           });
         });
       });
-    }
-  });
+    }], function (err) {
+          if (err) logger.warn(err);
+          callback(err);
+    });
 }
 
 userSchema.methods.verifyPassword = function(candidatePassword, callback) {

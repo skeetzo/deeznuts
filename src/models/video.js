@@ -22,6 +22,7 @@ var videoSchema = new Schema({
   description: { type: String, default: '' },
   duration: { type: Number },
   hasPreview: { type: Boolean, default: false },
+  isPaid: { type: Boolean, default: false },
   isPreview: { type: Boolean, default: false },
   isOriginal: { type: Boolean, default: false },
   paid: { type: Number, default: 0 },
@@ -35,18 +36,23 @@ videoSchema.pre('save', function (next) {
   var self = this;
   self.description = [self.performers.slice(0, -1).join(', '), self.performers.slice(-1)[0]].join(self.performers.length < 2 ? '' : ' and ');
   self.path = self.title+'.mp4';
-
+  if (self.isModified('paid')||self.isModified('duration')) {
+    if (self.paid>=self.duration) {
+      logger.debug('isPaid on save: %s', self._id);
+      self.isPaid = true;
+    }
+    else self.isPaid = false;
+  }
   if (self.isModified('duration')||self.isModified('price')) {
     if (self.duration<config.defaultPrice) { // 5 minutes / default time
       self.price = config.defaultPrice;
-      logger.log('price set: %s' self.price);
+      logger.log('price set: %s', self.price);
     }
     else {
-      self.price = parseInt(self.duration, 10);
-      logger.log('price upd: %s' self.price);
+      self.price = Math.round(self.duration);
+      logger.log('price upd: %s', self.price);
     }
   }
-
   logger.debug('Video Saved: %s', self.title);
   next();
 });

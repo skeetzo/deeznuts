@@ -100,6 +100,13 @@ function deploy(environment) {
 	}
 }
 
+config.defaultVideo = {
+	'title': 'example',
+	'performers': ['Myself','Your Mom'],
+	'isOriginal': true,
+	'duration': 1000*60*config.defaultPrice
+};
+
 config.local_keys_path = './src/dev/localConfig.json';
 // config.local_google_keys_path = './src/dev/kairosnaps-google.json';
 // config.local_data_path = './src/dev/localData.json';

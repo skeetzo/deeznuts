@@ -46,7 +46,7 @@ async.series([
       if (err) logger.warn(err);
       logger.log('Videos available: %s', videos.length);
       if (!videos||videos.length==0) {
-        var example = new Video({'title':'example','performers':['Myself','Your Mom'],'isOriginal':true});
+        var example = new Video(config.defaultVideo);
         example.save(function (err) {
           step(err);
         });
