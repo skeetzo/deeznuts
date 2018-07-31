@@ -7,41 +7,41 @@ var config = require('../config/index'),
 
 // edit video into 10 sec preview with watermark
 function convert(fileName, callback) {
-	console.log('--- Converting: %s', fileName);
+	logger.log('--- Converting: %s', fileName);
 	fileName = path.join(__dirname, '../public/videos', fileName);
 	logger.log(fileName);
 	FFmpeg.ffprobe(fileName, function (err, metadata) {
 		if (err) return callback(err);
-	    console.dir(metadata);
+	    logger.dir(metadata);
 	    // return;
-	    if (metadata) console.log('Probing Metadata');
-	    // if (err) return console.error(err);
+	    if (metadata) logger.log('Probing Metadata');
+	    // if (err) return logger.error(err);
 	    if (!metadata||(metadata&&!metadata.format)) return callback('Missing File')
 		async.waterfall([
 			function (step) {
-				console.log('--- Extracting ---');
-				console.log('metadata.format: %s', metadata.format);
+				logger.log('--- Extracting ---');
+				logger.log('metadata.format: %s', metadata.format);
 				extract(metadata.format, function (err, file) {
-					if (err) console.log(err);
+					if (err) logger.log(err);
 					step(null, file);
 				});
 			},
 			function (file, step) {
 				// if (args.watermark) {
-					console.log('--- Watermarking ---');
+					logger.log('--- Watermarking ---');
 					watermark(file, function (err) {
-						if (err) console.log(err);
+						if (err) logger.log(err);
 						step(null, file);
 					});
 				// }
 				// else step(null, file);
 			},
 			function (step) {
-				console.log('--- Conversion Complete: %s', fileName);
+				logger.log('--- Conversion Complete: %s', fileName);
 				callback(null);
 			}
 		], function (err) {
-			if (err) console.log(err);
+			if (err) logger.log(err);
 			callback(null);
 		});
 	});
@@ -49,31 +49,22 @@ function convert(fileName, callback) {
 module.exports.convert = convert;
 
 function extract(video, callback) {
-	console.log('Extracting: %s', video.filename);
+	logger.log('Extracting: %s', video.filename);
 	const duration = Math.round(video.duration);
-	console.log('Duration: %s', duration);
+	logger.log('Duration: %s', duration);
 	
 	var filename = video.filename;
-	var dir = path.join(__dirname, 'public/videos');
-	console.log('dir: %s', dir);
-	// filename = filename.replace(dir+'/','');
-	// filename = filename.substring(0,filename.indexOf('.'));
+	filename = path.join(__dirname, '../public/videos', filename);
+	var newFile = filename+"-preview.mp4";
 
-	var destination = dir+'/'+filename,
-		newFile = destination+'/'+filename+"-preview.mp4";
-	// Check for / make directory
-	if (!fs.existsSync(destination)&&!args.debugging)
-	    fs.mkdirSync(destination);
-	console.log('File: %s', filename);
-	console.log('Directory: %s', dir);
-	console.log('Destination: %s', destination);
-	console.log('New File: %s', newFile);
+	logger.log('File: %s', filename);
+	logger.log('New File: %s', newFile);
 	callback(null, newFile);
 	return;
 
 	// Convert
 	var conversion_process = new FFmpeg({ 'source': video.filename, 'timeout': 0 });
-	console.log('Video: %s', videoNum);
+	logger.log('Video: %s', videoNum);
 	conversion_process
 	    // .input("watermark.png")
 	    .withVideoBitrate(1024)
@@ -86,19 +77,17 @@ function extract(video, callback) {
 	    .toFormat('mp4')
 	    .duration(10)
 		.on('start', function (commandLine) {
-			console.log("Extraction Started");
+			logger.log("Extraction Started");
 		})
 		.on('error', function (err, stdout, stderr) {
-			console.log("Extraction Failed"); 
-			console.log(err);
+			logger.log("Extraction Failed"); 
+			logger.log(err);
 		})
 		.on('progress', function (progress) {
-			// console.dir(progress);
-			if (!args.quiet)
-				console.log("Extracting: %s%", Math.round(progress.percent*videos));
+			logger.log("Extracting: %s%", Math.round(progress.percent*videos));
 		})
 		.on('end', function () {
-			console.log("Extraction Finished");
+			logger.log("Extraction Finished");
 			callback(null, newFile);
 		})
 		.saveToFile(newFile);
@@ -107,7 +96,7 @@ function extract(video, callback) {
 function watermark(file, callback) {
 	var dir = args.folderName,
 		filename = file[videoNum-1];
-	console.log('Watermarking: %s', filename);
+	logger.log('Watermarking: %s', filename);
 	var conversion_process = new FFmpeg({ 'source': file[videoNum-1], 'timeout': 0 });
 	conversion_process
 	    .input("watermark.png")
@@ -146,20 +135,18 @@ function watermark(file, callback) {
 			], 'output')
 	    .toFormat('mp4')
 		.on('start', function (commandLine) {
-			console.log("Watermarking Started");
+			logger.log("Watermarking Started");
 		})
 		.on('error', function (err, stdout, stderr) {
-			console.log("Watermarking Failed"); 
-			console.log(err);
+			logger.log("Watermarking Failed"); 
+			logger.log(err);
 		})
 		.on('progress', function (progress) {
-			// console.dir(progress);
-			if (!args.quiet)
-				console.log("Watermarking: %s%", Math.round(progress.percent));
+			logger.log("Watermarking: %s%", Math.round(progress.percent));
 		})
 		.on('end', function () {
-			console.log("Watermarking Finished");
-			console.log('--- Watermarked: %s', filename);
+			logger.log("Watermarking Finished");
+			logger.log('--- Watermarked: %s', filename);
 			step(null);
 		})
 		.saveToFile(filename);	
