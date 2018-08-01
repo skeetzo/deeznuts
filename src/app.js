@@ -3,7 +3,6 @@ var config = require('./config/index'),
     path = require('path'),
     createError = require('http-errors'),
     _ = require('underscore'),
-    crypto = require('crypto'),
     express = require('express'),
     app = express();
 
@@ -55,23 +54,6 @@ app.use(sass({
 
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(__dirname, { dotfiles: 'allow' } ));
-
-// var multer = require('multer');
-// // app.use(multer({dest:'./src/tmp/images'}));
-// var storage = multer.diskStorage({
-//   destination: function (req, file, cb) {
-//     cb(null, './public/tmp/images')
-//   },
-//   filename: function (req, file, cb) {
-//     crypto.pseudoRandomBytes(16, function (err, raw) {
-//       if (err) return cb(err);
-//       var fileName = raw.toString('hex').substring(0,6) + path.extname(file.originalname);
-//       logger.log('File Uploaded: %s',fileName);
-//       cb(null, fileName);
-//     });
-//   }
-// });
-// app.use(multer({ 'storage': storage }).single('file')); //Beware, you need to match .single() with whatever name="" of your file upload field in html
 
 // CSURF
 var csrf = require('csurf');
