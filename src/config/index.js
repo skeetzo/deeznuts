@@ -27,7 +27,7 @@ config.ssl_cert = '/etc/letsencrypt/live/alexdeeznuts.com-0001/fullchain.pem';
 
 // DeezNuts Settings
 config.conversionRate = 6; // $1 per 6 minutes
-config.defaultPrice = 5;
+config.defaultPrice = 5; // in dollars
 config.defaultTime = 60; // time in seconds
 config.syncInterval = 3000;
 if (config.debugging) {
@@ -72,10 +72,15 @@ config.alexd = {
 
 function deploy(environment) {
 	if (environment=='staging') {
-		config.debugging = false;
+		config.debugging = true;
 		config.ssl = true;
+<<<<<<< HEAD
 		config.debugging_live = false;
 		config.debugging_address = true;
+=======
+		config.debugging_live = true;
+		config.debugging_address = false;
+>>>>>>> a132232d92d09c4bb47b74c10fcb46b00cd3c848
 		config.debugging_sync = false;
 		config.local = false;
 		config.localDatabse = false;
@@ -99,6 +104,13 @@ function deploy(environment) {
 		config.localDatabase = false;
 	}
 }
+
+config.defaultVideo = {
+	'title': 'example',
+	'performers': ['Myself','Your Mom'],
+	'isOriginal': true,
+	'duration': 1000*60*config.defaultPrice
+};
 
 config.local_keys_path = './src/dev/localConfig.json';
 // config.local_google_keys_path = './src/dev/kairosnaps-google.json';

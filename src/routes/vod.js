@@ -13,14 +13,15 @@ module.exports = function homeRoutes(router) {
       if (err) logger.warn(err);
       // logger.debug('videos: %s', JSON.stringify(videos, null, 4));
       req.session.locals.videos = mixins.Videos(videos);
-      Video.find({'original':true}, function (err, videos_all) {
+      Video.find({'isOriginal':true,'isPreview':true}, function (err, videos_all) {
         if (err) logger.warn(err);
         // logger.debug('videos_all: %s',JSON.stringify(videos_all,null,4));
         if (videos_all.length==0) {
-          var example = new Video({'title':'example','performers':['Myself','Your Mom'],'original':true});
+          var example = new Video({'title':'example','performers':['Myself','Your Mom'],'isOriginal':true,'isPreview':true});
           videos_all.push(example);
           example.save();
         }
+        // req.session.locals.videos = mixins.Videos(videos_all);
         req.session.locals.videos_all = mixins.Videos(videos_all);
         res.render('videos', req.session.locals);
       });

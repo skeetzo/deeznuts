@@ -11,8 +11,10 @@ prepend content
     if (videos)
       for video in videos
         .col-xs-4
-          if (video.paid>=video.price)
+          if (video.isPaid)
             video(controls, poster='/images/'+video.title+'.jpg', type="video/mp4", width=250, src="/videos/"+video.title+".mp4")
+            .row
+              a.btn.btn-primary(href="/videos/"+video.title+".mp4", download) Download
           else
             video(controls, poster='/images/'+video.title+'.jpg', type="video/mp4", width=250, src="/videos/"+video.title+"-preview.mp4")
           include ../include/crypto-vod

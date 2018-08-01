@@ -11,57 +11,84 @@ var http = require('http');
 var https = require('https');
 // var rtmp = require('../modules/rtmp');
 var cron = require('../modules/cron').start();
-
-var alexd = require('../models/user');
-alexd.findOne({'username':config.alexd.username}, function (err, alexd_) {
-  if (err) return config.logger.warn(err);
-  if (!alexd_) {
-    config.logger.log('Prepping bot: %s', config.alexd.username);
-    alexd = new alexd(config.alexd);
-    alexd.save(function (err) {
-      if (err) config.logger.warn(err);
-    });
-  }
-  else
-    config.logger.log('Bot found: %s', alexd_.username);
-});
-
+var async = require('async');
+var Video = require('../models/video');
 /**
  * Get port from environment and store in Express.
  */
-
+var server;
 var port = normalizePort(config.port);
 app.set('port', port);
 
-var server;
-if (config.ssl) {
-  /**
-   * Create HTTPS server.
-   */
-  var fs = require('fs');
-  var privateKey  = fs.readFileSync(config.ssl_key, 'utf8');
-  var certificate = fs.readFileSync(config.ssl_cert, 'utf8');
-  var credentials = {'key': privateKey, 'cert': certificate};
-  server = https.createServer(credentials, app);
-}
-else {
-  server = http.createServer(app);
-}
+// Startup
+async.series([
+  function (step) {
+    var User = require('../models/user');
+    User.findOne({'username':config.alexd.username}, function (err, alexd) {
+      if (err) return logger.warn(err);
+      if (!alexd) {
+        logger.log('Prepping bot: %s', config.alexd.username);
+        alexd = new User(config.alexd);
+        alexd.save(function (err) {
+          if (err) logger.warn(err);
+          step(null);
+        });
+      }
+      else {
+        logger.log('Bot found: %s', alexd.username);
+        step(null);
+      }
+    });
+  },
+  // database initialization
+  function (step) {
+    Video.find({'isOriginal':true,'isPreview':false}, function (err, videos) {
+      if (err) logger.warn(err);
+      logger.log('Videos available: %s', videos.length);
+      if (!videos||videos.length==0) {
+        var example = new Video(config.defaultVideo);
+        example.save(function (err) {
+          step(err);
+        });
+      }
+      else step(null);
+    });
+  },
+  // double checks all originals have a preview
+  // function (step) {
+  //   Video.createPreviews(function (err) {
+  //     step(err);
+  //   });
+  // },
+  function (step) {
+    if (config.ssl) {
+      /**
+       * Create HTTPS server.
+       */
+      var fs = require('fs');
+      var privateKey  = fs.readFileSync(config.ssl_key, 'utf8');
+      var certificate = fs.readFileSync(config.ssl_cert, 'utf8');
+      var credentials = {'key': privateKey, 'cert': certificate};
+      server = https.createServer(credentials, app);
+    }
+    else {
+      server = http.createServer(app);
+    }
 
-/**
- * Listen on provided port, on all network interfaces.
- */
-
-server.listen(port, "127.0.0.1", function () {
-  logger.log("Live at Port %s", port);
-});
-server.on('error', onError);
-server.on('listening', onListening);
+    /**
+     * Listen on provided port, on all network interfaces.
+     */
+    server.listen(port, "127.0.0.1", function () {
+      logger.log("Live at Port %s", port);
+    });
+    server.on('error', onError);
+    server.on('listening', onListening);
+  }
+]);
 
 /**
  * Normalize a port into a number, string, or false.
  */
-
 function normalizePort(val) {
   var port = parseInt(val, 10);
 
@@ -81,7 +108,6 @@ function normalizePort(val) {
 /**
  * Event listener for HTTP server "error" event.
  */
-
 function onError(error) {
   if (error.syscall !== 'listen') {
     throw error;
@@ -109,7 +135,6 @@ function onError(error) {
 /**
  * Event listener for HTTP server "listening" event.
  */
-
 function onListening() {
   var addr = server.address();
   var bind = typeof addr === 'string'
