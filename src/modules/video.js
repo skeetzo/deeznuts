@@ -49,12 +49,12 @@ function extract(video, callback) {
 	logger.log('Extracting: %s', video.filename);
 	const duration = Math.round(video.duration);
 	logger.log('Duration: %s', duration);
-	
 	var newFile = video.filename.replace(".mp4","-preview.mp4");
 	logger.log('New File: %s', newFile);
 
 	// return callback(null, newFile);
-
+	// logger.log('file: %s',video.filename);
+	
 	// Convert
 	var conversion_process = new FFmpeg({ 'source': video.filename, 'timeout': 0 });
 	conversion_process
@@ -62,8 +62,8 @@ function extract(video, callback) {
 	    .withVideoBitrate(1024)
 	    .withVideoCodec('libx265')
 	    .withAspect('16:9')
-	    .withFps(24)
-	    // .withFps(60)
+	    // .withFps(24)
+	    .withFps(30)
 	    .withAudioBitrate('128k')
 	    .withAudioCodec('aac')
 	    .toFormat('mp4')
@@ -74,6 +74,8 @@ function extract(video, callback) {
 		.on('error', function (err, stdout, stderr) {
 			logger.log("Extraction Failed"); 
 			logger.log(err);
+			// logger.log(stdout);
+			// logger.log(stderr);
 		})
 		.on('progress', function (progress) {
 			logger.log("Extracting: %s%", Math.round(progress.percent*videos));

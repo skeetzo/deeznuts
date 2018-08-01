@@ -27,6 +27,7 @@ config.ssl_cert = '/etc/letsencrypt/live/alexdeeznuts.com-0001/fullchain.pem';
 
 // DeezNuts Settings
 config.conversionRate = 6; // $1 per 6 minutes
+config.createPreviews = false;
 config.defaultPrice = 5; // in dollars
 config.defaultTime = 60; // time in seconds
 config.syncInterval = 3000;
@@ -93,7 +94,7 @@ function deploy(environment) {
 		config.debugging = true;
 		config.ssl = false;
 		config.debugging_live = true;
-		config.debugging_address = true;
+		config.debugging_address = false;
 		config.debugging_sync = true;
 		config.local = true;
 		config.localDatabase = false;
