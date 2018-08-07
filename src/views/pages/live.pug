@@ -24,7 +24,8 @@ prepend content
           type: 'flv',
           isLive: true,
           cors: true,
-          url: "#{live_url}#{key}"
+          //- url: "#{live_url}#{key}"
+          url: "#{live_url}"
         });
         flvPlayer.attachMediaElement(videoElement);
         flvPlayer.load();

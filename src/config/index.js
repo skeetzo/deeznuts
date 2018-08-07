@@ -51,7 +51,7 @@ config.streamKeyExpire = 3600000;
 config.streamRecording = false;
 
 var live_url = config.domain+":8443/live/stream.flv";
-if (config.debugging) live_url = config.domain+":8000/live/stream.flv";
+if (config.debugging&&!config.ssl) live_url = config.domain+":8000/live/stream.flv";
 
 config.siteData = 
 	{ 	
@@ -73,7 +73,7 @@ config.alexd = {
 
 function deploy(environment) {
 	if (environment=='staging') {
-		config.debugging = false;
+		config.debugging = true;
 		config.ssl = true;
 		config.debugging_live = true;
 		config.debugging_address = false;
