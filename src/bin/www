@@ -9,7 +9,7 @@ var app = require('../app');
 var debug = require('debug')('alexdeeznuts:server');
 var http = require('http');
 var https = require('https');
-// var rtmp = require('../modules/rtmp');
+var rtmp = require('../modules/rtmp');
 var cron = require('../modules/cron').start();
 
 var alexd = require('../models/user');

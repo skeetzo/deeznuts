@@ -47,7 +47,7 @@ config.blockchainSecret = "gofuckyourself6969";
 // RTMP Stream
 config.streamKey = "yourmotherisadirtywhore";
 config.streamKeyExpire = 3600000;
-config.streamRecording = true;
+config.streamRecording = false;
 
 var live_url = config.domain+":8443/live/stream.flv";
 if (config.debugging) live_url = config.domain+":8000/live/stream.flv";
