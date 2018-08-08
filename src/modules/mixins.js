@@ -83,7 +83,7 @@ module.exports.resetLocals = function(req, res, next) {
         req.session.locals._csrf = req.csrfToken();
 
     // rtmp key
-    if (!req.session.locals.key&&!config.debugging) {
+    if (!req.session.locals.key) {
         var timestamp = (Date.now() + config.streamKeyExpire);
         var hash = md5("/live/stream-"+timestamp+"-"+config.streamKey);
         req.session.locals.key = timestamp+"-"+hash;
