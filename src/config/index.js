@@ -50,8 +50,8 @@ config.streamKey = "yourmotherisadirtywhore";
 config.streamKeyExpire = 3600000;
 config.streamRecording = false;
 
-var live_url = config.domain+":8443/live/stream.flv";
-if (config.debugging&&!config.ssl) live_url = config.domain+":8000/live/stream.flv";
+var live_url = config.domain+":8443/live/stream.flv?sign=";
+if (config.debugging&&!config.ssl) live_url = config.domain+":8000/live/stream.flv?sign=";
 
 config.siteData = 
 	{ 	
