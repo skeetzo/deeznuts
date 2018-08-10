@@ -18,6 +18,7 @@ prepend content
           else
             video(controls, poster='/images/'+video.title+'.jpg', type="video/mp4", width=250, src="/videos/"+video.title+".mp4")
           include ../include/crypto-vod
+  .row
     if (message||error)
       .message
         if (message)
