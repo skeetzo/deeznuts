@@ -36,8 +36,7 @@ function convert(fileName, callback) {
 				callback(null);
 			}
 		], function (err) {
-			if (err) logger.log(err);
-			callback(null);
+			callback(err);
 		});
 	});
 }
@@ -72,8 +71,8 @@ function extract(video, callback) {
 		.on('error', function (err, stdout, stderr) {
 			logger.log("Extraction Failed"); 
 			callback(err);
-			logger.log("ffmpeg stdout:\n" + stdout);
-			logger.log("ffmpeg stderr:\n" + stderr);
+			// logger.log("ffmpeg stdout:\n" + stdout);
+			// logger.log("ffmpeg stderr:\n" + stderr);
 		})
 		.on('progress', function (progress) {
 			logger.log("Extracting: %s%", Math.round(progress.percent*videos));
