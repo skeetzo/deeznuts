@@ -60,9 +60,17 @@ async.series([
       logger.log('Skipping Previews');
       return step(null);
     }
-    Video.createPreviews(function (err) {
-      step(err);
+    Video.find({'isOriginal':true,'isPreview':false,'hasPreview':false}, function (err, videos) {
+      if (err) logger.warn(err);
+      if (videos&&videos.length>0) {
+        logger.log('Generating Preview: %s', videos.length);
+        return Video.createPreviews(function (err) {
+          step(err);
+        });    
+      }
+      step(null);
     });
+    
   },
   function (step) {
     if (config.ssl) {

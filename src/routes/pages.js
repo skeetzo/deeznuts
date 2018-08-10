@@ -24,7 +24,6 @@ module.exports = function homeRoutes(router) {
     res.render('index', req.session.locals);
   });
 
-
   // check for recent tips
   router.post("/sync", function (req, res, next) {
     if (!req.session.user) return res.sendStatus(204);

@@ -16,7 +16,7 @@ prepend content
             .row
               a.btn.btn-primary(href="/videos/"+video.title+".mp4", download) Download
           else
-            video(controls, poster='/images/'+video.title+'.jpg', type="video/mp4", width=250, src="/videos/"+video.title+"-preview.mp4")
+            video(controls, poster='/images/'+video.title+'.jpg', type="video/mp4", width=250, src="/videos/"+video.title+".mp4")
           include ../include/crypto-vod
   h3 Archive
   hr
@@ -25,7 +25,7 @@ prepend content
     if (videos_all)
       for video in videos_all
         .col-xs-4
-          video(controls, poster='/images/'+video.title+'.jpg', type="video/mp4", width=250, src="/videos/"+video.title+"-preview.mp4")
+          video(controls, poster='/images/'+video.title+'.jpg', type="video/mp4", width=250, src="/videos/"+video.title+".mp4")
           include ../include/crypto-vod
 
 prepend javascript

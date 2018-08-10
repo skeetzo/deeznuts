@@ -17,7 +17,7 @@ module.exports = function homeRoutes(router) {
         if (err) logger.warn(err);
         // logger.debug('videos_all: %s',JSON.stringify(videos_all,null,4));
         if (videos_all.length==0) {
-          var example = new Video({'title':'example','performers':['Myself','Your Mom'],'isOriginal':true,'isPreview':true});
+          var example = new Video({'title':'example-preview','performers':['Myself','Your Mom'],'isOriginal':true,'isPreview':true});
           videos_all.push(example);
           example.save();
         }
