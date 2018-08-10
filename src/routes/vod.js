@@ -13,6 +13,7 @@ module.exports = function homeRoutes(router) {
       if (err) logger.warn(err);
       // logger.debug('videos: %s', JSON.stringify(videos, null, 4));
       req.session.locals.videos = mixins.Videos(videos);
+      if (videos.length==0) req.flash('message', 'Purchase a video below!');
       Video.find({'isOriginal':true,'isPreview':true}, function (err, videos_all) {
         if (err) logger.warn(err);
         // logger.debug('videos_all: %s',JSON.stringify(videos_all,null,4));

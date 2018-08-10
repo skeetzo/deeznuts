@@ -20,7 +20,7 @@ function convert(fileName, callback) {
 		async.waterfall([
 			function (step) {
 				logger.log('--- Extracting ---');
-				logger.log('metadata.format: %s', JSON.stringify(metadata.format, null, 4));
+				// logger.log('metadata.format: %s', JSON.stringify(metadata.format, null, 4));
 				extract(metadata.format, function (err, file) {
 					step(err, file);
 				});
@@ -72,6 +72,8 @@ function extract(video, callback) {
 		.on('error', function (err, stdout, stderr) {
 			logger.log("Extraction Failed"); 
 			callback(err);
+			logger.log("ffmpeg stdout:\n" + stdout);
+			logger.log("ffmpeg stderr:\n" + stderr);
 		})
 		.on('progress', function (progress) {
 			logger.log("Extracting: %s%", Math.round(progress.percent*videos));
