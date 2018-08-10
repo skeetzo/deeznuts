@@ -20,17 +20,15 @@ function convert(fileName, callback) {
 		async.waterfall([
 			function (step) {
 				logger.log('--- Extracting ---');
-				logger.log('metadata.format: %s', metadata.format);
+				logger.log('metadata.format: %s', JSON.stringify(metadata.format, null, 4));
 				extract(metadata.format, function (err, file) {
-					if (err) logger.log(err);
-					step(null, file);
+					step(err, file);
 				});
 			},
 			function (file, step) {
 				logger.log('--- Watermarking ---');
 				watermark(file, function (err) {
-					if (err) logger.log(err);
-					step(null, file);
+					step(err, file);
 				});
 			},
 			function (step) {
@@ -73,9 +71,7 @@ function extract(video, callback) {
 		})
 		.on('error', function (err, stdout, stderr) {
 			logger.log("Extraction Failed"); 
-			logger.log(err);
-			// logger.log(stdout);
-			// logger.log(stderr);
+			callback(err);
 		})
 		.on('progress', function (progress) {
 			logger.log("Extracting: %s%", Math.round(progress.percent*videos));
@@ -131,7 +127,7 @@ function watermark(file, callback) {
 		})
 		.on('error', function (err, stdout, stderr) {
 			logger.log("Watermarking Failed"); 
-			logger.log(err);
+			callback(err);
 		})
 		.on('progress', function (progress) {
 			logger.log("Watermarking: %s%", Math.round(progress.percent));
