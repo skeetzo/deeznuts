@@ -67,7 +67,7 @@ function extract(video, callback) {
 	    .withAudioBitrate('128k')
 	    .withAudioCodec('aac')
 	    .toFormat('mp4')
-	    .duration(10)
+	    // .duration(10)
 		.on('start', function (commandLine) {
 			logger.log("Extraction Started");
 		})
