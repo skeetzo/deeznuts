@@ -38,15 +38,18 @@ module.exports = function homeRoutes(router) {
     });
   });
 
-  // router.get("/add", mixins.loggedIn,  function (req, res, next) {
-  //   User.findOne({'ip':req.session.user.ip}, function (err, user) {
-  //     if (err) logger.warn(err);
-  //     if (!user) return res.sendStatus(404);
-  //     // user.time_added = 60;
-  //     var oneDollarInBTC = 0.00015;
-  //     user.addTime(100000000*oneDollarInBTC*6);
-  //   });
-  // });
+  router.get("/add", mixins.loggedIn,  function (req, res, next) {
+    User.findOne({'ip':req.session.user.ip}, function (err, user) {
+      if (err) logger.warn(err);
+      if (!user) return res.sendStatus(404);
+      // user.time_added = 60;
+      var oneDollarInBTC = 0.00015;
+      user.addTime({'value':100000000*oneDollarInBTC*6}, function (err) {
+        if (err) logger.warn(err);
+        res.sendStatus(200);
+      });
+    });
+  });
 
   router.get("/key", mixins.loggedIn, mixins.loggedInAlexD, function (req, res, next) {
     res.render('key', req.session.locals);

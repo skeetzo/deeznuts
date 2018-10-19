@@ -48,13 +48,17 @@ config.blockchainSecret = "gofuckyourself6969";
 // RTMP Stream
 config.streamKey = "yourmotherisadirtywhore";
 config.streamKeyExpire = 3600000;
-config.streamRecording = false;
+config.streamRecording = true;
+// config.streamRecording_mp4 = true;
+// config.streamRecording_dash = true;
+// config.streamRecording_hls = true;
 
 var live_url = config.domain+":8443/live/stream.flv?sign=";
 if (config.debugging&&!config.ssl) live_url = config.domain+":8000/live/stream.flv?sign=";
 
 config.siteData = 
 	{ 	
+		debugging: config.debugging,
 		title: config.title,
 		siteTitle: config.siteTitle,
 		domain: config.domain,
@@ -71,6 +75,8 @@ config.alexd = {
 	'password': 'gofuckyourself6969'
 };
 
+config.remoteDatabase = false;
+
 function deploy(environment) {
 	if (environment=='staging') {
 		config.debugging = true;
@@ -79,7 +85,6 @@ function deploy(environment) {
 		config.debugging_address = false;
 		config.debugging_sync = false;
 		config.local = false;
-		config.localDatabse = false;
 	}
 	else if (environment=='production') {
 		config.debugging = false;
@@ -88,7 +93,6 @@ function deploy(environment) {
 		config.debugging_address = false;
 		config.debugging_sync = false;
 		config.local = false;
-		config.localDatabase = true;
 	}
 	else {
 		config.debugging = true;
@@ -97,7 +101,6 @@ function deploy(environment) {
 		config.debugging_address = false;
 		config.debugging_sync = true;
 		config.local = true;
-		config.localDatabase = false;
 	}
 }
 

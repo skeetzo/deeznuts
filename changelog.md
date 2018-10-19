@@ -25,12 +25,18 @@
  - debugging settings
  - writeup
 
-**1.0.0 : Live : 6/25/2018**
+**1.0.0 : Live-able : 6/25/2018**
  - social media: twitter & instagram links, snap
 
 **1.0.1**
- - next live @ & schedule
+ - route & view: videos
+ - btc for vod
+ - stream testing
+
+
+
 **1.1.0**
+ - next live @ & schedule
  - chat log
 **2.0.0 : Android App : ??/??/??**
  - android rtmp relay?

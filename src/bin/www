@@ -70,7 +70,6 @@ async.series([
       }
       step(null);
     });
-    
   },
   function (step) {
     if (config.ssl) {

@@ -12,26 +12,9 @@ prepend content
 
   append javascript
 
-    //- script(src="//cdn.dashjs.org/latest/dash.all.min.js")
-    //- video(data-dashjs-player autoplay src="https://alexdeeznuts.com:8080/live/stream.mpd" controls)
-    
-    script(src="//cdn.bootcss.com/flv.js/1.4.0/flv.min.js")
-    
-    script.
-      if (flvjs.isSupported()) {
-        var videoElement = document.getElementById('preview');
-        var flvPlayer = flvjs.createPlayer({
-          type: 'flv',
-          isLive: true,
-          cors: true,
-          url: "#{live_url}#{key}"
-          //- url: "#{live_url}"
-        });
-        flvPlayer.attachMediaElement(videoElement);
-        flvPlayer.load();
-        //- flvPlayer.play();
-      }
+    include ../include/flv
 
+    //- live viewing countdown
     script.
       $(document).ready(function () {
         //- updates time if live
@@ -45,7 +28,10 @@ prepend content
           else if (seconds<=0) {
             clearInterval(countdown);
             alert('Times up!');
-            window.location.replace("#{domain}/");
+            if ("#{debugging}")
+              window.location.replace("#{domain}:3000/");
+            else
+              window.location.replace("#{domain}/");
           }
         },1000);
       });
