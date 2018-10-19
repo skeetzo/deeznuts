@@ -59,6 +59,7 @@ async.series([
   function (step) {
     var fs = require('fs');
     logger.log('Archiving MP4s')
+    fs.ensureDirSync(path.resolve(__dirname, '../public/videos/archived'));
     fs.readdir(path.resolve(__dirname, '../public/videos/live/stream'), function(err, mp4s) {
       if (err) {
         logger.warn(err);
@@ -67,13 +68,14 @@ async.series([
       logger.log(mp4s);
       for (var i=0; i<mp4s.length; i++) {
         logger.log('Archiving: %s', mp4s[i]);
-        fs.renameSync(oldPath, newPath);
+        fs.renameSync(mp4s[i], path.resolve(__dirname, '../public/videos/archived'));
       }
       step(null);
     });
   },
   // double checks all originals have a preview
   function (step) {
+    fs.ensureDirSync(path.resolve(__dirname, '../public/videos/previews'));
     if (!config.createPreviews) {
       logger.log('Skipping Previews');
       return step(null);
