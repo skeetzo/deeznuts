@@ -88,7 +88,7 @@ function watermark(file, callback) {
 	logger.log('Watermarking: %s', file);
 	var conversion_process = new FFmpeg({ 'source': file, 'timeout': 0 });
 	conversion_process
-	    .input("watermark.png")
+	    .input("../public/images/watermark.png")
 		.complexFilter([
 			// watermarkvideos
 			{

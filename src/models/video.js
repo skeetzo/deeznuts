@@ -35,7 +35,7 @@ var videoSchema = new Schema({
 videoSchema.pre('save', function (next) {
   var self = this;
   self.description = [self.performers.slice(0, -1).join(', '), self.performers.slice(-1)[0]].join(self.performers.length < 2 ? '' : ' and ');
-  self.path = self.title+'.mp4';
+  self.path = '/public/videos/archive/'+self.title+'.mp4';
   if (self.isModified('paid')||self.isModified('duration')) {
     if (self.paid>=self.duration) {
       logger.debug('isPaid on save: %s', self._id);

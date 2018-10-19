@@ -54,6 +54,19 @@ async.series([
       else step(null);
     });
   },
+  // move any mp4s from public/videos/live/stream -> public/videos/archived
+  function (step) {
+    var fs = require('fs');
+
+    fs.readdir('../public/videos/live/stream', function(err, mp4s) {
+      logger.log(mp4s);
+      for (var i=0; i<mp4s.length; i++) {
+        logger.log('Archiving: %s', mp4s[i]);
+        fs.renameSync(oldPath, newPath);
+      }
+      step(null);
+    });
+  },
   // double checks all originals have a preview
   function (step) {
     if (!config.createPreviews) {

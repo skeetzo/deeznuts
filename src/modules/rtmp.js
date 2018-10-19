@@ -106,3 +106,7 @@ nms.on('donePublish', (id, StreamPath, args) => {
 // nms.on('donePlay', (id, StreamPath, args) => {
 //   console.log('[NodeEvent on donePlay]', `id=${id} StreamPath=${StreamPath} args=${JSON.stringify(args)}`);
 // });
+
+nms.on('transmuxingEnd', (id, StreamPath, args) => {
+  logger.log('[NodeEvent on transmuxingEnd]', `id=${id} StreamPath=${StreamPath} args=${JSON.stringify(args)}`);
+});
