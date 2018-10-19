@@ -14,6 +14,9 @@ var cron = require('../modules/cron').start();
 var async = require('async');
 var Video = require('../models/video');
 var path = require('path');
+var fs = require('fs');
+var fss = require('fs-extra');
+
 /**
  * Get port from environment and store in Express.
  */
@@ -59,7 +62,7 @@ async.series([
   function (step) {
     var fs = require('fs');
     logger.log('Archiving MP4s')
-    fs.ensureDirSync(path.resolve(__dirname, '../public/videos/archived'));
+    fss.ensureDirSync(path.resolve(__dirname, '../public/videos/archived'));
     fs.readdir(path.resolve(__dirname, '../public/videos/live/stream'), function(err, mp4s) {
       if (err) {
         logger.warn(err);
@@ -75,7 +78,7 @@ async.series([
   },
   // double checks all originals have a preview
   function (step) {
-    fs.ensureDirSync(path.resolve(__dirname, '../public/videos/previews'));
+    fss.ensureDirSync(path.resolve(__dirname, '../public/videos/previews'));
     if (!config.createPreviews) {
       logger.log('Skipping Previews');
       return step(null);
@@ -96,7 +99,6 @@ async.series([
       /**
        * Create HTTPS server.
        */
-      var fs = require('fs');
       var privateKey  = fs.readFileSync(config.ssl_key, 'utf8');
       var certificate = fs.readFileSync(config.ssl_cert, 'utf8');
       var credentials = {'key': privateKey, 'cert': certificate};
