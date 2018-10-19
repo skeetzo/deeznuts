@@ -38,7 +38,8 @@ if (config.debugging)
 if (config.streamRecording)
   // record to mp4
   serverOptions.trans = {
-    'ffmpeg': '/usr/bin/ffmpeg',
+    // 'ffmpeg': '/usr/bin/ffmpeg',
+    'ffmpeg': '/usr/local/bin/ffmpeg',
     'tasks': [{
       app: 'live',
       ac: 'aac',
