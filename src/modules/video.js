@@ -75,7 +75,7 @@ function extract(video, callback) {
 			// logger.log("ffmpeg stderr:\n" + stderr);
 		})
 		.on('progress', function (progress) {
-			logger.log("Extracting: %s%", Math.round(progress.percent*videos));
+			logger.log("Extracting: %s%", Math.round(progress.percent));
 		})
 		.on('end', function () {
 			logger.log("Extraction Finished");
@@ -135,7 +135,7 @@ function watermark(file, callback) {
 		})
 		.on('end', function () {
 			logger.log("Watermarking Finished");
-			logger.log('--- Watermarked: %s', fileName);
+			logger.log('--- Watermarked: %s', file);
 			step(null);
 		})
 		.saveToFile(file);	
