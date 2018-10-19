@@ -40,17 +40,18 @@ if (config.streamRecording)
   serverOptions.trans = {
     // 'ffmpeg': '/usr/bin/ffmpeg',
     'ffmpeg': '/usr/local/bin/ffmpeg',
-    'tasks': [{
-      app: 'live',
-      ac: 'aac',
-      hls: true,
-      hlsFlags: '[hls_time=2:hls_list_size=3:hls_flags=delete_segments]',
-      dash: true,
-      dashFlags: '[f=dash:window_size=3:extra_window_size=5]'
-    },
+    'tasks': [
+    // {
+    //   app: 'live',
+    //   ac: 'aac',
+    //   hls: true,
+    //   hlsFlags: '[hls_time=2:hls_list_size=3:hls_flags=delete_segments]',
+    //   dash: true,
+    //   dashFlags: '[f=dash:window_size=3:extra_window_size=5]'
+    // },
     {
       'app': 'live',
-      // 'ac': 'aac',
+      'ac': 'aac',
       'mp4': true,
       'mp4Flags': '[movflags=faststart]',
     }
@@ -106,7 +107,3 @@ nms.on('donePublish', (id, StreamPath, args) => {
 // nms.on('donePlay', (id, StreamPath, args) => {
 //   console.log('[NodeEvent on donePlay]', `id=${id} StreamPath=${StreamPath} args=${JSON.stringify(args)}`);
 // });
-
-nms.on('transmuxingEnd', (id, StreamPath, args) => {
-  logger.log('[NodeEvent on transmuxingEnd]', `id=${id} StreamPath=${StreamPath} args=${JSON.stringify(args)}`);
-});
