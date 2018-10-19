@@ -87,8 +87,11 @@ function extract(video, callback) {
 function watermark(file, callback) {
 	logger.log('Watermarking: %s', file);
 	var conversion_process = new FFmpeg({ 'source': file, 'timeout': 0 });
+	var path = require('path');
+	var loc = path.resolve(__dirname, "../public/images/watermark.png");
+	logger.log('loc: %s', loc);
 	conversion_process
-	    .input("../public/images/watermark.png")
+	    .input(loc)
 		.complexFilter([
 			// watermarkvideos
 			{
