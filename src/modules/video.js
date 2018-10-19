@@ -57,7 +57,7 @@ function extract(video, callback) {
 	conversion_process
 	    // .input("watermark.png")
 	    .withVideoBitrate(1024)
-	    .withVideoCodec('libx265')
+	    // .withVideoCodec('libx265')
 	    .withAspect('16:9')
 	    // .withFps(24)
 	    .withFps(30)
