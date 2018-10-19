@@ -59,6 +59,10 @@ async.series([
     var fs = require('fs');
 
     fs.readdir('../public/videos/live/stream', function(err, mp4s) {
+      if (err) {
+        logger.warn(err);
+        return step(null);
+      }
       logger.log(mp4s);
       for (var i=0; i<mp4s.length; i++) {
         logger.log('Archiving: %s', mp4s[i]);
