@@ -28,10 +28,7 @@ prepend content
           else if (seconds<=0) {
             clearInterval(countdown);
             alert('Times up!');
-            if ("#{debugging}")
-              window.location.replace("#{domain}:3000/");
-            else
-              window.location.replace("#{domain}/");
+            window.location.replace("#{domain}/");
           }
         },1000);
       });

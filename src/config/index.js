@@ -18,6 +18,9 @@ config.domain = "alexdeeznuts.com";
 if (config.local) config.domain = "localhost";
 if (config.ssl) config.domain = "https://"+config.domain;
 else config.domain = "http://"+config.domain;
+
+config.domain = "192.168.1.9:3000";
+
 config.author = "Skeetzo";
 config.description = "Porn Star Streamer";
 config.Google_Analytics = "UA-82463743-8";
