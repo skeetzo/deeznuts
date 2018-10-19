@@ -9,7 +9,7 @@ config.Crons_On = true;
 
 // App Settings
 config.botName = "DeezNuts";
-config.port = Number(process.env.PORT || 80);
+config.port = Number(process.env.PORT || 3000);
 
 // Site Settings
 config.title = "Alex D.'s Nuts";
