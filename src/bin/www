@@ -89,7 +89,8 @@ async.series([
     /**
      * Listen on provided port, on all network interfaces.
      */
-    server.listen(port, "127.0.0.1", function () {
+    // server.listen(port, "127.0.0.1", function () {
+    server.listen(port, "0.0.0.0", function () {
       logger.log("Live at Port %s", port);
     });
     server.on('error', onError);
