@@ -60,7 +60,7 @@ async.series([
 
     logger.log('dir: %s', __dirname);
 
-    fs.readdir('../public/videos/live/stream', function(err, mp4s) {
+    fs.readdir('./public/videos/live/stream', function(err, mp4s) {
       if (err) {
         logger.warn(err);
         return step(null);
