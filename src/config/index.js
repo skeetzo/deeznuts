@@ -59,7 +59,7 @@ config.streamRecording = true;
 var live_url = config.domain+":8443/live/stream.flv?sign=";
 if (config.debugging&&!config.ssl) live_url = config.domain+":8000/live/stream.flv?sign=";
 
-live_url = "192.168.1.9:8000/live/stream.flv?sign=";
+live_url = "http://192.168.1.9:8000/live/stream.flv?sign=";
 
 config.siteData = 
 	{ 	
