@@ -76,7 +76,6 @@ function extract(video, callback) {
 		})
 		.on('progress', function (progress) {
 		    process.stdout.write('Extracting: '+Math.round(progress.percent*video.duration)+'%\033[0G');
-			logger.log("Extracting: %s%", Math.round(progress.percent));
 		})
 		.on('end', function () {
 			logger.log("Extraction Finished");
@@ -134,12 +133,12 @@ function watermark(file, callback) {
 			callback(err);
 		})
 		.on('progress', function (progress) {
-			logger.log("Watermarking: %s%", Math.round(progress.percent));
+			process.stdout.write("Watermarking: "+Math.round(progress.percent));
 		})
 		.on('end', function () {
 			logger.log("Watermarking Finished");
 			logger.log('--- Watermarked: %s', file);
-			step(null);
+			callback(null);
 		})
 		.saveToFile(file.replace('.mp4','-w.mp4'));	
 }
