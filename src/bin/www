@@ -59,8 +59,10 @@ async.series([
     var fs = require('fs');
 
     logger.log('dir: %s', __dirname);
-
-    fs.readdir('./public/videos/live/stream', function(err, mp4s) {
+    var path = require('path');
+    var loc = path.resolve(__dirname, '../public/videos/live/stream');
+    logger.log('loc: %s', loc);
+    fs.readdir(loc, function(err, mp4s) {
       if (err) {
         logger.warn(err);
         return step(null);
