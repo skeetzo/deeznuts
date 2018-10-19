@@ -101,6 +101,7 @@ function deploy(environment) {
 		config.debugging_address = false;
 		config.debugging_sync = true;
 		config.local = true;
+		config.remoteDatabase = true;
 	}
 }
 
