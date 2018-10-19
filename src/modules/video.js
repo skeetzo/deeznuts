@@ -49,9 +49,6 @@ function extract(video, callback) {
 	var newFile = video.filename.replace(".mp4","-preview.mp4");
 	logger.log('New File: %s', newFile);
 
-	// return callback(null, newFile);
-	// logger.log('file: %s',video.filename);
-	
 	// Convert
 	var conversion_process = new FFmpeg({ 'source': video.filename, 'timeout': 0 });
 	conversion_process
@@ -75,7 +72,7 @@ function extract(video, callback) {
 			// logger.log("ffmpeg stderr:\n" + stderr);
 		})
 		.on('progress', function (progress) {
-		    process.stdout.write('Extracting: '+Math.round(progress.percent*video.duration)+'%\033[0G');
+		    process.stdout.write('Extracting: '+Math.round(progress.percent)+'%\033[0G');
 		})
 		.on('end', function () {
 			logger.log("Extraction Finished");
@@ -87,11 +84,8 @@ function extract(video, callback) {
 function watermark(file, callback) {
 	logger.log('Watermarking: %s', file);
 	var conversion_process = new FFmpeg({ 'source': file, 'timeout': 0 });
-	var path = require('path');
-	var loc = path.resolve(__dirname, "../public/images/watermark.png");
-	logger.log('loc: %s', loc);
 	conversion_process
-	    .input(loc)
+	    .input(path.resolve(__dirname, "../public/images/watermark.png"))
 		.complexFilter([
 			{
 				'filter': 'scale',
@@ -133,7 +127,7 @@ function watermark(file, callback) {
 			callback(err);
 		})
 		.on('progress', function (progress) {
-			process.stdout.write("Watermarking: "+Math.round(progress.percent));
+			process.stdout.write("Watermarking: "+Math.round(progress.percent)+'%\033[0G');
 		})
 		.on('end', function () {
 			logger.log("Watermarking Finished");
