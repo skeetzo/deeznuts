@@ -75,6 +75,7 @@ function extract(video, callback) {
 			// logger.log("ffmpeg stderr:\n" + stderr);
 		})
 		.on('progress', function (progress) {
+		    process.stdout.write('Extracting: '+Math.round(progress.percent*video.duration)+'%\033[0G');
 			logger.log("Extracting: %s%", Math.round(progress.percent));
 		})
 		.on('end', function () {
@@ -93,7 +94,6 @@ function watermark(file, callback) {
 	conversion_process
 	    .input(loc)
 		.complexFilter([
-			// watermarkvideos
 			{
 				'filter': 'scale',
 				'options': {
@@ -141,7 +141,7 @@ function watermark(file, callback) {
 			logger.log('--- Watermarked: %s', file);
 			step(null);
 		})
-		.saveToFile(file);	
+		.saveToFile(file.replace('.mp4','-w.mp4'));	
 }
 
 
