@@ -110,10 +110,11 @@ function deploy(environment) {
 }
 
 config.defaultVideo = {
-	'title': 'example',
+	'title': 'Preview',
 	'performers': ['Myself','Your Mom'],
 	'isOriginal': true,
-	'duration': 1000*60*config.defaultPrice
+	'duration': 1000*60*config.defaultPrice,
+	'path': '/public/videos/preview.mp4'
 };
 
 config.local_keys_path = './src/dev/localConfig.json';
