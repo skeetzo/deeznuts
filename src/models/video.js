@@ -122,7 +122,6 @@ videoSchema.methods.createPreview = function(callback) {
     });
   });
 }
-module.exports.createPreview = createPreview;
 
 videoSchema.methods.extract = function(callback) {
   logger.log('Extracting: %s', this.title);
