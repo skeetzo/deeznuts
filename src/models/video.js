@@ -122,7 +122,7 @@ videoSchema.methods.createPreview = function(callback) {
     });
   });
 }
-module.exports.convert = convert;
+module.exports.createPreview = createPreview;
 
 videoSchema.methods.extract = function(callback) {
   logger.log('Extracting: %s', this.title);
@@ -214,7 +214,6 @@ videoSchema.methods.watermark = function(callback) {
     })
     .saveToFile(newFile); 
 }
-
 
 var Video = mongoose.model('videos', videoSchema,'videos');
 module.exports = Video;
