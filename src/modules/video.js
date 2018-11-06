@@ -75,7 +75,7 @@ function extract(video, callback) {
 			// logger.log("ffmpeg stderr:\n" + stderr);
 		})
 		.on('progress', function (progress) {
-			logger.log("Extracting: %s%", Math.round(progress.percent*videos));
+			logger.log("Extracting: %s%", Math.round(progress.percent));
 		})
 		.on('end', function () {
 			logger.log("Extraction Finished");
