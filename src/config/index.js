@@ -75,7 +75,7 @@ config.alexd = {
 	'password': 'gofuckyourself6969'
 };
 
-config.remoteDatabase = false;
+config.remoteDatabase = true;
 
 function deploy(environment) {
 	if (environment=='staging') {
