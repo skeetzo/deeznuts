@@ -8,7 +8,7 @@ var config = require('../config/index'),
 // edit video into 10 sec preview with watermark
 function convert(fileName, callback) {
 	logger.log('--- Converting: %s', fileName);
-	fileName = path.join(__dirname, '../public/videos', fileName);
+	fileName = path.resolve(__dirname, '../public/videos', fileName);
 	logger.log(fileName);
 	FFmpeg.ffprobe(fileName, function (err, metadata) {
 		if (err) return callback(err);
