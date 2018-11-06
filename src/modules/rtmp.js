@@ -41,7 +41,7 @@ if (config.streamRecording)
     'ffmpeg': '/usr/bin/ffmpeg',
     'tasks': [{
       app: 'live',
-      ac: 'aac',
+      // ac: 'aac',
       hls: true,
       hlsFlags: '[hls_time=2:hls_list_size=3:hls_flags=delete_segments]',
       dash: true,
@@ -49,9 +49,9 @@ if (config.streamRecording)
     },
     {
       'app': 'live',
-      'ac': 'aac',
+      // 'ac': 'aac',
       'mp4': true,
-      'mp4Flags': '[-strict:2:movflags=faststart]',
+      'mp4Flags': '[movflags=faststart]',
     }
     ]
   }
