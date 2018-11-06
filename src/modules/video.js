@@ -33,7 +33,7 @@ function convert(fileName, callback) {
 			},
 			function (step) {
 				logger.log('--- Conversion Complete: %s', fileName);
-				callback(null);
+				callback(null, fileName);
 			}
 		], function (err) {
 			callback(err);

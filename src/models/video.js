@@ -82,16 +82,21 @@ videoSchema.statics.createPreviews = function(callback) {
   });
 }
 
+// get file at location
+// convert to preview
+// save ref
 videoSchema.methods.createPreview = function(callback) {
   var self = this;
-  // get file at location
-  // convert to preview
-  // save ref
-  convert(self.path, function (err) {
+  convert(self.path, function (err, newPreview) {
     if (err) return callback(err);
-    self.hasPreview = true;
-    self.save(function (err) {
-      callback(err);
+    var previewVideo = new Video(self);
+    previewVideo.path = newPreview;
+    previewVideo.save(function (err) {
+      if (err) return callback(err);
+      self.hasPreview = true;
+      self.save(function (err) {
+        callback(err);
+      });
     });
   });
 }
