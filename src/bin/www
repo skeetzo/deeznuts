@@ -18,7 +18,7 @@ var Video = require('../models/video');
  */
 var server;
 var port = normalizePort(config.port);
-app.set('port', port);
+app.set('port', 3020);
 
 // Startup
 async.series([
