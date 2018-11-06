@@ -48,10 +48,8 @@ function extract(video, callback) {
 	logger.log('Duration: %s', duration);
 	var newFile = video.filename.replace(".mp4","-preview.mp4");
 	logger.log('New File: %s', newFile);
-
 	// return callback(null, newFile);
 	// logger.log('file: %s',video.filename);
-	
 	// Convert
 	var conversion_process = new FFmpeg({ 'source': video.filename, 'timeout': 0 });
 	conversion_process
@@ -76,7 +74,7 @@ function extract(video, callback) {
 		})
 		.on('progress', function (progress) {
 			// logger.log("Extracting: %s%", Math.round(progress.percent));
-			process.stdout.write('Extracting: '+Math.round(progress.percent)+'%\033[0G');
+			process.stdout.write('Extracting: '+Math.round(progress.percent*(video.duration/10))+'%\033[0G');
 		})
 		.on('end', function () {
 			logger.log("Extraction Finished");
@@ -137,7 +135,7 @@ function watermark(file, callback) {
 		})
 		.on('end', function () {
 			logger.log("Watermarking Finished");
-			logger.log('--- Watermarked: %s', fileName);
+			logger.log('--- Watermarked: %s', file);
 			step(null);
 		})
 		.saveToFile(file);	
