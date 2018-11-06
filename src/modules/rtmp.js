@@ -51,7 +51,7 @@ if (config.streamRecording)
       'app': 'live',
       'ac': 'aac',
       'mp4': true,
-      'mp4Flags': '[movflags=faststart]',
+      'mp4Flags': '[-strict:2:movflags=faststart]',
     }
     ]
   }
