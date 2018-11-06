@@ -53,7 +53,7 @@ if (config.streamRecording)
       // 'ac': 'aac',
       'ac': 'copy',
       'mp4': true,
-      'mp4Flags': '[-strict -2:movflags=faststart]',
+      'mp4Flags': '[movflags=faststart]',
     }
     ]
   }
