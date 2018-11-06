@@ -136,7 +136,7 @@ function watermark(file, callback) {
 		.on('end', function () {
 			logger.log("Watermarking Finished");
 			logger.log('--- Watermarked: %s', file);
-			step(null);
+			callback(null);
 		})
 		.saveToFile(file);	
 }
