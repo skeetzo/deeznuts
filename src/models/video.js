@@ -75,6 +75,67 @@ videoSchema.pre('save', function (next) {
   }
 });
 
+// move any mp4s from public/videos/live/stream -> public/videos/archived
+videoSchema.statics.archiveVideos = function(callback) {
+  var fs = require('fs');
+  logger.log('Archiving MP4s');
+  // stream directories
+  fs.readdir(path.join(__dirname, '../public/videos/live'), function (err, streams) {
+    if (err) {
+      logger.warn(err);
+      return callback(null);
+    }
+    logger.debug('streams: %s', streams);
+    var series = [];
+    for (var i=0;i<streams.length;i++)
+      series.push(function (next) {
+        // mp4s in directories
+        var stream_name = streams.shift();
+        var stream_path = path.join(__dirname, '../public/videos/live', stream_name);
+        var archived_path = path.join(__dirname, '../public/videos/archived', stream_name);
+        // logger.debug('stream_name: %s', stream_name);
+        logger.log('stream: %s', stream_name);
+        logger.debug('stream_path: %s', stream_path);
+        logger.debug('archived_path: %s', archived_path);
+        // fss.ensureDirSync(archived_path);
+        fss.ensureSymlinkSync(path.join(config.videosPath, 'archived/', stream_name), archived_path);
+        fs.readdir(stream_path, function (err, mp4s) {
+          if (err) {
+            logger.warn(err);
+            return next(null);
+          }
+          logger.debug('MP4s:');
+          logger.debug(mp4s);
+          if (mp4s.length==0) {
+            logger.debug('skipping empty');
+            return next(null);
+          }
+          var done = 0;
+          for (var i=0; i<mp4s.length; i++) {
+            logger.log('Archiving: %s', mp4s[i]);
+            var file_path = path.join(__dirname, '../public/videos/live', stream_name, mp4s[i]);
+            var file_path_archived = path.join(__dirname, '../public/videos/archived', stream_name, mp4s[i].toLowerCase());
+            logger.debug('file_path: %s', file_path);
+            logger.debug('file_path_archived: %s', file_path_archived);
+            fss.moveSync(file_path, file_path_archived);
+            var newVideo = new Video({'title':mp4s[i],'path':file_path_archived,'isOriginal':true});
+            newVideo.save(function (err) {
+              if (err) logger.warn(err);
+              done++;
+              if (done==mp4s.length)
+                next(null);
+            });
+          }
+        });
+      });
+    series.push(function (next) {
+      logger.log('Archiving Complete');
+      callback(null);
+    });
+    async.series(series);
+  });
+}
+
 videoSchema.statics.createPreviews = function(callback) {
   logger.log('Creating Video Previews');
   Video.find({'isOriginal':true,'hasPreview':false}, function (err, videos) {

@@ -30,6 +30,7 @@ config.ssl_key = '/etc/letsencrypt/live/alexdeeznuts.com-0001/privkey.pem';
 config.ssl_cert = '/etc/letsencrypt/live/alexdeeznuts.com-0001/fullchain.pem';
 
 // DeezNuts Settings
+config.archive_videos = true;
 config.conversionRate = 6; // $1 per 6 minutes
 config.createPreviews = true;
 config.defaultPrice = 5; // in dollars

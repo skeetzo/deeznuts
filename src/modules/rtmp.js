@@ -92,6 +92,9 @@ nms.on('donePublish', (id, StreamPath, args) => {
   logger.log('[NodeEvent on donePublish]', `id=${id} StreamPath=${StreamPath} args=${JSON.stringify(args)}`);
   logger.log('Updating Status %s -> %s', config.status, 'Not Live');
   config.status = 'Not Live';
+  require('../models/videos').archiveVideos(function (err) {
+    if (err) logger.warn(err);
+  });
 });
 
 // nms.on('prePlay', (id, StreamPath, args) => {
@@ -107,16 +110,3 @@ nms.on('donePublish', (id, StreamPath, args) => {
 // nms.on('donePlay', (id, StreamPath, args) => {
 //   console.log('[NodeEvent on donePlay]', `id=${id} StreamPath=${StreamPath} args=${JSON.stringify(args)}`);
 // });
-
-
-nms.on('Transmuxing MP4', (id, StreamPath, args) => {
-  logger.log('[NodeEvent on Transmuxing MP4]', `id=${id} StreamPath=${StreamPath} args=${JSON.stringify(args)}`);
-});
-
-nms.on('Transmuxing end', (id, StreamPath, args) => {
-  logger.log('[NodeEvent on Transmuxing end]', `id=${id} StreamPath=${StreamPath} args=${JSON.stringify(args)}`);
-});
-
-nms.on('transmuxingEnd', (id, StreamPath, args) => {
-  logger.log('[NodeEvent on transmuxingEnd]', `id=${id} StreamPath=${StreamPath} args=${JSON.stringify(args)}`);
-});
