@@ -41,7 +41,7 @@ videoSchema.pre('save', function (next) {
   var self = this;
   self.description = [self.performers.slice(0, -1).join(', '), self.performers.slice(-1)[0]].join(self.performers.length < 2 ? '' : ' and ');
   if (!self.path)
-    self.path = config.publicPath+'videos/archive/'+self.title+'.mp4';
+    self.path = path.join(__dirname, '../public/videos/archive/', self.title+'.mp4');
   if (self.isModified('paid')||self.isModified('duration')) {
     if (self.paid>=self.duration) {
       logger.debug('isPaid on save: %s', self._id);
@@ -154,7 +154,7 @@ videoSchema.methods.extract = function(callback) {
   if (duration>config.defaultPreviewDuration) duration = config.defaultPreviewDuration;
   logger.debug('Duration: %s', duration);
   var newTitle = path.basename(this.path.toLowerCase().replace('.mp4','-preview.mp4'));
-  var newFile = path.join(config.publicPath, 'videos/previews', newTitle);
+  var newFile = path.join(__dirname, '../public/videos/previews', newTitle);
   logger.debug('New File: %s', newFile);
   logger.debug('New Title: %s', newTitle);
   var conversion_process = new FFmpeg({ 'source': this.path, 'timeout': 0 });
@@ -187,7 +187,7 @@ videoSchema.methods.thumbnail = function(callback) {
   var self = this;
   logger.log('Creating Thumbnail: %s', self.path);
   var filename = path.basename(self.path).split('.')[0]+'.png';
-  var foldername = path.join(config.publicPath, 'images/thumbnails');
+  var foldername = path.join(__dirname, '../public/images/thumbnails');
   logger.debug('filename: %s', filename);
   logger.debug('foldername: %s', foldername);
   var proc = new FFmpeg(self.path)
@@ -196,7 +196,7 @@ videoSchema.methods.thumbnail = function(callback) {
   // })
   .on('end', function() {
     // logger.debug('screenshots taken');
-    self.path_image = path.join(config.publicPath, 'images/thumbnails', path.basename(self.path).replace('.mp4','.png'));
+    self.path_image = path.join(__dirname, '../public/images/thumbnails', path.basename(self.path).replace('.mp4','.png'));
     logger.log('thumbnail saved: %s', filename);
     callback(null);
   })
@@ -213,7 +213,7 @@ videoSchema.methods.watermark = function(callback) {
   logger.log('Watermarking: %s', self.title);
   var conversion_process = new FFmpeg({ 'source': self.path, 'timeout': 0 });
   conversion_process
-    .input(path.resolve(config.publicPath, "images/watermark.png"))
+    .input(path.resolve(__dirname, "../public/images/watermark.png"))
     .complexFilter([
       {
         'filter': 'scale',

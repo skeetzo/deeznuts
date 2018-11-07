@@ -126,13 +126,8 @@ var User_ = function(src) {
 module.exports.User = User_;
 
 var Video_ = function(src) {
-  logger.debug('path: %s', src.path);
-  logger.debug('path_image: %s', src.path_image);
-  var path_ = path.relative(config.publicPath, src.path);
-  var path_image = path.relative(config.publicPath, src.path_image);
-  logger.debug('path: %s', path_);
-  logger.debug('path_image: %s', path_image);
-
+  var path_ = path.relative(__dirname, src.path);
+  var path_image = path.relative(__dirname, src.path_image);
   return {
     '_id': src._id,
     'address': src.address,
@@ -150,12 +145,8 @@ var Video_ = function(src) {
 module.exports.Video = Video_;
 
 var Video_Preview = function(src) {
-  logger.debug('path_preview: %s', src.path_preview);
-  logger.debug('path_image: %s', src.path_image);
-  var path_ = path.relative(config.publicPath, src.path_preview);
-  var path_image = path.relative(config.publicPath, src.path_image);
-  logger.debug('path: %s', path_);
-  logger.debug('path_image: %s', path_image);
+  var path_ = path.relative(__dirname, src.path_preview);
+  var path_image = path.relative(__dirname, src.path_image);
   return {
     '_id': src._id,
     'address': src.address,

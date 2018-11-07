@@ -35,8 +35,6 @@ config.createPreviews = true;
 config.defaultPrice = 5; // in dollars
 config.defaultTime = 60; // time in seconds
 config.defaultPreviewDuration = 10;
-config.publicPath = '/mnt/deeznuts/public/';
-config.publicPath = '/var/www/apps/deeznuts/source/src/public/';
 config.syncInterval = 3000;
 if (config.debugging) {
 	config.defaultTime = 60*60*23+45*60;
@@ -102,7 +100,7 @@ function deploy(environment) {
 		config.debugging = true;
 		config.ssl = false;
 		config.debugging_live = true;
-		config.debugging_address = false;
+		config.debugging_address = true;
 		config.debugging_sync = true;
 		config.local = true;
 		config.remoteDatabase = true;
