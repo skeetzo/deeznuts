@@ -160,7 +160,7 @@ videoSchema.methods.extract = function(callback) {
   var conversion_process = new FFmpeg({ 'source': this.path, 'timeout': 0 });
   conversion_process
       .inputOptions('-probesize 100')
-      .inputOptions('-analyzeduration  10000000')
+      // .inputOptions('-analyzeduration  10000000')
       .withVideoBitrate(1024)
       .withAspect('16:9')
       .withFps(30)
