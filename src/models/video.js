@@ -159,6 +159,8 @@ videoSchema.methods.extract = function(callback) {
   logger.debug('New Title: %s', newTitle);
   var conversion_process = new FFmpeg({ 'source': this.path, 'timeout': 0 });
   conversion_process
+      .inputOptions('-probesize 100')
+      .inputOptions('-analyzeduration  10000000')
       .withVideoBitrate(1024)
       .withAspect('16:9')
       .withFps(30)
@@ -166,15 +168,15 @@ videoSchema.methods.extract = function(callback) {
       .withAudioCodec('aac')
       .toFormat('mp4')
       .duration(duration)
-      .outputOptions('-probesize 100')
-      .outputOptions('-analyzeduration  10000000')
     .on('start', function (commandLine) {
       logger.log("Extraction Started");
     })
     .on('error', function (err, stdout, stderr) {
       logger.log("Extraction Failed"); 
-      logger.log("stdout:\n" + stdout);
-      logger.log("stderr:\n" + stderr);
+      if (stdout)
+        logger.log("stdout:\n" + stdout);
+      if (stderr)
+        logger.log("stderr:\n" + stderr);
       callback(err);
     })
     .on('progress', function (progress) {
