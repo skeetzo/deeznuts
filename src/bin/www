@@ -70,7 +70,7 @@ async.series([
     // fss.ensureDirSync(fs.realpathSync(path.join(__dirname, '../public/videos/archived')));
     // fss.ensureDirSync(fs.realpathSync(path.join(__dirname, '../public/images/thumbnails')));
     // stream directories
-    fs.readdir(fs.realpathSync(path.join(__dirname, '../public/videos/live')), function (err, streams) {
+    fs.readdir(path.join(__dirname, '../public/videos/live'), function (err, streams) {
       if (err) {
         logger.warn(err);
         return step(null);
