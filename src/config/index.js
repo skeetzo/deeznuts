@@ -80,10 +80,8 @@ config.alexd = {
 	'password': 'gofuckyourself6969'
 };
 
-<<<<<<< HEAD
-=======
+
 config.remoteDatabase = true;
->>>>>>> a001d7769100b082181d021415f107695fcc90e9
 
 function deploy(environment) {
 	if (environment=='staging') {
@@ -114,11 +112,11 @@ function deploy(environment) {
 }
 
 config.defaultVideo = {
-	'title': 'Preview',
+	'title': 'Example',
 	'performers': ['Myself','Your Mom'],
 	'isOriginal': true,
 	'duration': 1000*60*config.defaultPrice,
-	'path': '/public/videos/preview.mp4'
+	'path': require('path').join(__dirname,'../public/videos/preview.mp4')
 };
 
 config.local_keys_path = './src/dev/localConfig.json';
