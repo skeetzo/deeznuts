@@ -171,6 +171,8 @@ videoSchema.methods.extract = function(callback) {
     })
     .on('error', function (err, stdout, stderr) {
       logger.log("Extraction Failed"); 
+      logger.log("stdout:\n" + stdout);
+      logger.log("stderr:\n" + stderr);
       callback(err);
     })
     .on('progress', function (progress) {
