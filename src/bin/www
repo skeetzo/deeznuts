@@ -22,7 +22,7 @@ var fss = require('fs-extra');
  */
 var server;
 var port = normalizePort(config.port);
-app.set('port', 3020);
+app.set('port', port);
 
 // Startup
 async.series([
