@@ -35,6 +35,8 @@ config.createPreviews = true;
 config.defaultPrice = 5; // in dollars
 config.defaultTime = 60; // time in seconds
 config.defaultPreviewDuration = 10;
+config.videosPath = '/mnt/deeznuts/videos';
+config.imagesPath = '/mnt/deeznuts/images';
 config.syncInterval = 3000;
 if (config.debugging) {
 	config.defaultTime = 60*60*23+45*60;

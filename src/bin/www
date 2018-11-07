@@ -62,17 +62,24 @@ async.series([
   function (step) {
     var fs = require('fs');
     logger.log('Archiving MP4s');
-    fss.ensureDirSync(fs.realpathSync(path.join(__dirname, '../public/videos/archived')));
-    fss.ensureDirSync(fs.realpathSync(path.join(__dirname, '../public/images/thumbnails')));
+    fss.ensureSymlinkSync(config.videosPath, path.join(__dirname, '../public/videos'));
+    fss.ensureSymlinkSync(path.join(config.videosPath, 'archived'), path.join(__dirname, '../public/videos/archived'));
+    fss.ensureSymlinkSync(config.imagesPath, path.join(__dirname, '../public/images'));
+    fss.ensureSymlinkSync(path.join(config.imagesPath, 'thumbnails'), path.join(__dirname, '../public/images/thumbnails'));
+    
+    // fss.ensureDirSync(fs.realpathSync(path.join(__dirname, '../public/videos/archived')));
+    // fss.ensureDirSync(fs.realpathSync(path.join(__dirname, '../public/images/thumbnails')));
     // stream directories
-    fs.readdir(path.join(__dirname, '../public/videos/live'), function(err, streams) {
+    fs.readdir(fs.realpathSync(path.join(__dirname, '../public/videos/live')), function (err, streams) {
       if (err) {
         logger.warn(err);
         return step(null);
       }
       logger.debug('streams: %s', streams);
       var series = [];
-      
+      fss.ensureSymlinkSync(path.join(config.videosPath, 'live'), path.join(__dirname, '../public/videos/live'));
+      fss.ensureSymlinkSync(path.join(config.videosPath, 'archived'), path.join(__dirname, '../public/videos/archived'));
+          
       for (var i=0;i<streams.length;i++)
         series.push(function (next) {
           // mp4s in directories
@@ -84,7 +91,7 @@ async.series([
           logger.debug('stream_path: %s', stream_path);
           logger.debug('archived_path: %s', archived_path);
           fss.ensureDirSync(archived_path);
-          fs.readdir(stream_path, function(err, mp4s) {
+          fs.readdir(stream_path, function (err, mp4s) {
             if (err) {
               logger.warn(err);
               return next(null);
@@ -100,6 +107,7 @@ async.series([
               logger.log('Archiving: %s', mp4s[i]);
               var file_path = fs.realpathSync(path.join(__dirname, '../public/videos/live', stream_name, mp4s[i]));
               var file_path_archived = fs.realpathSync(path.join(__dirname, '../public/videos/archived', stream_name, mp4s[i].toLowerCase()));
+              fss.ensureDirSync(file_path_archived);
               logger.debug('file_path: %s', file_path);
               logger.debug('file_path_archived: %s', file_path_archived);
               fs.renameSync(file_path, file_path_archived);
