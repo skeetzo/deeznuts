@@ -64,6 +64,7 @@ async.series([
     logger.log('Archiving MP4s');
     fss.ensureSymlinkSync(config.videosPath, path.join(__dirname, '../public/videos'));
     fss.ensureSymlinkSync(path.join(config.videosPath, 'archived'), path.join(__dirname, '../public/videos/archived'));
+    fss.ensureSymlinkSync(path.join(config.videosPath, 'live'), path.join(__dirname, '../public/videos/live'));
     fss.ensureSymlinkSync(config.imagesPath, path.join(__dirname, '../public/images'));
     fss.ensureSymlinkSync(path.join(config.imagesPath, 'thumbnails'), path.join(__dirname, '../public/images/thumbnails'));
     
