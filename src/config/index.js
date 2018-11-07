@@ -82,7 +82,16 @@ config.alexd = {
 config.remoteDatabase = false;
 
 function deploy(environment) {
-	if (environment=='staging') {
+	if (environment=='development') {
+		config.debugging = true;
+		config.ssl = false;
+		config.debugging_live = true;
+		config.debugging_address = true;
+		config.debugging_sync = true;
+		config.local = true;
+		config.remoteDatabase = true;
+	}
+	else if (environment=='staging') {
 		config.debugging = true;
 		config.ssl = true;
 		config.debugging_live = true;
@@ -98,15 +107,7 @@ function deploy(environment) {
 		config.debugging_sync = false;
 		config.local = false;
 	}
-	else {
-		config.debugging = true;
-		config.ssl = false;
-		config.debugging_live = true;
-		config.debugging_address = true;
-		config.debugging_sync = true;
-		config.local = true;
-		config.remoteDatabase = true;
-	}
+	
 }
 
 config.defaultVideo = {
