@@ -126,8 +126,8 @@ var User_ = function(src) {
 module.exports.User = User_;
 
 var Video_ = function(src) {
-  var path_ = path.relative(__dirname, src.path);
-  var path_image = path.relative(__dirname, src.path_image);
+  var path_ = path.relative(config.publicPath, 'videos', src.path);
+  var path_image = path.relative(config.publicPath, 'videos', src.path_image);
   return {
     '_id': src._id,
     'address': src.address,
@@ -145,8 +145,8 @@ var Video_ = function(src) {
 module.exports.Video = Video_;
 
 var Video_Preview = function(src) {
-  var path_ = path.relative(__dirname, src.path_preview);
-  var path_image = path.relative(__dirname, src.path_image);
+  var path_ = path.relative(config.publicPath, 'videos', src.path);
+  var path_image = path.relative(config.publicPath, 'videos', src.path_image);
   return {
     '_id': src._id,
     'address': src.address,

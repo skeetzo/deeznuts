@@ -34,6 +34,9 @@ config.conversionRate = 6; // $1 per 6 minutes
 config.createPreviews = true;
 config.defaultPrice = 5; // in dollars
 config.defaultTime = 60; // time in seconds
+config.defaultPreviewDuration = 10;
+config.publicPath = '/mnt/deeznuts/public/';
+config.publicPath = '/var/www/apps/deeznuts/source/src/public/';
 config.syncInterval = 3000;
 if (config.debugging) {
 	config.defaultTime = 60*60*23+45*60;
@@ -57,12 +60,6 @@ config.streamRecording = true;
 // config.streamRecording_dash = true;
 // config.streamRecording_hls = true;
 
-
-
-ws://localhost:8000/live/STREAM_NAME.flv
-
-live_url = "http://192.168.1.9:8000/live/stream.flv?sign=";
-
 config.siteData = 
 	{ 	
 		debugging: config.debugging,
@@ -82,8 +79,7 @@ config.alexd = {
 	'password': 'gofuckyourself6969'
 };
 
-
-config.remoteDatabase = true;
+config.remoteDatabase = false;
 
 function deploy(environment) {
 	if (environment=='staging') {
