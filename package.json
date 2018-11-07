@@ -6,6 +6,7 @@
   "author": "Skeetzo",
   "main": "src/app.js",
   "scripts": {
+    "postinstall": "gulp",
     "start": "node src/bin/www"
   },
   "engines": {

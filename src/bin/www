@@ -13,12 +13,15 @@ var rtmp = require('../modules/rtmp');
 var cron = require('../modules/cron').start();
 var async = require('async');
 var Video = require('../models/video');
+var path = require('path');
+var fs = require('fs');
+var fss = require('fs-extra');
+
 /**
  * Get port from environment and store in Express.
  */
 var server;
 var port = normalizePort(config.port);
-port = 3020;
 app.set('port', port);
 
 // Startup
@@ -43,7 +46,7 @@ async.series([
   },
   // database initialization
   function (step) {
-    Video.find({'isOriginal':true,'isPreview':false}, function (err, videos) {
+    Video.find({'isOriginal':true}, function (err, videos) {
       if (err) logger.warn(err);
       logger.log('Videos available: %s', videos.length);
       if (!videos||videos.length==0) {
@@ -55,29 +58,87 @@ async.series([
       else step(null);
     });
   },
+  // move any mp4s from public/videos/live/stream -> public/videos/archived
+  function (step) {
+    var fs = require('fs');
+    logger.log('Archiving MP4s')
+    fss.ensureDirSync(path.join(__dirname, '../public/videos/archived'));
+    fss.ensureDirSync(path.join(__dirname, '../public/images/thumbnails'));
+    // stream directories
+    fs.readdir(path.join(__dirname, '../public/videos/live'), function(err, streams) {
+      if (err) {
+        logger.warn(err);
+        return step(null);
+      }
+      logger.debug('streams: %s', streams);
+      var series = [];
+      
+      for (var i=0;i<streams.length;i++)
+        series.push(function (next) {
+          // mp4s in directories
+          var stream_name = streams.shift();
+          var stream_path = path.join(__dirname, '../public/videos/live', stream_name);
+          var archived_path = path.join(__dirname, '../public/videos/archived', stream_name);
+          // logger.debug('stream_name: %s', stream_name);
+          logger.log('stream: %s', stream_name);
+          logger.debug('stream_path: %s', stream_path);
+          logger.debug('archived_path: %s', archived_path);
+          fss.ensureDirSync(archived_path);
+          fs.readdir(stream_path, function(err, mp4s) {
+            if (err) {
+              logger.warn(err);
+              return next(null);
+            }
+            logger.debug('MP4s:');
+            logger.debug(mp4s);
+            if (mp4s.length==0) {
+              logger.debug('skipping empty');
+              return next(null);
+            }
+            var done = 0;
+            for (var i=0; i<mp4s.length; i++) {
+              logger.log('Archiving: %s', mp4s[i]);
+              var file_path = path.join(__dirname, '../public/videos/live', stream_name, mp4s[i]);
+              var file_path_archived = path.join(__dirname, '../public/videos/archived', stream_name, mp4s[i].toLowerCase());
+              logger.debug('file_path: %s', file_path);
+              logger.debug('file_path_archived: %s', file_path_archived);
+              fs.renameSync(file_path, file_path_archived);
+              var newVideo = new Video({'title':mp4s[i],'path':file_path_archived,'isOriginal':true});
+              newVideo.save(function (err) {
+                if (err) logger.warn(err);
+                done++;
+                if (done==mp4s.length)
+                  next(null);
+              });
+            }
+          });
+        });
+      series.push(function (next) {
+        logger.log('Archiving Complete');
+        step(null);
+      });
+      async.series(series);
+    });
+  },
   // double checks all originals have a preview
   function (step) {
+    var previews_path = path.join(__dirname, '../public/videos/previews');
+    logger.debug('previews_path: %s', previews_path);
+    fss.ensureDirSync(previews_path);
     if (!config.createPreviews) {
       logger.log('Skipping Previews');
       return step(null);
     }
-    Video.find({'isOriginal':true,'isPreview':false,'hasPreview':false}, function (err, videos) {
+    Video.createPreviews(function (err) {
       if (err) logger.warn(err);
-      if (videos&&videos.length>0) {
-        logger.log('Generating Preview: %s', videos.length);
-        return Video.createPreviews(function (err) {
-          step(err);
-        });    
-      }
       step(null);
-    });
+    });    
   },
   function (step) {
     if (config.ssl) {
       /**
        * Create HTTPS server.
        */
-      var fs = require('fs');
       var privateKey  = fs.readFileSync(config.ssl_key, 'utf8');
       var certificate = fs.readFileSync(config.ssl_cert, 'utf8');
       var credentials = {'key': privateKey, 'cert': certificate};
@@ -90,7 +151,8 @@ async.series([
     /**
      * Listen on provided port, on all network interfaces.
      */
-    server.listen(port, "127.0.0.1", function () {
+    // server.listen(port, "127.0.0.1", function () {
+    server.listen(port, "0.0.0.0", function () {
       logger.log("Live at Port %s", port);
     });
     server.on('error', onError);

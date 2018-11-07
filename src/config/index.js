@@ -22,6 +22,9 @@ var live_url = "wss://"+config.domain+":8443/live/stream.flv?sign="
 if (config.debugging&&!config.ssl) live_url = "ws://"+config.domain+":8000/live/stream.flv?sign=";
 if (config.ssl) config.domain = "https://"+config.domain;
 else config.domain = "http://"+config.domain;
+
+config.domain = "192.168.1.9:3000";
+
 config.author = "Skeetzo";
 config.description = "Porn Star Streamer";
 config.Google_Analytics = "UA-82463743-8";
@@ -61,6 +64,8 @@ config.streamRecording = true;
 
 ws://localhost:8000/live/STREAM_NAME.flv
 
+live_url = "http://192.168.1.9:8000/live/stream.flv?sign=";
+
 config.siteData = 
 	{ 	
 		debugging: config.debugging,
@@ -79,6 +84,7 @@ config.alexd = {
 	'username': 'justalexxxd',
 	'password': 'gofuckyourself6969'
 };
+
 
 config.remoteDatabase = true;
 
@@ -106,14 +112,16 @@ function deploy(environment) {
 		config.debugging_address = false;
 		config.debugging_sync = true;
 		config.local = true;
+		config.remoteDatabase = true;
 	}
 }
 
 config.defaultVideo = {
-	'title': 'example',
+	'title': 'Example',
 	'performers': ['Myself','Your Mom'],
 	'isOriginal': true,
-	'duration': 1000*60*config.defaultPrice
+	'duration': 1000*60*config.defaultPrice,
+	'path': require('path').join(__dirname,'../public/videos/preview.mp4')
 };
 
 config.local_keys_path = './src/dev/localConfig.json';

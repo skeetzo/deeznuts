@@ -12,11 +12,11 @@ prepend content
       for video in videos
         .col-xs-4
           if (video.isPaid)
-            video(controls, poster='/images/'+video.title+'.jpg', type="video/mp4", width=250, src="/videos/"+video.title+".mp4")
+            video(controls, poster=video.path_image, type="video/mp4", width=250, src=video.path)
             .row
-              a.btn.btn-primary(href="/videos/"+video.title+".mp4", download) Download
+              a.btn.btn-primary(href=video.path, download) Download
           else
-            video(controls, poster='/images/'+video.title+'.jpg', type="video/mp4", width=250, src="/videos/"+video.title+".mp4")
+            video(controls, poster=video.path_image, type="video/mp4", width=250, src=video.path)
           include ../include/crypto-vod
   .row
     if (message||error)
@@ -32,7 +32,7 @@ prepend content
     if (videos_all)
       for video in videos_all
         .col-xs-4
-          video(controls, poster='/images/'+video.title+'.jpg', type="video/mp4", width=250, src="/videos/"+video.title+".mp4")
+          video(controls, poster=video.path_image, type="video/mp4", width=250, src=video.path)
           include ../include/crypto-vod
 
 prepend javascript
