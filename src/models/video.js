@@ -160,7 +160,6 @@ videoSchema.methods.extract = function(callback) {
   var conversion_process = new FFmpeg({ 'source': this.path, 'timeout': 0 });
   conversion_process
       .inputOptions('-probesize 100')
-      .inputOptions('-max_muxing_queue_size 99999')
       // .inputOptions('-analyzeduration  10000000')
       .withVideoBitrate(1024)
       .withAspect('16:9')
@@ -169,6 +168,7 @@ videoSchema.methods.extract = function(callback) {
       .withAudioCodec('aac')
       .toFormat('mp4')
       .duration(duration)
+      .outputOptions('-max_muxing_queue_size 99999')
     .on('start', function (commandLine) {
       logger.log("Extraction Started");
     })
