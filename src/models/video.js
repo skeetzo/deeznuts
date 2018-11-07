@@ -166,6 +166,8 @@ videoSchema.methods.extract = function(callback) {
       .withAudioCodec('aac')
       .toFormat('mp4')
       .duration(duration)
+      .outputOptions('-probesize 100')
+      .outputOptions('-analyzeduration  10000000')
     .on('start', function (commandLine) {
       logger.log("Extraction Started");
     })
