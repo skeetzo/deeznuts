@@ -87,8 +87,12 @@ videoSchema.statics.createPreviews = function(callback) {
   });
 }
 
+// get file at location
+// convert to preview
+// save ref
 videoSchema.methods.createPreview = function(callback) {
   var self = this;
+<<<<<<< HEAD
   logger.log('--- Converting: %s', self.path);
   FFmpeg.ffprobe(self.path, function (err, metadata) {
     if (err) return callback(err);
@@ -119,6 +123,18 @@ videoSchema.methods.createPreview = function(callback) {
       }
     ], function (err) {
       callback(err);
+=======
+  convert(self.path, function (err, newPreview) {
+    if (err) return callback(err);
+    var previewVideo = new Video(self);
+    previewVideo.path = newPreview;
+    previewVideo.save(function (err) {
+      if (err) return callback(err);
+      self.hasPreview = true;
+      self.save(function (err) {
+        callback(err);
+      });
+>>>>>>> a001d7769100b082181d021415f107695fcc90e9
     });
   });
 }

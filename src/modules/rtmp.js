@@ -38,12 +38,20 @@ if (config.debugging)
 if (config.streamRecording)
   // record to mp4
   serverOptions.trans = {
+<<<<<<< HEAD
     // 'ffmpeg': '/usr/bin/ffmpeg',
     'ffmpeg': '/usr/local/bin/ffmpeg',
     'tasks': [
     // {
     //   app: 'live',
     //   ac: 'aac',
+=======
+    'ffmpeg': '/usr/bin/ffmpeg',
+    'tasks': [
+    // {
+    //   app: 'live',
+    //   // ac: 'aac',
+>>>>>>> a001d7769100b082181d021415f107695fcc90e9
     //   hls: true,
     //   hlsFlags: '[hls_time=2:hls_list_size=3:hls_flags=delete_segments]',
     //   dash: true,
@@ -51,7 +59,12 @@ if (config.streamRecording)
     // },
     {
       'app': 'live',
+<<<<<<< HEAD
       'ac': 'aac',
+=======
+      // 'ac': 'aac',
+      'ac': 'copy',
+>>>>>>> a001d7769100b082181d021415f107695fcc90e9
       'mp4': true,
       'mp4Flags': '[movflags=faststart]',
     }
