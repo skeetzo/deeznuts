@@ -161,7 +161,6 @@ videoSchema.methods.extract = function(callback) {
   conversion_process
       .inputOptions('-probesize 100')
       .inputOptions('-analyzeduration 10000000')
-      .inputOptions('-flags +global_header')
       .withVideoBitrate(1024)
       .withAspect('16:9')
       .withFps(30)
@@ -170,6 +169,7 @@ videoSchema.methods.extract = function(callback) {
       .toFormat('mp4')
       .duration(duration)
       .outputOptions('-max_muxing_queue_size 99999')
+      .outputOptions('-flags +global_header')
     .on('start', function (commandLine) {
       logger.log("Extraction Started");
     })
