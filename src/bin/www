@@ -84,8 +84,8 @@ async.series([
         series.push(function (next) {
           // mp4s in directories
           var stream_name = streams.shift();
-          var stream_path = fs.realpathSync(path.join(__dirname, '../public/videos/live', stream_name));
-          var archived_path = fs.realpathSync(path.join(__dirname, '../public/videos/archived', stream_name));
+          var stream_path = path.join(__dirname, '../public/videos/live', stream_name);
+          var archived_path = path.join(__dirname, '../public/videos/archived', stream_name);
           // logger.debug('stream_name: %s', stream_name);
           logger.log('stream: %s', stream_name);
           logger.debug('stream_path: %s', stream_path);
@@ -105,8 +105,8 @@ async.series([
             var done = 0;
             for (var i=0; i<mp4s.length; i++) {
               logger.log('Archiving: %s', mp4s[i]);
-              var file_path = fs.realpathSync(path.join(__dirname, '../public/videos/live', stream_name, mp4s[i]));
-              var file_path_archived = fs.realpathSync(path.join(__dirname, '../public/videos/archived', stream_name, mp4s[i].toLowerCase()));
+              var file_path = path.join(__dirname, '../public/videos/live', stream_name, mp4s[i]);
+              var file_path_archived = path.join(__dirname, '../public/videos/archived', stream_name, mp4s[i].toLowerCase());
               fss.ensureDirSync(file_path_archived);
               logger.debug('file_path: %s', file_path);
               logger.debug('file_path_archived: %s', file_path_archived);
@@ -130,7 +130,7 @@ async.series([
   },
   // double checks all originals have a preview
   function (step) {
-    var previews_path = fs.realpathSync(path.join(__dirname, '../public/videos/previews'));
+    var previews_path = path.join(__dirname, '../public/videos/previews');
     logger.debug('previews_path: %s', previews_path);
     fss.ensureDirSync(previews_path);
     if (!config.createPreviews) {
