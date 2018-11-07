@@ -126,6 +126,8 @@ var User_ = function(src) {
 module.exports.User = User_;
 
 var Video_ = function(src) {
+  var path_ = path.relative(__dirname, src.path);
+  var path_image = path.relative(__dirname, src.path_image);
   return {
     '_id': src._id,
     'address': src.address,
@@ -134,8 +136,8 @@ var Video_ = function(src) {
     'performers': src.performers,
     'description': src.description,
     'isPaid': src.isPaid,
-    'path': src.path || '',
-    'path_image': src.path_image || '',
+    'path': path_ || '',
+    'path_image': path_image || '',
     // 'isPaid': true,
     'price': src.price
   };
@@ -143,6 +145,8 @@ var Video_ = function(src) {
 module.exports.Video = Video_;
 
 var Video_Preview = function(src) {
+  var path_ = path.relative(__dirname, src.path_preview);
+  var path_image = path.relative(__dirname, src.path_image);
   return {
     '_id': src._id,
     'address': src.address,
@@ -151,8 +155,8 @@ var Video_Preview = function(src) {
     'performers': src.performers,
     'description': src.description,
     'isPaid': src.isPaid,
-    'path': src.path_preview || '',
-    'path_image': src.path_image || '',
+    'path': path_ || '',
+    'path_image': path_image || '',
     // 'isPaid': true,
     'price': src.price
   };
