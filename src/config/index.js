@@ -86,7 +86,7 @@ function deploy(environment) {
 		config.debugging = true;
 		config.ssl = false;
 		config.debugging_live = true;
-		config.debugging_address = true;
+		config.debugging_address = false;
 		config.debugging_sync = true;
 		config.local = true;
 		config.remoteDatabase = true;
