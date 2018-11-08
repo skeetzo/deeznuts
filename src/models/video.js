@@ -236,36 +236,36 @@ videoSchema.methods.extract = function(callback) {
   logger.debug('New Title: %s', newTitle);
   var conversion_process = new FFmpeg({ 'source': this.path, 'timeout': 0 });
   conversion_process
-      .inputOptions('-probesize 100')
-      .inputOptions('-analyzeduration 10000000')
-      .withVideoBitrate(1024)
-      .withAspect('16:9')
-      .withFps(30)
-      .withAudioBitrate('128k')
-      .withAudioCodec('aac')
-      .toFormat('mp4')
-      .duration(duration)
-      .outputOptions('-max_muxing_queue_size 99999')
-      .outputOptions('-flags +global_header')
-    .on('start', function (commandLine) {
-      logger.log("Extraction Started");
-    })
-    .on('error', function (err, stdout, stderr) {
-      logger.log("Extraction Failed"); 
-      if (stdout)
-        logger.log("stdout:\n" + stdout);
-      if (stderr)
-        logger.log("stderr:\n" + stderr);
-      callback(err);
-    })
-    .on('progress', function (progress) {
-        process.stdout.write('Extracting: '+Math.round(progress.percent)+'%\033[0G');
-    })
-    .on('end', function () {
-      logger.log("Extraction Finished");
-      callback(null, newFile);
-    })
-    .saveToFile(newFile); 
+  .inputOptions('-probesize 100')
+  .inputOptions('-analyzeduration 10000000')
+  .withVideoBitrate(1024)
+  .withAspect('16:9')
+  .withFps(30)
+  .withAudioBitrate('128k')
+  .withAudioCodec('aac')
+  .toFormat('mp4')
+  .duration(duration)
+  .outputOptions('-max_muxing_queue_size 99999')
+  .outputOptions('-flags +global_header')
+  .on('start', function (commandLine) {
+    logger.log("Extraction Started");
+  })
+  .on('error', function (err, stdout, stderr) {
+    logger.log("Extraction Failed"); 
+    if (stdout)
+      logger.log("stdout:\n" + stdout);
+    if (stderr)
+      logger.log("stderr:\n" + stderr);
+    callback(err);
+  })
+  .on('progress', function (progress) {
+      process.stdout.write('Extracting: '+Math.round(progress.percent)+'%\033[0G');
+  })
+  .on('end', function () {
+    logger.log("Extraction Finished");
+    callback(null, newFile);
+  })
+  .saveToFile(newFile); 
 }
 
 videoSchema.methods.thumbnail = function(callback) {
@@ -297,10 +297,10 @@ videoSchema.methods.thumbnail = function(callback) {
     });
   })
   .thumbnails({
-      count: 1,
-      // timemarks: [ '1' ], // number of seconds
-      filename: filename,
-      folder: foldername
+    count: 1,
+    // timemarks: [ '1' ], // number of seconds
+    filename: filename,
+    folder: foldername
   });
 }
 
@@ -309,64 +309,65 @@ videoSchema.methods.watermark = function(callback) {
   logger.log('Watermarking: %s', self.title);
   var conversion_process = new FFmpeg({ 'source': self.path, 'timeout': 0 });
   conversion_process
-    .inputOptions('-probesize 100')
-    .inputOptions('-analyzeduration 10000000')
-    .input(path.join(__dirname, "../public/images/watermark.png"))
-    .complexFilter([
-      {
-        'filter': 'scale',
-        'options': {
-          'w': 150,
-          'h': 150, 
-        },
-        'inputs': '[1:v]',
-        'outputs': 'watermark'
+  .format('mp4')
+  .inputOptions('-probesize 100')
+  .inputOptions('-analyzeduration 10000000')
+  .input(path.join(__dirname, "../public/images/watermark.png"))
+  .complexFilter([
+    {
+      'filter': 'scale',
+      'options': {
+        'w': 150,
+        'h': 150, 
       },
-      // {
-      //  'filter': 'fade',
-      //  'options': { 
-      //    'type': 'out',
-      //    'alpha': 1,
-      //    'color': 'white',
-      //    'duration': 3
-      //  },
-      //  'inputs': 'watermark',
-      //  'outputs': 'watermarked'
-      // },
-      // combined
-      {
-        'filter': 'overlay',
-        'options': {
-          'x': 25,
-          'y': 25,
-        },
-        'inputs': ['[0:v]','watermark'],
-        'outputs': 'output'
+      'inputs': '[1:v]',
+      'outputs': 'watermark'
+    },
+    // {
+    //  'filter': 'fade',
+    //  'options': { 
+    //    'type': 'out',
+    //    'alpha': 1,
+    //    'color': 'white',
+    //    'duration': 3
+    //  },
+    //  'inputs': 'watermark',
+    //  'outputs': 'watermarked'
+    // },
+    // combined
+    {
+      'filter': 'overlay',
+      'options': {
+        'x': 25,
+        'y': 25,
       },
-      ], 'output')
-      .toFormat('mp4')
-      .outputOptions('-max_muxing_queue_size 99999')
-      .outputOptions('-flags +global_header')
-    .on('start', function (commandLine) {
-      logger.log("Watermarking Started");
-    })
-    .on('error', function (err, stdout, stderr) {
-      logger.log("Watermarking Failed");
-      if (stdout)
-        logger.log("stdout:\n" + stdout);
-      if (stderr)
-        logger.log("stderr:\n" + stderr);
-      callback(err);
-    })
-    .on('progress', function (progress) {
-      process.stdout.write("Watermarking: "+Math.round(progress.percent)+'%\033[0G');
-    })
-    .on('end', function () {
-      logger.log("Watermarking Finished");
-      logger.log('--- Watermarked: %s', self.title);
-      callback(null);
-    })
-    .saveToFile(self.path); 
+      'inputs': ['[0:v]','watermark'],
+      'outputs': 'output'
+    },
+    ], 'output')
+  .toFormat('mp4')
+  .outputOptions('-max_muxing_queue_size 99999')
+  .outputOptions('-flags +global_header')
+  .on('start', function (commandLine) {
+    logger.log("Watermarking Started");
+  })
+  .on('error', function (err, stdout, stderr) {
+    logger.log("Watermarking Failed");
+    if (stdout)
+      logger.log("stdout:\n" + stdout);
+    if (stderr)
+      logger.log("stderr:\n" + stderr);
+    callback(err);
+  })
+  .on('progress', function (progress) {
+    process.stdout.write("Watermarking: "+Math.round(progress.percent)+'%\033[0G');
+  })
+  .on('end', function () {
+    logger.log("Watermarking Finished");
+    logger.log('--- Watermarked: %s', self.title);
+    callback(null);
+  })
+  .saveToFile(self.path); 
 }
 
 var Video = mongoose.model('videos', videoSchema,'videos');
