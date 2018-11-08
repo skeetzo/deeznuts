@@ -92,7 +92,7 @@ nms.on('donePublish', (id, StreamPath, args) => {
   logger.log('[NodeEvent on donePublish]', `id=${id} StreamPath=${StreamPath} args=${JSON.stringify(args)}`);
   logger.log('Updating Status %s -> %s', config.status, 'Not Live');
   config.status = 'Not Live';
-  require('../models/videos').archiveVideos(function (err) {
+  require('../models/video').archiveVideos(function (err) {
     if (err) logger.warn(err);
   });
 });
