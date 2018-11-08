@@ -237,7 +237,6 @@ videoSchema.methods.extract = function(callback) {
   var conversion_process = new FFmpeg({ 'source': this.path, 'timeout': 0 })
   .inputOptions('-probesize 100')
   .inputOptions('-analyzeduration 10000000')
-  .inputOptions('-pix_fmt yuv420p')
   .withVideoBitrate(1024)
   .withAspect('16:9')
   .withFps(30)
@@ -245,6 +244,7 @@ videoSchema.methods.extract = function(callback) {
   .withAudioCodec('aac')
   .toFormat('mp4')
   .duration(duration)
+  .outputOptions('-pix_fmt yuv420p')
   .outputOptions('-max_muxing_queue_size 99999')
   .outputOptions('-flags +global_header')
   .on('start', function (commandLine) {
@@ -278,9 +278,9 @@ videoSchema.methods.thumbnail = function(callback) {
   var proc = new FFmpeg(self.path)
   .inputOptions('-probesize 100')
   .inputOptions('-analyzeduration 10000000')
-  .inputOptions('-pix_fmt yuv420p')
   .outputOptions('-max_muxing_queue_size 99999')
   .outputOptions('-flags +global_header')
+  .outputOptions('-pix_fmt yuv420p')
   // .on('filenames', function(filenames) {
   //   logger.log('Will generate: ' + filenames.join(', '))
   // })
@@ -315,7 +315,6 @@ videoSchema.methods.watermark = function(callback) {
   var conversion_process = new FFmpeg({ 'source': self.path, 'timeout': 0 })
   .inputOptions('-probesize 100')
   .inputOptions('-analyzeduration 10000000')
-  .inputOptions('-pix_fmt yuv420p')
   .format('mp4')
   .input(path.join(__dirname, "../public/images/watermark.png"))
   .complexFilter([
@@ -353,6 +352,7 @@ videoSchema.methods.watermark = function(callback) {
   .toFormat('mp4')
   .outputOptions('-max_muxing_queue_size 99999')
   .outputOptions('-flags +global_header')
+  .outputOptions('-pix_fmt yuv420p')
   .on('start', function (commandLine) {
     logger.log("Watermarking Started");
   })
