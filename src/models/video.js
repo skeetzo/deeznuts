@@ -117,6 +117,7 @@ videoSchema.statics.archiveVideos = function(callback) {
             var file_path_archived = path.join(__dirname, '../public/videos/archived', stream_name, mp4s[i].toLowerCase());
             logger.debug('file_path: %s', file_path);
             logger.debug('file_path_archived: %s', file_path_archived);
+            fs.chownSync(file_path, config.uid)
             fss.moveSync(file_path, file_path_archived);
             var newVideo = new Video({'title':mp4s[i],'path':file_path_archived,'isOriginal':true});
             newVideo.save(function (err) {
