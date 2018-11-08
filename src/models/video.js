@@ -234,8 +234,7 @@ videoSchema.methods.extract = function(callback) {
   var newFile = path.join(__dirname, '../public/videos/previews', newTitle);
   logger.debug('New File: %s', newFile);
   logger.debug('New Title: %s', newTitle);
-  var conversion_process = new FFmpeg({ 'source': this.path, 'timeout': 0 });
-  conversion_process
+  var conversion_process = new FFmpeg({ 'source': this.path, 'timeout': 0 })
   .inputOptions('-probesize 100')
   .inputOptions('-analyzeduration 10000000')
   .withVideoBitrate(1024)
@@ -276,6 +275,10 @@ videoSchema.methods.thumbnail = function(callback) {
   logger.debug('filename: %s', filename);
   logger.debug('foldername: %s', foldername);
   var proc = new FFmpeg(self.path)
+  .inputOptions('-probesize 100')
+  .inputOptions('-analyzeduration 10000000')
+  .outputOptions('-max_muxing_queue_size 99999')
+  .outputOptions('-flags +global_header')
   // .on('filenames', function(filenames) {
   //   logger.log('Will generate: ' + filenames.join(', '))
   // })
@@ -307,11 +310,10 @@ videoSchema.methods.thumbnail = function(callback) {
 videoSchema.methods.watermark = function(callback) {
   var self = this;
   logger.log('Watermarking: %s', self.title);
-  var conversion_process = new FFmpeg({ 'source': self.path, 'timeout': 0 });
-  conversion_process
-  .format('mp4')
+  var conversion_process = new FFmpeg({ 'source': self.path, 'timeout': 0 })
   .inputOptions('-probesize 100')
   .inputOptions('-analyzeduration 10000000')
+  .format('mp4')
   .input(path.join(__dirname, "../public/images/watermark.png"))
   .complexFilter([
     {
