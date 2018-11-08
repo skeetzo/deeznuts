@@ -158,6 +158,18 @@ videoSchema.statics.createPreviews = function(callback) {
   });
 }
 
+videoSchema.statics.processPublished = function(callback) {
+  logger.log('Processing Published Video');
+  Video.archiveVideos(function (err) {
+    if (err) return callback(err);
+    Video.createPreviews(function (err) {
+      if (err) return callback(err);
+      logger.log('Processed Published Videos');
+      callback(null);
+    });
+  });
+}
+
 // get file at location
 // convert to preview
 // save ref

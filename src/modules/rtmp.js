@@ -93,7 +93,7 @@ nms.on('donePublish', (id, StreamPath, args) => {
   logger.log('Updating Status %s -> %s', config.status, 'Not Live');
   config.status = 'Not Live';
   setTimeout(function () {
-    require('../models/video').archiveVideos(function (err) {
+    require('../models/video').processPublished(function (err) {
       if (err) logger.warn(err);
     });
   }, 30000);
