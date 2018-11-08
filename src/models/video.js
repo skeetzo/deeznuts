@@ -201,14 +201,16 @@ videoSchema.methods.convert = function(callback) {
     function (file, step) {
       logger.log('--- Watermarking ---');
       self.watermark(function (err) {
-        step(err, file);
+        if (err) logger.warn(err);
+        step(null, file);
       });
     },
     function (file, step) {
       // create png of early frames of .mp4 path
       logger.log('--- Thumbnailing ---');
       self.thumbnail(function (err) {
-        step(err, file);
+        if (err) logger.warn(err);
+        step(null, file);
       });
     },
     function (file, step) {
@@ -243,7 +245,6 @@ videoSchema.methods.extract = function(callback) {
       .duration(duration)
       .outputOptions('-max_muxing_queue_size 99999')
       .outputOptions('-flags +global_header')
-      .outputOptions('-scrict -2')
     .on('start', function (commandLine) {
       logger.log("Extraction Started");
     })
@@ -337,7 +338,6 @@ videoSchema.methods.watermark = function(callback) {
       .toFormat('mp4')
       .outputOptions('-max_muxing_queue_size 99999')
       .outputOptions('-flags +global_header')
-      .outputOptions('-scrict -2')
     .on('start', function (commandLine) {
       logger.log("Watermarking Started");
     })
