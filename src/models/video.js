@@ -340,7 +340,11 @@ videoSchema.methods.watermark = function(callback) {
       logger.log("Watermarking Started");
     })
     .on('error', function (err, stdout, stderr) {
-      logger.log("Watermarking Failed"); 
+      logger.log("Watermarking Failed");
+      if (stdout)
+        logger.log("stdout:\n" + stdout);
+      if (stderr)
+        logger.log("stderr:\n" + stderr);
       callback(err);
     })
     .on('progress', function (progress) {
