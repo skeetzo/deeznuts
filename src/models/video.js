@@ -243,6 +243,7 @@ videoSchema.methods.extract = function(callback) {
       .duration(duration)
       .outputOptions('-max_muxing_queue_size 99999')
       .outputOptions('-flags +global_header')
+      .outputOptions('-scrict -2')
     .on('start', function (commandLine) {
       logger.log("Extraction Started");
     })
@@ -336,6 +337,7 @@ videoSchema.methods.watermark = function(callback) {
       .toFormat('mp4')
       .outputOptions('-max_muxing_queue_size 99999')
       .outputOptions('-flags +global_header')
+      .outputOptions('-scrict -2')
     .on('start', function (commandLine) {
       logger.log("Watermarking Started");
     })
