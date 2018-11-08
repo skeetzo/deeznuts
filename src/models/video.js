@@ -286,7 +286,9 @@ videoSchema.methods.watermark = function(callback) {
   logger.log('Watermarking: %s', self.title);
   var conversion_process = new FFmpeg({ 'source': self.path, 'timeout': 0 });
   conversion_process
-    .input(path.resolve(__dirname, "../public/images/watermark.png"))
+    .inputOptions('-probesize 100')
+    .inputOptions('-analyzeduration 10000000')
+    .input(path.join(__dirname, "../public/images/watermark.png"))
     .complexFilter([
       {
         'filter': 'scale',
@@ -320,6 +322,8 @@ videoSchema.methods.watermark = function(callback) {
       },
       ], 'output')
       .toFormat('mp4')
+      .outputOptions('-max_muxing_queue_size 99999')
+      .outputOptions('-flags +global_header')
     .on('start', function (commandLine) {
       logger.log("Watermarking Started");
     })
