@@ -277,6 +277,14 @@ videoSchema.methods.thumbnail = function(callback) {
   // .on('filenames', function(filenames) {
   //   logger.log('Will generate: ' + filenames.join(', '))
   // })
+  .on('error', function (err, stdout, stderr) {
+    logger.log("Thumbnailing Failed"); 
+    if (stdout)
+      logger.log("stdout:\n" + stdout);
+    if (stderr)
+      logger.log("stderr:\n" + stderr);
+    callback(err);
+  })
   .on('end', function() {
     // logger.debug('screenshots taken');
     self.path_image = path.join(__dirname, '../public/images/thumbnails', path.basename(self.path).replace('.mp4','.png'));
@@ -285,7 +293,6 @@ videoSchema.methods.thumbnail = function(callback) {
       logger.log('thumbnail saved: %s', filename);
       callback(null);
     });
-    
   })
   .thumbnails({
       count: 1,
