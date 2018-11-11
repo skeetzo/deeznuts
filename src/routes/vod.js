@@ -11,18 +11,13 @@ module.exports = function homeRoutes(router) {
     logger.debug('video ids: %s', req.session.user.videos);
     Video.find({'_id':{'$in':req.session.user.videos}}, function (err, videos) {
       if (err) logger.warn(err);
-      logger.debug('videos: %s', JSON.stringify(videos, null, 4));
+      logger.debug('videos: %s', videos.length);
       req.session.locals.videos = mixins.Videos(videos);
-      Video.find({'isOriginal':true,'isPreview':true}, function (err, videos_all) {
+      Video.find({'hasPreview':true}, function (err, videos_all) {
         if (err) logger.warn(err);
-        logger.debug('videos_all: %s',JSON.stringify(videos_all,null,4));
-        if (videos_all.length==0) {
-          var example = new Video({'title':'example-preview','performers':['Myself','Your Mom'],'isOriginal':true,'isPreview':true});
-          videos_all.push(example);
-          example.save();
-        }
+        logger.debug('videos_all: %s', videos_all.length);
         // req.session.locals.videos = mixins.Videos(videos_all);
-        req.session.locals.videos_all = mixins.Videos(videos_all);
+        req.session.locals.videos_all = mixins.Video_Previews(videos_all);
         if (videos.length==0&&videos_all.length>0) req.session.locals.message = 'Purchase a video below!';
         res.render('videos', req.session.locals);
       });

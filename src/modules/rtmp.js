@@ -92,6 +92,12 @@ nms.on('donePublish', (id, StreamPath, args) => {
   logger.log('[NodeEvent on donePublish]', `id=${id} StreamPath=${StreamPath} args=${JSON.stringify(args)}`);
   logger.log('Updating Status %s -> %s', config.status, 'Not Live');
   config.status = 'Not Live';
+  if (config.archive_on_publish)
+    setTimeout(function () {
+      require('../models/video').processPublished(function (err) {
+        if (err) logger.warn(err);
+      });
+    }, 30000);
 });
 
 // nms.on('prePlay', (id, StreamPath, args) => {

@@ -33,7 +33,9 @@
  - btc for vod
  - stream testing
 
-
+**Transmuxing debugging : 11/7/2018**
+ - video: archiving
+ - video: previews
 
 **1.1.0**
  - next live @ & schedule

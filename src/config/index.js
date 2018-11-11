@@ -15,9 +15,13 @@ config.port = Number(process.env.PORT || 3000);
 config.title = "Alex D.'s Nuts";
 config.siteTitle = "AlexDeezNuts.com";
 config.domain = "alexdeeznuts.com";
+
 if (config.local) config.domain = "localhost";
+var live_url = "wss://"+config.domain+":8443/live/stream.flv?sign="
+if (config.debugging&&!config.ssl) live_url = "ws://"+config.domain+":8000/live/stream.flv?sign=";
 if (config.ssl) config.domain = "https://"+config.domain;
 else config.domain = "http://"+config.domain;
+
 config.author = "Skeetzo";
 config.description = "Porn Star Streamer";
 config.Google_Analytics = "UA-82463743-8";
@@ -26,10 +30,17 @@ config.ssl_key = '/etc/letsencrypt/live/alexdeeznuts.com-0001/privkey.pem';
 config.ssl_cert = '/etc/letsencrypt/live/alexdeeznuts.com-0001/fullchain.pem';
 
 // DeezNuts Settings
+config.uid = 1001;
+config.gid = 1002;
+config.archive_videos = true;
+config.archive_on_publish = true;
 config.conversionRate = 6; // $1 per 6 minutes
 config.createPreviews = true;
 config.defaultPrice = 5; // in dollars
 config.defaultTime = 60; // time in seconds
+config.defaultPreviewDuration = 10;
+config.videosPath = '/mnt/deeznuts/videos';
+config.imagesPath = '/mnt/deeznuts/images';
 config.syncInterval = 3000;
 if (config.debugging) {
 	config.defaultTime = 60*60*23+45*60;
@@ -53,9 +64,6 @@ config.streamRecording = true;
 // config.streamRecording_dash = true;
 // config.streamRecording_hls = true;
 
-var live_url = config.domain+":8443/live/stream.flv?sign=";
-if (config.debugging&&!config.ssl) live_url = config.domain+":8000/live/stream.flv?sign=";
-
 config.siteData = 
 	{ 	
 		debugging: config.debugging,
@@ -78,7 +86,16 @@ config.alexd = {
 config.remoteDatabase = true;
 
 function deploy(environment) {
-	if (environment=='staging') {
+	if (environment=='development') {
+		config.debugging = true;
+		config.ssl = false;
+		config.debugging_live = true;
+		config.debugging_address = false;
+		config.debugging_sync = true;
+		config.local = true;
+		config.remoteDatabase = true;
+	}
+	else if (environment=='staging') {
 		config.debugging = true;
 		config.ssl = true;
 		config.debugging_live = true;
@@ -94,21 +111,15 @@ function deploy(environment) {
 		config.debugging_sync = false;
 		config.local = false;
 	}
-	else {
-		config.debugging = true;
-		config.ssl = false;
-		config.debugging_live = true;
-		config.debugging_address = false;
-		config.debugging_sync = true;
-		config.local = true;
-	}
+	
 }
 
 config.defaultVideo = {
-	'title': 'example',
+	'title': 'Example',
 	'performers': ['Myself','Your Mom'],
 	'isOriginal': true,
-	'duration': 1000*60*config.defaultPrice
+	'duration': 1000*60*config.defaultPrice,
+	'path': require('path').join(__dirname,'../public/videos/preview.mp4')
 };
 
 config.local_keys_path = './src/dev/localConfig.json';

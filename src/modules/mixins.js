@@ -126,6 +126,10 @@ var User_ = function(src) {
 module.exports.User = User_;
 
 var Video_ = function(src) {
+  if (!src.path) src.path = '';
+  if (!src.path_image) src.path_image = '';
+  var path_ = path.relative(__dirname, src.path);
+  var path_image = path.relative(__dirname, src.path_image);
   return {
     '_id': src._id,
     'address': src.address,
@@ -134,11 +138,34 @@ var Video_ = function(src) {
     'performers': src.performers,
     'description': src.description,
     'isPaid': src.isPaid,
+    'path': path_ || '',
+    'path_image': path_image || '',
     // 'isPaid': true,
     'price': src.price
   };
 }
 module.exports.Video = Video_;
+
+var Video_Preview = function(src) {
+  if (!src.path_preview) src.path_preview = '';
+  if (!src.path_image) src.path_image = '';
+  var path_ = path.relative(__dirname, src.path_preview);
+  var path_image = path.relative(__dirname, src.path_image);
+  return {
+    '_id': src._id,
+    'address': src.address,
+    'address_qr': src.address_qr,
+    'title': src.title,
+    'performers': src.performers,
+    'description': src.description,
+    'isPaid': src.isPaid,
+    'path': path_ || '',
+    'path_image': path_image || '',
+    // 'isPaid': true,
+    'price': src.price
+  };
+}
+module.exports.Video_Previews = Video_Previews;
 
 var Videos_ = function(src) {
   var videos = [];
@@ -147,3 +174,11 @@ var Videos_ = function(src) {
   return videos;
 }
 module.exports.Videos = Videos_;
+
+var Video_Previews = function(src) {
+  var videos = [];
+  for (var i=0;i<src.length;i++)
+    videos.push(Video_Preview(src[i]));
+  return videos;
+}
+module.exports.Video_Previews = Video_Previews;
