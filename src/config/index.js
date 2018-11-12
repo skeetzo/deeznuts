@@ -45,6 +45,9 @@ config.imagesPath = '/mnt/deeznuts/images';
 config.videosPath = '/home/skeetzo/Projects/deeznuts/src/public/videos';
 config.imagesPath = '/home/skeetzo/Projects/deeznuts/src/public/images';
 
+config.videosPath = '/home/pi/deeznuts/src/public/videos';
+config.imagesPath = '/home/pi/deeznuts/src/public/images';
+
 config.syncInterval = 3000;
 if (config.debugging) {
 	config.defaultTime = 60*60*23+45*60;
@@ -98,7 +101,7 @@ config.debugging_blockchain = true;
 config.debugging_blockchain_hash = "696969";
 config.debugging_blockchain_address = "yourmomshouse";
 
-config.remoteDatabase = true;
+config.remoteDatabase = false;
 
 function deploy(environment) {
 	if (environment=='development') {
@@ -108,7 +111,7 @@ function deploy(environment) {
 		config.debugging_address = false;
 		config.debugging_sync = true;
 		config.local = true;
-		config.remoteDatabase = true;
+		// config.remoteDatabase = true;
 	}
 	else if (environment=='staging') {
 		config.debugging = true;
