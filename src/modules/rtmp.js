@@ -105,7 +105,7 @@ nms.on('donePublish', (id, StreamPath, args) => {
       require('../models/video').processPublished(function (err) {
         if (err) logger.warn(err);
       });
-    }, 30000);
+    }, config.archive_delay);
 });
 
 // nms.on('prePlay', (id, StreamPath, args) => {
