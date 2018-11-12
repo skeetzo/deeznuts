@@ -110,6 +110,7 @@ videoSchema.statics.archiveVideos = function(callback) {
         logger.debug('stream_path: %s', stream_path);
         logger.debug('archived_path: %s', archived_path);
         // fss.ensureDirSync(archived_path);
+        fs.ensureDirSync(path.join(config.videosPath, 'archived/', stream_name), archived_path);
         fss.ensureSymlinkSync(path.join(config.videosPath, 'archived/', stream_name), archived_path);
         fs.readdir(stream_path, function (err, mp4s) {
           if (err) {
