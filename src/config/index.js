@@ -101,7 +101,7 @@ config.debugging_blockchain = true;
 config.debugging_blockchain_hash = "696969";
 config.debugging_blockchain_address = "yourmomshouse";
 
-config.remoteDatabase = false;
+config.remoteDatabase = true;
 
 function deploy(environment) {
 	if (environment=='development') {
