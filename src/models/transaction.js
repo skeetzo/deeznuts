@@ -8,7 +8,7 @@ var mongoose = require('mongoose'),
 // Transaction Schema
 var transactionSchema = new Schema({
   address: { type: String },
-  confirmations: { type: Number, default: 0 title},
+  confirmations: { type: Number, default: 0 },
   date: { type: Date, default: moment(new Date()).format('MM/DD/YYYY-hh:mm:ss') },
   reason: { type: String, default: 'live'},
   secret: { type: String },

@@ -128,7 +128,7 @@ userSchema.statics.generateAddress = function(data, callback) {
       });
     },
     function (user, address, video, url, step) {
-      if (data.reason==.videos'vod') {
+      if (data.reason=='vod') {
         var video = new Video(video);
         video.isOriginal = false;
         video.address = address;
