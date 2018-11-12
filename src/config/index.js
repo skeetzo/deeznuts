@@ -16,7 +16,7 @@ config.title = "Alex D.'s Nuts";
 config.siteTitle = "AlexDeezNuts.com";
 config.domain = "alexdeeznuts.com";
 
-config.domain = "192.168.1.5:3000";
+config.domain = "192.168.1.5";
 
 // if (config.local) config.domain = "localhost";
 var live_url = "wss://"+config.domain+":8443/live/stream.flv?sign="
@@ -38,6 +38,7 @@ config.uid = 1001;
 config.gid = 1002;
 config.archive_videos = true;
 config.archive_on_publish = true;
+config.archive_delay = 10000;
 config.conversionRate = 6; // $1 per 6 minutes
 config.createPreviews = true;
 config.defaultPrice = 5; // in dollars
