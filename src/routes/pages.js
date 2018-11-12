@@ -44,7 +44,7 @@ module.exports = function homeRoutes(router) {
       if (!user) return res.sendStatus(404);
       // user.time_added = 60;
       var oneDollarInBTC = 0.00015;
-      user.addTime({'value':100000000*oneDollarInBTC*6}, function (err) {
+      user.addTime(100000000*oneDollarInBTC*6, function (err) {
         if (err) logger.warn(err);
         res.sendStatus(200);
       });
