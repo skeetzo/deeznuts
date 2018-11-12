@@ -224,6 +224,7 @@ videoSchema.methods.convert = function(callback) {
       logger.log('--- Watermarking ---');
       self.watermark(function (err) {
         if (err) logger.warn(err);
+        else self.path = self.path.replace('.mp4', '-w.mp4');
         step(null, file);
       });
     },
@@ -397,7 +398,7 @@ videoSchema.methods.watermark = function(callback) {
     logger.log('--- Watermarked: %s', self.title);
     callback(null);
   })
-  .saveToFile(self.path); 
+  .saveToFile(self.path.replace('.mp4', '-w.mp4')); 
 }
 
 var Video = mongoose.model('videos', videoSchema,'videos');
