@@ -42,11 +42,8 @@ config.defaultPreviewDuration = 10;
 config.videosPath = '/mnt/deeznuts/videos';
 config.imagesPath = '/mnt/deeznuts/images';
 
-config.videosPath = '/home/skeetzo/Projects/deeznuts/src/public/videos';
-config.imagesPath = '/home/skeetzo/Projects/deeznuts/src/public/images';
-
-config.videosPath = '/home/pi/deeznuts/src/public/videos';
-config.imagesPath = '/home/pi/deeznuts/src/public/images';
+// config.videosPath = '/home/skeetzo/Projects/deeznuts/src/public/videos';
+// config.imagesPath = '/home/skeetzo/Projects/deeznuts/src/public/images';
 
 config.syncInterval = 3000;
 if (config.debugging) {
