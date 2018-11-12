@@ -19,7 +19,10 @@
               location.reload();
             },
             error: function(data) {
-              alert("Please login or create an account!");
+              if (data.status == 400)
+                alert('There was an error!');
+              else
+                alert("Please login or create an account!");
             },
           })).catch(function (reason) {
             //- console.log(reason);

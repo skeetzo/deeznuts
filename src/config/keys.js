@@ -66,10 +66,10 @@ module.exports = function() {
     if (this.remoteDatabase) this.MONGODB_URI = localConfig.MONGODB_URI_remote;
 
     // Twitter
-	this.Twitter_consumer_key = localConfig.Twitter_AlexsDBot_consumer_key || process.env.Twitter_consumer_key; 
-	this.Twitter_consumer_secret = localConfig.Twitter_AlexsDBot_consumer_secret || process.env.Twitter_consumer_secret;
-	this.Twitter_access_token = localConfig.Twitter_AlexsDBot_access_token || process.env.Twitter_access_token;
-	this.Twitter_access_token_secret = localConfig.Twitter_AlexsDBot_access_token_secret || process.env.Twitter_access_token_secret;
+	this.Twitter_consumer_key = localConfig.Twitter_consumer_key || process.env.Twitter_consumer_key; 
+	this.Twitter_consumer_secret = localConfig.Twitter_consumer_secret || process.env.Twitter_consumer_secret;
+	this.Twitter_access_token = localConfig.Twitter_access_token || process.env.Twitter_access_token;
+	this.Twitter_access_token_secret = localConfig.Twitter_access_token_secret || process.env.Twitter_access_token_secret;
     this.TwitterConfig = {
     	consumer_key: this.Twitter_consumer_key, 
     	consumer_secret: this.Twitter_consumer_secret,

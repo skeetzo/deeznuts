@@ -6,7 +6,7 @@ var config = require('../config/index'),
 module.exports = function homeRoutes(router) {
 
   // /live
-  router.get("/live", mixins.loggedIn, mixins.hasPaid, function (req, res, next) {
+  router.get("/live", mixins.loggedIn, mixins.hasPaid, mixins.hasRoom, function (req, res, next) {
     res.render('live', req.session.locals);    
   });
 
@@ -31,7 +31,7 @@ module.exports = function homeRoutes(router) {
   //- /tip
   router.get(config.blockchainRoute, function (req, res, next) {
     logger.debug('req.query: %s', JSON.stringify(req.query, null, 4));
-    User.syncTransaction(req.query, function (err) {
+    require('../models/transaction').sync(req.query, function (err) {
       if (err) logger.warn(err);
       if (parseInt(req.query.confirmations, 10)>=config.blockchainConfirmationLimit)
         res.send("*ok*");
@@ -45,27 +45,27 @@ module.exports = function homeRoutes(router) {
     User.generateAddress({'_id':req.session.user._id,'reason':'live'}, function (err) {
       if (err) {
         logger.warn(err);
-        return res.sendStatus(404);
+        return res.sendStatus(400);
       }
       res.status(200).send();
     });
   });
 
-  router.get("/on_play", function (req, res, next) {
-    logger.log('--- Stream Playing ---');
-    config.status = 'Live';
-    res.status(200).send();
-  });
+  // router.get("/on_play", function (req, res, next) {
+  //   logger.log('--- Stream Playing ---');
+  //   config.status = 'Live';
+  //   res.status(200).send();
+  // });
 
-  router.get("/on_done", function (req, res, next) {
-    logger.log('--- Stream Done ---');
-    config.status = 'Not Live';
-    res.status(200).send();
-  });
+  // router.get("/on_done", function (req, res, next) {
+  //   logger.log('--- Stream Done ---');
+  //   config.status = 'Not Live';
+  //   res.status(200).send();
+  // });
 
-  router.get("/on_connect", function (req, res, next) {
-    logger.log('--- Stream Connected ---');
-    config.status = 'Not Live';
-    res.status(200).send();
-  });
+  // router.get("/on_connect", function (req, res, next) {
+  //   logger.log('--- Stream Connected ---');
+  //   config.status = 'Not Live';
+  //   res.status(200).send();
+  // });
 }
