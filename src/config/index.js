@@ -41,6 +41,10 @@ config.defaultTime = 60; // time in seconds
 config.defaultPreviewDuration = 10;
 config.videosPath = '/mnt/deeznuts/videos';
 config.imagesPath = '/mnt/deeznuts/images';
+
+config.videosPath = '/home/skeetzo/Projects/deeznuts/src/public/videos';
+config.imagesPath = '/home/skeetzo/Projects/deeznuts/src/public/images';
+
 config.syncInterval = 3000;
 if (config.debugging) {
 	config.defaultTime = 60*60*23+45*60;
@@ -64,6 +68,12 @@ config.streamRecording = true;
 // config.streamRecording_dash = true;
 // config.streamRecording_hls = true;
 
+// Twitter
+config.Twitter = false;
+config.Twitter_tweeting = false;
+config.Twitter_tweeting_on_live = false;
+config.Twitter_link = config.domain+'/live';
+
 config.siteData = 
 	{ 	
 		debugging: config.debugging,
@@ -82,6 +92,11 @@ config.alexd = {
 	'username': 'justalexxxd',
 	'password': 'gofuckyourself6969'
 };
+
+
+config.debugging_blockchain = true;
+config.debugging_blockchain_hash = "696969";
+config.debugging_blockchain_address = "yourmomshouse";
 
 config.remoteDatabase = true;
 

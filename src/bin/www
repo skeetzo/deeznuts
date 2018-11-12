@@ -6,7 +6,7 @@
 var config = require('../config/index'),
     logger = config.logger;
 var app = require('../app');
-var debug = require('debug')('alexdeeznuts:server');
+var debug = require('debug')('deeznuts:server');
 var http = require('http');
 var https = require('https');
 var rtmp = require('../modules/rtmp');
@@ -42,6 +42,14 @@ async.series([
         logger.log('Bot found: %s', alexd.username);
         step(null);
       }
+    });
+  },
+  function (step) {
+    // Twitter
+    var Twitter = require('../modules/twitter');
+    Twitter.connect(function (err) {
+      if (err) logger.warn(err);
+      step(null);
     });
   },
   // database initialization
@@ -98,6 +106,10 @@ async.series([
     else {
       server = http.createServer(app);
     }
+
+    // socket.io
+    // const io = require('socket.io')(server);    
+    // require('../modules/socket.io').setup(io);
 
     /**
      * Listen on provided port, on all network interfaces.

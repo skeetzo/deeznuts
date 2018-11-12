@@ -75,6 +75,18 @@ videoSchema.pre('save', function (next) {
   }
 });
 
+videoSchema.statics.addTransaction = function(transaction, callback) {
+  if (!transaction.value_in_dollars) return callback('Error Adding Transaction: Missing Value in Dollars');
+  Video.findById(transaction.video, function (err, video) {
+    if (err) return callback(err);
+    if (!video) return callback('Error Adding Transaction: Missing Video');
+    video.paid += parseInt(transaction.value_in_dollars, 10);
+    video.save(function (err) {
+      callback(err);
+    });
+  });
+}
+
 // move any mp4s from public/videos/live/stream -> public/videos/archived
 videoSchema.statics.archiveVideos = function(callback) {
   var fs = require('fs');
@@ -172,6 +184,14 @@ videoSchema.statics.processPublished = function(callback) {
   });
 }
 
+videoSchema.methods.addTransaction = function(transaction, callback) {
+  if (!transaction.value_in_dollars) return callback('Error Adding Transaction: Missing Value in Dollars');
+  this.paid += parseInt(transaction.value_in_dollars, 10);
+  this.save(function (err) {
+    callback(err);
+  });
+}
+
 // get file at location
 // convert to preview
 // save ref
@@ -235,18 +255,21 @@ videoSchema.methods.extract = function(callback) {
   logger.debug('New File: %s', newFile);
   logger.debug('New Title: %s', newTitle);
   var conversion_process = new FFmpeg({ 'source': this.path, 'timeout': 0 })
-  .inputOptions('-probesize 100')
-  .inputOptions('-analyzeduration 10000000')
-  .withVideoBitrate(1024)
+  .inputFormat('mp4')
+  .videoCodec('libx264')
+  // .inputOptions('-probesize 100')
+  // .inputOptions('-analyzeduration 10000000')
+  // .withVideoBitrate(1024)
   .withAspect('16:9')
-  .withFps(30)
-  .withAudioBitrate('128k')
-  .withAudioCodec('aac')
+  // .withFps(30)
+  // .withAudioBitrate('128k')
+  // .withAudioCodec('aac')
   .toFormat('mp4')
   .duration(duration)
-  .outputOptions('-pix_fmt yuv420p')
-  .outputOptions('-max_muxing_queue_size 99999')
-  .outputOptions('-flags +global_header')
+  // .outputOptions('-pix_fmt yuv420p')
+  // .outputOptions('-max_muxing_queue_size 99999')
+  // .outputOptions('-flags +global_header')
+  .outputOptions('-strict -2')
   .on('start', function (commandLine) {
     logger.log("Extraction Started");
   })
@@ -276,11 +299,11 @@ videoSchema.methods.thumbnail = function(callback) {
   logger.debug('filename: %s', filename);
   logger.debug('foldername: %s', foldername);
   var proc = new FFmpeg(self.path)
-  .inputOptions('-probesize 100')
-  .inputOptions('-analyzeduration 10000000')
-  .outputOptions('-max_muxing_queue_size 99999')
-  .outputOptions('-flags +global_header')
-  .outputOptions('-pix_fmt yuv420p')
+  // .inputOptions('-probesize 100')
+  // .inputOptions('-analyzeduration 10000000')
+  // .outputOptions('-max_muxing_queue_size 99999')
+  // .outputOptions('-flags +global_header')
+  // .outputOptions('-pix_fmt yuv420p')
   // .on('filenames', function(filenames) {
   //   logger.log('Will generate: ' + filenames.join(', '))
   // })
@@ -313,9 +336,10 @@ videoSchema.methods.watermark = function(callback) {
   var self = this;
   logger.log('Watermarking: %s', self.title);
   var conversion_process = new FFmpeg({ 'source': self.path, 'timeout': 0 })
-  .inputOptions('-probesize 100')
-  .inputOptions('-analyzeduration 10000000')
+  // .inputOptions('-probesize 100')
+  // .inputOptions('-analyzeduration 10000000')
   .format('mp4')
+  .videoCodec('libx264')
   .input(path.join(__dirname, "../public/images/watermark.png"))
   .complexFilter([
     {
@@ -350,9 +374,10 @@ videoSchema.methods.watermark = function(callback) {
     },
     ], 'output')
   .toFormat('mp4')
-  .outputOptions('-max_muxing_queue_size 99999')
-  .outputOptions('-flags +global_header')
-  .outputOptions('-pix_fmt yuv420p')
+  // .outputOptions('-max_muxing_queue_size 99999')
+  // .outputOptions('-flags +global_header')
+  // .outputOptions('-pix_fmt yuv420p')
+  .outputOptions('-strict -2')
   .on('start', function (commandLine) {
     logger.log("Watermarking Started");
   })

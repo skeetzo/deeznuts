@@ -7,7 +7,6 @@ var mongoose = require('mongoose'),
     async = require('async'),
     Google = require('../modules/google'),
     Receive = require('blockchain.info/Receive'),
-    Exchange = require('blockchain.info/exchange'),
     bcrypt = require('bcrypt-nodejs'),
     Transaction = require('../models/transaction'),
     Video = require('../models/video'),
@@ -58,77 +57,104 @@ userSchema.pre('save', function (next) {
 });
 
 userSchema.statics.generateAddress = function(data, callback) {
-  logger.log('Generating Address: %s', data._id);
-  User.findById(data._id, function (err, user) {
-    if (err) return callback(err);
-    if (data.reason=='live'&&user.address) return callback('Live Address already generated: '+user._id);
-    if (config.debugging&&!config.debugging_address) return callback('Skipping Address- Debugging');
-    // Generate new blockchain address
-    var xpub = config.blockchainXpub,
-     cb = config.blockchainCallback,
-     key = config.blockchainKey,
-     options = {
-      '__unsafe__gapLimit':config.blockchainGapLimit
-     };
-    // myReceive is the blockchain Object for the new address's generation
-    var myReceive = new Receive(xpub, cb, key, options);
-    // this checks the gap or number of unused addresses that have been generated
-    // gap - the current address gap (number of consecutive unused addresses)
-    var checkgap = myReceive.checkgap()
-    .then(function (data) {
-      var gap = data.gap;
-      logger.log('gap: %s', data.gap);
-      // config.checkgap = gap;
-    });
-    // generate address
-    var timestamp = (Date.now() + 3600000);
-    var hash = require('md5')(timestamp+"-"+config.blockchainHash);
-    // user.secret = hash;
-    user.secrets.push(hash);
-    var query = {'secret':hash,'transaction':data.reason};
-    if (data.reason=='live') {
+  logger.log('Generating Address: %s|%s', data._id, data.reason);
+  async.waterfall([
+    function (step) {
+      User.findById(data._id, function (err, user) {
+        if (err) return callback(err);
+        if (data.reason=='live'&&user.address) return callback('Live Address already generated: '+user._id);
+        step(null, user);
+      });
+    },
+    function (user, step) {
+      // Generate new blockchain address
+      var xpub = config.blockchain_xpub,
+        cb = config.blockchain_callback,
+        key = config.blockchain_key,
+        options = {
+          '__unsafe__gapLimit':config.blockchain_gap_limit
+        };
+      // myReceive is the blockchain Object for the new address's generation
+      var myReceive = new Receive(xpub, cb, key, options);
+      step(null, user, myReceive);
+    },
+    function (user, myReceive, step) {
+      // this checks the gap or number of unused addresses that have been generated
+      // gap - the current address gap (number of consecutive unused addresses)
+      if (config.debugging_blockchain||!config.blockchain_check_gap) return step(null, user, myReceive);
+      logger.debug('checking blockchain gap...');
+      var checkgap = myReceive.checkgap()
+      .then(function (data) {
+        logger.debug('gap: %s', data.gap);
+        if (data.gap>config.blockchainGapLimit) 
+          return step('gap chain limit reached: '+data.gap);
+        step(null, user, myReceive);
+      });
+    },
+    function (user, myReceive, step) {
+      // generate address
+      var timestamp = (Date.now() + 3600000);
+      var hash = require('md5')(timestamp+"-"+config.blockchainHash);
+      if (config.debugging_blockchain) hash = config.blockchainHash;
+      // user.secret = hash;
+      user.secrets.push(hash);
+      var query = {'secret':hash,'transaction':data.reason};
+      if (data.reason=='live') {
+        step(null, user, myReceive, query, null);
+      }
+      else if (data.reason=='vod') {
+        Video.findOne({'title':data.video,'isOriginal':true,'hasPreview':true}, function (err, video) {
+          if (err) return step(err);
+          if (!video) return step('Missing video');
+          query.video = video._id;
+          step(null, user, myReceive, query, video);
+        });
+      }
+    },
+    function (user, myRecieve, query, video, step) {
+      logger.debug('query: %s', JSON.stringify(query, null, 4));
+      if (config.debugging_blockchain) return step(null, user, config.debugging_blockchain_address, video); 
       myReceive = myReceive.generate(query)
       .then(function (generated) {
-        logger.log('Generated Address: %s', generated.address);
-        user.address = generated.address;
-        user.addresses.push(generated.address);
-        QRCode.toDataURL(generated.address, function (err_, url) {
-          if (err_) logger.warn(err_);
-          else user.address_qr = url;
-          // logger.debug('address_qr: %s', url);
-          user.save(function (err__) {
-            callback(err__);
-          });
+        logger.debug('generated: %s', JSON.stringify(generated));
+        step(null, user, generated.address, video);
+      });
+    },
+    function (user, address, video, step) {
+      QRCode.toDataURL(address, function (err, url) {
+        if (err) logger.warn(err);
+        // logger.debug('qrcode: %s', url);
+        step(null, user, address, video, url);
+      });
+    },
+    function (user, address, video, url, step) {
+      if (data.reason==.videos'vod') {
+        var video = new Video(video);
+        video.isOriginal = false;
+        video.address = address;
+        video.address_qr = url;
+        user.addresses.push(address);
+        video.save(function (err) {
+          if (err) return step(err);
+          // user.videos.push(video._id);
+          step(null, user);
         });
+      }
+      else {
+        user.address_qr = url;
+        user.address = address;
+        step(null, user)
+      }
+    },
+    function (user, address, step) {
+      user.save(function (err) {
+        if (err) return step(err);
+        logger.debug('BTC address created');
+        callback(null);
       });
     }
-    else if (data.reason=='vod') {
-      Video.findOne({'title':data.video,'isOriginal':true,'isPreview':false}, function (err, video) {
-        if (err) return callback(err);
-        if (!video) return callback('Missing video');
-        query.video = video.title;
-        myReceive = myReceive.generate(query)
-        .then(function (generated) {
-          logger.log('Generated Address for Video: %s (%s)', generated.address, video.title);
-          video = new Video(video);
-          video.isOriginal = false;
-          video.address = generated.address;
-          user.addresses.push(generated.address);
-          QRCode.toDataURL(generated.address, function (err_, url) {
-            if (err_) logger.warn(err_);
-            else video.address_qr = url;
-            video.save(function (err) {
-              if (err) logger.warn(err);
-              user.videos.push(video._id);
-              user.save(function (err__) {
-                callback(err__);
-              });
-            });
-          });
-        });
-      });
-    }
-
+    ], function (err) {
+      callback(err);
   });
 }
 
@@ -159,113 +185,65 @@ userSchema.statics.sync = function(data, callback) {
   });
 }
 
-userSchema.statics.syncTransaction = function(transaction, callback) {
-  logger.debug('Syncing Transaction: %s (%s)', transaction.value, transaction.transaction_hash);
-  // User.findOne({'address':transaction.address,'secret':transaction.secret}, function (err, user) {
-  User.findOne({'addresses':transaction.address,'secrets':transaction.secret}, function (err, user) {
-    if (err) return callback(err);
-    if (!user) return callback('No matching user: '+transaction.address);
-    // Confirm
-    if (_.contains(user.transactions, transaction.transaction_hash)) {
-      Transaction.confirm(transaction, function (err_) {
-        if (err_) return callback(err_);
-        logger.log('Confirmed Transaction: %s (%s) -> %s', transaction.value, transaction.confirmations, transaction.address, user._id);
-        callback(null);
-      });
-    }
-    // Add
-    else {
-      Transaction.add(transaction, function (err_) {
-        if (err_) return callback(err_);
-        logger.log('Added Transaction: %s (%s) -> %s', transaction.value, transaction.confirmations, transaction.address, user._id);
-        if (transaction.reason=='vod'&&transaction.video)
-          user.addVideo(transaction, function (err__) {
-            if (err__) return callback(err__);
-            user.transactions.push(transaction.transaction_hash);
-            callback(null);
-          });
-        else if (transaction.reason=='live')
-          user.addTime(transaction.value, function (err__) {
-            if (err__) return callback(err__);
-            user.transactions.push(transaction.transaction_hash);
-            callback(null);
-          });
-        else
-          callback('Transaction Error');
-      });
-    }
-  });
-}
-
 // amount in satoshi, so divide by 100,000,000 to get the value in BTC
-userSchema.methods.addTime = function(transaction, callback) {
+userSchema.methods.addTime = function(value_in_dollars, callback) {
 	var self = this;
-  logger.log('Calculating time: %s satoshi', transaction.value);
-  convertBTCtoDollar(transaction.value, function (err, dollar) {
-    if (err) return callback(err);
-    var timeAdded = dollar*(config.conversionRate*60); // 6 minutes per dollar
-    logger.debug('dollar to seconds: $%s -> %s seconds', dollar, timeAdded);
-    logger.log('Time Added: %s seconds + %s seconds = %s seconds', self.time, timeAdded, (self.time+timeAdded));
-    // Google.logTime(value_in_satoshi, dollar, self.time, timeAdded);
-    self.time_added = timeAdded;
-    self.time+= timeAdded;
-    self.save(function (err) {
-      callback(err);
-    });
+  logger.log('Calculating time: %s dollars', value_in_dollars);
+  var timeAdded = value_in_dollars*(config.conversionRate*60); // 6 minutes per dollar
+  logger.debug('dollar to seconds: $%s -> %s seconds', value_in_dollars, timeAdded);
+  logger.log('Time Added: %s seconds + %s seconds = %s seconds', self.time, timeAdded, (self.time+timeAdded));
+  // Google.logTime(value_in_satoshi, dollar, self.time, timeAdded);
+  self.time_added = timeAdded;
+  self.time+= timeAdded;
+  self.save(function (err) {
+    callback(err);
   });
 }
 
-userSchema.methods.addVideo = function(transaction, callback) {
-  var self = this;
-  if (!transaction.video) return callback('Missing video title!');
-  async.waterfall([
-    function (step) {
-      logger.debug('checking for existing paid video');
-      // check for existing paid video
-      Video.findOne({'title':transaction.video,'isOriginal':false,'_id':{'$in':self.videos}}, function (err, video) {
-        if (err) return step(err);
-        if (video&&video.isPaid) return step('Video already paid for!');
-        else if (video) return step(null, video);
-        else return step(null, null);
-      });
-    },
-    function (video, step) {
-      if (video) return step(null, video);
-      logger.debug('fetching original video for copy');
-      Video.findOne({'title':transaction.video,'isOriginal':true}, function (err, video) {
-        if (err) return step(err);
-        if (!video) return step('Missing Original Video: %s', transaction.video); 
-        var video_copy = new Video(video);
-        video_copy.isOriginal = false;
-        step(null, video_copy);
-      });
-    },
 
-    function (video, step) {
-      logger.debug('calculating btc to payment towards video');
-      convertBTCtoDollar(transaction.value, function (err, dollar) {
+userSchema.methods.addVideoTransaction = function(transaction, callback) {
+  var self = this;
+  async.waterfall([
+    // find original video for reference
+    function (step) {
+      Video.findById(transaction.video, function (err, video) {
         if (err) return step(err);
-        logger.log('Payment for video: %s -> %s', dollar, video.title);
-        video.paid+=dollar;
-        video.save(function (err) {
-          if (err) return step(err);
-          self.videos.push(video._id);
-          if (!video.isPaid) {
-            return self.save(function (err) {
-              callback('Video still unpaid!');
-            });
-          }
-          self.video_added = video._id;
-          logger.log('Video paid and added: %s -> %s', video.title, self._id);
-          // add video to list of videos user has access to 
-          self.save(function (err) {
-            callback(err);
-          });
-        });
+        if (!video) return step('Error Adding Video: Missing Original Video');
+        step(null, video);
       });
-    }], function (err) {
-          if (err) logger.warn(err);
-          callback(err);
+    },
+    // if video has already been copied find it
+    function (original, step) {
+      // check for existing paid video
+      Video.findOne({'title':original.title,'isOriginal':false,'_id':{'$in':self.videos}}, function (err, video) {
+        if (err) return step(err);
+        // if video hasn't been copied, copy it
+        if (!video) {
+          logger.debug('creating new video: %s', original.title);
+          video = new Video(original);
+          video.isOriginal = false;
+          self.videos.push(video._id);
+          video.save(function (err) {
+            step(err, video);
+          });
+        }
+        else
+          step(null, video);
+      });
+    },
+    function (video, step) {
+      video.addTransaction(transaction, function (err) {
+        if (err) return step(err);
+        if (video.isPaid)
+          self.video_added = video._id;
+        step(null);
+      });
+    }
+  ], function (err) {
+      if (err) logger.warn(err);
+      self.save(function (err) {
+        callback(err);
+      });
     });
 }
 
@@ -275,24 +253,8 @@ userSchema.methods.verifyPassword = function(candidatePassword, callback) {
   });
 };
 
-function convertBTCtoDollar(value_in_satoshi, callback) {
-  logger.log('Converting satoshi to Dollar: %s', value_in_satoshi);
-  var value_in_btc = value_in_satoshi / 100000000;
-  logger.debug('satoshi to BTC: %s satoshi -> %sBTC', value_in_satoshi, value_in_btc);
-  // calculate conversion rate to dollar
-  Exchange.getTicker({'currency':"USD"})
-  .then(function (data) {
-    if (!data.last) return callback('Missing BTC Converstion: '+value_in_satoshi);
-    logger.debug('amountPerBTC: %s/BTC', data.last);
-    var dollar = data.last*value_in_btc;
-    logger.debug('BTC to dollar: %s/BTC * %sBTC -> +$%s', data.last, value_in_btc, dollar);
-    callback(null, dollar);
-  });
-}
-
 var User = mongoose.model('users', userSchema,'users');
 module.exports = User;
-
 
 // var options = {
 //   'time': (new Date()).getTime()

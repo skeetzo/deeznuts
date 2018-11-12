@@ -9,7 +9,7 @@ module.exports = function homeRoutes(router) {
 
   router.get("/videos", mixins.loggedIn, function (req, res, next) {
     logger.debug('video ids: %s', req.session.user.videos);
-    Video.find({'_id':{'$in':req.session.user.videos}}, function (err, videos) {
+    Video.find({'_id':{'$in':req.session.user.videos},'isPaid':true}, function (err, videos) {
       if (err) logger.warn(err);
       logger.debug('videos: %s', videos.length);
       req.session.locals.videos = mixins.Videos(videos);
@@ -29,7 +29,7 @@ module.exports = function homeRoutes(router) {
     User.generateAddress({'_id':req.session.user._id,'reason':'vod','video':req.query.video}, function (err) {
       if (err) {
         logger.warn(err);
-        return res.sendStatus(404);
+        return res.sendStatus(400);
       }
       res.sendStatus(200);
     });

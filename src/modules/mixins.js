@@ -22,6 +22,15 @@ module.exports.hasPaid = function(req, res, next) {
     }
 }
 
+module.exports.hasRoom = function(req, res, next) {
+    return next(null);
+    // disabled
+    // var isRoom = require('../modules/socket.io').isRoom();
+    // if (isRoom) return next(null);
+    // req.session.locals.error = 'There\'s not enough room for you!';
+    // res.status(400).render('index', req.session.locals);
+}
+
 // Check Login
 module.exports.loggedIn = function(req, res, next) {
     if (req.session.user&&req.session.locals.loggedIn)
