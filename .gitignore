@@ -1,8 +1,8 @@
 # Videos
-src/public/videos/live/*
-src/public/videos/archived/*
-src/public/videos/previews/*
-src/public/images/thumbnails/*
+src/public/videos/live/*.mp4
+src/public/videos/archived/*.mp4
+src/public/videos/previews/*.mp4
+src/public/images/thumbnails/*.mp4
 
 # Logs
 #logs

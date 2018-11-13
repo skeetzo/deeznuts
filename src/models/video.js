@@ -197,23 +197,17 @@ videoSchema.methods.addTransaction = function(transaction, callback) {
 // save ref
 videoSchema.methods.createPreview = function(callback) {
   var self = this;
-  logger.debug('Creating Preview: %s', self.title);
-  self.convert(function (err, newFile) {
-    if (err) return callback(err);
-    self.hasPreview = true;
-    self.path_preview = newFile;
-    self.save(function (err) {
-      callback(err);
-    });
-  });
-}
-
-// edit video into 10 sec preview with watermark
-videoSchema.methods.convert = function(callback) {
-  var self = this;
-  logger.log('--- Converting: %s', self.title);
-  logger.log(self.path);
+  logger.log('Creating Preview: %s', self.title);
+  logger.debug(self.path);
   async.waterfall([
+    function (file, step) {
+      // create png of early frames of .mp4 path
+      logger.log('--- Thumbnailing ---');
+      self.thumbnail(function (err) {
+        if (err) logger.warn(err);
+        step(null, file);
+      });
+    },
     function (step) {
       logger.log('--- Extracting ---');
       self.extract(function (err, file) {
@@ -229,16 +223,12 @@ videoSchema.methods.convert = function(callback) {
       });
     },
     function (file, step) {
-      // create png of early frames of .mp4 path
-      logger.log('--- Thumbnailing ---');
-      self.thumbnail(function (err) {
-        if (err) logger.warn(err);
-        step(null, file);
+      logger.log('Preview Created: %s', self.title);
+      self.hasPreview = true;
+      self.path_preview = self.path.replace('.mp4', '-w.mp4');
+      self.save(function (err) {
+        callback(err);
       });
-    },
-    function (file, step) {
-      logger.log('--- Conversion Complete: %s', self.title);
-      callback(null, file);
     }
   ], function (err) {
     callback(err);
