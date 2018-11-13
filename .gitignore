@@ -1,8 +1,15 @@
 # Videos
+<<<<<<< HEAD
 src/public/videos/live/*.mp4
 src/public/videos/archived/*.mp4
 src/public/videos/previews/*.mp4
 src/public/images/thumbnails/*.png
+=======
+src/public/videos/live/*
+src/public/videos/archived/*
+src/public/videos/previews/*
+src/public/images/thumbnails/*
+>>>>>>> 2943fc6aae5ccd70d8773fdfc20af2be02719812
 
 # Logs
 #logs
