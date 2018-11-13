@@ -78,20 +78,10 @@ transactionSchema.statics.sync = function(transactionQuery, callback) {
           if (err) return callback(err);
           logger.log('Confirmed Transaction: %s (%s) -> %s', transaction.value, transaction.confirmations, transaction.address, user._id);
           if (transaction_.confirmed) {
-            if (transaction.reason=='vod') {
-              if (!transaction.video) return callback('Error Confirming Transaction: Missing Video');
-              user.addVideoTransaction(transaction, function (err) {
-                callback(err);
-              });
-            }
-            else if (transaction.reason=='live') {
-              if (!transaction.value_in_dollars) return callback('Error Confirming Transaction: Missing Value in Dollars');
-              user.addTime(transaction.value_in_dollars, function (err) {
-                callback(err);
-              });
-            }
-            else
-              callback('Error Confirming Transaction: Missing Reason');
+            if (!transaction.value_in_dollars) return callback('Error Confirming Transaction: Missing Value in Dollars');
+            user.addTime(transaction.value_in_dollars, function (err) {
+              callback(err);
+            });
           }
           else
             callback(null);

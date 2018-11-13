@@ -21,34 +21,25 @@ var mongoose = require('mongoose'),
 
 */
 var videoSchema = new Schema({
-  address: { type: String },
-  address_qr: { type: String },
+  date: { type: String, default: },
   description: { type: String, default: '' },
   duration: { type: Number },
   hasPreview: { type: Boolean, default: false },
-  isPaid: { type: Boolean, default: false },
   isOriginal: { type: Boolean, default: false },
-  paid: { type: Number, default: 0 },
   path: { type: String },
   path_preview: { type: String },
   path_image: { type: String },
-  performers: { type: Array, default: [] },
   price: { type: Number },
   title: { type: String }
 });
 
 videoSchema.pre('save', function (next) {
   var self = this;
+  if (!self.date)
+    self.date = moment(new Date(self.title)).format('YYYY-MM-DD:HH:mm');
   self.description = [self.performers.slice(0, -1).join(', '), self.performers.slice(-1)[0]].join(self.performers.length < 2 ? '' : ' and ');
   if (!self.path)
     self.path = path.join(__dirname, '../public/videos/archive/', self.title+'.mp4');
-  if (self.isModified('paid')||self.isModified('duration')) {
-    if (self.paid>=self.duration) {
-      logger.debug('isPaid on save: %s', self._id);
-      self.isPaid = true;
-    }
-    else self.isPaid = false;
-  }
   if (self.isModified('duration')||self.isModified('price')) {
     if (self.duration<config.defaultPrice) { // 5 minutes / default time
       self.price = config.defaultPrice;
@@ -74,18 +65,6 @@ videoSchema.pre('save', function (next) {
     next();
   }
 });
-
-videoSchema.statics.addTransaction = function(transaction, callback) {
-  if (!transaction.value_in_dollars) return callback('Error Adding Transaction: Missing Value in Dollars');
-  Video.findById(transaction.video, function (err, video) {
-    if (err) return callback(err);
-    if (!video) return callback('Error Adding Transaction: Missing Video');
-    video.paid += parseInt(transaction.value_in_dollars, 10);
-    video.save(function (err) {
-      callback(err);
-    });
-  });
-}
 
 // move any mp4s from public/videos/live/stream -> public/videos/archived
 videoSchema.statics.archiveVideos = function(callback) {
@@ -184,14 +163,6 @@ videoSchema.statics.processPublished = function(callback) {
   });
 }
 
-videoSchema.methods.addTransaction = function(transaction, callback) {
-  if (!transaction.value_in_dollars) return callback('Error Adding Transaction: Missing Value in Dollars');
-  this.paid += parseInt(transaction.value_in_dollars, 10);
-  this.save(function (err) {
-    callback(err);
-  });
-}
-
 // get file at location
 // convert to preview
 // save ref
@@ -200,42 +171,49 @@ videoSchema.methods.createPreview = function(callback) {
   logger.log('Creating Preview: %s', self.title);
   logger.debug(self.path);
   async.waterfall([
-    function (file, step) {
+    function (step) {
       // create png of early frames of .mp4 path
       logger.log('--- Thumbnailing ---');
       self.thumbnail(function (err) {
         if (err) logger.warn(err);
-        step(null, file);
+        step(null);
       });
     },
     function (step) {
       logger.log('--- Extracting ---');
       self.extract(function (err, file) {
-        step(err, file);
-      });
-    },
-    function (file, step) {
-      logger.log('--- Watermarking ---');
-      self.watermark(function (err) {
-        if (err) logger.warn(err);
-        else self.path = self.path.replace('.mp4', '-w.mp4');
+        if (err) {
+          if (err.message.indexOf('max_muxing_queue_size')>-1) {
+            return self.extract(function (err, file) {
+              step(err, file);
+            },'muxing');
+          }
+          return step(err);
+        }
         step(null, file);
       });
     },
     function (file, step) {
-      logger.log('Preview Created: %s', self.title);
       self.hasPreview = true;
-      self.path_preview = self.path.replace('.mp4', '-w.mp4');
-      self.save(function (err) {
-        callback(err);
+      self.path_preview = file;
+      step(null);
+    },
+    function (step) {
+      logger.log('--- Watermarking ---');
+      self.watermark(function (err) {
+        step(err);
       });
     }
   ], function (err) {
-    callback(err);
+    if (err) logger.warn(err);
+    else logger.log('Preview Created: %s', self.title);
+    self.save(function (err) {
+      callback(err);
+    });
   });
 }
 
-videoSchema.methods.extract = function(callback) {
+videoSchema.methods.extract = function(callback, retryReason) {
   logger.log('Extracting: %s', this.title);
   logger.debug('path: %s', this.path);
   var duration = Math.round(this.duration);
@@ -245,6 +223,10 @@ videoSchema.methods.extract = function(callback) {
   var newFile = path.join(__dirname, '../public/videos/previews', newTitle);
   logger.debug('New File: %s', newFile);
   logger.debug('New Title: %s', newTitle);
+  var outputOptions = [];
+  if (retryReason&&retryReason=='muxing')
+    outputOptions.push('-max_muxing_queue_size 99999');
+  outputOptions.push('-strict -2');
   var conversion_process = new FFmpeg({ 'source': this.path, 'timeout': 0 })
   .inputFormat('mp4')
   .videoCodec('libx264')
@@ -258,9 +240,8 @@ videoSchema.methods.extract = function(callback) {
   .toFormat('mp4')
   .duration(duration)
   // .outputOptions('-pix_fmt yuv420p')
-  .outputOptions('-max_muxing_queue_size 99999')
+  .outputOptions(outputOptions)
   // .outputOptions('-flags +global_header')
-  .outputOptions('-strict -2')
   .on('start', function (commandLine) {
     logger.log("Extraction Started");
   })
@@ -326,7 +307,8 @@ videoSchema.methods.thumbnail = function(callback) {
 videoSchema.methods.watermark = function(callback) {
   var self = this;
   logger.log('Watermarking: %s', self.title);
-  var conversion_process = new FFmpeg({ 'source': self.path, 'timeout': 0 })
+  if (!self.path_preview) return callback('Error Watermarking Video: Missing Preview Path');
+  var conversion_process = new FFmpeg({ 'source': self.path_preview, 'timeout': 0 })
   // .inputOptions('-probesize 100')
   // .inputOptions('-analyzeduration 10000000')
   .format('mp4')
@@ -388,7 +370,8 @@ videoSchema.methods.watermark = function(callback) {
     logger.log('--- Watermarked: %s', self.title);
     callback(null);
   })
-  .saveToFile(self.path.replace('.mp4', '-w.mp4')); 
+  // .saveToFile(self.path.replace('.mp4', '-w.mp4')); 
+  .saveToFile(self.path_preview); 
 }
 
 var Video = mongoose.model('videos', videoSchema,'videos');

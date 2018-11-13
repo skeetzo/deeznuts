@@ -15,7 +15,6 @@ var mongoose = require('mongoose'),
 // User Schema
 var userSchema = new Schema({
   address: { type: String },
-  addresses: { type: Array, default: [String] },
   address_qr: { type: String },
   ip: { type: String },
   ips: { type: Array, default: [] },
@@ -23,15 +22,13 @@ var userSchema = new Schema({
   logins: { type: Number, default: 0 },
   password: { type: String },
   // qr: { type: String },
-  // secret : { type: String }, // crypto sig
-  secrets : { type: Array, default: [String] }, // crypto sigs
+  secret : { type: String }, // crypto sig
   start: { type: String, default: moment(new Date()).format('MM/DD/YYYY') },
   time: { type: Number, default: config.defaultTime }, // time allotted for live
   time_added: { type: Number },
   transactions: { type: Array, default: [] },
   username: { type: String },
-  videos: { type: Array, default: [] },
-  video_added: { type: String }
+  videos: { type: Array, default: [] }
 });
 
 userSchema.pre('save', function (next) {
@@ -57,12 +54,12 @@ userSchema.pre('save', function (next) {
 });
 
 userSchema.statics.generateAddress = function(data, callback) {
-  logger.log('Generating Address: %s|%s', data._id, data.reason);
+  logger.log('Generating Address: %s', data._id);
   async.waterfall([
     function (step) {
       User.findById(data._id, function (err, user) {
         if (err) return callback(err);
-        if (data.reason=='live'&&user.address) return callback('Live Address already generated: '+user._id);
+        if (user.address) return callback('Live Address already generated: '+user._id);
         step(null, user);
       });
     },
@@ -76,9 +73,6 @@ userSchema.statics.generateAddress = function(data, callback) {
         };
       // myReceive is the blockchain Object for the new address's generation
       var myReceive = new Receive(xpub, cb, key, options);
-      step(null, user, myReceive);
-    },
-    function (user, myReceive, step) {
       // this checks the gap or number of unused addresses that have been generated
       // gap - the current address gap (number of consecutive unused addresses)
       if (config.debugging_blockchain||!config.blockchain_check_gap) return step(null, user, myReceive);
@@ -96,57 +90,26 @@ userSchema.statics.generateAddress = function(data, callback) {
       var timestamp = (Date.now() + 3600000);
       var hash = require('md5')(timestamp+"-"+config.blockchainHash);
       if (config.debugging_blockchain) hash = config.blockchainHash;
-      // user.secret = hash;
-      user.secrets.push(hash);
-      var query = {'secret':hash,'transaction':data.reason};
-      if (data.reason=='live') {
-        step(null, user, myReceive, query, null);
-      }
-      else if (data.reason=='vod') {
-        Video.findOne({'title':data.video,'isOriginal':true,'hasPreview':true}, function (err, video) {
-          if (err) return step(err);
-          if (!video) return step('Missing video');
-          query.video = video._id;
-          step(null, user, myReceive, query, video);
-        });
-      }
-    },
-    function (user, myRecieve, query, video, step) {
-      logger.debug('query: %s', JSON.stringify(query, null, 4));
-      if (config.debugging_blockchain) return step(null, user, config.debugging_blockchain_address, video); 
+      user.secret = hash;
+      var query = {'secret':hash};
+      // logger.debug('query: %s', JSON.stringify(query, null, 4));
+      if (config.debugging_blockchain) return step(null, user, config.debugging_blockchain_address); 
       myReceive = myReceive.generate(query)
       .then(function (generated) {
         logger.debug('generated: %s', JSON.stringify(generated));
-        step(null, user, generated.address, video);
+        step(null, user, generated.address);
       });
     },
-    function (user, address, video, step) {
+    function (user, address, step) {
       QRCode.toDataURL(address, function (err, url) {
         if (err) logger.warn(err);
         // logger.debug('qrcode: %s', url);
-        step(null, user, address, video, url);
+        step(null, user, address, url);
       });
     },
-    function (user, address, video, url, step) {
-      if (data.reason=='vod') {
-        var video = new Video(video);
-        video.isOriginal = false;
-        video.address = address;
-        video.address_qr = url;
-        user.addresses.push(address);
-        video.save(function (err) {
-          if (err) return step(err);
-          // user.videos.push(video._id);
-          step(null, user);
-        });
-      }
-      else {
-        user.address_qr = url;
-        user.address = address;
-        step(null, user)
-      }
-    },
-    function (user, address, step) {
+    function (user, address, url, step) {
+      user.address_qr = url;
+      user.address = address;
       user.save(function (err) {
         if (err) return step(err);
         logger.debug('BTC address created');
@@ -163,7 +126,9 @@ userSchema.statics.sync = function(data, callback) {
   User.findById(data._id, function (err, user) {
     if (err) return callback(err);
     if (!user) return 'User not found: '+data._id;
-    if (Math.abs(parseInt(user.time)-parseInt(data.time))>9&&config.debugging_sync)
+    logger.debug('user.time: %s | %s :data.time', parseInt(user.time), parseInt(data.time));
+    logger.debug('minus: %s | %s :sync interval', Math.abs(parseInt(user.time)-parseInt(data.time)), config.syncInterval)
+    if (Math.abs(parseInt(user.time)-parseInt(data.time))>config.syncInterval&&config.debugging_sync)
       logger.debug('syncing (ignore): %s seconds -> %s seconds (%s)', user.time, data.time, data._id);
     else if (data.time<=0) {
       if (config.debugging_sync)
@@ -177,8 +142,6 @@ userSchema.statics.sync = function(data, callback) {
     }
     var time_added = user.time_added || false;
     user.time_added = null;
-    var video_added = user.video_added || false;
-    user.video_added = null;
     user.save(function (err_) {
       callback(err_,{'time':user.time,'time_added':time_added,'video_added':video_added,'status':config.status});
     });
@@ -200,51 +163,34 @@ userSchema.methods.addTime = function(value_in_dollars, callback) {
   });
 }
 
-
-userSchema.methods.addVideoTransaction = function(transaction, callback) {
+userSchema.methods.purchaseVideo = function(videoTitle, callback) {
   var self = this;
+  logger.log('Purchasing Video: %s -> %s', self._id, videoTitle);
   async.waterfall([
-    // find original video for reference
     function (step) {
-      Video.findById(transaction.video, function (err, video) {
+      require('../models/video').findOne({'title':videoTitle,'isOriginal':true}, function (err, video) {
         if (err) return step(err);
-        if (!video) return step('Error Adding Video: Missing Original Video');
+        if (!video) return step('Error Purchasing Video: Missing Video: '+videoTitle);
         step(null, video);
       });
-    },
-    // if video has already been copied find it
-    function (original, step) {
-      // check for existing paid video
-      Video.findOne({'title':original.title,'isOriginal':false,'_id':{'$in':self.videos}}, function (err, video) {
-        if (err) return step(err);
-        // if video hasn't been copied, copy it
-        if (!video) {
-          logger.debug('creating new video: %s', original.title);
-          video = new Video(original);
-          video.isOriginal = false;
-          self.videos.push(video._id);
-          video.save(function (err) {
-            step(err, video);
-          });
-        }
-        else
-          step(null, video);
-      });
+      // find video and duration
+      // if self.time > duration
+      // purchase video
+      // else return error: missing time %s amount
     },
     function (video, step) {
-      video.addTransaction(transaction, function (err) {
-        if (err) return step(err);
-        if (video.isPaid)
-          self.video_added = video._id;
-        step(null);
+      if (parseInt(self.time, 10)<parseInt(video.duration, 10)) {
+        return callback('Error Purchasing Video: Not Enough Time', parseInt(video.duration, 10)-parseInt(self.time, 10))
+      }
+      self.videos.push(video._id);
+      self.time = parseInt(self.time, 10)-parseInt(video.duration, 10);
+      self.save(function (err) {
+        callback(err, "Video Purchased!");
       });
     }
-  ], function (err) {
-      if (err) logger.warn(err);
-      self.save(function (err) {
-        callback(err);
-      });
-    });
+    ], function (err) {
+      callback(err);
+  });
 }
 
 userSchema.methods.verifyPassword = function(candidatePassword, callback) {

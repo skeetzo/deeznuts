@@ -141,15 +141,12 @@ var Video_ = function(src) {
   var path_image = path.relative(__dirname, src.path_image);
   return {
     '_id': src._id,
-    'address': src.address,
-    'address_qr': src.address_qr,
     'title': src.title,
+    'date': src.date,
     'performers': src.performers,
     'description': src.description,
-    'isPaid': src.isPaid,
     'path': path_ || '',
     'path_image': path_image || '',
-    // 'isPaid': true,
     'price': src.price
   };
 }
@@ -162,15 +159,12 @@ var Video_Preview = function(src) {
   var path_image = path.relative(__dirname, src.path_image);
   return {
     '_id': src._id,
-    'address': src.address,
-    'address_qr': src.address_qr,
     'title': src.title,
+    'date': src.date,
     'performers': src.performers,
     'description': src.description,
-    'isPaid': src.isPaid,
     'path': path_ || '',
     'path_image': path_image || '',
-    // 'isPaid': true,
     'price': src.price
   };
 }

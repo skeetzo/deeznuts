@@ -27,19 +27,6 @@ module.exports = function homeRoutes(router) {
       res.status(400).send();
   });
 
-  // blockchainCallback
-  //- /tip
-  router.get(config.blockchainRoute, function (req, res, next) {
-    logger.debug('req.query: %s', JSON.stringify(req.query, null, 4));
-    require('../models/transaction').sync(req.query, function (err) {
-      if (err) logger.warn(err);
-      if (parseInt(req.query.confirmations, 10)>=config.blockchainConfirmationLimit)
-        res.send("*ok*");
-      else
-        res.status(200).send();
-    });
-  });
-
   // live
   router.get("/address-live", mixins.loggedIn, function (req, res, next) {
     User.generateAddress({'_id':req.session.user._id,'reason':'live'}, function (err) {

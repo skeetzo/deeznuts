@@ -11,13 +11,12 @@ prepend content
     if (videos)
       for video in videos
         .col-xs-4
-          if (video.isPaid)
-            video(controls, poster=video.path_image, type="video/mp4", width=250, src=video.path)
-            .row
-              a.btn.btn-primary(href=video.path, download) Download
-          else
-            video(controls, poster=video.path_image, type="video/mp4", width=250, src=video.path)
-          include ../include/crypto-vod
+          h3.videoTitle #{video.title}
+          h4.videoDate #{video.date}
+          h4.videoPrice #{video.price}
+          video(controls, poster=video.path_image, type="video/mp4", width=250, src=video.path)
+          .row
+            a.btn.btn-primary(href=video.path, download) Download
   .row
     if (message||error)
       .message
@@ -33,18 +32,19 @@ prepend content
       for video in videos_all
         .col-xs-4
           video(controls, poster=video.path_image, type="video/mp4", width=250, src=video.path)
-          include ../include/crypto-vod
+          button.btn.btn-primary(onclick="buy(\'"+video.title+"\')") Buy
 
 prepend javascript
   script.
-    function generateVoDAddress(video) {
-      console.log('video: %s', video);
+    function buy(video) {
+      //- console.log('video: %s', video);
       return Promise.resolve($.ajax({
-        type: 'GET',
-        url: '/address-vod',
+        type: 'POST',
+        url: '/buy',
         data: {'_csrf':"#{_csrf}",'video':video},
         success: function(data) {
-          location.reload();
+          if (data.text)
+            alert(data.text);
         },
         error: function(data) {
           if (data.status == 400)

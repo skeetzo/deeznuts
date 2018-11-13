@@ -24,6 +24,19 @@ module.exports = function homeRoutes(router) {
     res.render('index', req.session.locals);
   });
 
+  // blockchainCallback
+  //- /tip
+  router.get(config.blockchainRoute, function (req, res, next) {
+    logger.debug('req.query: %s', JSON.stringify(req.query, null, 4));
+    require('../models/transaction').sync(req.query, function (err) {
+      if (err) logger.warn(err);
+      if (parseInt(req.query.confirmations, 10)>=config.blockchainConfirmationLimit)
+        res.send("*ok*");
+      else
+        res.status(200).send();
+    });
+  });
+
   // check for recent tips
   router.post("/sync", function (req, res, next) {
     if (!req.session.user) return res.sendStatus(204);

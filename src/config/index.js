@@ -24,12 +24,10 @@ if (config.debugging&&!config.ssl) live_url = "ws://"+config.domain+":8000/live/
 // if (config.ssl) config.domain = "https://"+config.domain;
 // else config.domain = "http://"+config.domain;
 
-
-
 config.author = "Skeetzo";
 config.description = "Porn Star Streamer";
 config.Google_Analytics = "UA-82463743-8";
-config.pages = ['privacy','terms','support'];
+config.pages = ['privacy','terms','support','2257-compliance'];
 config.ssl_key = '/etc/letsencrypt/live/alexdeeznuts.com-0001/privkey.pem';
 config.ssl_cert = '/etc/letsencrypt/live/alexdeeznuts.com-0001/fullchain.pem';
 
