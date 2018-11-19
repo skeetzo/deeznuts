@@ -21,7 +21,6 @@ var userSchema = new Schema({
   lastVisit: { type: Date, default: moment(new Date()).format('MM/DD/YYYY') },
   logins: { type: Number, default: 0 },
   password: { type: String },
-  // qr: { type: String },
   secret : { type: String }, // crypto sig
   syncing : { type: Boolean, default: false },
   start: { type: String, default: moment(new Date()).format('MM/DD/YYYY') },
@@ -96,11 +95,11 @@ userSchema.statics.stop = function (userId, callback) {
   });
 }
 
-userSchema.statics.generateAddress = function(data, callback) {
-  logger.log('Generating Address: %s', data._id);
+userSchema.statics.generateAddress = function(userId, callback) {
+  logger.log('Generating Address: %s', userId);
   async.waterfall([
     function (step) {
-      User.findById(data._id, function (err, user) {
+      User.findById(userId, function (err, user) {
         if (err) return callback(err);
         if (user.address) return callback('Live Address already generated: '+user._id);
         step(null, user);

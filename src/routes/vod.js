@@ -1,21 +1,20 @@
 var config = require('../config/index'),
     logger = config.logger,
     _ = require('underscore'),
-    mixins = require('../modules/mixins'),
-    User = require('../models/user'),
-    Video = require('../models/video');
+    mixins = require('../modules/mixins');
 
 module.exports = function homeRoutes(router) {
 
   router.get("/videos", mixins.loggedIn, function (req, res, next) {
-    logger.debug('video ids: %s', req.session.user.videos);
+    var Video = require('../models/video');
+    // logger.debug('video ids: %s', req.session.user.videos);
     Video.find({'_id':{'$in':req.session.user.videos}}, function (err, videos) {
       if (err) logger.warn(err);
-      logger.debug('videos: %s', videos.length);
+      // logger.debug('videos: %s', videos.length);
       req.session.locals.videos = mixins.Videos(videos);
       Video.find({'hasPreview':true,'_id':{'$nin':req.session.user.videos}}, function (err, videos_unowned) {
         if (err) logger.warn(err);
-        logger.debug('videos_unowned: %s', videos_unowned.length);
+        // logger.debug('videos_unowned: %s', videos_unowned.length);
         // req.session.locals.videos = mixins.Videos(videos_all);
         req.session.locals.videos_unowned = mixins.Video_Previews(videos_unowned);
         if (videos.length==0&&videos_unowned.length>0) req.session.locals.message = 'Purchase a video below!';
@@ -25,7 +24,7 @@ module.exports = function homeRoutes(router) {
   });
 
   router.post("/buy", mixins.loggedIn,  function (req, res, next) {
-    User.findById(req.session.user._id, function (err, user) {
+    require('../models/user').findById(req.session.user._id, function (err, user) {
       if (err) {
         logger.warn(err);
         return res.sendStatus(400);
@@ -73,4 +72,5 @@ module.exports = function homeRoutes(router) {
   //       res.sendStatus(200);
   //   });
   // });
+
 }

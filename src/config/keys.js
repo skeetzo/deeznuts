@@ -1,6 +1,4 @@
 var fs = require('fs');
-    // google = require('googleapis'),
-    // OAuth2 = google.auth.OAuth2;
 
 module.exports = function() {
     var localConfig = {};
@@ -16,31 +14,20 @@ module.exports = function() {
         return;
     }
 
-    // Amazon S3
-    this.aws = {
-    	AWS_ACCESS_KEY : localConfig.AWS_ACCESS_KEY || process.env.AWS_ACCESS_KEY,
-    	AWS_SECRET_KEY : localConfig.AWS_SECRET_KEY || process.env.AWS_SECRET_KEY,
-    	S3_BUCKET_Twitter : localConfig.S3_BUCKET_Twitter || process.env.S3_BUCKET_Twitter,
-    	S3_BUCKET_main : {
-    		Bucket :  localConfig.S3_BUCKET_Twitter || process.env.S3_BUCKET_Twitter,
-    		Key :  localConfig.AWS_SECRET_KEY || process.env.AWS_SECRET_KEY
-    	}
-    }
-
     // Blockchain
     this.blockchainKey = localConfig.blockchainKey || process.env.blockchainKey;
     this.blockchainXpub = localConfig.blockchainXpub || process.env.blockchainXpub;
 
     // Google
-    this.Google_service_email = localConfig.client_email || process.env.Google_service_email;
-    this.Google_key = localConfig.private_key || process.env.Google_key;
+    // this.Google_service_email = localConfig.client_email || process.env.Google_service_email;
+    // this.Google_key = localConfig.private_key || process.env.Google_key;
     // this.Google_keyFile = localConfig.Google_keyFile || process.env.Google_keyFile;
-    this.Google_Oauth_Opts = {
-        "email": this.Google_service_email,
-        "key": this.Google_key,
-        "client_email": this.Google_service_email,
-        "private_key": this.Google_key
-    };
+    // this.Google_Oauth_Opts = {
+        // "email": this.Google_service_email,
+        // "key": this.Google_key,
+        // "client_email": this.Google_service_email,
+        // "private_key": this.Google_key
+    // };
  //    this.Google_scopes = ['https://www.googleapis.com/auth/plus.me',
  //        'https://www.googleapis.com/auth/calendar',
  //         'https://www.googleapis.com/auth/drive',
@@ -58,7 +45,7 @@ module.exports = function() {
  //    this.Google_secret = localConfig.Google_secret || process.env.Google_id;
 
     // Google Sheets - Twitter
-    this.Google_Spreadsheet_id = localConfig.Google_Spreadsheet_id || process.env.Google_Spreadsheet_id;
+    // this.Google_Spreadsheet_id = localConfig.Google_Spreadsheet_id || process.env.Google_Spreadsheet_id;
 
     // Mongo
     this.MONGODB_URI = localConfig.MONGODB_URI || process.env.MONGODB_URI;
