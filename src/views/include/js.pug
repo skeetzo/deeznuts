@@ -1,3 +1,5 @@
+include ../include/socket.io.pug
+
 //- time
 if (user)
   script.
@@ -6,34 +8,6 @@ if (user)
       var seconds = parseInt("#{user.time}"); // in seconds so 60
       $("#time").text(toTime(seconds));
       $("#timeseconds").text(seconds);
-      //- syncs with server every 10 seconds
-      setInterval(function sync() {
-        console.log('seconds: %s',$("#timeseconds").text());
-        return Promise.resolve($.ajax({
-          type: 'POST',
-          url: '/sync',
-          data: {'time':$("#timeseconds").text(),'_csrf':"#{_csrf}"},
-          success: function(data) {
-            //- returns {status, time, time_added}
-            if (data.time_added) {
-              var seconds = parseInt(data.time),
-                  time = toTime(data.time_added);
-              $("#time").text(toTime(seconds));
-              $("#timeseconds").text(seconds);
-              alert('Time added! Added: '+(time.substring(0,time.indexOf('.'))));
-            }
-            if (data.video_added) {
-              alert('Video purchased! Enjoy!');
-              location.reload();
-            }
-            updateStatus(data.status);
-          },
-          error: function(data) {
-          },
-        })).catch(function (reason) {
-          //- console.log(reason);
-        });
-      },#{syncInterval});
     });
 else
   script.
@@ -48,7 +22,7 @@ else
 script.
   function updateStatus(status) {
     var status_ = $("#status").text();
-    console.log('status: %s -> %s', status_, status);
+    //- console.log('status: %s -> %s', status_, status);
     $("#status").text(status);
     if (status_=="Not Live"&&status=="Live")
       alert('I\'ve gone live!');
@@ -57,6 +31,7 @@ script.
       window.location.replace("#{domain}/");
     }
   }
+
   // time in seconds
   function toTime(seconds) {
     var days, hours, minutes;
@@ -70,8 +45,32 @@ script.
     hours = hours < 10 ? "0" + hours : hours;
     minutes = minutes < 10 ? "0" + minutes : minutes;
     seconds = seconds < 10 ? "0" + seconds : seconds;
+    //- console.log('time: %s:%s:%s:%s', days, hours, minutes, seconds);
     return days+":"+hours+":"+ minutes+":"+seconds;
   }
+
+  function toPrice(seconds) {
+    var hours, minutes;
+    minutes = Math.floor(seconds / 60);
+    seconds = seconds % 60;
+    hours = Math.floor(minutes / 60);
+    minutes = minutes % 60;
+    hours = hours % 24;
+    hours = hours < 10 ? "0" + hours : hours;
+    minutes = minutes < 10 ? "0" + minutes : minutes;
+    seconds = seconds < 10 ? "0" + seconds : seconds;
+    //- console.log('price: %s:%s:%s', hours, minutes, seconds);
+    return hours+":"+ minutes+":"+seconds;
+  }
+
+  //- get all .videoPrice
+  //- set .value to toTime(value)
+  $(document).ready(function ($) {
+    $( ".videoPrice" ).each(function (i, videoEle) {
+      //- console.log($(this).html().replace(' seconds',''))
+      $(this).html(toPrice($(this).html().replace(' HH:MM:SS',''))+" HH:MM:SS")
+    });
+  })
 
   function toCalendar(seconds) {
     var days, hours, minutes;

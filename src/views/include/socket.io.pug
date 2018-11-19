@@ -1,28 +1,42 @@
-script(src='/socket.io/socket.io.js')
-script.
-  $(function () {
-    var socket = io();
+if (user)
+  script(src='/socket.io/socket.io.js')
+  script.
+    $(function () {
+      var socket = io();
 
-    $('chat').submit(function () {
-      socket.emit('chat message', $('#m').val());
-      $('#m').val('');
-      return false;
-    });
+      socket.on('connect', function() {
+        socket.emit('connecting', "#{user._id}");
+        console.log('path: %s', window.location.pathname);
+        if (window.location.pathname.indexOf('/live')>-1) {
+          console.log('live found - starting');
+          socket.emit('start', "#{user._id}");
+        }
+        else {
+          console.log('live not found - stopping');
+          socket.emit('stop', "#{user._id}");
+        }
+      });
 
-    socket.on('chat message', function (msg) {
-    	$('#messages').append($('<li>').text(msg));
-    });
+      socket.on('time', function(data) {
+        var seconds = parseInt(data.time),
+            time = toTime(data.time_added);
+        $("#time").text(toTime(seconds));
+        $("#timeseconds").text(seconds);
+        if (time)
+          alert('Time added! Added: '+(time.substring(0,time.indexOf('.'))));
+      });
 
+      socket.on('video', function(data) {
+        alert('Video purchased! Enjoy!');
+        location.reload();
+      });
 
-    socket.on('connect', function() {
+      socket.on('live', function(status) {
+        updateStatus(status);
+      });
 
-    });
+      socket.on('disconnect', function() {
+        socket.emit('end', "#{user._id}");
+      });
 
-    socket.on('event', function(data) {
-
-    });
-
-    socket.on('disconnect', function() {
-
-    });
-  })
+    })

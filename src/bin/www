@@ -58,9 +58,11 @@ async.series([
       if (err) logger.warn(err);
       logger.log('Videos available: %s', videos.length);
       if (!videos||videos.length==0) {
+        // logger.debug('creating example preview...');
         var example = new Video(config.defaultVideo);
         example.save(function (err) {
-          step(err);
+          if (err) logger.warn(err);
+          step(null);
         });
       }
       else step(null);
@@ -94,6 +96,14 @@ async.series([
     });    
   },
   function (step) {
+    // start User syncs
+    logger.log('Staring User Syncs every %s seconds...', config.syncInterval);
+    setInterval(function () {
+      require('../models/user').sync();
+    }, config.syncInterval*1000);
+    step(null);
+  },
+  function (step) {
     if (config.ssl) {
       /**
        * Create HTTPS server.
@@ -108,8 +118,8 @@ async.series([
     }
 
     // socket.io
-    // const io = require('socket.io')(server);    
-    // require('../modules/socket.io').setup(io);
+    const io = require('socket.io')(server);    
+    require('../modules/socket.io').setup(io);
 
     /**
      * Listen on provided port, on all network interfaces.

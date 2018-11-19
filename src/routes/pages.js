@@ -37,20 +37,6 @@ module.exports = function homeRoutes(router) {
     });
   });
 
-  // check for recent tips
-  router.post("/sync", function (req, res, next) {
-    if (!req.session.user) return res.sendStatus(204);
-    // logger.debug('req.session.user: %s', JSON.stringify(req.session.user, null, 4));
-    req.body._id = req.session.user._id ? req.session.user._id : null;
-    User.sync(req.body, function (err, synced) {
-      if (err) {
-        logger.warn(err);
-        return res.sendStatus(404);
-      }
-      res.status(200).send(synced);
-    });
-  });
-
   router.get("/add", mixins.loggedIn,  function (req, res, next) {
     User.findOne({'ip':req.session.user.ip}, function (err, user) {
       if (err) logger.warn(err);

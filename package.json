@@ -1,13 +1,23 @@
 {
-  "name": "alexdeeznuts",
+  "name": "deeznuts",
   "description": "Performers' Live Streaming w/ Blockchain",
-  "version": "0.0.9",
+  "version": "1.0.2",
   "private": true,
   "author": "Skeetzo",
   "main": "src/app.js",
   "scripts": {
+    "//": " --- DEPLOYMENT & ZIP --- ",
     "postinstall": "gulp",
-    "start": "node src/bin/www"
+    "start": "node src/bin/www",
+    "clean": "./setup/scripts/clean",
+    "prebuild:dev": "npm run clean",
+    "build:dev": "",
+    "prebuild:prod": "npm run clean",
+    "build:prod": "",
+    "postbuild:prod": "",
+    "postversion": "git push && git push --tags",
+    "prezip": "npm run build:prod",
+    "zip": "cd setup && zip ../build.zip ../src"
   },
   "engines": {
     "node": "9.4.0"
@@ -21,7 +31,12 @@
     "live",
     "streaming",
     "bitcoin",
-    "blockchain"
+    "blockchain",
+    "nginx",
+    "raspberry pi",
+    "deeznuts",
+    "mongodb",
+    "nodejs"
   ],
   "dependencies": {
     "async": "^2.6.1",
@@ -60,6 +75,7 @@
     "passport-local": "^1.0.0",
     "pug": "2.0.0-beta11",
     "qrcode": "^1.2.0",
+    "socket.io": "^2.1.1",
     "tracer": "^0.8.15",
     "twit": "^2.2.11",
     "underscore": "^1.9.1"

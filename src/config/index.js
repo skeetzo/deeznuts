@@ -16,13 +16,13 @@ config.title = "Alex D.'s Nuts";
 config.siteTitle = "AlexDeezNuts.com";
 config.domain = "alexdeeznuts.com";
 
-config.domain = "192.168.1.5";
+// config.domain = "192.168.1.5";
 
-// if (config.local) config.domain = "localhost";
+if (config.local) config.domain = "localhost";
 var live_url = "wss://"+config.domain+":8443/live/stream.flv?sign="
 if (config.debugging&&!config.ssl) live_url = "ws://"+config.domain+":8000/live/stream.flv?sign=";
-// if (config.ssl) config.domain = "https://"+config.domain;
-// else config.domain = "http://"+config.domain;
+if (config.ssl) config.domain = "https://"+config.domain;
+else config.domain = "http://"+config.domain;
 
 config.author = "Skeetzo";
 config.description = "Porn Star Streamer";
@@ -45,10 +45,10 @@ config.defaultPreviewDuration = 10;
 config.videosPath = '/mnt/deeznuts/videos';
 config.imagesPath = '/mnt/deeznuts/images';
 
-// config.videosPath = '/home/skeetzo/Projects/deeznuts/src/public/videos';
-// config.imagesPath = '/home/skeetzo/Projects/deeznuts/src/public/images';
+config.videosPath = '/home/skeetzo/Projects/deeznuts/src/public/videos';
+config.imagesPath = '/home/skeetzo/Projects/deeznuts/src/public/images';
 
-config.syncInterval = 3000;
+config.syncInterval = 3; // in seconds
 if (config.debugging) {
 	config.defaultTime = 60*60*23+45*60;
 	config.syncInterval = config.syncInterval*3;
@@ -136,7 +136,7 @@ config.defaultVideo = {
 	'title': 'Example',
 	'performers': ['Myself','Your Mom'],
 	'isOriginal': true,
-	'duration': 1000*60*config.defaultPrice,
+	'duration': 247,
 	'path': require('path').join(__dirname,'../public/videos/preview.mp4')
 };
 

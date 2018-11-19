@@ -23,6 +23,7 @@ var userSchema = new Schema({
   password: { type: String },
   // qr: { type: String },
   secret : { type: String }, // crypto sig
+  syncing : { type: Boolean, default: false },
   start: { type: String, default: moment(new Date()).format('MM/DD/YYYY') },
   time: { type: Number, default: config.defaultTime }, // time allotted for live
   time_added: { type: Number },
@@ -52,6 +53,48 @@ userSchema.pre('save', function (next) {
     });
   });
 });
+
+userSchema.statics.connected = function (userId, callback) {
+  User.findById(userId, function (err, user) {
+    if (err) return callback(err);
+    if (!user) return callback('Missing User!');
+    logger.log('connected: %s', user._id);
+  });
+}
+
+userSchema.statics.disconnected = function (userId, callback) {
+  User.findById(userId, function (err, user) {
+    if (err) return callback(err);
+    if (!user) return callback('Missing User!');
+    logger.log('disconnected: %s', user._id);
+  }); 
+}
+
+userSchema.statics.start = function (userId, callback) {
+  User.findById(userId, function (err, user) {
+    if (err) return callback(err);
+    if (!user) return callback('Missing User!');
+    user.syncing = true;
+    user.save(function (err) {
+      if (err) return callback(err);
+      logger.log('started: %s', user._id);
+      callback(null);
+    });
+  });
+}
+
+userSchema.statics.stop = function (userId, callback) {
+  User.findById(userId, function (err, user) {
+    if (err) return callback(err);
+    if (!user) return callback('Missing User!');
+    user.syncing = false;
+    user.save(function (err) {
+      if (err) return callback(err);
+      logger.log('stopped: %s', user._id);
+      callback(null);
+    });
+  });
+}
 
 userSchema.statics.generateAddress = function(data, callback) {
   logger.log('Generating Address: %s', data._id);
@@ -121,30 +164,29 @@ userSchema.statics.generateAddress = function(data, callback) {
   });
 }
 
-userSchema.statics.sync = function(data, callback) {
-  // logger.debug('Syncing: %s', data._id);
-  User.findById(data._id, function (err, user) {
-    if (err) return callback(err);
-    if (!user) return 'User not found: '+data._id;
-    logger.debug('user.time: %s | %s :data.time', parseInt(user.time), parseInt(data.time));
-    logger.debug('minus: %s | %s :sync interval', Math.abs(parseInt(user.time)-parseInt(data.time)), config.syncInterval)
-    if (Math.abs(parseInt(user.time)-parseInt(data.time))>config.syncInterval&&config.debugging_sync)
-      logger.debug('syncing (ignore): %s seconds -> %s seconds (%s)', user.time, data.time, data._id);
-    else if (data.time<=0) {
-      if (config.debugging_sync)
-        logger.debug('syncing (bug): %s seconds -> %s (%s) seconds (%s)', user.time, 0, data.time, data._id);
-      user.time = 0;
-    }
-    else {
-      if (config.debugging_sync)
-        logger.debug('syncing (success): %s seconds -> %s seconds (%s)', user.time, data.time, data._id);
-      user.time = data.time;
-    }
-    var time_added = user.time_added || false;
-    user.time_added = null;
-    user.save(function (err_) {
-      callback(err_,{'time':user.time,'time_added':time_added,'video_added':video_added,'status':config.status});
+userSchema.statics.sync = function() {
+  User.find({'syncing':true}, function (err, users) {
+    if (err) return logger.warn(err);
+    _.forEach(users, function (user) {
+      logger.debug('syncing user: %s - %s = %s', parseInt(user.time, 10), parseInt(config.syncInterval, 10), parseInt(user.time, 10) - parseInt(config.syncInterval, 10));
+      user.time = parseInt(user.time, 10) - parseInt(config.syncInterval, 10);
+      user.save(function (err) {
+        if (err) logger.warn(err);
+      });
     });
+
+    // var series = [];
+    // var j = users.length;
+    // for (var i=0;i<j;i++) {
+    //   series.push(function(step) {
+    //     var user = users.shift();
+    //     logger.debug('syncing user: %s - %s = %s', parseInt(user.time, 10), parseInt(config.syncInterval, 10), parseInt(user.time, 10) - parseInt(config.syncInterval, 10));
+    //     user.time = parseInt(user.time, 10) - parseInt(config.syncInterval, 10);
+    //     user.save(function (err) {
+    //       if (err) logger.warn(err);
+    //     });
+    //   });
+    // }
   });
 }
 
@@ -179,11 +221,15 @@ userSchema.methods.purchaseVideo = function(videoTitle, callback) {
       // else return error: missing time %s amount
     },
     function (video, step) {
+      logger.debug('self.time: %s', parseInt(self.time, 10));
+      logger.debug('video.duration: %s', parseInt(video.duration, 10));
       if (parseInt(self.time, 10)<parseInt(video.duration, 10)) {
         return callback('Error Purchasing Video: Not Enough Time', parseInt(video.duration, 10)-parseInt(self.time, 10))
       }
       self.videos.push(video._id);
+      logger.debug('self.time: %s - %s = %s', parseInt(self.time, 10), parseInt(video.duration, 10), parseInt(self.time, 10)-parseInt(video.duration, 10));
       self.time = parseInt(self.time, 10)-parseInt(video.duration, 10);
+      logger.log('Video Purchaed: %s -> %s', video.title, self._id);
       self.save(function (err) {
         callback(err, "Video Purchased!");
       });

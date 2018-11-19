@@ -23,17 +23,17 @@ module.exports.hasPaid = function(req, res, next) {
 }
 
 module.exports.hasRoom = function(req, res, next) {
-    return next(null);
+    // return next(null);
     // disabled
-    // var isRoom = require('../modules/socket.io').isRoom();
-    // if (isRoom) return next(null);
-    // req.session.locals.error = 'There\'s not enough room for you!';
-    // res.status(400).render('index', req.session.locals);
+    var isRoom = require('../modules/socket.io').isRoom();
+    if (isRoom) return next(null);
+    req.session.locals.error = 'There\'s not enough room for you!';
+    res.status(400).render('index', req.session.locals);
 }
 
 // Check Login
 module.exports.loggedIn = function(req, res, next) {
-    if (req.session.user&&req.session.locals.loggedIn)
+    if (req.session.user)
         next(null);
     else {
         req.session.locals.error = 'Please login!';
@@ -168,7 +168,7 @@ var Video_Preview = function(src) {
     'price': src.price
   };
 }
-module.exports.Video_Previews = Video_Previews;
+module.exports.Video_Preview = Video_Preview;
 
 var Videos_ = function(src) {
   var videos = [];

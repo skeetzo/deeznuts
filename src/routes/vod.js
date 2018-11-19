@@ -9,7 +9,7 @@ module.exports = function homeRoutes(router) {
 
   router.get("/videos", mixins.loggedIn, function (req, res, next) {
     logger.debug('video ids: %s', req.session.user.videos);
-    Video.find({'_id':{'$in':req.session.user.videos},'isPaid':true}, function (err, videos) {
+    Video.find({'_id':{'$in':req.session.user.videos}}, function (err, videos) {
       if (err) logger.warn(err);
       logger.debug('videos: %s', videos.length);
       req.session.locals.videos = mixins.Videos(videos);
@@ -44,4 +44,33 @@ module.exports = function homeRoutes(router) {
       });
     });
   });
+
+  // router.get("/download", mixins.loggedIn,  function (req, res, next) {
+  //   async.waterfall([
+  //       function (step) {
+  //         User.findById(req.session.user._id, function (err, user) {
+  //           if (err) return step(err);
+  //           if (!user) return step('Missing User!');
+  //           step(null, user);            
+  //         });
+  //       },
+  //       function (user, step) {
+  //         Video.findById(req.query.video, function (err, video) {
+  //           if (err) return step(err);
+  //           if (!video) return step('Missing Video!');
+  //           step(null, user, video);
+  //         });
+  //       },
+  //       function (user, video, step) {
+  //         logger.log('User downloading video: %s -> %s', video.title, user._id);
+  //         step(null);
+  //       }
+  //     ], function (err) {
+  //       if (err) {
+  //         logger.warn(err);
+  //         return res.sendStatus(400);
+  //       }
+  //       res.sendStatus(200);
+  //   });
+  // });
 }
