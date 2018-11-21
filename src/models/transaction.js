@@ -10,7 +10,6 @@ var transactionSchema = new Schema({
   address: { type: String },
   confirmations: { type: Number, default: 0 },
   date: { type: Date, default: moment(new Date()).format('MM/DD/YYYY-hh:mm:ss') },
-  reason: { type: String, default: 'live'},
   secret: { type: String },
   transaction_hash: { type: String },
   value: { type: Number },
@@ -47,7 +46,12 @@ transactionSchema.statics.confirm = function(existingTransaction, callback) {
     if (!transaction) return callback('Missing Transaction: '+existingTransaction.address+'-'+existingTransaction.transaction_hash);
     transaction.confirmations = parseInt(existingTransaction.confirmations, 10);
     logger.debug('Confirmed Existing Transaction: %s', transaction._id);
-    if (transaction.confirmations>=config.blockchain_confirmations) transaction.confirmed = true;
+    if (transaction.confirmations>=config.blockchain_confirmations) {
+      transaction.confirmed = true;
+      transaction.sendConfirmationEmail(function (err) {
+        if (err) logger.warn(err);
+      });
+    }
     transaction.save(function (err) {
       callback(err, transaction);
     });
@@ -105,6 +109,14 @@ transactionSchema.statics.sync = function(transactionQuery, callback) {
   ], function (err) {
     if (err) logger.warn(err);
     callback(null);
+  });
+}
+
+transactionSchema.methods.sendConfirmationEmail = function(callback) {
+  logger.log('Sending Transaction Confirmation Email: %s', this._id);
+  var mailOptions = config.email_transaction_confirmed(this);
+  require('../modules/gmail').sendEmail(mailOptions, function (err) {
+    callback(err);
   });
 }
 

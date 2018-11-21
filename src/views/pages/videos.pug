@@ -11,8 +11,8 @@ prepend content
     if (videos)
       for video in videos
         .col-xs-4
-          //- h3.videoTitle #{video.title}
-          h4.videoDate #{video.date}
+          h3.videoTitle=video.title
+          //- h4.videoDate #{video.date}
           h4.videoPrice=video.price+" HH:MM:SS"
           video(controls, poster=video.path_image, type="video/mp4", width=250, src=video.path)
           .row
@@ -31,8 +31,8 @@ prepend content
     if (videos_unowned)
       for video in videos_unowned
         .col-xs-4
-          //- h3.videoTitle #{video.title}
-          h4.videoDate #{video.date}
+          h3.videoTitle=video.title
+          //- h4.videoDate #{video.date}
           h4.videoPrice=video.price+" HH:MM:SS"
           video(controls, poster=video.path_image, type="video/mp4", width=250, src=video.path)
           .row

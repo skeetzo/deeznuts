@@ -13,21 +13,21 @@ module.exports.setup = function(io) {
 		logger.io('Client Connected: %s', num_occupants);
 		num_occupants++;
 
-		client.on('connecting', function(userId) {
+		client.on('connecting', function (userId) {
 			logger.io('connecting: %s', userId);
 			User.connected(userId, function (err) {
 				if (err) logger.warn(err);
 			});
 		});
 
-		client.on('start', function(userId) {
+		client.on('start', function (userId) {
 			logger.io('starting: %s', userId);
 			User.start(userId, function (err) {
 				if (err) logger.warn(err);
 			});
 		});
 
-		client.on('stop', function(userId) {
+		client.on('stop', function (userId) {
 			logger.io('stopping: %s', userId);
 			User.stop(userId, function (err) {
 				if (err) logger.warn(err);
@@ -38,23 +38,17 @@ module.exports.setup = function(io) {
 			num_occupants--;
 		});
 
-		client.on('end', function(userId) {
+		client.on('end', function (userId) {
 			logger.io('disconnecting: %s', userId);
 			User.disconnected(userId, function (err) {
 				if (err) logger.warn(err);
 			});
 		});
 
-		client.on('timeout', function () {
-			logger.io('timeout: %s', )
-			client.disconnect();
-		});
-
 		setInterval(function () {
 			client.emit('live', config.status);
 		}, 3000);
 
-	  logger.io('Connection Successful!');
 	});
 }
 
@@ -62,11 +56,6 @@ module.exports.isRoom = function() {
 	if (num_occupants>=occupancy) return false;
 	return true;
 }
-
-
-
-
-
 
 // clearTimeout(user.syncTimer);
 // user.syncTimer = setInterval(function () {

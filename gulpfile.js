@@ -5,6 +5,12 @@ var gulp = require('gulp');
 var concat = require('gulp-concat');
 var sourcemaps = require('gulp-sourcemaps');
 
+gulp.task('font-awesome', function() {
+  gulp.src('node_modules/font-awesome/css/**.*')
+    .pipe(gulp.dest('src/public/dist/font-awesome'));
+  return;
+});
+
 gulp.task('bootstrap', function() {
   gulp.src('node_modules/bootstrap/dist/css/**.*')
     .pipe(gulp.dest('src/public/dist/bootstrap/css'));
@@ -46,4 +52,4 @@ gulp.task('jquery', function() {
 // });
 
 // gulp.task('default', [ 'html', 'css', 'js' ]);
-gulp.task('default', [ 'bootstrap', 'flv', 'jquery' ]);
+gulp.task('default', [ 'font-awesome', 'bootstrap', 'flv', 'jquery' ]);

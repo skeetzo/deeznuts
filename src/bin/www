@@ -27,19 +27,26 @@ app.set('port', port);
 // Startup
 async.series([
   function (step) {
+    if (!config.debugging) return step(null);
+    require('../dev/debug').debug(function (err) {
+      if (err) logger.warn(err);
+      step(null);
+    });
+  },
+  function (step) {
     var User = require('../models/user');
-    User.findOne({'username':config.alexd.username}, function (err, alexd) {
+    User.findOne({'username':config.deeznutsUser.username}, function (err, user) {
       if (err) return logger.warn(err);
-      if (!alexd) {
-        logger.log('Prepping bot: %s', config.alexd.username);
-        alexd = new User(config.alexd);
-        alexd.save(function (err) {
+      if (!user) {
+        logger.log('Prepping bot: %s', config.deeznutsUser.username);
+        user = new User(config.deeznutsUser);
+        user.save(function (err) {
           if (err) logger.warn(err);
           step(null);
         });
       }
       else {
-        logger.log('Bot found: %s', alexd.username);
+        logger.log('Bot found: %s', user.username);
         step(null);
       }
     });
@@ -97,7 +104,7 @@ async.series([
   },
   function (step) {
     // start User syncs
-    logger.log('Staring User Syncs every %s seconds...', config.syncInterval);
+    logger.log('Starting User Syncs every %s seconds...', config.syncInterval);
     setInterval(function () {
       require('../models/user').sync();
     }, config.syncInterval*1000);

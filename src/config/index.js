@@ -9,6 +9,7 @@ config.Crons_On = true;
 
 // App Settings
 config.botName = "DeezNuts";
+config.siteName = "DeezNuts";
 config.port = Number(process.env.PORT || 3000);
 
 // Site Settings
@@ -42,6 +43,13 @@ config.createPreviews = true;
 config.defaultPrice = 5; // in dollars
 config.defaultTime = 60; // time in seconds
 config.defaultPreviewDuration = 10;
+config.defaultVideo = {
+	'title': 'Example',
+	'performers': ['Myself','Your Mom'],
+	'isOriginal': true,
+	'duration': 247,
+	'path': require('path').join(__dirname,'../public/videos/preview.mp4')
+};
 config.videosPath = '/mnt/deeznuts/videos';
 config.imagesPath = '/mnt/deeznuts/images';
 
@@ -71,10 +79,16 @@ config.streamRecording = true;
 // config.streamRecording_dash = true;
 // config.streamRecording_hls = true;
 
+// Email
+config.emailing = true;
+config.emailing_testing = true;
+config.emailing_on_new = true;
+config.emailing_on_error = true;
+config.emailing_on_transaction = true;
+config.email_self = 'WebmasterSkeetzo@gmail.com';
+config.domainEmail = 'deeznuts.com';
+
 // Twitter
-config.Twitter = false;
-config.Twitter_tweeting = false;
-config.Twitter_tweeting_on_live = false;
 config.Twitter_link = config.domain+'/live';
 
 config.siteData = 
@@ -91,19 +105,28 @@ config.siteData =
 		syncInterval: config.syncInterval
 	};
 
-config.alexd = {
+config.deeznutsUser = {
 	'username': 'justalexxxd',
 	'password': 'gofuckyourself6969'
 };
-
 
 config.debugging_blockchain = true;
 config.debugging_blockchain_hash = "696969";
 config.debugging_blockchain_address = "yourmomshouse";
 
-config.remoteDatabase = true;
+config.debugging_reset_db = false;
+config.debugging_reset_files = false;
+config.debugging_reset_logs = false;
+config.debugging_backup_db = true;
+
+config.remoteDatabase = false;
 
 function deploy(environment) {
+
+	config.Twitter = false;
+	config.Twitter_tweeting = false;
+	config.Twitter_tweeting_on_live = false;
+
 	if (environment=='development') {
 		config.debugging = true;
 		config.ssl = false;
@@ -128,27 +151,21 @@ function deploy(environment) {
 		config.debugging_address = false;
 		config.debugging_sync = false;
 		config.local = false;
+		config.Twitter = true;
+		config.Twitter_tweeting = true;
+		config.Twitter_tweeting_on_live = true;
 	}
 	
 }
 
-config.defaultVideo = {
-	'title': 'Example',
-	'performers': ['Myself','Your Mom'],
-	'isOriginal': true,
-	'duration': 247,
-	'path': require('path').join(__dirname,'../public/videos/preview.mp4')
-};
-
 config.local_keys_path = './src/dev/localConfig.json';
-// config.local_google_keys_path = './src/dev/kairosnaps-google.json';
-// config.local_data_path = './src/dev/localData.json';
-
+config.local_google_keys_path = './src/dev/google.json';
 config.logs_backupDir = './src/dev/logs/backup';
 config.logs_file = './src/dev/logs/file.log';
 
 require('./keys').call(config);
 require('./logger').call(config);
+require('./emails').call(config);
 require('./crons').call(config);
 
 module.exports = config;

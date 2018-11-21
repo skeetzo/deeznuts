@@ -6,15 +6,10 @@ if (user)
 
       socket.on('connect', function() {
         socket.emit('connecting', "#{user._id}");
-        console.log('path: %s', window.location.pathname);
-        if (window.location.pathname.indexOf('/live')>-1) {
-          console.log('live found - starting');
+        if (window.location.pathname.indexOf('/live')>-1)
           socket.emit('start', "#{user._id}");
-        }
-        else {
-          console.log('live not found - stopping');
+        else 
           socket.emit('stop', "#{user._id}");
-        }
       });
 
       socket.on('time', function(data) {

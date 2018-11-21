@@ -61,7 +61,7 @@ module.exports = function homeRoutes(router) {
     });
 
   // Key
-  router.get("/key", mixins.loggedIn, mixins.loggedInAlexD, function (req, res, next) {
+  router.get("/key", mixins.loggedIn, mixins.loggedInDeezNuts, function (req, res, next) {
     res.render('key', req.session.locals);
   });
 

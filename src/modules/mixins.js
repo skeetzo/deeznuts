@@ -41,8 +41,8 @@ module.exports.loggedIn = function(req, res, next) {
     }
 }
 
-module.exports.loggedInAlexD = function(req, res, next) {
-    User.findOne({'_id':req.session.user._id,'username':config.alexd.username}, function (err, user) {
+module.exports.loggedInDeezNuts = function(req, res, next) {
+    User.findOne({'_id':req.session.user._id,'username':config.deeznutsUser.username}, function (err, user) {
         if (err) {
             logger.warn(err);
             req.session.locals.error = 'Ha!';

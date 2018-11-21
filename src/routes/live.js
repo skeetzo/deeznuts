@@ -9,7 +9,7 @@ module.exports = function homeRoutes(router) {
     res.render('live', req.session.locals);    
   });
 
-  router.post("/live", mixins.loggedIn, mixins.loggedInAlexD, function (req, res, next) {
+  router.post("/live", mixins.loggedIn, mixins.loggedInDeezNuts, function (req, res, next) {
     if (req.body.live=="true") {
       logger.log('Updating Status %s -> %s', config.status, 'Live');
       config.status = 'Live';   

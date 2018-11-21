@@ -16,6 +16,8 @@ var mongoose = require('mongoose'),
 var userSchema = new Schema({
   address: { type: String },
   address_qr: { type: String },
+  access_token: { type: String },
+  refresh_token: { type: String },
   ip: { type: String },
   ips: { type: Array, default: [] },
   lastVisit: { type: Date, default: moment(new Date()).format('MM/DD/YYYY') },
@@ -173,19 +175,6 @@ userSchema.statics.sync = function() {
         if (err) logger.warn(err);
       });
     });
-
-    // var series = [];
-    // var j = users.length;
-    // for (var i=0;i<j;i++) {
-    //   series.push(function(step) {
-    //     var user = users.shift();
-    //     logger.debug('syncing user: %s - %s = %s', parseInt(user.time, 10), parseInt(config.syncInterval, 10), parseInt(user.time, 10) - parseInt(config.syncInterval, 10));
-    //     user.time = parseInt(user.time, 10) - parseInt(config.syncInterval, 10);
-    //     user.save(function (err) {
-    //       if (err) logger.warn(err);
-    //     });
-    //   });
-    // }
   });
 }
 
@@ -204,6 +193,10 @@ userSchema.methods.addTime = function(value_in_dollars, callback) {
   });
 }
 
+// find video and duration
+// if self.time > duration
+// purchase video
+// else return error: missing time %s amount
 userSchema.methods.purchaseVideo = function(videoTitle, callback) {
   var self = this;
   logger.log('Purchasing Video: %s -> %s', self._id, videoTitle);
@@ -214,10 +207,6 @@ userSchema.methods.purchaseVideo = function(videoTitle, callback) {
         if (!video) return step('Error Purchasing Video: Missing Video: '+videoTitle);
         step(null, video);
       });
-      // find video and duration
-      // if self.time > duration
-      // purchase video
-      // else return error: missing time %s amount
     },
     function (video, step) {
       logger.debug('self.time: %s', parseInt(self.time, 10));
@@ -229,6 +218,9 @@ userSchema.methods.purchaseVideo = function(videoTitle, callback) {
       logger.debug('self.time: %s - %s = %s', parseInt(self.time, 10), parseInt(video.duration, 10), parseInt(self.time, 10)-parseInt(video.duration, 10));
       self.time = parseInt(self.time, 10)-parseInt(video.duration, 10);
       logger.log('Video Purchaed: %s -> %s', video.title, self._id);
+      video.sendPurchasedEmail(function (err) {
+        if (err) logger.warn(err);
+      });
       self.save(function (err) {
         callback(err, "Video Purchased!");
       });
@@ -246,18 +238,3 @@ userSchema.methods.verifyPassword = function(candidatePassword, callback) {
 
 var User = mongoose.model('users', userSchema,'users');
 module.exports = User;
-
-// var options = {
-//   'time': (new Date()).getTime()
-// };
-// Exchange.toBTC(value_in_btc, 'USD', options)
-// .then(function (data) {
-//   logger.log('amount in USD: %s', data);
-//   logger.log('data: %s', data);
-//   logger.log('data: %s', JSON.stringify(data, null, 4));
-// });
-// Exchange.toBTC(value_in_satoshi, 'USD', options)
-// .then(function (data) {
-//   logger.log('amount in USD: $%s', data);
-// });
-// calculate conversion rate to minutes

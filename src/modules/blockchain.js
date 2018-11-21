@@ -17,3 +17,20 @@ function convertBTCtoDollar(value_in_satoshi, callback) {
   });
 }
 module.exports.convertBTCtoDollar = convertBTCtoDollar;
+
+
+
+// var options = {
+//   'time': (new Date()).getTime()
+// };
+// Exchange.toBTC(value_in_btc, 'USD', options)
+// .then(function (data) {
+//   logger.log('amount in USD: %s', data);
+//   logger.log('data: %s', data);
+//   logger.log('data: %s', JSON.stringify(data, null, 4));
+// });
+// Exchange.toBTC(value_in_satoshi, 'USD', options)
+// .then(function (data) {
+//   logger.log('amount in USD: $%s', data);
+// });
+// calculate conversion rate to minutes

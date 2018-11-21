@@ -4,7 +4,7 @@ prepend content
   // this is a square of video
   .row
     .col-xs-12
-      video#preview(controls, autoplay, poster='/images/preview.jpg', width=500)
+      video#live(controls, autoplay, poster='/images/preview.jpg', width=500)
 
   include ../include/bitcoin
 
@@ -16,15 +16,16 @@ prepend content
     script.
       $(document).ready(function () {
         //- updates time if live
-        var countdown = setInterval(function () {
+        var countdown = setTimeout(function () {
           var seconds = parseInt($("#timeseconds").text());
           if ($("#status").text()=="Live"&&seconds>0) {
             seconds--;
             $("#time").text(toTime(seconds));
             $("#timeseconds").text(seconds);   
+            
           }
           else if (seconds<=0) {
-            clearInterval(countdown);
+            //- clearInterval(countdown);
             alert('Times up!');
             window.location.replace("#{domain}/");
           }
