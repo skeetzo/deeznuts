@@ -124,7 +124,7 @@ config.debugging_reset_files = false;
 config.debugging_reset_logs = false;
 config.debugging_backup_db = true;
 
-config.remoteDatabase = false;
+config.remoteDatabase = true;
 
 function deploy(environment) {
 
