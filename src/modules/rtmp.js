@@ -7,7 +7,7 @@ var serverOptions = {
   'logType': 3,
 
   'rtmp': {
-    'port': 1935,
+    'port': 8935,
     'chunk_size': 60000,  
     'gop_cache': true,
     'ping': 60,
@@ -39,17 +39,19 @@ if (config.streamRecording)
   // record to mp4
   serverOptions.trans = {
     'ffmpeg': '/usr/bin/ffmpeg',
-    'tasks': [{
-      app: 'live',
-      ac: 'aac',
-      hls: true,
-      hlsFlags: '[hls_time=2:hls_list_size=3:hls_flags=delete_segments]',
-      dash: true,
-      dashFlags: '[f=dash:window_size=3:extra_window_size=5]'
-    },
+    'tasks': [
+    // {
+    //   app: 'live',
+    //   // ac: 'aac',
+    //   hls: true,
+    //   hlsFlags: '[hls_time=2:hls_list_size=3:hls_flags=delete_segments]',
+    //   dash: true,
+    //   dashFlags: '[f=dash:window_size=3:extra_window_size=5]'
+    // },
     {
       'app': 'live',
       // 'ac': 'aac',
+      'ac': 'copy',
       'mp4': true,
       'mp4Flags': '[movflags=faststart]',
     }
@@ -84,12 +86,26 @@ nms.on('postPublish', (id, StreamPath, args) => {
   logger.log('[NodeEvent on postPublish]', `id=${id} StreamPath=${StreamPath} args=${JSON.stringify(args)}`);
   logger.log('Updating Status %s -> %s', config.status, 'Live');
   config.status = 'Live';
+  if (config.Twitter_tweeting_on_live) {
+    logger.debug('Tweeting On Live...');
+    var Twitter = require('../modules/twitter');
+    Twitter.tweetLive(function (err) {
+      if (err) logger.warn(err);
+      logger.debug('Tweeted Live Status');
+    });
+  }
 });
 
 nms.on('donePublish', (id, StreamPath, args) => {
   logger.log('[NodeEvent on donePublish]', `id=${id} StreamPath=${StreamPath} args=${JSON.stringify(args)}`);
   logger.log('Updating Status %s -> %s', config.status, 'Not Live');
   config.status = 'Not Live';
+  if (config.archive_on_publish)
+    setTimeout(function () {
+      require('../models/video').processPublished(function (err) {
+        if (err) logger.warn(err);
+      });
+    }, config.archive_delay);
 });
 
 // nms.on('prePlay', (id, StreamPath, args) => {

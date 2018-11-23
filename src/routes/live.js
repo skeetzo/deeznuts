@@ -1,5 +1,6 @@
 var config = require('../config/index'),
     logger = config.logger,
+<<<<<<< HEAD
     mixins = require('../modules/mixins'),
     User = require('../models/user');
 
@@ -13,6 +14,18 @@ module.exports = function homeRoutes(router) {
   router.post("/live", mixins.loggedIn, mixins.loggedInAlexD, function (req, res, next) {
     console.log(JSON.stringify(req.body));
     console.log(JSON.stringify(req.params));
+=======
+    mixins = require('../modules/mixins');
+
+module.exports = function homeRoutes(router) {
+
+  // Live
+  router.get("/live", mixins.loggedIn, mixins.hasPaid, mixins.hasRoom, function (req, res, next) {
+    res.render('live', req.session.locals);    
+  });
+
+  router.post("/live", mixins.loggedIn, mixins.loggedInDeezNuts, function (req, res, next) {
+>>>>>>> development
     if (req.body.live=="true") {
       logger.log('Updating Status %s -> %s', config.status, 'Live');
       config.status = 'Live';   
@@ -27,6 +40,7 @@ module.exports = function homeRoutes(router) {
       res.status(400).send();
   });
 
+<<<<<<< HEAD
   // blockchainCallback
   //- /tip
   router.get(config.blockchainRoute, function (req, res, next) {
@@ -68,4 +82,6 @@ module.exports = function homeRoutes(router) {
     config.status = 'Not Live';
     res.status(200).send();
   });
+=======
+>>>>>>> development
 }

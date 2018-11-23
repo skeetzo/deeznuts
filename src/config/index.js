@@ -9,19 +9,26 @@ config.Crons_On = true;
 
 // App Settings
 config.botName = "DeezNuts";
+config.siteName = "DeezNuts";
 config.port = Number(process.env.PORT || 3000);
 
 // Site Settings
 config.title = "Alex D.'s Nuts";
 config.siteTitle = "AlexDeezNuts.com";
 config.domain = "alexdeeznuts.com";
-if (config.local) config.domain = "localhost";
+
+config.domain = "192.168.1.10";
+
+// if (config.local) config.domain = "localhost";
+var live_url = "wss://"+config.domain+":8443/live/stream.flv?sign="
+if (config.debugging&&!config.ssl) live_url = "ws://"+config.domain+":8000/live/stream.flv?sign=";
 if (config.ssl) config.domain = "https://"+config.domain;
 else config.domain = "http://"+config.domain;
+
 config.author = "Skeetzo";
 config.description = "Porn Star Streamer";
 config.Google_Analytics = "UA-82463743-8";
-config.pages = ['privacy','terms','support'];
+config.pages = ['privacy','terms','support','2257-compliance'];
 config.ssl_key = '/etc/letsencrypt/live/alexdeeznuts.com-0001/privkey.pem';
 config.ssl_cert = '/etc/letsencrypt/live/alexdeeznuts.com-0001/fullchain.pem';
 
@@ -31,6 +38,30 @@ config.createPreviews = false;
 config.defaultPrice = 5; // in dollars
 config.defaultTime = 60; // time in seconds
 config.syncInterval = 3000;
+config.uid = 1001;
+config.gid = 1002;
+config.archive_videos = true;
+config.archive_on_publish = true;
+config.archive_delay = 10000;
+config.conversionRate = 6; // $1 per 6 minutes
+config.createPreviews = true;
+config.defaultPrice = 5; // in dollars
+config.defaultTime = 60; // time in seconds
+config.defaultPreviewDuration = 10;
+config.defaultVideo = {
+	'title': 'Example',
+	'performers': ['Myself','Your Mom'],
+	'isOriginal': true,
+	'duration': 247,
+	'path': require('path').join(__dirname,'../public/videos/preview.mp4')
+};
+config.videosPath = '/mnt/deeznuts/videos';
+config.imagesPath = '/mnt/deeznuts/images';
+
+config.videosPath = '/home/skeetzo/Projects/deeznuts/src/public/videos';
+config.imagesPath = '/home/skeetzo/Projects/deeznuts/src/public/images';
+
+config.syncInterval = 3; // in seconds
 if (config.debugging) {
 	config.defaultTime = 60*60*23+45*60;
 	config.syncInterval = config.syncInterval*3;
@@ -40,7 +71,7 @@ config.status = "Not Live";
 config.bitcoin_address = "7h15157o74lly4b17co1n4ddre55";
 config.bitcoin_qr = "http://placehold.it/150x150";
 config.bitcoin_link = "bitcoin:"+config.bitcoin_address;
-config.blockchainRoute = "/tip";
+config.blockchainRoute = "/btc";
 config.blockchainCallback = config.domain+config.blockchainRoute;
 config.blockchainConfirmationLimit = 6;
 config.blockchainGapLimit = 20;
@@ -53,8 +84,17 @@ config.streamRecording = true;
 // config.streamRecording_dash = true;
 // config.streamRecording_hls = true;
 
-var live_url = config.domain+":8443/live/stream.flv?sign=";
-if (config.debugging&&!config.ssl) live_url = config.domain+":8000/live/stream.flv?sign=";
+// Email
+config.emailing = true;
+config.emailing_testing = true;
+config.emailing_on_new = true;
+config.emailing_on_error = true;
+config.emailing_on_transaction = true;
+config.email_self = 'WebmasterSkeetzo@gmail.com';
+config.domainEmail = 'deeznuts.com';
+
+// Twitter
+config.Twitter_link = config.domain+'/live';
 
 config.siteData = 
 	{ 	
@@ -71,14 +111,39 @@ config.siteData =
 	};
 
 config.alexd = {
+=======
+config.deeznutsUser = {
 	'username': 'justalexxxd',
 	'password': 'gofuckyourself6969'
 };
 
+config.debugging_blockchain = true;
+config.debugging_blockchain_hash = "696969";
+config.debugging_blockchain_address = "yourmomshouse";
+
+config.debugging_reset_db = false;
+config.debugging_reset_files = false;
+config.debugging_reset_logs = false;
+config.debugging_backup_db = true;
+
 config.remoteDatabase = false;
 
 function deploy(environment) {
-	if (environment=='staging') {
+
+	config.Twitter = false;
+	config.Twitter_tweeting = false;
+	config.Twitter_tweeting_on_live = false;
+
+	if (environment=='development') {
+		config.debugging = true;
+		config.ssl = false;
+		config.debugging_live = true;
+		config.debugging_address = false;
+		config.debugging_sync = true;
+		config.local = true;
+		// config.remoteDatabase = true;
+	}
+	else if (environment=='staging') {
 		config.debugging = true;
 		config.ssl = true;
 		config.debugging_live = true;
@@ -93,33 +158,21 @@ function deploy(environment) {
 		config.debugging_address = false;
 		config.debugging_sync = false;
 		config.local = false;
+		config.Twitter = true;
+		config.Twitter_tweeting = true;
+		config.Twitter_tweeting_on_live = true;
 	}
-	else {
-		config.debugging = true;
-		config.ssl = false;
-		config.debugging_live = true;
-		config.debugging_address = false;
-		config.debugging_sync = true;
-		config.local = true;
-	}
+	
 }
 
-config.defaultVideo = {
-	'title': 'example',
-	'performers': ['Myself','Your Mom'],
-	'isOriginal': true,
-	'duration': 1000*60*config.defaultPrice
-};
-
 config.local_keys_path = './src/dev/localConfig.json';
-// config.local_google_keys_path = './src/dev/kairosnaps-google.json';
-// config.local_data_path = './src/dev/localData.json';
-
+config.local_google_keys_path = './src/dev/google.json';
 config.logs_backupDir = './src/dev/logs/backup';
 config.logs_file = './src/dev/logs/file.log';
 
 require('./keys').call(config);
 require('./logger').call(config);
+require('./emails').call(config);
 require('./crons').call(config);
 
 module.exports = config;
