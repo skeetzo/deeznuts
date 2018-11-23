@@ -52,14 +52,14 @@ html
 
         br
 
+        include ../include/time
+
         //- login
         if (!loggedIn)
           include ../include/login
         else
           a(href="/logout", title='Logout')
             i.fas.fa-sign-out-alt Logout
-
-        include ../include/time
 
         //- js
         block javascript
