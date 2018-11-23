@@ -297,7 +297,7 @@ videoSchema.methods.extract = function(callback, retryReason) {
   .saveToFile(newFile); 
 }
 
-transactionSchema.methods.sendPurchasedEmail = function(callback) {
+videoSchema.methods.sendPurchasedEmail = function(callback) {
   logger.log('Sending Video Purchased Email: %s', this._id);
   var mailOptions = config.email_video_purchased(this);
   require('../modules/gmail').sendEmail(mailOptions, function (err) {

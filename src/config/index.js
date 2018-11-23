@@ -110,8 +110,6 @@ config.siteData =
 		syncInterval: config.syncInterval
 	};
 
-config.alexd = {
-=======
 config.deeznutsUser = {
 	'username': 'justalexxxd',
 	'password': 'gofuckyourself6969'
