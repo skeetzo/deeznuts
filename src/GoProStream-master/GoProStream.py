@@ -116,7 +116,7 @@ def gopro_live():
 			print("IP: " + str(IP))
 			# subprocess.Popen("ffmpeg -i 'udp://:10.5.5.100:8554' -loglevel panic -fflags nobuffer -f:v mpegts -probesize 8192 " + TS_PARAMS + "udp://192.168.1.3:8554", shell=True)
 			# subprocess.Popen("ffmpeg -i 'udp://:10.5.5.100:8554' -fflags nobuffer -f:v mpegts -probesize 8192 " + TS_PARAMS + SAVELOCATION, shell=True)
-			subprocess.Popen("ffmpeg -re -i 'udp://@10.5.5.100:8554' -loglevel debug -fflags nobuffer -f:v mpegts -probesize 8192 -c copy -f flv rtmp://127.0.0.1:1935", shell=True)
+			subprocess.Popen("ffmpeg -re -i 'udp://10.5.5.100:8554' -loglevel debug -fflags nobuffer -f:v mpegts -probesize 8192 -c copy -f flv rtmp://127.0.0.1:1935", shell=True)
 		#	subprocess.Popen("ffmpeg -i 'udp://:10.5.5.100:8554' -fflags nobuffer -f:v mpegts -probesize 8192 " + TS_PARAMS + SAVELOCATION, shell=True)
 		if sys.version_info.major >= 3:
 			MESSAGE = bytes(MESSAGE, "utf-8")
