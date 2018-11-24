@@ -117,7 +117,7 @@ def gopro_live():
 			print("Note: Preview is not available when saving the stream.")
 			# subprocess.Popen("ffmpeg -i 'udp://:10.5.5.100:8554' -loglevel panic -fflags nobuffer -f:v mpegts -probesize 8192 " + TS_PARAMS + "udp://192.168.1.3:8554", shell=True)
 			# subprocess.Popen("ffmpeg -i 'udp://:10.5.5.100:8554' -fflags nobuffer -f:v mpegts -probesize 8192 " + TS_PARAMS + SAVELOCATION, shell=True)
-			subprocess.Popen("ffmpeg -re -i 'udp://10.5.5.100:8554' -loglevel debug -probesize 8192 -analyzeduration 100M -fflags nobuffer -f:v mpegts -vcodec copy -acodec copy -preset fast rtmp://192.168.1.10:8935/live/stream?sign=1542970244462-8185f8222a7e830c60f29ae1eaa53161", shell=True)
+			subprocess.Popen("ffmpeg -re -i 'udp://10.5.5.100:8554' -loglevel debug -probesize 500M -analyzeduration 500M -map 0:0 -c:a aac -c:v libx264 -f flv -movflags frag_keyframe+empty_moov rtmp://192.168.1.10:8935/live/stream?sign=1542970244462-8185f8222a7e830c60f29ae1eaa53161", shell=True)
 		#	subprocess.Popen("ffmpeg -i 'udp://:10.5.5.100:8554' -fflags nobuffer -f:v mpegts -probesize 8192 " + TS_PARAMS + SAVELOCATION, shell=True)
 		if sys.version_info.major >= 3:
 			MESSAGE = bytes(MESSAGE, "utf-8")
