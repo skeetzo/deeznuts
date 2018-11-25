@@ -3,6 +3,8 @@ module.exports = function() {
   var self = this;
 
   // Emails
+  if (!this.gmail_user||!this.gmail_password) 
+    return console.log('Missing Gmail Config- Skipping Email Setup');
 
   // Account Created
   this.email_account_created = function() {

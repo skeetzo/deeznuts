@@ -20,10 +20,8 @@ config.domain = "alexdeeznuts.com";
 config.domain = "192.168.1.10";
 
 // if (config.local) config.domain = "localhost";
-// var live_url = "wss://"+config.domain+":8443/live/stream.flv?sign="
-var live_url = "https://"+config.domain+":8443/live/stream.flv?sign="
-// if (config.debugging&&!config.ssl) live_url = "ws://"+config.domain+":8000/live/stream.flv?sign=";
-if (config.debugging&&!config.ssl) live_url = "http://"+config.domain+":8000/live/stream.flv?sign=";
+var live_url = "wss://"+config.domain+":8443/live/stream.flv?sign="
+if (config.debugging&&!config.ssl) live_url = "ws://"+config.domain+":8000/live/stream.flv?sign=";
 if (config.ssl) config.domain = "https://"+config.domain;
 else config.domain = "http://"+config.domain;
 
@@ -35,11 +33,6 @@ config.ssl_key = '/etc/letsencrypt/live/alexdeeznuts.com-0001/privkey.pem';
 config.ssl_cert = '/etc/letsencrypt/live/alexdeeznuts.com-0001/fullchain.pem';
 
 // DeezNuts Settings
-config.conversionRate = 6; // $1 per 6 minutes
-config.createPreviews = false;
-config.defaultPrice = 5; // in dollars
-config.defaultTime = 60; // time in seconds
-config.syncInterval = 3000;
 config.uid = 1001;
 config.gid = 1002;
 config.archive_videos = true;
@@ -126,7 +119,7 @@ config.debugging_reset_files = false;
 config.debugging_reset_logs = false;
 config.debugging_backup_db = true;
 
-config.remoteDatabase = true;
+config.remoteDatabase = false;
 
 function deploy(environment) {
 
