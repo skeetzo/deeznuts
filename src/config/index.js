@@ -17,7 +17,7 @@ config.title = "Alex D.'s Nuts";
 config.siteTitle = "AlexDeezNuts.com";
 config.domain = "alexdeeznuts.com";
 
-config.domain = "192.168.1.10";
+// config.domain = "192.168.1.10";
 
 // if (config.local) config.domain = "localhost";
 var live_url = "wss://"+config.domain+":8443/live/stream.flv?sign="
