@@ -17,12 +17,10 @@ config.title = "Alex D.'s Nuts";
 config.siteTitle = "AlexDeezNuts.com";
 config.domain = "alexdeeznuts.com";
 
-config.domain = "192.168.1.10";
-
-// if (config.local) config.domain = "localhost";
-// var live_url = "wss://"+config.domain+":8443/live/stream.flv?sign="
+if (config.local) config.domain = "localhost";
+var live_url = "wss://"+config.domain+":8443/live/stream.flv?sign="
 var live_url = "https://"+config.domain+":8443/live/stream.flv?sign="
-// if (config.debugging&&!config.ssl) live_url = "ws://"+config.domain+":8000/live/stream.flv?sign=";
+if (config.debugging&&!config.ssl) live_url = "ws://"+config.domain+":8000/live/stream.flv?sign=";
 if (config.debugging&&!config.ssl) live_url = "http://"+config.domain+":8000/live/stream.flv?sign=";
 if (config.ssl) config.domain = "https://"+config.domain;
 else config.domain = "http://"+config.domain;
@@ -126,13 +124,13 @@ config.debugging_reset_files = false;
 config.debugging_reset_logs = false;
 config.debugging_backup_db = true;
 
-config.remoteDatabase = true;
 
 function deploy(environment) {
 
 	config.Twitter = false;
 	config.Twitter_tweeting = false;
 	config.Twitter_tweeting_on_live = false;
+	config.remoteDatabase = true;
 
 	if (environment=='development') {
 		config.debugging = true;
@@ -141,7 +139,7 @@ function deploy(environment) {
 		config.debugging_address = false;
 		config.debugging_sync = true;
 		config.local = true;
-		// config.remoteDatabase = true;
+		config.remoteDatabase = true;
 	}
 	else if (environment=='staging') {
 		config.debugging = true;
@@ -150,6 +148,7 @@ function deploy(environment) {
 		config.debugging_address = false;
 		config.debugging_sync = false;
 		config.local = false;
+		config.remoteDatabase = false;
 	}
 	else if (environment=='production') {
 		config.debugging = false;
@@ -161,6 +160,7 @@ function deploy(environment) {
 		config.Twitter = true;
 		config.Twitter_tweeting = true;
 		config.Twitter_tweeting_on_live = true;
+		config.remoteDatabase = false;
 	}
 	
 }
