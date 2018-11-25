@@ -119,13 +119,13 @@ config.debugging_reset_files = false;
 config.debugging_reset_logs = false;
 config.debugging_backup_db = true;
 
-config.remoteDatabase = false;
 
 function deploy(environment) {
 
 	config.Twitter = false;
 	config.Twitter_tweeting = false;
 	config.Twitter_tweeting_on_live = false;
+	config.remoteDatabase = false;
 
 	if (environment=='development') {
 		config.debugging = true;
@@ -134,7 +134,7 @@ function deploy(environment) {
 		config.debugging_address = false;
 		config.debugging_sync = true;
 		config.local = true;
-		// config.remoteDatabase = true;
+		config.remoteDatabase = true;
 	}
 	else if (environment=='staging') {
 		config.debugging = true;
@@ -143,6 +143,7 @@ function deploy(environment) {
 		config.debugging_address = false;
 		config.debugging_sync = false;
 		config.local = false;
+		config.remoteDatabase = true;
 	}
 	else if (environment=='production') {
 		config.debugging = false;
@@ -154,6 +155,7 @@ function deploy(environment) {
 		config.Twitter = true;
 		config.Twitter_tweeting = true;
 		config.Twitter_tweeting_on_live = true;
+		config.remoteDatabase = false;
 	}
 	
 }
