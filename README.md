@@ -1,9 +1,3 @@
-## AlexDeezNuts
-
-Performers' Premium Live Streaming
-
-Available at [alexdeeznuts.com](https://alexdeeznuts.com)
-
 # DeezNuts
 Performers' Live Streaming & Video Archive System
 
@@ -79,4 +73,15 @@ The videos page provides archived streams and purchased streams.
 The conversion table provides an easy reference for BTC to time available.
 
 The "Generate" button provides the means to generate a BTC address for the user to send BTC to in exchange for time in seconds.
+
+
+
+
+
+
+
+
+
+
+
 
