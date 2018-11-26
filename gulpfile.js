@@ -58,4 +58,4 @@ gulp.task('jquery', function() {
 // });
 
 // gulp.task('default', [ 'html', 'css', 'js' ]);
-gulp.task('default', [ 'font-awesome', 'bootstrap', 'flv', 'jquery' ]);
+gulp.task('default', [ 'socket.io', 'font-awesome', 'bootstrap', 'flv', 'jquery' ]);
