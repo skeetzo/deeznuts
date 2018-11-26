@@ -131,7 +131,9 @@ async.series([
     }
 
     // socket.io
-    const io = require('socket.io')(server);    
+    const io = require('socket.io')(server, {
+      path: '/public/dist/socket-io'
+    });    
     require('../modules/socket.io').setup(io);
 
     /**
