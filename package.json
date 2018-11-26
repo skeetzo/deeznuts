@@ -7,7 +7,7 @@
   "main": "src/app.js",
   "scripts": {
     "postinstall": "gulp",
-    "install": "sudo npm install --save --unsafe-perm=true --allow-root",
+    "install": "npm install --save --unsafe-perm=true --allow-root",
     "start": "node src/bin/www",
     "clean": "./setup/scripts/clean",
     "prebuild:dev": "npm run clean",
