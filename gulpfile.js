@@ -5,6 +5,12 @@ var gulp = require('gulp');
 var concat = require('gulp-concat');
 var sourcemaps = require('gulp-sourcemaps');
 
+gulp.task('socket.io', function() {
+  gulp.src('node_modules/socket.io-client/dist/socket.io.js')
+    .pipe(gulp.dest('src/public/dist/socket.io/socket.io.js'));
+  return;
+});
+
 gulp.task('font-awesome', function() {
   gulp.src('node_modules/font-awesome/css/**.*')
     .pipe(gulp.dest('src/public/dist/font-awesome'));
