@@ -6,7 +6,7 @@
 var config = require('../config/index'),
     logger = config.logger;
 var app = require('../app');
-var debug = require('debug')('alexdeeznuts:server');
+var debug = require('debug')('deeznuts:server');
 var http = require('http');
 var https = require('https');
 var rtmp = require('../modules/rtmp');
@@ -27,21 +27,36 @@ app.set('port', port);
 // Startup
 async.series([
   function (step) {
+    if (!config.debugging) return step(null);
+    require('../dev/debug').debug(function (err) {
+      if (err) logger.warn(err);
+      step(null);
+    });
+  },
+  function (step) {
     var User = require('../models/user');
-    User.findOne({'username':config.alexd.username}, function (err, alexd) {
+    User.findOne({'username':config.deeznutsUser.username}, function (err, user) {
       if (err) return logger.warn(err);
-      if (!alexd) {
-        logger.log('Prepping bot: %s', config.alexd.username);
-        alexd = new User(config.alexd);
-        alexd.save(function (err) {
+      if (!user) {
+        logger.log('Prepping bot: %s', config.deeznutsUser.username);
+        user = new User(config.deeznutsUser);
+        user.save(function (err) {
           if (err) logger.warn(err);
           step(null);
         });
       }
       else {
-        logger.log('Bot found: %s', alexd.username);
+        logger.log('Bot found: %s', user.username);
         step(null);
       }
+    });
+  },
+  function (step) {
+    // Twitter
+    var Twitter = require('../modules/twitter');
+    Twitter.connect(function (err) {
+      if (err) logger.warn(err);
+      step(null);
     });
   },
   // database initialization
@@ -50,9 +65,11 @@ async.series([
       if (err) logger.warn(err);
       logger.log('Videos available: %s', videos.length);
       if (!videos||videos.length==0) {
+        // logger.debug('creating example preview...');
         var example = new Video(config.defaultVideo);
         example.save(function (err) {
-          step(err);
+          if (err) logger.warn(err);
+          step(null);
         });
       }
       else step(null);
@@ -86,6 +103,14 @@ async.series([
     });    
   },
   function (step) {
+    // start User syncs
+    logger.log('Starting User Syncs every %s seconds...', config.syncInterval);
+    setInterval(function () {
+      require('../models/user').sync();
+    }, config.syncInterval*1000);
+    step(null);
+  },
+  function (step) {
     if (config.ssl) {
       /**
        * Create HTTPS server.
@@ -98,6 +123,10 @@ async.series([
     else {
       server = http.createServer(app);
     }
+
+    // socket.io
+    const io = require('socket.io')(server);    
+    require('../modules/socket.io').setup(io);
 
     /**
      * Listen on provided port, on all network interfaces.

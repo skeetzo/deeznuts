@@ -9,7 +9,6 @@ module.exports = function homeRoutes(router) {
   const { check, validationResult } = require('express-validator/check');
   var maxRate = 5;
   if (config.debugging) maxRate = 50;
-
   var signUpLimiter = new RateLimit({
     windowMs: 60*60*1000, // 1 hour window
     delayAfter: 1, // begin slowing down responses after the first request

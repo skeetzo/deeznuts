@@ -86,6 +86,14 @@ nms.on('postPublish', (id, StreamPath, args) => {
   logger.log('[NodeEvent on postPublish]', `id=${id} StreamPath=${StreamPath} args=${JSON.stringify(args)}`);
   logger.log('Updating Status %s -> %s', config.status, 'Live');
   config.status = 'Live';
+  if (config.Twitter_tweeting_on_live) {
+    logger.debug('Tweeting On Live...');
+    var Twitter = require('../modules/twitter');
+    Twitter.tweetLive(function (err) {
+      if (err) logger.warn(err);
+      logger.debug('Tweeted Live Status');
+    });
+  }
 });
 
 nms.on('donePublish', (id, StreamPath, args) => {
@@ -97,7 +105,7 @@ nms.on('donePublish', (id, StreamPath, args) => {
       require('../models/video').processPublished(function (err) {
         if (err) logger.warn(err);
       });
-    }, 30000);
+    }, config.archive_delay);
 });
 
 // nms.on('prePlay', (id, StreamPath, args) => {

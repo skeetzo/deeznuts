@@ -21,14 +21,11 @@ var mongoose = require('mongoose'),
 
 */
 var videoSchema = new Schema({
-  address: { type: String },
-  address_qr: { type: String },
+  date: { type: String, default: moment(new Date()).format('MM-DD-YYYY') },
   description: { type: String, default: '' },
   duration: { type: Number },
   hasPreview: { type: Boolean, default: false },
-  isPaid: { type: Boolean, default: false },
   isOriginal: { type: Boolean, default: false },
-  paid: { type: Number, default: 0 },
   path: { type: String },
   path_preview: { type: String },
   path_image: { type: String },
@@ -39,25 +36,42 @@ var videoSchema = new Schema({
 
 videoSchema.pre('save', function (next) {
   var self = this;
-  self.description = [self.performers.slice(0, -1).join(', '), self.performers.slice(-1)[0]].join(self.performers.length < 2 ? '' : ' and ');
+  if (!self.date)
+    self.date = moment(new Date(self.title)).format('MM-DD-YYYY:HH:mm');
+  if ((self.isModified('description')||self.isModified('performers'))&&self.performers)
+    self.description = [self.performers.slice(0, -1).join(', '), self.performers.slice(-1)[0]].join(self.performers.length < 2 ? '' : ' and ');
   if (!self.path)
     self.path = path.join(__dirname, '../public/videos/archive/', self.title+'.mp4');
-  if (self.isModified('paid')||self.isModified('duration')) {
-    if (self.paid>=self.duration) {
-      logger.debug('isPaid on save: %s', self._id);
-      self.isPaid = true;
-    }
-    else self.isPaid = false;
+  if (!self.duration) {
+    logger.debug('probing...');
+    // ffprobe video for duration
+    return FFmpeg.ffprobe(self.path, function(err, metadata) {
+      if (err) return logger.warn(err);
+      logger.debug('duration: %s', metadata.format.duration);
+      self.duration = metadata.format.duration;
+      if (self.duration<config.defaultPrice) { // 5 minutes / default time
+        self.price = config.defaultPrice;
+        logger.log('minimum price set: %s', self.price);
+      }
+      else {
+        self.price = Math.round(self.duration);
+        logger.log('price set: %s', self.price);
+      }
+      logger.debug('Video Saved: %s', self.title);
+      next();
+    });
   }
-  if (self.isModified('duration')||self.isModified('price')) {
+  if (self.isModified('duration')||self.isModified('price')||!self.price) {
     if (self.duration<config.defaultPrice) { // 5 minutes / default time
       self.price = config.defaultPrice;
+      logger.log('minimum price set: %s', self.price);
+    }
+    else if (self.duration) {
+      self.price = Math.round(self.duration);
       logger.log('price set: %s', self.price);
     }
-    else {
-      self.price = Math.round(self.duration);
-      logger.log('price upd: %s', self.price);
-    }
+    else
+      self.price = config.defaultPrice;
   }
   if (!self.duration) {
     // ffprobe video for duration
@@ -120,7 +134,18 @@ videoSchema.statics.archiveVideos = function(callback) {
             // fs.chmodSync(file_path, 777)
             // fs.chownSync(file_path, config.uid, config.gid)
             fss.moveSync(file_path, file_path_archived);
-            var newVideo = new Video({'title':mp4s[i],'path':file_path_archived,'isOriginal':true});
+            var title = mp4s[i].replace('.mp4','').substring(0,10);
+            var time = mp4s[i].replace('.mp4','').substring(11);
+            var month = moment(new Date(title)).month()+1;
+            var day = moment(new Date(title)).date()+1;
+            var year = moment(new Date(title)).year();
+            var hours = time.substring(0,2);
+            var minutes = time.substring(3,5);
+            logger.log('%s:%s:%s %s:%s', month, day, year, hours, minutes);
+            title = month+"-"+day+"-"+year+" "+hours+":"+minutes;
+            // var title = moment(new Date(mp4s[i].replace('.mp4','').substring(0,10))).format('MM-DD-YYYY HH:mm');
+            // logger.log('title: %s', title);
+            var newVideo = new Video({'title':title,'path':file_path_archived,'isOriginal':true});
             newVideo.save(function (err) {
               if (err) logger.warn(err);
               done++;
@@ -144,7 +169,8 @@ videoSchema.statics.createPreviews = function(callback) {
     if (err) return callback(err);
     logger.log('Generating Previews: %s', videos.length);
     var series = [];
-    for (var i=0;i<videos.length;i++)
+    var j = videos.length;
+    for (var i=0;i<j;i++)
       series.push(function (step) {
         var video = videos.shift();
         video.createPreview(function (err) {
@@ -177,54 +203,59 @@ videoSchema.statics.processPublished = function(callback) {
 // save ref
 videoSchema.methods.createPreview = function(callback) {
   var self = this;
-  logger.debug('Creating Preview: %s', self.title);
-  self.convert(function (err, newFile) {
-    if (err) return callback(err);
-    self.hasPreview = true;
-    self.path_preview = newFile;
+  logger.log('Creating Preview: %s', self.title);
+  logger.debug(self.path);
+  async.waterfall([
+    function (step) {
+      // create png of early frames of .mp4 path
+      logger.log('--- Thumbnailing ---');
+      self.thumbnail(function (err) {
+        if (err) logger.warn(err);
+        step(null);
+      });
+    },
+    function (step) {
+      logger.log('--- Extracting ---');
+      self.extract(function (err, file) {
+        if (err) {
+          if (err.message.indexOf('max_muxing_queue_size')>-1) {
+            logger.debug('-- retrying muxing extraction --');
+            return self.extract(function (err, file) {
+              step(err, file);
+            },'muxing');
+          }
+          else if (err.message.indexOf('filters')>-1) {
+            logger.debug('-- retrying filters extraction --');
+            return self.extract(function (err, file) {
+              step(err, file);
+            },'filters');
+          }
+          return step(err);
+        }
+        step(null, file);
+      });
+    },
+    function (file, step) {
+      self.hasPreview = true;
+      self.path_preview = file;
+      step(null);
+    },
+    function (step) {
+      logger.log('--- Watermarking ---');
+      self.watermark(function (err) {
+        step(err);
+      });
+    }
+  ], function (err) {
+    if (err) logger.warn(err);
+    else logger.log('Preview Created: %s', self.title);
     self.save(function (err) {
       callback(err);
     });
   });
 }
 
-// edit video into 10 sec preview with watermark
-videoSchema.methods.convert = function(callback) {
-  var self = this;
-  logger.log('--- Converting: %s', self.title);
-  logger.log(self.path);
-  async.waterfall([
-    function (step) {
-      logger.log('--- Extracting ---');
-      self.extract(function (err, file) {
-        step(err, file);
-      });
-    },
-    function (file, step) {
-      logger.log('--- Watermarking ---');
-      self.watermark(function (err) {
-        if (err) logger.warn(err);
-        step(null, file);
-      });
-    },
-    function (file, step) {
-      // create png of early frames of .mp4 path
-      logger.log('--- Thumbnailing ---');
-      self.thumbnail(function (err) {
-        if (err) logger.warn(err);
-        step(null, file);
-      });
-    },
-    function (file, step) {
-      logger.log('--- Conversion Complete: %s', self.title);
-      callback(null, file);
-    }
-  ], function (err) {
-    callback(err);
-  });
-}
-
-videoSchema.methods.extract = function(callback) {
+videoSchema.methods.extract = function(callback, retryReason) {
   logger.log('Extracting: %s', this.title);
   logger.debug('path: %s', this.path);
   var duration = Math.round(this.duration);
@@ -234,19 +265,29 @@ videoSchema.methods.extract = function(callback) {
   var newFile = path.join(__dirname, '../public/videos/previews', newTitle);
   logger.debug('New File: %s', newFile);
   logger.debug('New Title: %s', newTitle);
+  var outputOptions = [];
+  if (retryReason&&retryReason=='muxing')
+    outputOptions.push('-max_muxing_queue_size 99999');
+  if (retryReason&&retryReason=='filters') {
+    outputOptions.push('-pix_fmt yuv420p');
+    outputOptions.push('-flags +global_header');
+  }
+  outputOptions.push('-strict -2');
   var conversion_process = new FFmpeg({ 'source': this.path, 'timeout': 0 })
-  .inputOptions('-probesize 100')
-  .inputOptions('-analyzeduration 10000000')
-  .withVideoBitrate(1024)
+  .inputFormat('mp4')
+  .videoCodec('libx264')
+  .inputOptions('-probesize 100M')
+  .inputOptions('-analyzeduration 100M')
+  // .withVideoBitrate(1024)
   .withAspect('16:9')
-  .withFps(30)
-  .withAudioBitrate('128k')
-  .withAudioCodec('aac')
+  // .withFps(30)
+  // .withAudioBitrate('128k')
+  // .withAudioCodec('aac')
   .toFormat('mp4')
   .duration(duration)
-  .outputOptions('-pix_fmt yuv420p')
-  .outputOptions('-max_muxing_queue_size 99999')
-  .outputOptions('-flags +global_header')
+  // .outputOptions('-pix_fmt yuv420p')
+  // .outputOptions('-flags +global_header')
+  .outputOptions(outputOptions)
   .on('start', function (commandLine) {
     logger.log("Extraction Started");
   })
@@ -268,6 +309,14 @@ videoSchema.methods.extract = function(callback) {
   .saveToFile(newFile); 
 }
 
+videoSchema.methods.sendPurchasedEmail = function(callback) {
+  logger.log('Sending Video Purchased Email: %s', this._id);
+  var mailOptions = config.email_video_purchased(this);
+  require('../modules/gmail').sendEmail(mailOptions, function (err) {
+    callback(err);
+  });
+}
+
 videoSchema.methods.thumbnail = function(callback) {
   var self = this;
   logger.log('Creating Thumbnail: %s', self.path);
@@ -276,11 +325,11 @@ videoSchema.methods.thumbnail = function(callback) {
   logger.debug('filename: %s', filename);
   logger.debug('foldername: %s', foldername);
   var proc = new FFmpeg(self.path)
-  .inputOptions('-probesize 100')
-  .inputOptions('-analyzeduration 10000000')
-  .outputOptions('-max_muxing_queue_size 99999')
-  .outputOptions('-flags +global_header')
-  .outputOptions('-pix_fmt yuv420p')
+  .inputOptions('-probesize 100M')
+  .inputOptions('-analyzeduration 100M')
+  // .outputOptions('-max_muxing_queue_size 99999')
+  // .outputOptions('-flags +global_header')
+  // .outputOptions('-pix_fmt yuv420p')
   // .on('filenames', function(filenames) {
   //   logger.log('Will generate: ' + filenames.join(', '))
   // })
@@ -312,10 +361,12 @@ videoSchema.methods.thumbnail = function(callback) {
 videoSchema.methods.watermark = function(callback) {
   var self = this;
   logger.log('Watermarking: %s', self.title);
-  var conversion_process = new FFmpeg({ 'source': self.path, 'timeout': 0 })
-  .inputOptions('-probesize 100')
-  .inputOptions('-analyzeduration 10000000')
+  if (!self.path_preview) return callback('Error Watermarking Video: Missing Preview Path');
+  var conversion_process = new FFmpeg({ 'source': self.path_preview, 'timeout': 0 })
+  // .inputOptions('-probesize 100')
+  // .inputOptions('-analyzeduration 10000000')
   .format('mp4')
+  .videoCodec('libx264')
   .input(path.join(__dirname, "../public/images/watermark.png"))
   .complexFilter([
     {
@@ -350,9 +401,10 @@ videoSchema.methods.watermark = function(callback) {
     },
     ], 'output')
   .toFormat('mp4')
-  .outputOptions('-max_muxing_queue_size 99999')
-  .outputOptions('-flags +global_header')
-  .outputOptions('-pix_fmt yuv420p')
+  // .outputOptions('-max_muxing_queue_size 99999')
+  // .outputOptions('-flags +global_header')
+  // .outputOptions('-pix_fmt yuv420p')
+  .outputOptions('-strict -2')
   .on('start', function (commandLine) {
     logger.log("Watermarking Started");
   })
@@ -372,7 +424,8 @@ videoSchema.methods.watermark = function(callback) {
     logger.log('--- Watermarked: %s', self.title);
     callback(null);
   })
-  .saveToFile(self.path); 
+  // .saveToFile(self.path.replace('.mp4', '-w.mp4')); 
+  .saveToFile(self.path_preview); 
 }
 
 var Video = mongoose.model('videos', videoSchema,'videos');

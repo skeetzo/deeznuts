@@ -22,9 +22,18 @@ module.exports.hasPaid = function(req, res, next) {
     }
 }
 
+module.exports.hasRoom = function(req, res, next) {
+    // return next(null);
+    // disabled
+    var isRoom = require('../modules/socket.io').isRoom();
+    if (isRoom) return next(null);
+    req.session.locals.error = 'There\'s not enough room for you!';
+    res.status(400).render('index', req.session.locals);
+}
+
 // Check Login
 module.exports.loggedIn = function(req, res, next) {
-    if (req.session.user&&req.session.locals.loggedIn)
+    if (req.session.user)
         next(null);
     else {
         req.session.locals.error = 'Please login!';
@@ -32,8 +41,8 @@ module.exports.loggedIn = function(req, res, next) {
     }
 }
 
-module.exports.loggedInAlexD = function(req, res, next) {
-    User.findOne({'_id':req.session.user._id,'username':config.alexd.username}, function (err, user) {
+module.exports.loggedInDeezNuts = function(req, res, next) {
+    User.findOne({'_id':req.session.user._id,'username':config.deeznutsUser.username}, function (err, user) {
         if (err) {
             logger.warn(err);
             req.session.locals.error = 'Ha!';
@@ -132,15 +141,12 @@ var Video_ = function(src) {
   var path_image = path.relative(__dirname, src.path_image);
   return {
     '_id': src._id,
-    'address': src.address,
-    'address_qr': src.address_qr,
     'title': src.title,
+    'date': src.date,
     'performers': src.performers,
     'description': src.description,
-    'isPaid': src.isPaid,
     'path': path_ || '',
     'path_image': path_image || '',
-    // 'isPaid': true,
     'price': src.price
   };
 }
@@ -153,19 +159,16 @@ var Video_Preview = function(src) {
   var path_image = path.relative(__dirname, src.path_image);
   return {
     '_id': src._id,
-    'address': src.address,
-    'address_qr': src.address_qr,
     'title': src.title,
+    'date': src.date,
     'performers': src.performers,
     'description': src.description,
-    'isPaid': src.isPaid,
     'path': path_ || '',
     'path_image': path_image || '',
-    // 'isPaid': true,
     'price': src.price
   };
 }
-module.exports.Video_Previews = Video_Previews;
+module.exports.Video_Preview = Video_Preview;
 
 var Videos_ = function(src) {
   var videos = [];

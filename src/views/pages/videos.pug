@@ -11,13 +11,12 @@ prepend content
     if (videos)
       for video in videos
         .col-xs-4
-          if (video.isPaid)
-            video(controls, poster=video.path_image, type="video/mp4", width=250, src=video.path)
-            .row
-              a.btn.btn-primary(href=video.path, download) Download
-          else
-            video(controls, poster=video.path_image, type="video/mp4", width=250, src=video.path)
-          include ../include/crypto-vod
+          h3.videoTitle=video.title
+          //- h4.videoDate #{video.date}
+          h4.videoPrice=video.price+" HH:MM:SS"
+          video(controls, poster=video.path_image, type="video/mp4", width=250, src=video.path)
+          .row
+            a.btn.btn-primary.download(href=video.path, download, id=video._id) Download
   .row
     if (message||error)
       .message
@@ -29,27 +28,54 @@ prepend content
   hr
   .row
     //- all videos
-    if (videos_all)
-      for video in videos_all
+    if (videos_unowned)
+      for video in videos_unowned
         .col-xs-4
+          h3.videoTitle=video.title
+          //- h4.videoDate #{video.date}
+          h4.videoPrice=video.price+" HH:MM:SS"
           video(controls, poster=video.path_image, type="video/mp4", width=250, src=video.path)
-          include ../include/crypto-vod
+          .row
+            button.btn.btn-primary(onclick="buy(\'"+video.title+"\')") Buy
 
 prepend javascript
   script.
-    function generateVoDAddress(video) {
-      console.log('video: %s', video);
+    function buy(video) {
+      //- console.log('video: %s', video);
       return Promise.resolve($.ajax({
-        type: 'GET',
-        url: '/address-vod',
+        type: 'POST',
+        url: '/buy',
         data: {'_csrf':"#{_csrf}",'video':video},
         success: function(data) {
-          location.reload();
+          if (data.text)
+            alert(data.text);
         },
-        error: function(data) {
-          alert("Please login or create an account!");
+        error: function(data) { 
+         if (data.status == 400)
+            alert('There was an error!');
+          else if (data.status == 401)
+            alert("Please login or create an account!");
+          else if (data.responseJSON&&data.responseJSON.text)
+            alert(data.responseJSON.text);
+          else
+            alert('There was an error!');
         },
       })).catch(function (reason) {
         //- console.log(reason);
       });
     }
+
+    //- function download(video) {
+    //-   console.log('video: %s', video);
+    //-   return Promise.resolve($.ajax({
+    //-     type: 'POST',
+    //-     url: '/download',
+    //-     data: {'_csrf':"#{_csrf}",'video':video},
+    //-     success: function(data) {
+    //-     },
+    //-     error: function(data) { 
+    //-     },
+    //-   })).catch(function (reason) {
+    //-     //- console.log(reason);
+    //-   });
+    //- }

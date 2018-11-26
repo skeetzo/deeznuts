@@ -1,8 +1,7 @@
 var config = require('../config/index'),
     logger = config.logger,
     _ = require('underscore'),
-    mixins = require('../modules/mixins'),
-    User = require('../models/user');
+    mixins = require('../modules/mixins');
 
 module.exports = function homeRoutes(router) {
 
@@ -19,39 +18,50 @@ module.exports = function homeRoutes(router) {
   	next(null);
   });
 
-  // /index
+  // Index
   router.get("/", function (req, res, next) {
     res.render('index', req.session.locals);
   });
 
-  // check for recent tips
-  router.post("/sync", function (req, res, next) {
-    if (!req.session.user) return res.sendStatus(204);
-    // logger.debug('req.session.user: %s', JSON.stringify(req.session.user, null, 4));
-    req.body._id = req.session.user._id ? req.session.user._id : null;
-    User.sync(req.body, function (err, synced) {
+  // Blockchain
+  router.get(config.blockchainRoute, function (req, res, next) {
+    logger.debug('req.query: %s', JSON.stringify(req.query, null, 4));
+    require('../models/transaction').sync(req.query, function (err) {
+      if (err) logger.warn(err);
+      if (parseInt(req.query.confirmations, 10)>=config.blockchainConfirmationLimit)
+        res.send("*ok*");
+      else
+        res.status(200).send();
+    });
+  });
+
+  router.get("/address", mixins.loggedIn, function (req, res, next) {
+    require('../models/user').generateAddress(req.session.user._id, function (err) {
       if (err) {
         logger.warn(err);
-        return res.sendStatus(404);
+        return res.sendStatus(400);
       }
-      res.status(200).send(synced);
+      res.status(200).send();
     });
   });
 
-  router.get("/add", mixins.loggedIn,  function (req, res, next) {
-    User.findOne({'ip':req.session.user.ip}, function (err, user) {
-      if (err) logger.warn(err);
-      if (!user) return res.sendStatus(404);
-      // user.time_added = 60;
-      var oneDollarInBTC = 0.00015;
-      user.addTime({'value':100000000*oneDollarInBTC*6}, function (err) {
+  // Add
+  if (config.debugging)
+    router.get("/add", mixins.loggedIn,  function (req, res, next) {
+      require('../models/user').findOne({'ip':req.session.user.ip}, function (err, user) {
         if (err) logger.warn(err);
-        res.sendStatus(200);
+        if (!user) return res.sendStatus(404);
+        // user.time_added = 60;
+        var oneDollarInBTC = 0.00015;
+        user.addTime(100000000*oneDollarInBTC*6, function (err) {
+          if (err) logger.warn(err);
+          res.sendStatus(200);
+        });
       });
     });
-  });
 
-  router.get("/key", mixins.loggedIn, mixins.loggedInAlexD, function (req, res, next) {
+  // Key
+  router.get("/key", mixins.loggedIn, mixins.loggedInDeezNuts, function (req, res, next) {
     res.render('key', req.session.locals);
   });
 
