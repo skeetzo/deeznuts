@@ -15,16 +15,6 @@ config.port = Number(process.env.PORT || 3000);
 // Site Settings
 config.title = "Alex D.'s Nuts";
 config.siteTitle = "AlexDeezNuts.com";
-config.domain = "alexdeeznuts.com";
-
-// config.domain = "192.168.1.10";
-
-if (config.local) config.domain = "localhost";
-var live_url = "wss://"+config.domain+":8443/live/stream.flv?sign="
-if (config.debugging&&!config.ssl) live_url = "ws://"+config.domain+":8000/live/stream.flv?sign=";
-if (config.ssl) config.domain = "https://"+config.domain;
-else config.domain = "http://"+config.domain;
-
 config.author = "Skeetzo";
 config.description = "Porn Star Streamer";
 config.Google_Analytics = "UA-82463743-8";
@@ -32,12 +22,16 @@ config.pages = ['privacy','terms','support','2257-compliance'];
 config.ssl_key = '/etc/letsencrypt/live/alexdeeznuts.com-0001/privkey.pem';
 config.ssl_cert = '/etc/letsencrypt/live/alexdeeznuts.com-0001/fullchain.pem';
 
+config.domain = "alexdeeznuts.com";
+if (config.local) config.domain = "localhost";
+var live_url = "https://"+config.domain+":8443/live/stream.flv?sign="
+if (config.debugging&&!config.ssl) live_url = "http://"+config.domain+":8000/live/stream.flv?sign=";
+if (config.ssl) config.domain = "https://"+config.domain;
+else config.domain = "http://"+config.domain;
+
 // DeezNuts Settings
-config.uid = 1001;
-config.gid = 1002;
 config.archive_videos = true;
 config.archive_on_publish = true;
-
 config.archive_delay = 10000;
 config.conversionRate = 6; // $1 per 6 minutes
 config.createPreviews = true;
