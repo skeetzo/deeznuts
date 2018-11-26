@@ -37,7 +37,7 @@ config.conversionRate = 6; // $1 per 6 minutes
 config.createPreviews = true;
 config.defaultPrice = 5; // in dollars
 config.defaultTime = 60; // time in seconds
-config.defaultPreviewDuration = 10;
+config.defaultPreviewDuration = 30;
 config.defaultVideo = {
 	'title': 'Example',
 	'performers': ['Myself','Your Mom'],
@@ -114,7 +114,6 @@ config.debugging_reset_files = false;
 config.debugging_reset_logs = false;
 config.debugging_backup_db = false;
 
-
 function deploy(environment) {
 
 	config.Twitter = false;
@@ -130,6 +129,9 @@ function deploy(environment) {
 		config.debugging_sync = true;
 		config.local = true;
 		config.remoteDatabase = true;
+		config.debugging_reset_db = true;
+		config.debugging_reset_files = true;
+		config.debugging_reset_logs = true;
 	}
 	else if (environment=='staging') {
 		config.debugging = true;
@@ -139,6 +141,9 @@ function deploy(environment) {
 		config.debugging_sync = false;
 		config.local = false;
 		config.remoteDatabase = true;
+		config.debugging_reset_db = true;
+		config.debugging_reset_files = true;
+		config.debugging_reset_logs = true;
 	}
 	else if (environment=='production') {
 		config.debugging = false;
