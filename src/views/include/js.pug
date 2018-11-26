@@ -68,7 +68,7 @@ script.
   $(document).ready(function ($) {
     $( ".videoPrice" ).each(function (i, videoEle) {
       //- console.log($(this).html().replace(' seconds',''))
-      $(this).html(toPrice($(this).html().replace(' HH:MM:SS',''))+" HH:MM:SS")
+      $(this).html(toPrice($(this).html()))
     });
   })
 
