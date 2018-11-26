@@ -1,10 +1,8 @@
 if (user)
-  script(type="text/javascript", src='/dist/socket-io/socket.io.js')
+  script(type="text/javascript", src='/socket.io/socket.io.js')
   script.
     $(function () {
-      var socket = io({
-        path: '/dist/socket-io'
-      });
+      var socket = io();
 
       socket.on('connect', function() {
         socket.emit('connecting', "#{user._id}");
