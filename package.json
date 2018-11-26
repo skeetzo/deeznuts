@@ -7,7 +7,8 @@
   "main": "src/app.js",
   "scripts": {
     "postinstall": "gulp",
-    "start": "node src/bin/www"
+    "start": "node src/bin/www",
+    "install": "sudo npm install --save --unsafe-perm=true --allow-root"
   },
   "engines": {
     "node": "9.4.0"
