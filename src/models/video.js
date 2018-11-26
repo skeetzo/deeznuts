@@ -270,8 +270,8 @@ videoSchema.methods.extract = function(callback, retryReason) {
   logger.debug('New File: %s', newFile);
   logger.debug('New Title: %s', newTitle);
   var outputOptions = [];
-  if (retryReason&&retryReason=='muxing')
-    outputOptions.push('-max_muxing_queue_size 99999');
+  // if (retryReason&&retryReason=='muxing')
+  outputOptions.push('-max_muxing_queue_size 99999');
   if (retryReason&&retryReason=='filters') {
     outputOptions.push('-pix_fmt yuv420p');
     outputOptions.push('-flags +global_header');
@@ -289,8 +289,6 @@ videoSchema.methods.extract = function(callback, retryReason) {
   // .withAudioCodec('aac')
   .toFormat('mp4')
   .duration(duration)
-  // .outputOptions('-pix_fmt yuv420p')
-  // .outputOptions('-flags +global_header')
   .outputOptions(outputOptions)
   .on('start', function (commandLine) {
     logger.log("Extraction Started");
@@ -331,12 +329,6 @@ videoSchema.methods.thumbnail = function(callback) {
   var proc = new FFmpeg(self.path)
   .inputOptions('-probesize 100M')
   .inputOptions('-analyzeduration 100M')
-  // .outputOptions('-max_muxing_queue_size 99999')
-  // .outputOptions('-flags +global_header')
-  // .outputOptions('-pix_fmt yuv420p')
-  // .on('filenames', function(filenames) {
-  //   logger.log('Will generate: ' + filenames.join(', '))
-  // })
   .on('error', function (err, stdout, stderr) {
     logger.log("Thumbnailing Failed"); 
     if (stdout)
@@ -346,7 +338,6 @@ videoSchema.methods.thumbnail = function(callback) {
     callback(err);
   })
   .on('end', function() {
-    // logger.debug('screenshots taken');
     self.path_image = path.join(__dirname, '../public/images/thumbnails', path.basename(self.path).replace('.mp4','.png'));
     self.save(function (err) {
       if (err) return callback(err);
@@ -356,7 +347,7 @@ videoSchema.methods.thumbnail = function(callback) {
   })
   .thumbnails({
     count: 1,
-    // timemarks: [ '1' ], // number of seconds
+    timemarks: [ '1' ], // number of seconds
     filename: filename,
     folder: foldername
   });
