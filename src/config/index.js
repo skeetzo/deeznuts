@@ -19,7 +19,7 @@ config.domain = "alexdeeznuts.com";
 
 // config.domain = "192.168.1.10";
 
-// if (config.local) config.domain = "localhost";
+if (config.local) config.domain = "localhost";
 var live_url = "wss://"+config.domain+":8443/live/stream.flv?sign="
 if (config.debugging&&!config.ssl) live_url = "ws://"+config.domain+":8000/live/stream.flv?sign=";
 if (config.ssl) config.domain = "https://"+config.domain;
@@ -54,8 +54,8 @@ config.defaultVideo = {
 config.videosPath = '/mnt/deeznuts/videos';
 config.imagesPath = '/mnt/deeznuts/images';
 
-config.videosPath = '/home/skeetzo/Projects/deeznuts/src/public/videos';
-config.imagesPath = '/home/skeetzo/Projects/deeznuts/src/public/images';
+// config.videosPath = '/home/skeetzo/Projects/deeznuts/src/public/videos';
+// config.imagesPath = '/home/skeetzo/Projects/deeznuts/src/public/images';
 
 config.syncInterval = 3; // in seconds
 if (config.debugging) {
@@ -118,7 +118,7 @@ config.debugging_blockchain_address = "yourmomshouse";
 config.debugging_reset_db = false;
 config.debugging_reset_files = false;
 config.debugging_reset_logs = false;
-config.debugging_backup_db = true;
+config.debugging_backup_db = false;
 
 
 function deploy(environment) {
