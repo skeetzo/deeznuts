@@ -1,8 +1,8 @@
-script(src="//cdn.bootcss.com/flv.js/1.4.0/flv.min.js")
-    
+//- flv player
+script(src="dist/flv.js/flv.min.js")
 script.
   if (flvjs.isSupported()) {
-    var videoElement = document.getElementById('preview');
+    var videoElement = document.getElementById('live');
     var flvPlayer = flvjs.createPlayer({
       type: 'flv',
       isLive: true,
@@ -11,5 +11,9 @@ script.
     });
     flvPlayer.attachMediaElement(videoElement);
     flvPlayer.load();
-    //- flvPlayer.play();
+    flvPlayer.play();
   }
+
+//- dash
+//- script(src="//cdn.dashjs.org/latest/dash.all.min.js")
+//- video(data-dashjs-player autoplay src="https://alexdeeznuts.com:8080/live/stream.mpd" controls)

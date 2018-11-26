@@ -10,7 +10,7 @@ prepend content
   
   br
 
-  include ../include/crypto-live
+  include ../include/bitcoin
 
   br
 
@@ -35,8 +35,6 @@ prepend content
       br
       a.btn.btn-primary(href='/videos') Video Archive
 
-  include ../include/time
-
       //- Debugging - Add Time
       //- button.btn.btn-primary(onclick="addTime()") Add Time
 
@@ -46,8 +44,7 @@ prepend content
       //-       type: 'GET',
       //-       url: '/add',
       //-       data: {'_csrf':"#{_csrf}"},
-      //-       success: function(data) {
-              
+      //-       success: function(data) {              
       //-       },
       //-       error: function(data) {
       //-       },

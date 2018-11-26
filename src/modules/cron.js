@@ -54,11 +54,6 @@ crons.prototype = {
         
     },
 
-    ping: function(callback) {
-        logger.log('-- Ping -- ');
-        callback(null);
-    },
-
     // next day
     midnight : function(callback) {
         logger.log('--- Midnight ---');
@@ -75,6 +70,11 @@ crons.prototype = {
                 callback(null);      
             },
         ]);
+    },
+
+    ping: function(callback) {
+        logger.log('-- Ping -- ');
+        callback(null);
     }
 }
 

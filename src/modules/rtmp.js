@@ -7,16 +7,17 @@ var serverOptions = {
   'logType': 3,
 
   'rtmp': {
-    'port': 1935,
+    'port': 8935,
     'chunk_size': 60000,  
     'gop_cache': true,
     'ping': 60,
     'ping_timeout': 30
   },
+
   'http': {
     'port': 8000,
     'allow_origin': '*',
-    'mediaroot': './media'
+    'mediaroot': 'src/public/videos'
   }
 };
 
@@ -38,28 +39,54 @@ if (config.streamRecording)
   // record to mp4
   serverOptions.trans = {
     'ffmpeg': '/usr/bin/ffmpeg',
-    'tasks': [{
-      app: 'live',
-      ac: 'aac',
-      hls: true,
-      hlsFlags: '[hls_time=2:hls_list_size=3:hls_flags=delete_segments]',
-      dash: true,
-      dashFlags: '[f=dash:window_size=3:extra_window_size=5]'
+    'tasks': [
+    // {
+    //   app: 'live',
+    //   // ac: 'aac',
+    //   hls: true,
+    //   hlsFlags: '[hls_time=2:hls_list_size=3:hls_flags=delete_segments]',
+    //   dash: true,
+    //   dashFlags: '[f=dash:window_size=3:extra_window_size=5]'
+    // },
+    {
+      'app': 'live',
+      // 'ac': 'aac',
+      'ac': 'copy',
+      'mp4': true,
+      'mp4Flags': '[movflags=faststart]',
     }
     ]
-    // 'tasks': [
-    //   {
-    //     'app': 'live',
-    //     'ac': 'aac',
-    //     'mp4': true,
-    //     'mp4Flags': '[movflags=faststart]',
-    //   }
-    // ]
   }
 
 
 var nms = new NodeMediaServer(serverOptions);
 nms.run();
+
+nms.on('postPublish', (id, StreamPath, args) => {
+  logger.log('[NodeEvent on postPublish]', `id=${id} StreamPath=${StreamPath} args=${JSON.stringify(args)}`);
+  logger.log('Updating Status %s -> %s', config.status, 'Live');
+  config.status = 'Live';
+  if (config.Twitter_tweeting_on_live) {
+    logger.debug('Tweeting On Live...');
+    var Twitter = require('../modules/twitter');
+    Twitter.tweetLive(function (err) {
+      if (err) logger.warn(err);
+      logger.debug('Tweeted Live Status');
+    });
+  }
+});
+
+nms.on('donePublish', (id, StreamPath, args) => {
+  logger.log('[NodeEvent on donePublish]', `id=${id} StreamPath=${StreamPath} args=${JSON.stringify(args)}`);
+  logger.log('Updating Status %s -> %s', config.status, 'Not Live');
+  config.status = 'Not Live';
+  if (config.archive_on_publish)
+    setTimeout(function () {
+      require('../models/video').processPublished(function (err) {
+        if (err) logger.warn(err);
+      });
+    }, config.archive_delay);
+});
 
 // nms.on('preConnect', (id, args) => {
   // console.log('[NodeEvent on preConnect]', `id=${id} args=${JSON.stringify(args)}`);
@@ -80,18 +107,6 @@ nms.run();
 //   // let session = nms.getSession(id);
 //   // session.reject();
 // });
-
-nms.on('postPublish', (id, StreamPath, args) => {
-  logger.log('[NodeEvent on postPublish]', `id=${id} StreamPath=${StreamPath} args=${JSON.stringify(args)}`);
-  logger.log('Updating Status %s -> %s', config.status, 'Live');
-  config.status = 'Live';
-});
-
-nms.on('donePublish', (id, StreamPath, args) => {
-  logger.log('[NodeEvent on donePublish]', `id=${id} StreamPath=${StreamPath} args=${JSON.stringify(args)}`);
-  logger.log('Updating Status %s -> %s', config.status, 'Not Live');
-  config.status = 'Not Live';
-});
 
 // nms.on('prePlay', (id, StreamPath, args) => {
 //   console.log('[NodeEvent on prePlay]', `id=${id} StreamPath=${StreamPath} args=${JSON.stringify(args)}`);

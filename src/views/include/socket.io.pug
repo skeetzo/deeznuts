@@ -1,0 +1,37 @@
+if (user)
+  script(src='/dist/socket.io/socket.io.js')
+  script.
+    $(function () {
+      var socket = io();
+
+      socket.on('connect', function() {
+        socket.emit('connecting', "#{user._id}");
+        if (window.location.pathname.indexOf('/live')>-1)
+          socket.emit('start', "#{user._id}");
+        else 
+          socket.emit('stop', "#{user._id}");
+      });
+
+      socket.on('time', function(data) {
+        var seconds = parseInt(data.time),
+            time = toTime(data.time_added);
+        $("#time").text(toTime(seconds));
+        $("#timeseconds").text(seconds);
+        if (time)
+          alert('Time added! Added: '+(time.substring(0,time.indexOf('.'))));
+      });
+
+      socket.on('video', function(data) {
+        alert('Video purchased! Enjoy!');
+        location.reload();
+      });
+
+      socket.on('live', function(status) {
+        updateStatus(status);
+      });
+
+      socket.on('disconnect', function() {
+        socket.emit('end', "#{user._id}");
+      });
+
+    })

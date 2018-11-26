@@ -4,19 +4,15 @@ prepend content
   // this is a square of video
   .row
     .col-xs-12
-      video#preview(controls, autoplay, poster='/images/preview.jpg', width=500)
+      video#live(controls, autoplay, poster='/images/preview.jpg', width=500)
 
-  include ../include/crypto-live
+  include ../include/bitcoin
 
-  include ../include/time
+  prepend javascript
 
-  append javascript
+    include ../include/flv
 
-    script(src="//cdn.dashjs.org/latest/dash.all.min.js")
-
-    video(data-dashjs-player autoplay src="https://alexdeeznuts.com:8080/live/stream.mpd" controls)
-    
-
+    //- live viewing countdown
     script.
       $(document).ready(function () {
         //- updates time if live

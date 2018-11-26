@@ -22,9 +22,18 @@ module.exports.hasPaid = function(req, res, next) {
     }
 }
 
+module.exports.hasRoom = function(req, res, next) {
+    // return next(null);
+    // disabled
+    var isRoom = require('../modules/socket.io').isRoom();
+    if (isRoom) return next(null);
+    req.session.locals.error = 'There\'s not enough room for you!';
+    res.status(400).render('index', req.session.locals);
+}
+
 // Check Login
 module.exports.loggedIn = function(req, res, next) {
-    if (req.session.user&&req.session.locals.loggedIn)
+    if (req.session.user)
         next(null);
     else {
         req.session.locals.error = 'Please login!';
@@ -32,8 +41,8 @@ module.exports.loggedIn = function(req, res, next) {
     }
 }
 
-module.exports.loggedInAlexD = function(req, res, next) {
-    User.findOne({'_id':req.session.user._id,'username':config.alexd.username}, function (err, user) {
+module.exports.loggedInDeezNuts = function(req, res, next) {
+    User.findOne({'_id':req.session.user._id,'username':config.deeznutsUser.username}, function (err, user) {
         if (err) {
             logger.warn(err);
             req.session.locals.error = 'Ha!';
@@ -83,7 +92,7 @@ module.exports.resetLocals = function(req, res, next) {
         req.session.locals._csrf = req.csrfToken();
 
     // rtmp key
-    if (!req.session.locals.key&&!config.debugging) {
+    if (!req.session.locals.key) {
         var timestamp = (Date.now() + config.streamKeyExpire);
         var hash = md5("/live/stream-"+timestamp+"-"+config.streamKey);
         req.session.locals.key = timestamp+"-"+hash;
@@ -126,19 +135,40 @@ var User_ = function(src) {
 module.exports.User = User_;
 
 var Video_ = function(src) {
+  if (!src.path) src.path = '';
+  if (!src.path_image) src.path_image = '';
+  var path_ = path.relative(__dirname, src.path);
+  var path_image = path.relative(__dirname, src.path_image);
   return {
     '_id': src._id,
-    'address': src.address,
-    'address_qr': src.address_qr,
     'title': src.title,
+    'date': src.date,
     'performers': src.performers,
     'description': src.description,
-    'isPaid': src.isPaid,
-    // 'isPaid': true,
+    'path': path_ || '',
+    'path_image': path_image || '',
     'price': src.price
   };
 }
 module.exports.Video = Video_;
+
+var Video_Preview = function(src) {
+  if (!src.path_preview) src.path_preview = '';
+  if (!src.path_image) src.path_image = '';
+  var path_ = path.relative(__dirname, src.path_preview);
+  var path_image = path.relative(__dirname, src.path_image);
+  return {
+    '_id': src._id,
+    'title': src.title,
+    'date': src.date,
+    'performers': src.performers,
+    'description': src.description,
+    'path': path_ || '',
+    'path_image': path_image || '',
+    'price': src.price
+  };
+}
+module.exports.Video_Preview = Video_Preview;
 
 var Videos_ = function(src) {
   var videos = [];
@@ -147,3 +177,11 @@ var Videos_ = function(src) {
   return videos;
 }
 module.exports.Videos = Videos_;
+
+var Video_Previews = function(src) {
+  var videos = [];
+  for (var i=0;i<src.length;i++)
+    videos.push(Video_Preview(src[i]));
+  return videos;
+}
+module.exports.Video_Previews = Video_Previews;
