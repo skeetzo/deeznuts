@@ -13,7 +13,7 @@ prepend content
         .col-xs-4
           h3.videoTitle=video.title
           //- h4.videoDate #{video.date}
-          h4.videoPrice=video.price+" HH:MM:SS"
+          h4.videoPrice=video.price
           video(controls, poster=video.path_image, type="video/mp4", width=250, src=video.path)
           .row
             a.btn.btn-primary.download(href=video.path, download, id=video._id) Download
@@ -33,7 +33,7 @@ prepend content
         .col-xs-4
           h3.videoTitle=video.title
           //- h4.videoDate #{video.date}
-          h4.videoPrice=video.price+" HH:MM:SS"
+          h4.videoPrice=video.price
           video(controls, poster=video.path_image, type="video/mp4", width=250, src=video.path)
           .row
             button.btn.btn-primary(onclick="buy(\'"+video.title+"\')") Buy
