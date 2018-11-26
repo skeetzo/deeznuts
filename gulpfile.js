@@ -6,7 +6,7 @@ var concat = require('gulp-concat');
 var sourcemaps = require('gulp-sourcemaps');
 
 gulp.task('socket.io', function() {
-  gulp.src('node_modules/socket.io-client/dist/socket.io.js')
+  gulp.src('node_modules/socket.io-client/dist/**.*')
     .pipe(gulp.dest('src/public/dist/socket.io'));
   return;
 });
