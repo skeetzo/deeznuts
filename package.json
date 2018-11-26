@@ -8,16 +8,7 @@
   "scripts": {
     "postinstall": "gulp",
     "install": "npm install --save",
-    "start": "node src/bin/www",
-    "clean": "./setup/scripts/clean",
-    "prebuild:dev": "npm run clean",
-    "build:dev": "",
-    "prebuild:prod": "npm run clean",
-    "build:prod": "",
-    "postbuild:prod": "",
-    "postversion": "git push && git push --tags",
-    "prezip": "npm run build:prod",
-    "zip": "cd setup && zip ../build.zip ../src"
+    "start": "node src/bin/www"
   },
   "engines": {
     "node": "9.4.0"
