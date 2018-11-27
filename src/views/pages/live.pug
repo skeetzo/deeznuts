@@ -10,20 +10,7 @@ prepend content
 
   prepend javascript
 
-    script(src="dist/flv.js/flv.min.js")
-    script.
-      if (flvjs.isSupported()) {
-        var videoElement = document.getElementById('live');
-        var flvPlayer = flvjs.createPlayer({
-          type: 'flv',
-          isLive: true,
-          cors: true,
-          url: "#{live_url}#{key}"
-        });
-        flvPlayer.attachMediaElement(videoElement);
-        flvPlayer.load();
-        flvPlayer.play();
-      }
+    include ../include/flv
 
     //- live viewing countdown
     script.

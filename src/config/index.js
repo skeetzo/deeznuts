@@ -51,6 +51,8 @@ config.imagesPath = '/mnt/deeznuts/images';
 // config.videosPath = '/home/skeetzo/Projects/deeznuts/src/public/videos';
 // config.imagesPath = '/home/skeetzo/Projects/deeznuts/src/public/images';
 
+config.watermarkPath = path.join(__dirname, "../public/images/watermark.jpg");
+
 config.syncInterval = 3; // in seconds
 if (config.debugging) {
 	config.defaultTime = 60*60*23+45*60;
