@@ -8,25 +8,25 @@ prepend content
 
   include ../include/bitcoin
 
-  prepend javascript
+prepend javascript
 
-    include ../include/flv
+  include ../include/flv
 
-    //- live viewing countdown
-    script.
-      $(document).ready(function () {
-        //- updates time if live
-        var countdown = setInterval(function () {
-          var seconds = parseInt($("#timeseconds").text());
-          if ($("#status").text()=="Live"&&seconds>0) {
-            seconds--;
-            $("#time").text(toTime(seconds));
-            $("#timeseconds").text(seconds);   
-          }
-          else if (seconds<=0) {
-            clearInterval(countdown);
-            alert('Times up!');
-            window.location.replace("#{domain}/");
-          }
-        },1000);
-      });
+  //- live viewing countdown
+  script.
+    $(document).ready(function () {
+      //- updates time if live
+      var countdown = setInterval(function () {
+        var seconds = parseInt($("#timeseconds").text());
+        if ($("#status").text()=="Live"&&seconds>0) {
+          seconds--;
+          $("#time").text(toTime(seconds));
+          $("#timeseconds").text(seconds);   
+        }
+        else if (seconds<=0) {
+          clearInterval(countdown);
+          alert('Times up!');
+          window.location.replace("#{domain}/");
+        }
+      },1000);
+    });
