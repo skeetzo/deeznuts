@@ -155,10 +155,8 @@ module.exports.Video = Video;
 var Video_Preview = function(src) {
   if (!src.path_preview) src.path_preview = '';
   if (!src.path_image) src.path_image = '';
-  logger.log('path: %s', src.path_preview);
   var path_ = path.relative(__dirname, src.path_preview).replace(/.*public\//gi, '../');
   var path_image = path.relative(__dirname, src.path_image).replace(/.*public\//gi, '../');
-  logger.log('path: %s', src.path_);
   return {
     '_id': src._id,
     'title': src.title,

@@ -263,8 +263,8 @@ videoSchema.methods.extract = function(callback, retryReason) {
   logger.log('Extracting: %s', this.title);
   logger.debug('path: %s', this.path);
   var duration = Math.round(this.duration);
-  if (duration>config.defaultPreviewDuration) duration = config.defaultPreviewDuration;
-  logger.debug('Duration: %s', duration);
+  if (duration>config.defaultPreviewDuration) duration = parseInt(config.defaultPreviewDuration, 10);
+  logger.debug('Duration: %s:%s', duration, this.duration);
   var newTitle = path.basename(this.path.toLowerCase().replace('.mp4','-preview.mp4'));
   var newFile = path.join(__dirname, '../public/videos/previews', newTitle);
   logger.debug('New File: %s', newFile);
@@ -355,7 +355,7 @@ videoSchema.methods.thumbnail = function(callback) {
 
 videoSchema.methods.watermark = function(callback) {
   var self = this;
-  logger.log('Watermarking: %s', self.title);
+  logger.log('Watermarking: %s', self.path);
   if (!self.path_preview) return callback('Error Watermarking Video: Missing Preview Path');
   var conversion_process = new FFmpeg({ 'source': self.path_preview, 'timeout': 0 })
   // .inputOptions('-probesize 100')
