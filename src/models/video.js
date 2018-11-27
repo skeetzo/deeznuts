@@ -134,6 +134,8 @@ videoSchema.statics.archiveVideos = function(callback) {
               logger.debug('file_path: %s', file_path);
               logger.debug('file_path_archived: %s', file_path_archived);
               fss.moveSync(file_path, file_path_archived);
+              file_path_archived = file_path_archived.replace(/.*public\//gi, '');
+              logger.debug('file_path_archived: %s', file_path_archived);
               var title = mp4s[i].replace('.mp4','').substring(0,10);
               var time = mp4s[i].replace('.mp4','').substring(11);
               var month = moment(new Date(title)).month()+1;
@@ -241,6 +243,8 @@ videoSchema.methods.createPreview = function(callback) {
     },
     function (file, step) {
       self.hasPreview = true;
+      file = file.replace(/.*public\//gi, '');
+      logger.log('w_path: %s', file);
       self.path_preview = file;
       step(null);
     },
@@ -362,7 +366,7 @@ videoSchema.methods.watermark = function(callback) {
   // .inputOptions('-analyzeduration 10000000')
   .format('mp4')
   .videoCodec('libx264')
-  .input(path.join(__dirname, "../public/images/watermark.png"))
+  .input(config.watermarkPath)
   .complexFilter([
     {
       'filter': 'scale',

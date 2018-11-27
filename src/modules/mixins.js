@@ -137,8 +137,8 @@ module.exports.User = User_;
 var Video_ = function(src) {
   if (!src.path) src.path = '';
   if (!src.path_image) src.path_image = '';
-  var path_ = path.relative(__dirname, src.path).replace('/public/','');
-  var path_image = path.relative(__dirname, src.path_image).replace('/public/','');
+  var path_ = path.relative(__dirname, src.path);
+  var path_image = path.relative(__dirname, src.path_image);
   return {
     '_id': src._id,
     'title': src.title,
