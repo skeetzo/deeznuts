@@ -158,7 +158,7 @@ var Video_Preview = function(src) {
   var path_ = path.relative(__dirname, src.path_preview);
   var path_image = path.relative(__dirname, src.path_image);
   logger.log('path_preview: %s', src.path_preview);
-  logger.log('path_: %s', src.path_);
+  logger.log('path_: %s', path_);
   return {
     '_id': src._id,
     'title': src.title,
