@@ -38,7 +38,7 @@ config.conversionRate = 6; // $1 per 6 minutes
 config.createPreviews = true;
 config.defaultPrice = 5; // in dollars
 config.defaultTime = 60; // time in seconds
-config.defaultPreviewDuration = 10;
+config.defaultPreviewDuration = 30;
 config.defaultVideo = {
 	'title': 'Example',
 	'performers': ['Myself','Your Mom'],
