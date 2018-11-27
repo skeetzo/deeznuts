@@ -134,7 +134,7 @@ videoSchema.statics.archiveVideos = function(callback) {
               logger.debug('file_path: %s', file_path);
               logger.debug('file_path_archived: %s', file_path_archived);
               fss.moveSync(file_path, file_path_archived);
-              file_path_archived = file_path_archived.replace(/.*public\//gi, '');
+              file_path_archived = file_path_archived.replace(/.*public\//gi, '../');
               logger.debug('file_path_archived: %s', file_path_archived);
               var title = mp4s[i].replace('.mp4','').substring(0,10);
               var time = mp4s[i].replace('.mp4','').substring(11);
@@ -243,7 +243,7 @@ videoSchema.methods.createPreview = function(callback) {
     },
     function (file, step) {
       self.hasPreview = true;
-      file = file.replace(/.*public\//gi, '');
+      file = file.replace(/.*public\//gi, '../');
       logger.log('w_path: %s', file);
       self.path_preview = file;
       step(null);
