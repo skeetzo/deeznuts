@@ -13,7 +13,7 @@ var appSchema = new Schema({
   // - Drive & Sheet access
   google: {
     access_token: { type: String },
-    refresh_token: { type: String },
+    refresh_token: { type: String }
   },
 }, {'usePushEach': true});
 

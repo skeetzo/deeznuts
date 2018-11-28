@@ -12,14 +12,10 @@ module.exports = function googleRoutes(router) {
   router.get('/google/authorize', mixins.loggedInDeezNuts, function (req, res) {
     var App = require('../models/app');
     App.findOne({},function (err, app) {
-      if (err) {
+      if (err||!app) {
         logger.warn(err);
         req.flash('error','Error!');
         return res.redirect('/');
-      }
-      if (!app) {
-        app = new App();
-        app.save();
       }
       logger.log('authorizing Google');
       var Google_url = oauth2Client.generateAuthUrl({
@@ -41,7 +37,7 @@ module.exports = function googleRoutes(router) {
   router.get('/google/callback', function (req, res, next) {
     var App = require('../models/app');
     App.findOne({},function (err, app) {
-      if (err) {
+      if (err||!app) {
         logger.warn(err);
         req.flash('error','Error!');
         return res.redirect('/');
@@ -54,7 +50,6 @@ module.exports = function googleRoutes(router) {
           return res.redirect('/');
         }
         logger.debug('tokens: %s',JSON.stringify(tokens,null,4));
-        if (!app) app = new App();
         app.google.access_token = tokens.access_token;
         app.google.refresh_token = tokens.refresh_token;
         logger.log('authorized Google');
