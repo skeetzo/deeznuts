@@ -27,6 +27,24 @@ app.set('port', port);
 // Startup
 async.series([
   function (step) {
+    var App = require('../models/app');
+    App.findOne({}, function (err, app) {
+      if (err) logger.warn(err);
+      if (!app) {
+          logger.log('Creating new App- update google tokens');
+          app = new App();
+      }
+      else {
+          app.bootCount++;
+          logger.log('App loaded: %s', app.bootCount);
+      }
+      app.save(function (err) {
+          if (err) logger.warn(err);
+          step(null);
+      });
+    });
+  },
+  function (step) {
     if (!config.debugging) return step(null);
     require('../dev/debug').debug(function (err) {
       if (err) logger.warn(err);
