@@ -15,7 +15,6 @@ module.exports = function homeRoutes(router) {
       Video.find({'hasPreview':true,'_id':{'$nin':req.session.user.videos}}, function (err, videos_unowned) {
         if (err) logger.warn(err);
         // logger.debug('videos_unowned: %s', videos_unowned.length);
-        // req.session.locals.videos = mixins.Videos(videos_all);
         req.session.locals.videos_unowned = mixins.Video_Previews(videos_unowned);
         if (videos.length==0&&videos_unowned.length>0) req.session.locals.message = 'Purchase a video below!';
         res.render('videos', req.session.locals);

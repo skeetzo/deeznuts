@@ -1,5 +1,6 @@
 // Config file
 var config = {};
+var path = require('path');
 
 // Debugging
 if (!process.env.NODE_ENV) process.env.NODE_ENV = "development";
@@ -43,13 +44,15 @@ config.defaultVideo = {
 	'performers': ['Myself','Your Mom'],
 	'isOriginal': true,
 	'duration': 247,
-	'path': require('path').join(__dirname,'../public/videos/preview.mp4')
+	'path': path.join(__dirname,'../public/videos/preview.mp4')
 };
 config.videosPath = '/mnt/deeznuts/videos';
 config.imagesPath = '/mnt/deeznuts/images';
 
 // config.videosPath = '/home/skeetzo/Projects/deeznuts/src/public/videos';
 // config.imagesPath = '/home/skeetzo/Projects/deeznuts/src/public/images';
+
+config.watermarkPath = path.join(__dirname, "../public/images/watermark.png");
 
 config.syncInterval = 3; // in seconds
 if (config.debugging) {

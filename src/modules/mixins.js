@@ -134,11 +134,11 @@ var User_ = function(src) {
 }
 module.exports.User = User_;
 
-var Video_ = function(src) {
+var Video = function(src) {
   if (!src.path) src.path = '';
   if (!src.path_image) src.path_image = '';
-  var path_ = path.relative(__dirname, src.path);
-  var path_image = path.relative(__dirname, src.path_image);
+  var path_ = path.relative(__dirname, src.path).replace(/.*public\//gi, '../');
+  var path_image = path.relative(__dirname, src.path_image).replace(/.*public\//gi, '../');
   return {
     '_id': src._id,
     'title': src.title,
@@ -150,13 +150,13 @@ var Video_ = function(src) {
     'price': src.price
   };
 }
-module.exports.Video = Video_;
+module.exports.Video = Video;
 
 var Video_Preview = function(src) {
   if (!src.path_preview) src.path_preview = '';
   if (!src.path_image) src.path_image = '';
-  var path_ = path.relative(__dirname, src.path_preview);
-  var path_image = path.relative(__dirname, src.path_image);
+  var path_ = path.relative(__dirname, src.path_preview).replace(/.*public\//gi, '../');
+  var path_image = path.relative(__dirname, src.path_image).replace(/.*public\//gi, '../');
   return {
     '_id': src._id,
     'title': src.title,
@@ -170,13 +170,13 @@ var Video_Preview = function(src) {
 }
 module.exports.Video_Preview = Video_Preview;
 
-var Videos_ = function(src) {
+var Videos = function(src) {
   var videos = [];
   for (var i=0;i<src.length;i++)
-    videos.push(Video_(src[i]));
+    videos.push(Video(src[i]));
   return videos;
 }
-module.exports.Videos = Videos_;
+module.exports.Videos = Videos;
 
 var Video_Previews = function(src) {
   var videos = [];

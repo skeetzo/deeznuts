@@ -1,5 +1,5 @@
 if (user)
-  script(src='/dist/socket.io/socket.io.js')
+  script(type="text/javascript", src='/socket.io/socket.io.js')
   script.
     $(function () {
       var socket = io();
@@ -34,4 +34,18 @@ if (user)
         socket.emit('end', "#{user._id}");
       });
 
+      function updateStatus(status) {
+        var status_ = $("#status").text();
+        //- console.log('status: %s -> %s', status_, status);
+        $("#status").text(status);
+        if (status_=="Not Live"&&status=="Live")
+          alert('I\'ve gone live!');
+        else if (status_=="Live"&&status=="Not Live") {
+          alert('I\'ve gone offline!');
+          window.location.replace("#{domain}/");
+          socket.emit('stop', "#{user._id}");
+        }
+      }
+
     })
+
