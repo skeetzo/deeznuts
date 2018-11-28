@@ -117,6 +117,19 @@ if (config.ssl)
   });
 
 // /
+var mixins = require('./modules/mixins');
+app.use(mixins.resetLocals, mixins.syncUser, function (req, res, next) {
+  var ips = req.ips || [];
+  ips.push(req.connection.remoteAddress);
+  if (req.headers['x-forwarded-for'])
+    ips.push(req.headers['x-forwarded-for']);
+  logger.log("%s /%s %s", ips, req.method, req.url);
+  // misc pages redirect
+  if (_.contains(config.pages, req.url.replace('/','')))
+    return res.render(req.url.replace('/',''), req.session.locals);
+  next(null);
+});
+
 var router = express.Router();
 require('./routes/index')(router);
 app.use("/", router);
