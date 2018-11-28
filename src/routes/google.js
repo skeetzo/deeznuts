@@ -55,8 +55,8 @@ module.exports = function googleRoutes(router) {
         }
         logger.debug('tokens: %s',JSON.stringify(tokens,null,4));
         if (!app) app = new App();
-        app.access_token = tokens.access_token;
-        app.refresh_token = tokens.refresh_token;
+        app.google.access_token = tokens.access_token;
+        app.google.refresh_token = tokens.refresh_token;
         logger.log('authorized Google');
         req.flash('message','Authorized!');
         app.save(function(err) {
