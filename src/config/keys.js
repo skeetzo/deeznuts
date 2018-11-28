@@ -29,7 +29,6 @@ module.exports = function() {
         "email": this.Google_service_email,
         "key": this.Google_key,
         "client_email": this.Google_service_email,
-        "client_id": this.Google_client_id,
         "private_key": this.Google_key
     };
     this.Google_scopes = [
@@ -41,8 +40,8 @@ module.exports = function() {
     console.log('redirect: %s', this.Google_redirect);
 
     // Google Drive
-    // this.Google_client_id = localConfig.Google_id;
-    // this.Google_client_secret = localConfig.Google_secret;
+    this.Google_client_id = localConfig.Google_id;
+    this.Google_client_secret = localConfig.Google_secret;
 
     // Google Gmail
     this.gmail_user = localConfig.gmail_user || process.env.google_email;

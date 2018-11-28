@@ -163,7 +163,7 @@ function deploy(environment) {
 }
 
 config.local_keys_path = './src/dev/localConfig.json';
-config.local_google_keys_path = './src/dev/google_client.json';
+config.local_google_keys_path = './src/dev/google.json';
 config.logs_backupDir = './src/dev/logs/backup';
 config.logs_file = './src/dev/logs/file.log';
 
