@@ -60,13 +60,14 @@ var csrf = require('csurf');
 app.use(csrf({cookie: true}));
 
 app.enable('trust proxy');
+app.set('trust proxy', 1) // trust first proxy
 
 var MongoStore = require('./modules/mongo');
 var session = require('express-session');
 
 var maxAge = 1 * 12 * 60 * 60 * 1000; // half a day
 maxAge = 1 * 2 * 60 * 60 * 1000; // 2 hours
-if (config.debugging) maxAge = 5 * 60 * 1000; // five minutes
+if (config.debugging) maxAge = 10 * 60 * 1000; // five minutes
 
 var sess = {
   name: "deek",
@@ -85,10 +86,9 @@ var sess = {
   store:  MongoStore,
   proxy: true,
 };
-if (!config.debugging) {
-  app.set('trust proxy', 1) // trust first proxy
+if (config.ssl) 
   sess.cookie.secure = true // serve secure cookies
-}
+
 app.use(session(sess));
 
 // Analytics - Google

@@ -33,7 +33,7 @@ module.exports = function googleRoutes(router) {
   });
 
   // Google Authorize redirect
-  router.get('/google/callback', mixins.loggedInDeezNuts, function (req, res, next) {
+  router.get('/google/callback', function (req, res, next) {
     require('../models/app').findOne({},function (err, app) {
       if (err) {
         logger.warn(err);
