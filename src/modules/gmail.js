@@ -23,8 +23,8 @@ function authorize(callback) {
   App.findOne({},function (err, app) {
     if (err) return callback(err);
     if (!app) return callback('Missing app!');
-    if (!app.google.access_token&&app.google.refresh_token) return refreshAccess(callback);
-    if (!app.google.access_token&&!app.google.refresh_token) return callback('Missing Google Tokens: Please Login');
+    if (app.google&&!app.google.access_token&&app.google.refresh_token) return refreshAccess(callback);
+    if (app.google&&!app.google.access_token&&!app.google.refresh_token) return callback('Missing Google Tokens: Please Login');
     oauth2Client.setCredentials({
       'access_token': app.google.access_token,
       'refresh_token': app.google.refresh_token
@@ -49,7 +49,7 @@ function refreshAccess(callback) {
   // logger.log('refreshing Google - Gmail');
   App.findOne({},function (err, app) {
     if (err) return callback(err);
-    if (!app.google.access_token&&!app.google.refresh_token) return callback('Missing Google Tokens: Please Login');
+    if (app.google&&!app.google.access_token&&!app.google.refresh_token) return callback('Missing Google Tokens: Please Login');
     oauth2Client.refreshAccessToken(function (err, tokens) {
       if (err) return callback(err);
       logger.debug('google tokens: %s',JSON.stringify(tokens,null,4));
