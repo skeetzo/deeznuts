@@ -24,10 +24,12 @@ module.exports = function() {
     // Google
     this.Google_service_email = localGoogle.client_email || process.env.google_client_email;
     this.Google_key = localGoogle.private_key || process.env.google_private_key;
+    this.Google_client_id = localGoogle.client_id || process.env.google_client_id;
     this.Google_Oauth_Opts = {
         "email": this.Google_service_email,
         "key": this.Google_key,
         "client_email": this.Google_service_email,
+        "client_id": this.Google_client_id,
         "private_key": this.Google_key
     };
     this.Google_scopes = [
