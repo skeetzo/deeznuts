@@ -46,7 +46,7 @@ async.series([
   },
   function (step) {
     if (!config.debugging) return step(null);
-    require('../dev/debug').debug(function (err) {
+    require('../modules/debug').debug(function (err) {
       if (err) logger.warn(err);
       step(null);
     });
