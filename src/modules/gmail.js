@@ -101,7 +101,8 @@ function sendEmail(email, callback) {
       });
     },
   ],function (err) {
-    if (err) logger.warn(err.message);
+    if (err&&err.message) logger.warn(err.message);
+    else if (err) logger.warn(err);
     callback('Email Systems Down!');
   });
 }

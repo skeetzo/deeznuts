@@ -1,10 +1,10 @@
 {
   "name": "deeznuts",
   "description": "Performers' Live Streaming w/ Blockchain",
-  "version": "1.0.2",
+  "version": "1.0.0",
   "private": true,
   "author": "Skeetzo",
-  "main": "src/app.js",
+  "main": "src/bin/www",
   "scripts": {
     "postinstall": "gulp",
     "start": "node src/bin/www"
