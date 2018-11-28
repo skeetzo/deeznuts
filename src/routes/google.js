@@ -24,7 +24,7 @@ module.exports = function googleRoutes(router) {
         scope: config.Google_scopes,
         // Optional property that passes state parameters to redirect URI
         // state: { foo: 'bar' }
-        // login_hint: config.gmail_app,
+        login_hint: config.gmail_user,
         prompt: 'consent',
         // approval_prompt: "force",
       });

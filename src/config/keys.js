@@ -38,6 +38,7 @@ module.exports = function() {
         'https://www.googleapis.com/auth/userinfo.email',
         ];
     this.Google_redirect = this.domain+'/google/callback';
+    console.log('redirect: %s', this.Google_redirect);
 
     // Google Drive
     // this.Google_client_id = localConfig.Google_id;
