@@ -270,8 +270,8 @@ videoSchema.methods.extract = function(callback, retryReason) {
   logger.debug('New File: %s', newFile);
   logger.debug('New Title: %s', newTitle);
   var outputOptions = [];
-  // if (retryReason&&retryReason=='muxing')
-  outputOptions.push('-max_muxing_queue_size 99999');
+  if (retryReason&&retryReason=='muxing')
+    outputOptions.push('-max_muxing_queue_size 99999');
   if (retryReason&&retryReason=='filters') {
     outputOptions.push('-pix_fmt yuv420p');
     outputOptions.push('-flags +global_header');
