@@ -51,21 +51,6 @@ module.exports = function googleRoutes(router) {
         app.access_token = tokens.access_token;
         app.refresh_token = tokens.refresh_token;
 
-        // config.oauth2Client.setCredentials({
-        //   'access_token': app.google.access_token,
-        //   'refresh_token': app.google.refresh_token
-        // });
-
-        // config.Google_Drive = google.drive({
-        //   version: 'v3',
-        //   auth: config.oauth2Client
-        // });
-
-        // config.Gmail = google.gmail({
-        //   version: 'v1',
-        //   auth: config.oauth2Client
-        // });
-
         logger.log('authorized Google');
         req.flash('message','Authorized!');
         app.save(function(err) {

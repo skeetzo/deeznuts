@@ -42,6 +42,10 @@ module.exports.loggedIn = function(req, res, next) {
 }
 
 module.exports.loggedInDeezNuts = function(req, res, next) {
+    if (!req.session.user) {
+        req.session.locals.error = 'Please login!';
+        return res.status(401).render('index', req.session.locals);
+    }
     User.findOne({'_id':req.session.user._id,'username':config.deeznutsUser.username}, function (err, user) {
         if (err) {
             logger.warn(err);
