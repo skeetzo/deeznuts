@@ -4,14 +4,14 @@ src/public/videos/archived/*.mp4
 src/public/videos/previews/*.mp4
 src/public/images/thumbnails/*.png
 
+src/dev/
+
 # Logs
 #logs
 #*.log
 #npm-debug.log*
 #yarn-debug.log*
 #yarn-error.log*
-
-node_modules/
 
 # Runtime data
 pids
