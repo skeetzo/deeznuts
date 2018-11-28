@@ -16,6 +16,10 @@ module.exports = function googleRoutes(router) {
         req.flash('error','Error!');
         return res.redirect('/');
       }
+      if (!app) {
+        app = new App();
+        app.save();
+      }
       logger.log('authorizing Google');
       var Google_url = oauth2Client.generateAuthUrl({
         // 'online' (default) or 'offline' (gets refresh_token)
