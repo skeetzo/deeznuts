@@ -10,7 +10,8 @@ var OAuth2 = google.auth.OAuth2,
 module.exports = function googleRoutes(router) {
   // Google Drive Authorize
   router.get('/google/authorize', mixins.loggedInDeezNuts, function (req, res) {
-    require('../models/app').findOne({},function (err, app) {
+    var App = require('../models/app');
+    App.findOne({},function (err, app) {
       if (err) {
         logger.warn(err);
         req.flash('error','Error!');
