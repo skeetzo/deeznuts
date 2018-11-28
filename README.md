@@ -4,7 +4,7 @@ Performers' Live Streaming & Video Archive System
 Available at [alexdeeznuts.com](https://alexdeeznuts.com)
 
 ## Description
-DeezNuts is a Nodejs streaming solution designed for usage with a GoPro Hero 4.
+DeezNuts is a Nodejs streaming solution designed for usage with a GoPro Hero 4 and a Raspberry Pi 3.
 
 #### Howdafuck
 A GoPro Hero 4 operates by generating its own WiFi for devices such as a phone to connect to. As conveniently hacked by [this repo](link) the Hero 4 requires some fancy signaling before being able to conveniently stream the feed from its camera over the WiFi. Modifying the code provided by the (repo) project allows the GoPro to stream directly to the Pi or any other connected device.

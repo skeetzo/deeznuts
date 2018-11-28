@@ -24,7 +24,7 @@ module.exports = function googleRoutes(router) {
         scope: config.Google_scopes,
         // Optional property that passes state parameters to redirect URI
         // state: { foo: 'bar' }
-        login_hint: config.gmail_app,
+        // login_hint: config.gmail_app,
         prompt: 'consent',
         // approval_prompt: "force",
       });
@@ -33,7 +33,7 @@ module.exports = function googleRoutes(router) {
   });
 
   // Google Authorize redirect
-  router.get('/google/callback', function (req, res, next) {
+  router.get('/google/callback', mixins.loggedInDeezNuts, function (req, res, next) {
     require('../models/app').findOne({},function (err, app) {
       if (err) {
         logger.warn(err);
