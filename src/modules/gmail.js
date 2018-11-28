@@ -1,7 +1,7 @@
 var config = require('../config/index'),
     logger = config.logger,
     base64url = require('base64url'),
-    App = require('../models/user'),
+    App = require('../models/app'),
     async = require('async');
 
 var authenticated = false; // 6 hour expiration

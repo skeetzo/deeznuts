@@ -112,10 +112,10 @@ config.debugging_blockchain = true;
 config.debugging_blockchain_hash = "696969";
 config.debugging_blockchain_address = "yourmomshouse";
 
-config.debugging_reset_db = false;
-config.debugging_reset_files = false;
-config.debugging_reset_logs = false;
-config.debugging_backup_db = false;
+config.debugging_reset_db = true;
+config.debugging_reset_files = true;
+config.debugging_reset_logs = true;
+config.debugging_backup_db = true;
 
 config.debugging_live = false;
 config.debugging_address = false;
