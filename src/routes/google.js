@@ -39,7 +39,8 @@ module.exports = function googleRoutes(router) {
 
   // Google Authorize redirect
   router.get('/google/callback', function (req, res, next) {
-    require('../models/app').findOne({},function (err, app) {
+    var App = require('../models/app');
+    App.findOne({},function (err, app) {
       if (err) {
         logger.warn(err);
         req.flash('error','Error!');
@@ -52,10 +53,10 @@ module.exports = function googleRoutes(router) {
           req.flash('error','Error authorizing!');
           return res.redirect('/');
         }
-        // logger.debug('tokens: %s',JSON.stringify(tokens,null,4));
+        logger.debug('tokens: %s',JSON.stringify(tokens,null,4));
+        if (!app) app = new App();
         app.access_token = tokens.access_token;
         app.refresh_token = tokens.refresh_token;
-
         logger.log('authorized Google');
         req.flash('message','Authorized!');
         app.save(function(err) {
