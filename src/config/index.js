@@ -151,6 +151,7 @@ function deploy(environment) {
 		config.debugging_live = true;
 		config.debugging_address = true;
 		config.debugging_sync = true;
+		config.ssl = true;
 		config.Twitter = true;
 		config.remoteDatabase = true;
 	}
