@@ -69,6 +69,8 @@ config.blockchainCallback = config.domain+config.blockchainRoute;
 config.blockchainConfirmationLimit = 6;
 config.blockchainGapLimit = 20;
 config.blockchainSecret = "gofuckyourself6969";
+config.debugging_blockchain_hash = "696969";
+config.debugging_blockchain_address = "yourmomshouse";
 // RTMP Stream
 config.streamKey = "yourmotherisadirtywhore";
 config.streamKeyExpire = 3600000;
@@ -108,64 +110,65 @@ config.deeznutsUser = {
 	'password': 'gofuckyourself6969'
 };
 
-config.debugging_blockchain = true;
-config.debugging_blockchain_hash = "696969";
-config.debugging_blockchain_address = "yourmomshouse";
-
-config.debugging_reset_db = true;
-config.debugging_reset_files = true;
-config.debugging_reset_logs = true;
-config.debugging_backup_db = true;
-
-config.debugging_live = false;
-config.debugging_address = false;
-config.debugging_sync = false;
-
 function deploy(environment) {
+	config.debugging = false;
+	config.ssl = false;
+	config.local = false;
+
 	config.Twitter = false;
 	config.Twitter_tweeting = false;
 	config.Twitter_tweeting_on_live = false;
 	config.remoteDatabase = false;
 
+	config.debugging_blockchain = false;
+	config.debugging_live = false;
+	config.debugging_address = false;
+	config.debugging_sync = false;
+
+	config.debugging_reset_db = false;
+	config.debugging_reset_files = false;
+	config.debugging_reset_logs = false;
+	config.debugging_backup_db = false;
+
 	if (environment=='development') {
 		config.debugging = true;
-		config.ssl = false;
 		config.debugging_live = true;
 		config.debugging_address = true;
 		config.debugging_sync = true;
-		config.local = true;
-		config.remoteDatabase = true;
 		config.debugging_reset_db = true;
 		config.debugging_reset_files = true;
 		config.debugging_reset_logs = true;
+		config.debugging_blockchain = true;
+		config.local = true;
+		config.remoteDatabase = true;
 	}
 	else if (environment=='staging') {
 		config.debugging = true;
-		config.ssl = true;
-		config.debugging_live = false;
-		config.debugging_address = false;
-		config.debugging_sync = false;
-		config.local = false;
-		config.remoteDatabase = true;
 		config.debugging_reset_db = true;
 		config.debugging_reset_files = true;
 		config.debugging_reset_logs = true;
+		config.debugging_blockchain = true;
+		config.debugging_live = true;
+		config.debugging_address = true;
+		config.debugging_sync = true;
+		config.Twitter = true;
+		config.remoteDatabase = true;
 	}
 	else if (environment=='production') {
-		config.debugging = false;
 		config.ssl = true;
-		config.local = false;
 		config.Twitter = true;
 		config.Twitter_tweeting = true;
 		config.Twitter_tweeting_on_live = true;
-		config.remoteDatabase = false;
 	}
 }
 
-config.local_keys_path = './src/dev/localConfig.json';
-config.local_google_keys_path = './src/dev/google.json';
-config.logs_backupDir = './src/dev/logs/backup';
-config.logs_file = './src/dev/logs/file.log';
+// config.dev_path = './src/dev';
+config.dev_path = '/mnt/deeznuts/dev';
+
+config.local_keys_path = path.join(config.dev_path, 'localConfig.json');
+config.local_google_keys_path = path.join(config.dev_path, 'google.json');
+config.logs_backupDir = path.join(config.dev_path, 'logs/backup');
+config.logs_file = path.join(config.dev_path, 'logs/file.log');
 
 require('./keys').call(config);
 require('./logger').call(config);
