@@ -20,6 +20,7 @@ var connect = function(callback) {
         	logger.log('Tweeting Enabled');
         else
         	logger.log('Tweeting Disabled');
+        callback(null);
     });
 }
 module.exports.connect = connect;
