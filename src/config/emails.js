@@ -48,7 +48,7 @@ module.exports = function() {
   this.email_footer = "<p><small><a href=\"//"+this.domain+"\">"+this.title+"</a> &copy; 2018</small></p>";
 
   // Testing
-  this.email_test_address = "Alex Johnson <WebmasterSkeetzo@gmail.com>";
+  this.email_test_address = this.gmail_user;
   this.email_tests = [
     {
       function: "email_account_created",

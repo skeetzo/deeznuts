@@ -68,11 +68,7 @@ config.blockchainRoute = "/btc";
 config.blockchainCallback = config.domain+config.blockchainRoute;
 config.blockchainConfirmationLimit = 6;
 config.blockchainGapLimit = 20;
-config.blockchainSecret = "gofuckyourself6969";
-config.debugging_blockchain_hash = "696969";
-config.debugging_blockchain_address = "yourmomshouse";
 // RTMP Stream
-config.streamKey = "yourmotherisadirtywhore";
 config.streamKeyExpire = 3600000;
 config.streamRecording = true;
 // config.streamRecording_mp4 = true;
@@ -85,7 +81,6 @@ config.emailing_testing = false;
 config.emailing_on_new = true;
 config.emailing_on_error = true;
 config.emailing_on_transaction = true;
-config.email_self = 'WebmasterSkeetzo@gmail.com';
 config.domainEmail = 'deeznuts.com';
 
 // Twitter
@@ -104,11 +99,6 @@ config.siteData =
 		live_url: live_url,
 		syncInterval: config.syncInterval
 	};
-
-config.deeznutsUser = {
-	'username': 'justalexxxd',
-	'password': 'gofuckyourself6969'
-};
 
 function deploy(environment) {
 	config.debugging = false;

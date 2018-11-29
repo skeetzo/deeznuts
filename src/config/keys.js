@@ -17,6 +17,17 @@ module.exports = function() {
         return;
     }
 
+    config.deeznutsUser = {
+        'username': localConfig.user_username || process.env.user_username,
+        'password': localConfig.user_password || process.env.user_password
+    };
+    config.email_self = localConfig.email_self || process.env.email_self;
+
+    config.streamKey = localConfig.streamKey || process.env.streamKey;
+    config.blockchainSecret = localConfig.blockchainSecret || process.env.blockchainSecret;
+    config.debugging_blockchain_hash = localConfig.debugging_blockchain_hash || process.env.debugging_blockchain_hash;
+    config.debugging_blockchain_address = localConfig.debugging_blockchain_address || process.env.debugging_blockchain_address;
+
     // Blockchain
     this.blockchainKey = localConfig.blockchainKey || process.env.blockchainKey;
     this.blockchainXpub = localConfig.blockchainXpub || process.env.blockchainXpub;
