@@ -55,8 +55,10 @@ prepend javascript
             alert('There was an error!');
           else if (data.status == 401)
             alert("Please login or create an account!");
-          else if (data.responseJSON&&data.responseJSON.text)
+          else if (data.responseJSON&&data.responseJSON.text) {
             alert(data.responseJSON.text);
+            location.reload();
+          }
           else
             alert('There was an error!');
         },

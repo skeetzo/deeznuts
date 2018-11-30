@@ -153,7 +153,6 @@ function deploy(environment) {
 	}
 }
 
-// config.dev_path = './src/dev';
 config.dev_path = '/mnt/deeznuts/dev';
 
 config.local_keys_path = path.join(config.dev_path, 'localConfig.json');

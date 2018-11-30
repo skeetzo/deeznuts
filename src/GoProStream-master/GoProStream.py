@@ -109,7 +109,7 @@ def gopro_live():
 			print("Recording locally: " + str(SAVE))
 			print("Recording stored in: " + SAVELOCATION)
 			print("Note: Preview is not available when saving the stream.")
-			subprocess.Popen("ffmpeg -re -i 'udp://10.5.5.100:8554' -loglevel debug -probesize 100M -analyzeduration 100M -fflags nobuffer -f:v mpegts -c copy -f flv rtmp://127.0.0.1:1935", shell=True)
+			subprocess.Popen("ffmpeg -re -i 'udp://10.5.5.100:8554' -loglevel debug -probesize 100M -analyzeduration 100M -fflags nobuffer -f:v mpegts -acodec copy -vcodec copy -f flv rtmp://76.91.217.22:1935/live", shell=True)
 		if sys.version_info.major >= 3:
 			MESSAGE = bytes(MESSAGE, "utf-8")
 		print("Press ctrl+C to quit this application.\n")
