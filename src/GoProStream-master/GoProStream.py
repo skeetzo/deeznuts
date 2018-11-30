@@ -106,19 +106,10 @@ def gopro_live():
 			else:
 				TS_PARAMS = ""
 			SAVELOCATION = SAVE_LOCATION + SAVE_FILENAME + "." + SAVE_FORMAT
-			IP = socket.getfqdn()
-			OTHERIP = socket.gethostbyname(socket.gethostname())
-			print("IP" + str(IP))
-			print("OTHERIP" + str(OTHERIP))
-			# socket.gethostbyname(socket.gethostname())
-			# IP = "192.168.1.10:1935"
 			print("Recording locally: " + str(SAVE))
 			print("Recording stored in: " + SAVELOCATION)
 			print("Note: Preview is not available when saving the stream.")
-			# subprocess.Popen("ffmpeg -i 'udp://:10.5.5.100:8554' -loglevel panic -fflags nobuffer -f:v mpegts -probesize 8192 " + TS_PARAMS + "udp://192.168.1.3:8554", shell=True)
-			# subprocess.Popen("ffmpeg -i 'udp://:10.5.5.100:8554' -fflags nobuffer -f:v mpegts -probesize 8192 " + TS_PARAMS + SAVELOCATION, shell=True)
-			subprocess.Popen("ffmpeg -re -i 'udp://10.5.5.100:8554' -loglevel debug -probesize 100M -analyzeduration 100M -fflags nobuffer -f:v mpegts -c copy -f flv rtmp://192.168.1.10:1935", shell=True)
-		#	subprocess.Popen("ffmpeg -i 'udp://:10.5.5.100:8554' -fflags nobuffer -f:v mpegts -probesize 8192 " + TS_PARAMS + SAVELOCATION, shell=True)
+			subprocess.Popen("ffmpeg -re -i 'udp://10.5.5.100:8554' -loglevel debug -probesize 100M -analyzeduration 100M -fflags nobuffer -f:v mpegts -c copy -f flv rtmp://127.0.0.1:1935", shell=True)
 		if sys.version_info.major >= 3:
 			MESSAGE = bytes(MESSAGE, "utf-8")
 		print("Press ctrl+C to quit this application.\n")
