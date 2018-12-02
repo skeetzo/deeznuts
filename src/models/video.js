@@ -206,8 +206,8 @@ videoSchema.statics.populateFromFiles = function(callback) {
   var series = [];
   _.forEach(previewFiles, function (video) {
     series.push(function (step) {
-      var previewPath = video.title.replace('.mp4','-w.mp4');
-      var newVideo = new Video({'path':video,'path_preview':previewPath});
+      var videoPath = video.replace('-preview.mp4','.mp4');
+      var newVideo = new Video({'path':videoPath,'path_preview':video});
       newVideo.save(function (err) {
         if (err) logger.warn(err);
         step(null);
