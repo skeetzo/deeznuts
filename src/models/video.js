@@ -394,6 +394,7 @@ videoSchema.methods.thumbnail = function(callback) {
 
 // uploads to Google Drive - OnlyFans folder
 videoSchema.methods.backup = function(callback) {
+  var self = this;
   logger.log('Backing up: %s', self.title);
   require('../modules/drive').uploadVideoToOnlyFansFolder(self, function (err) {
     if (err) return callback(err);

@@ -116,6 +116,7 @@ async.series([
     });
   },
   function (step) {
+    if (!config.rebuildFromFiles) return step(null);
     // rebuilds video db based on existing mp4s
     Video.populateFromFiles(function (err) {
       if (err) logger.warn(err);

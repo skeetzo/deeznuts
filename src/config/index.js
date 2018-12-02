@@ -50,6 +50,8 @@ config.defaultVideo = {
 config.videosPath = '/mnt/deeznuts/videos';
 config.imagesPath = '/mnt/deeznuts/images';
 
+config.rebuildFromFiles = false;
+
 // config.videosPath = '/home/skeetzo/Projects/deeznuts/src/public/videos';
 // config.imagesPath = '/home/skeetzo/Projects/deeznuts/src/public/images';
 
