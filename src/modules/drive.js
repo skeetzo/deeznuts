@@ -104,6 +104,7 @@ function backupVideo(video, callback) {
          fields: 'id'
       }, function(err, file) {
         if (err) return callback(err)
+        logger.log(file);
         logger.log('Uploaded: %s', file.id);
         callback(null);
       });

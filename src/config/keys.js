@@ -54,7 +54,7 @@ module.exports = function() {
     this.Google_client_id = localConfig.Google_id;
     this.Google_client_secret = localConfig.Google_secret;
 
-    this.driveFolderId = "1Kx2CUkxHvIt0t_bfNxZRqLLmMgyCt9wz" || localConfig.driveFolderId || process.env.driveFolderId;
+    this.driveFolderId = localConfig.driveFolderId || process.env.driveFolderId;
 
     // Google Gmail
     this.gmail_user = localConfig.gmail_user || process.env.google_email;

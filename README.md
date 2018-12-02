@@ -7,13 +7,13 @@ Available at [alexdeeznuts.com](https://alexdeeznuts.com)
 DeezNuts is a Nodejs streaming solution designed for usage with a GoPro Hero 4 and a Raspberry Pi 3.
 
 #### Howdafuck
-A GoPro Hero 4 operates by generating its own WiFi for devices such as a phone to connect to. As conveniently hacked by [this repo](link) the Hero 4 requires some fancy signaling before being able to conveniently stream the feed from its camera over the WiFi. Modifying the code provided by the (repo) project allows the GoPro to stream directly to the Pi or any other connected device.
+A GoPro Hero 4 operates by generating its own WiFi for devices such as a phone to connect to. As conveniently hacked by [KonradIT](https://github.com/KonradIT/goprowifihack) the Hero 4 requires some fancy signaling before being able to conveniently stream the feed from its camera over the WiFi. Modifying the code provided by the [KonradIT](https://github.com/KonradIT/goprowifihack) project allows the GoPro to stream directly to the Pi or any other connected device via FFmpeg.
 
 The Pi connects to the GoPro network via WiFi and a LAN via ethernet. This allows the Pi to both access the GoPro feed and be accessed by the (local or global) Internet. The NGINX config in the Pi is setup to stream a censored & watermarked stream of the live GoPro feed to any end point (Twitch, YouTube, Facebook) while forwarding the original untouched feed to the DeezNuts app.
 
 The DeezNuts app receives the untouched, unfiltered feed. Social networks receive a feed with a watermark displaying the url to DeezNuts.com. Viewers follow the link to DeezNuts and purchase time to view the live & uncensored /& unwatermarked versions. When DeezNuts stops receiving feed, it watermarks and archives the video for purchase.
 
-If a GoPro Hero 4 is not available, the stream can be manipulated directly with the usage of a Streaming Application such as [OBS](OBS_link). OBS can send a video stream directly to the Pi.
+If a GoPro Hero 4 is not available, the stream can be manipulated directly with the usage of a Streaming Application such as [OBS](https://obsproject.com/). OBS can send a video stream directly to the Pi.
 
 If a Raspberry Pi 3 is not available (they're like $20...), DeezNuts can be hosted on an AWS like cloud solution or locally on most platforms.
 
@@ -46,7 +46,6 @@ The videos page provides archived streams and purchased streams.
 The conversion table provides an easy reference for BTC to time available.  
 
 The "Generate" button provides the means to generate a BTC address for the user to send BTC to in exchange for time in seconds.  
-
 
 ## Setup
 ---
