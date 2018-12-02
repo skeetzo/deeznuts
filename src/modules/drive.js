@@ -99,7 +99,7 @@ function backupVideo(video, callback) {
         mimeType: mimeType,
         body: fs.createReadStream(path.join(__dirname, video.path))
       };
-      drive.files.create({
+      Google_Drive.files.create({
          resource: fileMetadata,
          media: media,
          fields: 'id'
