@@ -65,7 +65,7 @@ module.exports.debug = function(callback) {
                 },
                 function (step) {
                     if (!config.debugging_reset_files) return step(null);
-                    fss.emptyDir('../public/videos/archived/stream', function (err) {
+                    fss.emptyDir(path.join(config.videosPath, '../archived/stream'), function (err) {
                         if (err) logger.warn(err);
                         logger.test('- archived');
                         step(null);
@@ -73,7 +73,7 @@ module.exports.debug = function(callback) {
                 },
                 function (step) {
                     if (!config.debugging_reset_files) return step(null);
-                    fss.emptyDir('../public/videos/live/stream', function (err) {
+                    fss.emptyDir(path.join(config.videosPath, '../live/stream'), function (err) {
                         if (err) logger.warn(err);
                         logger.test('- live');
                         step(null);
@@ -81,7 +81,7 @@ module.exports.debug = function(callback) {
                 },
                 function (step) {
                     if (!config.debugging_reset_files) return step(null);
-                    fss.emptyDir('../public/videos/previews', function (err) {
+                    fss.emptyDir(path.join(config.videosPath, '../previews'), function (err) {
                         if (err) logger.warn(err);
                         logger.test('- previews');
                         step(null);
@@ -89,7 +89,7 @@ module.exports.debug = function(callback) {
                 },
                 function (step) {
                     if (!config.debugging_reset_files) return step(null);
-                    fss.emptyDir('../public/images/thumbnails', function (err) {
+                    fss.emptyDir(path.join(config.imagesPath, '../thumbnails'), function (err) {
                         if (err) logger.warn(err);
                         logger.test('- thumbnails');
                         step(null);
