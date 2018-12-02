@@ -155,7 +155,7 @@ videoSchema.statics.archiveVideos = function(callback) {
               newVideo.save(function (err) {
                 if (err) logger.warn(err);
                 if (config.backingUp)
-                  video.backup(function (err) {
+                  newVideo.backup(function (err) {
                     if (err) logger.warn(err);
                     next(null);
                   });
