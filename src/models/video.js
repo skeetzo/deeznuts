@@ -77,7 +77,10 @@ videoSchema.pre('save', function (next) {
   if (!self.duration) {
     // ffprobe video for duration
     FFmpeg.ffprobe(self.path, function(err, metadata) {
-      if (err) return logger.warn(err);
+      if (err) {
+        logger.warn(err);
+        return next();
+      }
       logger.debug('duration: %s', metadata.format.duration);
       self.duration = metadata.format.duration;
       logger.debug('Video Saved: %s', self.title);
