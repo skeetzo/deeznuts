@@ -42,28 +42,28 @@ module.exports.debug = function(callback) {
                 //     });
                 // },
                 function (step) {
-                    mongoose.connection.db.dropCollection('session', function(err) {
+                    mongoose.connection.db.dropCollection('sessions', function(err) {
                         if (err) logger.warn(err);
                         logger.test('- session');
                         step(null);
                     });
                 },
                 function (step) {
-                    mongoose.connection.db.dropCollection('user', function (err) {
+                    mongoose.connection.db.dropCollection('users', function (err) {
                         if (err) logger.warn(err);
                         logger.test('- user');
                         step(null);
                     });
                 },
                 function (step) {
-                    mongoose.connection.db.dropCollection('video', function (err) {
+                    mongoose.connection.db.dropCollection('videos', function (err) {
                         if (err) logger.warn(err);
                         logger.test('- video');
                         step(null);
                     });
                 },
                 function (step) {
-                    mongoose.connection.db.dropCollection('transaction', function (err) {
+                    mongoose.connection.db.dropCollection('transactions', function (err) {
                         if (err) logger.warn(err);
                         logger.test('- transaction');
                         step(null);
