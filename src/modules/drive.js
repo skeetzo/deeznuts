@@ -3,6 +3,7 @@ var _ = require('underscore'),
     fs = require('fs'),
     logger = config.logger,
     App = require('../models/app'),
+    path = require('path'),
     async = require('async');
 
 var authenticated = false; // 6 hour expiration
