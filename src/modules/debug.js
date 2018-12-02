@@ -35,41 +35,40 @@ module.exports.debug = function(callback) {
             if (!config.debugging_reset_db) return cb(null);
             logger.test('Resetting Database:');
             async.series([
+                // function (step) {
+                //     mongoose.connection.db.dropDatabase(function(err, result) {
+                //         if (err) logger.warn(err);
+                //         step(null);
+                //     });
+                // },
                 function (step) {
-                    mongoose.connection.db.dropDatabase(function(err, result) {
+                    mongoose.connection.db.dropCollection('session', function(err) {
                         if (err) logger.warn(err);
+                        logger.test('- session');
                         step(null);
                     });
                 },
-                // function (step) {
-                //     mongoose.model('session',{}).remove({}, function (err) {
-                //         if (err) logger.warn(err);
-                //         logger.test('- session');
-                //         step(null);
-                //     });
-                // },
-                // function (step) {
-
-                //     mongoose.connection.db.dropCollection('user', function (err) {
-                //         if (err) logger.warn(err);
-                //         logger.test('- user');
-                //         step(null);
-                //     });
-                // },
-                // function (step) {
-                //     mongoose.model('videos',{}).remove({}, function (err) {
-                //         if (err) logger.warn(err);
-                //         logger.test('- video');
-                //         step(null);
-                //     });
-                // },
-                // function (step) {
-                //     mongoose.model('transactions',{}).remove({}, function (err) {
-                //         if (err) logger.warn(err);
-                //         logger.test('- transaction');
-                //         step(null);
-                //     });
-                // },
+                function (step) {
+                    mongoose.connection.db.dropCollection('users', function (err) {
+                        if (err) logger.warn(err);
+                        logger.test('- user');
+                        step(null);
+                    });
+                },
+                function (step) {
+                    mongoose.connection.db.dropCollection('videos', function (err) {
+                        if (err) logger.warn(err);
+                        logger.test('- video');
+                        step(null);
+                    });
+                },
+                function (step) {
+                    mongoose.connection.db.dropCollection('transactions', function (err) {
+                        if (err) logger.warn(err);
+                        logger.test('- transaction');
+                        step(null);
+                    });
+                },
                 function (step) {
                     if (!config.debugging_reset_files) return step(null);
                     fss.emptyDir(path.join(config.videosPath, '../archived/stream'), function (err) {
