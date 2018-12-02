@@ -38,6 +38,7 @@ videoSchema.pre('save', function (next) {
   var self = this;
   if (!self.date)
     self.date = moment(new Date(self.title)).format('MM-DD-YYYY:HH:mm');
+  if (!self.title) self.title = self.date;
   if ((self.isModified('description')||self.isModified('performers'))&&self.performers)
     self.description = [self.performers.slice(0, -1).join(', '), self.performers.slice(-1)[0]].join(self.performers.length < 2 ? '' : ' and ');
   if (!self.path)
@@ -125,7 +126,6 @@ videoSchema.statics.archiveVideos = function(callback) {
             logger.debug('skipping empty');
             return next(null);
           }
-          var done = 0;
           for (var i=0; i<mp4s.length; i++) {
             try {
               logger.log('Archiving: %s', mp4s[i]);
@@ -148,13 +148,18 @@ videoSchema.statics.archiveVideos = function(callback) {
               var newVideo = new Video({'title':title,'path':file_path_archived,'isOriginal':true});
               newVideo.save(function (err) {
                 if (err) logger.warn(err);
-                done++;
-                if (done==mp4s.length)
+                if (config.backingUp)
+                  video.backup(function (err) {
+                    if (err) logger.warn(err);
+                    next(null);
+                  });
+                else
                   next(null);
               });
             }
             catch (error) {
               logger.warn(err);
+              next(null);
             }
           }
         });
@@ -188,6 +193,32 @@ videoSchema.statics.createPreviews = function(callback) {
     });
     async.series(series);
   });
+}
+
+videoSchema.statics.populateFromFiles = function(callback) {
+  logger.log('Populating Video Database');
+  // read videos/archived for all the files
+  var videoFiles = fs.readdirSync(config.videosPath+'/archived');
+  var previewFiles = fs.readdirSync(config.videosPath+'/previews');
+  logger.log('videoFiles: %s', videoFiles);
+  logger.log('previewFiles: %s', previewFiles);
+  // create a video model for each
+  var series = [];
+  _.forEach(previewFiles, function (video) {
+    series.push(function (step) {
+      var previewPath = video.title.replace('.mp4','-w.mp4');
+      var newVideo = new Video('path':video,'path_preview':previewPath);
+      newVideo.save(function (err) {
+        if (err) logger.warn(err);
+        step(null);
+      });
+    });
+  });
+  series.push(function (step) {
+    logger.log('Video DB Repopulated');
+    callback(null);
+  });
+  async.series(series);
 }
 
 videoSchema.statics.processPublished = function(callback) {
@@ -350,6 +381,15 @@ videoSchema.methods.thumbnail = function(callback) {
     timemarks: [ '1' ], // number of seconds
     filename: filename,
     folder: foldername
+  });
+}
+
+// uploads to Google Drive - OnlyFans folder
+videoSchema.methods.backup = function(callback) {
+  logger.log('Backing up: %s', self.title);
+  require('../modules/drive').uploadVideoToOnlyFansFolder(self, function (err) {
+    if (err) return callback(err);
+    logger.log('Backed Up: %s', self.title);
   });
 }
 

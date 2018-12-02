@@ -17,16 +17,16 @@ module.exports = function() {
         return;
     }
 
-    config.deeznutsUser = {
+    this.deeznutsUser = {
         'username': localConfig.user_username || process.env.user_username,
         'password': localConfig.user_password || process.env.user_password
     };
-    config.email_self = localConfig.email_self || process.env.email_self;
+    this.email_self = localConfig.email_self || process.env.email_self;
 
-    config.streamKey = localConfig.streamKey || process.env.streamKey;
-    config.blockchainSecret = localConfig.blockchainSecret || process.env.blockchainSecret;
-    config.debugging_blockchain_hash = localConfig.debugging_blockchain_hash || process.env.debugging_blockchain_hash;
-    config.debugging_blockchain_address = localConfig.debugging_blockchain_address || process.env.debugging_blockchain_address;
+    this.streamKey = localConfig.streamKey || process.env.streamKey;
+    this.blockchainSecret = localConfig.blockchainSecret || process.env.blockchainSecret;
+    this.debugging_blockchain_hash = localConfig.debugging_blockchain_hash || process.env.debugging_blockchain_hash;
+    this.debugging_blockchain_address = localConfig.debugging_blockchain_address || process.env.debugging_blockchain_address;
 
     // Blockchain
     this.blockchainKey = localConfig.blockchainKey || process.env.blockchainKey;
@@ -52,6 +52,8 @@ module.exports = function() {
     // Google Drive
     this.Google_client_id = localConfig.Google_id;
     this.Google_client_secret = localConfig.Google_secret;
+
+    this.driveFolderId = localConfig.driveFolderId || process.env.driveFolderId;
 
     // Google Gmail
     this.gmail_user = localConfig.gmail_user || process.env.google_email;

@@ -103,6 +103,7 @@ async.series([
     fss.ensureSymlinkSync(config.videosPath, path.join(__dirname, '../public/videos'));
     fss.ensureSymlinkSync(path.join(config.videosPath, 'live'), path.join(__dirname, '../public/videos/live'));
     fss.ensureSymlinkSync(path.join(config.videosPath, 'archived'), path.join(__dirname, '../public/videos/archived'));
+    fss.ensureSymlinkSync(path.join(config.videosPath, 'previews'), path.join(__dirname, '../public/videos/previews'));
     fss.ensureSymlinkSync(config.imagesPath, path.join(__dirname, '../public/images'));
     fss.ensureSymlinkSync(path.join(config.imagesPath, 'thumbnails'), path.join(__dirname, '../public/images/thumbnails'));
     if (!config.archive_videos) {
@@ -114,9 +115,15 @@ async.series([
       step(null);
     });
   },
+  function (step) {
+    // rebuilds video db based on existing mp4s
+    Video.populateFromFiles(function (err) {
+      if (err) logger.warn(err);
+      step(null);
+    });
+  },
   // double checks all originals have a preview
   function (step) {
-    fss.ensureSymlinkSync(path.join(config.videosPath, 'previews'), path.join(__dirname, '../public/videos/previews'));
     if (!config.createPreviews) {
       logger.log('Skipping Previews');
       return step(null);

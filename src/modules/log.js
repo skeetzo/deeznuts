@@ -16,7 +16,7 @@ Log.prototype.backup = function(callback) {
 	var newLog = moment(new Date()).format('MM-DD-YYYY');
 	var year = moment(new Date()).format('YYYY');
 	var month = moment(new Date()).format('MM-YYYY');
-	var file_path = path.resolve(config.logs_backupDir, year, month);
+	var file_path = path.resolve(config.logs_dir, year, month);
 	logger.log('logs backup path: %s', file_path);
 	fss.ensureDir(file_path, err => {
 	    if (err) return callback(err);

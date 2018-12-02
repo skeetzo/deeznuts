@@ -34,6 +34,7 @@ else config.domain = "http://"+config.domain;
 config.archive_videos = true;
 config.archive_on_publish = true;
 config.archive_delay = 10000;
+config.backingUp = true;
 config.conversionRate = 6; // $1 per 6 minutes
 config.createPreviews = true;
 config.defaultPrice = 5; // in dollars
@@ -154,10 +155,11 @@ function deploy(environment) {
 }
 
 config.dev_path = '/mnt/deeznuts/dev';
+config.dev_path = '/media/removable/USB Drive/deeznuts/dev';
 
 config.local_keys_path = path.join(config.dev_path, 'localConfig.json');
 config.local_google_keys_path = path.join(config.dev_path, 'google.json');
-config.logs_backupDir = path.join(config.dev_path, 'logs/backup');
+config.logs_dir = path.join(config.dev_path, 'logs');
 config.logs_file = path.join(config.dev_path, 'logs/file.log');
 
 require('./keys').call(config);
