@@ -43,21 +43,21 @@ module.exports.debug = function(callback) {
                     });
                 },
                 function (step) {
-                    mongoose.model('user',{}).remove({}, function (err) {
+                    mongoose.model('users',{}).remove({}, function (err) {
                         if (err) logger.warn(err);
                         logger.test('- user');
                         step(null);
                     });
                 },
                 function (step) {
-                    mongoose.model('video',{}).remove({}, function (err) {
+                    mongoose.model('videos',{}).remove({}, function (err) {
                         if (err) logger.warn(err);
                         logger.test('- video');
                         step(null);
                     });
                 },
                 function (step) {
-                    mongoose.model('transaction',{}).remove({}, function (err) {
+                    mongoose.model('transactions',{}).remove({}, function (err) {
                         if (err) logger.warn(err);
                         logger.test('- transaction');
                         step(null);
