@@ -48,8 +48,11 @@ videoSchema.pre('save', function (next) {
     // ffprobe video for duration
     return FFmpeg.ffprobe(self.path, function(err, metadata) {
       if (err) logger.warn(err);
-      logger.debug('duration: %s', metadata.format.duration);
-      self.duration = metadata.format.duration;
+      if (metadata) {
+        logger.debug('duration: %s', metadata.format.duration);
+        self.duration = metadata.format.duration;
+      }
+      else self.duration = 0;
       if (self.duration<config.defaultPrice) { // 5 minutes / default time
         self.price = config.defaultPrice;
         logger.log('minimum price set: %s', self.price);
