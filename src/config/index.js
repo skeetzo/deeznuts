@@ -135,9 +135,9 @@ function deploy(environment) {
 	}
 	else if (environment=='staging') {
 		config.debugging = true;
-		config.debugging_reset_db = true;
-		config.debugging_reset_files = true;
-		config.debugging_reset_logs = true;
+		config.debugging_reset_db = false;
+		config.debugging_reset_files = false;
+		config.debugging_reset_logs = false;
 		config.debugging_blockchain = true;
 		config.debugging_live = true;
 		config.debugging_address = true;
