@@ -3,7 +3,6 @@ var _ = require('underscore'),
     fs = require('fs'),
     logger = config.logger,
     App = require('../models/app'),
-    path = require('path'),
     async = require('async');
 
 var authenticated = false; // 6 hour expiration
@@ -97,7 +96,7 @@ function backupVideo(video, callback) {
       };
       var media = {
         mimeType: mimeType,
-        body: fs.createReadStream(path.join(__dirname, video.path))
+        body: fs.createReadStream(video.path)
       };
       Google_Drive.files.create({
          resource: fileMetadata,
