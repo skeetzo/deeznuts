@@ -155,7 +155,7 @@ function deploy(environment) {
 }
 
 config.dev_path = '/mnt/deeznuts/dev';
-config.dev_path = '/media/removable/USB Drive/deeznuts/dev';
+// config.dev_path = '/media/removable/USB Drive/deeznuts/dev';
 
 config.local_keys_path = path.join(config.dev_path, 'localConfig.json');
 config.local_google_keys_path = path.join(config.dev_path, 'google.json');
