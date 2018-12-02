@@ -44,6 +44,7 @@ module.exports = function() {
     };
     this.Google_scopes = [
         'https://www.googleapis.com/auth/plus.me',
+        'https://www.googleapis.com/auth/drive',
         'https://mail.google.com/',
         'https://www.googleapis.com/auth/userinfo.email',
         ];
