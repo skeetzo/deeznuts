@@ -47,7 +47,7 @@ videoSchema.pre('save', function (next) {
     logger.debug('probing...');
     // ffprobe video for duration
     return FFmpeg.ffprobe(self.path, function(err, metadata) {
-      if (err) return logger.warn(err);
+      if (err) logger.warn(err);
       logger.debug('duration: %s', metadata.format.duration);
       self.duration = metadata.format.duration;
       if (self.duration<config.defaultPrice) { // 5 minutes / default time
