@@ -79,7 +79,7 @@ function refreshAccess(callback) {
 // Functions
 
 // upload file at path to OnlyFans folder
-function uploadVideoToOnlyFansFolder(video, callback) {
+function backupVideo(video, callback) {
   async.waterfall([
     function auth(step) {
       if (authenticated) return step(null);
@@ -113,4 +113,4 @@ function uploadVideoToOnlyFansFolder(video, callback) {
     callback(null);
   });
 }
-module.exports.uploadVideoToOnlyFansFolder;
+module.exports.backupVideo = backupVideo;

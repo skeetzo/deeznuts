@@ -396,7 +396,7 @@ videoSchema.methods.thumbnail = function(callback) {
 videoSchema.methods.backup = function(callback) {
   var self = this;
   logger.log('Backing up: %s', self.title);
-  require('../modules/drive').uploadVideoToOnlyFansFolder(self, function (err) {
+  require('../modules/drive').backupVideo(self, function (err) {
     if (err) return callback(err);
     logger.log('Backed Up: %s', self.title);
   });
