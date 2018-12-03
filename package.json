@@ -2,12 +2,14 @@
   "name": "deeznuts",
   "description": "Performers' Live Streaming w/ Blockchain",
   "version": "1.0.0",
-  "private": true,
+  "private": false,
   "author": "Skeetzo",
   "main": "src/bin/www",
   "scripts": {
     "postinstall": "gulp",
-    "start": "node src/bin/www"
+    "start": "node src/bin/www",
+    "setup": "setup/scripts/install.sh",
+    "setup-config": "setup/scripts/config.sh"
   },
   "engines": {
     "node": "9.4.0"
@@ -26,7 +28,8 @@
     "raspberry pi",
     "deeznuts",
     "mongodb",
-    "nodejs"
+    "nodejs",
+    "gopro"
   ],
   "dependencies": {
     "@fortawesome/fontawesome-free": "^5.5.0",

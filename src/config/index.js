@@ -52,9 +52,6 @@ config.imagesPath = '/mnt/deeznuts/images';
 
 config.rebuildFromFiles = false;
 
-// config.videosPath = '/home/skeetzo/Projects/deeznuts/src/public/videos';
-// config.imagesPath = '/home/skeetzo/Projects/deeznuts/src/public/images';
-
 config.watermarkPath = path.join(__dirname, "../public/images/watermark.png");
 
 config.syncInterval = 3; // in seconds
@@ -137,9 +134,6 @@ function deploy(environment) {
 	}
 	else if (environment=='staging') {
 		config.debugging = true;
-		config.debugging_reset_db = false;
-		config.debugging_reset_files = false;
-		config.debugging_reset_logs = false;
 		config.debugging_blockchain = true;
 		config.debugging_live = true;
 		config.debugging_address = true;
@@ -152,13 +146,11 @@ function deploy(environment) {
 		config.ssl = true;
 		config.Twitter = true;
 		config.Twitter_tweeting = true;
-		config.Twitter_tweeting_on_live = true;
+		config.Twitter_tweeting_on_live = false;
 	}
 }
 
 config.dev_path = '/mnt/deeznuts/dev';
-// config.dev_path = '/media/removable/USB Drive/deeznuts/dev';
-
 config.local_keys_path = path.join(config.dev_path, 'localConfig.json');
 config.local_google_keys_path = path.join(config.dev_path, 'google.json');
 config.logs_dir = path.join(config.dev_path, 'logs');

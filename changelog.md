@@ -1,6 +1,6 @@
 ## Changelog
 
-**6/10/2018**
+** 0.1.0 : 6/10/2018**
  - setup and general outline
  - app skeleton
  - rtmp
@@ -13,7 +13,7 @@
 **6/24/2018**
  - usability fixes
  - testing
-**6/26/2018**
+** 0.2.0 : 6/26/2018**
  - SSL
  - blockchain testing
  - model: transaction
@@ -28,16 +28,18 @@
  - transmuxing debugging
  - video: archiving
  - video: previews
-**11/10/2018**
+** 0.3.0 : 11/10/2018**
  - socket.io infrastructure
 **11/27/2018**
  - Gmail
  - debug.js
 **12/2/2018**
  - Google Drive backup to OnlyFans folder
+ ** 1.0.0 : 12/3/2018**
+ - production
+
  **??/??/??**
  - next live @ & schedule
-
 
 
 **2.0.0 : Android App : ??/??/??**
