@@ -28,7 +28,7 @@ module.exports.connect = connect;
 var tweetLive = function(tw) {
     var self = this;
 	logger.log('Tweeting Live');
-	var tweet = "I\'ve just gone live! "+moment(new Date()).format('MM-dd')+" "+config.Twitter_link;
+	var tweet = "I\'ve just gone live! "+moment(new Date()).format('DD/MM @ HH:MM')+" "+config.Twitter_link;
     logger.debug('tweet: %s', tweet);
 	if (!config.Twitter) return logger.debug('Twitter Disabled');
 	if (!config.Twitter_tweeting) return logger.debug('Not Tweeting');

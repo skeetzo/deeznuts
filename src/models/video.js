@@ -341,6 +341,7 @@ videoSchema.methods.extract = function(callback, retryReason) {
     callback(err);
   })
   .on('progress', function (progress) {
+    if (config.debugging)
       process.stdout.write('Extracting...\033[0G');
   })
   .on('end', function () {
@@ -462,7 +463,8 @@ videoSchema.methods.watermark = function(callback) {
     callback(err);
   })
   .on('progress', function (progress) {
-    process.stdout.write("Watermarking...\033[0G");
+    if (config.debugging)
+      process.stdout.write("Watermarking...\033[0G");
   })
   .on('end', function () {
     logger.log("Watermarking Finished");
