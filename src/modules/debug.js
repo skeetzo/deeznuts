@@ -31,6 +31,29 @@ module.exports.debug = function(callback) {
             });
         },
 
+        function backupVideos(cb) {
+            if (!config.backupToOnlyFans) return cb(null);
+            require('../modules/video').find({}, function (err, videos) {
+                if (err) {
+                    logger.warn(err);
+                    cb(null);
+                }
+                var series = [];
+                _.forEach(videos, function (video) {
+                    series.push(function (step) {
+                        video.backup(function (err) {
+                            if (err) logger.warn(err);
+                            step(null);
+                        });
+                    });
+                });
+                series.push(function (step) {
+                    cb(null);
+                });
+                async.series(series);
+            });
+        },
+
         function resetDatabase(cb) {
             if (!config.debugging_reset_db) return cb(null);
             logger.test('Resetting Database:');

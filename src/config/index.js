@@ -34,7 +34,6 @@ else config.domain = "http://"+config.domain;
 config.archive_videos = true;
 config.archive_on_publish = true;
 config.archive_delay = 10000;
-config.backingUp = true;
 config.conversionRate = 6; // $1 per 6 minutes
 config.createPreviews = true;
 config.defaultPrice = 5; // in dollars
@@ -105,6 +104,8 @@ function deploy(environment) {
 	config.ssl = false;
 	config.local = false;
 
+	config.backupToOnlyFans = false;
+
 	config.Twitter = false;
 	config.Twitter_tweeting = false;
 	config.Twitter_tweeting_on_live = false;
@@ -142,12 +143,14 @@ function deploy(environment) {
 		config.Twitter = true;
 		config.Twitter_tweeting_on_live = true;
 		config.remoteDatabase = true;
+		config.backupToOnlyFans = true;
 	}
 	else if (environment=='production') {
 		config.ssl = true;
 		config.Twitter = true;
 		config.Twitter_tweeting = true;
 		config.Twitter_tweeting_on_live = true;
+		config.backupToOnlyFans = true;
 	}
 }
 

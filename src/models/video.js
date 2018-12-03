@@ -21,6 +21,7 @@ var mongoose = require('mongoose'),
 
 */
 var videoSchema = new Schema({
+  backedUp: { type: Boolean, default: false },
   date: { type: String, default: moment(new Date()).format('MM-DD-YYYY') },
   description: { type: String, default: '' },
   duration: { type: Number },
@@ -154,13 +155,10 @@ videoSchema.statics.archiveVideos = function(callback) {
               var newVideo = new Video({'title':title,'path':file_path_archived,'isOriginal':true});
               newVideo.save(function (err) {
                 if (err) logger.warn(err);
-                if (config.backingUp)
-                  newVideo.backup(function (err) {
-                    if (err) logger.warn(err);
-                    next(null);
-                  });
-                else
+                newVideo.backup(function (err) {
+                  if (err) logger.warn(err);
                   next(null);
+                });
               });
             }
             catch (error) {
@@ -396,11 +394,19 @@ videoSchema.methods.thumbnail = function(callback) {
 // uploads to Google Drive - OnlyFans folder
 videoSchema.methods.backup = function(callback) {
   var self = this;
+  if (!config.backupToOnlyFans) return callback('Skipping OnlyFans folder Backup');
   logger.log('Backing up: %s', self.title);
+  if (self.backedUp) {
+    logger.debug('Skipping Backup: Already Backed Up');
+    return callback(null);
+  }
   require('../modules/drive').backupVideo(self, function (err) {
-    if (err) logger.warn(err);
-    else logger.log('Backed Up: %s', self.title);
-    callback(null);
+    if (err) return callback(err);
+    logger.log('Backed Up: %s', self.title);
+    self.backedUp = true;
+    self.save(function (err) {
+      callback(err);
+    });
   });
 }
 
