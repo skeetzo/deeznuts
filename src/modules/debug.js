@@ -33,7 +33,7 @@ module.exports.debug = function(callback) {
 
         function backupVideos(cb) {
             if (!config.backupToOnlyFans) return cb(null);
-            require('../modules/video').find({}, function (err, videos) {
+            require('../models/video').find({'backedUp':false}, function (err, videos) {
                 if (err) {
                     logger.warn(err);
                     cb(null);
