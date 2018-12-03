@@ -65,10 +65,10 @@ nms.on('postPublish', (id, StreamPath, args) => {
   logger.log('[NodeEvent on postPublish]', `id=${id} StreamPath=${StreamPath} args=${JSON.stringify(args)}`);
   logger.log('Updating Status %s -> %s', config.status, 'Live');
   config.status = 'Live';
-  require('../modules/twitter').tweetLive(function (err) {
-    if (err) logger.warn(err);
-    logger.debug('Tweeted Live Status');
-  });
+  if (config.Twitter_tweeting_on_live)
+    require('../modules/twitter').tweetLive(function (err) {
+      if (err) logger.warn(err);
+    });
 });
 
 nms.on('donePublish', (id, StreamPath, args) => {

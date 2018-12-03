@@ -140,13 +140,14 @@ function deploy(environment) {
 		config.debugging_sync = true;
 		config.ssl = true;
 		config.Twitter = true;
+		config.Twitter_tweeting_on_live = true;
 		config.remoteDatabase = true;
 	}
 	else if (environment=='production') {
 		config.ssl = true;
 		config.Twitter = true;
 		config.Twitter_tweeting = true;
-		config.Twitter_tweeting_on_live = false;
+		config.Twitter_tweeting_on_live = true;
 	}
 }
 
