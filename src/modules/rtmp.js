@@ -54,8 +54,8 @@ if (config.streamRecording)
       'ac': 'copy',
       'mp4': true,
       'mp4Flags': '[movflags=faststart]',
-      'dash': true,
-      'dashFlags': '[f=dash:window_size=3:extra_window_size=5]'
+      // 'dash': true,
+      // 'dashFlags': '[f=dash:window_size=3:extra_window_size=5]'
     }
     ]
   }
