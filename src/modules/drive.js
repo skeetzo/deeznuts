@@ -8,16 +8,43 @@ var _ = require('underscore'),
 var authenticated = false; // 6 hour expiration
 var authTimeout;
 
-const {GoogleApis} = require('googleapis');
-const google = new GoogleApis();
+// const {GoogleApis} = require('googleapis');
+// const google = new GoogleApis();
+var {google} = require('googleapis');
 
-var OAuth2 = google.auth.OAuth2,
-    oauth2Client = new OAuth2(config.Google_client_id, config.Google_client_secret, config.Google_redirect);
+// var OAuth2 = google.auth.OAuth2,
+    // oauth2Client = new OAuth2(config.Google_client_id, config.Google_client_secret, config.Google_redirect);
 
-var Google_Drive = google.drive({
-  'version': 'v3',
-  'auth': oauth2Client
+// var Google_Drive = google.drive({
+//   'version': 'v3',
+//   'auth': oauth2Client
+// });
+
+// var Google_Oauth_Opts = {};
+// var local_keys_path = "../keys/dbot-keys.json";
+// Google_Oauth_Opts = fs.readFileSync(local_keys_path).toString();
+// Google_Oauth_Opts = JSON.parse(Google_Oauth_Opts);
+
+// var Google_scopes = ['https://www.googleapis.com/auth/drive'];
+var Google_Drive;
+// var Google_jwtClient = new google.auth.JWT(
+//      Google_Oauth_Opts.client_email,
+//      null,
+//      Google_Oauth_Opts.private_key,
+//      Google_scopes);
+
+// authenticate request
+config.Google_jwtClient.authorize(function (err, tokens) {
+  if (err) return console.error(err);
+  console.log("Successfully authorized Google!");
+  authenticated = true;
+  Google_Drive = google.drive({
+    version: 'v3',
+      auth: config.Google_jwtClient
+  });
 });
+
+
 
 // Authentication
 

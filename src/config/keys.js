@@ -1,4 +1,5 @@
 var fs = require('fs');
+var {google} = require('googleapis');
 
 module.exports = function() {
     var localConfig = {},
@@ -53,6 +54,17 @@ module.exports = function() {
     // Google Drive
     this.Google_client_id = localConfig.Google_id;
     this.Google_client_secret = localConfig.Google_secret;
+
+    var Google_Oauth_Opts = {};
+
+    Google_Oauth_Opts = fs.readFileSync(this.local_google_keys_path).toString();
+    Google_Oauth_Opts = JSON.parse(Google_Oauth_Opts);
+
+    this.Google_jwtClient = new google.auth.JWT(
+         Google_Oauth_Opts.client_email,
+         null,
+         Google_Oauth_Opts.private_key,
+         this.Google_scopes);
 
     this.driveFolderId = localConfig.driveFolderId || process.env.driveFolderId;
 
