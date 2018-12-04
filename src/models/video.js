@@ -99,7 +99,7 @@ videoSchema.pre('save', function (next) {
 
 // move any mp4s from public/videos/live/stream -> public/videos/archived
 videoSchema.statics.archiveVideos = function(callback) {
-  var fs = require('fs');
+  var fs = require('fs');fs.r
   logger.log('Archiving MP4s');
   // stream directories
   fs.readdir(path.join(__dirname, '../public/videos/live'), function (err, streams) {
