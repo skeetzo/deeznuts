@@ -28,7 +28,7 @@ gulp.task('bootstrap', function() {
 gulp.task('flv', function() {
   // console.log('Moving flv.js...');
   return gulp.src('node_modules/flv.js/dist/**.*')
-    .pipe(gulp.dest('src/public/dist/flv.js'));
+    .pipe(gulp.dest('src/public/flv.js'));
 });
 
 gulp.task('jquery', function() {
