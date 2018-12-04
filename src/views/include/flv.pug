@@ -10,15 +10,8 @@ script.
       url: "#{live_url}"
     });
     flvPlayer.attachMediaElement(videoElement);
-    try {
-      console.log('loading...');
-      flvPlayer.load();
-    }
-    catch (err) {
-      console.log(err);
-    }
-    //- flvPlayer.play();
-   
+    flvPlayer.load();
+    flvPlayer.play();
   }
 
 //- dash
