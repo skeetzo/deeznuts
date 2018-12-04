@@ -18,7 +18,13 @@ var serverOptions = {
     'port': 8000,
     'allow_origin': '*',
     'mediaroot': 'src/public/videos'
-  }
+  },
+
+  // 'auth': {
+  //   'play': true,
+  //   'publish': true,
+  //   'secret': config.streamKey
+  // }
 };
 
 if (config.ssl)
@@ -48,15 +54,15 @@ if (config.streamRecording)
     //   dash: true,
     //   dashFlags: '[f=dash:window_size=3:extra_window_size=5]'
     // },
-    // {
-    //   'app': 'live',
-    //   // 'ac': 'aac',
-    //   'ac': 'copy',
-    //   'mp4': true,
-    //   'mp4Flags': '[movflags=faststart]',
-    //   // 'dash': true,
-    //   // 'dashFlags': '[f=dash:window_size=3:extra_window_size=5]'
-    // }
+    {
+      'app': 'live',
+      // 'ac': 'aac',
+      'ac': 'copy',
+      'mp4': true,
+      'mp4Flags': '[movflags=faststart]',
+      // 'dash': true,
+      // 'dashFlags': '[f=dash:window_size=3:extra_window_size=5]'
+    }
     ]
   }
 
