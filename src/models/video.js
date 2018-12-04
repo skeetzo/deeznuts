@@ -271,6 +271,12 @@ videoSchema.methods.createPreview = function(callback) {
               step(err, file);
             },'filters');
           }
+          else if (err.message.indexOf('Conversion failed!')>-1) {
+            logger.debug('-- retrying muxing extraction 2 --');
+            return self.extract(function (err, file) {
+              step(err, file);
+            },'muxing');
+          }
           return step(err);
         }
         step(null, file);
@@ -303,7 +309,7 @@ videoSchema.methods.extract = function(callback, retryReason) {
   if (duration>config.defaultPreviewDuration) duration = parseInt(config.defaultPreviewDuration, 10);
   logger.debug('Duration: %s:%s', duration, this.duration);
   var newTitle = path.basename(this.path.toLowerCase().replace('.mp4','-preview.mp4'));
-  var newFile = path.join(__dirname, '../public/videos/previews', newTitle);
+  var newFile = path.join(config.videosPath, 'previews', newTitle);
   logger.debug('New File: %s', newFile);
   logger.debug('New Title: %s', newTitle);
   var outputOptions = [];

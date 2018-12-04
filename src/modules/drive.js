@@ -82,7 +82,7 @@ function refreshAccess(callback) {
 function backupVideo(video, callback) {
   async.waterfall([
     function auth(step) {
-      if (authenticated) return step(null);
+      // if (authenticated) return step(null);
       authenticate(step);
     },
     function (step) {
