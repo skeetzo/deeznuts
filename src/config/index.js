@@ -44,7 +44,8 @@ config.defaultVideo = {
 	'performers': ['Myself','Your Mom'],
 	'isOriginal': true,
 	'duration': 247,
-	'path': path.join(__dirname,'../public/videos/preview.mp4')
+	'path': path.join(__dirname,'../public/videos/preview.mp4'),
+	'backedUp': true
 };
 config.videosPath = '/mnt/deeznuts/videos';
 config.imagesPath = '/mnt/deeznuts/images';
