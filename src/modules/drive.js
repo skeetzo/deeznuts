@@ -57,6 +57,7 @@ function authenticate(callback) {
       version: 'v3',
         auth: config.Google_jwtClient
     });
+    callback(null);
   });
 
   // logger.log('authenticating Google - Drive');
