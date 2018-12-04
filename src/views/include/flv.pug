@@ -3,25 +3,13 @@ script(type="text/javascript", src="/flv.js/flv.min.js")
 script.
   if (flvjs.isSupported()) {
     var videoElement = document.getElementById('live');
-    try {
-      console.log('creating...');
-      var flvPlayer = flvjs.createPlayer({
-        type: 'flv',
-        isLive: true,
-        cors: true,
-        url: "#{live_url}"
-      });
-    }
-    catch (err) {
-      console.log(err);
-    }
-    try {
-      console.log('attaching...');
-      flvPlayer.attachMediaElement(videoElement);
-    }
-    catch (err) {
-      console.log(err);
-    }
+    var flvPlayer = flvjs.createPlayer({
+      type: 'flv',
+      isLive: true,
+      cors: true,
+      url: "#{live_url}"
+    });
+    flvPlayer.attachMediaElement(videoElement);
     try {
       console.log('loading...');
       flvPlayer.load();
@@ -29,13 +17,8 @@ script.
     catch (err) {
       console.log(err);
     }
-    try {
-      console.log('playing...');
-      flvPlayer.play();
-    }
-    catch (err) {
-      console.log(err);
-    }
+    //- flvPlayer.play();
+   
   }
 
 //- dash
