@@ -6,7 +6,7 @@ script.
     var flvPlayer = flvjs.createPlayer({
       type: 'flv',
       isLive: true,
-      cors: false,
+      cors: true,
       url: "#{live_url}"
     });
     flvPlayer.attachMediaElement(videoElement);
