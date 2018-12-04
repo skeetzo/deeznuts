@@ -37,6 +37,8 @@ async.series([
       else {
           app.bootCount++;
           logger.log('App loaded: %s', app.bootCount);
+          if (app.google.access_token&&app.google.refresh_token)
+            app.google.access_token = null;
       }
       app.save(function (err) {
           if (err) logger.warn(err);
