@@ -34,47 +34,57 @@ var Google_Drive;
 //      Google_scopes);
 
 // authenticate request
-config.Google_jwtClient.authorize(function (err, tokens) {
-  if (err) return console.error(err);
-  console.log("Successfully authorized Google!");
-  authenticated = true;
-  Google_Drive = google.drive({
-    version: 'v3',
-      auth: config.Google_jwtClient
-  });
-});
+// config.Google_jwtClient.authorize(function (err, tokens) {
+//   if (err) return console.error(err);
+//   console.log("Successfully authorized Google!");
+//   authenticated = true;
+//   Google_Drive = google.drive({
+//     version: 'v3',
+//       auth: config.Google_jwtClient
+//   });
+// });
 
 
 
 // Authentication
 
-// function authenticate(callback) {
-//   // logger.log('authenticating Google - Drive');
-//   App.findOne({}, function (err, app) {
-//     if (err) logger.warn(err);
-//     if (!app.google.access_token&&app.google.refresh_token) return refreshAccess(callback);
-//     if (!app.google.access_token&&!app.google.refresh_token) {
-//       return callback('Missing Google Tokens: Please Login');
-//     }
-//     oauth2Client.setCredentials({
-//       'access_token': app.google.access_token,
-//       'refresh_token': app.google.refresh_token
-//     });
-//     Google_Drive = google.drive({
-//       version: 'v3',
-//       auth: oauth2Client
-//     });
-//     logger.log('Google authenticated - Drive');
-//     authenticated = true;
-//     clearTimeout(authTimeout);
-//     authTimeout = setTimeout(function authExpire() {
-//       logger.debug('Google authentication - Drive; expired');
-//       authenticated = false;
-//     },1000*60*60*6) // 6 hours
-//     callback(null);  
-//   });
-// }
-// module.exports.authenticate = authenticate;
+function authenticate(callback) {
+  config.Google_jwtClient.authorize(function (err, tokens) {
+    if (err) return callback(err);
+    logger.log("Successfully authorized Google!");
+    authenticated = true;
+    Google_Drive = google.drive({
+      version: 'v3',
+        auth: config.Google_jwtClient
+    });
+  });
+
+  // logger.log('authenticating Google - Drive');
+  // App.findOne({}, function (err, app) {
+  //   if (err) logger.warn(err);
+  //   if (!app.google.access_token&&app.google.refresh_token) return refreshAccess(callback);
+  //   if (!app.google.access_token&&!app.google.refresh_token) {
+  //     return callback('Missing Google Tokens: Please Login');
+  //   }
+  //   oauth2Client.setCredentials({
+  //     'access_token': app.google.access_token,
+  //     'refresh_token': app.google.refresh_token
+  //   });
+  //   Google_Drive = google.drive({
+  //     version: 'v3',
+  //     auth: oauth2Client
+  //   });
+  //   logger.log('Google authenticated - Drive');
+  //   authenticated = true;
+  //   clearTimeout(authTimeout);
+  //   authTimeout = setTimeout(function authExpire() {
+  //     logger.debug('Google authentication - Drive; expired');
+  //     authenticated = false;
+  //   },1000*60*60*6) // 6 hours
+  //   callback(null);  
+  // });
+}
+module.exports.authenticate = authenticate;
 
 // function refreshAccess(callback) {
 //   // logger.log('refreshing Google - Drive');
@@ -108,10 +118,10 @@ config.Google_jwtClient.authorize(function (err, tokens) {
 // upload file at path to OnlyFans folder
 function backupVideo(video, callback) {
   async.waterfall([
-    // function auth(step) {
-    //   if (authenticated) return step(null);
-    //   authenticate(step);
-    // },
+    function auth(step) {
+      if (authenticated) return step(null);
+      authenticate(step);
+    },
     function (step) {
       logger.log('Uploading to OnlyFans folder: %s', video.title);
       // file is string of path
