@@ -102,13 +102,13 @@ module.exports.resetLocals = function(req, res, next) {
     //     req.session.locals.key = timestamp+"-"+hash;
     // }
 
-    if (!req.session.locals.key) {
-        var fs = require('fs');
-        var path = require('path');
-        var liveFiles = fs.readdirSync(path.join(config.videosPath,'live/stream'));
-        logger.debug('files: %s', liveFiles);
-        req.session.locals.key = liveFiles[0];
-    }
+    // if (!req.session.locals.key) {
+    //     var fs = require('fs');
+    //     var path = require('path');
+    //     var liveFiles = fs.readdirSync(path.join(config.videosPath,'live/stream'));
+    //     logger.debug('files: %s', liveFiles);
+    //     req.session.locals.key = liveFiles[0];
+    // }
 
     req.session.save(function (err) {
         if (err) logger.warn(err);
