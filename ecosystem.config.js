@@ -27,8 +27,6 @@ module.exports = {
       repo : "git@github.com:skeetzo/deeznuts.git",
       path : "/var/www/apps/deeznuts",
       "post-deploy" : "npm install && pm2 startOrRestart ecosystem.config.js --only deeznuts",
-      // "pre-setup" : "apt-get install git",
-
       env  : {
         NODE_ENV: "development"
       }
@@ -40,7 +38,6 @@ module.exports = {
       repo : "git@github.com:skeetzo/deeznuts.git",
       path : "/var/www/apps/deeznuts",
       "post-deploy" : "npm install && pm2 startOrRestart ecosystem.config.js --env staging --only deeznuts",
-      "ssh_options": ["StrictHostKeyChecking=no"],
       env  : {
         NODE_ENV: "staging"
       }
