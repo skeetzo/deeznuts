@@ -52,12 +52,8 @@ config.defaultVideo = {
 	'path': path.join(__dirname,'../public/videos/preview.mp4'),
 	'backedUp': true
 };
-config.videosPath = '/mnt/deeznuts/videos';
-config.imagesPath = '/mnt/deeznuts/images';
 
 config.rebuildFromFiles = false;
-
-config.watermarkPath = path.join(__dirname, "../public/images/watermark.png");
 
 config.syncInterval = 3; // in seconds
 if (config.debugging) {
@@ -164,6 +160,10 @@ config.local_keys_path = path.join(config.dev_path, 'localConfig.json');
 config.local_google_keys_path = path.join(config.dev_path, 'google.json');
 config.logs_dir = path.join(config.dev_path, 'logs');
 config.logs_file = path.join(config.dev_path, 'logs/file.log');
+
+config.videosPath = '/mnt/deeznuts/videos';
+config.imagesPath = '/mnt/deeznuts/images';
+config.watermarkPath = path.join(config.imagesPath, "watermark.png");
 
 require('./keys').call(config);
 require('./logger').call(config);

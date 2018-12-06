@@ -9,7 +9,7 @@ module.exports.backup = function(callback) {
 	logger.log('Backing Up MongoDB: DeezNuts');
 	var year = moment(new Date()).format('YYYY');
 	var month = moment(new Date()).format('MM-YYYY');
-	var file_path = path.resolve(__dirname, 'backups', 'mongo', year, month);
+	var file_path = path.join(config.dev_path, 'mongo', year, month);
 	logger.debug('mongo backup path: %s/%s', file_path, moment(new Date()).format('DD-MM-YYYY')+'.tar');
 	fss.ensureDirSync(file_path);
 	backup({
