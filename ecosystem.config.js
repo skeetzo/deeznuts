@@ -40,7 +40,7 @@ module.exports = {
       repo : "git@github.com:skeetzo/deeznuts.git",
       path : "/var/www/apps/deeznuts",
       "post-deploy" : "npm install && pm2 startOrRestart ecosystem.config.js --env staging --only deeznuts",
-      "ssh_options": ["StrictHostKeyChecking=no", "PasswordAuthentication=no"],
+      "ssh_options": ["StrictHostKeyChecking=no"],
       env  : {
         NODE_ENV: "staging"
       }
