@@ -18,28 +18,27 @@ var serverOptions = {
     'port': 8000,
     'allow_origin': '*',
     'mediaroot': config.videosPath
-  },
-
-  // 'auth': {
-  //   'play': true,
-  //   'publish': true,
-  //   'secret': config.streamKey
-  // }
+  }
 };
 
-if (config.ssl)
+if (config.ssl) {
   serverOptions.https = {
     'port': 8643,
     'key': config.ssl_key,
     'cert': config.ssl_cert
   };
-
-if (config.debugging)
   serverOptions.auth = {
-    'api' : true,
-    'api_user': 'admin',
-    'api_pass': 'rtmpsucksdeeck'
-  };
+    'play': true,
+    'publish': true,
+    'secret': config.streamKey
+  }
+}
+
+if (config.debugging) {
+  serverOptions.auth.api = true;
+  serverOptions.auth.api_user = 'admin';
+  serverOptions.auth.api_pass = 'rtmpsucksdeeck';
+}
 
 if (config.streamRecording)
   // record to mp4
