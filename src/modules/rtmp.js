@@ -17,7 +17,7 @@ var serverOptions = {
   'http': {
     'port': 8000,
     'allow_origin': '*',
-    'mediaroot': 'src/public/videos'
+    'mediaroot': config.videosPath
   },
 
   // 'auth': {

@@ -99,10 +99,10 @@ videoSchema.pre('save', function (next) {
 
 // move any mp4s from public/videos/live/stream -> public/videos/archived
 videoSchema.statics.archiveVideos = function(callback) {
-  var fs = require('fs');fs.r
+  var fs = require('fs');
   logger.log('Archiving MP4s');
   // stream directories
-  fs.readdir(path.join(__dirname, '../public/videos/live'), function (err, streams) {
+  fs.readdir(path.join(config.videosPath, 'live'), function (err, streams) {
     if (err) {
       logger.warn(err);
       return callback(null);
@@ -121,7 +121,7 @@ videoSchema.statics.archiveVideos = function(callback) {
         logger.debug('archived_path: %s', archived_path);
         // fss.ensureDirSync(archived_path);
         fss.ensureDirSync(path.join(config.videosPath, 'archived', stream_name), "0o2775");
-        fss.ensureSymlinkSync(path.join(config.videosPath, 'archived', stream_name), archived_path);
+        // fss.ensureSymlinkSync(path.join(config.videosPath, 'archived', stream_name), archived_path);
         fs.readdir(stream_path, function (err, mp4s) {
           if (err) {
             logger.warn(err);
