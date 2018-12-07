@@ -113,14 +113,14 @@ videoSchema.statics.archiveVideos = function(callback) {
       series.push(function (next) {
         // mp4s in directories
         var stream_name = streams.shift();
-        var stream_path = path.join(config.videosPath, 'live/', stream_name);
-        var archived_path = path.join(config.videosPath, 'archived/', stream_name);
+        var stream_path = path.join(config.videosPath, '/live/', stream_name);
+        var archived_path = path.join(config.videosPath, '/archived/', stream_name);
         // logger.debug('stream_name: %s', stream_name);
         logger.log('stream: %s', stream_name);
         logger.debug('stream_path: %s', stream_path);
         logger.debug('archived_path: %s', archived_path);
         // fss.ensureDirSync(archived_path);
-        fss.ensureDirSync(path.join(config.videosPath, 'archived/', stream_name), "0o2775");
+        fss.ensureDirSync(path.join(config.videosPath, '/archived/', stream_name), "0o2775");
         // fss.ensureSymlinkSync(path.join(config.videosPath, 'archived', stream_name), archived_path);
         fs.readdir(stream_path, function (err, mp4s) {
           if (err) {
@@ -136,8 +136,8 @@ videoSchema.statics.archiveVideos = function(callback) {
           for (var i=0; i<mp4s.length; i++) {
             try {
               logger.log('Archiving: %s', mp4s[i]);
-              var file_path = path.join(config.videosPath, 'live/', stream_name, mp4s[i]);
-              var file_path_archived = path.join(config.videosPath, 'archived/', stream_name, mp4s[i].toLowerCase());
+              var file_path = path.join(config.videosPath, '/live/', stream_name, mp4s[i]);
+              var file_path_archived = path.join(config.videosPath, '/archived/', stream_name, mp4s[i].toLowerCase());
               logger.debug('file_path: %s', file_path);
               logger.debug('file_path_archived: %s', file_path_archived);
               fss.moveSync(file_path, file_path_archived);
@@ -309,7 +309,7 @@ videoSchema.methods.extract = function(callback, retryReason) {
   if (duration>config.defaultPreviewDuration) duration = parseInt(config.defaultPreviewDuration, 10);
   logger.debug('Duration: %s:%s', duration, this.duration);
   var newTitle = path.basename(this.path.toLowerCase().replace('.mp4','-preview.mp4'));
-  var newFile = path.join(config.videosPath, 'previews/', newTitle);
+  var newFile = path.join(config.videosPath, '/previews/', newTitle);
   logger.debug('New File: %s', newFile);
   logger.debug('New Title: %s', newTitle);
   var outputOptions = [];
@@ -367,7 +367,7 @@ videoSchema.methods.thumbnail = function(callback) {
   var self = this;
   logger.log('Creating Thumbnail: %s', self.path);
   var filename = path.basename(self.path).split('.')[0]+'.png';
-  var foldername = path.join(config.imagesPath, 'thumbnails/');
+  var foldername = path.join(config.imagesPath, '/thumbnails/');
   logger.debug('filename: %s', filename);
   logger.debug('foldername: %s', foldername);
   var proc = new FFmpeg(self.path)
@@ -382,7 +382,7 @@ videoSchema.methods.thumbnail = function(callback) {
     callback(err);
   })
   .on('end', function() {
-    self.path_image = path.join(config.imagesPath, 'thumbnails/', path.basename(self.path).replace('.mp4','.png'));
+    self.path_image = path.join(config.imagesPath, '/thumbnails/', path.basename(self.path).replace('.mp4','.png'));
     self.save(function (err) {
       if (err) return callback(err);
       logger.log('thumbnail saved: %s', filename);
