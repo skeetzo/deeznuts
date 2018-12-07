@@ -125,6 +125,7 @@ function backupVideo(video, callback) {
     },
     function (step) {
       logger.log('Uploading to OnlyFans folder: %s', video.title);
+      logger.debug(video.path);
       // file is string of path
       var mimeType = "video/mp4";
       var fileMetadata = {
