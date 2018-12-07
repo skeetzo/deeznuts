@@ -4,7 +4,7 @@ var config = require('../config/index'),
 const { NodeMediaServer } = require('node-media-server');
 
 var serverOptions = {
-  'logType': 3,
+  'logType': 2,
 
   'rtmp': {
     'port': 8935,
@@ -23,7 +23,7 @@ var serverOptions = {
 
 if (config.ssl) {
   serverOptions.https = {
-    'port': 8643,
+    'port': 8443,
     'key': config.ssl_key,
     'cert': config.ssl_cert
   };
