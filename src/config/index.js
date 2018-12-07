@@ -36,7 +36,6 @@ else config.domain = "http://"+config.domain;
 
 // DeezNuts Settings
 config.archive_videos = true;
-config.archive_on_publish = false;
 config.archive_delay = 10000;
 config.conversionRate = 6; // $1 per 6 minutes
 config.createPreviews = true;
@@ -98,6 +97,7 @@ function deploy(environment) {
 	config.local = false;
 
 	config.backupToOnlyFans = false;
+	config.archive_on_publish = false;
 
 	config.Twitter = false;
 	config.Twitter_tweeting = false;
@@ -140,6 +140,7 @@ function deploy(environment) {
 		config.Twitter_tweeting_on_live = true;
 		config.remoteDatabase = true;
 		config.archive_on_publish = true;
+		config.backupToOnlyFans = true;
 	}
 	else if (environment=='production') {
 		config.ssl = true;
