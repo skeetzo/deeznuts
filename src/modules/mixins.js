@@ -172,9 +172,9 @@ var Video_Preview = function(src) {
   path_ = path_.replace(/.*public\//gi, '../');
   logger.log('path: %s', path_);
   var path_image = path.relative(config.imagesPath, src.path_image);
-  logger.log('path_image: %s', path_);
+  logger.log('path_image: %s', path_image);
   path_image = path_image.replace(/.*public\//gi, '../');
-  logger.log('path_image: %s', path_);
+  logger.log('path_image: %s', path_image);
   return {
     '_id': src._id,
     'title': src.title,
