@@ -149,8 +149,8 @@ module.exports.User = User_;
 var Video = function(src) {
   if (!src.path) src.path = '';
   if (!src.path_image) src.path_image = '';
-  var path_ = path.relative(config.videosPath, src.path).replace(/.*public\//gi, '../');
-  var path_image = path.relative(config.imagesPath, src.path_image).replace(/.*public\//gi, '../');
+  var path_ = path.join(config.videosPath, src.path).replace(/.*public\//gi, '../');
+  var path_image = path.join(config.imagesPath, src.path_image).replace(/.*public\//gi, '../');
   return {
     '_id': src._id,
     'title': src.title,
@@ -167,11 +167,11 @@ module.exports.Video = Video;
 var Video_Preview = function(src) {
   if (!src.path_preview) src.path_preview = '';
   if (!src.path_image) src.path_image = '';
-  var path_ = path.relative(config.videosPath, src.path_preview);
+  var path_ = path.join(config.videosPath, src.path_preview);
   logger.log('path: %s', path_);
   path_ = path_.replace(/.*public\//gi, '../');
   logger.log('path: %s', path_);
-  var path_image = path.relative(config.imagesPath, src.path_image);
+  var path_image = path.join(config.imagesPath, src.path_image);
   logger.log('path_image: %s', path_image);
   path_image = path_image.replace(/.*public\//gi, '../');
   logger.log('path_image: %s', path_image);
