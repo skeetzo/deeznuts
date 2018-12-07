@@ -147,28 +147,38 @@ var User_ = function(src) {
 module.exports.User = User_;
 
 var Video = function(src) {
+  if (!src.path) src.path = '';
+  if (!src.path_image) src.path_image = '';
+  var path_ = path.relative(config.videosPath, src.path).replace(/.*public\//gi, '../');
+  var path_image = path.relative(config.imagesPath, src.path_image).replace(/.*public\//gi, '../');
   return {
     '_id': src._id,
     'title': src.title,
     'date': src.date,
     'performers': src.performers,
     'description': src.description,
-    'path': src.path || '',
-    'path_image': src.path_image || '',
+    'path': path_ || '',
+    'path_image': path_image || '',
     'price': src.price
   };
 }
 module.exports.Video = Video;
 
 var Video_Preview = function(src) {
+  if (!src.path_preview) src.path_preview = '';
+  if (!src.path_image) src.path_image = '';
+  var path_ = path.join('../..', src.path_preview);
+  logger.log('path: %s', path_);
+  var path_image = path.join('../..', src.path_image);
+  logger.log('path_image: %s', path_image);
   return {
     '_id': src._id,
     'title': src.title,
     'date': src.date,
     'performers': src.performers,
     'description': src.description,
-    'path': src.path,
-    'path_image': src.path_image,
+    'path': path_ || '',
+    'path_image': path_image || '',
     'price': src.price
   };
 }
