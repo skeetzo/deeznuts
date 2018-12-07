@@ -127,14 +127,13 @@ function backupVideo(video, callback) {
       logger.log('Uploading to OnlyFans folder: %s', video.title);
       logger.debug(video.path);
       // file is string of path
-      var mimeType = "video/mp4";
       var fileMetadata = {
         'name': video.title,
         'parents': [config.driveFolderId],
         'uploadType': 'resumable'
       };
       var media = {
-        mimeType: mimeType,
+        mimeType: "video/mp4",
         body: fs.createReadStream(video.path)
       };
       Google_Drive.files.create({
