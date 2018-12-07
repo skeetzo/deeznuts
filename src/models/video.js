@@ -43,7 +43,7 @@ videoSchema.pre('save', function (next) {
   if ((self.isModified('description')||self.isModified('performers'))&&self.performers)
     self.description = [self.performers.slice(0, -1).join(', '), self.performers.slice(-1)[0]].join(self.performers.length < 2 ? '' : ' and ');
   if (!self.path)
-    self.path = path.join(__dirname, '../public/videos/archive/', self.title+'.mp4');
+    self.path = path.join(config.videosPath, 'archive', self.title+'.mp4');
   if (!self.duration) {
     logger.debug('probing...');
     // ffprobe video for duration
@@ -113,15 +113,15 @@ videoSchema.statics.archiveVideos = function(callback) {
       series.push(function (next) {
         // mp4s in directories
         var stream_name = streams.shift();
-        var stream_path = path.join(__dirname, '../public/videos/live', stream_name);
-        var archived_path = path.join(__dirname, '../public/videos/archived', stream_name);
+        var stream_path = path.join(config.videosPath, 'live', stream_name);
+        var archived_path = path.join(config.videosPath, 'archived', stream_name);
         // logger.debug('stream_name: %s', stream_name);
         logger.log('stream: %s', stream_name);
         logger.debug('stream_path: %s', stream_path);
         logger.debug('archived_path: %s', archived_path);
         // fss.ensureDirSync(archived_path);
-        fss.ensureDirSync(path.join(config.videosPath, 'archived/', stream_name), "0o2775");
-        fss.ensureSymlinkSync(path.join(config.videosPath, 'archived/', stream_name), archived_path);
+        fss.ensureDirSync(path.join(config.videosPath, 'archived', stream_name), "0o2775");
+        fss.ensureSymlinkSync(path.join(config.videosPath, 'archived', stream_name), archived_path);
         fs.readdir(stream_path, function (err, mp4s) {
           if (err) {
             logger.warn(err);
@@ -136,8 +136,8 @@ videoSchema.statics.archiveVideos = function(callback) {
           for (var i=0; i<mp4s.length; i++) {
             try {
               logger.log('Archiving: %s', mp4s[i]);
-              var file_path = path.join(__dirname, '../public/videos/live', stream_name, mp4s[i]);
-              var file_path_archived = path.join(__dirname, '../public/videos/archived', stream_name, mp4s[i].toLowerCase());
+              var file_path = path.join(config.videosPath, 'live', stream_name, mp4s[i]);
+              var file_path_archived = path.join(config.videosPath, 'archived', stream_name, mp4s[i].toLowerCase());
               logger.debug('file_path: %s', file_path);
               logger.debug('file_path_archived: %s', file_path_archived);
               fss.moveSync(file_path, file_path_archived);
@@ -367,7 +367,7 @@ videoSchema.methods.thumbnail = function(callback) {
   var self = this;
   logger.log('Creating Thumbnail: %s', self.path);
   var filename = path.basename(self.path).split('.')[0]+'.png';
-  var foldername = path.join(__dirname, '../public/images/thumbnails');
+  var foldername = path.join(config.imagesPath, 'thumbnails');
   logger.debug('filename: %s', filename);
   logger.debug('foldername: %s', foldername);
   var proc = new FFmpeg(self.path)
@@ -382,7 +382,7 @@ videoSchema.methods.thumbnail = function(callback) {
     callback(err);
   })
   .on('end', function() {
-    self.path_image = path.join(__dirname, '../public/images/thumbnails', path.basename(self.path).replace('.mp4','.png'));
+    self.path_image = path.join(config.imagesPath, 'thumbnails', path.basename(self.path).replace('.mp4','.png'));
     self.save(function (err) {
       if (err) return callback(err);
       logger.log('thumbnail saved: %s', filename);

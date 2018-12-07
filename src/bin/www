@@ -100,12 +100,12 @@ async.series([
     fss.ensureDirSync(path.join(config.videosPath, 'archived'), "0o2775");
     fss.ensureDirSync(path.join(config.videosPath, 'previews'), "0o2775");
     fss.ensureDirSync(path.join(config.imagesPath, 'thumbnails'), "0o2775");
-    fss.ensureSymlinkSync(config.videosPath, path.join(__dirname, '../public/videos'));
-    fss.ensureSymlinkSync(path.join(config.videosPath, 'live'), path.join(__dirname, '../public/videos/live'));
-    fss.ensureSymlinkSync(path.join(config.videosPath, 'archived'), path.join(__dirname, '../public/videos/archived'));
-    fss.ensureSymlinkSync(path.join(config.videosPath, 'previews'), path.join(__dirname, '../public/videos/previews'));
-    fss.ensureSymlinkSync(config.imagesPath, path.join(__dirname, '../public/images'));
-    fss.ensureSymlinkSync(path.join(config.imagesPath, 'thumbnails'), path.join(__dirname, '../public/images/thumbnails'));
+    // fss.ensureSymlinkSync(config.videosPath, path.join(__dirname, '../public/videos'));
+    // fss.ensureSymlinkSync(path.join(config.videosPath, 'live'), path.join(__dirname, '../public/videos/live'));
+    // fss.ensureSymlinkSync(path.join(config.videosPath, 'archived'), path.join(__dirname, '../public/videos/archived'));
+    // fss.ensureSymlinkSync(path.join(config.videosPath, 'previews'), path.join(__dirname, '../public/videos/previews'));
+    // fss.ensureSymlinkSync(config.imagesPath, path.join(__dirname, '../public/images'));
+    // fss.ensureSymlinkSync(path.join(config.imagesPath, 'thumbnails'), path.join(__dirname, '../public/images/thumbnails'));
     if (!config.archive_videos) {
       logger.log('Skipping Video Archiving');
       return step(null);
