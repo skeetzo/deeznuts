@@ -20,11 +20,11 @@ var serverOptions = {
     'mediaroot': config.videosPath
   },
 
-  'auth': {
-    'play': true,
-    'publish': true,
-    'secret': config.streamKey
-  }
+  // 'auth': {
+  //   'play': true,
+  //   'publish': true,
+  //   'secret': config.streamKey
+  // }
 };
 
 if (config.ssl)
