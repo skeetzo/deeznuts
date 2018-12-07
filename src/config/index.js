@@ -44,14 +44,6 @@ config.createPreviews = true;
 config.defaultPrice = 5; // in dollars
 config.defaultTime = 60; // time in seconds
 config.defaultPreviewDuration = 30;
-config.defaultVideo = {
-	'title': 'Example',
-	'performers': ['Myself','Your Mom'],
-	'isOriginal': true,
-	'duration': 247,
-	'path': path.join(__dirname,'../public/videos/preview.mp4'),
-	'backedUp': true
-};
 
 config.rebuildFromFiles = false;
 
@@ -168,6 +160,15 @@ config.logs_file = path.join(config.dev_path, 'logs/file.log');
 config.videosPath = '/mnt/deeznuts/videos';
 config.imagesPath = '/mnt/deeznuts/images';
 config.watermarkPath = path.join(config.imagesPath, "watermark.png");
+
+config.defaultVideo = {
+	'title': 'Example',
+	'performers': ['Myself','Your Mom'],
+	'isOriginal': true,
+	'duration': 247,
+	'path': path.join(config.videosPath, 'preview.mp4'),
+	'backedUp': true
+};
 
 require('./keys').call(config);
 require('./logger').call(config);
