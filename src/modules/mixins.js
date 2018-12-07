@@ -167,9 +167,9 @@ module.exports.Video = Video;
 var Video_Preview = function(src) {
   if (!src.path_preview) src.path_preview = '';
   if (!src.path_image) src.path_image = '';
-  var path_ = path.join('../..', src.path_preview);
+  var path_ = src.path_preview.replace('/mnt/deeznuts', '..');
   logger.log('path: %s', path_);
-  var path_image = path.join('../..', src.path_image);
+  var path_image = src.path_image.replace('/mnt/deeznuts', '..');
   logger.log('path_image: %s', path_image);
   return {
     '_id': src._id,
