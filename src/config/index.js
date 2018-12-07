@@ -25,19 +25,19 @@ config.ssl_cert = '/etc/letsencrypt/live/alexdeeznuts.com-0001/fullchain.pem';
 
 config.domain = "alexdeeznuts.com";
 if (config.local) config.domain = "localhost";
-// var live_url = "wss://"+config.domain+":8443/videos/live/stream";
+var live_url = "wss://"+config.domain+":8443/videos/live/stream.flv";
 // var live_url = "https://"+config.domain+":8443/live/stream/index.mpd";
-var live_url = "https://"+config.domain+":8443/videos/live/stream.flv";
+// var live_url = "https://"+config.domain+":8443/videos/live/stream.flv";
 // if (config.debugging&&!config.ssl) live_url = "https://"+config.domain+":8000/live/stream.flv";
 // if (config.debugging&&!config.ssl) live_url = "http://"+config.domain+":8000/live/stream/index.mpd";
-if (config.debugging&&!config.ssl) live_url = "http://"+config.domain+":8000/live/stream.flv";
-// if (config.debugging&&!config.ssl) live_url = "ws://"+config.domain+":8000/videos/live/stream";
+// if (config.debugging&&!config.ssl) live_url = "http://"+config.domain+":8000/live/stream.flv";
+if (config.debugging&&!config.ssl) live_url = "ws://"+config.domain+":8000/videos/live/stream.flv";
 if (config.ssl) config.domain = "https://"+config.domain;
 else config.domain = "http://"+config.domain;
 
 // DeezNuts Settings
 config.archive_videos = true;
-config.archive_on_publish = true;
+config.archive_on_publish = false;
 config.archive_delay = 10000;
 config.conversionRate = 6; // $1 per 6 minutes
 config.createPreviews = true;
@@ -134,18 +134,20 @@ function deploy(environment) {
 		config.debugging_blockchain = true;
 		config.local = true;
 		config.remoteDatabase = true;
+		config.archive_on_publish = true;
 	}
 	else if (environment=='staging') {
 		config.debugging = true;
 		config.debugging_blockchain = true;
 		config.debugging_live = true;
+		config.debugging_reset_db = true;
+		config.debugging_reset_files = true;
 		config.debugging_address = true;
 		config.debugging_sync = true;
 		config.ssl = true;
 		config.Twitter = true;
 		config.Twitter_tweeting_on_live = true;
 		config.remoteDatabase = true;
-		config.archive_on_publish = false;
 	}
 	else if (environment=='production') {
 		config.ssl = true;
@@ -153,6 +155,7 @@ function deploy(environment) {
 		config.Twitter_tweeting = true;
 		config.Twitter_tweeting_on_live = true;
 		config.backupToOnlyFans = true;
+		config.archive_on_publish = true;
 	}
 }
 
