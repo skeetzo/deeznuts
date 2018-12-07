@@ -29,7 +29,7 @@ var serverOptions = {
 
 if (config.ssl)
   serverOptions.https = {
-    'port': 8443,
+    'port': 443,
     'key': config.ssl_key,
     'cert': config.ssl_cert
   };
