@@ -16,7 +16,7 @@ var serverOptions = {
 
   'http': {
     'port': 8000,
-    'allow_origin': '*',
+    'allow_origin': 'alexdeeznuts.com',
     'mediaroot': config.videosPath
   }
 };
@@ -25,8 +25,7 @@ if (config.ssl) {
   serverOptions.https = {
     'port': 8643,
     'key': config.ssl_key,
-    'cert': config.ssl_cert,
-    'allow_origin': '*'
+    'cert': config.ssl_cert
   };
   serverOptions.auth = {
     'play': true,
