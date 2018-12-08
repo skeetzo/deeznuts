@@ -16,7 +16,7 @@ var serverOptions = {
 
   'http': {
     'port': 8000,
-    'allow_origin': 'https://alexdeeznuts.com:8443',
+    'allow_origin': 'https://alexdeeznuts.com:8443/live/stream.flv',
     'mediaroot': config.videosPath
   }
 };
