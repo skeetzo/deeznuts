@@ -16,7 +16,7 @@ var serverOptions = {
 
   'http': {
     'port': 8000,
-    'allow_origin': 'http://www.alexdeeznuts.com https://www.alexdeeznuts.com http://alexdeeznuts.com https://alexdeeznuts.com alexdeeznuts.com',
+    'allow_origin': 'https://alexdeeznuts.com:8443/live/stream.flv',
     'mediaroot': config.videosPath
   }
 };
@@ -27,11 +27,11 @@ if (config.ssl) {
     'key': config.ssl_key,
     'cert': config.ssl_cert
   };
-  serverOptions.auth = {
-    'play': true,
-    'publish': true,
-    'secret': config.streamKey
-  }
+  // serverOptions.auth = {
+  //   'play': true,
+  //   'publish': true,
+  //   'secret': config.streamKey
+  // }
 }
 
 if (config.debugging) {
