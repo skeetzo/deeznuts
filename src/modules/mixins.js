@@ -96,19 +96,11 @@ module.exports.resetLocals = function(req, res, next) {
         req.session.locals._csrf = req.csrfToken();
 
     // rtmp key
-    // if (!req.session.locals.key) {
-    //     var timestamp = (Date.now() + config.streamKeyExpire);
-    //     var hash = md5("/live/stream-"+timestamp+"-"+config.streamKey);
-    //     req.session.locals.key = timestamp+"-"+hash;
-    // }
-
-    // if (!req.session.locals.key) {
-    //     var fs = require('fs');
-    //     var path = require('path');
-    //     var liveFiles = fs.readdirSync(path.join(config.videosPath,'live/stream'));
-    //     logger.debug('files: %s', liveFiles);
-    //     req.session.locals.key = liveFiles[0];
-    // }
+    if (!req.session.locals.key) {
+        var timestamp = (Date.now() + config.streamKeyExpire);
+        var hash = md5("/live/stream-"+timestamp+"-"+config.streamKey);
+        req.session.locals.key = timestamp+"-"+hash;
+    }
 
     req.session.save(function (err) {
         if (err) logger.warn(err);
