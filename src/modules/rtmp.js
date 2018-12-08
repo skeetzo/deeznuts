@@ -4,7 +4,7 @@ var config = require('../config/index'),
 const { NodeMediaServer } = require('node-media-server');
 
 var serverOptions = {
-  'logType': 4,
+  'logType': 3,
 
   'rtmp': {
     'port': 8935,
@@ -90,19 +90,19 @@ nms.on('donePublish', (id, StreamPath, args) => {
     }, config.archive_delay);
 });
 
-// nms.on('preConnect', (id, args) => {
-  // console.log('[NodeEvent on preConnect]', `id=${id} args=${JSON.stringify(args)}`);
-  // let session = nms.getSession(id);
-  // session.reject();
-// });
+nms.on('preConnect', (id, args) => {
+  logger.log('[NodeEvent on preConnect]', `id=${id} args=${JSON.stringify(args)}`);
+  let session = nms.getSession(id);
+  session.reject();
+});
 
-// nms.on('postConnect', (id, args) => {
-//   console.log('[NodeEvent on postConnect]', `id=${id} args=${JSON.stringify(args)}`);
-// });
+nms.on('postConnect', (id, args) => {
+  logger.log('[NodeEvent on postConnect]', `id=${id} args=${JSON.stringify(args)}`);
+});
 
-// nms.on('doneConnect', (id, args) => {
-//   console.log('[NodeEvent on doneConnect]', `id=${id} args=${JSON.stringify(args)}`);
-// });
+nms.on('doneConnect', (id, args) => {
+  logger.log('[NodeEvent on doneConnect]', `id=${id} args=${JSON.stringify(args)}`);
+});
 
 // nms.on('prePublish', (id, StreamPath, args) => {
 //   console.log('[NodeEvent on prePublish]', `id=${id} StreamPath=${StreamPath} args=${JSON.stringify(args)}`);
