@@ -23,7 +23,7 @@ var serverOptions = {
 
 if (config.ssl) {
   serverOptions.https = {
-    'port': 8443,
+    'port': 8643,
     'key': config.ssl_key,
     'cert': config.ssl_cert,
     'allow_origin': '*'
