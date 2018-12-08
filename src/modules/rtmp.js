@@ -16,7 +16,7 @@ var serverOptions = {
 
   'http': {
     'port': 8000,
-    'allow_origin': 'https://alexdeeznuts.com:8443/live/stream.flv',
+    'allow_origin': 'https://alexdeeznuts.com',
     'mediaroot': config.videosPath
   }
 };
@@ -28,9 +28,9 @@ if (config.ssl) {
     'cert': config.ssl_cert
   };
   serverOptions.auth = {
-    // 'play': true,
-    // 'publish': true,
-    // 'secret': config.streamKey
+    'play': true,
+    'publish': true,
+    'secret': config.streamKey
   }
 }
 

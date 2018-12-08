@@ -139,8 +139,8 @@ function deploy(environment) {
 		config.Twitter = true;
 		config.Twitter_tweeting_on_live = true;
 		config.remoteDatabase = true;
-		// config.archive_on_publish = true;
-		// config.backupToOnlyFans = true;
+		config.archive_on_publish = true;
+		config.backupToOnlyFans = true;
 	}
 	else if (environment=='production') {
 		config.ssl = true;
