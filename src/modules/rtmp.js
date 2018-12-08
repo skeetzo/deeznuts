@@ -27,11 +27,11 @@ if (config.ssl) {
     'key': config.ssl_key,
     'cert': config.ssl_cert
   };
-  // serverOptions.auth = {
-  //   'play': true,
-  //   'publish': true,
-  //   'secret': config.streamKey
-  // }
+  serverOptions.auth = {
+    // 'play': true,
+    // 'publish': true,
+    // 'secret': config.streamKey
+  }
 }
 
 if (config.debugging) {
