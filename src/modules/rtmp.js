@@ -16,7 +16,7 @@ var serverOptions = {
 
   'http': {
     'port': 8000,
-    'allow_origin': 'always',
+    'allow_origin': '*',
     'mediaroot': config.videosPath
   }
 };
@@ -25,7 +25,8 @@ if (config.ssl) {
   serverOptions.https = {
     'port': 8443,
     'key': config.ssl_key,
-    'cert': config.ssl_cert
+    'cert': config.ssl_cert,
+    'allow_origin': '*'
   };
   serverOptions.auth = {
     'play': true,
