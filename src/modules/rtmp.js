@@ -16,7 +16,7 @@ var serverOptions = {
 
   'http': {
     'port': 8000,
-    'allow_origin': 'https://alexdeeznuts.com',
+    'allow_origin': 'https://alexdeeznuts.com:8443',
     'mediaroot': config.videosPath
   }
 };
