@@ -4,7 +4,7 @@ var config = require('../config/index'),
 const { NodeMediaServer } = require('node-media-server');
 
 var serverOptions = {
-  'logType': 4,
+  'logType': 3,
 
   'rtmp': {
     'port': 8935,
