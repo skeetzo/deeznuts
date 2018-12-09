@@ -25,7 +25,7 @@ var userSchema = new Schema({
   password: { type: String },
   secret : { type: String }, // crypto sig
   syncing : { type: Boolean, default: false },
-  start: { type: String, default: moment(new Date()).format('MM/DD/YYYY') },
+  start_date: { type: String, default: moment(new Date()).format('MM/DD/YYYY') },
   time: { type: Number, default: config.defaultTime }, // time allotted for live
   time_added: { type: Number },
   transactions: { type: Array, default: [] },
