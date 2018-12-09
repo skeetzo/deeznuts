@@ -73,8 +73,7 @@ module.exports = function() {
          Google_Oauth_Opts.private_key,
          [
         'https://www.googleapis.com/auth/drive'
-        ],
-         this.gmail_user);
+        ]);
 
     this.driveFolderId = localConfig.driveFolderId || process.env.driveFolderId;
 
