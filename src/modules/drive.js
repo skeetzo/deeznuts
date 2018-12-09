@@ -51,7 +51,7 @@ var Google_Drive;
 function authenticate(callback) {
   config.Google_jwtClient.authorize(function (err, tokens) {
     if (err) return callback(err);
-    logger.log("Successfully authorized Google!");
+    logger.log("Successfully authorized Google - Drive");
     authenticated = true;
     Google_Drive = google.drive({
       version: 'v3',
