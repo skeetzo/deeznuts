@@ -6,17 +6,18 @@ var User = require('../models/user');
 var occupancy = 10;
 var num_occupants = 0;
 
-module.exports.setup = function(io) {
+module.exports.setup = function (io) {
 	logger.io('Setting up socket.io');
 
-	io.on('connection', function(client) {
+	io.on('connection', function (client) {
 		logger.io('Client Connected: %s', num_occupants);
 		num_occupants++;
 
 		client.on('connecting', function (userId) {
 			logger.io('connecting: %s', userId);
 			User.connected(userId, function (err) {
-				if (err) logger.warn(err);
+				if (err) return logger.warn(err);
+				sync(userId);
 			});
 		});
 
@@ -45,9 +46,17 @@ module.exports.setup = function(io) {
 			});
 		});
 
-		setInterval(function () {
-			client.emit('live', config.status);
-		}, 3000);
+		function sync(userId) {
+			setInterval(function () {
+				client.emit('sync', config.status);
+				User.findById(userId, function (err, user) {
+					if (err) return logger.warn(err);
+					if (user.disconnect) client.emit('disconnect');
+				});
+				if (user.disconnect)
+
+			}, config.syncInterval*1000);
+		}
 
 	});
 }

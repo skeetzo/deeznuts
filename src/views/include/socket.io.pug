@@ -23,15 +23,16 @@ if (user)
 
       socket.on('video', function(data) {
         alert('Video purchased! Enjoy!');
-        location.reload();
+        window.location.replace("#{domain}/videos");
       });
 
-      socket.on('live', function(status) {
+      socket.on('sync', function(status) {
         updateStatus(status);
       });
 
       socket.on('disconnect', function() {
         socket.emit('end', "#{user._id}");
+        window.location.replace("#{domain}/");
       });
 
       function updateStatus(status) {

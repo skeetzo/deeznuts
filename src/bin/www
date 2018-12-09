@@ -136,7 +136,7 @@ async.series([
   },
   function (step) {
     // start User syncs
-    logger.log('Starting User Syncs every %s seconds...', config.syncInterval);
+    logger.log('Starting User Syncs every %s second(s)...', config.syncInterval);
     setInterval(function () {
       require('../models/user').sync();
     }, config.syncInterval*1000);
