@@ -184,7 +184,7 @@ module.exports.debug = function(callback) {
                 return cb(null);
             }
             logger.test('Testing Crons');
-            var Crons = require('../modules/crons');
+            var Crons = require('../modules/cron');
             var series = [];
             _.forEach(Crons.debugging, function (c) {
                 if (typeof Crons[c] === 'function') 
@@ -201,7 +201,7 @@ module.exports.debug = function(callback) {
             });
             async.series(series);
         },
-        
+
         function (cb) {
             logger.test('Debugging Complete')
             cb(null);
