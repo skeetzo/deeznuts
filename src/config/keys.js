@@ -44,11 +44,11 @@ module.exports = function() {
         "private_key": this.Google_key
     };
     this.Google_scopes = [
-        // 'https://www.googleapis.com/auth/plus.me',
+        'https://www.googleapis.com/auth/plus.me',
         'https://www.googleapis.com/auth/drive',
-        // 'https://mail.google.com/',
-        // 'https://www.googleapis.com/auth/userinfo.email',
-        // 'https://www.googleapis.com/auth/gmail'
+        'https://mail.google.com/',
+        'https://www.googleapis.com/auth/userinfo.email',
+        'https://www.googleapis.com/auth/gmail'
         ];
     this.Google_redirect = this.domain+'/google/callback';
 
@@ -71,7 +71,9 @@ module.exports = function() {
          Google_Oauth_Opts.client_email,
          null,
          Google_Oauth_Opts.private_key,
-         this.Google_scopes,
+         [
+        'https://www.googleapis.com/auth/drive'
+        ],
          this.gmail_user);
 
     this.driveFolderId = localConfig.driveFolderId || process.env.driveFolderId;
