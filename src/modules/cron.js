@@ -61,7 +61,7 @@ crons.prototype = {
         async.series([
             function (step) {
                 logger.log('Archiving...');
-                var Video = require('../modules/video');
+                var Video = require('../models/video');
                 Video.archiveVideos(function (err) {
                   if (err) logger.warn(err);
                   step(null);
@@ -69,7 +69,7 @@ crons.prototype = {
             },
             function (step) {
                 logger.log('Creating Previews...');
-                var Video = require('../modules/video');
+                var Video = require('../models/video');
                 Video.createPreviews(function (err) {
                   if (err) logger.warn(err);
                   step(null);
