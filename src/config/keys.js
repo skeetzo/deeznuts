@@ -51,6 +51,12 @@ module.exports = function() {
         ];
     this.Google_redirect = this.domain+'/google/callback';
 
+    // Google Gmail
+    this.gmail_user = localConfig.gmail_user || process.env.google_email;
+    this.gmail_password = localConfig.gmail_password || process.env.google_password;
+    this.email_return = localConfig.email_return || process.env.google_email_return;
+    this.email_service = 'gmail';
+
     // Google Drive
     this.Google_client_id = localConfig.Google_id;
     this.Google_client_secret = localConfig.Google_secret;
@@ -64,15 +70,10 @@ module.exports = function() {
          Google_Oauth_Opts.client_email,
          null,
          Google_Oauth_Opts.private_key,
-         this.Google_scopes);
+         this.Google_scopes,
+         this.gmail_user);
 
     this.driveFolderId = localConfig.driveFolderId || process.env.driveFolderId;
-
-    // Google Gmail
-    this.gmail_user = localConfig.gmail_user || process.env.google_email;
-    this.gmail_password = localConfig.gmail_password || process.env.google_password;
-    this.email_return = localConfig.email_return || process.env.google_email_return;
-    this.email_service = 'gmail';
 
     // Google Sheets
     // this.Google_Spreadsheet_id = localConfig.Google_Spreadsheet_id || process.env.Google_Spreadsheet_id;

@@ -57,6 +57,11 @@ function authenticate(callback) {
       version: 'v3',
         auth: config.Google_jwtClient
     });
+    clearTimeout(authTimeout);
+    authTimeout = setTimeout(function authExpire() {
+      logger.debug('Google authentication - Drive; expired');
+      authenticated = false;
+    },1000*60*60*6) // 6 hours
     callback(null);
   });
 
@@ -77,11 +82,11 @@ function authenticate(callback) {
   //   });
   //   logger.log('Google authenticated - Drive');
   //   authenticated = true;
-  //   clearTimeout(authTimeout);
-  //   authTimeout = setTimeout(function authExpire() {
-  //     logger.debug('Google authentication - Drive; expired');
-  //     authenticated = false;
-  //   },1000*60*60*6) // 6 hours
+    clearTimeout(authTimeout);
+    authTimeout = setTimeout(function authExpire() {
+      logger.debug('Google authentication - Drive; expired');
+      authenticated = false;
+    },1000*60*60*6) // 6 hours
   //   callback(null);  
   // });
 }
