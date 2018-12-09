@@ -10,13 +10,13 @@ var authTimeout;
 const {GoogleApis} = require('googleapis');
 const google = new GoogleApis();
 
-// var OAuth2 = google.auth.OAuth2,
-    // oauth2Client = new OAuth2(config.Google_client_id, config.Google_client_secret, config.Google_redirect);
+var OAuth2 = google.auth.OAuth2,
+    oauth2Client = new OAuth2(config.Google_client_id, config.Google_client_secret, config.Google_redirect);
 
-// var Gmail = google.gmail({
-//   'version': 'v1',
-//   'auth': oauth2Client
-// });
+var Gmail = google.gmail({
+  'version': 'v1',
+  'auth': oauth2Client
+});
 
 function authorize(callback) {
   // config.Google_jwtClient.authorize(function (err, tokens) {
