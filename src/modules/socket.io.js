@@ -46,17 +46,15 @@ module.exports.setup = function (io) {
 			});
 		});
 
-		function sync(userId) {
-			setInterval(function () {
-				client.emit('sync', config.status);
-				User.findById(userId, function (err, user) {
-					if (err) return logger.warn(err);
-					if (user.disconnect) client.emit('disconnect');
-				});
-				if (user.disconnect)
-
-			}, config.syncInterval*1000);
-		}
+		// function sync(userId) {
+		// 	setInterval(function () {
+		// 		client.emit('sync', config.status);
+		// 		User.findById(userId, function (err, user) {
+		// 			if (err) return logger.warn(err);
+		// 			if (user.disconnect) client.emit('disconnect');
+		// 		});
+		// 	}, config.syncInterval*1000);
+		// }
 
 	});
 }
