@@ -255,7 +255,7 @@ userSchema.methods.purchaseVideo = function(videoTitle, callback) {
 
 userSchema.methods.sync = function (callback) {
   var self = this;
-  logger.debug('syncing user: %s - %s = %s', parseInt(self.time, 10), parseInt(config.syncInterval, 10), parseInt(self.time, 10) - parseInt(config.syncInterval, 10));
+  // logger.debug('syncing user: %s - %s = %s', parseInt(self.time, 10), parseInt(config.syncInterval, 10), parseInt(self.time, 10) - parseInt(config.syncInterval, 10));
   self.time = parseInt(self.time, 10) - parseInt(config.syncInterval, 10);
   if (self.time<=0) 
     self.disconnect = true;
