@@ -44,7 +44,7 @@ module.exports = function() {
         "private_key": this.Google_key
     };
     this.Google_scopes = [
-        'https://www.googleapis.com/auth/plus.me',
+        // 'https://www.googleapis.com/auth/plus.me',
         'https://www.googleapis.com/auth/drive',
         'https://mail.google.com/',
         'https://www.googleapis.com/auth/userinfo.email',
