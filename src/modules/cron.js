@@ -7,7 +7,9 @@ var _ = require('underscore'),
 var crons = function() {
     var self = this;
 
-    this.debugging = [];
+    this.debugging = [
+        'backup'
+    ];
 }
 
 crons.prototype = {

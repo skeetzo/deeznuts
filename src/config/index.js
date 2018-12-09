@@ -114,6 +114,8 @@ function deploy(environment) {
 	config.debugging_reset_logs = false;
 	config.debugging_backup_db = false;
 
+	config.debugging_crons = false;
+
 	if (environment=='development') {
 		config.debugging = true;
 		config.debugging_live = true;
@@ -126,6 +128,7 @@ function deploy(environment) {
 		config.local = true;
 		config.remoteDatabase = true;
 		config.archive_on_publish = true;
+		config.debugging_crons = true;
 	}
 	else if (environment=='staging') {
 		config.debugging = true;
@@ -141,6 +144,7 @@ function deploy(environment) {
 		config.remoteDatabase = true;
 		// config.archive_on_publish = true;
 		// config.backupToOnlyFans = true;
+		config.debugging_crons = true;
 	}
 	else if (environment=='production') {
 		config.ssl = true;

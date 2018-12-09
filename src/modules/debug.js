@@ -177,6 +177,31 @@ module.exports.debug = function(callback) {
             });
             async.series(series);
         },
+
+        function testCrons(cb) {
+            if (!config.debugging_crons) {
+                logger.test('Skipping Crons Tests');
+                return cb(null);
+            }
+            logger.test('Testing Crons');
+            var Crons = require('../modules/crons');
+            var series = [];
+            _.forEach(Crons.debugging, function (c) {
+                if (typeof Crons[c] === 'function') 
+                    series.push(function (step) {
+                        logger.test('cron: %s',c);
+                        Crons[c](function (err) {
+                            setTimeout(() => { step(null); });
+                        });
+                    });
+            });
+            series.push(function (step) {
+                logger.test('Cron Tests Complete');
+                cb(null);
+            });
+            async.series(series);
+        },
+        
         function (cb) {
             logger.test('Debugging Complete')
             cb(null);
