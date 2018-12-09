@@ -150,8 +150,7 @@ function backupVideo(video, callback) {
       });
     }
   ], function (err) {
-    if (err) logger.warn(err);
-    callback(null);
+    callback(err);
   });
 }
 module.exports.backupVideo = backupVideo;

@@ -239,6 +239,25 @@ videoSchema.statics.processPublished = function(callback) {
   });
 }
 
+// uploads to Google Drive - OnlyFans folder
+videoSchema.methods.backup = function(callback) {
+  var self = this;
+  if (!config.backupToOnlyFans) return callback('Skipping OnlyFans folder Backup');
+  logger.log('Backing up: %s', self.title);
+  if (self.backedUp) {
+    logger.debug('Skipping Backup: Already Backed Up');
+    return callback(null);
+  }
+  require('../modules/drive').backupVideo(self, function (err) {
+    if (err) return callback(err);
+    logger.log('Backed Up: %s', self.title);
+    self.backedUp = true;
+    self.save(function (err) {
+      callback(err);
+    });
+  });
+}
+
 // get file at location
 // convert to preview
 // save ref
@@ -394,25 +413,6 @@ videoSchema.methods.thumbnail = function(callback) {
     timemarks: [ '1' ], // number of seconds
     filename: filename,
     folder: foldername
-  });
-}
-
-// uploads to Google Drive - OnlyFans folder
-videoSchema.methods.backup = function(callback) {
-  var self = this;
-  if (!config.backupToOnlyFans) return callback('Skipping OnlyFans folder Backup');
-  logger.log('Backing up: %s', self.title);
-  if (self.backedUp) {
-    logger.debug('Skipping Backup: Already Backed Up');
-    return callback(null);
-  }
-  require('../modules/drive').backupVideo(self, function (err) {
-    if (err) return callback(err);
-    logger.log('Backed Up: %s', self.title);
-    self.backedUp = true;
-    self.save(function (err) {
-      callback(err);
-    });
   });
 }
 
