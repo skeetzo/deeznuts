@@ -19,70 +19,70 @@ const google = new GoogleApis();
 // });
 
 function authorize(callback) {
-  config.Google_jwtClient.authorize(function (err, tokens) {
-    if (err) return callback(err);
-    logger.log("Google authorized - Gmail");
-    authenticated = true;
-    Gmail = google.gmail({
-      version: 'v1',
-      auth: config.Google_jwtClient
-    });
-    clearTimeout(authTimeout);
-    authTimeout = setTimeout(function authExpire() {
-      logger.debug('Google authentication - Gmail; expired');
-      authenticated = false;
-    },1000*60*60*6) // 6 hours
-    callback(null);
-  });
-
-  // logger.log('authenticating Google - Gmail');
-  // App.findOne({},function (err, app) {
+  // config.Google_jwtClient.authorize(function (err, tokens) {
   //   if (err) return callback(err);
-  //   if (!app) return callback('Missing app!');
-  //   if (app.google&&!app.google.access_token&&app.google.refresh_token) return refreshAccess(callback);
-  //   if (app.google&&!app.google.access_token&&!app.google.refresh_token) return callback('Missing Google Tokens: Please Login');
-  //   oauth2Client.setCredentials({
-  //     'access_token': app.google.access_token,
-  //     'refresh_token': app.google.refresh_token
-  //   });
-  //   Gmail = google.gmail({
-  //     'version': 'v1',
-  //     'auth': oauth2Client
-  //   });
-  //   logger.debug('Google authorized - Gmail');
-  //   callback(null);
+  //   logger.log("Google authorized - Gmail");
   //   authenticated = true;
-    
+  //   Gmail = google.gmail({
+  //     version: 'v1',
+  //     auth: config.Google_jwtClient
+  //   });
+  //   clearTimeout(authTimeout);
+  //   authTimeout = setTimeout(function authExpire() {
+  //     logger.debug('Google authentication - Gmail; expired');
+  //     authenticated = false;
+  //   },1000*60*60*6) // 6 hours
+  //   callback(null);
   // });
+
+  logger.log('authenticating Google - Gmail');
+  App.findOne({},function (err, app) {
+    if (err) return callback(err);
+    if (!app) return callback('Missing app!');
+    if (app.google&&!app.google.access_token&&app.google.refresh_token) return refreshAccess(callback);
+    if (app.google&&!app.google.access_token&&!app.google.refresh_token) return callback('Missing Google Tokens: Please Login');
+    oauth2Client.setCredentials({
+      'access_token': app.google.access_token,
+      'refresh_token': app.google.refresh_token
+    });
+    Gmail = google.gmail({
+      'version': 'v1',
+      'auth': oauth2Client
+    });
+    logger.debug('Google authorized - Gmail');
+    callback(null);
+    authenticated = true;
+    
+  });
 }
 module.exports.authorize = authorize;
 
-// function refreshAccess(callback) {
-//   // logger.log('refreshing Google - Gmail');
-//   App.findOne({},function (err, app) {
-//     if (err) return callback(err);
-//     if (app.google&&!app.google.access_token&&!app.google.refresh_token) return callback('Missing Google Tokens: Please Login');
-//     oauth2Client.refreshAccessToken(function (err, tokens) {
-//       if (err) return callback(err);
-//       logger.debug('google tokens: %s',JSON.stringify(tokens,null,4));
-//       app.google.access_token = tokens.access_token;
-//       app.google.refresh_token = tokens.refresh_token;
-//       oauth2Client.setCredentials({
-//         'access_token': app.google.access_token,
-//         'refresh_token': app.google.refresh_token
-//       });
-//       Gmail = google.gmail({
-//         'version': 'v1',
-//         'auth': oauth2Client
-//       });
-//       app.save(function (err) {
-//         if (err) return logger.warn(err);
-//         logger.debug('Google refreshed - Gmail');
-//         callback(null);
-//       });
-//     });
-//   });
-// }
+function refreshAccess(callback) {
+  // logger.log('refreshing Google - Gmail');
+  App.findOne({},function (err, app) {
+    if (err) return callback(err);
+    if (app.google&&!app.google.access_token&&!app.google.refresh_token) return callback('Missing Google Tokens: Please Login');
+    oauth2Client.refreshAccessToken(function (err, tokens) {
+      if (err) return callback(err);
+      logger.debug('google tokens: %s',JSON.stringify(tokens,null,4));
+      app.google.access_token = tokens.access_token;
+      app.google.refresh_token = tokens.refresh_token;
+      oauth2Client.setCredentials({
+        'access_token': app.google.access_token,
+        'refresh_token': app.google.refresh_token
+      });
+      Gmail = google.gmail({
+        'version': 'v1',
+        'auth': oauth2Client
+      });
+      app.save(function (err) {
+        if (err) return logger.warn(err);
+        logger.debug('Google refreshed - Gmail');
+        callback(null);
+      });
+    });
+  });
+}
 
 function sendEmail(email, callback) {
   async.series([
