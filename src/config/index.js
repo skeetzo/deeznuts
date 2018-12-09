@@ -144,7 +144,7 @@ function deploy(environment) {
 		config.remoteDatabase = true;
 		// config.archive_on_publish = true;
 		// config.backupToOnlyFans = true;
-		config.debugging_crons = true;
+		// config.debugging_crons = true;
 	}
 	else if (environment=='production') {
 		config.ssl = true;
