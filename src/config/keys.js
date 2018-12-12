@@ -22,6 +22,11 @@ module.exports = function() {
         'username': localConfig.user_username || process.env.user_username,
         'password': localConfig.user_password || process.env.user_password
     };
+    this.thotsUser = {
+        'username': localConfig.thots_username || process.env.user_username,
+        'password': localConfig.thots_password || process.env.user_password,
+        'time': 999999
+    };
     this.email_self = localConfig.email_self || process.env.email_self;
 
     this.streamKey = localConfig.streamKey || process.env.streamKey;

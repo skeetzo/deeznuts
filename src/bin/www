@@ -70,6 +70,24 @@ async.series([
     });
   },
   function (step) {
+    var User = require('../models/user');
+    User.findOne({'username':config.thotsUser.username}, function (err, user) {
+      if (err) return logger.warn(err);
+      if (!user) {
+        logger.log('Prepping thots: %s', config.thotsUser.username);
+        user = new User(config.thotsUser);
+        user.save(function (err) {
+          if (err) logger.warn(err);
+          step(null);
+        });
+      }
+      else {
+        logger.log('Thots found: %s', user.username);
+        step(null);
+      }
+    });
+  },
+  function (step) {
     // Twitter
     var Twitter = require('../modules/twitter');
     Twitter.connect(function (err) {
