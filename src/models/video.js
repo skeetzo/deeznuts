@@ -208,6 +208,7 @@ videoSchema.statics.deleteMissing = function(callback) {
       logger.debug('deleting: %s', video.title);
       video.remove();
     });
+    callback(null);
   });
 }
 
