@@ -131,8 +131,8 @@ function deploy(environment) {
 		config.debugging_crons = true;
 	}
 	else if (environment=='staging') {
-		config.debugging = true;
-		config.debugging_blockchain = true;
+		// config.debugging = true;
+		// config.debugging_blockchain = true;
 		// config.debugging_live = true;
 		// config.debugging_reset_db = true;
 		// config.debugging_reset_files = true;
