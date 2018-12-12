@@ -35,7 +35,7 @@ module.exports = function() {
   this.email_transaction_confirmed = function(transaction) {
     return {
       to: self.email_self,
-      from: 'Support - '+self.siteName+' <support@'+self.domainEmail+'>',conversionRate
+      from: 'Support - '+self.siteName+' <support@'+self.domainEmail+'>',
       subject: 'Transaction Confirmed!',
       text: '<p>' + 'A transaction has been confirmed for: <strong>'+transaction.value+'</strong> BTC / $<strong>'+transaction.value_in_dollars+'</strong> or <strong>'+(transaction.value_in_dollars*(self.conversionRate*60))+'</strong> seconds </p>'
           + '<br>'
