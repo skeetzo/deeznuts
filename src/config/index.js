@@ -132,8 +132,8 @@ function deploy(environment) {
 		config.debugging_crons = true;
 	}
 	else if (environment=='staging') {
-		// config.debugging = true;
-		// config.debugging_blockchain = true;
+		config.debugging = true;
+		config.debugging_blockchain = true;
 		// config.debugging_live = true;
 		// config.debugging_reset_db = true;
 		// config.debugging_reset_files = true;
@@ -141,6 +141,7 @@ function deploy(environment) {
 		// config.debugging_sync = true;
 		config.ssl = true;
 		config.Twitter = true;
+		config.Twitter_tweeting = true;
 		config.Twitter_tweeting_on_live = true;
 		config.remoteDatabase = true;
 		config.archive_on_publish = true;
