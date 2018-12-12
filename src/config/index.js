@@ -98,6 +98,7 @@ function deploy(environment) {
 
 	config.backupToOnlyFans = false;
 	config.archive_on_publish = false;
+	config.deleteMissing = false;
 
 	config.Twitter = false;
 	config.Twitter_tweeting = false;
@@ -144,6 +145,7 @@ function deploy(environment) {
 		// config.remoteDatabase = true;
 		config.archive_on_publish = true;
 		config.backupToOnlyFans = true;
+		config.deleteMissing = true;
 		// config.debugging_crons = true;
 	}
 	else if (environment=='production') {

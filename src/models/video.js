@@ -27,6 +27,7 @@ var videoSchema = new Schema({
   duration: { type: Number },
   hasPreview: { type: Boolean, default: false },
   isOriginal: { type: Boolean, default: false },
+  missingFile : { type: Boolean, default: false },
   path: { type: String },
   path_preview: { type: String },
   path_image: { type: String },
@@ -199,6 +200,17 @@ videoSchema.statics.createPreviews = function(callback) {
   });
 }
 
+videoSchema.statics.deleteMissing = function(callback) {
+  logger.log('Deleting Missing Videos...');
+  Video.find({'missingFile':true}, function (err, videos) {
+    if (err) return callback(err);
+    _.forEach(videos, function (video) {
+      logger.debug('deleting: %s', video.title);
+      video.remove();
+    });
+  });
+}
+
 videoSchema.statics.populateFromFiles = function(callback) {
   logger.log('Populating Video Database');
   // read videos/archived for all the files
@@ -270,7 +282,13 @@ videoSchema.methods.createPreview = function(callback) {
       // create png of early frames of .mp4 path
       logger.log('--- Thumbnailing ---');
       self.thumbnail(function (err) {
-        if (err) logger.warn(err);
+        if (err) {
+          logger.warn(err);
+          if (err.message.indexOf('No such file or directory')>-1) {
+            logger.debug('-- missing file --');
+            self.missingFile = true;
+          }
+        }
         step(null);
       });
     },
@@ -295,6 +313,10 @@ videoSchema.methods.createPreview = function(callback) {
             return self.extract(function (err, file) {
               step(err, file);
             },'muxing');
+          }
+          else if (err.message.indexOf('No such file or directory')>-1) {
+            logger.debug('-- missing file --');
+            self.missingFile = true;
           }
           return step(err);
         }

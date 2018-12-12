@@ -153,6 +153,16 @@ async.series([
     });    
   },
   function (step) {
+    if (!config.deleteMissing) {
+      logger.log('Skipping Missing Deletion');
+      return step(null);
+    }
+    Video.deleteMissing(function (err) {
+      if (err) logger.warn(err);
+      step(null);
+    });    
+  },
+  function (step) {
     // start User syncs
     logger.log('Starting User Syncs every %s second(s)...', config.syncInterval);
     setInterval(function () {
