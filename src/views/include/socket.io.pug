@@ -43,8 +43,8 @@ if (user)
           alert('I\'ve gone live!');
         else if (status_=="Live"&&status=="Not Live") {
           alert('I\'ve gone offline!');
-          window.location.replace("#{domain}/");
           socket.emit('stop', "#{user._id}");
+          window.location.replace("#{domain}/");
         }
       }
 

@@ -11,8 +11,8 @@ module.exports.setup = function (io) {
 
 	io.on('connection', function (client) {
 		num_occupants++;
-		if (num_occupants==1) enableSync();
-		logger.io('Client Connected: %s', num_occupants);
+		logger.io('Client connected: %s', num_occupants);
+		if (num_occupants==1) User.syncOn();
 
 		client.on('connecting', function (userId) {
 			logger.io('connecting: %s', userId);
@@ -38,7 +38,8 @@ module.exports.setup = function (io) {
 		
 		client.on('disconnect', function () {
 			num_occupants--;
-			if (num_occupants==0) disableSync();
+			logger.io('Client disconnected: %s', num_occupants);
+			if (num_occupants==0) User.syncOff();
 		});
 
 		client.on('end', function (userId) {
@@ -48,16 +49,6 @@ module.exports.setup = function (io) {
 			});
 		});
 
-		// function sync(userId) {
-		// 	setInterval(function () {
-		// 		client.emit('sync', config.status);
-		// 		User.findById(userId, function (err, user) {
-		// 			if (err) return logger.warn(err);
-		// 			if (user.disconnect) client.emit('disconnect');
-		// 		});
-		// 	}, config.syncInterval*1000);
-		// }
-
 	});
 }
 
@@ -65,21 +56,3 @@ module.exports.isRoom = function() {
 	if (num_occupants>=occupancy) return false;
 	return true;
 }
-
-function enableSync() {
-	User.syncOn();
-}
-
-function disableSync() {
-	User.syncOff();
-}
-
-// clearTimeout(user.syncTimer);
-// user.syncTimer = setInterval(function () {
-// 	logger.log('user synced: %s -> %s', user.time,(user.time - (config.syncInterval/1000)));
-// 	user.time = user.time - (config.syncInterval/1000);
-// 	user.save(function (err) {
-// 		if (err) logger.warn(err);
-// 		if (user.time<=0) client.emit('timeout', userId);
-// 	});
-// }, config.syncInterval);

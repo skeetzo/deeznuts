@@ -42,6 +42,7 @@
  - email: conversion metric debugging
  - mixins bug fixes
  - nginx location: /favicon/
+ - User.sync update
 
  **??/??/??**
  - next live @ & schedule
