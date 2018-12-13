@@ -142,7 +142,6 @@ function deploy(environment) {
 		config.ssl = true;
 		config.Twitter = true;
 		config.Twitter_tweeting = true;
-		config.Twitter_tweeting_on_live = true;
 		config.remoteDatabase = true;
 		config.archive_on_publish = true;
 		config.backupToOnlyFans = true;
