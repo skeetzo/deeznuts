@@ -511,5 +511,6 @@ videoSchema.methods.watermark = function(callback) {
   .saveToFile(self.path_preview); 
 }
 
+videoSchema.set('redisCache', true);
 var Video = mongoose.model('videos', videoSchema,'videos');
 module.exports = Video;
