@@ -163,14 +163,6 @@ async.series([
     });    
   },
   function (step) {
-    // start User syncs
-    logger.log('Starting User Syncs every %s second(s)...', config.syncInterval);
-    setInterval(function () {
-      require('../models/user').sync();
-    }, config.syncInterval*1000);
-    step(null);
-  },
-  function (step) {
     if (config.ssl) {
       /**
        * Create HTTPS server.

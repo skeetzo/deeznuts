@@ -168,15 +168,29 @@ userSchema.statics.generateAddress = function(userId, callback) {
   });
 }
 
-userSchema.statics.sync = function() {
-  User.find({'syncing':true}, function (err, users) {
-    if (err) return logger.warn(err);
-    _.forEach(users, function (user) {
-      user.sync(function (err) {
-        if (err) logger.warn(err);
+var SYNCING = false;
+var SYNC_INTERVAL;
+
+userSchema.statics.syncOff = function() {
+  logger.log('Stopping User Syncs');
+  clearInterval(SYNC_INTERVAL);
+  SYNCING = false;
+}
+
+userSchema.statics.syncOn = function() {
+  clearInterval(SYNC_INTERVAL);
+  SYNCING = true;
+  logger.log('Starting User Syncs every %s second(s)...', config.syncInterval);
+  SYNC_INTERVAL = setInterval(function () {
+    User.find({'syncing':true}, function (err, users) {
+      if (err) return logger.warn(err);
+      _.forEach(users, function (user) {
+        user.sync(function (err) {
+          if (err) logger.warn(err);
+        });
       });
     });
-  });
+  }, config.syncInterval*1000);
 }
 
 // amount in satoshi, so divide by 100,000,000 to get the value in BTC

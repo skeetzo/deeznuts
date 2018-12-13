@@ -11,6 +11,7 @@ module.exports.setup = function (io) {
 
 	io.on('connection', function (client) {
 		num_occupants++;
+		if (num_occupants==1) enableSync();
 		logger.io('Client Connected: %s', num_occupants);
 
 		client.on('connecting', function (userId) {
@@ -37,6 +38,7 @@ module.exports.setup = function (io) {
 		
 		client.on('disconnect', function () {
 			num_occupants--;
+			if (num_occupants==0) disableSync();
 		});
 
 		client.on('end', function (userId) {
@@ -62,6 +64,14 @@ module.exports.setup = function (io) {
 module.exports.isRoom = function() {
 	if (num_occupants>=occupancy) return false;
 	return true;
+}
+
+function enableSync() {
+	User.syncOn();
+}
+
+function disableSync() {
+	User.syncOff();
 }
 
 // clearTimeout(user.syncTimer);
