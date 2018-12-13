@@ -163,7 +163,8 @@ module.exports.debug = function(callback) {
             _.forEach(tests, function (email) {
                 series.push(function (next) {
                     if (typeof config[email.function] != "function") return logger.log('Not found: %s',email.function);
-                    var mailOptions = config[email.function](config.email_test_address, email.data);
+                    // var mailOptions = config[email.function](config.email_test_address, email.data);
+                    var mailOptions = config[email.function](email.data);
                     logger.test('Testing Email: %s', email.function);
                     Gmail.sendEmail(mailOptions, function (err) {
                         if (err) logger.warn(err);      
