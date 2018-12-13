@@ -292,5 +292,6 @@ userSchema.methods.verifyPassword = function(candidatePassword, callback) {
   });
 };
 
+userSchema.set('redisCache', true);
 var User = mongoose.model('users', userSchema,'users');
 module.exports = User;
