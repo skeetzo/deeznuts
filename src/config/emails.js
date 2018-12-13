@@ -61,7 +61,7 @@ module.exports = function() {
     },
     {
       function: "email_transaction_confirmed",
-      data: {'value':'1000000','value_in_dollars':15}
+      data: {'value':'1000000','value_in_dollars':15,'price':Math.round(247)}
     }
   ];
 }

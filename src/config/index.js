@@ -68,9 +68,10 @@ config.streamRecording = true;
 
 // Email
 config.emailing = true;
-config.emailing_testing = false;
+config.emailing_testing = true;
 config.emailing_on_new = true;
 config.emailing_on_error = true;
+config.emailing_on_buy = true;
 config.emailing_on_transaction = true;
 config.domainEmail = 'deeznuts.com';
 

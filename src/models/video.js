@@ -398,6 +398,7 @@ videoSchema.methods.extract = function(callback, retryReason) {
 }
 
 videoSchema.methods.sendPurchasedEmail = function(callback) {
+  if (!config.emailing_on_buy) return callback('Skipping - Email Notification On Purchase');
   logger.log('Sending Video Purchased Email: %s', this._id);
   var mailOptions = config.email_video_purchased(this);
   require('../modules/gmail').sendEmail(mailOptions, function (err) {
