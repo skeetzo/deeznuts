@@ -51,17 +51,17 @@ module.exports = function() {
   // Testing
   this.email_test_address = this.gmail_user;
   this.email_tests = [
-    {
-      function: "email_account_created",
-      data: null
-    },
+    // {
+    //   function: "email_account_created",
+    //   data: null
+    // },
     {
       function: "email_video_purchased",
-      data: {'title':'your mom','price':15}
+      data: {'title':'your mom','price':Math.round(900)}
     },
-    {
-      function: "email_transaction_confirmed",
-      data: {'value':'1000000','value_in_dollars':15,'price':Math.round(247)}
-    }
+    // {
+      // function: "email_transaction_confirmed",
+      // data: {'value':'.0045','value_in_dollars':15}
+    // }
   ];
 }
