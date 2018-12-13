@@ -92,8 +92,8 @@ module.exports.resetLocals = function(req, res, next) {
         // logger.debug('error: %s',req.session.locals.error);
     }
 
-    if (!req.session.locals._csrf)
-        req.session.locals._csrf = req.csrfToken();
+    // if (!req.session.locals._csrf)
+    req.session.locals._csrf = req.csrfToken();
 
     // rtmp key
     if (!req.session.locals.key) {
