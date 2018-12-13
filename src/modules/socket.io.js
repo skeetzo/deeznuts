@@ -10,8 +10,8 @@ module.exports.setup = function (io) {
 	logger.io('Setting up socket.io');
 
 	io.on('connection', function (client) {
-		logger.io('Client Connected: %s', num_occupants);
 		num_occupants++;
+		logger.io('Client Connected: %s', num_occupants);
 
 		client.on('connecting', function (userId) {
 			logger.io('connecting: %s', userId);

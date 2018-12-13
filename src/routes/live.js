@@ -5,7 +5,7 @@ var config = require('../config/index'),
 module.exports = function homeRoutes(router) {
 
   // Live
-  router.get("/live", mixins.loggedIn, mixins.hasPaid, mixins.hasRoom, function (req, res, next) {
+  router.get("/live", mixins.loggedIn, mixins.syncUser, mixins.hasPaid, mixins.hasRoom, function (req, res, next) {
     res.render('live', req.session.locals);    
   });
 
