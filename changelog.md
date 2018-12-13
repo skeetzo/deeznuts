@@ -40,6 +40,8 @@
  **1.0.1 : 12/12/2018**
  - added stream's disconnect timeout
  - email: conversion metric debugging
+ - mixins bug fixes
+ - nginx location: /favicon/
 
  **??/??/??**
  - next live @ & schedule

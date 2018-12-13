@@ -20,7 +20,7 @@ module.exports = function() {
 
   // Video Purchased
   this.email_video_purchased = function(video) {
-    var amount = ((parseInt(video.price, 10) / 60) / self.conversionRate);
+    var amount = Math.round(((parseInt(video.price, 10) / 60) / self.conversionRate) * 100) / 100;
     return {
       to: self.email_self,
       from: 'Support - '+self.siteName+' <support@'+self.domainEmail+'>',

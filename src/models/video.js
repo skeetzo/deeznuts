@@ -45,57 +45,45 @@ videoSchema.pre('save', function (next) {
     self.description = [self.performers.slice(0, -1).join(', '), self.performers.slice(-1)[0]].join(self.performers.length < 2 ? '' : ' and ');
   if (!self.path)
     self.path = path.join(config.videosPath, 'archive', self.title+'.mp4');
-  if (!self.duration) {
-    logger.debug('probing...');
-    // ffprobe video for duration
-    return FFmpeg.ffprobe(self.path, function(err, metadata) {
-      if (err) logger.warn(err);
-      if (metadata) {
-        logger.debug('duration: %s', metadata.format.duration);
-        self.duration = metadata.format.duration;
+  async.series([
+    function (step) {
+      // duration check
+      if (self.duration) return step(null);
+      logger.debug('probing duration...');
+      // ffprobe video for duration
+      return FFmpeg.ffprobe(self.path, function(err, metadata) {
+        if (err) logger.warn(err);
+        if (metadata) {
+          logger.debug('duration: %s', metadata.format.duration);
+          self.duration = metadata.format.duration;
+        } 
+        else {
+          logger.warn('Missing duration');
+          self.duration = 0;
+        }
+        step(null);
+      });
+    },
+    function (step) {
+      if (self.isModified('duration')||self.isModified('price')||!self.price) {
+        if (self.duration<config.defaultPrice) { // 5 minutes / default time
+          self.price = config.defaultPrice;
+          logger.log('minimum price set: %s', self.price);
+        }
+        else if (self.duration) {
+          self.price = self.duration;
+          logger.log('price set: %s', self.price);
+        }
+        else
+          self.price = config.defaultPrice;
+        // self.price = Math.round(self.price * 100) / 100;
+        self.price = Math.round(self.price);
       }
-      else self.duration = 0;
-      if (self.duration<config.defaultPrice) { // 5 minutes / default time
-        self.price = config.defaultPrice;
-        logger.log('minimum price set: %s', self.price);
-      }
-      else {
-        self.price = Math.round(self.duration);
-        logger.log('price set: %s', self.price);
-      }
+      // Normal
       logger.debug('Video Saved: %s', self.title);
       next();
-    });
-  }
-  if (self.isModified('duration')||self.isModified('price')||!self.price) {
-    if (self.duration<config.defaultPrice) { // 5 minutes / default time
-      self.price = config.defaultPrice;
-      logger.log('minimum price set: %s', self.price);
     }
-    else if (self.duration) {
-      self.price = Math.round(self.duration);
-      logger.log('price set: %s', self.price);
-    }
-    else
-      self.price = config.defaultPrice;
-  }
-  if (!self.duration) {
-    // ffprobe video for duration
-    FFmpeg.ffprobe(self.path, function(err, metadata) {
-      if (err) {
-        logger.warn(err);
-        return next();
-      }
-      logger.debug('duration: %s', metadata.format.duration);
-      self.duration = metadata.format.duration;
-      logger.debug('Video Saved: %s', self.title);
-      next();
-    });
-  }
-  else {
-    logger.debug('Video Saved: %s', self.title);
-    next();
-  }
+  ]);
 });
 
 // move any mp4s from public/videos/live/stream -> public/videos/archived
