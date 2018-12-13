@@ -141,7 +141,7 @@ module.exports.User = User_;
 var Video = function(src) {
   if (!src.path) src.path = '';
   if (!src.path_image) src.path_image = '';
-  var path_ = path.join(config.videosPath, src.path).replace(/.*videos\//gi, '../');
+  var path_ = path.join(config.videosPath, src.path).replace(/.*videos\//gi, '');
   var path_image = path.join(config.imagesPath, src.path_image).replace(/.*images\//gi, '../images/');
   logger.log('path: %s', path_);
   logger.log('path_image: %s', path_image);
@@ -163,7 +163,7 @@ var Video_Preview = function(src) {
   if (!src.path_image) src.path_image = '';
   // var path_ = src.path_preview.replace('/mnt/deeznuts', '..');
   // var path_image = src.path_image.replace('/mnt/deeznuts', '..');
-  var path_ = path.join(config.videosPath, src.path_preview).replace(/.*videos\//gi, '../');
+  var path_ = path.join(config.videosPath, src.path_preview).replace(/.*videos\//gi, '');
   var path_image = path.join(config.imagesPath, src.path_image).replace(/.*images\//gi, '../images/');
   logger.log('path: %s', path_);
   logger.log('path_image: %s', path_image);
