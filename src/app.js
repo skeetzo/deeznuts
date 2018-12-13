@@ -66,12 +66,11 @@ var MongoStore = require('./modules/mongo');
 var session = require('express-session');
 
 var maxAge = 1 * 12 * 60 * 60 * 1000; // half a day
-maxAge = 1 * 2 * 60 * 60 * 1000; // 2 hours
-if (config.debugging) maxAge = 10 * 60 * 1000; // five minutes
+if (config.debugging) maxAge = 1000 * 60 * 10; // ten minutes
 
 var sess = {
-  name: "deek",
-  secret: "Suck my dick",
+  name: "deeznuts",
+  secret: "suckmybeautifulnuts",
   saveUninitialized: false,
   resave: true,
   cookie: {
