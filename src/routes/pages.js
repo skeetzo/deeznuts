@@ -22,6 +22,8 @@ module.exports = function homeRoutes(router) {
   router.get("/", function (req, res, next) {
     if (req.url.indexOf('address')>-1||req.url.indexOf('live')>-1||req.url.indexOf('videos')>-1)
       return next(null);
+    if (_.contains(config.pages, req.url.replace('/','')))
+      return next(null);
     res.render('index', req.session.locals);
   });
 
