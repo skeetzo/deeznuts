@@ -143,8 +143,8 @@ var Video = function(src) {
   if (!src.path_image) src.path_image = '';
   var path_ = path.join(config.videosPath, src.path).replace(/.*videos\//gi, '');
   var path_image = path.join(config.imagesPath, src.path_image).replace(/.*images\//gi, '../images/');
-  logger.log('path: %s', path_);
-  logger.log('path_image: %s', path_image);
+  // logger.log('path: %s', path_);
+  // logger.log('path_image: %s', path_image);
   return {
     '_id': src._id,
     'title': src.title,
@@ -165,8 +165,8 @@ var Video_Preview = function(src) {
   // var path_image = src.path_image.replace('/mnt/deeznuts', '..');
   var path_ = path.join(config.videosPath, src.path_preview).replace(/.*videos\//gi, '');
   var path_image = path.join(config.imagesPath, src.path_image).replace(/.*images\//gi, '../images/');
-  logger.log('path: %s', path_);
-  logger.log('path_image: %s', path_image);
+  // logger.log('path: %s', path_);
+  // logger.log('path_image: %s', path_image);
   return {
     '_id': src._id,
     'title': src.title,
