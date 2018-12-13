@@ -25,7 +25,7 @@ module.exports = function() {
       to: self.email_self,
       from: 'Support - '+self.siteName+' <support@'+self.domainEmail+'>',
       subject: 'Video Purchased!',
-      text: '<p>' + 'The video <strong>'+video.title+'</strong> has been purchased for: $<strong>'+video.price+'</strong></p>'
+      text: '<p>' + 'The video <strong>'+video.title+'</strong> has been purchased for: $<strong>'+amount+'</strong></p>'
           + '<br>'
           + self.email_footer
     }

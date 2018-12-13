@@ -50,6 +50,7 @@ prepend javascript
         success: function(data) {
           if (data.text)
             alert(data.text);
+          location.reload();
         },
         error: function(data) { 
          if (data.status == 400)
