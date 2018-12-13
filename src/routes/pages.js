@@ -20,6 +20,7 @@ module.exports = function homeRoutes(router) {
 
   // Index
   router.get("/", function (req, res, next) {
+    logger.log('uh');
     res.render('index', req.session.locals);
   });
 
