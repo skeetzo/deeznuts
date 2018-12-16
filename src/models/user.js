@@ -144,7 +144,7 @@ userSchema.statics.generateAddress = function(userId, callback) {
       // logger.debug('query: %s', JSON.stringify(query, null, 4));
       if (config.debugging_blockchain) return step(null, user, config.debugging_blockchain_address); 
       logger.debug('generating address...');
-      myReceive = myReceive.generate(query)
+      myReceive.generate(query)
       .then(function (generated) {
         logger.debug('generated: %s', JSON.stringify(generated));
         step(null, user, generated.address);
