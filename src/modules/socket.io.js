@@ -15,7 +15,7 @@ module.exports.setup = function (io) {
 		if (num_occupants==1) User.syncOn();
 
 		client.on('connecting', function (userId) {
-			logger.io('connecting: %s', userId);
+			// logger.io('connecting: %s', userId);
 			User.connected(userId, function (err) {
 				if (err) return logger.warn(err);
 				sync(userId);
@@ -23,14 +23,14 @@ module.exports.setup = function (io) {
 		});
 
 		client.on('start', function (userId) {
-			logger.io('starting: %s', userId);
+			// logger.io('starting: %s', userId);
 			User.start(userId, function (err) {
 				if (err) logger.warn(err);
 			});
 		});
 
 		client.on('stop', function (userId) {
-			logger.io('stopping: %s', userId);
+			// logger.io('stopping: %s', userId);
 			User.stop(userId, function (err) {
 				if (err) logger.warn(err);
 			});
@@ -43,7 +43,7 @@ module.exports.setup = function (io) {
 		});
 
 		client.on('end', function (userId) {
-			logger.io('disconnecting: %s', userId);
+			// logger.io('disconnecting: %s', userId);
 			User.disconnected(userId, function (err) {
 				if (err) logger.warn(err);
 			});

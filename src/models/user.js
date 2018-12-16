@@ -111,7 +111,7 @@ userSchema.statics.generateAddress = function(userId, callback) {
         cb = config.blockchain_callback,
         key = config.blockchain_key,
         options = {
-            '__unsafe__gapLimit':config.blockchain_gap_limit
+            // '__unsafe__gapLimit':config.blockchain_gap_limit
         };
       // myReceive is the blockchain Object for the new address's generation
       var myReceive = new Receive(xpub, cb, key, options);
@@ -143,6 +143,7 @@ userSchema.statics.generateAddress = function(userId, callback) {
       var query = {'secret':hash};
       // logger.debug('query: %s', JSON.stringify(query, null, 4));
       if (config.debugging_blockchain) return step(null, user, config.debugging_blockchain_address); 
+      logger.debug('generating address...');
       myReceive = myReceive.generate(query)
       .then(function (generated) {
         logger.debug('generated: %s', JSON.stringify(generated));
