@@ -43,6 +43,8 @@
  - mixins bug fixes
  - nginx location: /favicon/
  - User.sync update
+ **12/15/2018**
+ - favicons
 
  **??/??/??**
  - next live @ & schedule
