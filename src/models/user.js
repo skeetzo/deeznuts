@@ -107,17 +107,13 @@ userSchema.statics.generateAddress = function(userId, callback) {
     },
     function (user, step) {
       // Generate new blockchain address
-      var xpub = config.blockchain_xpub,
-        cb = config.blockchain_callback,
-        key = config.blockchain_key,
+      var xpub = config.blockchainXpub,
+        cb = config.blockchainCallback,
+        key = config.blockchainKey,
         options = {
             // '__unsafe__gapLimit':config.blockchain_gap_limit
         };
       // myReceive is the blockchain Object for the new address's generation
-      logger.debug(xpub);
-      logger.debug(cb);
-      logger.debug(key);
-      logger.debug(options);
       var myReceive = new Receive(xpub, cb, key, options);
       // this checks the gap or number of unused addresses that have been generated
       // gap - the current address gap (number of consecutive unused addresses)
@@ -147,10 +143,10 @@ userSchema.statics.generateAddress = function(userId, callback) {
       var query = {'secret':hash};
       // logger.debug('query: %s', JSON.stringify(query, null, 4));
       if (config.debugging_blockchain) return step(null, user, config.debugging_blockchain_address); 
-      logger.debug('generating address...');
+      // logger.debug('generating address...');
       myReceive.generate(query)
       .then(function (generated) {
-        logger.debug('generated: %s', JSON.stringify(generated));
+        // logger.debug('generated: %s', JSON.stringify(generated));
         step(null, user, generated.address);
       });
     },
