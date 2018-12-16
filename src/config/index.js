@@ -59,7 +59,7 @@ config.blockchainRoute = "/btc";
 config.blockchainCallback = config.domain+config.blockchainRoute;
 config.blockchainConfirmationLimit = 6;
 config.blockchainGapLimit = 20;
-config.blockchain_check_gap = false;
+config.blockchain_check_gap = true;
 // RTMP Stream
 config.streamKeyExpire = 3600000;
 config.streamRecording = true;

@@ -114,10 +114,6 @@ userSchema.statics.generateAddress = function(userId, callback) {
             // '__unsafe__gapLimit':config.blockchain_gap_limit
         };
       // myReceive is the blockchain Object for the new address's generation
-      logger.debug(xpub);
-      logger.debug(cb);
-      logger.debug(key);
-      logger.debug(options);
       var myReceive = new Receive(xpub, cb, key, options);
       // this checks the gap or number of unused addresses that have been generated
       // gap - the current address gap (number of consecutive unused addresses)
