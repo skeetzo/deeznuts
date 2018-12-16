@@ -110,7 +110,9 @@ userSchema.statics.generateAddress = function(userId, callback) {
       var xpub = config.blockchain_xpub,
         cb = config.blockchain_callback,
         key = config.blockchain_key,
-        options = {};
+        options = {
+            '__unsafe__gapLimit':config.blockchain_gap_limit
+        };
       // myReceive is the blockchain Object for the new address's generation
       var myReceive = new Receive(xpub, cb, key, options);
       // this checks the gap or number of unused addresses that have been generated
