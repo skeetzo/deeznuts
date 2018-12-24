@@ -1,5 +1,6 @@
 var config = require('../config/index'),
-    logger = config.logger;
+    logger = config.logger,
+    _ = require('underscore');
 
 var User = require('../models/user');
 
