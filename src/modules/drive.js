@@ -123,6 +123,7 @@ module.exports.authenticate = authenticate;
 var path = require('path');
 // upload file at path to OnlyFans folder
 function backupVideo(video, callback) {
+  return callback('Skipping!');
   async.waterfall([
     function auth(step) {
       if (authenticated) return step(null);
