@@ -8,7 +8,7 @@ var _ = require('underscore'),
 module.exports = function homeRoutes(router) {
 
 	// Subscription client request
-	router.get("/paypal/approval", function (req, res, next) {
+	router.get("/paypal/approval", mixins.loggedIn, function (req, res, next) {
 		if (!req.session.user) {
 			logger.warn('Missing logged in user.');
 			// return error('You need to login to subscribe!');
