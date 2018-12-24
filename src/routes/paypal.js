@@ -87,7 +87,7 @@ module.exports = function homeRoutes(router) {
 					});
 			},
 			function (url) {
-				res.status(200).send({'url':url});
+				res.status(400).send({'url':url});
 			}
 			], function (err, text) {
 				if (err) logger.warn(err);

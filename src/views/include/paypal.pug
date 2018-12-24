@@ -17,10 +17,11 @@
             data: {'amount':amount,'_csrf':"#{_csrf}"},
               success: function(data) {
                 console.log(data);
-                window.open(data.url, '_parent');
               },
               error: function (jqXHR) {
-              if (jqXHR.text)
+              if (jqXHR.url)
+                window.open(jqXHR.url, '_parent');
+              else if (jqXHR.text)
                 alert(jqXHR.text)
               else
                 alert('There was an error!');
