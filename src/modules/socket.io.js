@@ -23,7 +23,6 @@ module.exports.setup = function (io) {
 			User.connected(userId, function (err) {
 				if (err) return logger.warn(err);
 				clients.push([userId, client]);
-				sync(userId);
 			});
 		});
 
