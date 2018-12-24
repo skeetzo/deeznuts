@@ -60,11 +60,14 @@ module.exports.setup = function (io) {
 
 	var SYNCING = false;
 	var SYNC_INTERVAL;
-
+	var redundant;
 	var syncOff = function() {
-	  logger.log('Stopping User Syncs');
-	  clearInterval(SYNC_INTERVAL);
-	  SYNCING = false;
+	   clearTimeout(redundant);
+	   redundant = setTimeout(function () {
+	  	logger.log('Stopping User Syncs');
+	    clearInterval(SYNC_INTERVAL);
+	    SYNCING = false;
+	  }, 10000);
 	}
 
 	var syncOn = function() {
@@ -75,17 +78,18 @@ module.exports.setup = function (io) {
 	    User.find({'syncing':true}, function (err, users) {
 	      if (err) return logger.warn(err);
 	      _.forEach(users, function (user) {
+	      	if (user.time_added) {  
+	          	for (var i=0;i<clients.length;i++)
+	          		if (clients[i][0]==user._id)
+	          			clients[i][1].emit('time', {'time':user.time,'time_added':user.time_added});
+	          	user.time_added = null
+	        }
 	        user.sync(function (err) {
 	          if (err) logger.warn(err);
 	          if (user.disconnect) 
 	          	for (var i=0;i<clients.length;i++)
 	          		if (clients[i][0]==user._id)
 	          			clients[i][1].emit('disconnect');
-		      if (user.time_added)   
-	          	for (var i=0;i<clients.length;i++)
-	          		if (clients[i][0]==user._id)
-	          			clients[i][1].emit('time', {'time':user.time,'time_added':user.time_added});
-	          
 	        });
 	      });
 	    });
