@@ -11,6 +11,8 @@ module.exports = function homeRoutes(router) {
 	router.get("/paypal/approval", function (req, res, next) {
 		logger.log('Processing PayPal Payment Request');
 		logger.debug('PayPal GET query: %s', JSON.stringify(req.query, null, 4));
+		logger.log('session: %s', JSON.stringify(req.session, null, 4));
+		logger.log('locals: %s', JSON.stringify(req.session.locals, null, 4));
 		async.waterfall([
 			function (step) {
 				var User = require('../models/user');
@@ -45,10 +47,8 @@ module.exports = function homeRoutes(router) {
 			}
 			], function (err, text) {
 				if (err) logger.warn(err);
-				req.session.user = mixins.User(user);
-				req.session.locals.user = mixins.User(user);
 				req.session.locals.error = text || 'There was an error!';
-			    res.redirect('/');
+				res.redirect('/');
 		});
 	});
 
