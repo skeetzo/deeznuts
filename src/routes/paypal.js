@@ -71,6 +71,7 @@ module.exports = function homeRoutes(router) {
 				if (req.body.amount=="5.00") { 
 					PayPal.createPaymentSingle(req, function (err, url) {
 						if (err) return step(err);
+						logger.log('url: %s', url);
 						step(null, url);
 					});	
 				}

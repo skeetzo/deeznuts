@@ -16,6 +16,7 @@
             url: '/paypal',
             data: {'amount':amount,'_csrf':"#{_csrf}"},
               success: function(data) {
+                console.log(data);
                 window.open(data.url, '_parent');
               },
               error: function (jqXHR) {
