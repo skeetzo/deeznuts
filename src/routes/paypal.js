@@ -46,7 +46,7 @@ module.exports = function homeRoutes(router) {
 			], function (err, text) {
 				if (err) logger.warn(err);
 				req.session.locals.error = text || 'There was an error!';
-				res.redirect('/');
+				res.redirect('/callback');
 		});
 	});
 

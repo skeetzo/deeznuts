@@ -11,6 +11,7 @@
     "setup": "setup/scripts/install.sh",
     "setup-config": "setup/scripts/config.sh"
   },
+  "license": "MIT",
   "engines": {
     "node": "9.4.0"
   },
