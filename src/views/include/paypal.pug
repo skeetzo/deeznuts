@@ -19,12 +19,13 @@
                 console.log(data);
               },
               error: function (jqXHR) {
-              if (jqXHR.responseJSON.url)
-                window.open(jqXHR.responseJSON.url, '_parent');
-              else if (jqXHR.text)
-                alert(jqXHR.text)
-              else
-                alert('There was an error!');
+                console.log('json: %s', jqXHR);
+                if (jqXHR.responseJSON.url)
+                  window.open(jqXHR.responseJSON.url, '_parent');
+                else if (jqXHR.text)
+                  alert(jqXHR.text)
+                else
+                  alert('There was an error!');
               }
           })).catch(function (reason) {
             console.log(reason);
