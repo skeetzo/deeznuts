@@ -19,9 +19,9 @@
               },
               error: function (jqXHR) {
                 if (jqXHR&&jqXHR.responseJSON&&jqXHR.responseJSON.url)
-                  //- window.open(jqXHR.responseJSON.url, '_blank');
+                  window.open(jqXHR.responseJSON.url, '_blank');
                   //- window.location.href = jqXHR.responseJSON.url;
-                  window.location.replace(jqXHR.responseJSON.url);
+                  //- window.location.replace(jqXHR.responseJSON.url);
                 else if (jqXHR&&jqXHR.responseJSON&&jqXHR.responseJSON.text)
                   alert(jqXHR.text)
                 else
