@@ -149,9 +149,9 @@ function deploy(environment) {
 	}
 	else if (environment=='staging') {
 		config.debugging = true;
-		config.debugging_blockchain = true;
+		// config.debugging_blockchain = true;
 		// config.debugging_live = true;
-		// config.debugging_reset_db = true;
+		config.debugging_reset_db = true;
 		// config.debugging_reset_files = true;
 		// config.debugging_address = true;
 		// config.debugging_sync = true;
