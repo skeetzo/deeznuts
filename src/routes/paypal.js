@@ -69,7 +69,6 @@ module.exports = function homeRoutes(router) {
 				logger.log('amount: %s', req.body.amount);
 				var PayPal = require('../modules/paypal');
 				if (req.body.amount=="5.00") { 
-					logger.log('stuff 1');
 					PayPal.createPaymentSingle(req, function (err, url) {
 						if (err) return step(err);
 						step(null, url);
@@ -87,7 +86,7 @@ module.exports = function homeRoutes(router) {
 					});
 			},
 			function (url) {
-				res.status(402).send({'url':url});
+				res.status(200).send({'url':url});
 			}
 			], function (err, text) {
 				if (err) logger.warn(err);
