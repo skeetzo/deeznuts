@@ -32,15 +32,13 @@ prepend content
       a.btn.btn-primary(href='/videos') Video Archive
 
   br
-  br
 
-  include ../include/paypal
-  
-  br
-  p or
-  br
-  
-  include ../include/bitcoin
+  if (user)
+    include ../include/paypal
+    br
+    p or
+    br
+    include ../include/bitcoin
 
       //- Debugging - Add Time
       //- button.btn.btn-primary(onclick="addTime()") Add Time
