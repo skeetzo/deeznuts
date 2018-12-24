@@ -46,6 +46,9 @@
  **12/15/2018**
  - favicons
 
+ **12/23/2018**
+ - paypal
+
  **??/??/??**
  - next live @ & schedule
 

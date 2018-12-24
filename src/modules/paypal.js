@@ -170,7 +170,6 @@ var createPaymentSingle = function(req, callback) {
 						callback(err, approval_url);
 						user.paypal_tokens.push(token);
 						user.paypal_total = paymentSingleJSON.transactions[0].amount.total;
-						logger.log('paypal_total: %s', user.paypal_total);
 						user.save(function (err) {
 							if (err) logger.warn(err);
 						});
@@ -217,6 +216,7 @@ var createPaymentDouble = function(req, callback) {
                         logger.log("Payment token: %s", token);
 						callback(err, approval_url);
 						user.paypal_tokens.push(token);
+						user.paypal_total = paymentDoubleJSON.transactions[0].amount.total;
 						user.save(function (err) {
 							if (err) logger.warn(err);
 						});
@@ -263,6 +263,7 @@ var createPaymentTriple = function(req, callback) {
                         logger.log("Payment token: %s", token);
 						callback(err, approval_url);
 						user.paypal_tokens.push(token);
+						user.paypal_total = paymentTripleJSON.transactions[0].amount.total;
 						user.save(function (err) {
 							if (err) logger.warn(err);
 						});

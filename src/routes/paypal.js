@@ -39,14 +39,14 @@ module.exports = function homeRoutes(router) {
 		            if (user.paypal_tokens[i].toString()===req.query.token.toString()) 
 		              user.paypal_tokens.splice(i,1);
 		        user.paypal_total = null;
-		        req.session.user = mixins.User(user);
-		        req.session.loggedIn = true; // ?
 				user.save(function (err) {
 					step(null);
 				});
 			}
 			], function (err, text) {
 				if (err) logger.warn(err);
+				req.session.user = mixins.User(user);
+				req.session.locals.user = mixins.User(user);
 				req.session.locals.error = text || 'There was an error!';
 			    res.redirect('/');
 		});
