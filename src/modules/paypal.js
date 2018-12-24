@@ -39,7 +39,7 @@ var executePayment = function(data, callback) {
 		},
 		function (user, step) {
 			var execute_payment_json = generatePaymentExecuteJSON(id, total);
-			paypal.payment.execute(paymentId, execute_payment_json, function (err, payment) {
+			PayPal.payment.execute(paymentId, execute_payment_json, function (err, payment) {
 			    if (err) {
 			        logger.warn(err);
 			        return step('There was an error.');
