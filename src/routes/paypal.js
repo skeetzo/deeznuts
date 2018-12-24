@@ -14,7 +14,7 @@ module.exports = function homeRoutes(router) {
 		async.waterfall([
 			function (step) {
 				var User = require('../models/user');
-				User.findOne({'_id':req.session.user._id,'paypal_tokens':req.query.token}, function (err, user) {
+				User.findOne({'paypal_tokens':req.query.token}, function (err, user) {
 					if (err) return step(err);
 					if (!user) return step('Missing user: '+ user.username, 'You need to be a user to add time!');
 					step(null, user);
