@@ -77,6 +77,7 @@ module.exports.setup = function (io) {
 	  SYNC_INTERVAL = setInterval(function () {
 	    User.find({'connected':true}, function (err, users) {
 	      if (err) return logger.warn(err);
+	      logger.log('users: %s', users.length);
 	      _.forEach(users, function (user) {
 	      	logger.log(user);
 	      	if (user.time_added) {  
