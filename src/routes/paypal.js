@@ -32,7 +32,7 @@ module.exports = function homeRoutes(router) {
 					'id' : req.query.payer_id,
 					'total' : req.query.total,
 					'_id':user._id
-				}
+				};
 				var PayPal = require('../modules/paypal');
 				PayPal.executePayment(data, function (err, time) {
 				    if (err) return step(err);
@@ -68,17 +68,19 @@ module.exports = function homeRoutes(router) {
 				if (!config.PayPal) return step('PayPal Disabled', 'PayPal subscriptions are currently disabled!');
 				logger.log('amount: %s', req.body.amount);
 				var PayPal = require('../modules/paypal');
-				if (req.body.amount==="5.00")
+				if (req.body.amount=="5.00") { 
+					logger.log('stuff 1');
 					PayPal.createPaymentSingle(req, function (err, url) {
 						if (err) return step(err);
 						step(null, url);
 					});	
-				else if (req.body.amount==="10.00")
+				}
+				else if (req.body.amount=="10.00")
 					PayPal.createPaymentDouble(req, function (err, url) {
 						if (err) return step(err);
 						step(null, url);
 					});
-				else if (req.body.amount==="20.00")
+				else if (req.body.amount=="20.00")
 					PayPal.createPaymentTriple(req, function (err, url) {
 						if (err) return step(err);
 						step(null, url);
