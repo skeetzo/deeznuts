@@ -43,7 +43,8 @@ videoSchema.pre('save', function (next) {
   if (!self.title) self.title = self.date;
   if ((self.isModified('description')||self.isModified('performers'))&&self.performers)
     self.description = [self.performers.slice(0, -1).join(', '), self.performers.slice(-1)[0]].join(self.performers.length < 2 ? '' : ' and ');
-  self.path = path.join(config.videosPath, 'archive/stream', self.title+'.mp4');
+  if (!self.path)
+    self.path = path.join(config.videosPath, 'archive/stream', self.title+'.mp4');
   async.series([
     function (step) {
       // duration check
