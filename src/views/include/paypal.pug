@@ -14,9 +14,9 @@
           return Promise.resolve($.ajax({
             type: 'POST',
             url: '/paypal',
-         data: {'amount':amount,'_csrf':"#{_csrf}"},
+            data: {'amount':amount,'_csrf':"#{_csrf}"},
               success: function(data) {
-                window.open(data.responseJSON.url, '_parent');
+                window.open(data.url, '_parent');
               },
               error: function (jqXHR) {
                 alert('There was an error!');
