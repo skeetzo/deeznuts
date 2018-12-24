@@ -163,6 +163,28 @@ async.series([
     });    
   },
   function (step) {
+    // PayPal Webhooks
+    if (!config.PayPal||!config.PayPal_syncing_webhooks) {
+      logger.debug('Skipping PayPal syncs');
+      return step(null);
+    }
+    var PayPal = require('../modules/paypal');
+    PayPal.syncWebhooks(function (err) {
+      if (err) logger.warn(err);
+      step(null);
+    });
+    if (config.debugging_paypal&&config.debugging_paypal_reset_plans) {
+      logger.debug('Resetting PayPal Plans...');
+      var Plan = require('../models/plan');
+      Plan.find({}, function (err, plans) {
+        if (err) return logger.warn(err);
+        _.forEach(plans, function (plan) {
+          plan.remove();
+        });
+      });
+    }
+  },
+  function (step) {
     if (config.ssl) {
       /**
        * Create HTTPS server.

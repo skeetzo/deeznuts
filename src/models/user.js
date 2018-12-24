@@ -30,8 +30,9 @@ var userSchema = new Schema({
   time_added: { type: Number },
   transactions: { type: Array, default: [] },
   username: { type: String },
-  videos: { type: Array, default: [] }
-});
+  videos: { type: Array, default: [] },
+  paypal_tokens: { type: Array, default: [] }
+ });
 
 userSchema.pre('save', function (next) {
   var self = this;

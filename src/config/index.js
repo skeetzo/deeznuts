@@ -60,6 +60,9 @@ config.blockchainCallback = config.domain+config.blockchainRoute;
 config.blockchainConfirmationLimit = 6;
 config.blockchainGapLimit = 20;
 config.blockchain_check_gap = true;
+// PayPal
+config.paypal_ips = ["64.4.248", "64.4.249", "66.211.168", "66.211.168", "173.0.84", "173.0.84", "173.0.88", "173.0.88", "173.0.92", "173.0.93", "173.0.82", "173.0.81"];
+
 // RTMP Stream
 config.streamKeyExpire = 3600000;
 config.streamRecording = true;
@@ -102,6 +105,10 @@ function deploy(environment) {
 	config.archive_on_publish = false;
 	config.deleteMissing = false;
 
+	config.PayPal = false;
+	config.PayPal_environment = 'sandbox';
+	config.PayPal_syncing_webhooks = false;
+
 	config.Twitter = false;
 	config.Twitter_tweeting = false;
 	config.Twitter_tweeting_on_live = false;
@@ -119,6 +126,9 @@ function deploy(environment) {
 
 	config.debugging_crons = false;
 
+	config.debugging_paypal = false;
+	config.debugging_paypal_reset_plans = false;
+
 	if (environment=='development') {
 		config.debugging = true;
 		config.debugging_live = true;
@@ -132,6 +142,9 @@ function deploy(environment) {
 		config.remoteDatabase = true;
 		config.archive_on_publish = true;
 		config.debugging_crons = true;
+		config.debugging_paypal = true;
+		config.debugging_paypal_reset_plans = true;
+
 	}
 	else if (environment=='staging') {
 		config.debugging = true;
@@ -142,6 +155,8 @@ function deploy(environment) {
 		// config.debugging_address = true;
 		// config.debugging_sync = true;
 		config.ssl = true;
+		config.PayPal = true;
+		config.PayPal_environment = 'sandbox';
 		config.Twitter = true;
 		config.Twitter_tweeting = true;
 		config.remoteDatabase = true;
@@ -152,6 +167,9 @@ function deploy(environment) {
 	}
 	else if (environment=='production') {
 		config.ssl = true;
+		config.PayPal = true;
+		config.PayPal_environment = 'live';
+		config.PayPal_syncing_webhooks = false;
 		config.Twitter = true;
 		config.Twitter_tweeting = true;
 		// config.Twitter_tweeting_on_live = true;

@@ -1,0 +1,27 @@
+.row
+  .col-md-4.col-sm-6.col-xs-8
+    if (user)
+      //- explanation
+      p To Add Time, Pay >=$5 via PayPal:
+      //- links
+      button.btn.btn-md.btn-primary.btn-block.paypal(onclick="paypal(\'5.00\')") $5.00
+      button.btn.btn-md.btn-primary.btn-block.paypal(onclick="paypal(\'10.00\')") $10.00
+      button.btn.btn-md.btn-primary.btn-block.paypal(onclick="paypal(\'20.00\')") $20.00
+
+      script.
+        //- Subscribe to Snapchat Subscription via Source and activate
+        function paypal(amount) {
+          return Promise.resolve($.ajax({
+            type: 'POST',
+            url: '/paypal',
+         data: {'amount':amount,'_csrf':"#{_csrf}"},
+              success: function(data) {
+                window.open(data.responseJSON.url, '_parent');
+              },
+              error: function (jqXHR) {
+                alert('There was an error!');
+              }
+          })).catch(function (reason) {
+            console.log(reason);
+          });
+        }

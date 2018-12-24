@@ -21,6 +21,8 @@ var serverOptions = {
   }
 };
 
+serverOptions.auth = {};
+
 if (config.ssl) {
   serverOptions.https = {
     'port': 8643,
