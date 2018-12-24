@@ -66,6 +66,7 @@ module.exports = function homeRoutes(router) {
 			function (step) {	
 				logger.log('Subscription Form (PayPal): %s', req.session.user._id);
 				if (!config.PayPal) return step('PayPal Disabled', 'PayPal subscriptions are currently disabled!');
+				logger.log('amount: %s', req.body.amount);
 				var PayPal = require('../modules/paypal');
 				if (req.body.amount=="5.00")
 					PayPal.createPaymentSingle(req, function (err, url) {
