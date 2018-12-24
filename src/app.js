@@ -71,7 +71,7 @@ if (config.debugging) maxAge = 1000 * 60 * 10; // ten minutes
 var sess = {
   name: "deeznuts",
   secret: "suckmybeautifulnuts",
-  saveUninitialized: false,
+  saveUninitialized: true,
   resave: true,
   cookie: {
       secure: false,
