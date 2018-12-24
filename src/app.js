@@ -78,7 +78,7 @@ var sess = {
       // secure: 'auto',
       // domain: ,
       httpOnly: true,
-      sameSite: 'strict',
+      // sameSite: 'strict',
       maxAge: maxAge
   },
   // ephemeral: true,
