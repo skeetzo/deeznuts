@@ -43,7 +43,6 @@ config.defaultPrice = 5; // in dollars
 config.defaultTime = 60; // time in seconds
 config.defaultPreviewDuration = 30;
 
-config.rebuildFromFiles = false;
 
 config.syncInterval = 3; // in seconds
 if (config.debugging) {
@@ -129,6 +128,8 @@ function deploy(environment) {
 	config.debugging_paypal = false;
 	config.debugging_paypal_reset_plans = false;
 
+	config.rebuildFromFiles = true;
+
 	if (environment=='development') {
 		config.debugging = true;
 		config.debugging_live = true;
@@ -155,7 +156,7 @@ function deploy(environment) {
 		// config.debugging_address = true;
 		// config.debugging_sync = true;
 		config.ssl = true;
-		config.PayPal = true;
+		config.PayPal = false;
 		config.PayPal_environment = 'sandbox';
 		config.Twitter = true;
 		config.Twitter_tweeting = true;
