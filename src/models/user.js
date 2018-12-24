@@ -31,7 +31,8 @@ var userSchema = new Schema({
   transactions: { type: Array, default: [] },
   username: { type: String },
   videos: { type: Array, default: [] },
-  paypal_tokens: { type: Array, default: [] }
+  paypal_tokens: { type: Array, default: [] },
+  paypal_total: { type: String }
  });
 
 userSchema.pre('save', function (next) {
