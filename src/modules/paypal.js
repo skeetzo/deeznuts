@@ -168,6 +168,7 @@ var createPaymentSingle = function(req, callback) {
                         logger.log("Payment token: %s", token);
 						callback(err, approval_url);
 						user.paypal_tokens.push(token);
+						user.paypal_total = paymentSingleJSON.transactions.amount.total;
 						user.save(function (err) {
 							if (err) logger.warn(err);
 						});

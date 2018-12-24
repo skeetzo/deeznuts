@@ -11,7 +11,6 @@ module.exports = function homeRoutes(router) {
 	router.get("/paypal/approval", function (req, res, next) {
 		logger.log('Processing PayPal Payment Request');
 		logger.debug('PayPal GET query: %s', JSON.stringify(req.query, null, 4));
-		logger.debug('payer_id: %s', req.query.payer_id)
 		async.waterfall([
 			function (step) {
 				var User = require('../models/user');
@@ -23,9 +22,9 @@ module.exports = function homeRoutes(router) {
 			},
 			function (user, step) {
 				var data = {
-					'paymentId' : req.query.amount,
-					'id' : req.query.payer_id,
-					'total' : req.query.total,
+					'paymentId' : req.query.paymentId,
+					'id' : req.query.PayerID,
+					'total' : user.paypal_total,
 					'_id':user._id
 				};
 				var PayPal = require('../modules/paypal');
@@ -39,6 +38,7 @@ module.exports = function homeRoutes(router) {
 				for (var i=0;i<user.paypal_tokens.length;i++) 
 		            if (user.paypal_tokens[i].toString()===req.query.token.toString()) 
 		              user.paypal_tokens.splice(i,1);
+		        user.paypal_total = null;
 				user.save(function (err) {
 					step(null);
 				});
