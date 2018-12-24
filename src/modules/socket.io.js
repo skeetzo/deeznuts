@@ -19,7 +19,7 @@ module.exports.setup = function (io) {
 		
 
 		client.on('connecting', function (userId) {
-			// logger.io('connecting: %s', userId);
+			logger.io('connecting: %s', userId);
 			User.connected(userId, function (err) {
 				if (err) return logger.warn(err);
 				clients.push([userId, client]);
