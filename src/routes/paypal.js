@@ -30,7 +30,7 @@ module.exports = function homeRoutes(router) {
 				var PayPal = require('../modules/paypal');
 				PayPal.executePayment(data, function (err, time) {
 				    if (err) return step(err);
-			        req.flash('message', 'You have added '+time+' seconds!');
+			        req.session.locals.message = 'You have added '+time+' seconds!';
 					step(null, user);
 				});
 			},
