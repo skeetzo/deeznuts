@@ -128,7 +128,7 @@ function deploy(environment) {
 	config.debugging_paypal = false;
 	config.debugging_paypal_reset_plans = false;
 
-	config.rebuildFromFiles = true;
+	config.rebuildFromFiles = false;
 
 	if (environment=='development') {
 		config.debugging = true;
@@ -151,7 +151,7 @@ function deploy(environment) {
 		config.debugging = true;
 		// config.debugging_blockchain = true;
 		// config.debugging_live = true;
-		config.debugging_reset_db = true;
+		// config.debugging_reset_db = true;
 		// config.debugging_reset_files = true;
 		// config.debugging_address = true;
 		// config.debugging_sync = true;
@@ -159,7 +159,7 @@ function deploy(environment) {
 		config.PayPal = false;
 		config.PayPal_environment = 'sandbox';
 		config.Twitter = true;
-		config.Twitter_tweeting = true;
+		config.Twitter_tweeting_on_live = true;
 		config.remoteDatabase = true;
 		config.archive_on_publish = true;
 		config.backupToOnlyFans = true;
@@ -172,11 +172,13 @@ function deploy(environment) {
 		config.PayPal_environment = 'live';
 		config.PayPal_syncing_webhooks = false;
 		config.Twitter = true;
-		config.Twitter_tweeting = true;
-		// config.Twitter_tweeting_on_live = true;
+		// config.Twitter_tweeting = true;
+		config.Twitter_tweeting_on_live = true;
 		config.backupToOnlyFans = true;
 		config.archive_on_publish = true;
-		config.remoteDatabase = true;
+		// config.remoteDatabase = true;
+		config.debugging_reset_db = true;
+		config.rebuildFromFiles = true;
 	}
 }
 
