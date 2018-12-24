@@ -124,8 +124,8 @@ app.use(mixins.resetLocals, function (req, res, next) {
     ips.push(req.headers['x-forwarded-for']);
   logger.log("%s /%s %s", ips, req.method, req.url);
   // misc pages redirect
-  if (_.contains(config.pages, req.url.replace('/','')))
-    return res.render(req.url.replace('/',''), req.session.locals);
+  // if (_.contains(config.pages, req.url.replace('/','')))
+    // return res.render(req.url.replace('/',''), req.session.locals);
   next(null);
 });
 
