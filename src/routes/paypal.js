@@ -118,8 +118,4 @@ module.exports = function homeRoutes(router) {
 		})
 	});
 
-	// router.get("/callback", function (req, res, next) {
-	//     res.render('callback');
-	// });
-
 }

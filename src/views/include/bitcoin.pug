@@ -7,7 +7,7 @@
       img(src=user.address_qr,style="display:block;margin-left:auto;margin-right:auto;")
       a(href="bitcoin:"+user.address, target="_blank") bitcoin:#{user.address}
     else
-      button.btn.btn-primary(onclick="generateAddress()") Generate Address
+      button.btn.btn-primary(onclick="generateAddress()") Generate BTC Address
 
       script.
         function generateAddress() {

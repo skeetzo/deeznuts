@@ -10,12 +10,6 @@ prepend content
   
   br
 
-  include ../include/paypal
-  br
-  include ../include/bitcoin
-
-  br
-
   //- 18+ disclaimer
   .row.disclaimer
     .col-xs-12
@@ -36,6 +30,11 @@ prepend content
       br
       br
       a.btn.btn-primary(href='/videos') Video Archive
+
+  include ../include/paypal
+  p or
+  br
+  include ../include/bitcoin
 
       //- Debugging - Add Time
       //- button.btn.btn-primary(onclick="addTime()") Add Time
