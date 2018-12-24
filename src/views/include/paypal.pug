@@ -19,8 +19,8 @@
                 console.log(data);
               },
               error: function (jqXHR) {
-              if (jqXHR.url)
-                window.open(jqXHR.url, '_parent');
+              if (jqXHR.responseJSON.url)
+                window.open(jqXHR.responseJSON.url, '_parent');
               else if (jqXHR.text)
                 alert(jqXHR.text)
               else
