@@ -117,7 +117,7 @@ if (config.ssl)
 
 // /
 var mixins = require('./modules/mixins');
-app.use(mixins.resetLocals, mixins.syncUser, function (req, res, next) {
+app.use(mixins.resetLocals, function (req, res, next) {
   var ips = req.ips || [];
   ips.push(req.connection.remoteAddress);
   if (req.headers['x-forwarded-for'])
