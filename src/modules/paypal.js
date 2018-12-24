@@ -16,7 +16,7 @@ PayPal.configure(config.paypal_creds);
 
 var executePayment = function(data, callback) {
 	var paymentId = data.paymentId,
-		id = data.payerId,
+		id = data.id,
 		total = data.total;
 	if (!paymentId) return callback('Error Executing Payment: Missing Payment Id!');
 	if (!id) return callback('Error Executing Payment: Missing Id!');
