@@ -59,6 +59,7 @@ var executePayment = function(data, callback) {
 		callback(err);
 	});
 }
+module.exports.executePayment = executePayment;
 
 // var activateSubscription = function(data, callback) {
 	// logger.log('Activating PayPal Billing Agreement');
