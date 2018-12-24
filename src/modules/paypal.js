@@ -768,7 +768,7 @@ function generatePurchasePaymentTriple() {
 	};
 }
 
-function generatePaymentExecuteJSON = function(id, total) {
+function generatePaymentExecuteJSON(id, total) {
 	return {
 	    "payer_id": id,
 	    "transactions": [{
