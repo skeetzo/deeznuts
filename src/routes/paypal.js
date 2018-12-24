@@ -56,12 +56,12 @@ module.exports = function homeRoutes(router) {
 	});
 
 	// Subscription client request
-	router.post("/paypal", function (req, res, next) {
-		if (!req.session.user) {
-			logger.warn('Missing logged in user.');
-			// return error('You need to login to subscribe!');
-			return res.status(400).send({'text':'You need to be a user to add time!'});
-	    }
+	router.post("/paypal", mixins.loggedIn, function (req, res, next) {
+		// if (!req.session.user) {
+		// 	logger.warn('Missing logged in user.');
+		// 	// return error('You need to login to subscribe!');
+		// 	return res.status(400).send({'text':'You need to be a user to add time!'});
+	 //    }
 		async.waterfall([
 			function (step) {	
 				logger.log('Subscription Form (PayPal): %s', req.session.user._id);
