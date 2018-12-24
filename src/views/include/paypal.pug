@@ -19,10 +19,10 @@
                 console.log(data);
               },
               error: function (jqXHR) {
-                console.log('json: %s', jqXHR);
-                if (jqXHR.responseJSON.url)
-                  window.open(jqXHR.responseJSON.url, '_parent');
-                else if (jqXHR.text)
+                console.log('json: %s', JSON.stringify(jqXHR));
+                if (jqXHR&&jqXHR.url)
+                  window.open(jqXHR.url, '_parent');
+                else if (jqXHR&&jqXHR.text)
                   alert(jqXHR.text)
                 else
                   alert('There was an error!');

@@ -710,7 +710,7 @@ function generatePurchasePaymentSingle() {
 	};
 }
 
-function generatePurchasePaymentSingle() {
+function generatePurchasePaymentDouble() {
 	return {
 	    "intent": "sale",
 	    "payer": {
