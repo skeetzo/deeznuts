@@ -33,7 +33,7 @@ module.exports.hasRoom = function(req, res, next) {
 
 // Check Login
 module.exports.loggedIn = function(req, res, next) {
-    if (req.session.user)
+    if (req.user||req.session.user)
         next(null);
     else {
         req.session.locals.error = 'Please login!';

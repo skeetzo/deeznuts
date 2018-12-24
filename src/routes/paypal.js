@@ -9,12 +9,6 @@ module.exports = function homeRoutes(router) {
 
 	// Subscription client request
 	router.get("/paypal/approval", mixins.loggedIn, function (req, res, next) {
-		if (!req.session.user) {
-			logger.warn('Missing logged in user.');
-			// return error('You need to login to subscribe!');
-			res.session.locals.error = "You need to login to add time!";
-			return res.redirect('/');
-	    }
 		logger.log('Processing PayPal Payment Request');
 		logger.debug('PayPal GET query: %s', JSON.stringify(req.query, null, 4));
 		logger.debug('payer_id: %s', req.query.payer_id)
