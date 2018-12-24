@@ -8,7 +8,7 @@ var _ = require('underscore'),
 module.exports = function homeRoutes(router) {
 
 	// Subscription client request
-	router.get("/paypal/approval", function (req, res, next) {
+	router.get("/paypal/approval", mixins.loggedIn, function (req, res, next) {
 		logger.log('Processing PayPal Payment Request');
 		logger.debug('PayPal GET query: %s', JSON.stringify(req.query, null, 4));
 		async.waterfall([
