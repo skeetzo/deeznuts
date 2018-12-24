@@ -203,7 +203,7 @@ videoSchema.statics.deleteMissing = function(callback) {
 videoSchema.statics.populateFromFiles = function(callback) {
   logger.log('Populating Video Database');
   // read videos/archived for all the files
-  var videoFiles = fs.readdirSync(config.videosPath+'/archived');
+  var videoFiles = fs.readdirSync(config.videosPath+'/archived/stream');
   var previewFiles = fs.readdirSync(config.videosPath+'/previews');
   logger.log('videoFiles: %s', videoFiles);
   logger.log('previewFiles: %s', previewFiles);
@@ -211,10 +211,11 @@ videoSchema.statics.populateFromFiles = function(callback) {
   var series = [];
   _.forEach(previewFiles, function (video) {
     series.push(function (step) {
-      var videoPath = video.replace('-preview.mp4','.mp4');
-      var newVideo = new Video({'path':videoPath,'path_preview':video});
-      logger.debug('video: %s', video);
+      var videoPath = path.join(config.videosPath, '/archived/stream', video.replace('-preview.mp4','.mp4'));
+      var videoPreviewPath = path.join(config.videoPath, '/previews', video);
+      var newVideo = new Video({'path':videoPath,'path_preview':videoPreviewPath});
       logger.debug('videoPath: %s', videoPath);
+      logger.debug('videoPreviewPath: %s', videoPreviewPath);
       newVideo.save(function (err) {
         if (err) logger.warn(err);
         step(null);
