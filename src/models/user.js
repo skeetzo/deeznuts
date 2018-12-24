@@ -32,7 +32,8 @@ var userSchema = new Schema({
   username: { type: String },
   videos: { type: Array, default: [] },
   paypal_tokens: { type: Array, default: [] },
-  paypal_total: { type: String }
+  paypal_total: { type: String },
+  countingDown: { type: Boolean, default: false }
  });
 
 userSchema.pre('save', function (next) {
@@ -247,7 +248,7 @@ userSchema.methods.purchaseVideo = function(videoTitle, callback) {
   });
 }
 
-userSchema.methods.sync = function (callback) {
+userSchema.methods.countDown = function (callback) {
   var self = this;
   // logger.debug('syncing user: %s - %s = %s', parseInt(self.time, 10), parseInt(config.syncInterval, 10), parseInt(self.time, 10) - parseInt(config.syncInterval, 10));
   self.time = parseInt(self.time, 10) - parseInt(config.syncInterval, 10);
@@ -261,7 +262,7 @@ userSchema.methods.sync = function (callback) {
 userSchema.methods.start = function (callback) {
   var self = this;
   // logger.debug('starting : %s', self._id);
-  self.syncing = true;
+  self.countingDown = true;
   self.save(function (err) {
     if (err) return callback(err);
     logger.debug('started: %s', self._id);
@@ -272,13 +273,35 @@ userSchema.methods.start = function (callback) {
 userSchema.methods.stop = function (callback) {
   var self = this;
   // logger.debug('stopping : %s', self._id);
-  self.syncing = false;
+  self.countingDown = false;
   self.save(function (err) {
     if (err) return callback(err);
     logger.debug('stopped: %s', self._id);
     callback(null);
   });
 }
+
+userSchema.methods.sync = function (callback) {
+  var self = this;
+  async.series([
+    function (step) {
+      if (self.countingDown)
+        self.countDown(function (err) {
+          if (err) logger.warn(err);
+          step(null);
+        });
+      else step(null);
+    },
+    function (step) {
+      self.save(function (err) {
+        if (err) return callback(err);
+        // logger.debug('synced: %s', self._id);
+        callback(null);
+      });
+    }
+  ])
+}
+
 
 userSchema.methods.verifyPassword = function(candidatePassword, callback) {
   bcrypt.compare(candidatePassword, this.password, function (err, isMatch) {

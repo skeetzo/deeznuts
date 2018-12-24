@@ -75,7 +75,7 @@ module.exports.setup = function (io) {
 	  SYNCING = true;
 	  logger.log('Starting User Syncs every %s second(s)...', config.syncInterval);
 	  SYNC_INTERVAL = setInterval(function () {
-	    User.find({'syncing':true}, function (err, users) {
+	    User.find({'connected':true}, function (err, users) {
 	      if (err) return logger.warn(err);
 	      _.forEach(users, function (user) {
 	      	logger.log(user);
