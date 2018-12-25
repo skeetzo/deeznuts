@@ -77,11 +77,11 @@ module.exports.setup = function (io) {
 	  SYNC_INTERVAL = setInterval(function () {
 	    User.find({'connected':true}, function (err, users) {
 	      if (err) return logger.warn(err);
-	      logger.log('users: %s', users.length);
+	      // logger.log('users: %s', users.length);
 	      _.forEach(users, function (user) {
 	      	logger.log(user);
 	      	if (user.time_added) {  
-	      		logger.log('what the fucking fuck');
+	      		// logger.log('what the fucking fuck');
 	          	for (var i=0;i<clients.length;i++)
 	          		if (clients[i][0]==user._id)
 	          			clients[i][1].emit('time', {'time':user.time,'time_added':user.time_added});
