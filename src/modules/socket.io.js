@@ -17,19 +17,21 @@ module.exports.setup = function (io) {
 		logger.io('Client connected: %s', num_occupants);
 		if (num_occupants==1) syncOn();
 
-		client.on('ballsacks', function (userId) {
-			logger.log('what the fuck');
-			logger.io('connecting: %s', userId);
-			User.connected(userId, function (err) {
-				if (err) return logger.warn(err);
-				clients.push([userId, client]);
-			});
-		});
+		// client.on('ballsacks', function (userId) {
+		// 	logger.log('what the fuck');
+		// 	logger.io('connecting: %s', userId);
+		// 	User.connected(userId, function (err) {
+		// 		if (err) return logger.warn(err);
+		// 		clients.push([userId, client]);
+		// 	});
+		// });
 
 		client.on('start', function (userId) {
 			logger.io('starting: %s', userId);
 			User.start(userId, function (err) {
 				if (err) logger.warn(err);
+				if (!_.contains(clients, userId))
+					clients.push([userId, client]);
 			});
 		});
 
@@ -43,6 +45,7 @@ module.exports.setup = function (io) {
 		client.on('disconnect', function () {
 			num_occupants--;
 			logger.io('Client disconnected: %s', num_occupants);
+
 			if (num_occupants==0) syncOff();
 		});
 
@@ -51,6 +54,9 @@ module.exports.setup = function (io) {
 			User.disconnected(userId, function (err) {
 				if (err) logger.warn(err);
 			});
+			for (var i=0;i<clients.length;i++)
+				if (clients[i]==userId)
+					clients.splice(i,1);
 		});
 
 
