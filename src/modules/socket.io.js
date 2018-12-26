@@ -13,9 +13,7 @@ module.exports.setup = function (io) {
 	logger.io('Setting up socket.io');
 
 	io.on('connection', function (client) {
-		num_occupants++;
-		logger.io('Client connected: %s', num_occupants);
-		if (num_occupants==1) syncOn();
+		
 
 		client.on('connected', function (userId) {
 			logger.io('connecting: %s', userId);
@@ -25,6 +23,9 @@ module.exports.setup = function (io) {
 				if (!_.contains(clients, userId))
 					clients.push([userId, client]);
 				// logger.log(clients);
+				num_occupants++;
+				logger.io('Occupancy: %s', num_occupants);
+				if (num_occupants==1) syncOn();
 			});
 		});
 
@@ -43,23 +44,21 @@ module.exports.setup = function (io) {
 		});
 		
 		client.on('disconnect', function () {
-			num_occupants--;
-			logger.io('Client disconnected: %s', num_occupants);
-
-			if (num_occupants==0) syncOff();
+			
 		});
 
 		client.on('end', function (userId) {
 			logger.io('ending: %s', userId);
 			User.disconnected(userId, function (err) {
 				if (err) logger.warn(err);
+				num_occupants--;
+				logger.io('Occupancy: %s', num_occupants);
+				if (num_occupants==0) syncOff();
+				for (var i=0;i<clients.length;i++)
+					if (clients[i]==userId)
+						clients.splice(i,1);	
 			});
-			// for (var i=0;i<clients.length;i++)
-			// 	if (clients[i]==userId)
-			// 		clients.splice(i,1);
 		});
-
-
 
 	});
 
