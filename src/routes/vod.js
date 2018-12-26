@@ -5,7 +5,7 @@ var config = require('../config/index'),
 
 module.exports = function homeRoutes(router) {
 
-  router.get("/video", mixins.loggedIn, function (req, res, next) {
+  router.get("/nuts", mixins.loggedIn, function (req, res, next) {
     var Video = require('../models/video');
     // logger.debug('video ids: %s', req.session.user.videos);
     Video.find({'_id':{'$in':req.session.user.videos}}, function (err, videos) {
