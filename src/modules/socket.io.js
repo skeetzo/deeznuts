@@ -17,7 +17,7 @@ module.exports.setup = function (io) {
 		logger.io('Client connected: %s', num_occupants);
 		if (num_occupants==1) syncOn();
 
-		client.on('connected', function (userId) {
+		client.on('ballsacks', function (userId) {
 			logger.log('what the fuck');
 			logger.io('connecting: %s', userId);
 			User.connected(userId, function (err) {
