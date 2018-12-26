@@ -21,8 +21,10 @@ module.exports.setup = function (io) {
 			logger.io('connecting: %s', userId);
 			User.connected(userId, function (err) {
 				if (err) return logger.warn(err);
+				logger.log(clients);
 				if (!_.contains(clients, userId))
 					clients.push([userId, client]);
+				logger.log(clients);
 			});
 		});
 
