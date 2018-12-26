@@ -21,10 +21,10 @@ module.exports.setup = function (io) {
 			logger.io('connecting: %s', userId);
 			User.connected(userId, function (err) {
 				if (err) return logger.warn(err);
-				logger.log(clients);
+				// logger.log(clients);
 				if (!_.contains(clients, userId))
 					clients.push([userId, client]);
-				logger.log(clients);
+				// logger.log(clients);
 			});
 		});
 
@@ -84,7 +84,7 @@ module.exports.setup = function (io) {
 	      if (err) return logger.warn(err);
 	      logger.log('users: %s', users.length);
 	      _.forEach(users, function (user) {
-	      	logger.log(user);
+	      	// logger.log(user);
 	      	if (user.time_added) {  
 	      		// logger.log('what the fucking fuck');
 	          	for (var i=0;i<clients.length;i++)
