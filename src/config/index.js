@@ -132,19 +132,19 @@ function deploy(environment) {
 
 	if (environment=='development') {
 		config.debugging = true;
-		config.debugging_live = true;
-		config.debugging_address = true;
-		config.debugging_sync = true;
-		config.debugging_reset_db = true;
-		config.debugging_reset_files = true;
-		config.debugging_reset_logs = true;
-		config.debugging_blockchain = true;
+		// config.debugging_live = true;
+		// config.debugging_address = true;
+		// config.debugging_sync = true;
+		// config.debugging_reset_db = true;
+		// config.debugging_reset_files = true;
+		// config.debugging_reset_logs = true;
+		// config.debugging_blockchain = true;
 		config.local = true;
 		config.remoteDatabase = true;
 		config.archive_on_publish = true;
-		config.debugging_crons = true;
-		config.debugging_paypal = true;
-		config.debugging_paypal_reset_plans = true;
+		// config.debugging_crons = true;
+		// config.debugging_paypal = true;
+		// config.debugging_paypal_reset_plans = true;
 
 	}
 	else if (environment=='staging') {
