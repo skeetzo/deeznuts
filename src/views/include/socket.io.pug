@@ -5,7 +5,7 @@ if (user)
       var socket = io();
 
       socket.on('connect', function() {
-        socket.emit('ballsacks', "#{user._id}");
+        socket.emit('connected', "#{user._id}");
         if (window.location.pathname.indexOf('/live')>-1)
           socket.emit('start', "#{user._id}");
         else 
