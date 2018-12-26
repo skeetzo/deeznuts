@@ -33,7 +33,8 @@ var userSchema = new Schema({
   videos: { type: Array, default: [] },
   paypal_tokens: { type: Array, default: [] },
   paypal_total: { type: String },
-  countingDown: { type: Boolean, default: false }
+  countingDown: { type: Boolean, default: false },
+  connected: { type: Boolean, default: false }
  });
 
 userSchema.pre('save', function (next) {
