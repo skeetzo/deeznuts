@@ -49,30 +49,31 @@ prepend javascript
   script.
     function buy(video) {
       //- console.log('video: %s', video);
-      return Promise.resolve($.ajax({
-        type: 'POST',
-        url: '/buy',
-        data: {'_csrf':"#{_csrf}",'video':video},
-        success: function(data) {
-          if (data.text)
-            alert(data.text);
-          location.reload();
-        },
-        error: function(data) { 
-         if (data.status == 400)
-            alert('There was an error!');
-          else if (data.status == 401)
-            alert("Please login or create an account!");
-          else if (data.responseJSON&&data.responseJSON.text) {
-            alert(data.responseJSON.text);
+      if (confirm("Confirm Purchase"))
+        return Promise.resolve($.ajax({
+          type: 'POST',
+          url: '/buy',
+          data: {'_csrf':"#{_csrf}",'video':video},
+          success: function(data) {
+            if (data.text)
+              alert(data.text);
             location.reload();
-          }
-          else
-            alert('There was an error!');
-        },
-      })).catch(function (reason) {
-        //- console.log(reason);
-      });
+          },
+          error: function(data) { 
+           if (data.status == 400)
+              alert('There was an error!');
+            else if (data.status == 401)
+              alert("Please login or create an account!");
+            else if (data.responseJSON&&data.responseJSON.text) {
+              alert(data.responseJSON.text);
+              location.reload();
+            }
+            else
+              alert('There was an error!');
+          },
+        })).catch(function (reason) {
+          //- console.log(reason);
+        });
     }
 
     //- function download(video) {
