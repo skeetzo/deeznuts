@@ -7,8 +7,8 @@ module.exports = function homeRoutes(router) {
 
   // Index
   router.get("/", function (req, res, next) {
-    if (req.url.indexOf('address')>-1||req.url.indexOf('live')>-1||req.url.indexOf('videos')>-1||req.url.indexOf('login')>-1||req.url.indexOf('logout')>-1)
-      return next(null);
+    // if (req.url.indexOf('address')>-1||req.url.indexOf('live')>-1||req.url.indexOf('videos')>-1||req.url.indexOf('login')>-1||req.url.indexOf('logout')>-1)
+      // return next(null);
     if (_.contains(config.pages, req.url.replace('/','')))
       return res.render(req.url.replace('/',''), req.session.locals);
     res.render('index', req.session.locals);
