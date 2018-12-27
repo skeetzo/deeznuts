@@ -37,7 +37,7 @@ prepend content
           h4.videoPrice=video.price
           video(controls, poster=video.path_image, type="video/mp4", width=250, src=video.path)
           .row
-            button.btn.btn-primary(onclick="buy(\'"+video.title+"\')") Buy
+            button.btn.btn-primary(onclick="buy(\'"+video._id+"\')") Buy
 
   br
 

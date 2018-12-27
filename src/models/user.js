@@ -216,14 +216,14 @@ userSchema.methods.disconnect = function(callback) {
 // if self.time > duration
 // purchase video
 // else return error: missing time %s amount
-userSchema.methods.purchaseVideo = function(videoTitle, callback) {
+userSchema.methods.purchaseVideo = function(videoId, callback) {
   var self = this;
-  logger.log('Purchasing Video: %s -> %s', self._id, videoTitle);
+  logger.log('Purchasing Video: %s -> %s', self._id, videoId);
   async.waterfall([
     function (step) {
-      require('../models/video').findOne({'title':videoTitle,'isOriginal':true}, function (err, video) {
+      require('../models/video').findOne({'_id':videoId,'isOriginal':true}, function (err, video) {
         if (err) return step(err);
-        if (!video) return step('Error Purchasing Video: Missing Video: '+videoTitle);
+        if (!video) return step('Error Purchasing Video: Missing Video: '+videoId);
         step(null, video);
       });
     },
