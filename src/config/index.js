@@ -157,7 +157,7 @@ function deploy(environment) {
 		// config.debugging_address = true;
 		// config.debugging_sync = true;
 		config.ssl = true;
-		config.PayPal = false;
+		config.PayPal = true;
 		config.PayPal_environment = 'sandbox';
 		config.Twitter = true;
 		config.Twitter_tweeting_on_live = true;

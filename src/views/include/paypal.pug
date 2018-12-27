@@ -24,7 +24,7 @@
               },
               error: function (jqXHR) {
                 if (jqXHR&&jqXHR.responseJSON&&jqXHR.responseJSON.text)
-                  alert(jqXHR.text)
+                  alert(jqXHR.responseJSON.text)
                 else
                   alert('There was an error!');
               }
