@@ -206,19 +206,23 @@ module.exports.debug = function(callback) {
         function cleanFileNames(cb) {
             if (config.debugging_clean_fileNames)
             var Video = require('../models/video');
-            Video.find({}, function (err, videos) {
+            Video.find({'isOriginal':true}, function (err, videos) {
                 if (err) {
                     logger.warn(err);
                     return cb(null);
                 }
                 _.forEach(videos, function (video) {
-                    var date = video.path.match(/(\d\d\d\d-\d\d-\d\d)/g);
-                    logger.log('date: %s', date);
-                    return;
-
-                    video.date = moment(new Date(date)).format('MM-DD-YYYY')
+                    var date = video.path.match(/(\d\d\d\d-\d\d-\d\d-\d\d-\d\d)/g);
+                    var time = date.substring(12);
+                    date = date.substring(0,11);
+                    if (!date) return;
+                    video.date = moment(new Date(date)).format('MM-DD-YYYY');
+                    video.title = video.date+" "+time;
+                    logger.log('date: %s', video.date);
+                    logger.log('title: %s', video.title);
                     video.save();
                 });
+                logger.test('Video Filenames Reset');
                 cb(null);
             })
         },
