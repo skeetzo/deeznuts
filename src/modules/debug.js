@@ -213,9 +213,9 @@ module.exports.debug = function(callback) {
                 }
                 _.forEach(videos, function (video) {
                     var date = video.path.match(/(\d\d\d\d-\d\d-\d\d-\d\d-\d\d)/g);
+                    if (!date) return;
                     var time = date.substring(12);
                     date = date.substring(0,11);
-                    if (!date) return;
                     video.date = moment(new Date(date)).format('MM-DD-YYYY');
                     video.title = video.date+" "+time;
                     logger.log('date: %s', video.date);
