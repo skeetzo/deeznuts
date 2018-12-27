@@ -204,7 +204,10 @@ module.exports.debug = function(callback) {
         },
 
         function cleanFileNames(cb) {
-            if (config.debugging_clean_fileNames)
+            if (!config.debugging_clean_fileNames) {
+                logger.test('Skipping File Clean');
+                return cb(null);
+            }
             var Video = require('../models/video');
             Video.find({'isOriginal':true}, function (err, videos) {
                 if (err) {
