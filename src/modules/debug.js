@@ -212,9 +212,14 @@ module.exports.debug = function(callback) {
                     return cb(null);
                 }
                 _.forEach(videos, function (video) {
-                    video.date = moment(new Date(video.path.match(/(\d\d\d\d-\d\d-\d\d)/g)[0])).format('MM-DD-YYYY')
+                    var date = video.path.match(/(\d\d\d\d-\d\d-\d\d)/g);
+                    logger.log('date: %s', date);
+                    return;
+
+                    video.date = moment(new Date(date)).format('MM-DD-YYYY')
                     video.save();
                 });
+                cb(null);
             })
         },
 
