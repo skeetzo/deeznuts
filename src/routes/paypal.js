@@ -66,7 +66,6 @@ module.exports = function homeRoutes(router) {
 				if (req.body.amount=="5.00") { 
 					PayPal.createPaymentSingle(req, function (err, url) {
 						if (err) return step(err);
-						logger.log('url: %s', url);
 						step(null, url);
 					});	
 				}
@@ -82,7 +81,7 @@ module.exports = function homeRoutes(router) {
 					});
 			},
 			function (url) {
-				res.status(400).send({'url':url});
+				res.status(200).send({'url':url});
 			}
 			], function (err, text) {
 				if (err) logger.warn(err);
