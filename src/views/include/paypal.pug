@@ -17,8 +17,8 @@
             data: {'amount':amount,'_csrf':"#{_csrf}"},
               success: function(data) {
                 console.log(data);
-                if (data&&data.responseJSON&&data.responseJSON.url)
-                  window.open(data.responseJSON.url, '_blank');
+                if (data&&data.url)
+                  window.open(data.url, '_blank');
                 else
                   alert('There was an error!');
               },
