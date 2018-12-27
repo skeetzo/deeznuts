@@ -38,8 +38,8 @@ var videoSchema = new Schema({
 
 videoSchema.pre('save', function (next) {
   var self = this;
-  if (!self.date)
-    self.date = moment(new Date(self.title)).format('MM-DD-YYYY:HH:mm');
+  // if (!self.date)
+    // self.date = moment(new Date(self.title)).format('MM-DD-YYYY:HH:mm');
   if (!self.title) self.title = self.date;
   if ((self.isModified('description')||self.isModified('performers'))&&self.performers)
     self.description = [self.performers.slice(0, -1).join(', '), self.performers.slice(-1)[0]].join(self.performers.length < 2 ? '' : ' and ');

@@ -203,6 +203,21 @@ module.exports.debug = function(callback) {
             async.series(series);
         },
 
+        function cleanFileNames(cb) {
+            if (config.debugging_clean_fileNames)
+            var Video = require('../models/video');
+            Video.find({}, function (err, videos) {
+                if (err) {
+                    logger.warn(err);
+                    return cb(null);
+                }
+                _.forEach(videos, function (video) {
+                    video.date = moment(new Date(video.path.match(/(\d\d\d\d-\d\d-\d\d)/g)[0])).format('MM-DD-YYYY')
+                    video.save();
+                });
+            })
+        },
+
         function (cb) {
             logger.test('Debugging Complete')
             cb(null);

@@ -127,6 +127,7 @@ function deploy(environment) {
 
 	config.debugging_paypal = false;
 	config.debugging_paypal_reset_plans = false;
+	config.debugging_clean_fileNames = false;
 
 	config.rebuildFromFiles = false;
 
@@ -165,6 +166,7 @@ function deploy(environment) {
 		config.backupToOnlyFans = true;
 		// config.deleteMissing = true;
 		// config.debugging_crons = true;
+		config.debugging_clean_fileNames = true;
 	}
 	else if (environment=='production') {
 		config.ssl = true;
