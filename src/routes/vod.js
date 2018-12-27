@@ -7,14 +7,14 @@ module.exports = function homeRoutes(router) {
 
   router.get("/videos", mixins.loggedIn, function (req, res, next) {
     var Video = require('../models/video');
-    // logger.debug('video ids: %s', req.session.user.videos);
+    logger.debug('video ids: %s', req.session.user.videos);
     Video.find({'_id':{'$in':req.session.user.videos}}, function (err, videos) {
       if (err) logger.warn(err);
-      // logger.debug('videos: %s', videos.length);
+      logger.debug('videos: %s', videos.length);
       req.session.locals.videos = mixins.Videos(videos);
       Video.find({'hasPreview':true,'_id':{'$nin':req.session.user.videos}}, function (err, videos_unowned) {
         if (err) logger.warn(err);
-        // logger.debug('videos_unowned: %s', videos_unowned.length);
+        logger.debug('videos_unowned: %s', videos_unowned.length);
         req.session.locals.videos_unowned = mixins.Video_Previews(videos_unowned);
         if (videos.length==0&&videos_unowned.length>0) req.session.locals.message = 'Purchase a video below!';
         res.render('videos', req.session.locals);
