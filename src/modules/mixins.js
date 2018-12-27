@@ -33,8 +33,17 @@ module.exports.hasRoom = function(req, res, next) {
 
 // Check Login
 module.exports.loggedIn = function(req, res, next) {
-    if (req.user||req.session.user)
-        next(null);
+    if (req.session.user) {
+        User.findById(req.session.user._id, function (err, user) {
+            if (err) {
+                logger.warn(err);
+                req.session.locals.error = 'There was an error!';
+                res.status(401).render('index', req.session.locals);
+            }
+            req.session.user = User_(user);
+            next(null);
+        });
+    }
     else {
         req.session.locals.error = 'Please login!';
         res.status(401).render('index', req.session.locals);
