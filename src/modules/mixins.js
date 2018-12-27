@@ -41,6 +41,7 @@ module.exports.loggedIn = function(req, res, next) {
                 res.status(401).render('index', req.session.locals);
             }
             req.session.user = User_(user);
+            logger.log('logged in')
             next(null);
         });
     }
