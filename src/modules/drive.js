@@ -148,7 +148,7 @@ function backupVideo(video, callback) {
          resource: fileMetadata,
          media: media,
          fields: 'id'
-      }, function(err) {
+      }, function (err) {
         callback(err);
       });
     }
