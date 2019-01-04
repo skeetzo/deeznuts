@@ -19,24 +19,23 @@ config.siteTitle = "AlexDeezNuts.com";
 config.author = "Skeetzo";
 config.description = "Porn Star Streamer";
 config.Google_Analytics = "UA-82463743-8";
-config.pages = ['privacy','terms','support','2257-compliance'];
+config.pages = ['privacy','terms','support','2257-compliance','callback'];
 config.ssl_key = '/etc/letsencrypt/live/alexdeeznuts.com-0001/privkey.pem';
 config.ssl_cert = '/etc/letsencrypt/live/alexdeeznuts.com-0001/fullchain.pem';
 
 config.domain = "alexdeeznuts.com";
 if (config.local) config.domain = "localhost";
-// var live_url = "wss://"+config.domain+":8443/live/stream.flv";
+var live_url = "wss://"+config.domain+":8443/live/stream.flv?sign=";
 // var live_url = "https://"+config.domain+":8443/live/stream/index.mpd";
-var live_url = "https://"+config.domain+":8443/live/stream.flv";
+// var live_url = "https://"+config.domain+":8443/live/stream.flv?sign=";
 // if (config.debugging&&!config.ssl) live_url = "http://"+config.domain+":8000/live/stream/index.mpd";
-if (config.debugging&&!config.ssl) live_url = "http://"+config.domain+":8000/live/stream.flv";
-// if (config.debugging&&!config.ssl) live_url = "ws://"+config.domain+":8000/live/stream.flv";
+// if (config.debugging&&!config.ssl) live_url = "http://"+config.domain+":8000/live/stream.flv?sign=";
+if (config.debugging&&!config.ssl) live_url = "ws://"+config.domain+":8000/live/stream.flv?sign=";
 if (config.ssl) config.domain = "https://"+config.domain;
 else config.domain = "http://"+config.domain;
 
 // DeezNuts Settings
 config.archive_videos = true;
-config.archive_on_publish = false;
 config.archive_delay = 10000;
 config.conversionRate = 6; // $1 per 6 minutes
 config.createPreviews = true;
@@ -44,7 +43,6 @@ config.defaultPrice = 5; // in dollars
 config.defaultTime = 60; // time in seconds
 config.defaultPreviewDuration = 30;
 
-config.rebuildFromFiles = false;
 
 config.syncInterval = 3; // in seconds
 if (config.debugging) {
@@ -60,6 +58,10 @@ config.blockchainRoute = "/btc";
 config.blockchainCallback = config.domain+config.blockchainRoute;
 config.blockchainConfirmationLimit = 6;
 config.blockchainGapLimit = 20;
+config.blockchain_check_gap = true;
+// PayPal
+config.paypal_ips = ["64.4.248", "64.4.249", "66.211.168", "66.211.168", "173.0.84", "173.0.84", "173.0.88", "173.0.88", "173.0.92", "173.0.93", "173.0.82", "173.0.81"];
+
 // RTMP Stream
 config.streamKeyExpire = 3600000;
 config.streamRecording = true;
@@ -72,6 +74,7 @@ config.emailing = true;
 config.emailing_testing = false;
 config.emailing_on_new = true;
 config.emailing_on_error = true;
+config.emailing_on_buy = true;
 config.emailing_on_transaction = true;
 config.domainEmail = 'deeznuts.com';
 
@@ -98,6 +101,12 @@ function deploy(environment) {
 	config.local = false;
 
 	config.backupToOnlyFans = false;
+	config.archive_on_publish = false;
+	config.deleteMissing = false;
+
+	config.PayPal = false;
+	config.PayPal_environment = 'sandbox';
+	config.PayPal_syncing_webhooks = false;
 
 	config.Twitter = false;
 	config.Twitter_tweeting = false;
@@ -114,39 +123,64 @@ function deploy(environment) {
 	config.debugging_reset_logs = false;
 	config.debugging_backup_db = false;
 
+	config.debugging_crons = false;
+
+	config.debugging_paypal = false;
+	config.debugging_paypal_reset_plans = false;
+	config.debugging_clean_fileNames = false;
+
+	config.rebuildFromFiles = false;
+
 	if (environment=='development') {
 		config.debugging = true;
-		config.debugging_live = true;
-		config.debugging_address = true;
-		config.debugging_sync = true;
-		config.debugging_reset_db = true;
-		config.debugging_reset_files = true;
-		config.debugging_reset_logs = true;
-		config.debugging_blockchain = true;
+		// config.debugging_live = true;
+		// config.debugging_address = true;
+		// config.debugging_sync = true;
+		// config.debugging_reset_db = true;
+		// config.debugging_reset_files = true;
+		// config.debugging_reset_logs = true;
+		// config.debugging_blockchain = true;
 		config.local = true;
 		config.remoteDatabase = true;
 		config.archive_on_publish = true;
+		// config.debugging_crons = true;
+		// config.debugging_paypal = true;
+		// config.debugging_paypal_reset_plans = true;
+
 	}
 	else if (environment=='staging') {
 		config.debugging = true;
-		config.debugging_blockchain = true;
-		config.debugging_live = true;
-		config.debugging_reset_db = true;
-		config.debugging_reset_files = true;
-		config.debugging_address = true;
-		config.debugging_sync = true;
+		// config.debugging_blockchain = true;
+		// config.debugging_live = true;
+		// config.debugging_reset_db = true;
+		// config.debugging_reset_files = true;
+		// config.debugging_address = true;
+		// config.debugging_sync = true;
 		config.ssl = true;
+		config.PayPal = true;
+		config.PayPal_environment = 'sandbox';
 		config.Twitter = true;
 		config.Twitter_tweeting_on_live = true;
 		config.remoteDatabase = true;
+		config.archive_on_publish = true;
+		config.backupToOnlyFans = true;
+		// config.deleteMissing = true;
+		// config.debugging_crons = true;
+		// config.debugging_clean_fileNames = true;
 	}
 	else if (environment=='production') {
 		config.ssl = true;
+		config.PayPal = true;
+		config.PayPal_environment = 'live';
+		config.PayPal_syncing_webhooks = false;
 		config.Twitter = true;
-		config.Twitter_tweeting = true;
+		// config.Twitter_tweeting = true;
 		config.Twitter_tweeting_on_live = true;
 		config.backupToOnlyFans = true;
 		config.archive_on_publish = true;
+		config.remoteDatabase = true;
+		// config.debugging_reset_db = true;
+		// config.rebuildFromFiles = true;
 	}
 }
 

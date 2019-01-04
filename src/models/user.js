@@ -25,13 +25,17 @@ var userSchema = new Schema({
   password: { type: String },
   secret : { type: String }, // crypto sig
   syncing : { type: Boolean, default: false },
-  start: { type: String, default: moment(new Date()).format('MM/DD/YYYY') },
+  start_date: { type: String, default: moment(new Date()).format('MM/DD/YYYY') },
   time: { type: Number, default: config.defaultTime }, // time allotted for live
   time_added: { type: Number },
   transactions: { type: Array, default: [] },
   username: { type: String },
-  videos: { type: Array, default: [] }
-});
+  videos: { type: Array, default: [] },
+  paypal_tokens: { type: Array, default: [] },
+  paypal_total: { type: String },
+  countingDown: { type: Boolean, default: false },
+  connected: { type: Boolean, default: false }
+ });
 
 userSchema.pre('save', function (next) {
   var self = this;
@@ -58,28 +62,29 @@ userSchema.pre('save', function (next) {
 userSchema.statics.connected = function (userId, callback) {
   User.findById(userId, function (err, user) {
     if (err) return callback(err);
-    if (!user) return callback('Missing User!');
-    logger.log('connected: %s', user._id);
+    if (!user) return callback('Missing User: '+userId);
+    user.connect(function (err) {
+      callback(err);
+    });
   });
 }
 
 userSchema.statics.disconnected = function (userId, callback) {
   User.findById(userId, function (err, user) {
     if (err) return callback(err);
-    if (!user) return callback('Missing User!');
-    logger.log('disconnected: %s', user._id);
+    if (!user) return callback('Missing User: '+userId);
+    user.disconnect(function (err) {
+      callback(err);
+    });
   }); 
 }
 
 userSchema.statics.start = function (userId, callback) {
   User.findById(userId, function (err, user) {
     if (err) return callback(err);
-    if (!user) return callback('Missing User!');
-    user.syncing = true;
-    user.save(function (err) {
-      if (err) return callback(err);
-      logger.log('started: %s', user._id);
-      callback(null);
+    if (!user) return callback('Missing User: '+userId);
+    user.start(function (err) {
+      callback(err);
     });
   });
 }
@@ -87,12 +92,9 @@ userSchema.statics.start = function (userId, callback) {
 userSchema.statics.stop = function (userId, callback) {
   User.findById(userId, function (err, user) {
     if (err) return callback(err);
-    if (!user) return callback('Missing User!');
-    user.syncing = false;
-    user.save(function (err) {
-      if (err) return callback(err);
-      logger.log('stopped: %s', user._id);
-      callback(null);
+    if (!user) return callback('Missing User: '+userId);
+    user.stop(function (err) {
+      callback(err);
     });
   });
 }
@@ -109,11 +111,11 @@ userSchema.statics.generateAddress = function(userId, callback) {
     },
     function (user, step) {
       // Generate new blockchain address
-      var xpub = config.blockchain_xpub,
-        cb = config.blockchain_callback,
-        key = config.blockchain_key,
+      var xpub = config.blockchainXpub,
+        cb = config.blockchainCallback,
+        key = config.blockchainKey,
         options = {
-          '__unsafe__gapLimit':config.blockchain_gap_limit
+            // '__unsafe__gapLimit':config.blockchain_gap_limit
         };
       // myReceive is the blockchain Object for the new address's generation
       var myReceive = new Receive(xpub, cb, key, options);
@@ -124,8 +126,15 @@ userSchema.statics.generateAddress = function(userId, callback) {
       var checkgap = myReceive.checkgap()
       .then(function (data) {
         logger.debug('gap: %s', data.gap);
-        if (data.gap>config.blockchainGapLimit) 
-          return step('gap chain limit reached: '+data.gap);
+        if (data.gap>config.blockchainGapLimit) {
+          options = {
+            '__unsafe__gapLimit':config.blockchain_gap_limit
+          };
+          myReceive = new Receive(xpub, cb, key, options);
+          logger.log('gap chain limit reached: '+data.gap);
+          logger.debug('gap chain limit raised: %s', config.blockchain_gap_limit);
+          config.blockchain_check_gap = false;
+        }
         step(null, user, myReceive);
       });
     },
@@ -138,9 +147,10 @@ userSchema.statics.generateAddress = function(userId, callback) {
       var query = {'secret':hash};
       // logger.debug('query: %s', JSON.stringify(query, null, 4));
       if (config.debugging_blockchain) return step(null, user, config.debugging_blockchain_address); 
-      myReceive = myReceive.generate(query)
+      // logger.debug('generating address...');
+      myReceive.generate(query)
       .then(function (generated) {
-        logger.debug('generated: %s', JSON.stringify(generated));
+        // logger.debug('generated: %s', JSON.stringify(generated));
         step(null, user, generated.address);
       });
     },
@@ -165,19 +175,6 @@ userSchema.statics.generateAddress = function(userId, callback) {
   });
 }
 
-userSchema.statics.sync = function() {
-  User.find({'syncing':true}, function (err, users) {
-    if (err) return logger.warn(err);
-    _.forEach(users, function (user) {
-      logger.debug('syncing user: %s - %s = %s', parseInt(user.time, 10), parseInt(config.syncInterval, 10), parseInt(user.time, 10) - parseInt(config.syncInterval, 10));
-      user.time = parseInt(user.time, 10) - parseInt(config.syncInterval, 10);
-      user.save(function (err) {
-        if (err) logger.warn(err);
-      });
-    });
-  });
-}
-
 // amount in satoshi, so divide by 100,000,000 to get the value in BTC
 userSchema.methods.addTime = function(value_in_dollars, callback) {
 	var self = this;
@@ -193,18 +190,40 @@ userSchema.methods.addTime = function(value_in_dollars, callback) {
   });
 }
 
+userSchema.methods.connect = function(callback) {
+  var self = this;
+  if (self.connected) return callback('Error: User already connected');
+  self.connected = true;
+  self.save(function (err) {
+    if (err) return callback(err);
+    logger.log('connected: %s', self._id);
+    callback(null);
+  });
+}
+
+userSchema.methods.disconnect = function(callback) {
+  var self = this;
+  if (!self.connected) return callback('Error: User not connected');
+  self.connected = false;
+  self.save(function (err) {
+    if (err) return callback(err);
+    logger.log('disconnected: %s', self._id);
+    callback(null);
+  });
+}
+
 // find video and duration
 // if self.time > duration
 // purchase video
 // else return error: missing time %s amount
-userSchema.methods.purchaseVideo = function(videoTitle, callback) {
+userSchema.methods.purchaseVideo = function(videoId, callback) {
   var self = this;
-  logger.log('Purchasing Video: %s -> %s', self._id, videoTitle);
+  logger.log('Purchasing Video: %s -> %s', self._id, videoId);
   async.waterfall([
     function (step) {
-      require('../models/video').findOne({'title':videoTitle,'isOriginal':true}, function (err, video) {
+      require('../models/video').findOne({'_id':videoId,'isOriginal':true}, function (err, video) {
         if (err) return step(err);
-        if (!video) return step('Error Purchasing Video: Missing Video: '+videoTitle);
+        if (!video) return step('Error Purchasing Video: Missing Video: '+videoId);
         step(null, video);
       });
     },
@@ -230,11 +249,67 @@ userSchema.methods.purchaseVideo = function(videoTitle, callback) {
   });
 }
 
+userSchema.methods.countDown = function (callback) {
+  var self = this;
+  // logger.debug('syncing user: %s - %s = %s', parseInt(self.time, 10), parseInt(config.syncInterval, 10), parseInt(self.time, 10) - parseInt(config.syncInterval, 10));
+  self.time = parseInt(self.time, 10) - parseInt(config.syncInterval, 10);
+  if (self.time<=0) 
+    self.disconnect = true;
+  self.save(function (err) {
+    callback(err);
+  });
+}
+
+userSchema.methods.start = function (callback) {
+  var self = this;
+  // logger.debug('starting : %s', self._id);
+  self.countingDown = true;
+  self.save(function (err) {
+    if (err) return callback(err);
+    logger.debug('started: %s', self._id);
+    callback(null);
+  });
+}
+
+userSchema.methods.stop = function (callback) {
+  var self = this;
+  // logger.debug('stopping : %s', self._id);
+  self.countingDown = false;
+  self.save(function (err) {
+    if (err) return callback(err);
+    logger.debug('stopped: %s', self._id);
+    callback(null);
+  });
+}
+
+userSchema.methods.sync = function (callback) {
+  var self = this;
+  async.series([
+    function (step) {
+      if (self.countingDown)
+        self.countDown(function (err) {
+          if (err) logger.warn(err);
+          step(null);
+        });
+      else step(null);
+    },
+    function (step) {
+      self.save(function (err) {
+        if (err) return callback(err);
+        // logger.debug('synced: %s', self._id);
+        callback(null);
+      });
+    }
+  ])
+}
+
+
 userSchema.methods.verifyPassword = function(candidatePassword, callback) {
   bcrypt.compare(candidatePassword, this.password, function (err, isMatch) {
     callback(err, isMatch);
   });
 };
 
+userSchema.set('redisCache', true);
 var User = mongoose.model('users', userSchema,'users');
 module.exports = User;

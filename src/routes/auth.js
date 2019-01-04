@@ -48,17 +48,17 @@ module.exports = function homeRoutes(router) {
   // Logout
   router.get('/logout', mixins.loggedIn, function (req, res) {
     var name = req.session.user._id;
-      logger.log('logging out: %s', name);
-      req.logout();
-      req.flash('message',"Logout successful!");
-      req.session.locals.loggedIn = false;
-      req.session.locals.user = null;
-      req.session.user = null;
-      req.session.save(function(err) {
-        if (err) logger.warn(err);
-        logger.log('logout successful: %s', name);
-        res.redirect('/');
-      });
+    logger.log('logging out: %s', name);
+    req.logout();
+    req.flash('message',"Logout successful!");
+    req.session.locals.loggedIn = false;
+    req.session.locals.user = null;
+    req.session.user = null;
+    req.session.save(function(err) {
+      if (err) logger.warn(err);
+      logger.log('logout successful: %s', name);
+      res.redirect('/');
+    });
   });
 }
 

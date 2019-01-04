@@ -51,12 +51,17 @@ var Google_Drive;
 function authenticate(callback) {
   config.Google_jwtClient.authorize(function (err, tokens) {
     if (err) return callback(err);
-    logger.log("Successfully authorized Google!");
+    logger.log("Google authorized - Drive");
     authenticated = true;
     Google_Drive = google.drive({
       version: 'v3',
         auth: config.Google_jwtClient
     });
+    clearTimeout(authTimeout);
+    authTimeout = setTimeout(function authExpire() {
+      logger.debug('Google authentication - Drive; expired');
+      authenticated = false;
+    },1000*60*60*6) // 6 hours
     callback(null);
   });
 
@@ -77,11 +82,11 @@ function authenticate(callback) {
   //   });
   //   logger.log('Google authenticated - Drive');
   //   authenticated = true;
-  //   clearTimeout(authTimeout);
-  //   authTimeout = setTimeout(function authExpire() {
-  //     logger.debug('Google authentication - Drive; expired');
-  //     authenticated = false;
-  //   },1000*60*60*6) // 6 hours
+    clearTimeout(authTimeout);
+    authTimeout = setTimeout(function authExpire() {
+      logger.debug('Google authentication - Drive; expired');
+      authenticated = false;
+    },1000*60*60*6) // 6 hours
   //   callback(null);  
   // });
 }
@@ -115,9 +120,10 @@ module.exports.authenticate = authenticate;
 // }
 
 // Functions
-
+var path = require('path');
 // upload file at path to OnlyFans folder
 function backupVideo(video, callback) {
+  // return callback('Skipping!');
   async.waterfall([
     function auth(step) {
       if (authenticated) return step(null);
@@ -125,15 +131,17 @@ function backupVideo(video, callback) {
     },
     function (step) {
       logger.log('Uploading to OnlyFans folder: %s', video.title);
+      if (video.path.indexOf(config.videosPath)==-1)
+        video.path = path.join(config.videosPath, 'archived/stream', video.path);
+      logger.debug(video.path);
       // file is string of path
-      var mimeType = "video/mp4";
       var fileMetadata = {
         'name': video.title,
         'parents': [config.driveFolderId],
         'uploadType': 'resumable'
       };
       var media = {
-        mimeType: mimeType,
+        mimeType: "video/mp4",
         body: fs.createReadStream(video.path)
       };
       Google_Drive.files.create({
@@ -145,8 +153,7 @@ function backupVideo(video, callback) {
       });
     }
   ], function (err) {
-    if (err) logger.warn(err);
-    callback(null);
+    callback(err);
   });
 }
 module.exports.backupVideo = backupVideo;

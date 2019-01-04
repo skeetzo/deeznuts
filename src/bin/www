@@ -70,6 +70,24 @@ async.series([
     });
   },
   function (step) {
+    var User = require('../models/user');
+    User.findOne({'username':config.thotsUser.username}, function (err, user) {
+      if (err) return logger.warn(err);
+      if (!user) {
+        logger.log('Prepping thots: %s', config.thotsUser.username);
+        user = new User(config.thotsUser);
+        user.save(function (err) {
+          if (err) logger.warn(err);
+          step(null);
+        });
+      }
+      else {
+        logger.log('Thots found: %s', user.username);
+        step(null);
+      }
+    });
+  },
+  function (step) {
     // Twitter
     var Twitter = require('../modules/twitter');
     Twitter.connect(function (err) {
@@ -135,12 +153,36 @@ async.series([
     });    
   },
   function (step) {
-    // start User syncs
-    logger.log('Starting User Syncs every %s seconds...', config.syncInterval);
-    setInterval(function () {
-      require('../models/user').sync();
-    }, config.syncInterval*1000);
-    step(null);
+    if (!config.deleteMissing) {
+      logger.log('Skipping Missing Deletion');
+      return step(null);
+    }
+    Video.deleteMissing(function (err) {
+      if (err) logger.warn(err);
+      step(null);
+    });    
+  },
+  function (step) {
+    // PayPal Webhooks
+    if (!config.PayPal||!config.PayPal_syncing_webhooks) {
+      logger.debug('Skipping PayPal syncs');
+      return step(null);
+    }
+    var PayPal = require('../modules/paypal');
+    PayPal.syncWebhooks(function (err) {
+      if (err) logger.warn(err);
+      step(null);
+    });
+    if (config.debugging_paypal&&config.debugging_paypal_reset_plans) {
+      logger.debug('Resetting PayPal Plans...');
+      var Plan = require('../models/plan');
+      Plan.find({}, function (err, plans) {
+        if (err) return logger.warn(err);
+        _.forEach(plans, function (plan) {
+          plan.remove();
+        });
+      });
+    }
   },
   function (step) {
     if (config.ssl) {

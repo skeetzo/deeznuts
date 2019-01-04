@@ -27,6 +27,7 @@ var videoSchema = new Schema({
   duration: { type: Number },
   hasPreview: { type: Boolean, default: false },
   isOriginal: { type: Boolean, default: false },
+  missingFile : { type: Boolean, default: false },
   path: { type: String },
   path_preview: { type: String },
   path_image: { type: String },
@@ -37,64 +38,52 @@ var videoSchema = new Schema({
 
 videoSchema.pre('save', function (next) {
   var self = this;
-  if (!self.date)
-    self.date = moment(new Date(self.title)).format('MM-DD-YYYY:HH:mm');
+  // if (!self.date)
+    // self.date = moment(new Date(self.title)).format('MM-DD-YYYY:HH:mm');
   if (!self.title) self.title = self.date;
   if ((self.isModified('description')||self.isModified('performers'))&&self.performers)
     self.description = [self.performers.slice(0, -1).join(', '), self.performers.slice(-1)[0]].join(self.performers.length < 2 ? '' : ' and ');
   if (!self.path)
-    self.path = path.join(config.videosPath, 'archive', self.title+'.mp4');
-  if (!self.duration) {
-    logger.debug('probing...');
-    // ffprobe video for duration
-    return FFmpeg.ffprobe(self.path, function(err, metadata) {
-      if (err) logger.warn(err);
-      if (metadata) {
-        logger.debug('duration: %s', metadata.format.duration);
-        self.duration = metadata.format.duration;
+    self.path = path.join(config.videosPath, 'archive/stream', self.title+'.mp4');
+  async.series([
+    function (step) {
+      // duration check
+      if (self.duration) return step(null);
+      logger.debug('probing duration...');
+      // ffprobe video for duration
+      return FFmpeg.ffprobe(self.path, function(err, metadata) {
+        if (err) logger.warn(err);
+        if (metadata) {
+          logger.debug('duration: %s', metadata.format.duration);
+          self.duration = metadata.format.duration;
+        } 
+        else {
+          logger.warn('Missing duration');
+          self.duration = 0;
+        }
+        step(null);
+      });
+    },
+    function (step) {
+      if (self.isModified('duration')||self.isModified('price')||!self.price) {
+        if (self.duration<config.defaultPrice) { // 5 minutes / default time
+          self.price = config.defaultPrice;
+          logger.log('minimum price set: %s', self.price);
+        }
+        else if (self.duration) {
+          self.price = self.duration;
+          logger.log('price set: %s', self.price);
+        }
+        else
+          self.price = config.defaultPrice;
+        // self.price = Math.round(self.price * 100) / 100;
+        self.price = Math.round(self.price);
       }
-      else self.duration = 0;
-      if (self.duration<config.defaultPrice) { // 5 minutes / default time
-        self.price = config.defaultPrice;
-        logger.log('minimum price set: %s', self.price);
-      }
-      else {
-        self.price = Math.round(self.duration);
-        logger.log('price set: %s', self.price);
-      }
+      // Normal
       logger.debug('Video Saved: %s', self.title);
       next();
-    });
-  }
-  if (self.isModified('duration')||self.isModified('price')||!self.price) {
-    if (self.duration<config.defaultPrice) { // 5 minutes / default time
-      self.price = config.defaultPrice;
-      logger.log('minimum price set: %s', self.price);
     }
-    else if (self.duration) {
-      self.price = Math.round(self.duration);
-      logger.log('price set: %s', self.price);
-    }
-    else
-      self.price = config.defaultPrice;
-  }
-  if (!self.duration) {
-    // ffprobe video for duration
-    FFmpeg.ffprobe(self.path, function(err, metadata) {
-      if (err) {
-        logger.warn(err);
-        return next();
-      }
-      logger.debug('duration: %s', metadata.format.duration);
-      self.duration = metadata.format.duration;
-      logger.debug('Video Saved: %s', self.title);
-      next();
-    });
-  }
-  else {
-    logger.debug('Video Saved: %s', self.title);
-    next();
-  }
+  ]);
 });
 
 // move any mp4s from public/videos/live/stream -> public/videos/archived
@@ -199,10 +188,22 @@ videoSchema.statics.createPreviews = function(callback) {
   });
 }
 
+videoSchema.statics.deleteMissing = function(callback) {
+  logger.log('Deleting Missing Videos...');
+  Video.find({'missingFile':true}, function (err, videos) {
+    if (err) return callback(err);
+    _.forEach(videos, function (video) {
+      logger.debug('deleting: %s', video.title);
+      video.remove();
+    });
+    callback(null);
+  });
+}
+
 videoSchema.statics.populateFromFiles = function(callback) {
   logger.log('Populating Video Database');
   // read videos/archived for all the files
-  var videoFiles = fs.readdirSync(config.videosPath+'/archived');
+  var videoFiles = fs.readdirSync(config.videosPath+'/archived/stream');
   var previewFiles = fs.readdirSync(config.videosPath+'/previews');
   logger.log('videoFiles: %s', videoFiles);
   logger.log('previewFiles: %s', previewFiles);
@@ -210,10 +211,11 @@ videoSchema.statics.populateFromFiles = function(callback) {
   var series = [];
   _.forEach(previewFiles, function (video) {
     series.push(function (step) {
-      var videoPath = video.replace('-preview.mp4','.mp4');
-      var newVideo = new Video({'path':videoPath,'path_preview':video});
-      logger.debug('video: %s', video);
+      var videoPath = path.join(config.videosPath, '/archived/stream', video.replace('-preview.mp4','.mp4'));
+      var videoPreviewPath = path.join(config.videosPath, '/previews', video);
+      var newVideo = new Video({'isOriginal':true,'path':videoPath,'path_preview':videoPreviewPath});
       logger.debug('videoPath: %s', videoPath);
+      logger.debug('videoPreviewPath: %s', videoPreviewPath);
       newVideo.save(function (err) {
         if (err) logger.warn(err);
         step(null);
@@ -239,6 +241,25 @@ videoSchema.statics.processPublished = function(callback) {
   });
 }
 
+// uploads to Google Drive - OnlyFans folder
+videoSchema.methods.backup = function(callback) {
+  var self = this;
+  if (!config.backupToOnlyFans) return callback('Skipping OnlyFans folder Backup');
+  logger.log('Backing up: %s', self.title);
+  if (self.backedUp) {
+    logger.debug('Skipping Backup: Already Backed Up');
+    return callback(null);
+  }
+  require('../modules/drive').backupVideo(self, function (err) {
+    if (err) return callback(err);
+    logger.log('Backed Up: %s', self.title);
+    self.backedUp = true;
+    self.save(function (err) {
+      callback(err);
+    });
+  });
+}
+
 // get file at location
 // convert to preview
 // save ref
@@ -251,7 +272,13 @@ videoSchema.methods.createPreview = function(callback) {
       // create png of early frames of .mp4 path
       logger.log('--- Thumbnailing ---');
       self.thumbnail(function (err) {
-        if (err) logger.warn(err);
+        if (err) {
+          logger.warn(err);
+          if (err.message.indexOf('No such file or directory')>-1) {
+            logger.debug('-- missing file --');
+            self.missingFile = true;
+          }
+        }
         step(null);
       });
     },
@@ -276,6 +303,10 @@ videoSchema.methods.createPreview = function(callback) {
             return self.extract(function (err, file) {
               step(err, file);
             },'muxing');
+          }
+          else if (err.message.indexOf('No such file or directory')>-1) {
+            logger.debug('-- missing file --');
+            self.missingFile = true;
           }
           return step(err);
         }
@@ -356,6 +387,7 @@ videoSchema.methods.extract = function(callback, retryReason) {
 }
 
 videoSchema.methods.sendPurchasedEmail = function(callback) {
+  if (!config.emailing_on_buy) return callback('Skipping - Email Notification On Purchase');
   logger.log('Sending Video Purchased Email: %s', this._id);
   var mailOptions = config.email_video_purchased(this);
   require('../modules/gmail').sendEmail(mailOptions, function (err) {
@@ -394,25 +426,6 @@ videoSchema.methods.thumbnail = function(callback) {
     timemarks: [ '1' ], // number of seconds
     filename: filename,
     folder: foldername
-  });
-}
-
-// uploads to Google Drive - OnlyFans folder
-videoSchema.methods.backup = function(callback) {
-  var self = this;
-  if (!config.backupToOnlyFans) return callback('Skipping OnlyFans folder Backup');
-  logger.log('Backing up: %s', self.title);
-  if (self.backedUp) {
-    logger.debug('Skipping Backup: Already Backed Up');
-    return callback(null);
-  }
-  require('../modules/drive').backupVideo(self, function (err) {
-    if (err) return callback(err);
-    logger.log('Backed Up: %s', self.title);
-    self.backedUp = true;
-    self.save(function (err) {
-      callback(err);
-    });
   });
 }
 
@@ -487,5 +500,6 @@ videoSchema.methods.watermark = function(callback) {
   .saveToFile(self.path_preview); 
 }
 
+videoSchema.set('redisCache', true);
 var Video = mongoose.model('videos', videoSchema,'videos');
 module.exports = Video;

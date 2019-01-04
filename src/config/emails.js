@@ -10,23 +10,24 @@ module.exports = function() {
   this.email_account_created = function() {
     return {
       to: self.email_self,
-      from: 'Support - '+self.siteName+' <support@'+this.domainEmail+'>',
+      from: 'Support - '+self.siteName+' <support@'+self.domainEmail+'>',
       subject: 'Account Created!',
       text: '<p>' + 'A new account has been created!' + '</p>'
           + '<br>'
-          + this.email_footer
+          + self.email_footer
     }
   }
 
   // Video Purchased
   this.email_video_purchased = function(video) {
+    var amount = Math.round(((parseInt(video.price, 10) / 60) / self.conversionRate) * 100) / 100;
     return {
       to: self.email_self,
-      from: 'Support - '+self.siteName+' <support@'+this.domainEmail+'>',
+      from: 'Support - '+self.siteName+' <support@'+self.domainEmail+'>',
       subject: 'Video Purchased!',
-      text: '<p>' + 'The video <strong>'+video.title+'</strong> has been purchased for: $<strong>'+video.price+'</strong></p>'
+      text: '<p>' + 'The video <strong>'+video.title+'</strong> has been purchased for: $<strong>'+amount+'</strong></p>'
           + '<br>'
-          + this.email_footer
+          + self.email_footer
     }
   }
 
@@ -34,11 +35,11 @@ module.exports = function() {
   this.email_transaction_confirmed = function(transaction) {
     return {
       to: self.email_self,
-      from: 'Support - '+self.siteName+' <support@'+this.domainEmail+'>',
+      from: 'Support - '+self.siteName+' <support@'+self.domainEmail+'>',
       subject: 'Transaction Confirmed!',
       text: '<p>' + 'A transaction has been confirmed for: <strong>'+transaction.value+'</strong> BTC / $<strong>'+transaction.value_in_dollars+'</strong> or <strong>'+(transaction.value_in_dollars*(self.conversionRate*60))+'</strong> seconds </p>'
           + '<br>'
-          + this.email_footer
+          + self.email_footer
     }
   }
 
@@ -50,17 +51,17 @@ module.exports = function() {
   // Testing
   this.email_test_address = this.gmail_user;
   this.email_tests = [
-    {
-      function: "email_account_created",
-      data: null
-    },
+    // {
+    //   function: "email_account_created",
+    //   data: null
+    // },
     {
       function: "email_video_purchased",
-      data: {'title':'your mom','price':15}
+      data: {'title':'your mom','price':Math.round(900)}
     },
-    {
-      function: "email_transaction_confirmed",
-      data: {'value':'1000000','value_in_dollars':15}
-    }
+    // {
+      // function: "email_transaction_confirmed",
+      // data: {'value':'.0045','value_in_dollars':15}
+    // }
   ];
 }

@@ -1,11 +1,11 @@
 if (user)
-  script(type="text/javascript", src='/socket.io/socket.io.js')
+  script(type="text/javascript", src='/dist/socket.io/socket.io.js')
   script.
     $(function () {
       var socket = io();
 
       socket.on('connect', function() {
-        socket.emit('connecting', "#{user._id}");
+        socket.emit('connected', "#{user._id}");
         if (window.location.pathname.indexOf('/live')>-1)
           socket.emit('start', "#{user._id}");
         else 
@@ -23,15 +23,16 @@ if (user)
 
       socket.on('video', function(data) {
         alert('Video purchased! Enjoy!');
-        location.reload();
+        window.location.replace("#{domain}/videos");
       });
 
-      socket.on('live', function(status) {
+      socket.on('sync', function(status) {
         updateStatus(status);
       });
 
       socket.on('disconnect', function() {
         socket.emit('end', "#{user._id}");
+        window.location.replace("#{domain}/");
       });
 
       function updateStatus(status) {
@@ -42,8 +43,8 @@ if (user)
           alert('I\'ve gone live!');
         else if (status_=="Live"&&status=="Not Live") {
           alert('I\'ve gone offline!');
-          window.location.replace("#{domain}/");
           socket.emit('stop', "#{user._id}");
+          window.location.replace("#{domain}/");
         }
       }
 

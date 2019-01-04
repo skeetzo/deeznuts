@@ -66,20 +66,19 @@ var MongoStore = require('./modules/mongo');
 var session = require('express-session');
 
 var maxAge = 1 * 12 * 60 * 60 * 1000; // half a day
-maxAge = 1 * 2 * 60 * 60 * 1000; // 2 hours
-if (config.debugging) maxAge = 10 * 60 * 1000; // five minutes
+if (config.debugging) maxAge = 1000 * 60 * 10; // ten minutes
 
 var sess = {
-  name: "deek",
-  secret: "Suck my dick",
-  saveUninitialized: false,
+  name: "deeznuts",
+  secret: "suckmybeautifulnuts",
+  saveUninitialized: true,
   resave: true,
   cookie: {
       secure: false,
       // secure: 'auto',
       // domain: ,
       httpOnly: true,
-      sameSite: 'strict',
+      // sameSite: 'strict',
       maxAge: maxAge
   },
   // ephemeral: true,
@@ -118,7 +117,7 @@ if (config.ssl)
 
 // /
 var mixins = require('./modules/mixins');
-app.use(mixins.resetLocals, mixins.syncUser, function (req, res, next) {
+app.use(mixins.resetLocals, function (req, res, next) {
   var ips = req.ips || [];
   ips.push(req.connection.remoteAddress);
   if (req.headers['x-forwarded-for'])
