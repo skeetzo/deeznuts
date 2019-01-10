@@ -132,9 +132,16 @@ videoSchema.statics.archiveVideos = function(callback) {
               fss.moveSync(file_path, file_path_archived);
               var title = mp4s[i].replace('.mp4','').substring(0,10);
               var time = mp4s[i].replace('.mp4','').substring(11);
-              var month = moment(new Date(title)).month()+1;
-              var day = moment(new Date(title)).date()+1;
-              var year = moment(new Date(title)).year();
+              //////
+              var date = moment(new Date(title));
+              var month = date.month();
+              var day = date.date();
+              var year = date.year();
+              //////
+              // var month = moment(new Date(title)).month()+1;
+              // var day = moment(new Date(title)).date()+1;
+              // var year = moment(new Date(title)).year();
+              //////
               var hours = time.substring(0,2);
               var minutes = time.substring(3,5);
               logger.log('%s:%s:%s %s:%s', month, day, year, hours, minutes);
