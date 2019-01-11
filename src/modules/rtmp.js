@@ -31,7 +31,7 @@ if (config.ssl) {
   };
   serverOptions.auth = {
     'play': false,
-    'publish': true,
+    'publish': false,
     'secret': config.streamKey
   }
 }
