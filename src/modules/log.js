@@ -5,6 +5,7 @@ var config = require('../config/index'),
     moment = require('moment'),
     async = require('async'),
     path = require('path'),
+    zlib = require('zlib'),
     _ = require('underscore');
 
 var Log = function() {
@@ -17,7 +18,7 @@ Log.prototype.backup = function(callback) {
 	var year = moment(new Date()).format('YYYY');
 	var month = moment(new Date()).format('MM-YYYY');
 	var file_path = path.resolve(config.logs_dir, year, month);
-	logger.log('logs backup path: %s', file_path);
+	// logger.log('logs backup path: %s', file_path);
 	fss.ensureDir(file_path, err => {
 	    if (err) return callback(err);
 	  	// dir has now been created, including the directory it is to be placed in
@@ -28,6 +29,11 @@ Log.prototype.backup = function(callback) {
 	  	backup = backup.replace(/\[(1|3|2|4)(7|9|3|4|2|1|)m/gi,'');
 	    fs.writeFile(file_path+"/"+newLog, backup, function (err) {
 	    	if (err) console.error(err);
+			var gzip = zlib.createGzip();
+			var r = fs.createReadStream(config.logs_dir);
+			var file_path = ;
+			var w = fs.createWriteStream(path.resolve(config.logs_dir, "logs.txt.gz"));
+			r.pipe(gzip).pipe(w);
 			callback(null);
 		});
 	});
