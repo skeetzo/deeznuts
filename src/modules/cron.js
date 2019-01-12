@@ -7,7 +7,9 @@ var _ = require('underscore'),
 var crons = function() {
     var self = this;
 
-    this.debugging = [];
+    this.debugging = [
+        'backup'
+    ];
 }
 
 crons.prototype = {
@@ -52,6 +54,57 @@ crons.prototype = {
             if (job.started) logger.log('started cron - %s',job.label);
         });
         
+    },
+
+    backup: function(callback) {
+        logger.log('Cron- Backup');
+        async.series([
+            function (step) {
+                logger.log('Archiving...');
+                var Video = require('../models/video');
+                Video.archiveVideos(function (err) {
+                  if (err) logger.warn(err);
+                  step(null);
+                });
+            },
+            function (step) {
+                logger.log('Creating Previews...');
+                var Video = require('../models/video');
+                Video.createPreviews(function (err) {
+                  if (err) logger.warn(err);
+                  step(null);
+                });
+            },
+            function (step) {
+                logger.log('Backing Up DB...');
+                var Backup = require('../modules/backup');
+                Backup.backup(function (err) {
+                    if (err) logger.warn(err);
+                    step(null);
+                });
+            },
+            function (step) {
+                logger.log('Backing Up Logs...');
+                var Log = require('../modules/log');
+                Log.reset(function (err) {
+                    if (err) logger.log(err);
+                    step(null);
+                });
+            },
+            function (step) {
+                logger.debug('skipping git backup');
+                return step(null);
+                // logger.log('Backing Up Git');
+                // var Github = require('../modules/git');
+                // Github.sync(function (err) {
+                //     if (err) logger.log(err);
+                //     step(null);
+                // });
+            },
+            function (step) {
+                callback(null);      
+            },
+        ]);
     },
 
     // next day

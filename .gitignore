@@ -5,6 +5,7 @@ src/public/videos/previews/*.mp4
 src/public/images/thumbnails/*.png
 
 src/dev
+src/public/dist
 
 # Logs
 #logs

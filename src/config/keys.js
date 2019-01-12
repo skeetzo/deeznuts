@@ -22,6 +22,11 @@ module.exports = function() {
         'username': localConfig.user_username || process.env.user_username,
         'password': localConfig.user_password || process.env.user_password
     };
+    this.thotsUser = {
+        'username': localConfig.thots_username || process.env.user_username,
+        'password': localConfig.thots_password || process.env.user_password,
+        'time': 999999
+    };
     this.email_self = localConfig.email_self || process.env.email_self;
 
     this.streamKey = localConfig.streamKey || process.env.streamKey;
@@ -32,6 +37,41 @@ module.exports = function() {
     // Blockchain
     this.blockchainKey = localConfig.blockchainKey || process.env.blockchainKey;
     this.blockchainXpub = localConfig.blockchainXpub || process.env.blockchainXpub;
+
+    // PayPal
+    this.paypal_account_sandbox = localConfig.paypal_account_sandbox;
+    this.paypal_clientid_sandbox = localConfig.paypal_clientid_sandbox;
+    this.paypal_client_secret_sandbox = localConfig.paypal_client_secret_sandbox;
+    this.paypal_account = localConfig.paypal_account;
+    this.paypal_clientid = localConfig.paypal_clientid;
+    this.paypal_client_secret = localConfig.paypal_client_secret;
+    this.paypal_cancel_url = this.domain+'/paypal/cancel';
+    this.paypal_success_url = this.domain+'/paypal/approval';
+    this.paypal_creds = {
+        'mode': this.PayPal_environment
+    };
+    if (this.PayPal_environment=='sandbox') {
+        this.paypal_creds.client_id = this.paypal_clientid_sandbox;
+        this.paypal_creds.client_secret = this.paypal_client_secret_sandbox;
+    }
+    else {
+        this.paypal_creds.client_id = this.paypal_clientid;
+        this.paypal_creds.client_secret = this.paypal_client_secret;
+    }
+    this.paypal_email = "WebmasterSkeetzo@gmail.com";
+    this.paypal_webhooks = [
+        'CHECKOUT.ORDER.PROCESSED',
+        'CHECKOUT.ORDER.COMPLETED',
+        'BILLING.SUBSCRIPTION.CREATED',
+        'BILLING.SUBSCRIPTION.CANCELLED',
+        'BILLING.SUBSCRIPTION.RE-ACTIVATED',
+        'BILLING.SUBSCRIPTION.SUSPENDED',
+        'BILLING.SUBSCRIPTION.UPDATED',
+        'PAYMENT.SALE.COMPLETED',
+        'PAYMENT.SALE.REVERSED',
+        'BILLING.PLAN.CREATED',
+        'BILLING.PLAN.UPDATED'
+    ];
 
     // Google
     this.Google_service_email = localGoogle.client_email || process.env.google_client_email;
@@ -48,8 +88,15 @@ module.exports = function() {
         'https://www.googleapis.com/auth/drive',
         'https://mail.google.com/',
         'https://www.googleapis.com/auth/userinfo.email',
+        'https://www.googleapis.com/auth/gmail'
         ];
     this.Google_redirect = this.domain+'/google/callback';
+
+    // Google Gmail
+    this.gmail_user = localConfig.gmail_user || process.env.google_email;
+    this.gmail_password = localConfig.gmail_password || process.env.google_password;
+    this.email_return = localConfig.email_return || process.env.google_email_return;
+    this.email_service = 'gmail';
 
     // Google Drive
     this.Google_client_id = localConfig.Google_id;
@@ -64,15 +111,11 @@ module.exports = function() {
          Google_Oauth_Opts.client_email,
          null,
          Google_Oauth_Opts.private_key,
-         this.Google_scopes);
+         [
+        'https://www.googleapis.com/auth/drive'
+        ]);
 
     this.driveFolderId = localConfig.driveFolderId || process.env.driveFolderId;
-
-    // Google Gmail
-    this.gmail_user = localConfig.gmail_user || process.env.google_email;
-    this.gmail_password = localConfig.gmail_password || process.env.google_password;
-    this.email_return = localConfig.email_return || process.env.google_email_return;
-    this.email_service = 'gmail';
 
     // Google Sheets
     // this.Google_Spreadsheet_id = localConfig.Google_Spreadsheet_id || process.env.Google_Spreadsheet_id;
@@ -83,8 +126,8 @@ module.exports = function() {
     if (this.remoteDatabase) this.MONGODB_URI = localConfig.MONGODB_URI_remote;
 
     // Redis
-    this.REDIS_URI = localConfig.REDIS_URI;
-    if (this.remoteDatabase) this.REDIS_URI = localConfig.REDIS_URI_remote;
+    this.REDIS_URL = localConfig.REDIS_URL_local;
+    if (this.remoteDatabase) this.REDIS_URL = localConfig.REDIS_URL;
 
     // Twitter
 	this.Twitter_consumer_key = localConfig.Twitter_consumer_key || process.env.Twitter_consumer_key; 

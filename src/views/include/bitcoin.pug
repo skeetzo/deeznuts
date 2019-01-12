@@ -7,7 +7,7 @@
       img(src=user.address_qr,style="display:block;margin-left:auto;margin-right:auto;")
       a(href="bitcoin:"+user.address, target="_blank") bitcoin:#{user.address}
     else
-      button.btn.btn-primary(onclick="generateAddress()") Generate Address
+      button.btn.btn-primary(onclick="generateAddress()") Generate BTC Address
 
       script.
         function generateAddress() {
@@ -21,8 +21,10 @@
             error: function(data) {
               if (data.status == 400)
                 alert('There was an error!');
-              else
+              else if (data.status == 401)
                 alert("Please login or create an account!");
+              else
+                alert('There was an error!');
             },
           })).catch(function (reason) {
             //- console.log(reason);

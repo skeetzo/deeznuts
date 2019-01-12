@@ -163,7 +163,8 @@ module.exports.debug = function(callback) {
             _.forEach(tests, function (email) {
                 series.push(function (next) {
                     if (typeof config[email.function] != "function") return logger.log('Not found: %s',email.function);
-                    var mailOptions = config[email.function](config.email_test_address, email.data);
+                    // var mailOptions = config[email.function](config.email_test_address, email.data);
+                    var mailOptions = config[email.function](email.data);
                     logger.test('Testing Email: %s', email.function);
                     Gmail.sendEmail(mailOptions, function (err) {
                         if (err) logger.warn(err);      
@@ -177,6 +178,61 @@ module.exports.debug = function(callback) {
             });
             async.series(series);
         },
+
+        function testCrons(cb) {
+            if (!config.debugging_crons) {
+                logger.test('Skipping Crons Tests');
+                return cb(null);
+            }
+            logger.test('Testing Crons');
+            var Crons = require('../modules/cron');
+            var series = [];
+            _.forEach(Crons.debugging, function (c) {
+                if (typeof Crons[c] === 'function') 
+                    series.push(function (step) {
+                        logger.test('cron: %s',c);
+                        Crons[c](function (err) {
+                            setTimeout(() => { step(null); });
+                        });
+                    });
+            });
+            series.push(function (step) {
+                logger.test('Cron Tests Complete');
+                cb(null);
+            });
+            async.series(series);
+        },
+
+        function cleanFileNames(cb) {
+            if (!config.debugging_clean_fileNames) {
+                logger.test('Skipping File Clean');
+                return cb(null);
+            }
+            var Video = require('../models/video');
+            Video.find({'isOriginal':true}, function (err, videos) {
+                if (err) {
+                    logger.warn(err);
+                    return cb(null);
+                }
+                _.forEach(videos, function (video) {
+                    var date = video.path.match(/(\d\d\d\d-\d\d-\d\d-\d\d-\d\d)/g);
+                    if (!date) return;
+                    logger.log(date);
+                    date = date[0];
+                    logger.log(date);
+                    var time = date.substring(11);
+                    date = date.substring(0,10);
+                    video.date = moment(new Date(date)).format('MM-DD-YYYY');
+                    video.title = video.date+" "+time;
+                    logger.log('date: %s', video.date);
+                    logger.log('title: %s', video.title);
+                    video.save();
+                });
+                logger.test('Video Filenames Reset');
+                cb(null);
+            })
+        },
+
         function (cb) {
             logger.test('Debugging Complete')
             cb(null);

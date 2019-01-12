@@ -19,7 +19,23 @@ var Gmail = google.gmail({
 });
 
 function authorize(callback) {
-  // logger.log('authenticating Google - Gmail');
+  // config.Google_jwtClient.authorize(function (err, tokens) {
+  //   if (err) return callback(err);
+  //   logger.log("Google authorized - Gmail");
+  //   authenticated = true;
+  //   Gmail = google.gmail({
+  //     version: 'v1',
+  //     auth: config.Google_jwtClient
+  //   });
+  //   clearTimeout(authTimeout);
+  //   authTimeout = setTimeout(function authExpire() {
+  //     logger.debug('Google authentication - Gmail; expired');
+  //     authenticated = false;
+  //   },1000*60*60*6) // 6 hours
+  //   callback(null);
+  // });
+
+  logger.log('authenticating Google - Gmail');
   App.findOne({},function (err, app) {
     if (err) return callback(err);
     if (!app) return callback('Missing app!');
@@ -36,11 +52,7 @@ function authorize(callback) {
     logger.debug('Google authorized - Gmail');
     callback(null);
     authenticated = true;
-    clearTimeout(authTimeout);
-    authTimeout = setTimeout(function authExpire() {
-      logger.debug('Google authentication - Gmail; expired');
-      authenticated = false;
-    },1000*60*60*6) // 6 hours
+    
   });
 }
 module.exports.authorize = authorize;
@@ -96,7 +108,7 @@ function sendEmail(email, callback) {
         }
       }, function (err, response) {
         if (err) return next(err);
-        logger.log('email sent: %s <- %s: %s',email.to,email.from,email.subject);  
+        logger.log('email sent: %s <- %s: %s', email.to, email.from, email.subject);  
         return callback(null);
       });
     },
