@@ -42,7 +42,7 @@ config.createPreviews = true;
 config.defaultPrice = 5; // in dollars
 config.defaultTime = 60; // time in seconds
 config.defaultPreviewDuration = 30;
-
+config.disconnectTimeout = 30;
 
 config.syncInterval = 3; // in seconds
 if (config.debugging) {
@@ -102,6 +102,7 @@ function deploy(environment) {
 
 	config.backupToOnlyFans = false;
 	config.archive_on_publish = false;
+	config.delete_on_publish = false;
 	config.deleteMissing = false;
 
 	config.PayPal = false;
@@ -162,8 +163,9 @@ function deploy(environment) {
 		config.Twitter = true;
 		config.Twitter_tweeting_on_live = true;
 		config.remoteDatabase = true;
-		config.archive_on_publish = true;
+		// config.archive_on_publish = true;
 		config.backupToOnlyFans = true;
+		config.delete_on_publish = true;
 		// config.deleteMissing = true;
 		// config.debugging_crons = true;
 		// config.debugging_clean_fileNames = true;

@@ -90,13 +90,21 @@ nms.on('donePublish', (id, StreamPath, args) => {
   clearTimeout(disconnectTimeout);
   disconnectTimeout = setTimeout(function () {
     config.status = 'Not Live';
-    if (config.archive_on_publish)
+    if (config.delete_on_publish) {
+      var stream_path = require('path').join(config.videosPath, '/live/', StreamPath);
+      require('fs').unlink(stream_path, function (err) {
+        if (err) logger.warn(err);
+      });
+    }
+    else if (config.archive_on_publish)
       setTimeout(function () {
         require('../models/video').processPublished(function (err) {
           if (err) logger.warn(err);
         });
       }, config.archive_delay);
-  }, 1000*15);
+    
+
+  }, 1000*config.disconnectTimeout);
 });
 
 // nms.on('preConnect', (id, args) => {
