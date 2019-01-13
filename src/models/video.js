@@ -38,6 +38,8 @@ var videoSchema = new Schema({
 
 videoSchema.pre('save', function (next) {
   var self = this;
+  if (!self.path_preview)
+    self.path_preview = path.join(config.videosPath, '/previews', self.path.replace('.mp4','-preview.mp4'));
   // if (!self.date)
     // self.date = moment(new Date(self.title)).format('MM-DD-YYYY:HH:mm');
   if (!self.title) self.title = self.date;
@@ -211,21 +213,28 @@ videoSchema.statics.populateFromFiles = function(callback) {
   logger.log('Populating Video Database');
   // read videos/archived for all the files
   var videoFiles = fs.readdirSync(config.videosPath+'/archived/stream');
-  var previewFiles = fs.readdirSync(config.videosPath+'/previews');
   logger.log('videoFiles: %s', videoFiles);
-  logger.log('previewFiles: %s', previewFiles);
   // create a video model for each
   var series = [];
-  _.forEach(previewFiles, function (video) {
+  _.forEach(videoFiles, function (video) {
     series.push(function (step) {
-      var videoPath = path.join(config.videosPath, '/archived/stream', video.replace('-preview.mp4','.mp4'));
-      var videoPreviewPath = path.join(config.videosPath, '/previews', video);
-      var newVideo = new Video({'isOriginal':true,'path':videoPath,'path_preview':videoPreviewPath});
+      var videoPath = path.join(config.videosPath, '/archived/stream', video);
       logger.debug('videoPath: %s', videoPath);
-      logger.debug('videoPreviewPath: %s', videoPreviewPath);
-      newVideo.save(function (err) {
-        if (err) logger.warn(err);
-        step(null);
+      Video.findOne({}, function (err, video) {
+        if (err) {
+          logger.warn(err);
+          return step(null);
+        }
+        if (video) {
+          logger.debug('Existing video: %s', video.title);
+          return step(null);
+        }
+        var newVideo = new Video({'isOriginal':true,'path':videoPath});
+        newVideo.save(function (err) {
+          if (err) logger.warn(err);
+          logger.debug('Populated video: %s', newVideo.title);
+          step(null);
+        });
       });
     });
   });

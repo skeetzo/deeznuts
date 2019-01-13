@@ -180,9 +180,9 @@ function deploy(environment) {
 		config.Twitter_tweeting_on_live = true;
 		config.backupToOnlyFans = true;
 		config.archive_on_publish = true;
-		config.remoteDatabase = true;
+		// config.remoteDatabase = true;
 		// config.debugging_reset_db = true;
-		// config.rebuildFromFiles = true;
+		config.rebuildFromFiles = true;
 	}
 }
 
