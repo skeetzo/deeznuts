@@ -49,8 +49,8 @@ videoSchema.pre('save', function (next) {
     logger.log('time: %s | %s', title, time);
     //////
     var date = moment(new Date(title));
-    var month = date.month();
-    var day = date.date();
+    var month = date.month()+1;
+    var day = date.date()+1;
     var year = date.year();
     //////
     // var month = moment(new Date(title)).month()+1;
