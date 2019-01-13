@@ -38,11 +38,30 @@ var videoSchema = new Schema({
 
 videoSchema.pre('save', function (next) {
   var self = this;
+  if (self.path) return next('Missing path!');
   if (!self.path_preview)
     self.path_preview = path.join(config.videosPath, '/previews', self.path.replace('.mp4','-preview.mp4'));
-  // if (!self.date)
-    // self.date = moment(new Date(self.title)).format('MM-DD-YYYY:HH:mm');
-  if (!self.title) self.title = self.date;
+  if (self.title) {
+    var title = self.path.replace('/[a-z\/]*/g','').substring(0,10);
+    var time = self.path.replace('/[a-z\/]*/g','').substring(11);
+    logger.log('time: %s | %s', title, time);
+    //////
+    var date = moment(new Date(title));
+    var month = date.month();
+    var day = date.date();
+    var year = date.year();
+    //////
+    // var month = moment(new Date(title)).month()+1;
+    // var day = moment(new Date(title)).date()+1;
+    // var year = moment(new Date(title)).year();
+    //////
+    var hours = time.substring(0,2);
+    var minutes = time.substring(3,5);
+    logger.log('%s:%s:%s %s:%s', month, day, year, hours, minutes);
+    title = month+"-"+day+"-"+year+" "+hours+":"+minutes;
+    self.title = title;
+  }
+
   if ((self.isModified('description')||self.isModified('performers'))&&self.performers)
     self.description = [self.performers.slice(0, -1).join(', '), self.performers.slice(-1)[0]].join(self.performers.length < 2 ? '' : ' and ');
   if (!self.path)
@@ -129,28 +148,10 @@ videoSchema.statics.archiveVideos = function(callback) {
               logger.log('Archiving: %s', mp4s[i]);
               var file_path = path.join(config.videosPath, '/live/', stream_name, mp4s[i]);
               var file_path_archived = path.join(config.videosPath, '/archived/', stream_name, mp4s[i].toLowerCase());
-              logger.debug('file_path: %s', file_path);
-              logger.debug('file_path_archived: %s', file_path_archived);
+              // logger.debug('file_path: %s', file_path);
+              // logger.debug('file_path_archived: %s', file_path_archived);
               fss.moveSync(file_path, file_path_archived);
-              var title = mp4s[i].replace('.mp4','').substring(0,10);
-              var time = mp4s[i].replace('.mp4','').substring(11);
-              //////
-              var date = moment(new Date(title));
-              var month = date.month();
-              var day = date.date();
-              var year = date.year();
-              //////
-              // var month = moment(new Date(title)).month()+1;
-              // var day = moment(new Date(title)).date()+1;
-              // var year = moment(new Date(title)).year();
-              //////
-              var hours = time.substring(0,2);
-              var minutes = time.substring(3,5);
-              logger.log('%s:%s:%s %s:%s', month, day, year, hours, minutes);
-              title = month+"-"+day+"-"+year+" "+hours+":"+minutes;
-              // var title = moment(new Date(mp4s[i].replace('.mp4','').substring(0,10))).format('MM-DD-YYYY HH:mm');
-              // logger.log('title: %s', title);
-              var newVideo = new Video({'title':title,'path':file_path_archived,'isOriginal':true});
+              var newVideo = new Video({'path':file_path_archived,'isOriginal':true});
               newVideo.save(function (err) {
                 if (err) logger.warn(err);
                 newVideo.backup(function (err) {
