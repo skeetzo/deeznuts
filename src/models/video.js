@@ -27,7 +27,6 @@ var videoSchema = new Schema({
   duration: { type: Number },
   hasPreview: { type: Boolean, default: false },
   isOriginal: { type: Boolean, default: false },
-  missingFile : { type: Boolean, default: false },
   path: { type: String },
   path_preview: { type: String },
   path_image: { type: String },
@@ -202,13 +201,23 @@ videoSchema.statics.createPreviews = function(callback) {
 
 videoSchema.statics.deleteMissing = function(callback) {
   logger.log('Deleting Missing Videos...');
-  Video.find({'missingFile':true}, function (err, videos) {
+  fs.readdir(path.join(config.videosPath, '/archived/stream'), function (err, files) {
     if (err) return callback(err);
-    _.forEach(videos, function (video) {
-      logger.debug('deleting: %s', video.title);
-      video.remove();
+    Video.find({'isOriginal':true,'title':{'$ne':'Example'}}, function (err, videos) {
+      if (err) return callback(err);
+      var missingVideos = [];
+      for (var i=0;i<files.length;i++) 
+        for (var j=0;j<videos.length;j++) {
+          if (files[i]==path.basename(videos[j].path))
+            break;
+          missingVideos.push(videos[j]);
+        }
+      _.forEach(missingVideos, function (video) {
+        video.remove();
+      });
+      logger.debug('Deleted missing: %s', missingVideos.length);
+      callback(null);
     });
-    callback(null);
   });
 }
 
@@ -298,7 +307,6 @@ videoSchema.methods.createPreview = function(callback) {
           logger.warn(err);
           if (err.message.indexOf('No such file or directory')>-1) {
             logger.debug('-- missing file --');
-            self.missingFile = true;
           }
         }
         step(null);
@@ -328,7 +336,6 @@ videoSchema.methods.createPreview = function(callback) {
           }
           else if (err.message.indexOf('No such file or directory')>-1) {
             logger.debug('-- missing file --');
-            self.missingFile = true;
           }
           return step(err);
         }
