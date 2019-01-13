@@ -30,8 +30,8 @@ if (config.ssl) {
     'cert': config.ssl_cert
   };
   serverOptions.auth = {
-    'play': false,
-    'publish': false,
+    'play': true,
+    'publish': true,
     'secret': config.streamKey
   }
 }
