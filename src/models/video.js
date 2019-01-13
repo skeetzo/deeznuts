@@ -220,13 +220,13 @@ videoSchema.statics.populateFromFiles = function(callback) {
     series.push(function (step) {
       var videoPath = path.join(config.videosPath, '/archived/stream', video);
       logger.debug('videoPath: %s', videoPath);
-      Video.findOne({}, function (err, video) {
+      Video.findOne({'path':videoPath}, function (err, video_) {
         if (err) {
           logger.warn(err);
           return step(null);
         }
-        if (video) {
-          logger.debug('Existing video: %s', video.title);
+        if (video_) {
+          logger.debug('Existing video: %s', video_.title);
           return step(null);
         }
         var newVideo = new Video({'isOriginal':true,'path':videoPath});
