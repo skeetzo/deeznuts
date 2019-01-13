@@ -42,7 +42,7 @@ videoSchema.pre('save', function (next) {
   if (!self.path_preview)
     self.path_preview = path.join(config.videosPath, '/previews', self.path.replace('.mp4','-preview.mp4'));
   // if (self.title) {
-
+  if (self.title!='Example') {
     var title = path.basename(this.path.toLowerCase().replace('.mp4',''));
     var time = title.substring(11);
     title = title.substring(0,10);
@@ -62,7 +62,7 @@ videoSchema.pre('save', function (next) {
     logger.log('%s:%s:%s %s:%s', month, day, year, hours, minutes);
     title = month+"-"+day+"-"+year+" "+hours+":"+minutes;
     self.title = title;
-  // }
+  }
 
   if ((self.isModified('description')||self.isModified('performers'))&&self.performers)
     self.description = [self.performers.slice(0, -1).join(', '), self.performers.slice(-1)[0]].join(self.performers.length < 2 ? '' : ' and ');

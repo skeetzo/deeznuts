@@ -97,11 +97,10 @@ async.series([
   },
   // database initialization
   function (step) {
-    Video.find({'isOriginal':true}, function (err, videos) {
+    Video.findOne({'title':config.defaultVideo.title}, function (err, exampleVideo) {
       if (err) logger.warn(err);
-      logger.log('Videos available: %s', videos.length);
-      if (!videos||videos.length==0) {
-        // logger.debug('creating example preview...');
+      if (!exampleVideo) {
+        // logger.debug('Creating Example video...');
         var example = new Video(config.defaultVideo);
         example.save(function (err) {
           if (err) logger.warn(err);
