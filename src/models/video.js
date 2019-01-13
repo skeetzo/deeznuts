@@ -210,11 +210,10 @@ videoSchema.statics.deleteMissing = function(callback) {
         for (var j=0;j<videos.length;j++) {
           logger.log('file: %s | %s :video', files[i],path.basename(videos[j].path));
           if (files[i]==path.basename(videos[j].path))
-            break;
-          missingVideos.push(videos[j]);
+            videos.splice(j,1);
         }
-      _.forEach(missingVideos, function (video) {
-        // video.remove();
+      _.forEach(videos, function (video) {
+        video.remove();
       });
       logger.debug('Deleted missing: %s', missingVideos.length);
       callback(null);
