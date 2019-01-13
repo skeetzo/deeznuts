@@ -70,6 +70,7 @@ if (config.streamRecording)
 var nms = new NodeMediaServer(serverOptions);
 nms.run();
 
+var connectTimeout;
 var disconnectTimeout;
 
 nms.on('postPublish', (id, StreamPath, args) => {
