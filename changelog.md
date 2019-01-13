@@ -45,9 +45,10 @@
  - User.sync update
  **12/15/2018**
  - favicons
-
  **12/23/2018**
  - paypal
+ **1.0.2 : 1/11/2019**
+ - rtmp key debugging
 
  **??/??/??**
  - next live @ & schedule
