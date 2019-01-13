@@ -42,8 +42,10 @@ videoSchema.pre('save', function (next) {
   if (!self.path_preview)
     self.path_preview = path.join(config.videosPath, '/previews', self.path.replace('.mp4','-preview.mp4'));
   // if (self.title) {
-    var title = self.path.replace('/[a-z\/]*/g','').substring(0,10);
-    var time = self.path.replace('/[a-z\/]*/g','').substring(11);
+    var title = self.path.match('/[0-9]{4}-[0-9]{2}-[0-9]{2}-[0-9]{2}-[0-9]{2}/g');
+    logger.log('title: %s', title);
+    title = title[0];
+    var time = title.substring(11);
     logger.log('time: %s | %s', title, time);
     //////
     var date = moment(new Date(title));
