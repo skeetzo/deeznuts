@@ -44,8 +44,8 @@ videoSchema.pre('save', function (next) {
   // if (self.title) {
 
     var title = path.basename(this.path.toLowerCase().replace('.mp4',''));
-    logger.log('title: %s', title);
     var time = title.substring(11);
+    title = title.substring(0,11);
     logger.log('time: %s | %s', title, time);
     //////
     var date = moment(new Date(title));
