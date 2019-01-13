@@ -41,7 +41,7 @@ videoSchema.pre('save', function (next) {
   if (self.path) return next('Missing path!');
   if (!self.path_preview)
     self.path_preview = path.join(config.videosPath, '/previews', self.path.replace('.mp4','-preview.mp4'));
-  if (self.title) {
+  // if (self.title) {
     var title = self.path.replace('/[a-z\/]*/g','').substring(0,10);
     var time = self.path.replace('/[a-z\/]*/g','').substring(11);
     logger.log('time: %s | %s', title, time);
@@ -60,7 +60,7 @@ videoSchema.pre('save', function (next) {
     logger.log('%s:%s:%s %s:%s', month, day, year, hours, minutes);
     title = month+"-"+day+"-"+year+" "+hours+":"+minutes;
     self.title = title;
-  }
+  // }
 
   if ((self.isModified('description')||self.isModified('performers'))&&self.performers)
     self.description = [self.performers.slice(0, -1).join(', '), self.performers.slice(-1)[0]].join(self.performers.length < 2 ? '' : ' and ');
@@ -228,7 +228,10 @@ videoSchema.statics.populateFromFiles = function(callback) {
         }
         if (video_) {
           logger.debug('Existing video: %s', video_.title);
-          return step(null);
+          return video_.save(function (err) {
+            if (err) logger.warn(err);
+            step(null);
+          });
         }
         var newVideo = new Video({'isOriginal':true,'path':videoPath});
         newVideo.save(function (err) {
