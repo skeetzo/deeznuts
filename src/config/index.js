@@ -25,12 +25,12 @@ config.ssl_cert = '/etc/letsencrypt/live/alexdeeznuts.com-0001/fullchain.pem';
 
 config.domain = "alexdeeznuts.com";
 if (config.local) config.domain = "localhost";
-var live_url = "wss://"+config.domain+":8443/live/stream.flv?sign=";
+// var live_url = "wss://"+config.domain+":8443/live/stream.flv?sign=";
 // var live_url = "https://"+config.domain+":8443/live/stream/index.mpd";
-// var live_url = "https://"+config.domain+":8443/live/stream.flv?sign=";
+var live_url = "https://"+config.domain+":8443/live/stream.flv?sign=";
 // if (config.debugging&&!config.ssl) live_url = "http://"+config.domain+":8000/live/stream/index.mpd";
-// if (config.debugging&&!config.ssl) live_url = "http://"+config.domain+":8000/live/stream.flv?sign=";
-if (config.debugging&&!config.ssl) live_url = "ws://"+config.domain+":8000/live/stream.flv?sign=";
+if (config.debugging&&!config.ssl) live_url = "http://"+config.domain+":8000/live/stream.flv?sign=";
+// if (config.debugging&&!config.ssl) live_url = "ws://"+config.domain+":8000/live/stream.flv?sign=";
 if (config.ssl) config.domain = "https://"+config.domain;
 else config.domain = "http://"+config.domain;
 

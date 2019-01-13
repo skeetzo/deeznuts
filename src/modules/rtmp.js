@@ -91,7 +91,7 @@ nms.on('donePublish', (id, StreamPath, args) => {
   disconnectTimeout = setTimeout(function () {
     config.status = 'Not Live';
     if (config.delete_on_publish) {
-      var stream_path = require('path').join(config.videosPath, '/live/', StreamPath);
+      var stream_path = require('path').join(config.videosPath, '/live/stream/*', );
       require('fs').unlink(stream_path, function (err) {
         if (err) logger.warn(err);
       });
