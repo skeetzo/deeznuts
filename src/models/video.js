@@ -38,7 +38,7 @@ var videoSchema = new Schema({
 
 videoSchema.pre('save', function (next) {
   var self = this;
-  if (self.path) return next('Missing path!');
+  if (!self.path) return next('Missing path!');
   if (!self.path_preview)
     self.path_preview = path.join(config.videosPath, '/previews', self.path.replace('.mp4','-preview.mp4'));
   // if (self.title) {
