@@ -87,7 +87,6 @@ module.exports = function() {
         'https://www.googleapis.com/auth/plus.me',
         'https://www.googleapis.com/auth/drive',
         'https://mail.google.com/',
-        'https://www.googleapis.com/auth/userinfo.email',
         'https://www.googleapis.com/auth/gmail'
         ];
     this.Google_redirect = this.domain+'/google/callback';
