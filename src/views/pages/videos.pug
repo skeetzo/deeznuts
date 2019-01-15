@@ -11,7 +11,7 @@ prepend content
     //- users videos
     if (videos)
       for video in videos
-        .col-md-3.col-sm-4.col-xs-4
+        .col-md-3.col-sm-4.col-xs-12
           h3.videoTitle=video.title
           //- h4.videoDate #{video.date}
           h4.videoPrice=video.price
@@ -31,7 +31,7 @@ prepend content
     //- all videos
     if (videos_unowned)
       for video in videos_unowned
-        .col-md-3.col-sm-4.col-xs-4
+        .col-md-3.col-sm-4.col-xs-12
           h3.videoTitle=video.title
           //- h4.videoDate #{video.date}
           h4.videoPrice=video.price
