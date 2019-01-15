@@ -1,6 +1,6 @@
 var config = require('../config/index'),
 	logger = config.logger,
-	backup = require('mongodb-backup'),
+	MongodbBackup = require('mongodb-backup'),
 	moment = require('moment'),
     fss = require('fs-extra'),
     path = require('path'),
@@ -14,11 +14,11 @@ var backupDatabase = function(callback) {
 	// logger.debug('mongo backup path: %s/%s', file_path, moment(new Date()).format('MM-DD-YYYY')+'.tar');
 	// logger.debug('file path: %s', file_path);
 	fss.ensureDirSync(file_path);
-	backup({
+	MongodbBackup({
 	  uri: config.MONGODB_URI,
 	  root: file_path,
 	  tar: moment(new Date()).format('MM-DD-YYYY')+'.tar',
-	  callback: function(err) {
+	  'callback': function(err) {
 	    if (err) return callback(err);
 	    logger.log('MongoDB Backup Successful');
 	    callback(null);

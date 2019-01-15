@@ -25,7 +25,7 @@ module.exports.debug = function(callback) {
 
         function backupDatabase(cb) {
             if (!config.debugging_backup_db) return cb(null);
-            require('../modules/backup').backup(function (err) {
+            require('../modules/backup').backupDatabase(function (err) {
                 if (err) logger.warn(err);
                 cb(null);
             });
