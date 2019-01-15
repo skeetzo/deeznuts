@@ -185,8 +185,8 @@ function deploy(environment) {
 }
 
 config.mnt_path = '/mnt/deeznuts';
-config.local_keys_path = path.join(config.mnt_path, 'localConfig.json');
-config.local_google_keys_path = path.join(config.mnt_path, 'google.json');
+config.local_keys_path = path.join(config.mnt_path, 'dev/localConfig.json');
+config.local_google_keys_path = path.join(config.mnt_path, 'dev/google.json');
 config.logs_dir = path.join(config.mnt_path, 'logs');
 config.logs_file = path.join(config.mnt_path, 'logs/file.log');
 config.videosPath = path.join(config.mnt_path, 'videos');

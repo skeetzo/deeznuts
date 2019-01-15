@@ -10,7 +10,7 @@ module.exports.backupDatabase = function(callback) {
 	logger.log('Backing Up MongoDB: %s', config.botName);
 	var year = moment(new Date()).format('YYYY');
 	var month = moment(new Date()).format('MM-YYYY');
-	var file_path = path.join(config.mnt_path, 'backups', year, month);
+	var file_path = path.join(config.mnt_path, 'backups/mongo', year, month);
 	// logger.debug('mongo backup path: %s/%s', file_path, moment(new Date()).format('MM-DD-YYYY')+'.tar');
 	// logger.debug('file path: %s', file_path);
 	fss.ensureDirSync(file_path);

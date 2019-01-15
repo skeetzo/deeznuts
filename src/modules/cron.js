@@ -76,6 +76,13 @@ crons.prototype = {
                 });
             },
             function (step) {
+                var Log = require('../modules/log');
+                Log.backup(function (err) {
+                    if (err) logger.log(err);
+                    step(null);
+                });
+            },
+            function (step) {
                 logger.log('Backing Up DB...');
                 var Backup = require('../modules/backup');
                 Backup.backup(function (err) {
