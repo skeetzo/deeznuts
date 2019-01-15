@@ -33,7 +33,7 @@ module.exports.backupDatabase = backupDatabase;
 
 var backupApp = function(callback) {
 	logger.log('Backing Up App: %s', config.botName);
-	fstreamIgnore.Reader({ 'path': config.mnt_path, 'type': 'Directory', ignoreFiles: [".mp4"] }) /* Read the source directory */
+	fstreamIgnore({ 'path': config.mnt_path, 'type': 'Directory', ignoreFiles: [".mp4"] }) /* Read the source directory */
 	.on('end', function () {
 		logger.debug('Logs Compressed');
 		callback(null);
