@@ -10,7 +10,6 @@ config.Crons_On = true;
 
 // App Settings
 config.botName = "DeezNuts";
-config.siteName = "DeezNuts";
 config.port = Number(process.env.PORT || 3000);
 
 // Site Settings
@@ -71,12 +70,11 @@ config.streamRecording = true;
 
 // Email
 config.emailing = true;
-config.emailing_testing = false;
+config.emailing_testing = true;
 config.emailing_on_new = true;
 config.emailing_on_error = true;
 config.emailing_on_buy = true;
 config.emailing_on_transaction = true;
-config.domainEmail = 'deeznuts.com';
 
 // Twitter
 config.Twitter_link = config.domain+'/live';
