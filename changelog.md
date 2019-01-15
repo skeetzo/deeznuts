@@ -49,6 +49,8 @@
  - paypal
  **1.0.2 : 1/11/2019**
  - rtmp key debugging
+ **1.0.3 : 1/14/2019**
+ - email debugging
 
  **??/??/??**
  - next live @ & schedule
