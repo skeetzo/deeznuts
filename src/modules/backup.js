@@ -7,7 +7,6 @@ var config = require('../config/index'),
     async = require('async'),
     zlib = require('zlib'),
     fstream = require('fstream'),
-    fstreamIgnore = require('fstream-ignore'),
     tar = require('tar');
 
 var backupDatabase = function(callback) {
@@ -33,17 +32,22 @@ module.exports.backupDatabase = backupDatabase;
 
 var backupApp = function(callback) {
 	logger.log('Backing Up App: %s', config.botName);
-	fstreamIgnore({ 'path': config.mnt_path, 'type': 'Directory', ignoreFiles: [".mp4"] }) /* Read the source directory */
-	.on('end', function () {
-		logger.debug('Logs Compressed');
-		callback(null);
-	})
-	.on('error', function (err) {
-		if (err&&err.message) logger.warn(err.message);
-	})
-	.pipe(tar.Pack()) /* Convert the directory to a .tar file */
-	.pipe(zlib.Gzip()) /* Compress the .tar file */
-	.pipe(fstream.Writer({ 'path': path.join(config.mnt_path, "backups", config.botName+".tar.gz") })) /* Give the output file name */
+	try {
+		fstream.Reader({ 'path': config.mnt_path, 'type': 'Directory' }) /* Read the source directory */
+		.on('end', function () {
+			logger.debug('App Compressed');
+			callback(null);
+		})
+		.on('error', function (err) {
+			if (err&&err.message) logger.warn(err.message);
+		})
+		.pipe(tar.Pack()) /* Convert the directory to a .tar file */
+		.pipe(zlib.Gzip()) /* Compress the .tar file */
+		.pipe(fstream.Writer({ 'path': path.join(config.mnt_path, "backups", config.botName+".tar.gz") })) /* Give the output file name */
+	}
+	catch (err) {
+		callback(err);
+	}
 }
 module.exports.backupApp= backupApp;
 
