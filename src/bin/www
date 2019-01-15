@@ -97,11 +97,10 @@ async.series([
   },
   // database initialization
   function (step) {
-    Video.find({'isOriginal':true}, function (err, videos) {
+    Video.findOne({'title':config.defaultVideo.title}, function (err, exampleVideo) {
       if (err) logger.warn(err);
-      logger.log('Videos available: %s', videos.length);
-      if (!videos||videos.length==0) {
-        // logger.debug('creating example preview...');
+      if (!exampleVideo) {
+        // logger.debug('Creating Example video...');
         var example = new Video(config.defaultVideo);
         example.save(function (err) {
           if (err) logger.warn(err);
@@ -110,6 +109,35 @@ async.series([
       }
       else step(null);
     });
+  },
+  function (step) {
+    if (config.ssl) {
+      /**
+       * Create HTTPS server.
+       */
+      var privateKey  = fs.readFileSync(config.ssl_key, 'utf8');
+      var certificate = fs.readFileSync(config.ssl_cert, 'utf8');
+      var credentials = {'key': privateKey, 'cert': certificate};
+      server = https.createServer(credentials, app);
+    }
+    else {
+      server = http.createServer(app);
+    }
+
+    // socket.io
+    const io = require('socket.io')(server);    
+    require('../modules/socket.io').setup(io);
+
+    /**
+     * Listen on provided port, on all network interfaces.
+     */
+    // server.listen(port, "127.0.0.1", function () {
+    server.listen(port, "0.0.0.0", function () {
+      logger.log("Live at Port %s", port);
+      step(null);
+    });
+    server.on('error', onError);
+    server.on('listening', onListening);
   },
   function (step) {
     fss.ensureDirSync(path.join(config.videosPath), "0o2775");
@@ -183,34 +211,6 @@ async.series([
         });
       });
     }
-  },
-  function (step) {
-    if (config.ssl) {
-      /**
-       * Create HTTPS server.
-       */
-      var privateKey  = fs.readFileSync(config.ssl_key, 'utf8');
-      var certificate = fs.readFileSync(config.ssl_cert, 'utf8');
-      var credentials = {'key': privateKey, 'cert': certificate};
-      server = https.createServer(credentials, app);
-    }
-    else {
-      server = http.createServer(app);
-    }
-
-    // socket.io
-    const io = require('socket.io')(server);    
-    require('../modules/socket.io').setup(io);
-
-    /**
-     * Listen on provided port, on all network interfaces.
-     */
-    // server.listen(port, "127.0.0.1", function () {
-    server.listen(port, "0.0.0.0", function () {
-      logger.log("Live at Port %s", port);
-    });
-    server.on('error', onError);
-    server.on('listening', onListening);
   }
 ]);
 

@@ -70,33 +70,51 @@ if (config.streamRecording)
 var nms = new NodeMediaServer(serverOptions);
 nms.run();
 
+var connectTimeout;
 var disconnectTimeout;
 
 nms.on('postPublish', (id, StreamPath, args) => {
   logger.log('[NodeEvent on postPublish]', `id=${id} StreamPath=${StreamPath} args=${JSON.stringify(args)}`);
-  logger.log('Updating Status %s -> %s', config.status, 'Live');
-  config.status = 'Live';
+  clearTimeout(connectTimeout);
   clearTimeout(disconnectTimeout);
-  if (config.Twitter_tweeting_on_live)
-    require('../modules/twitter').tweetLive(function (err) {
-      if (err) logger.warn(err);
-    });
+  connectTimeout = setTimeout(function () {
+    logger.log('Updating Status %s -> %s', config.status, 'Live');
+    config.status = 'Live';
+    if (config.Twitter_tweeting_on_live)
+      require('../modules/twitter').tweetLive(function (err) {
+        if (err) logger.warn(err);
+      });
+  }, 1000*config.rtmpTimeout);
 });
 
 
 nms.on('donePublish', (id, StreamPath, args) => {
   logger.log('[NodeEvent on donePublish]', `id=${id} StreamPath=${StreamPath} args=${JSON.stringify(args)}`);
-  logger.log('Updating Status %s -> %s', config.status, 'Not Live');
+  clearTimeout(connectTimeout);
   clearTimeout(disconnectTimeout);
   disconnectTimeout = setTimeout(function () {
+    logger.log('Updating Status %s -> %s', config.status, 'Not Live');
     config.status = 'Not Live';
-    if (config.archive_on_publish)
+    if (config.delete_on_publish) {
+      var stream_path = require('path').join(config.videosPath, '/live/stream/*', );
+      var fs = require('fs');
+      fs.readdir(stream_path, function(err, items) {
+        if (!items) return;
+        for (var i=0; i<items.length; i++)
+          fs.unlink(items[i], function (err) {
+            if (err) logger.warn(err);
+            logger.debug('deleted: %s', items[i]);
+          });
+      });
+    }
+    else if (config.archive_on_publish) {
       setTimeout(function () {
         require('../models/video').processPublished(function (err) {
           if (err) logger.warn(err);
         });
       }, config.archive_delay);
-  }, 1000*15);
+    }
+  }, 1000*config.rtmpTimeout);
 });
 
 // nms.on('preConnect', (id, args) => {

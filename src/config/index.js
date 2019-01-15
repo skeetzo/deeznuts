@@ -10,7 +10,6 @@ config.Crons_On = true;
 
 // App Settings
 config.botName = "DeezNuts";
-config.siteName = "DeezNuts";
 config.port = Number(process.env.PORT || 3000);
 
 // Site Settings
@@ -25,12 +24,12 @@ config.ssl_cert = '/etc/letsencrypt/live/alexdeeznuts.com-0001/fullchain.pem';
 
 config.domain = "alexdeeznuts.com";
 if (config.local) config.domain = "localhost";
-var live_url = "wss://"+config.domain+":8443/live/stream.flv?sign=";
+// var live_url = "wss://"+config.domain+":8443/live/stream.flv?sign=";
 // var live_url = "https://"+config.domain+":8443/live/stream/index.mpd";
-// var live_url = "https://"+config.domain+":8443/live/stream.flv?sign=";
+var live_url = "https://"+config.domain+":8443/live/stream.flv?sign=";
 // if (config.debugging&&!config.ssl) live_url = "http://"+config.domain+":8000/live/stream/index.mpd";
-// if (config.debugging&&!config.ssl) live_url = "http://"+config.domain+":8000/live/stream.flv?sign=";
-if (config.debugging&&!config.ssl) live_url = "ws://"+config.domain+":8000/live/stream.flv?sign=";
+if (config.debugging&&!config.ssl) live_url = "http://"+config.domain+":8000/live/stream.flv?sign=";
+// if (config.debugging&&!config.ssl) live_url = "ws://"+config.domain+":8000/live/stream.flv?sign=";
 if (config.ssl) config.domain = "https://"+config.domain;
 else config.domain = "http://"+config.domain;
 
@@ -42,7 +41,7 @@ config.createPreviews = true;
 config.defaultPrice = 5; // in dollars
 config.defaultTime = 60; // time in seconds
 config.defaultPreviewDuration = 30;
-
+config.rtmpTimeout = 30;
 
 config.syncInterval = 3; // in seconds
 if (config.debugging) {
@@ -71,12 +70,11 @@ config.streamRecording = true;
 
 // Email
 config.emailing = true;
-config.emailing_testing = false;
+config.emailing_testing = true;
 config.emailing_on_new = true;
 config.emailing_on_error = true;
 config.emailing_on_buy = true;
 config.emailing_on_transaction = true;
-config.domainEmail = 'deeznuts.com';
 
 // Twitter
 config.Twitter_link = config.domain+'/live';
@@ -102,6 +100,7 @@ function deploy(environment) {
 
 	config.backupToOnlyFans = false;
 	config.archive_on_publish = false;
+	config.delete_on_publish = false;
 	config.deleteMissing = false;
 
 	config.PayPal = false;
@@ -162,8 +161,9 @@ function deploy(environment) {
 		config.Twitter = true;
 		config.Twitter_tweeting_on_live = true;
 		config.remoteDatabase = true;
-		config.archive_on_publish = true;
+		// config.archive_on_publish = true;
 		config.backupToOnlyFans = true;
+		config.delete_on_publish = true;
 		// config.deleteMissing = true;
 		// config.debugging_crons = true;
 		// config.debugging_clean_fileNames = true;
@@ -174,13 +174,13 @@ function deploy(environment) {
 		config.PayPal_environment = 'live';
 		config.PayPal_syncing_webhooks = false;
 		config.Twitter = true;
-		// config.Twitter_tweeting = true;
+		config.Twitter_tweeting = true;
 		config.Twitter_tweeting_on_live = true;
 		config.backupToOnlyFans = true;
 		config.archive_on_publish = true;
-		config.remoteDatabase = true;
-		// config.debugging_reset_db = true;
+		// config.remoteDatabase = true;
 		// config.rebuildFromFiles = true;
+		// config.deleteMissing = true;
 	}
 }
 

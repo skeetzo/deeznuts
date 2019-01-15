@@ -5,6 +5,9 @@ var config = require('../config/index'),
     moment = require('moment'),
     async = require('async'),
     path = require('path'),
+    zlib = require('zlib'),
+    fstream = require('fstream'),
+    tar = require('tar'),
     _ = require('underscore');
 
 var Log = function() {
@@ -17,7 +20,7 @@ Log.prototype.backup = function(callback) {
 	var year = moment(new Date()).format('YYYY');
 	var month = moment(new Date()).format('MM-YYYY');
 	var file_path = path.resolve(config.logs_dir, year, month);
-	logger.log('logs backup path: %s', file_path);
+	// logger.log('logs backup path: %s', file_path);
 	fss.ensureDir(file_path, err => {
 	    if (err) return callback(err);
 	  	// dir has now been created, including the directory it is to be placed in
@@ -28,7 +31,23 @@ Log.prototype.backup = function(callback) {
 	  	backup = backup.replace(/\[(1|3|2|4)(7|9|3|4|2|1|)m/gi,'');
 	    fs.writeFile(file_path+"/"+newLog, backup, function (err) {
 	    	if (err) console.error(err);
-			callback(null);
+	    	try {
+				fstream.Reader({ 'path': config.logs_dir, 'type': 'Directory' }) /* Read the source directory */
+				.on('end', function () {
+					logger.debug('Logs Compressed');
+					callback(null);
+				})
+				.on('error', function (err) {
+					if (err&&err.message) logger.warn(err.message);
+				})
+				.pipe(tar.Pack()) /* Convert the directory to a .tar file */
+				.pipe(zlib.Gzip()) /* Compress the .tar file */
+				.pipe(fstream.Writer({ 'path': path.resolve(config.logs_dir, "logs.tar.gz") })) /* Give the output file name */
+			}
+			catch (err) {
+				logger.warn(err);
+				callback(null);
+			}
 		});
 	});
 }

@@ -63,16 +63,16 @@ crons.prototype = {
                 logger.log('Archiving...');
                 var Video = require('../models/video');
                 Video.archiveVideos(function (err) {
-                  if (err) logger.warn(err);
-                  step(null);
+                    if (err) logger.warn(err);
+                    step(null);
                 });
             },
             function (step) {
                 logger.log('Creating Previews...');
                 var Video = require('../models/video');
                 Video.createPreviews(function (err) {
-                  if (err) logger.warn(err);
-                  step(null);
+                    if (err) logger.warn(err);
+                    step(null);
                 });
             },
             function (step) {
@@ -84,24 +84,6 @@ crons.prototype = {
                 });
             },
             function (step) {
-                logger.log('Backing Up Logs...');
-                var Log = require('../modules/log');
-                Log.reset(function (err) {
-                    if (err) logger.log(err);
-                    step(null);
-                });
-            },
-            function (step) {
-                logger.debug('skipping git backup');
-                return step(null);
-                // logger.log('Backing Up Git');
-                // var Github = require('../modules/git');
-                // Github.sync(function (err) {
-                //     if (err) logger.log(err);
-                //     step(null);
-                // });
-            },
-            function (step) {
                 callback(null);      
             },
         ]);
@@ -109,7 +91,7 @@ crons.prototype = {
 
     // next day
     midnight : function(callback) {
-        logger.log('--- Midnight ---');
+        logger.log('<--- Midnight ---');
         async.series([
             function (step) {
                 var Log = require('../modules/log');
@@ -119,7 +101,7 @@ crons.prototype = {
                 });
             },
             function (step) {
-                logger.log('--- Midnight ---');
+                logger.log('--- Midnight --->');
                 callback(null);      
             },
         ]);
