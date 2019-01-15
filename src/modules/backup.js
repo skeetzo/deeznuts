@@ -7,6 +7,7 @@ var config = require('../config/index'),
     async = require('async'),
     zlib = require('zlib'),
     fstream = require('fstream'),
+    fstreamIgnore = require('fstream-ignore'),
     tar = require('tar');
 
 var backupDatabase = function(callback) {
@@ -32,7 +33,7 @@ module.exports.backupDatabase = backupDatabase;
 
 var backupApp = function(callback) {
 	logger.log('Backing Up App: %s', config.botName);
-	fstream.Reader({ 'path': config.mnt_path, 'type': 'Directory' }) /* Read the source directory */
+	fstreamIgnore.Reader({ 'path': config.mnt_path, 'type': 'Directory', ignoreFiles: [".mp4"] }) /* Read the source directory */
 	.on('end', function () {
 		logger.debug('Logs Compressed');
 		callback(null);
