@@ -4,7 +4,10 @@ var config = require('../config/index'),
 	moment = require('moment'),
     fss = require('fs-extra'),
     path = require('path'),
-    async = require('async');
+    async = require('async'),
+    zlib = require('zlib'),
+    fstream = require('fstream'),
+    tar = require('tar');
 
 var backupDatabase = function(callback) {
 	logger.log('Backing Up MongoDB: %s', config.botName);
@@ -17,7 +20,7 @@ var backupDatabase = function(callback) {
 	MongodbBackup({
 	  uri: config.MONGODB_URI,
 	  root: file_path,
-	  tar: moment(new Date()).format('MM-DD-YYYY')+'.tar',
+	  'tar': moment(new Date()).format('MM-DD-YYYY')+'.tar',
 	  'callback': function(err) {
 	    if (err) return callback(err);
 	    logger.log('MongoDB Backup Successful');

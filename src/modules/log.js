@@ -4,11 +4,7 @@ var config = require('../config/index'),
     fss = require('fs-extra'),
     moment = require('moment'),
     async = require('async'),
-    path = require('path'),
-    zlib = require('zlib'),
-    fstream = require('fstream'),
-    tar = require('tar'),
-    _ = require('underscore');
+    path = require('path');
 
 var Log = function() {
 
