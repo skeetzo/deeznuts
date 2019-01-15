@@ -49,7 +49,7 @@ module.exports = function googleRoutes(router) {
           req.flash('error','Error authorizing!');
           return res.redirect('/');
         }
-        logger.debug('tokens: %s',JSON.stringify(tokens,null,4));
+        // logger.debug('tokens: %s',JSON.stringify(tokens,null,4));
         app.google.access_token = tokens.access_token;
         app.google.refresh_token = tokens.refresh_token;
         logger.log('authorized Google');
