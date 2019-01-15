@@ -85,7 +85,7 @@ function sendEmail(email, callback) {
       message = base64url(message);
       // logger.log('encoded: %s', message);
       Gmail.users.messages.send({
-        // userId: 'me',
+        userId: 'me',
         resource: {
           raw: message
         }
