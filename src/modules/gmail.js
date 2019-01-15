@@ -32,6 +32,7 @@ function authorize(callback) {
       version: 'v1',
       auth: config.Google_jwtClient
     });
+    callback(null);
   });
 
   // logger.log('authenticating Google - Gmail');
