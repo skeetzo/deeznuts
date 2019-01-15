@@ -174,7 +174,7 @@ module.exports.debug = function(callback) {
             });
             series.push(function (next) {
                 logger.test('Email Tests Complete');
-                cb(null);
+                // cb(null);
             });
             async.series(series);
         },
