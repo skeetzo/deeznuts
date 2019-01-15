@@ -10,7 +10,7 @@ module.exports = function() {
   this.email_account_created = function() {
     return {
       to: self.email_self,
-      from: 'Support - '+self.title+' <support@'+self.siteTitle+'>',
+      from: 'Support - '+self.siteTitle+' <support@'+self.siteTitle+'>',
       subject: 'Account Created!',
       text: '<p>' + 'A new account has been created!' + '</p>'
           + '<br>'
@@ -23,7 +23,7 @@ module.exports = function() {
     var amount = Math.round(((parseInt(video.price, 10) / 60) / self.conversionRate) * 100) / 100;
     return {
       to: self.email_self,
-      from: 'Support - '+self.title+' <support@'+self.siteTitle+'>',
+      from: 'Support - '+self.siteTitle+' <support@'+self.siteTitle+'>',
       subject: 'Video Purchased!',
       text: '<p>' + 'The video <strong>'+video.title+'</strong> has been purchased for: $<strong>'+amount+'</strong></p>'
           + '<br>'
@@ -35,7 +35,7 @@ module.exports = function() {
   this.email_transaction_confirmed = function(transaction) {
     return {
       to: self.email_self,
-      from: 'Support - '+self.title+' <support@'+self.siteTitle+'>',
+      from: 'Support - '+self.siteTitle+' <support@'+self.siteTitle+'>',
       subject: 'Transaction Confirmed!',
       text: '<p>' + 'A transaction has been confirmed for: <strong>'+transaction.value+'</strong> BTC / $<strong>'+transaction.value_in_dollars+'</strong> or <strong>'+(transaction.value_in_dollars*(self.conversionRate*60))+'</strong> seconds </p>'
           + '<br>'
