@@ -11,6 +11,7 @@ var config = require('../config/index'),
 
 var backupDatabase = function(callback) {
 	logger.log('Backing Up MongoDB: %s', config.botName);
+	if (!config.backup_db) return callback('Skipping MongoDB Backup');
 	var year = moment(new Date()).format('YYYY');
 	var month = moment(new Date()).format('MM-YYYY');
 	var file_path = path.join(config.mnt_path, 'backups/mongo', year, month);
@@ -32,6 +33,7 @@ module.exports.backupDatabase = backupDatabase;
 
 var backupApp = function(callback) {
 	logger.log('Backing Up App: %s', config.botName);
+	if (!config.backup_app) return callback('Skipping App Backup');
 	try {
 		fstream.Reader({ 'path': config.mnt_path, 'type': 'Directory' }) /* Read the source directory */
 		.on('end', function () {

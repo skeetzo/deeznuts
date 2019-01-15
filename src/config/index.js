@@ -79,6 +79,9 @@ config.emailing_on_transaction = true;
 // Twitter
 config.Twitter_link = config.domain+'/live';
 
+config.backup_db = true;
+config.backup_app = false;
+
 config.siteData = 
 	{ 	
 		debugging: config.debugging,
