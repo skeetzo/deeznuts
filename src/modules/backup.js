@@ -6,7 +6,7 @@ var config = require('../config/index'),
     path = require('path'),
     async = require('async');
 
-module.exports.backupDatabase = function(callback) {
+var backupDatabase = function(callback) {
 	logger.log('Backing Up MongoDB: %s', config.botName);
 	var year = moment(new Date()).format('YYYY');
 	var month = moment(new Date()).format('MM-YYYY');
@@ -25,8 +25,9 @@ module.exports.backupDatabase = function(callback) {
 	  }
 	});
 }
+module.exports.backupDatabase = backupDatabase;
 
-module.exports.backupApp = function(callback) {
+var backupApp = function(callback) {
 	logger.log('Backing Up App: %s', config.botName);
 	fstream.Reader({ 'path': config.mnt_path, 'type': 'Directory' }) /* Read the source directory */
 	.on('end', function () {
@@ -40,8 +41,9 @@ module.exports.backupApp = function(callback) {
 	.pipe(zlib.Gzip()) /* Compress the .tar file */
 	.pipe(fstream.Writer({ 'path': path.join(config.mnt_path, "backups", config.botName+".tar.gz") })) /* Give the output file name */
 }
+module.exports.backupApp= backupApp;
 
-module.exports.backup = function(callback) {
+var backup = function(callback) {
 	async.series([
 		function (step) {
 			backupDatabase(function (err) {
@@ -57,3 +59,4 @@ module.exports.backup = function(callback) {
 		}
 	]);
 }
+module.exports.backup = backup;
