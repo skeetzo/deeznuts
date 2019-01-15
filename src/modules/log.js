@@ -4,11 +4,7 @@ var config = require('../config/index'),
     fss = require('fs-extra'),
     moment = require('moment'),
     async = require('async'),
-    path = require('path'),
-    zlib = require('zlib'),
-    fstream = require('fstream'),
-    tar = require('tar'),
-    _ = require('underscore');
+    path = require('path');
 
 var Log = function() {
 
@@ -31,23 +27,7 @@ Log.prototype.backup = function(callback) {
 	  	backup = backup.replace(/\[(1|3|2|4)(7|9|3|4|2|1|)m/gi,'');
 	    fs.writeFile(file_path+"/"+newLog, backup, function (err) {
 	    	if (err) console.error(err);
-	    	try {
-				fstream.Reader({ 'path': config.logs_dir, 'type': 'Directory' }) /* Read the source directory */
-				.on('end', function () {
-					logger.debug('Logs Compressed');
-					callback(null);
-				})
-				.on('error', function (err) {
-					if (err&&err.message) logger.warn(err.message);
-				})
-				.pipe(tar.Pack()) /* Convert the directory to a .tar file */
-				.pipe(zlib.Gzip()) /* Compress the .tar file */
-				.pipe(fstream.Writer({ 'path': path.resolve(config.logs_dir, "logs.tar.gz") })) /* Give the output file name */
-			}
-			catch (err) {
-				logger.warn(err);
-				callback(null);
-			}
+	    	callback(null);
 		});
 	});
 }

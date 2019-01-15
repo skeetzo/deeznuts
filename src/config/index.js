@@ -70,7 +70,7 @@ config.streamRecording = true;
 
 // Email
 config.emailing = true;
-config.emailing_testing = true;
+config.emailing_testing = false;
 config.emailing_on_new = true;
 config.emailing_on_error = true;
 config.emailing_on_buy = true;
@@ -78,6 +78,9 @@ config.emailing_on_transaction = true;
 
 // Twitter
 config.Twitter_link = config.domain+'/live';
+
+config.backup_db = true;
+config.backup_app = false;
 
 config.siteData = 
 	{ 	
@@ -165,7 +168,7 @@ function deploy(environment) {
 		config.backupToOnlyFans = true;
 		config.delete_on_publish = true;
 		// config.deleteMissing = true;
-		// config.debugging_crons = true;
+		config.debugging_crons = true;
 		// config.debugging_clean_fileNames = true;
 	}
 	else if (environment=='production') {
@@ -184,14 +187,13 @@ function deploy(environment) {
 	}
 }
 
-config.dev_path = '/mnt/deeznuts/dev';
-config.local_keys_path = path.join(config.dev_path, 'localConfig.json');
-config.local_google_keys_path = path.join(config.dev_path, 'google.json');
-config.logs_dir = path.join(config.dev_path, 'logs');
-config.logs_file = path.join(config.dev_path, 'logs/file.log');
-
-config.videosPath = '/mnt/deeznuts/videos';
-config.imagesPath = '/mnt/deeznuts/images';
+config.mnt_path = '/mnt/deeznuts';
+config.local_keys_path = path.join(config.mnt_path, 'dev/localConfig.json');
+config.local_google_keys_path = path.join(config.mnt_path, 'dev/google.json');
+config.logs_dir = path.join(config.mnt_path, 'logs');
+config.logs_file = path.join(config.mnt_path, 'logs/file.log');
+config.videosPath = path.join(config.mnt_path, 'videos');
+config.imagesPath = path.join(config.mnt_path, 'images');
 config.watermarkPath = path.join(config.imagesPath, "watermark.png");
 
 config.defaultVideo = {
