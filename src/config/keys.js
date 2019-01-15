@@ -111,9 +111,7 @@ module.exports = function() {
          Google_Oauth_Opts.client_email,
          null,
          Google_Oauth_Opts.private_key,
-         [
-        'https://www.googleapis.com/auth/drive'
-        ]);
+         this.Google_scopes);
 
     this.driveFolderId = localConfig.driveFolderId || process.env.driveFolderId;
 
