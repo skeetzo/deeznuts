@@ -98,9 +98,9 @@ function sendEmail(email, callback) {
         + "To: "+email.to + "\n"
         + "Subject: "+email.subject + "\n\n"
         + email.text;
-      // logger.log('message: %s',message);
+      logger.log('message: %s', message);
       message = base64url(message);
-      // logger.log('encoded: %s',message);
+      logger.log('encoded: %s', message);
       Gmail.users.messages.send({
         userId: 'me',
         resource: {
