@@ -531,4 +531,20 @@ videoSchema.methods.watermark = function(callback) {
 
 videoSchema.set('redisCache', true);
 var Video = mongoose.model('videos', videoSchema,'videos');
+
+
+
+
+
+// // knex
+// var db = require("mongoose-sql");
+// db.migreateSchemas([Video]).then(function() { // call migreateSchemas with model
+//     console.log("moved video data to PostgreSQL from Mongoose");
+// });
+
+
+
+
 module.exports = Video;
+
+

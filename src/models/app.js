@@ -25,4 +25,14 @@ appSchema.pre('save', function (next) {
 
 appSchema.set('redisCache', false);
 var App = mongoose.model('app', appSchema,'app');
+
+
+
+// // knex
+// var db = require("mongoose-sql");
+// db.migreateSchemas([App]).then(function() { // call migreateSchemas with model
+//     console.log("moved app data to PostgreSQL from Mongoose");
+// });
+
+
 module.exports = App;
