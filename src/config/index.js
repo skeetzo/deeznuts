@@ -113,6 +113,8 @@ function deploy(environment) {
 	config.Twitter = false;
 	config.Twitter_tweeting = false;
 	config.Twitter_tweeting_on_live = false;
+	config.Twitter_deleting_tweet = true;
+	config.Twitter_deleting_tweet_on_live = true;
 	config.remoteDatabase = false;
 
 	config.debugging_blockchain = false;
