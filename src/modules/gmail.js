@@ -19,7 +19,7 @@ var Gmail = google.gmail({
 });
 
 function authorize(callback) {
-  // logger.log('authenticating Google - Gmail');
+  logger.log('authenticating Google - Gmail');
   App.findOne({},function (err, app) {
     if (err) return callback(err);
     if (!app) return callback('Missing app!');
@@ -36,17 +36,12 @@ function authorize(callback) {
     logger.debug('Google authorized - Gmail');
     callback(null);
     authenticated = true;
-    clearTimeout(authTimeout);
-    authTimeout = setTimeout(function authExpire() {
-      logger.debug('Google authentication - Gmail; expired');
-      authenticated = false;
-    },1000*60*60*6) // 6 hours
   });
 }
 module.exports.authorize = authorize;
 
 function refreshAccess(callback) {
-  // logger.log('refreshing Google - Gmail');
+  logger.log('refreshing Google - Gmail');
   App.findOne({},function (err, app) {
     if (err) return callback(err);
     if (app.google&&!app.google.access_token&&!app.google.refresh_token) return callback('Missing Google Tokens: Please Login');
@@ -81,14 +76,14 @@ function sendEmail(email, callback) {
     },
     function (next) {
       var message = "" 
-        + "Content-type: text/html;charset=iso-8859-1" + "\n"
+        + "Content-type: text/html;charset=iso-8859-1\n"
         + "From: "+email.from + "\n"
         + "To: "+email.to + "\n"
         + "Subject: "+email.subject + "\n\n"
         + email.text;
-      // logger.log('message: %s',message);
+      // logger.log('message: %s', message);
       message = base64url(message);
-      // logger.log('encoded: %s',message);
+      // logger.log('encoded: %s', message);
       Gmail.users.messages.send({
         userId: 'me',
         resource: {
@@ -96,7 +91,7 @@ function sendEmail(email, callback) {
         }
       }, function (err, response) {
         if (err) return next(err);
-        logger.log('email sent: %s <- %s: %s',email.to,email.from,email.subject);  
+        logger.log('email sent: %s <- %s: %s', email.to, email.from, email.subject);  
         return callback(null);
       });
     },

@@ -1,22 +1,31 @@
 var config = require('../config/index'),
-    logger = config.logger;
+    logger = config.logger,
+    _ = require('underscore');
 
 var User = require('../models/user');
 
 var occupancy = 10;
 var num_occupants = 0;
 
-module.exports.setup = function(io) {
+var clients = [];
+
+module.exports.setup = function (io) {
 	logger.io('Setting up socket.io');
 
-	io.on('connection', function(client) {
-		logger.io('Client Connected: %s', num_occupants);
-		num_occupants++;
+	io.on('connection', function (client) {
+		
 
-		client.on('connecting', function (userId) {
+		client.on('connected', function (userId) {
 			logger.io('connecting: %s', userId);
 			User.connected(userId, function (err) {
-				if (err) logger.warn(err);
+				if (err) return logger.warn(err);
+				// logger.log(clients);
+				if (!_.contains(clients, userId))
+					clients.push([userId, client]);
+				// logger.log(clients);
+				num_occupants++;
+				logger.io('Occupancy: %s', num_occupants);
+				if (num_occupants==1) syncOn();
 			});
 		});
 
@@ -35,34 +44,65 @@ module.exports.setup = function(io) {
 		});
 		
 		client.on('disconnect', function () {
-			num_occupants--;
+			
 		});
 
 		client.on('end', function (userId) {
-			logger.io('disconnecting: %s', userId);
+			logger.io('ending: %s', userId);
 			User.disconnected(userId, function (err) {
 				if (err) logger.warn(err);
+				num_occupants--;
+				logger.io('Occupancy: %s', num_occupants);
+				if (num_occupants==0) syncOff();
+				for (var i=0;i<clients.length;i++)
+					if (clients[i]==userId)
+						clients.splice(i,1);	
 			});
 		});
 
-		setInterval(function () {
-			client.emit('live', config.status);
-		}, 3000);
-
 	});
+
+	var SYNCING = false;
+	var SYNC_INTERVAL;
+	var redundant;
+	var syncOff = function() {
+	   clearTimeout(redundant);
+	   redundant = setTimeout(function () {
+	  	logger.log('Stopping User Syncs');
+	    clearInterval(SYNC_INTERVAL);
+	    SYNCING = false;
+	  }, 10000);
+	}
+
+	var syncOn = function() {
+	  clearInterval(SYNC_INTERVAL);
+	  SYNCING = true;
+	  logger.log('Starting User Syncs every %s second(s)...', config.syncInterval);
+	  SYNC_INTERVAL = setInterval(function () {
+	    User.find({'connected':true}, function (err, users) {
+	      if (err) return logger.warn(err);
+	      // logger.log('users: %s', users.length);
+	      _.forEach(users, function (user) {
+	      	if (user.time_added) {  
+	          	for (var i=0;i<clients.length;i++)
+	          		if (clients[i][0]==user._id)
+	          			clients[i][1].emit('time', {'time':user.time,'time_added':user.time_added});
+	          	user.time_added = null
+	        }
+	        user.sync(function (err) {
+	          if (err) logger.warn(err);
+	          if (user.disconnect) 
+	          	for (var i=0;i<clients.length;i++)
+	          		if (clients[i][0]==user._id)
+	          			clients[i][1].emit('disconnect');
+	        });
+	      });
+	    });
+	  }, config.syncInterval*1000);
+	}
 }
 
 module.exports.isRoom = function() {
 	if (num_occupants>=occupancy) return false;
 	return true;
 }
-
-// clearTimeout(user.syncTimer);
-// user.syncTimer = setInterval(function () {
-// 	logger.log('user synced: %s -> %s', user.time,(user.time - (config.syncInterval/1000)));
-// 	user.time = user.time - (config.syncInterval/1000);
-// 	user.save(function (err) {
-// 		if (err) logger.warn(err);
-// 		if (user.time<=0) client.emit('timeout', userId);
-// 	});
-// }, config.syncInterval);

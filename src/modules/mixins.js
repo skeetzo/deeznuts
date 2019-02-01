@@ -33,8 +33,18 @@ module.exports.hasRoom = function(req, res, next) {
 
 // Check Login
 module.exports.loggedIn = function(req, res, next) {
-    if (req.session.user)
-        next(null);
+    if (req.session.user) {
+        User.findById(req.session.user._id, function (err, user) {
+            if (err) {
+                logger.warn(err);
+                req.session.locals.error = 'There was an error!';
+                res.status(401).render('index', req.session.locals);
+            }
+            req.session.user = User_(user);
+            req.session.locals.user = User_(user);
+            next(null);
+        });
+    }
     else {
         req.session.locals.error = 'Please login!';
         res.status(401).render('index', req.session.locals);
@@ -92,15 +102,13 @@ module.exports.resetLocals = function(req, res, next) {
         // logger.debug('error: %s',req.session.locals.error);
     }
 
-    if (!req.session.locals._csrf)
-        req.session.locals._csrf = req.csrfToken();
+    // if (!req.session.locals._csrf)
+    req.session.locals._csrf = req.csrfToken();
 
     // rtmp key
-    if (!req.session.locals.key) {
-        var timestamp = (Date.now() + config.streamKeyExpire);
-        var hash = md5("/live/stream-"+timestamp+"-"+config.streamKey);
-        req.session.locals.key = timestamp+"-"+hash;
-    }
+    var timestamp = (Date.now() + config.streamKeyExpire);
+    var hash = md5("/live/stream-"+timestamp+"-"+config.streamKey);
+    req.session.locals.key = timestamp+"-"+hash;
 
     req.session.save(function (err) {
         if (err) logger.warn(err);
@@ -141,8 +149,10 @@ module.exports.User = User_;
 var Video = function(src) {
   if (!src.path) src.path = '';
   if (!src.path_image) src.path_image = '';
-  var path_ = path.relative(__dirname, src.path).replace(/.*public\//gi, '../');
-  var path_image = path.relative(__dirname, src.path_image).replace(/.*public\//gi, '../');
+  var path_ = path.join(config.videosPath, src.path).replace(/.*videos\//gi, '');
+  var path_image = path.join(config.imagesPath, src.path_image).replace(/.*images\//gi, '../images/');
+  // logger.log('path: %s', path_);
+  // logger.log('path_image: %s', path_image);
   return {
     '_id': src._id,
     'title': src.title,
@@ -159,8 +169,12 @@ module.exports.Video = Video;
 var Video_Preview = function(src) {
   if (!src.path_preview) src.path_preview = '';
   if (!src.path_image) src.path_image = '';
-  var path_ = path.relative(__dirname, src.path_preview).replace(/.*public\//gi, '../');
-  var path_image = path.relative(__dirname, src.path_image).replace(/.*public\//gi, '../');
+  // var path_ = src.path_preview.replace('/mnt/deeznuts', '..');
+  // var path_image = src.path_image.replace('/mnt/deeznuts', '..');
+  var path_ = path.join(config.videosPath, src.path_preview).replace(/.*videos\//gi, '');
+  var path_image = path.join(config.imagesPath, src.path_image).replace(/.*images\//gi, '../images/');
+  // logger.log('path: %s', path_);
+  // logger.log('path_image: %s', path_image);
   return {
     '_id': src._id,
     'title': src.title,

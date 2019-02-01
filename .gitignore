@@ -4,7 +4,8 @@ src/public/videos/archived/*.mp4
 src/public/videos/previews/*.mp4
 src/public/images/thumbnails/*.png
 
-#src/dev
+src/dev
+src/public/dist
 
 # Logs
 #logs

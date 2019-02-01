@@ -21,6 +21,7 @@ var mongoose = require('mongoose'),
 
 */
 var videoSchema = new Schema({
+  backedUp: { type: Boolean, default: false },
   date: { type: String, default: moment(new Date()).format('MM-DD-YYYY') },
   description: { type: String, default: '' },
   duration: { type: Number },
@@ -36,57 +37,75 @@ var videoSchema = new Schema({
 
 videoSchema.pre('save', function (next) {
   var self = this;
-  if (!self.date)
-    self.date = moment(new Date(self.title)).format('MM-DD-YYYY:HH:mm');
+  if (!self.path) return next('Missing path!');
+  if (!self.path_preview)
+    self.path_preview = path.join(config.videosPath, '/previews', self.path.replace('.mp4','-preview.mp4'));
+  // if (self.title) {
+  if (self.title!='Example') {
+    var title = path.basename(this.path.toLowerCase().replace('.mp4',''));
+    var time = title.substring(11);
+    title = title.substring(0,10);
+    // logger.debug('time: %s | %s', title, time);
+    //////
+    var date = moment(new Date(title));
+    var month = date.month()+1;
+    var day = date.date()+1;
+    var year = date.year();
+    //////
+    // var month = moment(new Date(title)).month()+1;
+    // var day = moment(new Date(title)).date()+1;
+    // var year = moment(new Date(title)).year();
+    //////
+    var hours = time.substring(0,2);
+    var minutes = time.substring(3,5);
+    // logger.debug('%s:%s:%s %s:%s', month, day, year, hours, minutes);
+    title = month+"-"+day+"-"+year+" "+hours+":"+minutes;
+    self.title = title;
+  }
+
   if ((self.isModified('description')||self.isModified('performers'))&&self.performers)
     self.description = [self.performers.slice(0, -1).join(', '), self.performers.slice(-1)[0]].join(self.performers.length < 2 ? '' : ' and ');
   if (!self.path)
-    self.path = path.join(__dirname, '../public/videos/archive/', self.title+'.mp4');
-  if (!self.duration) {
-    logger.debug('probing...');
-    // ffprobe video for duration
-    return FFmpeg.ffprobe(self.path, function(err, metadata) {
-      if (err) return logger.warn(err);
-      logger.debug('duration: %s', metadata.format.duration);
-      self.duration = metadata.format.duration;
-      if (self.duration<config.defaultPrice) { // 5 minutes / default time
-        self.price = config.defaultPrice;
-        logger.log('minimum price set: %s', self.price);
+    self.path = path.join(config.videosPath, 'archive/stream', self.title+'.mp4');
+  async.series([
+    function (step) {
+      // duration check
+      if (self.duration) return step(null);
+      logger.debug('probing duration...');
+      // ffprobe video for duration
+      return FFmpeg.ffprobe(self.path, function(err, metadata) {
+        if (err) logger.warn(err);
+        if (metadata) {
+          logger.debug('duration: %s', metadata.format.duration);
+          self.duration = metadata.format.duration;
+        } 
+        else {
+          logger.warn('Missing duration');
+          self.duration = 0;
+        }
+        step(null);
+      });
+    },
+    function (step) {
+      if (self.isModified('duration')||self.isModified('price')||!self.price) {
+        if (self.duration<config.defaultPrice) { // 5 minutes / default time
+          self.price = config.defaultPrice;
+          logger.log('minimum price set: %s', self.price);
+        }
+        else if (self.duration) {
+          self.price = self.duration;
+          logger.log('price set: %s', self.price);
+        }
+        else
+          self.price = config.defaultPrice;
+        // self.price = Math.round(self.price * 100) / 100;
+        self.price = Math.round(self.price);
       }
-      else {
-        self.price = Math.round(self.duration);
-        logger.log('price set: %s', self.price);
-      }
+      // Normal
       logger.debug('Video Saved: %s', self.title);
       next();
-    });
-  }
-  if (self.isModified('duration')||self.isModified('price')||!self.price) {
-    if (self.duration<config.defaultPrice) { // 5 minutes / default time
-      self.price = config.defaultPrice;
-      logger.log('minimum price set: %s', self.price);
     }
-    else if (self.duration) {
-      self.price = Math.round(self.duration);
-      logger.log('price set: %s', self.price);
-    }
-    else
-      self.price = config.defaultPrice;
-  }
-  if (!self.duration) {
-    // ffprobe video for duration
-    FFmpeg.ffprobe(self.path, function(err, metadata) {
-      if (err) return logger.warn(err);
-      logger.debug('duration: %s', metadata.format.duration);
-      self.duration = metadata.format.duration;
-      logger.debug('Video Saved: %s', self.title);
-      next();
-    });
-  }
-  else {
-    logger.debug('Video Saved: %s', self.title);
-    next();
-  }
+  ]);
 });
 
 // move any mp4s from public/videos/live/stream -> public/videos/archived
@@ -94,7 +113,7 @@ videoSchema.statics.archiveVideos = function(callback) {
   var fs = require('fs');
   logger.log('Archiving MP4s');
   // stream directories
-  fs.readdir(path.join(__dirname, '../public/videos/live'), function (err, streams) {
+  fs.readdir(path.join(config.videosPath, 'live/'), function (err, streams) {
     if (err) {
       logger.warn(err);
       return callback(null);
@@ -105,15 +124,15 @@ videoSchema.statics.archiveVideos = function(callback) {
       series.push(function (next) {
         // mp4s in directories
         var stream_name = streams.shift();
-        var stream_path = path.join(__dirname, '../public/videos/live', stream_name);
-        var archived_path = path.join(__dirname, '../public/videos/archived', stream_name);
+        var stream_path = path.join(config.videosPath, '/live/', stream_name);
+        var archived_path = path.join(config.videosPath, '/archived/', stream_name);
         // logger.debug('stream_name: %s', stream_name);
         logger.log('stream: %s', stream_name);
         logger.debug('stream_path: %s', stream_path);
         logger.debug('archived_path: %s', archived_path);
         // fss.ensureDirSync(archived_path);
-        fss.ensureDirSync(path.join(config.videosPath, 'archived/', stream_name), "0o2775");
-        fss.ensureSymlinkSync(path.join(config.videosPath, 'archived/', stream_name), archived_path);
+        fss.ensureDirSync(path.join(config.videosPath, '/archived/', stream_name), "0o2775");
+        // fss.ensureSymlinkSync(path.join(config.videosPath, 'archived', stream_name), archived_path);
         fs.readdir(stream_path, function (err, mp4s) {
           if (err) {
             logger.warn(err);
@@ -125,36 +144,26 @@ videoSchema.statics.archiveVideos = function(callback) {
             logger.debug('skipping empty');
             return next(null);
           }
-          var done = 0;
           for (var i=0; i<mp4s.length; i++) {
             try {
               logger.log('Archiving: %s', mp4s[i]);
-              var file_path = path.join(__dirname, '../public/videos/live', stream_name, mp4s[i]);
-              var file_path_archived = path.join(__dirname, '../public/videos/archived', stream_name, mp4s[i].toLowerCase());
-              logger.debug('file_path: %s', file_path);
-              logger.debug('file_path_archived: %s', file_path_archived);
+              var file_path = path.join(config.videosPath, '/live/', stream_name, mp4s[i]);
+              var file_path_archived = path.join(config.videosPath, '/archived/', stream_name, mp4s[i].toLowerCase());
+              // logger.debug('file_path: %s', file_path);
+              // logger.debug('file_path_archived: %s', file_path_archived);
               fss.moveSync(file_path, file_path_archived);
-              var title = mp4s[i].replace('.mp4','').substring(0,10);
-              var time = mp4s[i].replace('.mp4','').substring(11);
-              var month = moment(new Date(title)).month()+1;
-              var day = moment(new Date(title)).date()+1;
-              var year = moment(new Date(title)).year();
-              var hours = time.substring(0,2);
-              var minutes = time.substring(3,5);
-              logger.log('%s:%s:%s %s:%s', month, day, year, hours, minutes);
-              title = month+"-"+day+"-"+year+" "+hours+":"+minutes;
-              // var title = moment(new Date(mp4s[i].replace('.mp4','').substring(0,10))).format('MM-DD-YYYY HH:mm');
-              // logger.log('title: %s', title);
-              var newVideo = new Video({'title':title,'path':file_path_archived,'isOriginal':true});
+              var newVideo = new Video({'path':file_path_archived,'isOriginal':true});
               newVideo.save(function (err) {
                 if (err) logger.warn(err);
-                done++;
-                if (done==mp4s.length)
+                newVideo.backup(function (err) {
+                  if (err) logger.warn(err);
                   next(null);
+                });
               });
             }
             catch (error) {
               logger.warn(err);
+              next(null);
             }
           }
         });
@@ -190,6 +199,67 @@ videoSchema.statics.createPreviews = function(callback) {
   });
 }
 
+videoSchema.statics.deleteMissing = function(callback) {
+  logger.log('Deleting Missing Videos...');
+  fs.readdir(path.join(config.videosPath, '/archived/stream'), function (err, files) {
+    if (err) return callback(err);
+    Video.find({'isOriginal':true,'title':{'$ne':'Example'}}, function (err, videos) {
+      if (err) return callback(err);
+      var missingVideos = [];
+      for (var i=0;i<files.length;i++) 
+        for (var j=0;j<videos.length;j++) {
+          // logger.log('file: %s | %s :video', files[i],path.basename(videos[j].path));
+          if (files[i]==path.basename(videos[j].path))
+            videos.splice(j,1);
+        }
+      _.forEach(videos, function (video) {
+        video.remove();
+      });
+      logger.debug('Deleted missing: %s', missingVideos.length);
+      callback(null);
+    });
+  });
+}
+
+videoSchema.statics.populateFromFiles = function(callback) {
+  logger.log('Populating Video Database');
+  // read videos/archived for all the files
+  var videoFiles = fs.readdirSync(config.videosPath+'/archived/stream');
+  logger.log('videoFiles: %s', videoFiles);
+  // create a video model for each
+  var series = [];
+  _.forEach(videoFiles, function (video) {
+    series.push(function (step) {
+      var videoPath = path.join(config.videosPath, '/archived/stream', video);
+      logger.debug('videoPath: %s', videoPath);
+      Video.findOne({'path':videoPath}, function (err, video_) {
+        if (err) {
+          logger.warn(err);
+          return step(null);
+        }
+        if (video_) {
+          logger.debug('Existing video: %s', video_.title);
+          return video_.save(function (err) {
+            if (err) logger.warn(err);
+            step(null);
+          });
+        }
+        var newVideo = new Video({'isOriginal':true,'path':videoPath});
+        newVideo.save(function (err) {
+          if (err) logger.warn(err);
+          logger.debug('Populated video: %s', newVideo.title);
+          step(null);
+        });
+      });
+    });
+  });
+  series.push(function (step) {
+    logger.log('Video DB Repopulated');
+    callback(null);
+  });
+  async.series(series);
+}
+
 videoSchema.statics.processPublished = function(callback) {
   logger.log('Processing Published Video');
   Video.archiveVideos(function (err) {
@@ -198,6 +268,25 @@ videoSchema.statics.processPublished = function(callback) {
       if (err) return callback(err);
       logger.log('Processed Published Videos');
       callback(null);
+    });
+  });
+}
+
+// uploads to Google Drive - OnlyFans folder
+videoSchema.methods.backup = function(callback) {
+  var self = this;
+  if (!config.backupToOnlyFans) return callback('Skipping OnlyFans folder Backup');
+  logger.log('Backing up: %s', self.title);
+  if (self.backedUp) {
+    logger.debug('Skipping Backup: Already Backed Up');
+    return callback(null);
+  }
+  require('../modules/drive').backupVideo(self, function (err) {
+    if (err) return callback(err);
+    logger.log('Backed Up: %s', self.title);
+    self.backedUp = true;
+    self.save(function (err) {
+      callback(err);
     });
   });
 }
@@ -214,7 +303,12 @@ videoSchema.methods.createPreview = function(callback) {
       // create png of early frames of .mp4 path
       logger.log('--- Thumbnailing ---');
       self.thumbnail(function (err) {
-        if (err) logger.warn(err);
+        if (err) {
+          logger.warn(err);
+          if (err.message.indexOf('No such file or directory')>-1) {
+            logger.debug('-- missing file --');
+          }
+        }
         step(null);
       });
     },
@@ -233,6 +327,15 @@ videoSchema.methods.createPreview = function(callback) {
             return self.extract(function (err, file) {
               step(err, file);
             },'filters');
+          }
+          else if (err.message.indexOf('Conversion failed!')>-1) {
+            logger.debug('-- retrying muxing extraction 2 --');
+            return self.extract(function (err, file) {
+              step(err, file);
+            },'muxing');
+          }
+          else if (err.message.indexOf('No such file or directory')>-1) {
+            logger.debug('-- missing file --');
           }
           return step(err);
         }
@@ -266,7 +369,7 @@ videoSchema.methods.extract = function(callback, retryReason) {
   if (duration>config.defaultPreviewDuration) duration = parseInt(config.defaultPreviewDuration, 10);
   logger.debug('Duration: %s:%s', duration, this.duration);
   var newTitle = path.basename(this.path.toLowerCase().replace('.mp4','-preview.mp4'));
-  var newFile = path.join(__dirname, '../public/videos/previews', newTitle);
+  var newFile = path.join(config.videosPath, '/previews/', newTitle);
   logger.debug('New File: %s', newFile);
   logger.debug('New Title: %s', newTitle);
   var outputOptions = [];
@@ -302,6 +405,7 @@ videoSchema.methods.extract = function(callback, retryReason) {
     callback(err);
   })
   .on('progress', function (progress) {
+    if (config.debugging)
       process.stdout.write('Extracting...\033[0G');
   })
   .on('end', function () {
@@ -312,6 +416,7 @@ videoSchema.methods.extract = function(callback, retryReason) {
 }
 
 videoSchema.methods.sendPurchasedEmail = function(callback) {
+  if (!config.emailing_on_buy) return callback('Skipping - Email Notification On Purchase');
   logger.log('Sending Video Purchased Email: %s', this._id);
   var mailOptions = config.email_video_purchased(this);
   require('../modules/gmail').sendEmail(mailOptions, function (err) {
@@ -323,7 +428,7 @@ videoSchema.methods.thumbnail = function(callback) {
   var self = this;
   logger.log('Creating Thumbnail: %s', self.path);
   var filename = path.basename(self.path).split('.')[0]+'.png';
-  var foldername = path.join(__dirname, '../public/images/thumbnails');
+  var foldername = path.join(config.imagesPath, '/thumbnails/');
   logger.debug('filename: %s', filename);
   logger.debug('foldername: %s', foldername);
   var proc = new FFmpeg(self.path)
@@ -338,7 +443,7 @@ videoSchema.methods.thumbnail = function(callback) {
     callback(err);
   })
   .on('end', function() {
-    self.path_image = path.join(__dirname, '../public/images/thumbnails', path.basename(self.path).replace('.mp4','.png'));
+    self.path_image = path.join(config.imagesPath, '/thumbnails/', path.basename(self.path).replace('.mp4','.png'));
     self.save(function (err) {
       if (err) return callback(err);
       logger.log('thumbnail saved: %s', filename);
@@ -412,7 +517,8 @@ videoSchema.methods.watermark = function(callback) {
     callback(err);
   })
   .on('progress', function (progress) {
-    process.stdout.write("Watermarking...\033[0G");
+    if (config.debugging)
+      process.stdout.write("Watermarking...\033[0G");
   })
   .on('end', function () {
     logger.log("Watermarking Finished");
@@ -423,5 +529,22 @@ videoSchema.methods.watermark = function(callback) {
   .saveToFile(self.path_preview); 
 }
 
+videoSchema.set('redisCache', true);
 var Video = mongoose.model('videos', videoSchema,'videos');
+
+
+
+
+
+// // knex
+// var db = require("mongoose-sql");
+// db.migreateSchemas([Video]).then(function() { // call migreateSchemas with model
+//     console.log("moved video data to PostgreSQL from Mongoose");
+// });
+
+
+
+
 module.exports = Video;
+
+

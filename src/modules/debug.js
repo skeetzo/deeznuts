@@ -25,9 +25,32 @@ module.exports.debug = function(callback) {
 
         function backupDatabase(cb) {
             if (!config.debugging_backup_db) return cb(null);
-            require('../modules/backup').backup(function (err) {
+            require('../modules/backup').backupDatabase(function (err) {
                 if (err) logger.warn(err);
                 cb(null);
+            });
+        },
+
+        function backupVideos(cb) {
+            if (!config.backupToOnlyFans) return cb(null);
+            require('../models/video').find({}, function (err, videos) {
+                if (err) {
+                    logger.warn(err);
+                    cb(null);
+                }
+                var series = [];
+                _.forEach(videos, function (video) {
+                    series.push(function (step) {
+                        video.backup(function (err) {
+                            if (err) logger.warn(err);
+                            step(null);
+                        });
+                    });
+                });
+                series.push(function (step) {
+                    cb(null);
+                });
+                async.series(series);
             });
         },
 
@@ -35,29 +58,35 @@ module.exports.debug = function(callback) {
             if (!config.debugging_reset_db) return cb(null);
             logger.test('Resetting Database:');
             async.series([
+                // function (step) {
+                //     mongoose.connection.db.dropDatabase(function(err, result) {
+                //         if (err) logger.warn(err);
+                //         step(null);
+                //     });
+                // },
                 function (step) {
-                    mongoose.model('session',{}).remove({}, function (err) {
+                    mongoose.connection.db.dropCollection('sessions', function(err) {
                         if (err) logger.warn(err);
                         logger.test('- session');
                         step(null);
                     });
                 },
                 function (step) {
-                    mongoose.model('user',{}).remove({}, function (err) {
+                    mongoose.connection.db.dropCollection('users', function (err) {
                         if (err) logger.warn(err);
                         logger.test('- user');
                         step(null);
                     });
                 },
                 function (step) {
-                    mongoose.model('video',{}).remove({}, function (err) {
+                    mongoose.connection.db.dropCollection('videos', function (err) {
                         if (err) logger.warn(err);
                         logger.test('- video');
                         step(null);
                     });
                 },
                 function (step) {
-                    mongoose.model('transaction',{}).remove({}, function (err) {
+                    mongoose.connection.db.dropCollection('transactions', function (err) {
                         if (err) logger.warn(err);
                         logger.test('- transaction');
                         step(null);
@@ -65,7 +94,7 @@ module.exports.debug = function(callback) {
                 },
                 function (step) {
                     if (!config.debugging_reset_files) return step(null);
-                    fss.emptyDir('../public/videos/archived/stream', function (err) {
+                    fss.emptyDir(path.join(config.videosPath, 'archived/stream'), function (err) {
                         if (err) logger.warn(err);
                         logger.test('- archived');
                         step(null);
@@ -73,7 +102,7 @@ module.exports.debug = function(callback) {
                 },
                 function (step) {
                     if (!config.debugging_reset_files) return step(null);
-                    fss.emptyDir('../public/videos/live/stream', function (err) {
+                    fss.emptyDir(path.join(config.videosPath, 'live/stream'), function (err) {
                         if (err) logger.warn(err);
                         logger.test('- live');
                         step(null);
@@ -81,7 +110,7 @@ module.exports.debug = function(callback) {
                 },
                 function (step) {
                     if (!config.debugging_reset_files) return step(null);
-                    fss.emptyDir('../public/videos/previews', function (err) {
+                    fss.emptyDir(path.join(config.videosPath, 'previews'), function (err) {
                         if (err) logger.warn(err);
                         logger.test('- previews');
                         step(null);
@@ -89,7 +118,7 @@ module.exports.debug = function(callback) {
                 },
                 function (step) {
                     if (!config.debugging_reset_files) return step(null);
-                    fss.emptyDir('../public/images/thumbnails', function (err) {
+                    fss.emptyDir(path.join(config.imagesPath, 'thumbnails'), function (err) {
                         if (err) logger.warn(err);
                         logger.test('- thumbnails');
                         step(null);
@@ -134,7 +163,8 @@ module.exports.debug = function(callback) {
             _.forEach(tests, function (email) {
                 series.push(function (next) {
                     if (typeof config[email.function] != "function") return logger.log('Not found: %s',email.function);
-                    var mailOptions = config[email.function](config.email_test_address, email.data);
+                    // var mailOptions = config[email.function](config.email_test_address, email.data);
+                    var mailOptions = config[email.function](email.data);
                     logger.test('Testing Email: %s', email.function);
                     Gmail.sendEmail(mailOptions, function (err) {
                         if (err) logger.warn(err);      
@@ -148,6 +178,61 @@ module.exports.debug = function(callback) {
             });
             async.series(series);
         },
+
+        function testCrons(cb) {
+            if (!config.debugging_crons) {
+                logger.test('Skipping Crons Tests');
+                return cb(null);
+            }
+            logger.test('Testing Crons');
+            var Crons = require('../modules/cron');
+            var series = [];
+            _.forEach(Crons.debugging, function (c) {
+                if (typeof Crons[c] === 'function') 
+                    series.push(function (step) {
+                        logger.test('cron: %s',c);
+                        Crons[c](function (err) {
+                            setTimeout(() => { step(null); });
+                        });
+                    });
+            });
+            series.push(function (step) {
+                logger.test('Cron Tests Complete');
+                cb(null);
+            });
+            async.series(series);
+        },
+
+        function cleanFileNames(cb) {
+            if (!config.debugging_clean_fileNames) {
+                logger.test('Skipping File Clean');
+                return cb(null);
+            }
+            var Video = require('../models/video');
+            Video.find({'isOriginal':true}, function (err, videos) {
+                if (err) {
+                    logger.warn(err);
+                    return cb(null);
+                }
+                _.forEach(videos, function (video) {
+                    var date = video.path.match(/(\d\d\d\d-\d\d-\d\d-\d\d-\d\d)/g);
+                    if (!date) return;
+                    logger.log(date);
+                    date = date[0];
+                    logger.log(date);
+                    var time = date.substring(11);
+                    date = date.substring(0,10);
+                    video.date = moment(new Date(date)).format('MM-DD-YYYY');
+                    video.title = video.date+" "+time;
+                    logger.log('date: %s', video.date);
+                    logger.log('title: %s', video.title);
+                    video.save();
+                });
+                logger.test('Video Filenames Reset');
+                cb(null);
+            })
+        },
+
         function (cb) {
             logger.test('Debugging Complete')
             cb(null);

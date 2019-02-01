@@ -2,6 +2,7 @@ extends ../layout/page
 
 prepend content
   h2 Videos
+  small video cost = video duration in seconds
   p 
   // this is a list of videos
   h3 Purchased
@@ -10,7 +11,7 @@ prepend content
     //- users videos
     if (videos)
       for video in videos
-        .col-xs-4
+        .col-md-3.col-sm-4.col-xs-12
           h3.videoTitle=video.title
           //- h4.videoDate #{video.date}
           h4.videoPrice=video.price
@@ -30,39 +31,49 @@ prepend content
     //- all videos
     if (videos_unowned)
       for video in videos_unowned
-        .col-xs-4
+        .col-md-3.col-sm-4.col-xs-12
           h3.videoTitle=video.title
           //- h4.videoDate #{video.date}
           h4.videoPrice=video.price
           video(controls, poster=video.path_image, type="video/mp4", width=250, src=video.path)
           .row
-            button.btn.btn-primary(onclick="buy(\'"+video.title+"\')") Buy
+            button.btn.btn-primary(onclick="buy(\'"+video._id+"\')") Buy
+
+  br
+
+  include ../include/paypal
+  br
+  include ../include/bitcoin
 
 prepend javascript
   script.
     function buy(video) {
       //- console.log('video: %s', video);
-      return Promise.resolve($.ajax({
-        type: 'POST',
-        url: '/buy',
-        data: {'_csrf':"#{_csrf}",'video':video},
-        success: function(data) {
-          if (data.text)
-            alert(data.text);
-        },
-        error: function(data) { 
-         if (data.status == 400)
-            alert('There was an error!');
-          else if (data.status == 401)
-            alert("Please login or create an account!");
-          else if (data.responseJSON&&data.responseJSON.text)
-            alert(data.responseJSON.text);
-          else
-            alert('There was an error!');
-        },
-      })).catch(function (reason) {
-        //- console.log(reason);
-      });
+      if (confirm("Confirm Purchase"))
+        return Promise.resolve($.ajax({
+          type: 'POST',
+          url: '/buy',
+          data: {'_csrf':"#{_csrf}",'video':video},
+          success: function(data) {
+            if (data.text)
+              alert(data.text);
+            location.reload();
+          },
+          error: function(data) { 
+           if (data.status == 400)
+              alert('There was an error!');
+            else if (data.status == 401)
+              alert("Please login or create an account!");
+            else if (data.responseJSON&&data.responseJSON.text) {
+              alert(data.responseJSON.text);
+              location.reload();
+            }
+            else
+              alert('There was an error!');
+          },
+        })).catch(function (reason) {
+          //- console.log(reason);
+        });
     }
 
     //- function download(video) {

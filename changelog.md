@@ -1,48 +1,62 @@
 ## Changelog
 
-**0.0.1 : 6/10/2018**
+** 0.1.0 : 6/10/2018**
  - setup and general outline
-**0.0.2**
  - app skeleton
-**0.0.3**
  - rtmp
-**0.0.4**
  - refacing
-**0.0.5**
  - aws
-**0.0.6 : 6/20/2018**
+**6/20/2018**
  - blockchain.info
-**0.0.7 : 6/22/2018**
+**6/22/2018**
  - user login
-**0.0.8 : 6/24/2018**
+**6/24/2018**
  - usability fixes
  - testing
-**0.0.9 : 6/26/2018**
+** 0.2.0 : 6/26/2018**
  - SSL
  - blockchain testing
  - model: transaction
-
  - debugging settings
  - writeup
-
-**1.0.0 : Live-able : 6/25/2018**
+**6/25/2018**
  - social media: twitter & instagram links, snap
-
-**1.0.1**
  - route & view: videos
  - btc for vod
  - stream testing
-
-**Transmuxing debugging : 11/7/2018**
+**11/7/2018**
+ - transmuxing debugging
  - video: archiving
  - video: previews
-
-**11/10/2018**
+** 0.3.0 : 11/10/2018**
  - socket.io infrastructure
- 
-**1.1.0**
+**11/27/2018**
+ - Gmail
+ - debug.js
+**12/2/2018**
+ - Google Drive backup to OnlyFans folder
+ ** 1.0.0 : 12/3/2018**
+ - production ready
+ **1.0.1 : 12/12/2018**
+ - added stream's disconnect timeout
+ - email: conversion metric debugging
+ - mixins bug fixes
+ - nginx location: /favicon/
+ - User.sync update
+ **12/15/2018**
+ - favicons
+ **12/23/2018**
+ - paypal
+ **1.0.2 : 1/11/2019**
+ - rtmp key debugging
+ **1.0.3 : 1/14/2019**
+ - email debugging
+ **1.0.4 : 2/1/2019**
+ - GoProStream-master/stream.js
+ - Tweeting rearranged to stream.js
+
+ **??/??/??**
  - next live @ & schedule
- - chat log
 
 
 **2.0.0 : Android App : ??/??/??**

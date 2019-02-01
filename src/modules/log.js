@@ -4,8 +4,7 @@ var config = require('../config/index'),
     fss = require('fs-extra'),
     moment = require('moment'),
     async = require('async'),
-    path = require('path'),
-    _ = require('underscore');
+    path = require('path');
 
 var Log = function() {
 
@@ -16,8 +15,8 @@ Log.prototype.backup = function(callback) {
 	var newLog = moment(new Date()).format('MM-DD-YYYY');
 	var year = moment(new Date()).format('YYYY');
 	var month = moment(new Date()).format('MM-YYYY');
-	var file_path = path.resolve(config.logs_backupDir, year, month);
-	logger.log('logs backup path: %s', file_path);
+	var file_path = path.resolve(config.logs_dir, year, month);
+	// logger.log('logs backup path: %s', file_path);
 	fss.ensureDir(file_path, err => {
 	    if (err) return callback(err);
 	  	// dir has now been created, including the directory it is to be placed in
@@ -28,7 +27,7 @@ Log.prototype.backup = function(callback) {
 	  	backup = backup.replace(/\[(1|3|2|4)(7|9|3|4|2|1|)m/gi,'');
 	    fs.writeFile(file_path+"/"+newLog, backup, function (err) {
 	    	if (err) console.error(err);
-			callback(null);
+	    	callback(null);
 		});
 	});
 }

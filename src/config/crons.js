@@ -2,6 +2,12 @@ module.exports = function() {
     // CronJobs
     this.crons = {
 
+        backup : {
+            start : true,
+            cronTime : '23 56 00 * * *', // end of night every day
+            timeZone: 'America/Los_Angeles' 
+        },
+
         ping : {
             start : true,
             cronTime : '00 00 * * * *', // every hour
