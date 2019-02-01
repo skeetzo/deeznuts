@@ -1,32 +1,32 @@
 #!/usr/bin/env node 
-var config = require('../config/index'),
-    logger = config.logger;
+// var config = require('../config/index'),
+    // logger = config.logger;
 var async = require('async');
 
 var TWEET = null,
     QUIET = false;
 
 process.argv.forEach((val, index) => {
-  // logger.log(`${index}: ${val}`)
+  // console.log(`${index}: ${val}`)
   if (val=='-t') TWEET = process.argv[index+1];
   if (val=='-q') QUIET = true;
 });
 
-if (TWEET) logger.log('Tweeting: %s');
-if (QUIET) logger.log('Not Tweeting (Quiet)');
+if (TWEET) console.log('Tweeting: %s');
+if (QUIET) console.log('Not Tweeting (Quiet)');
 
-logger.log('Streaming to DeezNuts...');
+console.log('Streaming to DeezNuts...');
 async.series([
   function (step) {
     if (QUIET) return step(null);
     var Twitter = require('../modules/twitter');
     Twitter.tweetLive(TWEET, function (err) {
-      if (err) logger.warn(err);
+      if (err) console.warn(err);
       step(null);
     });
   },
   function (step) {
-    logger.log('Spawning Python process...');
+    console.log('Spawning Python process...');
     let {PythonShell} = require('python-shell');
     var path = require('path');
     let options = {
@@ -39,14 +39,14 @@ async.series([
     let pyshell = new PythonShell('GoProStream.py', options);
 
     pyshell.on('message', function (message) {
-      logger.log(message);
+      console.log(message);
     });
 
     // end the input stream and allow the process to exit
     pyshell.end(function (err, code, signal) {
-      if (err) logger.warn(err);
-      logger.log('The exit code was: ' + code);
-      logger.log('The exit signal was: ' + signal);
+      if (err) console.warn(err);
+      console.log('The exit code was: ' + code);
+      console.log('The exit signal was: ' + signal);
       step(null);   
     });  
 
@@ -59,11 +59,11 @@ async.series([
     if (QUIET) return step(null);
     var Twitter = require('../modules/twitter');
     Twitter.deleteLiveTweet(function (err) {
-      if (err) logger.warn(err);
+      if (err) console.warn(err);
       step(null);
     });
   },
   function (step) {
-    logger.log('Stream Complete');
+    console.log('Stream Complete');
   }
 ])
