@@ -112,7 +112,6 @@ function deploy(environment) {
 
 	config.Twitter = false;
 	config.Twitter_tweeting = false;
-	config.Twitter_tweeting_on_live = false;
 	config.Twitter_deleting_tweet = true;
 	config.Twitter_deleting_tweet_on_live = true;
 	config.remoteDatabase = false;
@@ -165,7 +164,6 @@ function deploy(environment) {
 		config.PayPal = true;
 		config.PayPal_environment = 'sandbox';
 		config.Twitter = true;
-		config.Twitter_tweeting_on_live = true;
 		config.remoteDatabase = true;
 		// config.archive_on_publish = true;
 		config.backupToOnlyFans = true;
@@ -180,8 +178,7 @@ function deploy(environment) {
 		config.PayPal_environment = 'live';
 		config.PayPal_syncing_webhooks = false;
 		config.Twitter = true;
-		// config.Twitter_tweeting = true;
-		// config.Twitter_tweeting_on_live = true;
+		config.Twitter_tweeting = true;
 		config.backupToOnlyFans = true;
 		config.archive_on_publish = true;
 		// config.remoteDatabase = true;

@@ -51,6 +51,9 @@
  - rtmp key debugging
  **1.0.3 : 1/14/2019**
  - email debugging
+ **1.0.4 : 2/1/2019**
+ - GoProStream-master/stream.js
+ - Tweeting rearranged to stream.js
 
  **??/??/??**
  - next live @ & schedule

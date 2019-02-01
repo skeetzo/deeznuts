@@ -80,10 +80,6 @@ nms.on('postPublish', (id, StreamPath, args) => {
   connectTimeout = setTimeout(function () {
     logger.log('Updating Status %s -> %s', config.status, 'Live');
     config.status = 'Live';
-    if (config.Twitter_tweeting_on_live)
-      require('../modules/twitter').tweetLive(function (err) {
-        if (err) logger.warn(err);
-      });
   }, 1000*config.rtmpTimeout);
 });
 
@@ -95,10 +91,6 @@ nms.on('donePublish', (id, StreamPath, args) => {
   disconnectTimeout = setTimeout(function () {
     logger.log('Updating Status %s -> %s', config.status, 'Not Live');
     config.status = 'Not Live';
-    if (config.Twitter_deleting_tweet_on_live)
-      require('../modules/twitter').deleteLiveTweet(function (err) {
-        if (err) logger.warn(err);
-      });
     if (config.delete_on_publish) {
       var stream_path = require('path').join(config.videosPath, '/live/stream/*', );
       var fs = require('fs');

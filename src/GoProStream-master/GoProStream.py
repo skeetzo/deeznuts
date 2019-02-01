@@ -44,13 +44,20 @@ SAVE_FILENAME="goprofeed3"
 SAVE_FORMAT="ts"
 SAVE_LOCATION="/tmp/"
 # destination rtmp application to determine text sent to Tweet
+LOGLEVEL = "debug"
 DESTINATION = "live"
 
+# arguments
 i = 0
 while i < len(sys.argv):
     if '-d' in str(sys.argv[i]):
         DESTINATION = str(sys.argv[i+1])
+    if '-loglevel' in str(sys.argv[i]):
+        LOGLEVEL = str(sys.argv[i+1])
     i += 1
+
+print("LOGLEVEL: "+LOGLEVEL)
+print("DESTINATION: "+DESTINATION)
 
 print("Connecting to GoPro Media...")
 sys.stdout.flush()
@@ -117,7 +124,7 @@ def gopro_live():
 			print("Recording locally: " + str(SAVE))
 			print("Recording stored in: " + SAVELOCATION)
 			print("Note: Preview is not available when saving the stream.")
-			subprocess.Popen("ffmpeg -re -i 'udp://10.5.5.100:8554' -loglevel debug -probesize 100M -analyzeduration 100M -fflags nobuffer -f:v mpegts -acodec copy -vcodec copy -f flv rtmp://76.91.217.22:1935/"+DESTINATION, shell=True)
+			subprocess.Popen("ffmpeg -re -i 'udp://10.5.5.100:8554' -loglevel "+LOGLEVEL+" -probesize 100M -analyzeduration 100M -fflags nobuffer -f:v mpegts -acodec copy -vcodec copy -f flv rtmp://76.91.217.22:1935/"+DESTINATION, shell=True)
 		if sys.version_info.major >= 3:
 			MESSAGE = bytes(MESSAGE, "utf-8")
 		print("Press ctrl+C to quit this application.\n")

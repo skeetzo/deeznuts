@@ -22,16 +22,18 @@ var connect = function(callback) {
 }
 module.exports.connect = connect;
 
-var tweetLive = function(tw) {
+var tweetLive = function(tw, callback) {
 	logger.log('Tweeting Live');
 	var tweet = "I\'ve just gone live! "+moment(new Date()).format('D/MM @ H:MM')+" "+config.Twitter_link;
+    if (!tw) tw = tweet;
     logger.debug('tweet: %s', tweet);
-	if (!config.Twitter) return logger.debug('Twitter Disabled');
-	if (!config.Twitter_tweeting) return logger.debug('Not Tweeting');
+	if (!config.Twitter) return callback('Twitter Disabled');
+	if (!config.Twitter_tweeting) return callback('Not Tweeting');
 	var T = new Twit(config.TwitterConfig);
     T.post('statuses/update', { 'status': tweet }, function(err) { 
-    	if (err) return logger.warn(err);
+    	if (err) return callback(err);
         logger.log('Live Tweet posted');
+        callback(null);
     });
 }
 module.exports.tweetLive = tweetLive;
