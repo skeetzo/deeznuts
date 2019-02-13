@@ -54,7 +54,9 @@
  **1.0.4 : 2/1/2019**
  - GoProStream-master/stream.js
  - Tweeting rearranged to stream.js
-
+ **1.0.5 : 2/12/2019**
+ - menu.js
+ 
  **??/??/??**
  - next live @ & schedule
 
