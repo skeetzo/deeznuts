@@ -24,6 +24,7 @@ function tweet(callback) {
       output: process.stdout
     });
     rl.question('Text: ', (answer) => {
+      logger.log('answer: %s', answer);
       Twitter.tweet(answer, function (err) {
         callback(err);
       });
@@ -137,7 +138,6 @@ function main() {
         toggleStream(handle);
       else if (answer==3)
         deleteTweet(handle);
-      // rl.close();
     });
 }
 
