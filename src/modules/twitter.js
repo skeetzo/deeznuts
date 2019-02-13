@@ -26,6 +26,7 @@ var tweetLive = function(tw, callback) {
 	logger.log('Tweeting Live');
 	var tweet = "I\'ve just gone live! "+moment(new Date()).format('D/MM @ H:MM')+" "+config.Twitter_link;
     if (!tw) tw = tweet;
+    else tw += " "+config.Twitter_link
     logger.debug('tweet: %s', tweet);
 	if (!config.Twitter) return callback('Twitter Disabled');
 	if (!config.Twitter_tweeting) return callback('Not Tweeting');

@@ -182,7 +182,7 @@ function deploy(environment) {
 		config.backupToOnlyFans = true;
 		config.archive_on_publish = true;
 		// config.remoteDatabase = true;
-		// config.rebuildFromFiles = true;
+		config.rebuildFromFiles = true;
 		// config.deleteMissing = true;
 	}
 }
