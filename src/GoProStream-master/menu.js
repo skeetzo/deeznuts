@@ -38,7 +38,7 @@ function tweetLive(callback) {
     });
 }
 
-function deleteTweet() {
+function deleteTweet(callback) {
     // find recent tweet w/ url
     // delete tweet
     Twitter.deleteLiveTweet(function (err) {
@@ -80,9 +80,8 @@ function toggleStream() {
           logger.log('The exit signal was: ' + signal);
           CONNECTED = false;
         });
-
-        main()
     }
+    setTimeout((step) => {main()}, 10000);
 }
 
 function menu() {
@@ -120,6 +119,7 @@ function colorize(string, color) {
 var util = require('util');
 
 function main() {
+    process.stdout.write('\033c');
     header()
     menu()
 
@@ -145,5 +145,5 @@ main()
 
 function handle(err) {
     if (err) logger.log(err);
-    main();    
+    setTimeout((step) => {main()}, 10000);    
 }
