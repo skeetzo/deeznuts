@@ -24,14 +24,13 @@ module.exports.connect = connect;
 
 var tweet = function(tw, callback) {
 	logger.log('Tweeting');
-	var tweet = "I\'ve just gone live! "+moment(new Date()).format('D/MM @ H:MM')+" "+config.Twitter_link;
-    if (!tw) tw = tweet;
+    if (!tw) tw = "I\'ve just gone live! "+moment(new Date()).format('D/MM @ H:MM')+" "+config.Twitter_link;
     else tw += " "+config.Twitter_link
-    logger.debug('tweet: %s', tweet);
+    logger.debug('tweet: %s', tw);
 	if (!config.Twitter) return callback('Twitter Disabled');
 	if (!config.Twitter_tweeting) return callback('Not Tweeting');
 	var T = new Twit(config.TwitterConfig);
-    T.post('statuses/update', { 'status': tweet }, function(err) { 
+    T.post('statuses/update', { 'status': tw }, function(err) { 
     	if (err) return callback(err);
         logger.log('Live Tweet posted');
         callback(null);
