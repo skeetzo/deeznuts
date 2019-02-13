@@ -128,6 +128,7 @@ function main() {
     });
 
     rl.question('Selection: ', (answer) => {
+      rl.close();
       if (answer==0)
         tweet(handle);
       else if (answer==1)
