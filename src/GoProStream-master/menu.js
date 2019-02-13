@@ -56,7 +56,7 @@ var path = require('path');
 function toggleStream() {
     if (CONNECTED) {
         logger.log('Ending Python process...')
-        pyshell.kill();
+        pyshell.end();
     }
     else {
         logger.log('Spawning Python process...');
