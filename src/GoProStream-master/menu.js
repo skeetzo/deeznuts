@@ -24,7 +24,7 @@ function tweet(callback) {
       output: process.stdout
     });
     rl.question('Text: ', (answer) => {
-      Twitter.tweet(input, function (err) {
+      Twitter.tweet(answer, function (err) {
         callback(err);
       });
       rl.close();
