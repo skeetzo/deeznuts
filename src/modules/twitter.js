@@ -22,8 +22,8 @@ var connect = function(callback) {
 }
 module.exports.connect = connect;
 
-var tweetLive = function(tw, callback) {
-	logger.log('Tweeting Live');
+var tweet = function(tw, callback) {
+	logger.log('Tweeting');
 	var tweet = "I\'ve just gone live! "+moment(new Date()).format('D/MM @ H:MM')+" "+config.Twitter_link;
     if (!tw) tw = tweet;
     else tw += " "+config.Twitter_link
@@ -37,7 +37,7 @@ var tweetLive = function(tw, callback) {
         callback(null);
     });
 }
-module.exports.tweetLive = tweetLive;
+module.exports.tweet = tweet;
 
 
 var deleteLiveTweet = function(callback) {
