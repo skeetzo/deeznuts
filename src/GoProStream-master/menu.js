@@ -1,7 +1,5 @@
-
-
-
-
+// Skeetzo
+// 2/12/2018
 // ASCII
 // show menu and wait for input
 // - do action and then return
@@ -12,11 +10,12 @@
 // -- delete latest tweet w/ url
 // - go live / go offline
 // -- stream to GoPro
-const readline = require('readline');
 var config = require('../config/index'),
     logger = config.logger;
 var Twitter = require('../modules/twitter');
-    
+var util = require('util');
+const readline = require('readline');
+
 
 function tweet(callback) {
     const rl = readline.createInterface({
@@ -115,8 +114,6 @@ function colorize(string, color) {
     // if not color in colors: return string
     return colors[color] + string + '\033[0m';
 }
-
-var util = require('util');
 
 function main() {
     process.stdout.write('\033c');
