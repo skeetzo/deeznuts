@@ -38,6 +38,28 @@ var tweet = function(tw, callback) {
 }
 module.exports.tweet = tweet;
 
+var tweetOnPublishLock = false;
+var tweetOnPublish = function(video, callback) {
+    if (tweetOnPublishLock) return callback('Recently Tweeted');
+    logger.log('Tweeting Published Video: ', video.title);
+    var tw = "I\'ve just uploaded another video! "+video.link;
+    logger.debug('tweet: %s', tw);
+    if (!config.Twitter) return callback('Twitter Disabled');
+    if (!config.Twitter_tweeting) return callback('Not Tweeting');
+    var T = new Twit(config.TwitterConfig);
+    T.post('statuses/update', { 'status': tw }, function(err) { 
+        if (err) return callback(err);
+        logger.log('Published Tweet posted');
+        callback(null);
+        tweetOnPublishLock = true;
+        setTimeout(function publishTimeout() {
+            tweetOnPublishLock = false;
+            logger.debug('tweetOnPublishLock released');
+        }, 10000);
+    });
+}
+module.exports.tweetOnPublish = tweetOnPublish;
+
 
 var deleteLiveTweet = function(callback) {
     logger.log('Deleting Live Tweet');
