@@ -71,11 +71,11 @@ var deleteLiveTweet = function(callback) {
         if (err) return callback(err);
         if (tweets.length<=0) return cTallback('Error: No Tweets Found');
         for (var i=0;i<tweets.length;i++) {
-            logger.log('status: %s', tweets[i]);
-            if (~tweets[i].status.indexOf(config.Twitter_link))
-                return T.post('statuses/destroy/:id', { 'id': tweets[i].id }, function (err, data, response) {
+            // logger.log('status: %s', JSON.stringify(tweets[i], null, 4));
+            if (~tweets[i].text.indexOf("/t.co/"))
+                return T.post('statuses/destroy/:id', { 'id': tweets[i].id_str }, function (err, data, response) {
                     if (err) return callback(err);
-                    logger.log('Live Tweet destroyed: %s', tweets[i].id);
+                    logger.log('Live Tweet destroyed: %s', tweets[i].id_str);
                     callback(null);
                 });       
         }
@@ -83,15 +83,6 @@ var deleteLiveTweet = function(callback) {
     });
 }
 module.exports.deleteLiveTweet = deleteLiveTweet;
-
-
-
-
-
-
-
-
-
 
 
 

@@ -69,7 +69,7 @@ var path = require('path');
 function toggleStream() {
     if (CONNECTED) {
         logger.log('Ending Python process...')
-        pyshell.kill('SIGINT');
+        pyshell.terminate('SIGINT');
     }
     else {
         logger.log('Spawning Python process...');
@@ -83,7 +83,7 @@ function toggleStream() {
         pyshell = new PythonShell('GoProStream.py', options);
         CONNECTED = true;
         pyshell.on('message', function (message) {
-          // logger.log(message);
+          logger.log(message);
         });
 
         // end the input stream and allow the process to exit
