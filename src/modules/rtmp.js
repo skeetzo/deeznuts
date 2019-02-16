@@ -92,7 +92,7 @@ nms.on('donePublish', (id, StreamPath, args) => {
     logger.log('Updating Status %s -> %s', config.status, 'Not Live');
     config.status = 'Not Live';
     if (config.delete_on_publish) {
-      var stream_path = require('path').join(config.videosPath, '/live/stream/*', );
+      var stream_path = require('path').join(config.videosPath, '/live/stream/*');
       var fs = require('fs');
       fs.readdir(stream_path, function(err, items) {
         if (!items) return;

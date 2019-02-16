@@ -56,6 +56,9 @@
  - Tweeting rearranged to stream.js
  **1.0.5 : 2/12/2019**
  - menu.js
+ **2/15/2019**
+ - menu additions: connect
+ - twitter: tweetOnPublish
  
  **??/??/??**
  - next live @ & schedule
@@ -63,3 +66,10 @@
 
 **2.0.0 : Android App : ??/??/??**
  - android rtmp relay?
+
+
+
+
+ to:do
+
+blockchain address recycling

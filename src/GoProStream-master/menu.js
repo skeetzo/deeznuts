@@ -17,6 +17,20 @@ var Twitter = require('../modules/twitter');
 var util = require('util');
 const readline = require('readline');
 
+function connect(callback) {
+    var piWifi = require('pi-wifi');
+    logger.log('Reconnecting to GoPro...');
+    piWifi.restartInterface('wlan0', function (err) {
+      if (err) return callback(err);
+      piWifi.setCurrentInterface('wlan0');
+      piWifi.status('wlan0', function (err, status) {
+        if (err) return callback(err);
+        logger.log(status);
+        logger.log('GoPro connection restarted');
+        callback(null);
+      });
+    });
+}
 
 function tweet(callback) {
     const rl = readline.createInterface({
@@ -52,11 +66,10 @@ var pyshell;
 var {PythonShell} = require('python-shell');
 var path = require('path');
     
-
 function toggleStream() {
     if (CONNECTED) {
         logger.log('Ending Python process...')
-        pyshell.end();
+        pyshell.kill('SIGINT');
     }
     else {
         logger.log('Spawning Python process...');
@@ -86,14 +99,15 @@ function toggleStream() {
 
 function menu() {
     // show main menu
-    logger.log(colorize("[ 0 ] ", 'blue') + "Tweet");
-    logger.log(colorize("[ 1 ] ", 'blue') + "Tweet: Live");
-    logger.log(colorize("[ 2 ] ", 'blue') + "Toggle Stream");
-    logger.log(colorize("[ 3 ] ", 'blue') + "Delete Tweet");
+    logger.log(colorize("[ 0 ] ", 'blue') + "Connect");
+    logger.log(colorize("[ 1 ] ", 'blue') + "Tweet");
+    logger.log(colorize("[ 2 ] ", 'blue') + "Tweet: Live");
+    logger.log(colorize("[ 3 ] ", 'blue') + "Toggle Stream");
+    logger.log(colorize("[ 4 ] ", 'blue') + "Delete Tweet");
 }
 
 function header() {
-    return logger.log('\n________                        _______          __\n'+        
+    return console.log('\n________                        _______          __\n'+        
 '\\______ \\   ____   ____ ________\\      \\  __ ___/  |_  ______\n' +
 ' |    |  \\_/ __ \\_/ __ \\\\___   //   |   \\|  |  \\   __\\/  ___/\n' +
 ' |    `   \\  ___/\\  ___/ /    //    |    \\  |  /|  |  \\___ \\\n'  +
@@ -129,12 +143,14 @@ function main() {
     rl.question('Selection: ', (answer) => {
       rl.close();
       if (answer==0)
-        tweet(handle);
+        connect(handle);
       else if (answer==1)
-        tweetLive(handle);
+        tweet(handle);
       else if (answer==2)
-        toggleStream(handle);
+        tweetLive(handle);
       else if (answer==3)
+        toggleStream(handle);
+      else if (answer==4)
         deleteTweet(handle);
     });
 }
