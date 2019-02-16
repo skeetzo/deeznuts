@@ -71,6 +71,7 @@ var deleteLiveTweet = function(callback) {
         if (err) return callback(err);
         if (tweets.length<=0) return cTallback('Error: No Tweets Found');
         for (var i=0;i<tweets.length;i++) {
+            logger.log('status: %s', tweets[i]);
             if (~tweets[i].status.indexOf(config.Twitter_link))
                 return T.post('statuses/destroy/:id', { 'id': tweets[i].id }, function (err, data, response) {
                     if (err) return callback(err);
