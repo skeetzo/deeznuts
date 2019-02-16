@@ -19,13 +19,14 @@ const readline = require('readline');
 
 function connect(callback) {
     var piWifi = require('pi-wifi');
-    piWifi.restartInterface('wlan0', function(err) {
+    logger.log('Reconnecting to GoPro...');
+    piWifi.restartInterface('wlan0', function (err) {
       if (err) return callback(err);
-      logger.log('GoPro connection restarted');
       piWifi.setCurrentInterface('wlan0');
-      piWifi.status('wlan0', function(err, status) {
+      piWifi.status('wlan0', function (err, status) {
         if (err) return callback(err);
         logger.log(status);
+        logger.log('GoPro connection restarted');
         callback(null);
       });
     });
@@ -65,7 +66,6 @@ var pyshell;
 var {PythonShell} = require('python-shell');
 var path = require('path');
     
-
 function toggleStream() {
     if (CONNECTED) {
         logger.log('Ending Python process...')
@@ -107,7 +107,7 @@ function menu() {
 }
 
 function header() {
-    return logger.log('\n________                        _______          __\n'+        
+    return console.log('\n________                        _______          __\n'+        
 '\\______ \\   ____   ____ ________\\      \\  __ ___/  |_  ______\n' +
 ' |    |  \\_/ __ \\_/ __ \\\\___   //   |   \\|  |  \\   __\\/  ___/\n' +
 ' |    `   \\  ___/\\  ___/ /    //    |    \\  |  /|  |  \\___ \\\n'  +
@@ -158,6 +158,6 @@ function main() {
 main()
 
 function handle(err) {
-    if (err) logger.log(err);`
+    if (err) logger.log(err);
     setTimeout((step) => {main()}, 10000);    
 }
