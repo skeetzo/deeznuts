@@ -96,6 +96,24 @@ crons.prototype = {
         ]);
     },
 
+    deactivateOldUsers : function(callback) {
+        var User = require('../models/user');
+        logger.log('Cron- Deactivating Old Users');
+        User.deactivateOldUsers(function (err) {
+            if (err) logger.warn(err);
+            callback(null);
+        });
+    },
+
+    deleteOldUsers : function(callback) {
+        var User = require('../models/user');
+        logger.log('Cron- Deleting Old Users');
+        User.deleteOldUsers(function (err) {
+            if (err) logger.warn(err);
+            callback(null);
+        });
+    },
+
     // next day
     midnight : function(callback) {
         logger.log('<--- Midnight ---');

@@ -59,6 +59,8 @@
  **2/15/2019**
  - menu additions: connect
  - twitter: tweetOnPublish
+ **2/20/2019**
+ - blockchain: generateAddress rework
  
  **??/??/??**
  - next live @ & schedule
@@ -73,3 +75,4 @@
  to:do
 
 blockchain address recycling
+view: videos -> paginate months
