@@ -126,7 +126,16 @@ function createAddress(user, myReceive, cb) {
     }
     checkGap(myReceive, function (err) {
       if (err) return cb(err);
-      generate(user, myReceive, cb);
+      generate(user, myReceive, function (err) {
+        if (err) {
+          if (err=="gap")
+            return getRecycled(function (err, address) {
+              if (err) return cb(err);
+              cb(null, user, address);
+            });
+          return cb(err);
+        }
+      });
     });
   });
 }
@@ -144,11 +153,22 @@ function generate(user, myReceive, cb) {
   // logger.debug('query: %s', JSON.stringify(query, null, 4));
   if (config.debugging_blockchain) return cb(null, config.debugging_blockchain_address); 
   // logger.debug('generating address...');
-  myReceive.generate(query)
-  .then(function (generated) {
-    // logger.debug('generated: %s', JSON.stringify(generated));
-    cb(null, generated.address);
-  });
+  try {
+    myReceive.generate(query)
+    .then(function (generated) {
+      // logger.debug('generated: %s', JSON.stringify(generated));
+      cb(null, generated.address);
+    });
+  catch (err) {
+    if (err.message&&err.description) {
+      logger.warn('%s : %s', err.message, err.description);
+      if (err.message=='Problem with xpub') {
+        logger.debug('adjusting gap...');
+        return cb('gap');
+      }
+    }
+    return cb(err.message);
+  }
 }
 
 function createQR(address, cb) {

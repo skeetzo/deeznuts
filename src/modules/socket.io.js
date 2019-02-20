@@ -17,7 +17,7 @@ module.exports.setup = function (io) {
 		client.on('connected', function (userId) {
 			// logger.io('connecting: %s', userId);
 			User.connected(userId, function (err) {
-				if (err) return logger.warn(err);
+				// if (err) return logger.warn(err);
 				// logger.log(clients);
 				if (!_.contains(clients, userId))
 					clients.push([userId, client]);
@@ -31,14 +31,14 @@ module.exports.setup = function (io) {
 		client.on('start', function (userId) {
 			// logger.io('starting: %s', userId);
 			User.start(userId, function (err) {
-				if (err) logger.warn(err);
+				// if (err) logger.warn(err);
 			});
 		});
 
 		client.on('stop', function (userId) {
 			// logger.io('stopping: %s', userId);
 			User.stop(userId, function (err) {
-				if (err) logger.warn(err);
+				// if (err) logger.warn(err);
 			});
 		});
 		
