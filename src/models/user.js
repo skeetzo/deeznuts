@@ -9,8 +9,7 @@ var mongoose = require('mongoose'),
     Receive = require('blockchain.info/Receive'),
     bcrypt = require('bcrypt-nodejs'),
     Transaction = require('../models/transaction'),
-    Video = require('../models/video'),
-    QRCode = require('qrcode');
+    Video = require('../models/video');
 
 // User Schema
 var userSchema = new Schema({
@@ -34,7 +33,11 @@ var userSchema = new Schema({
   paypal_tokens: { type: Array, default: [] },
   paypal_total: { type: String },
   countingDown: { type: Boolean, default: false },
-  connected: { type: Boolean, default: false }
+  connected: { type: Boolean, default: false },
+
+  deactivated: { type: Boolean, default: false },
+  expiresOn: { type: String },
+
  });
 
 userSchema.pre('save', function (next) {
@@ -58,6 +61,60 @@ userSchema.pre('save', function (next) {
     });
   });
 });
+
+userSchema.statics.deactivateOldUsers = function(callback) {
+  var self = this;
+  logger.remove('Deactivating Old Users');
+  // if deactivated and expired or unverified and oldder than 30 days
+  self.find( {'lastVisit': { '$gt': Date.now()+(1000*60*60*24*30)}}, function (err, users) {
+    if (err) return callback(err);
+    if (!users||users.length==0) {
+      logger.remove('No users to deactivate!');
+      return callback(null);
+    }
+    logger.debug('Old Accounts: %s',_.pluck(users,'_id').join(', '));
+    var series = [];
+    _.forEach(users, function (user) {
+      series.push(function (step) {
+        user.deactivate(function (err) {
+          if (err) logger.warn(err);
+          step(null);
+        });
+      });
+    })
+    series.push(function (step) {
+      callback(null);
+    });
+    async.series(series);
+  });
+};
+
+userSchema.statics.deleteOldUsers = function(callback) {
+  var self = this;
+  logger.remove('Deleting Old Deactivated Users');
+  // if deactivated and older than 30 days
+  self.find( { '$or': [ {'deactivated': true, 'expiresOn': { '$lt': Date.now() } } ] }, function (err, users) {
+    if (err) return callback(err);
+    if (!users||users.length==0) {
+      logger.remove('No users to delete!');
+      return callback(null);
+    }
+    logger.debug('Old Accounts: %s',_.pluck(users,'_id').join(', '));
+    var series = [];
+    _.forEach(users, function (user) {
+      series.push(function (step) {
+        user.delete(function (err) {
+          if (err) logger.warn(err);
+          step(null);
+        });
+      });
+    })
+    series.push(function (step) {
+      callback(null);
+    });
+    async.series(series);
+  });
+};
 
 userSchema.statics.connected = function (userId, callback) {
   User.findById(userId, function (err, user) {
@@ -101,83 +158,15 @@ userSchema.statics.stop = function (userId, callback) {
 
 userSchema.statics.generateAddress = function(userId, callback) {
   logger.log('Generating Address: %s', userId);
-  async.waterfall([
-    function (step) {
-      User.findById(userId, function (err, user) {
-        if (err) return callback(err);
-        if (user.address) return callback('Live Address already generated: '+user._id);
-        step(null, user);
-      });
-    },
-    function (user, step) {
-      // Generate new blockchain address
-      var xpub = config.blockchainXpub,
-        cb = config.blockchainCallback,
-        key = config.blockchainKey,
-        options = {
-            // '__unsafe__gapLimit':config.blockchain_gap_limit
-        };
-      // myReceive is the blockchain Object for the new address's generation
-      var myReceive = new Receive(xpub, cb, key, options);
-      // this checks the gap or number of unused addresses that have been generated
-      // gap - the current address gap (number of consecutive unused addresses)
-      if (config.debugging_blockchain||!config.blockchain_check_gap) return step(null, user, myReceive);
-      logger.debug('checking blockchain gap...');
-      var checkgap = myReceive.checkgap()
-      .then(function (data) {
-        logger.debug('gap: %s', data.gap);
-        if (data.gap>config.blockchainGapLimit) {
-          options = {
-            '__unsafe__gapLimit':config.blockchain_gap_limit
-          };
-          myReceive = new Receive(xpub, cb, key, options);
-          logger.log('gap chain limit reached: '+data.gap);
-          logger.debug('gap chain limit raised: %s', config.blockchain_gap_limit);
-          config.blockchain_check_gap = false;
-        }
-        step(null, user, myReceive);
-      });
-    },
-    function (user, myReceive, step) {
-      // generate address
-      var timestamp = (Date.now() + 3600000);
-      var hash = require('md5')(timestamp+"-"+config.blockchainHash);
-      if (config.debugging_blockchain) hash = config.blockchainHash;
-      user.secret = hash;
-      var query = {'secret':hash};
-      // logger.debug('query: %s', JSON.stringify(query, null, 4));
-      if (config.debugging_blockchain) return step(null, user, config.debugging_blockchain_address); 
-      // logger.debug('generating address...');
-      myReceive.generate(query)
-      .then(function (generated) {
-        // logger.debug('generated: %s', JSON.stringify(generated));
-        step(null, user, generated.address);
-      });
-    },
-    function (user, address, step) {
-      QRCode.toDataURL(address, function (err, url) {
-        if (err) logger.warn(err);
-        // logger.debug('qrcode: %s', url);
-        step(null, user, address, url);
-      });
-    },
-    function (user, address, url, step) {
-      user.address_qr = url;
-      user.address = address;
-      user.save(function (err) {
-        if (err) return step(err);
-        logger.debug('BTC address created');
-        callback(null);
-      });
-    }
-    ], function (err) {
-      callback(err);
+  var Blockchain = require('../modules/blockchain');
+  Blockchain.generateAddress(userId, function (err) {
+    callback(err);
   });
 }
 
 // amount in satoshi, so divide by 100,000,000 to get the value in BTC
 userSchema.methods.addTime = function(value_in_dollars, callback) {
-	var self = this;
+  var self = this;
   logger.log('Calculating time: %s dollars', value_in_dollars);
   var timeAdded = value_in_dollars*(config.conversionRate*60); // 6 minutes per dollar
   logger.debug('dollar to seconds: $%s -> %s seconds', value_in_dollars, timeAdded);
@@ -196,7 +185,7 @@ userSchema.methods.connect = function(callback) {
   self.connected = true;
   self.save(function (err) {
     if (err) return callback(err);
-    logger.log('connected: %s', self._id);
+    // logger.log('connected: %s', self._id);
     callback(null);
   });
 }
@@ -207,10 +196,47 @@ userSchema.methods.disconnect = function(callback) {
   self.connected = false;
   self.save(function (err) {
     if (err) return callback(err);
-    logger.log('disconnected: %s', self._id);
+    // logger.log('disconnected: %s', self._id);
     callback(null);
   });
 }
+
+userSchema.methods.deactivate = function(callback) {
+  var self = this;
+  logger.log('Deactivating User: %s', self._id);
+  self.deactivated = true;
+  self.expiresOn = Date.now() + 1000*60*60*24*30;
+  self.recycle(function (err) {
+    callback(err);
+  });
+}
+
+userSchema.methods.delete = function(callback) {
+  var self = this;
+  if (!self.deactivated) return callback('Error Deleting: User is not deactivated - '+self._id);
+  logger.remove('Deleting User: %s', self._id);
+  User.remove({'_id':self._id}, function (err) {
+    if (err) return callback(err);
+    logger.remove('User Deleted: %s',self._id);
+    callback(null);
+  });  
+}
+
+userSchema.methods.recycle = function(callback) {
+  var self = this;
+  if (!self.address) return callback('Unable to recycle: missing address');
+  var App = require('../models/app');
+  App.recycleAddress(self.address, function (err) {
+    if (err) return callback(err);
+    self.address = null;
+    self.address_qr = null;
+    self.secret = null;
+    self.save(function (err) {
+      callback(err);
+    });
+  });
+}
+
 
 // find video and duration
 // if self.time > duration
@@ -266,7 +292,7 @@ userSchema.methods.start = function (callback) {
   self.countingDown = true;
   self.save(function (err) {
     if (err) return callback(err);
-    logger.debug('started: %s', self._id);
+    // logger.debug('started: %s', self._id);
     callback(null);
   });
 }
@@ -277,7 +303,7 @@ userSchema.methods.stop = function (callback) {
   self.countingDown = false;
   self.save(function (err) {
     if (err) return callback(err);
-    logger.debug('stopped: %s', self._id);
+    // logger.debug('stopped: %s', self._id);
     callback(null);
   });
 }

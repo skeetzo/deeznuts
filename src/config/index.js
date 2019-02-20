@@ -57,7 +57,7 @@ config.blockchainRoute = "/btc";
 config.blockchainCallback = config.domain+config.blockchainRoute;
 config.blockchainConfirmationLimit = 6;
 config.blockchainGapLimit = 20;
-config.blockchain_check_gap = true;
+config.blockchainCheckGap = true;
 // PayPal
 config.paypal_ips = ["64.4.248", "64.4.249", "66.211.168", "66.211.168", "173.0.84", "173.0.84", "173.0.88", "173.0.88", "173.0.92", "173.0.93", "173.0.82", "173.0.81"];
 
@@ -145,7 +145,7 @@ function deploy(environment) {
 		// config.debugging_reset_logs = true;
 		// config.debugging_blockchain = true;
 		config.local = true;
-		config.remoteDatabase = true;
+		// config.remoteDatabase = true;
 		config.archive_on_publish = true;
 		// config.backupToOnlyFans = true;
 		// config.debugging_crons = true;
@@ -183,7 +183,7 @@ function deploy(environment) {
 		config.backupToOnlyFans = true;
 		config.archive_on_publish = true;
 		// config.remoteDatabase = true;
-		config.rebuildFromFiles = true;
+		// config.rebuildFromFiles = true;
 		// config.deleteMissing = true;
 	}
 }

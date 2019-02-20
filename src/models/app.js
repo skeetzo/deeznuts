@@ -8,7 +8,9 @@ var mongoose = require('mongoose'),
 // App Schema
 var appSchema = new Schema({
   bootCount: { type: Number, default: 0 },
-
+  // recycled addresses
+  blockchain_addresses : { type: Array, default: [] },
+  // blockchain_addresses_used : { type: Array, default: [] },
   // Google
   // - Drive & Sheet access
   google: {
@@ -20,6 +22,29 @@ var appSchema = new Schema({
 appSchema.pre('save', function (next) {
   next();
 });
+
+appSchema.statics.getRecycled = function(callback) {
+  App.findOne({}, function (err, app) {
+    if (err) return callback(err);
+    if (app.blockchain_addresses.length==0) return callback('Error: No Recycled Addresses');
+    var index = Math.floor(Math.random()*blockchain_addresses.length);
+    var address = app.blockchain_addresses[index];
+    app.blockchain_addresses.splice(index, 1);
+    app.save(function (err) {
+      callback(err, address);
+    });
+  });
+}
+
+appSchema.statics.recycleAddress = function(address, callback) {
+  App.findOne({}, function (err, app) {
+    if (err) return callback(err);
+    app.blockchain_addresses.push(address);
+    app.save(function (err) {
+      callback(err);
+    });
+  }); 
+}
 
 // payments and payouts are added / subtracted towardspayment_fees the pending_balance and available_balance as appropriate
 

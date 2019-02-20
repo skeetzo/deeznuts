@@ -1,4 +1,8 @@
-    
+var config = require('../config/index'),
+    logger = config.logger,
+    async = require('async');
+
+var Receive = require('blockchain.info/Receive');
 
 
 function convertBTCtoDollar(value_in_satoshi, callback) {
@@ -17,6 +21,199 @@ function convertBTCtoDollar(value_in_satoshi, callback) {
   });
 }
 module.exports.convertBTCtoDollar = convertBTCtoDollar;
+
+
+
+function generateAddress(userId, callback) {
+  async.waterfall([
+    function (step) {
+      var User = require('../models/user');
+      User.findById(userId, function (err, user) {
+        if (err) return callback(err);
+        if (user.address) return callback('Live Address already generated: '+user._id);
+        step(null, user);
+      });
+    },
+    function (user, step) {
+      logger.debug('creating address');
+      createAddress(user, function (err, address) {
+        if (err) return step(err);
+        step(null, user, address);
+      });  
+    },
+    function (user, address, step) {
+      logger.debug('creating qr');
+      createQR(address, function (err, qr) {
+        if (err) return step(err);
+        step(null, user, address, qr);
+      });
+    },
+    function (user, address, url, step) {
+      logger.debug('saving user');
+      var App = require('../models/app');
+      App.findOne({}, function (err, app) {
+        if (err) logger.warn(err);
+        app.blockchain_addresses.push(address);
+        app.save(function (err) {logger.warn(err)}); 
+      });
+      user.address_qr = url;
+      user.address = address;
+      user.save(function (err) {
+        if (err) return step(err);
+        logger.debug('BTC address created');
+        callback(null);
+      });
+    }
+    ], function (err) {
+      callback(err);
+  });
+}
+module.exports.generateAddress = generateAddress;
+
+
+
+
+function createMyReceive(cb) {
+  // Generate new blockchain address
+  var myReceive = null;
+  try {
+    // myReceive is the blockchain Object for the new address's generation
+    myReceive = new Receive(config.blockchainXpub, config.blockchainCallback, config.blockchainKey, {});
+  }
+  catch (err) {
+    if (err.message&&err.description) {
+      logger.warn('%s : %s', err.message, err.description);
+      if (err.message=='Problem with xpub') {
+        logger.debug('adjusting gap...');
+        return cb('gap');
+      }
+    }
+    return cb(err.message);
+  }
+  cb(null, myReceive);
+}
+
+function checkGap(myReceive, cb) {
+  // this checks the gap or number of unused addresses that have been generated
+  // gap - the current address gap (number of consecutive unused addresses)
+  if (config.debugging_blockchain||!config.blockchainCheckGap) return cb(null, myReceive);
+  logger.debug('checking blockchain gap...');
+  var checkgap = myReceive.checkgap()
+  .then(function (data) {
+    logger.debug('gap: %s', data.gap);
+    if (data.gap>config.blockchainGapLimit) {
+      options = {
+        '__unsafe__gapLimit':config.blockchainGapLimit
+      };
+      myReceive = new Receive(config.blockchainXpub, config.blockchainCallback, config.blockchainKey, options);
+      logger.log('gap chain limit reached: '+data.gap);
+      logger.debug('gap chain limit raised: %s', config.blockchainGapLimit);
+      config.blockchainCheckGap = false;
+    }
+    cb(null, myReceive);
+  });
+}
+
+function createAddress(user, myReceive, cb) {
+  createMyReceive(function (err, myReceive) {
+    if (err) {
+      // if (err=="gap")
+        return getRecycled(function (err, address) {
+          if (err) return cb(err);
+          cb(null, user, address);
+        });
+      return cb(err);
+    }
+    checkGap(myReceive, function (err) {
+      if (err) return cb(err);
+      generate(user, myReceive, function (err) {
+        if (err) {
+          // if (err=="gap")
+            return getRecycled(function (err, address) {
+              if (err) return cb(err);
+              cb(null, user, address);
+            });
+          // return cb(err);
+        }
+      });
+    });
+  });
+}
+  
+
+function generate(user, myReceive, cb) {
+  logger.debug('generating new address');
+  // generate address
+  var timestamp = (Date.now() + 3600000);
+  var hash = require('md5')(timestamp+"-"+config.blockchainHash);
+  if (config.debugging_blockchain) hash = config.blockchainHash;
+  user.secret = hash;
+  user.save(function (err) {if (err) logger.warn(err)});
+  var query = {'secret':hash};
+  // logger.debug('query: %s', JSON.stringify(query, null, 4));
+  if (config.debugging_blockchain) return cb(null, config.debugging_blockchain_address); 
+  // logger.debug('generating address...');
+  try {
+    myReceive.generate(query)
+    .then(function (generated) {
+      // logger.debug('generated: %s', JSON.stringify(generated));
+      cb(null, generated.address);
+    });
+  }
+  catch (err) {
+    if (err.message&&err.description) {
+      logger.warn('%s : %s', err.message, err.description);
+      if (err.message=='Problem with xpub') {
+        logger.debug('adjusting gap...');
+        return cb('gap');
+      }
+    }
+    return cb(err.message);
+  }
+}
+
+function createQR(address, cb) {
+  var QRCode = require('qrcode');
+  QRCode.toDataURL(address, function (err, url) {
+    if (err) return cb(err);
+    // logger.debug('qrcode: %s', url);
+    cb(null, url);
+  });
+}
+
+function getRecycled(cb) {
+  var App = require('../models/app');
+  App.getRecycled(function (err, address) {
+    cb(err, address);
+  });
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
