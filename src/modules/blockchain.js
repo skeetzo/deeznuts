@@ -122,7 +122,7 @@ function createAddress(user, myReceive, cb) {
           if (err) return cb(err);
           cb(null, user, address);
         });
-      // return cb(err);
+      return cb(err);
     }
     checkGap(myReceive, function (err) {
       if (err) return cb(err);
@@ -159,6 +159,7 @@ function generate(user, myReceive, cb) {
       // logger.debug('generated: %s', JSON.stringify(generated));
       cb(null, generated.address);
     });
+  }
   catch (err) {
     if (err.message&&err.description) {
       logger.warn('%s : %s', err.message, err.description);
