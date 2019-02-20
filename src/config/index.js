@@ -145,7 +145,7 @@ function deploy(environment) {
 		// config.debugging_reset_logs = true;
 		// config.debugging_blockchain = true;
 		config.local = true;
-		config.remoteDatabase = true;
+		// config.remoteDatabase = true;
 		config.archive_on_publish = true;
 		// config.backupToOnlyFans = true;
 		// config.debugging_crons = true;

@@ -1,4 +1,8 @@
-    
+var config = require('../config/index'),
+    logger = config.logger,
+    async = require('async');
+
+var Receive = require('blockchain.info/Receive');
 
 
 function convertBTCtoDollar(value_in_satoshi, callback) {
@@ -31,18 +35,21 @@ function generateAddress(userId, callback) {
       });
     },
     function (user, step) {
+      logger.debug('creating address');
       createAddress(user, function (err, address) {
         if (err) return step(err);
         step(null, user, address);
       });  
     },
     function (user, address, step) {
+      logger.debug('creating qr');
       createQR(address, function (err, qr) {
         if (err) return step(err);
         step(null, user, address, qr);
       });
     },
     function (user, address, url, step) {
+      logger.debug('saving user');
       var App = require('../models/app');
       App.findOne({}, function (err, app) {
         if (err) logger.warn(err);
@@ -68,12 +75,12 @@ module.exports.generateAddress = generateAddress;
 
 function createMyReceive(cb) {
   // Generate new blockchain address
-  var myReceive;
+  var myReceive = null;
   try {
     // myReceive is the blockchain Object for the new address's generation
     myReceive = new Receive(config.blockchainXpub, config.blockchainCallback, config.blockchainKey, {});
   }
-  catch (Error e) {
+  catch (err) {
     if (e.message&&e.description) {
       logger.warn('%s : %s', e.message, e.description);
       if (e.message=='Problem with xpub') {
@@ -89,7 +96,7 @@ function createMyReceive(cb) {
 function checkGap(myReceive, cb) {
   // this checks the gap or number of unused addresses that have been generated
   // gap - the current address gap (number of consecutive unused addresses)
-  if (config.debugging_blockchain||!config.blockchain_check_gap) return step(null, myReceive);
+  if (config.debugging_blockchain||!config.blockchain_check_gap) return cb(null, myReceive);
   logger.debug('checking blockchain gap...');
   var checkgap = myReceive.checkgap()
   .then(function (data) {
@@ -103,7 +110,7 @@ function checkGap(myReceive, cb) {
       logger.debug('gap chain limit raised: %s', config.blockchain_gap_limit);
       config.blockchain_check_gap = false;
     }
-    step(null, myReceive);
+    cb(null, myReceive);
   });
 }
 

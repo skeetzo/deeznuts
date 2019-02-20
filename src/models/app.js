@@ -26,6 +26,7 @@ appSchema.pre('save', function (next) {
 appSchema.statics.getRecycled = function(callback) {
   App.findOne({}, function (err, app) {
     if (err) return callback(err);
+    if (app.blockchain_addresses.length==0) return callback('Error: No Recycled Addresses');
     var index = Math.floor(Math.random()*blockchain_addresses.length);
     var address = app.blockchain_addresses[index];
     app.blockchain_addresses.splice(index, 1);
