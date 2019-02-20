@@ -81,14 +81,14 @@ function createMyReceive(cb) {
     myReceive = new Receive(config.blockchainXpub, config.blockchainCallback, config.blockchainKey, {});
   }
   catch (err) {
-    if (e.message&&e.description) {
-      logger.warn('%s : %s', e.message, e.description);
-      if (e.message=='Problem with xpub') {
+    if (err.message&&err.description) {
+      logger.warn('%s : %s', err.message, err.description);
+      if (err.message=='Problem with xpub') {
         logger.debug('adjusting gap...');
         return cb('gap');
       }
     }
-    return cb(e.message);
+    return cb(err.message);
   }
   cb(null, myReceive);
 }
