@@ -96,19 +96,19 @@ function createMyReceive(cb) {
 function checkGap(myReceive, cb) {
   // this checks the gap or number of unused addresses that have been generated
   // gap - the current address gap (number of consecutive unused addresses)
-  if (config.debugging_blockchain||!config.blockchain_check_gap) return cb(null, myReceive);
+  if (config.debugging_blockchain||!config.blockchainCheckGap) return cb(null, myReceive);
   logger.debug('checking blockchain gap...');
   var checkgap = myReceive.checkgap()
   .then(function (data) {
     logger.debug('gap: %s', data.gap);
     if (data.gap>config.blockchainGapLimit) {
       options = {
-        '__unsafe__gapLimit':config.blockchain_gap_limit
+        '__unsafe__gapLimit':config.blockchainGapLimit
       };
       myReceive = new Receive(config.blockchainXpub, config.blockchainCallback, config.blockchainKey, options);
       logger.log('gap chain limit reached: '+data.gap);
-      logger.debug('gap chain limit raised: %s', config.blockchain_gap_limit);
-      config.blockchain_check_gap = false;
+      logger.debug('gap chain limit raised: %s', config.blockchainGapLimit);
+      config.blockchainCheckGap = false;
     }
     cb(null, myReceive);
   });

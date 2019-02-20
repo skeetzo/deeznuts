@@ -185,7 +185,7 @@ userSchema.methods.connect = function(callback) {
   self.connected = true;
   self.save(function (err) {
     if (err) return callback(err);
-    logger.log('connected: %s', self._id);
+    // logger.log('connected: %s', self._id);
     callback(null);
   });
 }
@@ -196,7 +196,7 @@ userSchema.methods.disconnect = function(callback) {
   self.connected = false;
   self.save(function (err) {
     if (err) return callback(err);
-    logger.log('disconnected: %s', self._id);
+    // logger.log('disconnected: %s', self._id);
     callback(null);
   });
 }
@@ -292,7 +292,7 @@ userSchema.methods.start = function (callback) {
   self.countingDown = true;
   self.save(function (err) {
     if (err) return callback(err);
-    logger.debug('started: %s', self._id);
+    // logger.debug('started: %s', self._id);
     callback(null);
   });
 }
@@ -303,7 +303,7 @@ userSchema.methods.stop = function (callback) {
   self.countingDown = false;
   self.save(function (err) {
     if (err) return callback(err);
-    logger.debug('stopped: %s', self._id);
+    // logger.debug('stopped: %s', self._id);
     callback(null);
   });
 }
