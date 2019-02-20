@@ -117,23 +117,23 @@ function checkGap(myReceive, cb) {
 function createAddress(user, myReceive, cb) {
   createMyReceive(function (err, myReceive) {
     if (err) {
-      if (err=="gap")
+      // if (err=="gap")
         return getRecycled(function (err, address) {
           if (err) return cb(err);
           cb(null, user, address);
         });
-      return cb(err);
+      // return cb(err);
     }
     checkGap(myReceive, function (err) {
       if (err) return cb(err);
       generate(user, myReceive, function (err) {
         if (err) {
-          if (err=="gap")
+          // if (err=="gap")
             return getRecycled(function (err, address) {
               if (err) return cb(err);
               cb(null, user, address);
             });
-          return cb(err);
+          // return cb(err);
         }
       });
     });
