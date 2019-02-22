@@ -12,7 +12,7 @@ module.exports = function() {
         deactivateOldUsers : {
             start : true,
             // cronTime : '23 30 00 * * *', // end of night every day
-            cronTime : '* 43 00 * * *', // end of night every day
+            cronTime : '09 45 30 * * *', // end of night every day
             timeZone: 'America/Los_Angeles' 
         },
 
