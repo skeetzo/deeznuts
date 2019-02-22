@@ -87,14 +87,14 @@ async.series([
       }
     });
   },
-  function (step) {
+  // function (step) {
     // Twitter
-    var Twitter = require('../modules/twitter');
-    Twitter.connect(function (err) {
-      if (err) logger.warn(err);
-      step(null);
-    });
-  },
+    // var Twitter = require('../modules/twitter');
+    // Twitter.connect(function (err) {
+    //   if (err) logger.warn(err);
+    //   step(null);
+    // });
+  // },
   // database initialization
   function (step) {
     Video.findOne({'title':config.defaultVideo.title}, function (err, exampleVideo) {

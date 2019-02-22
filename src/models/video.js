@@ -27,6 +27,7 @@ var videoSchema = new Schema({
   duration: { type: Number },
   hasPreview: { type: Boolean, default: false },
   isOriginal: { type: Boolean, default: false },
+  link: { type: String, default: config.Twitter_link },
   path: { type: String },
   path_preview: { type: String },
   path_image: { type: String },
@@ -157,6 +158,13 @@ videoSchema.statics.archiveVideos = function(callback) {
                 if (err) logger.warn(err);
                 newVideo.backup(function (err) {
                   if (err) logger.warn(err);
+                  if (config.Twitter_tweet_on_publish) {
+                    // tweet about having just uploaded a new video and include link to video
+                    var Twitter = require('../modules/twitter');
+                    Twitter.tweetOnPublish(newVideo, function (err) {
+                      if (err) logger.warn(err);
+                    });
+                  }
                   next(null);
                 });
               });
@@ -531,4 +539,20 @@ videoSchema.methods.watermark = function(callback) {
 
 videoSchema.set('redisCache', true);
 var Video = mongoose.model('videos', videoSchema,'videos');
+
+
+
+
+
+// // knex
+// var db = require("mongoose-sql");
+// db.migreateSchemas([Video]).then(function() { // call migreateSchemas with model
+//     console.log("moved video data to PostgreSQL from Mongoose");
+// });
+
+
+
+
 module.exports = Video;
+
+
