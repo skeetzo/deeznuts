@@ -11,6 +11,7 @@ var appSchema = new Schema({
   // recycled addresses
   blockchain_addresses : { type: Array, default: [] },
   // blockchain_addresses_used : { type: Array, default: [] },
+  blockchain_gap : { type: Number, default: config.blockchainGapLimit },
   // Google
   // - Drive & Sheet access
   google: {

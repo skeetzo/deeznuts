@@ -97,20 +97,34 @@ function checkGap(myReceive, cb) {
   // this checks the gap or number of unused addresses that have been generated
   // gap - the current address gap (number of consecutive unused addresses)
   if (config.debugging_blockchain||!config.blockchainCheckGap) return cb(null, myReceive);
-  logger.debug('checking blockchain gap...');
+  var App = require('../models/app');
+  App.findOne({}, function (err, app) {
+    if (err) return cb(err);
+    logger.debug('checking blockchain gap...');
+    var checkgap = myReceive.checkgap()
+    .then(function (data) {
+      logger.debug('gap: %s', data.gap);
+      if (data.gap>app.blockchain_gap)
+        logger.log('gap chain limit reached: '+data.gap);
+      cb(null, myReceive);
+    });
+  });
+}
+
+function raiseGap(myReceive, cb) {
   var checkgap = myReceive.checkgap()
   .then(function (data) {
-    logger.debug('gap: %s', data.gap);
-    if (data.gap>config.blockchainGapLimit) {
-      options = {
-        '__unsafe__gapLimit':config.blockchainGapLimit
+    var App = require('../models/app');
+    App.findOne({}, function (err, app) {
+      if (err) return cb(err);
+      app.blockchain_gap = data.gap+config.blockchainGapLimit;
+      var options = {
+        '__unsafe__gapLimit':app.blockchain_gap
       };
       myReceive = new Receive(config.blockchainXpub, config.blockchainCallback, config.blockchainKey, options);
-      logger.log('gap chain limit reached: '+data.gap);
-      logger.debug('gap chain limit raised: %s', config.blockchainGapLimit);
-      config.blockchainCheckGap = false;
-    }
-    cb(null, myReceive);
+      logger.debug('gap chain limit raised: %s', app.blockchain_gap);
+      cb(null, myReceive);
+    });
   });
 }
 
@@ -130,7 +144,12 @@ function createAddress(user, myReceive, cb) {
         if (err) {
           // if (err=="gap")
             return getRecycled(function (err, address) {
-              if (err) return cb(err);
+              if (err) {
+                return raiseGap(myReceive, function (err) {
+                  if (err) return cb(err);
+                  createAddress(user, myReceive, cb);
+                })
+              }
               cb(null, user, address);
             });
           // return cb(err);
