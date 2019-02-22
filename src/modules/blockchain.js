@@ -144,7 +144,7 @@ function createAddress(user, cb) {
           logger.warn(err);
           return createAddress(user, cb);
         }
-        callback(null, address);
+        cb(null, address);
       });
     }
     ], function (err) {
