@@ -8,7 +8,7 @@ var crons = function() {
     var self = this;
 
     this.debugging = [
-        'deactivateOldUsers'
+        'deactivate'
     ];
 }
 
