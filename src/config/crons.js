@@ -11,7 +11,8 @@ module.exports = function() {
         // deactivates accounts older than 30 days
         deactivateOldUsers : {
             start : true,
-            cronTime : '23 30 00 * * *', // end of night every day
+            // cronTime : '23 30 00 * * *', // end of night every day
+            cronTime : '* 43 00 * * *', // end of night every day
             timeZone: 'America/Los_Angeles' 
         },
 
