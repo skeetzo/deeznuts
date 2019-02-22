@@ -16,7 +16,7 @@
             url: '/address',
             data: {'_csrf':"#{_csrf}"},
             success: function(data) {
-              location.reload();
+              window.location.reload();
             },
             error: function(data) {
               if (data.status == 400)
