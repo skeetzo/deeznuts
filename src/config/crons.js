@@ -9,15 +9,15 @@ module.exports = function() {
         },
 
         // deactivates accounts older than 30 days
-        deactivateOldUsers : {
+        deactivate : {
             start : true,
             // cronTime : '23 30 00 * * *', // end of night every day
-            cronTime : '09 45 30 * * *', // end of night every day
+            cronTime : '09 53 00 * * *', // end of night every day
             timeZone: 'America/Los_Angeles' 
         },
 
         // deletes deactivated accounts older than 30 days
-        deleteOldUsers : {
+        delete : {
             start : true,
             cronTime : '23 35 00 * * *', // end of night every day
             timeZone: 'America/Los_Angeles' 
