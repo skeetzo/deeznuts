@@ -11,9 +11,9 @@
 // - go live / go offline
 // -- stream to GoPro
 process.env.NODE_ENV = "production";
-var config = require('../config/index'),
+var config = require('../../config/index'),
     logger = config.logger;
-var Twitter = require('../modules/twitter');
+var Twitter = require('../../modules/twitter');
 var util = require('util');
 const readline = require('readline');
 
