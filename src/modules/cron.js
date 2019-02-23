@@ -8,7 +8,7 @@ var crons = function() {
     var self = this;
 
     this.debugging = [
-        'backup'
+        'deactivate'
     ];
 }
 
@@ -96,7 +96,7 @@ crons.prototype = {
         ]);
     },
 
-    deactivateOldUsers : function(callback) {
+    deactivate : function(callback) {
         var User = require('../models/user');
         logger.log('Cron- Deactivating Old Users');
         User.deactivateOldUsers(function (err) {
@@ -105,7 +105,7 @@ crons.prototype = {
         });
     },
 
-    deleteOldUsers : function(callback) {
+    delete : function(callback) {
         var User = require('../models/user');
         logger.log('Cron- Deleting Old Users');
         User.deleteOldUsers(function (err) {

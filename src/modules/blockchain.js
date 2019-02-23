@@ -4,7 +4,6 @@ var config = require('../config/index'),
 
 var Receive = require('blockchain.info/Receive');
 
-
 function convertBTCtoDollar(value_in_satoshi, callback) {
   logger.log('Converting satoshi to Dollar: %s', value_in_satoshi);
   var value_in_btc = value_in_satoshi / 100000000;
@@ -23,15 +22,26 @@ function convertBTCtoDollar(value_in_satoshi, callback) {
 module.exports.convertBTCtoDollar = convertBTCtoDollar;
 
 
-
-function generateAddress(userId, callback) {
+function getAddress(userId, callback) {
   async.waterfall([
     function (step) {
       var User = require('../models/user');
       User.findById(userId, function (err, user) {
-        if (err) return callback(err);
-        if (user.address) return callback('Live Address already generated: '+user._id);
+        if (err) return step(err);
+        if (user.address) return step('Live Address already generated: '+user._id);
         step(null, user);
+      });
+    },
+    function (user, step) {
+      var App = require('../models/app');
+      App.getRecycled(function (err, addressAndSecret) {
+        if (err) logger.warn(err);
+        if (!addressAndSecret) return step(null, user);
+        user.address = addressAndSecret[0];
+        user.secret = addressAndSecret[1];
+        user.save(function (err) {
+          callback(err);
+        });
       });
     },
     function (user, step) {
@@ -54,7 +64,7 @@ function generateAddress(userId, callback) {
       App.findOne({}, function (err, app) {
         if (err) logger.warn(err);
         app.blockchain_addresses.push(address);
-        app.save(function (err) {logger.warn(err)}); 
+        app.save(function (err) {if (err) logger.warn(err)}); 
       });
       user.address_qr = url;
       user.address = address;
@@ -68,7 +78,7 @@ function generateAddress(userId, callback) {
       callback(err);
   });
 }
-module.exports.generateAddress = generateAddress;
+module.exports.getAddress = getAddress;
 
 
 
@@ -97,51 +107,67 @@ function checkGap(myReceive, cb) {
   // this checks the gap or number of unused addresses that have been generated
   // gap - the current address gap (number of consecutive unused addresses)
   if (config.debugging_blockchain||!config.blockchainCheckGap) return cb(null, myReceive);
-  logger.debug('checking blockchain gap...');
-  var checkgap = myReceive.checkgap()
-  .then(function (data) {
-    logger.debug('gap: %s', data.gap);
-    if (data.gap>config.blockchainGapLimit) {
-      options = {
-        '__unsafe__gapLimit':config.blockchainGapLimit
-      };
-      myReceive = new Receive(config.blockchainXpub, config.blockchainCallback, config.blockchainKey, options);
-      logger.log('gap chain limit reached: '+data.gap);
-      logger.debug('gap chain limit raised: %s', config.blockchainGapLimit);
-      config.blockchainCheckGap = false;
-    }
-    cb(null, myReceive);
+  var App = require('../models/app');
+  App.findOne({}, function (err, app) {
+    if (err) return cb(err);
+    logger.debug('checking blockchain gap...');
+    var checkgap = myReceive.checkgap()
+    .then(function (data) {
+      logger.debug('gap: %s', data.gap);
+      if (data.gap>app.blockchain_gap)
+        logger.log('gap chain limit reached: '+data.gap);
+      cb(null, myReceive);
+    });
   });
 }
 
-function createAddress(user, myReceive, cb) {
-  createMyReceive(function (err, myReceive) {
-    if (err) {
-      // if (err=="gap")
-        return getRecycled(function (err, address) {
-          if (err) return cb(err);
-          cb(null, user, address);
-        });
-      return cb(err);
-    }
-    checkGap(myReceive, function (err) {
+function raiseGap(myReceive, cb) {
+  var checkgap = myReceive.checkgap()
+  .then(function (data) {
+    var App = require('../models/app');
+    App.findOne({}, function (err, app) {
       if (err) return cb(err);
-      generate(user, myReceive, function (err) {
-        if (err) {
-          // if (err=="gap")
-            return getRecycled(function (err, address) {
-              if (err) return cb(err);
-              cb(null, user, address);
-            });
-          // return cb(err);
-        }
-      });
+      app.blockchain_gap = data.gap+config.blockchainGapLimit;
+      var options = {
+        '__unsafe__gapLimit':app.blockchain_gap
+      };
+      myReceive = new Receive(config.blockchainXpub, config.blockchainCallback, config.blockchainKey, options);
+      logger.debug('gap chain limit raised: %s', app.blockchain_gap);
+      cb(null, myReceive);
     });
+  });
+}
+
+function createAddress(user, cb) {
+  async.waterfall([
+    function (step) {
+      createMyReceive(function (err, myReceive) {
+        if (err) {
+          logger.warn(err);
+          return checkGap(myReceive, function (err, myReceive_) {
+            if (err) return step(err);
+            step(null, myReceive_);
+          });
+        }
+        step(null, myReceive);
+      });
+    },
+    function (myReceive, step) {
+      generateAddress(user, myReceive, function (err, address) {
+        if (err) {
+          logger.warn(err);
+          return createAddress(user, cb);
+        }
+        cb(null, address);
+      });
+    }
+    ], function (err) {
+      cb(err);
   });
 }
   
 
-function generate(user, myReceive, cb) {
+function generateAddress(user, myReceive, cb) {
   logger.debug('generating new address');
   // generate address
   var timestamp = (Date.now() + 3600000);

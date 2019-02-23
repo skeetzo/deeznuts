@@ -4,21 +4,22 @@ module.exports = function() {
 
         backup : {
             start : true,
-            cronTime : '23 56 00 * * *', // end of night every day
+            cronTime : '00 56 23 * * *', // end of night every day
             timeZone: 'America/Los_Angeles' 
         },
 
         // deactivates accounts older than 30 days
-        deactivateOldUsers : {
+        deactivate : {
             start : true,
             cronTime : '23 30 00 * * *', // end of night every day
+            // cronTime : '30 01 10 * * *', // end of night every day
             timeZone: 'America/Los_Angeles' 
         },
 
         // deletes deactivated accounts older than 30 days
-        deleteOldUsers : {
+        delete : {
             start : true,
-            cronTime : '23 35 00 * * *', // end of night every day
+            cronTime : '00 35 23 * * *', // end of night every day
             timeZone: 'America/Los_Angeles' 
         },
 

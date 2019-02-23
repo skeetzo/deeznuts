@@ -159,7 +159,7 @@ userSchema.statics.stop = function (userId, callback) {
 userSchema.statics.generateAddress = function(userId, callback) {
   logger.log('Generating Address: %s', userId);
   var Blockchain = require('../modules/blockchain');
-  Blockchain.generateAddress(userId, function (err) {
+  Blockchain.getAddress(userId, function (err) {
     callback(err);
   });
 }
@@ -226,7 +226,7 @@ userSchema.methods.recycle = function(callback) {
   var self = this;
   if (!self.address) return callback('Unable to recycle: missing address');
   var App = require('../models/app');
-  App.recycleAddress(self.address, function (err) {
+  App.recycleAddress([self.address, self.secret], function (err) {
     if (err) return callback(err);
     self.address = null;
     self.address_qr = null;

@@ -8,9 +8,10 @@ var mongoose = require('mongoose'),
 // App Schema
 var appSchema = new Schema({
   bootCount: { type: Number, default: 0 },
-  // recycled addresses
+  // recycled addresses w/ secrets
   blockchain_addresses : { type: Array, default: [] },
   // blockchain_addresses_used : { type: Array, default: [] },
+  blockchain_gap : { type: Number, default: config.blockchainGapLimit },
   // Google
   // - Drive & Sheet access
   google: {
@@ -28,18 +29,18 @@ appSchema.statics.getRecycled = function(callback) {
     if (err) return callback(err);
     if (app.blockchain_addresses.length==0) return callback('Error: No Recycled Addresses');
     var index = Math.floor(Math.random()*blockchain_addresses.length);
-    var address = app.blockchain_addresses[index];
+    var addressAndSecret = app.blockchain_addresses[index];
     app.blockchain_addresses.splice(index, 1);
     app.save(function (err) {
-      callback(err, address);
+      callback(err, addressAndSecret);
     });
   });
 }
 
-appSchema.statics.recycleAddress = function(address, callback) {
+appSchema.statics.recycleAddress = function(addressAndSecret, callback) {
   App.findOne({}, function (err, app) {
     if (err) return callback(err);
-    app.blockchain_addresses.push(address);
+    app.blockchain_addresses.push(addressAndSecret);
     app.save(function (err) {
       callback(err);
     });
