@@ -22,14 +22,19 @@ function connect(callback) {
   logger.log('Reconnecting to GoPro...');
   piWifi.restartInterface('wlan0', function (err) {
     if (err) return callback(err);
-    piWifi.setCurrentInterface('eth0', function (err) {
+    // piWifi.setCurrentInterface('eth0', function (err) {
+      // if (err) return callback(err);
+    piWifi.listInterfaces(function (err, interfaces) {
       if (err) return callback(err);
+      logger.log(interfaces);
+    
       piWifi.status('wlan0', function (err, status) {
         if (err) return callback(err);
         // logger.log(status);
         logger.log('GoPro connection restarted');
         callback(null);
       });  
+    // });
     });
   });
 }
