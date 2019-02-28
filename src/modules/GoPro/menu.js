@@ -79,7 +79,7 @@ function toggleStream() {
       'mode': 'text',
       'pythonPath': '/usr/bin/python3',
       'pythonOptions': ['-u'], // get print results in real-time
-      'scriptPath': path.join(__dirname,'../GoProStream-master'),
+      'scriptPath': path.join(__dirname,'../GoPro'),
       'args': ['-loglevel', 'debug']
     };
     pyshell = new PythonShell('GoProStream.py', options);
