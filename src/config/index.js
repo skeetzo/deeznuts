@@ -76,6 +76,7 @@ config.emailing_on_error = true;
 config.emailing_on_buy = true;
 config.emailing_on_transaction = true;
 
+
 // Twitter
 config.Twitter_link = config.domain+'/live';
 
@@ -100,6 +101,8 @@ function deploy(environment) {
 	config.debugging = false;
 	config.ssl = false;
 	config.local = false;
+
+	config.live_enabled = false;
 
 	config.backupToOnlyFans = false;
 	config.archive_on_publish = false;

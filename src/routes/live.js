@@ -10,7 +10,7 @@ module.exports = function homeRoutes(router) {
   });
 
   router.post("/live", mixins.loggedIn, mixins.loggedInDeezNuts, function (req, res, next) {
-    if (req.body.live=="true") {
+    if (req.body.live=="true"&&config.live_enabled) {
       logger.log('Updating Status %s -> %s', config.status, 'Live');
       config.status = 'Live';   
       res.status(200).send();
