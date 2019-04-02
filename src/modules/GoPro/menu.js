@@ -1,15 +1,6 @@
 // Skeetzo
-// 2/12/2018
-// ASCII
-// show menu and wait for input
-// - do action and then return
-// functions for actions
-// - tweet
-// -- input -> tweet
-// - delete tweet
-// -- delete latest tweet w/ url
-// - go live / go offline
-// -- stream to GoPro
+// 2/12/2019
+
 process.env.NODE_ENV = "production";
 var config = require('../../config/index'),
     logger = config.logger;
@@ -71,7 +62,14 @@ var path = require('path');
 function toggleStream() {
   if (CONNECTED) {
     logger.log('Ending Python process...')
-    pyshell.terminate('SIGINT');
+    // end the input stream and allow the process to exit
+    pyshell.end(function (err, code, signal) {
+      if (err) logger.warn(err);
+      logger.log('The exit code was: ' + code);
+      logger.log('The exit signal was: ' + signal);
+      CONNECTED = false;
+    });
+    // pyshell.terminate('SIGINT');
   }
   else {
     logger.log('Spawning Python process...');
@@ -86,14 +84,6 @@ function toggleStream() {
     CONNECTED = true;
     pyshell.on('message', function (message) {
       logger.log(message);
-    });
-
-    // end the input stream and allow the process to exit
-    pyshell.end(function (err, code, signal) {
-      if (err) logger.warn(err);
-      logger.log('The exit code was: ' + code);
-      logger.log('The exit signal was: ' + signal);
-      CONNECTED = false;
     });
   }
   setTimeout((step) => {main()}, 10000);
