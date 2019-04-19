@@ -470,14 +470,14 @@ videoSchema.methods.repairMoov = function(callback) {
     return callback("Warning: Missing Working Video Path");
   const { spawn } = require('child_process');
   const child = spawn('untrunc', [config.workingVideoPath, self.path]);
-  // child.stdout.on('data', function (data) {
+  child.stdout.on('data', function (data) {
     // logger.log(data.toString());
-  // })
+  });
   child.on('exit', code => {
     // logger.log(`Exit code is: ${code}`);
     path_name = self.path.replace(".mp4","_fixed.mp4");
     if (!fs.existsSync(path_name))
-      return callback("Missing Repaired File");
+      return callback("Missing Repaired File: "+self.title);
     fs.renameSync(path_name, self.path);
     self.path = path_name;
     // cannot save because this is being called from save but everything else will save it anyways, hopefully
