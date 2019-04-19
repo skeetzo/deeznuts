@@ -309,7 +309,6 @@ userSchema.methods.stop = function (callback) {
 }
 
 userSchema.methods.sync = function (callback) {
-  if (!this.countingDown) return callback("Skipping Sync: "+this._id);
   if (!this.countingDown) return callback(null);
   this.countDown(function (err) {
     if (err) logger.warn(err);
