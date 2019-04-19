@@ -83,14 +83,17 @@ module.exports.setup = function (io) {
 	      // logger.log('users: %s', users.length);
 	      _.forEach(users, function (user) {
 	      	for (var i=0;i<clients.length;i++)
-          		if (clients[i][0]==user._id)
+          		if (clients[i][0]==user._id) {
+          			logger.io('client: %s', clients[i][0]);
           			client = clients[i][1];        
+          		}
 	      	if (user.time_added) {  
       			client.emit('time', {'time':user.time,'time_added':user.time_added});
 	          	user.time_added = null
 	        }
 	        user.sync(function (err) {
 	          if (err) logger.warn(err);
+	          logger.io('synced: %s', user._id);
 	          if (user.disconnect) 
   			  	client.emit('disconnect');
   			  else
