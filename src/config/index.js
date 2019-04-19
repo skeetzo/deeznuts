@@ -140,16 +140,17 @@ function deploy(environment) {
 
 	if (environment=='development') {
 		config.debugging = true;
-		// config.debugging_live = true;
+		config.debugging_live = true;
 		// config.debugging_address = true;
 		// config.debugging_sync = true;
-		// config.debugging_reset_db = true;
+		config.debugging_reset_db = true;
 		// config.debugging_reset_files = true;
-		// config.debugging_reset_logs = true;
+		config.debugging_reset_logs = true;
 		// config.debugging_blockchain = true;
 		config.local = true;
-		// config.remoteDatabase = true;
-		config.archive_on_publish = true;
+		config.remoteDatabase = true;
+		config.delete_on_publish = true;
+		// config.archive_on_publish = true;
 		// config.backupToOnlyFans = true;
 		config.debugging_crons = true;
 		// config.debugging_paypal = true;
@@ -182,16 +183,19 @@ function deploy(environment) {
 		config.PayPal_environment = 'live';
 		config.PayPal_syncing_webhooks = false;
 		config.Twitter = true;
-		config.Twitter_tweeting = true;
-		config.backupToOnlyFans = true;
-		config.archive_on_publish = true;
+		// config.Twitter_tweeting = true;
+		// config.backupToOnlyFans = true;
+		// config.archive_on_publish = true;
+		config.delete_on_publish = true;
 		// config.remoteDatabase = true;
-		config.populateFromFiles = true;
-		config.deleteMissing = true;
+		// config.populateFromFiles = true;
+		// config.deleteMissing = true;
 	}
 }
 
 config.mnt_path = '/mnt/deeznuts';
+if (process.env.NODE_ENV=="development")
+	config.mnt_path = '/mnt/mnt/deeznuts';
 config.local_keys_path = path.join(config.mnt_path, 'dev/localConfig.json');
 config.local_google_keys_path = path.join(config.mnt_path, 'dev/google.json');
 config.logs_dir = path.join(config.mnt_path, 'logs');

@@ -16,10 +16,13 @@ var serverOptions = {
 
   'http': {
     'port': 8000,
-    'allow_origin': 'https://alexdeeznuts.com',
+    'allow_origin': 'no-cors',
     'mediaroot': config.videosPath
   }
 };
+
+if (process.env.NODE_ENV!="development")
+  serverOptions.http.allow_origin = 'https://alexdeeznuts.com';
 
 serverOptions.auth = {};
 
