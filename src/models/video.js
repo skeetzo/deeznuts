@@ -345,6 +345,12 @@ videoSchema.methods.createPreview = function(callback) {
           else if (err.message.indexOf('No such file or directory')>-1) {
             logger.debug('-- missing file --');
           }
+          else if (err.message.indexOf('Invalid data found when processing input')>-1) {
+            logger.debug('-- missing moov atom --');
+            return self.repairMoov(function (err_) {
+              step(err_, file);
+            });
+          }
           return step(err);
         }
         step(null, file);
@@ -429,6 +435,19 @@ videoSchema.methods.sendPurchasedEmail = function(callback) {
   var mailOptions = config.email_video_purchased(this);
   require('../modules/gmail').sendEmail(mailOptions, function (err) {
     callback(err);
+  });
+}
+
+videoSchema.methods.repairMoov = function(callback) {
+  logger.log('Repairing Moov: %s', self.title);
+  const { spawn } = require('child_process');
+  const child = spawn('untrunc', [config.workingVideoPath, self.path]);
+  for await (const data of child.stdout) {
+    logger.log(`${data}`);
+  };
+  child.on('exit', code => {
+    logger.log(`Exit code is: ${code}`);
+    callback(null);
   });
 }
 

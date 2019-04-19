@@ -27,7 +27,7 @@ app.set('port', port);
 // Startup
 async.series([
   function (step) {
-    logger.log("--- Launching %s --- ", config.botName);
+    logger.log("--- Launching %s --- ", config.domain);
     step(null);
   },
   function (step) {
@@ -91,7 +91,10 @@ async.series([
       else {
         logger.log('Resetting Thot: %s', user.username);
         user.time = config.thotsUser.time;
-        step(null);
+        user.save(function (err) {
+          if (err) logger.warn(err);
+          step(null);
+        });
       }
     });
   },
@@ -225,7 +228,7 @@ async.series([
     }
   },
   function (step) {
-    logger.log('--- Launched %s ---', config.botName)
+    logger.log('--- Launched %s ---', config.domain)
   }
 ]);
 

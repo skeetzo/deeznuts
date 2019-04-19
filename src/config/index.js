@@ -187,7 +187,7 @@ function deploy(environment) {
 		config.archive_on_publish = true;
 		// config.remoteDatabase = true;
 		// config.rebuildFromFiles = true;
-		// config.deleteMissing = true;
+		config.deleteMissing = true;
 	}
 }
 
@@ -199,6 +199,7 @@ config.logs_file = path.join(config.mnt_path, 'logs/file.log');
 config.videosPath = path.join(config.mnt_path, 'videos');
 config.imagesPath = path.join(config.mnt_path, 'images');
 config.watermarkPath = path.join(config.imagesPath, "watermark.png");
+config.workingVideoPath = path.join(config.videosPath, "working.mp4");
 
 config.defaultVideo = {
 	'title': 'Example',
