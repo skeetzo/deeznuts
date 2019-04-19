@@ -11,6 +11,7 @@ module.exports.setup = function (io) {
 
 	io.on('connection', function (client) {
 		client._id = null;
+		client.status = config.status;
 
 		client.on('connected', function (userId) {
 			logger.io('connecting: %s', userId);
@@ -22,22 +23,30 @@ module.exports.setup = function (io) {
 				    User.findById(client._id, function (err, user) {
 				    	if (err) return logger.warn(err);
 				    	if (!user) return logger.warn("Missing Sync User");
+				        // add time
 				        if (user.time_added) {  
 			      	    	client.emit('time', {'time':user.time,'time_added':user.time_added});
 				          	user.time_added = null;
 				        }
+				        // go live
+				        if (config.status!=client.status) {
+				        	client.status = config.status;
+				        	client.emit('status', config.status);
+				        }
+				        // countdown on /live
 				        user.countdown(function (err) {
 				            if (err) {
 				            	// logger.debug(err);
 				            	return;
 				            }
+				            // out of time
 			          		if (user.disconnect_me) {
 			      				logger.io('disconnecting: %s', user._id);
 				  			  	client.emit('disconnect');
 			      			}
 				  			else {
-				  				logger.io('syncing: %s', user._id);
-				  			  	client.emit('sync', {'status':config.status,'time':user.time});
+				  				// logger.io('syncing: %s', user._id);
+				  			  	client.emit('time', {'time':user.time});
 				  			}
 			      		});
 				    });
