@@ -312,6 +312,7 @@ userSchema.methods.sync = function (callback) {
   if (!this.countingDown) return callback(null, false);
   this.countDown(function (err) {
     if (err) logger.warn(err);
+    logger.log('returning countdown');
     callback(null, true);
   });
 }
