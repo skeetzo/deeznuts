@@ -82,22 +82,23 @@ module.exports.setup = function (io) {
 	      if (err) return logger.warn(err);
 	      // logger.log('users: %s', users.length);
 	      _.forEach(users, function (user) {
-	      	for (var i=0;i<clients.length;i++)
-          		if (clients[i][0]==user._id) {
-          			logger.io('client: %s', clients[i][0]);
-          			client = clients[i][1];        
-          		}
-	      	if (user.time_added) {  
-      			client.emit('time', {'time':user.time,'time_added':user.time_added});
-	          	user.time_added = null
-	        }
+	      	if (user.time_added)  
+	      		for (var i=0;i<clients.length;i++)
+	          		if (clients[i][0]==user._id) {
+	          			clients[i][1].emit('time', {'time':user.time,'time_added':user.time_added});
+			          	user.time_added = null;
+			          	break;        
+	          		}
 	        user.sync(function (err) {
 	          if (err) logger.warn(err);
+	          client = null;
 	          for (var i=0;i<clients.length;i++)
           		if (clients[i][0]==user._id) {
           			logger.io('client: %s', clients[i][0]);
-          			client = clients[i][1];        
+          			client = clients[i][1];
+          			break;        
           		}
+          	  if (!client) return logger.warn("Missing Client: %s", user._id);
 	          if (user.disconnect) 
   			  	client.emit('disconnect');
   			  else
