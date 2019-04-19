@@ -96,7 +96,7 @@ module.exports.setup = function (io) {
 	          client = null;
 	          for (var i=0;i<clients.length;i++)
 	          	logger.log('client: %s', clients[i][0]);
-	          	logger.log('client1: %s', clients[i][1]);
+	          	logger.log('client1: %s', clients[i]);
           		if (clients[i][0]==user._id) {
           			logger.io('client: %s', clients[i][0]);
           			if (user.disconnect) {
