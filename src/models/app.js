@@ -42,6 +42,7 @@ appSchema.statics.getRecycled = function(callback) {
 appSchema.statics.recycleAddress = function(addressAndSecret, callback) {
   App.findOne({}, function (err, app) {
     if (err) return callback(err);
+    if (!app.blockchain_addresses) app.blockchain_addresses = [];
     app.blockchain_addresses.push(addressAndSecret);
     app.save(function (err) {
       callback(err);
