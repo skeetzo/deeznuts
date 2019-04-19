@@ -27,9 +27,12 @@ if (user)
         window.location.replace("#{domain}/videos");
       });
 
-      socket.on('sync', function(status) {
+      socket.on('sync', function(data) {
         console.log("syncing: #{user._id}")
-        updateStatus(status);
+        updateStatus(data.status);
+        var time = parseInt(data.time);
+        $("#time").text(toTime(time));
+        $("#timeseconds").text(time);
       });
 
       socket.on('disconnect', function() {

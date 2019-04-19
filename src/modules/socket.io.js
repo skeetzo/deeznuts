@@ -90,10 +90,13 @@ module.exports.setup = function (io) {
 	        }
 	        user.sync(function (err) {
 	          if (err) logger.warn(err);
-	          if (user.disconnect) 
-	          	for (var i=0;i<clients.length;i++)
+	          for (var i=0;i<clients.length;i++)
 	          		if (clients[i][0]==user._id)
-	          			clients[i][1].emit('disconnect');
+	          			client = clients[i];
+	          if (user.disconnect) 
+  			  	client.emit('disconnect');
+  			  else
+  			  	client.emit('sync', config.status);
 	        });
 	      });
 	    });
