@@ -280,7 +280,8 @@ userSchema.methods.countDown = function (callback) {
   logger.debug('syncing user (%s): %s - %s = %s', self._id, parseInt(self.time, 10), parseInt(config.syncInterval, 10), parseInt(self.time, 10) - parseInt(config.syncInterval, 10));
   self.time = parseInt(self.time, 10) - parseInt(config.syncInterval, 10);
   if (self.time<=0) 
-    self.disconnect = true;
+    self.disconnect_me = true;
+  else self.disconnect_me = false;
   self.save(function (err) {
     callback(err);
   });

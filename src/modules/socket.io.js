@@ -33,7 +33,7 @@ module.exports.setup = function (io) {
 				        user.sync(function (err, synced) {
 				            if (err) logger.warn(err);
 				            if (!synced) return;
-			          		if (user.disconnect) {
+			          		if (user.disconnect_me) {
 			      				logger.io('disconnecting: %s', user._id);
 				  			  	client.emit('disconnect');
 			      			}
