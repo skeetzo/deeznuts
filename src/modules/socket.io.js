@@ -85,6 +85,7 @@ module.exports.setup = function (io) {
 	      	if (user.time_added)  
 	      		for (var i=0;i<clients.length;i++)
 	          		if (clients[i][0]==user._id) {
+	          			logger.io('client: %s', clients[i][0]);
 	          			clients[i][1].emit('time', {'time':user.time,'time_added':user.time_added});
 			          	user.time_added = null;
 			          	break;        
