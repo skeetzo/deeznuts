@@ -27,7 +27,10 @@ module.exports.setup = function (io) {
 				          	user.time_added = null;
 				        }
 				        user.countdown(function (err) {
-				            if (err) return logger.warn(err);
+				            if (err) {
+				            	// logger.debug(err);
+				            	return;
+				            }
 			          		if (user.disconnect_me) {
 			      				logger.io('disconnecting: %s', user._id);
 				  			  	client.emit('disconnect');
@@ -45,7 +48,10 @@ module.exports.setup = function (io) {
 		client.on('start', function () {
 			logger.io('starting: %s', client._id);
 			User.start(client._id, function (err) {
-				if (err) logger.warn(err);
+				if (err) {
+					// logger.debug(err);
+					return;
+				}
 				num_occupants++;
 				logger.io('Occupancy (+): %s', num_occupants);		
 			});
@@ -54,7 +60,10 @@ module.exports.setup = function (io) {
 		client.on('stop', function () {
 			logger.io('stopping: %s', client._id);
 			User.stop(client._id, function (err) {
-				if (err) logger.warn(err);
+				if (err) {
+					// logger.debug(err);
+					return;
+				}
 				num_occupants--;
 				logger.io('Occupancy (-): %s', num_occupants);
 			});

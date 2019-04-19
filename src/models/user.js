@@ -289,7 +289,7 @@ userSchema.methods.countdown = function (callback) {
 
 userSchema.methods.start = function (callback) {
   var self = this;
-  // logger.debug('starting : %s', self._id);
+  if (self.countingDown) return callback("Already Started: "+self._id);
   self.countingDown = true;
   self.save(function (err) {
     if (err) return callback(err);
@@ -300,7 +300,7 @@ userSchema.methods.start = function (callback) {
 
 userSchema.methods.stop = function (callback) {
   var self = this;
-  // logger.debug('stopping : %s', self._id);
+  if (!self.countingDown) return callback("Already Stopped: "+self._id);
   self.countingDown = false;
   self.save(function (err) {
     if (err) return callback(err);
