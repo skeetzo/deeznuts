@@ -277,7 +277,7 @@ userSchema.methods.purchaseVideo = function(videoId, callback) {
 
 userSchema.methods.countDown = function (callback) {
   var self = this;
-  // logger.debug('syncing user: %s - %s = %s', parseInt(self.time, 10), parseInt(config.syncInterval, 10), parseInt(self.time, 10) - parseInt(config.syncInterval, 10));
+  logger.debug('syncing user: %s - %s = %s', parseInt(self.time, 10), parseInt(config.syncInterval, 10), parseInt(self.time, 10) - parseInt(config.syncInterval, 10));
   self.time = parseInt(self.time, 10) - parseInt(config.syncInterval, 10);
   if (self.time<=0) 
     self.disconnect = true;
@@ -309,24 +309,12 @@ userSchema.methods.stop = function (callback) {
 }
 
 userSchema.methods.sync = function (callback) {
-  var self = this;
-  async.series([
-    function (step) {
-      if (self.countingDown)
-        self.countDown(function (err) {
-          if (err) logger.warn(err);
-          step(null);
-        });
-      else step(null);
-    },
-    function (step) {
-      self.save(function (err) {
-        if (err) return callback(err);
-        // logger.debug('synced: %s', self._id);
-        callback(null);
-      });
-    }
-  ])
+  if (!this.countingDown) return callback("Skipping Sync: "+this._id);
+  if (!this.countingDown) return callback(null);
+  this.countDown(function (err) {
+    if (err) logger.warn(err);
+    callback(null);
+  });
 }
 
 
