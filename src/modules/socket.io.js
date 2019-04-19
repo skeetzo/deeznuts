@@ -54,7 +54,7 @@ module.exports.setup = function (io) {
 				logger.io('Occupancy (-): %s', num_occupants);
 				if (num_occupants==0) syncOff();
 				for (var i=0;i<clients.length;i++)
-					if (clients[i]==userId)
+					if (clients[i][0]==userId)
 						clients.splice(i,1);	
 			});
 		});
@@ -107,6 +107,7 @@ module.exports.setup = function (io) {
 		  				logger.io('syncing: %s', user._id);
 		  			  	clients[i][1].emit('sync', config.status);
 		  			}
+		  			break;
           		}
           	  }
 	        });
