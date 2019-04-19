@@ -74,18 +74,37 @@ videoSchema.pre('save', function (next) {
       if (self.duration) return step(null);
       logger.debug('probing duration...');
       // ffprobe video for duration
-      return FFmpeg.ffprobe(self.path, function(err, metadata) {
-        if (err) logger.warn(err);
-        if (metadata) {
-          logger.debug('duration: %s', metadata.format.duration);
-          self.duration = metadata.format.duration;
-        } 
-        else {
-          logger.warn('Missing duration');
-          self.duration = 0;
-        }
-        step(null);
-      });
+      retried = false;
+      (function probe() {
+        FFmpeg.ffprobe(self.path, function(err, metadata) {
+          if (err) {
+            logger.warn(err);
+            if (err.message.indexOf('Invalid data found when processing input')>-1&&!retried) {
+              logger.debug('-- missing moov atom --');
+              return self.repairMoov(function (err) {
+                if (err) {
+                  logger.warn(err);
+                  logger.warn('Missing duration: %s', self.title);
+                  self.duration = 0;
+                  return step(null);
+                }
+                logger.debug('retrying probe...');
+                retried = true;
+                probe()
+              });
+            }
+          }
+          if (metadata) {
+            logger.debug('duration: %s', metadata.format.duration);
+            self.duration = metadata.format.duration;
+          } 
+          else {
+            logger.warn('Missing duration');
+            self.duration = 0;
+          }
+          step(null);
+        });
+      })()
     },
     function (step) {
       if (self.isModified('duration')||self.isModified('price')||!self.price) {
@@ -112,7 +131,7 @@ videoSchema.pre('save', function (next) {
 // move any mp4s from public/videos/live/stream -> public/videos/archived
 videoSchema.statics.archiveVideos = function(callback) {
   var fs = require('fs');
-  logger.log('Archiving MP4s');
+  logger.log('Archiving MP4s...');
   // stream directories
   fs.readdir(path.join(config.videosPath, 'live/'), function (err, streams) {
     if (err) {
@@ -185,7 +204,7 @@ videoSchema.statics.archiveVideos = function(callback) {
 }
 
 videoSchema.statics.createPreviews = function(callback) {
-  logger.log('Creating Video Previews');
+  logger.log('Creating Video Previews...');
   Video.find({'isOriginal':true,'hasPreview':false}, function (err, videos) {
     if (err) return callback(err);
     logger.log('Generating Previews: %s', videos.length);
@@ -213,7 +232,6 @@ videoSchema.statics.deleteMissing = function(callback) {
     if (err) return callback(err);
     Video.find({'isOriginal':true,'title':{'$ne':'Example'}}, function (err, videos) {
       if (err) return callback(err);
-      var missingVideos = [];
       for (var i=0;i<files.length;i++) 
         for (var j=0;j<videos.length;j++) {
           // logger.log('file: %s | %s :video', files[i],path.basename(videos[j].path));
@@ -221,16 +239,19 @@ videoSchema.statics.deleteMissing = function(callback) {
             videos.splice(j,1);
         }
       _.forEach(videos, function (video) {
+        logger.debug("deleting: %s", video.title)
+        // fs.unlinkSync(video.path);
+        // fs.unlinkSync(video.preview_path);
         video.remove();
       });
-      logger.debug('Deleted missing: %s', missingVideos.length);
+      logger.debug('Deleted Missing: %s', videos.length);
       callback(null);
     });
   });
 }
 
 videoSchema.statics.populateFromFiles = function(callback) {
-  logger.log('Populating Video Database');
+  logger.log('Populating Video Database...');
   // read videos/archived for all the files
   var videoFiles = fs.readdirSync(config.videosPath+'/archived/stream');
   logger.log('videoFiles: %s', videoFiles);
@@ -246,16 +267,16 @@ videoSchema.statics.populateFromFiles = function(callback) {
           return step(null);
         }
         if (video_) {
-          logger.debug('Existing video: %s', video_.title);
           return video_.save(function (err) {
             if (err) logger.warn(err);
+            logger.log('Existing video: %s', video_.title);
             step(null);
           });
         }
         var newVideo = new Video({'isOriginal':true,'path':videoPath});
         newVideo.save(function (err) {
           if (err) logger.warn(err);
-          logger.debug('Populated video: %s', newVideo.title);
+          logger.log('Populated video: %s', newVideo.title);
           step(null);
         });
       });
@@ -269,7 +290,7 @@ videoSchema.statics.populateFromFiles = function(callback) {
 }
 
 videoSchema.statics.processPublished = function(callback) {
-  logger.log('Processing Published Video');
+  logger.log('Processing Published Video...');
   Video.archiveVideos(function (err) {
     if (err) return callback(err);
     Video.createPreviews(function (err) {
@@ -316,6 +337,12 @@ videoSchema.methods.createPreview = function(callback) {
           if (err.message.indexOf('No such file or directory')>-1) {
             logger.debug('-- missing file --');
           }
+          else if (err.message.indexOf('Invalid data found when processing input')>-1) {
+            logger.debug('-- missing moov atom --');
+            return self.repairMoov(function (err_) {
+              step(err_);
+            });
+          }
         }
         step(null);
       });
@@ -344,6 +371,12 @@ videoSchema.methods.createPreview = function(callback) {
           }
           else if (err.message.indexOf('No such file or directory')>-1) {
             logger.debug('-- missing file --');
+          }
+          else if (err.message.indexOf('Invalid data found when processing input')>-1) {
+            logger.debug('-- missing moov atom --');
+            return self.repairMoov(function (err_) {
+              step(err_, file);
+            });
           }
           return step(err);
         }
@@ -429,6 +462,27 @@ videoSchema.methods.sendPurchasedEmail = function(callback) {
   var mailOptions = config.email_video_purchased(this);
   require('../modules/gmail').sendEmail(mailOptions, function (err) {
     callback(err);
+  });
+}
+
+videoSchema.methods.repairMoov = function(callback) {
+  var self = this;
+  logger.log('Repairing Moov: %s', self.title);
+  if (!fs.existsSync(config.workingVideoPath))
+    return callback("Warning: Missing Working Video Path");
+  const { spawn } = require('child_process');
+  const child = spawn('untrunc', [config.workingVideoPath, self.path]);
+  child.stdout.on('data', function (data) {
+    // logger.log(data.toString());
+  });
+  child.on('exit', code => {
+    // logger.log(`Exit code is: ${code}`);
+    path_name = self.path+"_fixed.mp4";
+    if (!fs.existsSync(path_name))
+      return callback("Missing Repaired File: "+self.title);
+    fs.renameSync(path_name, self.path);
+    // cannot save because this is being called from save but everything else will save it anyways, hopefully
+    callback(null);
   });
 }
 

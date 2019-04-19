@@ -16,10 +16,13 @@ var serverOptions = {
 
   'http': {
     'port': 8000,
-    'allow_origin': 'https://alexdeeznuts.com',
+    'allow_origin': 'no-cors',
     'mediaroot': config.videosPath
   }
 };
+
+if (process.env.NODE_ENV!="development")
+  serverOptions.http.allow_origin = 'https://alexdeeznuts.com';
 
 serverOptions.auth = {};
 
@@ -80,7 +83,7 @@ nms.on('postPublish', (id, StreamPath, args) => {
   connectTimeout = setTimeout(function () {
     logger.log('Updating Status %s -> %s', config.status, 'Live');
     config.status = 'Live';
-  }, 1000*config.rtmpTimeout);
+  }, config.rtmpTimeout);
 });
 
 
@@ -110,7 +113,7 @@ nms.on('donePublish', (id, StreamPath, args) => {
         });
       }, config.archive_delay);
     }
-  }, 1000*config.rtmpTimeout);
+  }, config.rtmpTimeout);
 });
 
 // nms.on('preConnect', (id, args) => {

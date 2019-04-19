@@ -23,7 +23,7 @@ module.exports.setup = function (io) {
 					clients.push([userId, client]);
 				// logger.log(clients);
 				num_occupants++;
-				logger.io('Occupancy: %s', num_occupants);
+				logger.io('Occupancy (+): %s', num_occupants);
 				if (num_occupants==1) syncOn();
 			});
 		});
@@ -51,7 +51,7 @@ module.exports.setup = function (io) {
 			User.disconnected(userId, function (err) {
 				if (err) logger.warn(err);
 				num_occupants--;
-				logger.io('Occupancy: %s', num_occupants);
+				logger.io('Occupancy (-): %s', num_occupants);
 				if (num_occupants==0) syncOff();
 				for (var i=0;i<clients.length;i++)
 					if (clients[i]==userId)
@@ -67,7 +67,7 @@ module.exports.setup = function (io) {
 	var syncOff = function() {
 	   clearTimeout(redundant);
 	   redundant = setTimeout(function () {
-	  	logger.log('Stopping User Syncs');
+	  	logger.io('Stopping User Syncs');
 	    clearInterval(SYNC_INTERVAL);
 	    SYNCING = false;
 	  }, 10000);
@@ -76,7 +76,7 @@ module.exports.setup = function (io) {
 	var syncOn = function() {
 	  clearInterval(SYNC_INTERVAL);
 	  SYNCING = true;
-	  logger.log('Starting User Syncs every %s second(s)...', config.syncInterval);
+	  logger.io('Starting User Syncs every %s second(s)...', config.syncInterval);
 	  SYNC_INTERVAL = setInterval(function () {
 	    User.find({'connected':true}, function (err, users) {
 	      if (err) return logger.warn(err);

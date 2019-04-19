@@ -41,7 +41,7 @@ config.createPreviews = true;
 config.defaultPrice = 5; // in dollars
 config.defaultTime = 60; // time in seconds
 config.defaultPreviewDuration = 30;
-config.rtmpTimeout = 30;
+config.rtmpTimeout = 1000 * 30;
 
 config.syncInterval = 3; // in seconds
 if (config.debugging) {
@@ -136,20 +136,21 @@ function deploy(environment) {
 	config.debugging_paypal_reset_plans = false;
 	config.debugging_clean_fileNames = false;
 
-	config.rebuildFromFiles = false;
+	config.populateFromFiles = false;
 
 	if (environment=='development') {
 		config.debugging = true;
-		// config.debugging_live = true;
+		config.debugging_live = true;
 		// config.debugging_address = true;
 		// config.debugging_sync = true;
-		// config.debugging_reset_db = true;
+		config.debugging_reset_db = true;
 		// config.debugging_reset_files = true;
-		// config.debugging_reset_logs = true;
+		config.debugging_reset_logs = true;
 		// config.debugging_blockchain = true;
 		config.local = true;
-		// config.remoteDatabase = true;
-		config.archive_on_publish = true;
+		config.remoteDatabase = true;
+		config.delete_on_publish = true;
+		// config.archive_on_publish = true;
 		// config.backupToOnlyFans = true;
 		config.debugging_crons = true;
 		// config.debugging_paypal = true;
@@ -170,10 +171,10 @@ function deploy(environment) {
 		config.Twitter = true;
 		config.remoteDatabase = true;
 		// config.archive_on_publish = true;
-		config.backupToOnlyFans = true;
+		// config.backupToOnlyFans = true;
 		config.delete_on_publish = true;
 		// config.deleteMissing = true;
-		config.debugging_crons = true;
+		// config.debugging_crons = true;
 		// config.debugging_clean_fileNames = true;
 	}
 	else if (environment=='production') {
@@ -182,16 +183,19 @@ function deploy(environment) {
 		config.PayPal_environment = 'live';
 		config.PayPal_syncing_webhooks = false;
 		config.Twitter = true;
-		config.Twitter_tweeting = true;
-		config.backupToOnlyFans = true;
-		config.archive_on_publish = true;
+		// config.Twitter_tweeting = true;
+		// config.backupToOnlyFans = true;
+		// config.archive_on_publish = true;
+		config.delete_on_publish = true;
 		// config.remoteDatabase = true;
-		// config.rebuildFromFiles = true;
+		// config.populateFromFiles = true;
 		// config.deleteMissing = true;
 	}
 }
 
 config.mnt_path = '/mnt/deeznuts';
+if (process.env.NODE_ENV=="development")
+	config.mnt_path = '/mnt/mnt/deeznuts';
 config.local_keys_path = path.join(config.mnt_path, 'dev/localConfig.json');
 config.local_google_keys_path = path.join(config.mnt_path, 'dev/google.json');
 config.logs_dir = path.join(config.mnt_path, 'logs');
@@ -199,6 +203,7 @@ config.logs_file = path.join(config.mnt_path, 'logs/file.log');
 config.videosPath = path.join(config.mnt_path, 'videos');
 config.imagesPath = path.join(config.mnt_path, 'images');
 config.watermarkPath = path.join(config.imagesPath, "watermark.png");
+config.workingVideoPath = path.join(config.videosPath, "working.mp4");
 
 config.defaultVideo = {
 	'title': 'Example',

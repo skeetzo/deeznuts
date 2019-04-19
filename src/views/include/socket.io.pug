@@ -5,6 +5,7 @@ if (user)
       var socket = io();
 
       socket.on('connect', function() {
+        console.log("connected: #{user._id}")
         socket.emit('connected', "#{user._id}");
         if (window.location.pathname.indexOf('/live')>-1)
           socket.emit('start', "#{user._id}");
@@ -27,10 +28,12 @@ if (user)
       });
 
       socket.on('sync', function(status) {
+        console.log("syncing: #{user._id}")
         updateStatus(status);
       });
 
       socket.on('disconnect', function() {
+        console.log("disconnecting: #{user._id}")
         socket.emit('end', "#{user._id}");
         window.location.replace("#{domain}/");
       });

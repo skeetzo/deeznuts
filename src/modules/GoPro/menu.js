@@ -62,14 +62,15 @@ var path = require('path');
 function toggleStream() {
   if (CONNECTED) {
     logger.log('Ending Python process...')
+    pyshell.send("q")
     // end the input stream and allow the process to exit
     pyshell.end(function (err, code, signal) {
       if (err) logger.warn(err);
       logger.log('The exit code was: ' + code);
       logger.log('The exit signal was: ' + signal);
-      CONNECTED = false;
     });
-    // pyshell.terminate('SIGINT');
+    pyshell.terminate('SIGINT');
+    CONNECTED = false;
   }
   else {
     logger.log('Spawning Python process...');
