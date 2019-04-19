@@ -98,7 +98,7 @@ module.exports.setup = function (io) {
           			client = clients[i][1];
           			break;        
           		}
-          	  if (!client) return;
+          	  if (!client) return logger.warn("missing client: %s", user._id);
 	          if (user.disconnect) 
   			  	client.emit('disconnect');
   			  else
