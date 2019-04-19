@@ -15,9 +15,10 @@ module.exports.setup = function (io) {
 
 		client.on('connected', function (userId) {
 			logger.io('connecting: %s', userId);
+			client._id = userId;
 			User.connected(userId, function (err) {
 				if (err) return logger.warn(err);
-				client._id = userId;
+				
 				num_occupants++;
 				logger.io('Occupancy (+): %s', num_occupants);				
 
@@ -46,23 +47,23 @@ module.exports.setup = function (io) {
 			});
 		});
 
-		client.on('start', function (userId) {
-			logger.io('starting: %s', userId);
-			User.start(userId, function (err) {
+		client.on('start', function () {
+			logger.io('starting: %s', client._id);
+			User.start(client._id, function (err) {
 				if (err) logger.warn(err);
 			});
 		});
 
-		client.on('stop', function (userId) {
-			logger.io('stopping: %s', userId);
-			User.stop(userId, function (err) {
+		client.on('stop', function () {
+			logger.io('stopping: %s', client._id);
+			User.stop(client._id, function (err) {
 				if (err) logger.warn(err);
 			});
 		});
 		
-		client.on('disconnect', function (userId) {
-			logger.io('disconnecting: %s', userId);
-			User.disconnected(userId, function (err) {
+		client.on('disconnect', function () {
+			logger.io('disconnecting: %s', client._id);
+			User.disconnected(client._id, function (err) {
 				if (err) logger.warn(err);
 				num_occupants--;
 				logger.io('Occupancy (-): %s', num_occupants);
