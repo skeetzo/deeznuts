@@ -16,34 +16,34 @@ module.exports.setup = function (io) {
 		client.on('connected', function (userId) {
 			logger.io('connecting: %s', userId);
 			User.connected(userId, function (err) {
-				if (err) logger.warn(err);
+				if (err) return logger.warn(err);
 				client._id = userId;
 				num_occupants++;
 				logger.io('Occupancy (+): %s', num_occupants);				
-			});
 
-			client.SYNC_INTERVAL = setInterval(function () {
-			    User.findById(client._id, function (err, user) {
-			    	if (err) return logger.warn(err);
-			    	if (!user) return logger.warn("Missing Sync User");
-			        if (user.time_added) {  
-		      	    	client.emit('time', {'time':user.time,'time_added':user.time_added});
-			          	user.time_added = null;
-			        }
-			        user.sync(function (err, synced) {
-			            if (err) logger.warn(err);
-			            if (!synced) return;
-		          		if (user.disconnect) {
-		      				logger.io('disconnecting: %s', user._id);
-			  			  	client.emit('disconnect');
-		      			}
-			  			else {
-			  				logger.io('syncing: %s', user._id);
-			  			  	client.emit('sync', {'status':config.status,'time':user.time});
-			  			}
-		      		});
-			    });
-		    }, config.syncInterval*1000);
+				client.SYNC_INTERVAL = setInterval(function () {
+				    User.findById(client._id, function (err, user) {
+				    	if (err) return logger.warn(err);
+				    	if (!user) return logger.warn("Missing Sync User");
+				        if (user.time_added) {  
+			      	    	client.emit('time', {'time':user.time,'time_added':user.time_added});
+				          	user.time_added = null;
+				        }
+				        user.sync(function (err, synced) {
+				            if (err) logger.warn(err);
+				            if (!synced) return;
+			          		if (user.disconnect) {
+			      				logger.io('disconnecting: %s', user._id);
+				  			  	client.emit('disconnect');
+			      			}
+				  			else {
+				  				logger.io('syncing: %s', user._id);
+				  			  	client.emit('sync', {'status':config.status,'time':user.time});
+				  			}
+			      		});
+				    });
+			    }, config.syncInterval*1000);
+			});
 		});
 
 		client.on('start', function (userId) {
@@ -60,12 +60,8 @@ module.exports.setup = function (io) {
 			});
 		});
 		
-		client.on('disconnect', function () {
-			logger.warn('this disconnect is doing something');
-		});
-
-		client.on('end', function (userId) {
-			logger.io('ending: %s', userId);
+		client.on('disconnect', function (userId) {
+			logger.io('disconnecting: %s', userId);
 			User.disconnected(userId, function (err) {
 				if (err) logger.warn(err);
 				num_occupants--;
@@ -73,6 +69,11 @@ module.exports.setup = function (io) {
 				clearInterval(client.SYNC_INTERVAL);
 			});
 		});
+
+		// client.on('end', function (userId) {
+		// 	logger.io('ending: %s', userId);
+		// 	// client.()
+		// });
 
 	});
 }

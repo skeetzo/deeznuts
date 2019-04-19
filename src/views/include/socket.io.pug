@@ -37,7 +37,7 @@ if (user)
 
       socket.on('disconnect', function() {
         console.log("disconnecting: #{user._id}")
-        socket.emit('end', "#{user._id}");
+        //- socket.emit('end', "#{user._id}");
         window.location.replace("#{domain}/");
       });
 
