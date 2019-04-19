@@ -89,8 +89,9 @@ module.exports.setup = function (io) {
 			          	user.time_added = null;
 			          	break;        
 	          		}
-	        user.sync(function (err) {
+	        user.sync(function (err, synced) {
 	          if (err) logger.warn(err);
+	          if (!synced) return;
 	          client = null;
 	          for (var i=0;i<clients.length;i++)
           		if (clients[i][0]==user._id) {

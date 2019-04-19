@@ -309,10 +309,10 @@ userSchema.methods.stop = function (callback) {
 }
 
 userSchema.methods.sync = function (callback) {
-  if (!this.countingDown) return callback(null);
+  if (!this.countingDown) return callback(null, false);
   this.countDown(function (err) {
     if (err) logger.warn(err);
-    callback(null);
+    callback(null, true);
   });
 }
 
