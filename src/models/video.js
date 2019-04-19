@@ -240,6 +240,8 @@ videoSchema.statics.deleteMissing = function(callback) {
         }
       _.forEach(videos, function (video) {
         logger.debug("deleting: %s", video.title)
+        // fs.unlinkSync(video.path);
+        // fs.unlinkSync(video.preview_path);
         video.remove();
       });
       logger.debug('Deleted Missing: %s', videos.length);
@@ -479,7 +481,6 @@ videoSchema.methods.repairMoov = function(callback) {
     if (!fs.existsSync(path_name))
       return callback("Missing Repaired File: "+self.title);
     fs.renameSync(path_name, self.path);
-    self.path = path_name;
     // cannot save because this is being called from save but everything else will save it anyways, hopefully
     callback(null);
   });

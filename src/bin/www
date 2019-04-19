@@ -183,17 +183,6 @@ async.series([
       step(null);
     });
   },
-  // Previews
-  function (step) {
-    if (!config.createPreviews) {
-      logger.log('Skipping: Create Previews');
-      return step(null);
-    }
-    Video.createPreviews(function (err) {
-      if (err) logger.warn(err);
-      step(null);
-    });    
-  },
   // Delete Missing
   function (step) {
     if (!config.deleteMissing) {
@@ -201,6 +190,17 @@ async.series([
       return step(null);
     }
     Video.deleteMissing(function (err) {
+      if (err) logger.warn(err);
+      step(null);
+    });    
+  },
+  // Previews
+  function (step) {
+    if (!config.createPreviews) {
+      logger.log('Skipping: Create Previews');
+      return step(null);
+    }
+    Video.createPreviews(function (err) {
       if (err) logger.warn(err);
       step(null);
     });    
