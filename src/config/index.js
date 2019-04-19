@@ -43,7 +43,7 @@ config.defaultTime = 60; // time in seconds
 config.defaultPreviewDuration = 30;
 config.rtmpTimeout = 1000 * 30;
 
-config.syncInterval = 3; // in seconds
+config.syncInterval = 1; // in seconds
 if (config.debugging) {
 	config.defaultTime = 60*60*23+45*60;
 	config.syncInterval = config.syncInterval*3;
