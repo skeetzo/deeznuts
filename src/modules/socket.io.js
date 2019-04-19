@@ -93,7 +93,6 @@ module.exports.setup = function (io) {
 	        }
 	        user.sync(function (err) {
 	          if (err) logger.warn(err);
-	          logger.io('synced: %s', user._id);
 	          if (user.disconnect) 
   			  	client.emit('disconnect');
   			  else
