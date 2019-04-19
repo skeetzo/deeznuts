@@ -275,7 +275,7 @@ userSchema.methods.purchaseVideo = function(videoId, callback) {
   });
 }
 
-userSchema.methods.countDown = function (callback) {
+userSchema.methods.countdown = function (callback) {
   var self = this;
   if (!self.countingDown) return callback("Not Counting Down: "+self._id);
   // logger.debug('syncing user (%s): %s - %s = %s', self._id, parseInt(self.time, 10), parseInt(config.syncInterval, 10), parseInt(self.time, 10) - parseInt(config.syncInterval, 10));
