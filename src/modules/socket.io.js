@@ -95,17 +95,17 @@ module.exports.setup = function (io) {
 	          if (err) logger.warn(err);
 	          if (!synced) return;
 	          client = null;
-	          for (var i=0;i<clients.length;i++) {
-	          	logger.io('client: %s', clients[i][0]);
-          		if (clients[i]==user._id) {
-          			logger.io('client match: %s', clients[i]);
+	          for (var j=0;j<clients.length;j++) {
+	          	logger.io('client: %s', clients[j][0]);
+          		if (clients[j]==user._id) {
+          			logger.io('client match: %s', clients[j]);
           			if (user.disconnect) {
           				logger.io('disconnecting: %s', user._id);
-		  			  	clients[i+1].emit('disconnect');
+		  			  	clients[j+1].emit('disconnect');
           			}
 		  			else {
 		  				logger.io('syncing: %s', user._id);
-		  			  	clients[i+1].emit('sync', config.status);
+		  			  	clients[j+1].emit('sync', config.status);
 		  			}
 		  			break;
           		}
