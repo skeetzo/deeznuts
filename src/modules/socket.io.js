@@ -1,10 +1,9 @@
 var config = require('../config/index'),
     logger = config.logger,
-    _ = require('underscore');
+    _ = require('underscore'),
+    User = require('../models/user');
 
-var User = require('../models/user');
-
-var occupancy = 10;
+var occupancy = config.live_occupancy;
 var num_occupants = 0;
 
 module.exports.setup = function (io) {
@@ -17,11 +16,8 @@ module.exports.setup = function (io) {
 			logger.io('connecting: %s', userId);
 			client._id = userId;
 			User.connected(userId, function (err) {
-				if (err) return logger.warn(err);
-				
-				num_occupants++;
-				logger.io('Occupancy (+): %s', num_occupants);				
-
+				if (err) logger.warn(err);
+				clearInterval(client.SYNC_INTERVAL);
 				client.SYNC_INTERVAL = setInterval(function () {
 				    User.findById(client._id, function (err, user) {
 				    	if (err) return logger.warn(err);
@@ -30,9 +26,8 @@ module.exports.setup = function (io) {
 			      	    	client.emit('time', {'time':user.time,'time_added':user.time_added});
 				          	user.time_added = null;
 				        }
-				        user.sync(function (err, synced) {
-				            if (err) logger.warn(err);
-				            if (!synced) return;
+				        user.countdown(function (err) {
+				            if (err) return logger.warn(err);
 			          		if (user.disconnect_me) {
 			      				logger.io('disconnecting: %s', user._id);
 				  			  	client.emit('disconnect');
@@ -51,6 +46,8 @@ module.exports.setup = function (io) {
 			logger.io('starting: %s', client._id);
 			User.start(client._id, function (err) {
 				if (err) logger.warn(err);
+				num_occupants++;
+				logger.io('Occupancy (+): %s', num_occupants);		
 			});
 		});
 
@@ -58,6 +55,8 @@ module.exports.setup = function (io) {
 			logger.io('stopping: %s', client._id);
 			User.stop(client._id, function (err) {
 				if (err) logger.warn(err);
+				num_occupants--;
+				logger.io('Occupancy (-): %s', num_occupants);
 			});
 		});
 		
@@ -65,16 +64,9 @@ module.exports.setup = function (io) {
 			logger.io('disconnecting: %s', client._id);
 			User.disconnected(client._id, function (err) {
 				if (err) logger.warn(err);
-				num_occupants--;
-				logger.io('Occupancy (-): %s', num_occupants);
 				clearInterval(client.SYNC_INTERVAL);
 			});
 		});
-
-		// client.on('end', function (userId) {
-		// 	logger.io('ending: %s', userId);
-		// 	// client.()
-		// });
 
 	});
 }

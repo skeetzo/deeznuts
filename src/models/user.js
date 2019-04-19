@@ -277,10 +277,10 @@ userSchema.methods.purchaseVideo = function(videoId, callback) {
 
 userSchema.methods.countDown = function (callback) {
   var self = this;
+  if (!self.countingDown) return callback("Not Counting Down: "+self._id);
   // logger.debug('syncing user (%s): %s - %s = %s', self._id, parseInt(self.time, 10), parseInt(config.syncInterval, 10), parseInt(self.time, 10) - parseInt(config.syncInterval, 10));
   self.time = parseInt(self.time, 10) - parseInt(config.syncInterval, 10);
-  if (self.time<=0) 
-    self.disconnect_me = true;
+  if (self.time<=0) self.disconnect_me = true;
   else self.disconnect_me = false;
   self.save(function (err) {
     callback(err);
@@ -310,7 +310,6 @@ userSchema.methods.stop = function (callback) {
 }
 
 userSchema.methods.sync = function (callback) {
-  if (!this.countingDown) return callback(null, false);
   this.countDown(function (err) {
     if (err) logger.warn(err);
     callback(null, true);

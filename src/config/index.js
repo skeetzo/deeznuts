@@ -42,7 +42,7 @@ config.defaultPrice = 5; // in dollars
 config.defaultTime = 60; // time in seconds
 config.defaultPreviewDuration = 30;
 config.rtmpTimeout = 1000 * 30;
-
+config.live_occupancy = 10;
 config.syncInterval = 1; // in seconds
 if (config.debugging) {
 	config.defaultTime = 60*60*23+45*60;
