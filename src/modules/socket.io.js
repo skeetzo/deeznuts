@@ -82,14 +82,14 @@ module.exports.setup = function (io) {
 	      if (err) return logger.warn(err);
 	      // logger.log('users: %s', users.length);
 	      _.forEach(users, function (user) {
-	      	// if (user.time_added)  
-      		for (var i=0;i<clients.length;i++)
-          		if (clients[i][0]==user._id) {
-          			logger.io('client: %s', clients[i][0]);
-          			clients[i][1].emit('time', {'time':user.time,'time_added':user.time_added});
-		          	user.time_added = null;
-		          	break;        
-          		}
+	      	if (user.time_added)  
+	      		for (var i=0;i<clients.length;i++)
+	          		if (clients[i][0]==user._id) {
+	          			logger.io('client: %s', clients[i][0]);
+	          			clients[i][1].emit('time', {'time':user.time,'time_added':user.time_added});
+			          	user.time_added = null;
+			          	break;        
+	          		}
 	        user.sync(function (err, synced) {
 	          if (err) logger.warn(err);
 	          if (!synced) return;
@@ -97,14 +97,12 @@ module.exports.setup = function (io) {
 	          for (var i=0;i<clients.length;i++)
           		if (clients[i][0]==user._id) {
           			logger.io('client: %s', clients[i][0]);
-          			client = clients[i][1];
+          			if (user.disconnect) 
+		  			  	clients[i][1].emit('disconnect');
+		  			else
+		  			  	clients[i][1].emit('sync', config.status);
           			break;        
           		}
-          	  if (!client) return logger.warn("missing client: %s", user._id);
-	          if (user.disconnect) 
-  			  	client.emit('disconnect');
-  			  else
-  			  	client.emit('sync', config.status);
 	        });
 	      });
 	    });
