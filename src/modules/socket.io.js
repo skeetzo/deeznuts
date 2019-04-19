@@ -96,6 +96,7 @@ module.exports.setup = function (io) {
 	          if (!synced) return;
 	          client = null;
 	          for (var j=0;j<clients.length;j++) {
+	          	logger.io('clients: %s', clients);
 	          	logger.io('client: %s', clients[j][0]);
           		if (clients[j]==user._id) {
           			logger.io('client match: %s', clients[j]);
