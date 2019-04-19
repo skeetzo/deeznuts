@@ -63,8 +63,7 @@
 	- blockchain: generateAddress rework
 **1.0.6 : 4/18/2019**
 	- added PayPal to Support page
-	- fixed user sync and countdown
-
+	- fixed socket.io
 
 **??/??/??**
 - next live @ & schedule
