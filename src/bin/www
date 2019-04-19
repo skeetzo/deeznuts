@@ -27,16 +27,20 @@ app.set('port', port);
 // Startup
 async.series([
   function (step) {
+    logger.log("--- Launching %s --- ", config.botName);
+    step(null);
+  },
+  function (step) {
     var App = require('../models/app');
     App.findOne({}, function (err, app) {
       if (err) logger.warn(err);
       if (!app) {
-          logger.log('Creating new App- update google tokens');
+          logger.log('Creating New App');
           app = new App();
       }
       else {
           app.bootCount++;
-          logger.log('App loaded: %s', app.bootCount);
+          logger.log('App Loaded: %s', app.bootCount);
       }
       app.save(function (err) {
         if (err) logger.warn(err);
@@ -45,7 +49,10 @@ async.series([
     });
   },
   function (step) {
-    if (!config.debugging) return step(null);
+    if (!config.debugging) {
+      logger.log('Skipping: Debugging');
+      return step(null);
+    }
     require('../modules/debug').debug(function (err) {
       if (err) logger.warn(err);
       step(null);
@@ -56,7 +63,7 @@ async.series([
     User.findOne({'username':config.deeznutsUser.username}, function (err, user) {
       if (err) return logger.warn(err);
       if (!user) {
-        logger.log('Prepping bot: %s', config.deeznutsUser.username);
+        logger.log('Prepping Bot: %s', config.deeznutsUser.username);
         user = new User(config.deeznutsUser);
         user.save(function (err) {
           if (err) logger.warn(err);
@@ -74,7 +81,7 @@ async.series([
     User.findOne({'username':config.thotsUser.username}, function (err, user) {
       if (err) return logger.warn(err);
       if (!user) {
-        logger.log('Prepping thots: %s', config.thotsUser.username);
+        logger.log('Prepping Thot: %s', config.thotsUser.username);
         user = new User(config.thotsUser);
         user.save(function (err) {
           if (err) logger.warn(err);
@@ -82,19 +89,24 @@ async.series([
         });
       }
       else {
-        logger.log('Thots found: %s', user.username);
+        logger.log('Resetting Thot: %s', user.username);
+        user.time = config.thotsUser.time;
         step(null);
       }
     });
   },
-  // function (step) {
-    // Twitter
-    // var Twitter = require('../modules/twitter');
-    // Twitter.connect(function (err) {
-    //   if (err) logger.warn(err);
-    //   step(null);
-    // });
-  // },
+  // Twitter
+  function (step) {
+    if (!config.Twitter) {
+      logger.log('Disabled: Twitter');
+      return step(null);
+    }
+    var Twitter = require('../modules/twitter');
+    Twitter.connect(function (err) {
+      if (err) logger.warn(err);
+      step(null);
+    });
+  },
   // database initialization
   function (step) {
     Video.findOne({'title':config.defaultVideo.title}, function (err, exampleVideo) {
@@ -139,6 +151,7 @@ async.series([
     server.on('error', onError);
     server.on('listening', onListening);
   },
+  // Archive
   function (step) {
     fss.ensureDirSync(path.join(config.videosPath), "0o2775");
     fss.ensureDirSync(path.join(config.imagesPath), "0o2775");
@@ -146,14 +159,8 @@ async.series([
     fss.ensureDirSync(path.join(config.videosPath, 'archived'), "0o2775");
     fss.ensureDirSync(path.join(config.videosPath, 'previews'), "0o2775");
     fss.ensureDirSync(path.join(config.imagesPath, 'thumbnails'), "0o2775");
-    // fss.ensureSymlinkSync(config.videosPath, path.join(__dirname, '../public/videos'));
-    // fss.ensureSymlinkSync(path.join(config.videosPath, 'live'), path.join(__dirname, '../public/videos/live'));
-    // fss.ensureSymlinkSync(path.join(config.videosPath, 'archived'), path.join(__dirname, '../public/videos/archived'));
-    // fss.ensureSymlinkSync(path.join(config.videosPath, 'previews'), path.join(__dirname, '../public/videos/previews'));
-    // fss.ensureSymlinkSync(config.imagesPath, path.join(__dirname, '../public/images'));
-    // fss.ensureSymlinkSync(path.join(config.imagesPath, 'thumbnails'), path.join(__dirname, '../public/images/thumbnails'));
     if (!config.archive_videos) {
-      logger.log('Skipping Video Archiving');
+      logger.log('Skipping: Archive Videos');
       return step(null);
     }
     Video.archiveVideos(function (err) {
@@ -161,18 +168,22 @@ async.series([
       step(null);
     });
   },
+  // Rebuild
   function (step) {
-    if (!config.rebuildFromFiles) return step(null);
+    if (!config.rebuildFromFiles) {
+      logger.log('Skipping: Rebuild From Files');
+      return step(null);
+    }
     // rebuilds video db based on existing mp4s
     Video.populateFromFiles(function (err) {
       if (err) logger.warn(err);
       step(null);
     });
   },
-  // double checks all originals have a preview
+  // Previews
   function (step) {
     if (!config.createPreviews) {
-      logger.log('Skipping Previews');
+      logger.log('Skipping: Create Previews');
       return step(null);
     }
     Video.createPreviews(function (err) {
@@ -180,9 +191,10 @@ async.series([
       step(null);
     });    
   },
+  // Delete Missing
   function (step) {
     if (!config.deleteMissing) {
-      logger.log('Skipping Missing Deletion');
+      logger.log('Skipping: Delete Missing');
       return step(null);
     }
     Video.deleteMissing(function (err) {
@@ -190,10 +202,10 @@ async.series([
       step(null);
     });    
   },
+  // PayPal
   function (step) {
-    // PayPal Webhooks
     if (!config.PayPal||!config.PayPal_syncing_webhooks) {
-      logger.debug('Skipping PayPal syncs');
+      logger.debug('Skipping: PayPal Webhook Syncs');
       return step(null);
     }
     var PayPal = require('../modules/paypal');
@@ -202,7 +214,7 @@ async.series([
       step(null);
     });
     if (config.debugging_paypal&&config.debugging_paypal_reset_plans) {
-      logger.debug('Resetting PayPal Plans...');
+      logger.debug('Resetting: PayPal Plans');
       var Plan = require('../models/plan');
       Plan.find({}, function (err, plans) {
         if (err) return logger.warn(err);
@@ -211,6 +223,9 @@ async.series([
         });
       });
     }
+  },
+  function (step) {
+    logger.log('--- Launched %s ---', config.botName)
   }
 ]);
 

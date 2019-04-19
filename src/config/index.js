@@ -41,7 +41,7 @@ config.createPreviews = true;
 config.defaultPrice = 5; // in dollars
 config.defaultTime = 60; // time in seconds
 config.defaultPreviewDuration = 30;
-config.rtmpTimeout = 30;
+config.rtmpTimeout = 1000 * 30;
 
 config.syncInterval = 3; // in seconds
 if (config.debugging) {

@@ -213,7 +213,6 @@ videoSchema.statics.deleteMissing = function(callback) {
     if (err) return callback(err);
     Video.find({'isOriginal':true,'title':{'$ne':'Example'}}, function (err, videos) {
       if (err) return callback(err);
-      var missingVideos = [];
       for (var i=0;i<files.length;i++) 
         for (var j=0;j<videos.length;j++) {
           // logger.log('file: %s | %s :video', files[i],path.basename(videos[j].path));
@@ -221,9 +220,10 @@ videoSchema.statics.deleteMissing = function(callback) {
             videos.splice(j,1);
         }
       _.forEach(videos, function (video) {
+        logger.debug("deleting: %s", video.title)
         video.remove();
       });
-      logger.debug('Deleted missing: %s', missingVideos.length);
+      logger.debug('Deleted Missing: %s', videos.length);
       callback(null);
     });
   });
