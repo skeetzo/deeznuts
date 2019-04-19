@@ -74,18 +74,31 @@ videoSchema.pre('save', function (next) {
       if (self.duration) return step(null);
       logger.debug('probing duration...');
       // ffprobe video for duration
-      return FFmpeg.ffprobe(self.path, function(err, metadata) {
-        if (err) logger.warn(err);
-        if (metadata) {
-          logger.debug('duration: %s', metadata.format.duration);
-          self.duration = metadata.format.duration;
-        } 
-        else {
-          logger.warn('Missing duration');
-          self.duration = 0;
-        }
-        step(null);
-      });
+      retried = false;
+      (function probe() {
+        FFmpeg.ffprobe(self.path, function(err, metadata) {
+          if (err) {
+            logger.warn(err);
+            if (err.message.indexOf('Invalid data found when processing input')>-1&&!retried) {
+              logger.debug('-- missing moov atom --');
+              return self.repairMoov(function (err) {
+                logger.debug('retrying probe...');
+                retried = true;
+                probe()
+              });
+            }
+          }
+          if (metadata) {
+            logger.debug('duration: %s', metadata.format.duration);
+            self.duration = metadata.format.duration;
+          } 
+          else {
+            logger.warn('Missing duration');
+            self.duration = 0;
+          }
+          step(null);
+        });
+      })()
     },
     function (step) {
       if (self.isModified('duration')||self.isModified('price')||!self.price) {
@@ -112,7 +125,7 @@ videoSchema.pre('save', function (next) {
 // move any mp4s from public/videos/live/stream -> public/videos/archived
 videoSchema.statics.archiveVideos = function(callback) {
   var fs = require('fs');
-  logger.log('Archiving MP4s');
+  logger.log('Archiving MP4s...');
   // stream directories
   fs.readdir(path.join(config.videosPath, 'live/'), function (err, streams) {
     if (err) {
@@ -185,7 +198,7 @@ videoSchema.statics.archiveVideos = function(callback) {
 }
 
 videoSchema.statics.createPreviews = function(callback) {
-  logger.log('Creating Video Previews');
+  logger.log('Creating Video Previews...');
   Video.find({'isOriginal':true,'hasPreview':false}, function (err, videos) {
     if (err) return callback(err);
     logger.log('Generating Previews: %s', videos.length);
@@ -230,7 +243,7 @@ videoSchema.statics.deleteMissing = function(callback) {
 }
 
 videoSchema.statics.populateFromFiles = function(callback) {
-  logger.log('Populating Video Database');
+  logger.log('Populating Video Database...');
   // read videos/archived for all the files
   var videoFiles = fs.readdirSync(config.videosPath+'/archived/stream');
   logger.log('videoFiles: %s', videoFiles);
@@ -246,7 +259,7 @@ videoSchema.statics.populateFromFiles = function(callback) {
           return step(null);
         }
         if (video_) {
-          logger.debug('Existing video: %s', video_.title);
+          logger.log('Existing video: %s', video_.title);
           return video_.save(function (err) {
             if (err) logger.warn(err);
             step(null);
@@ -255,7 +268,7 @@ videoSchema.statics.populateFromFiles = function(callback) {
         var newVideo = new Video({'isOriginal':true,'path':videoPath});
         newVideo.save(function (err) {
           if (err) logger.warn(err);
-          logger.debug('Populated video: %s', newVideo.title);
+          logger.log('Populated video: %s', newVideo.title);
           step(null);
         });
       });
@@ -269,7 +282,7 @@ videoSchema.statics.populateFromFiles = function(callback) {
 }
 
 videoSchema.statics.processPublished = function(callback) {
-  logger.log('Processing Published Video');
+  logger.log('Processing Published Video...');
   Video.archiveVideos(function (err) {
     if (err) return callback(err);
     Video.createPreviews(function (err) {
