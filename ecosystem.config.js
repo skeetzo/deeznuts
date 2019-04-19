@@ -44,7 +44,7 @@ module.exports = {
     },
     "production" : {
       user : "deploy",
-      host : "104.34.128.2",
+      host : "alexdeeznuts.com",
       ref  : "origin/production",
       repo : "git@github.com:skeetzo/deeznuts.git",
       path : "/var/www/apps/deeznuts",
