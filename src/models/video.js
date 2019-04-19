@@ -265,9 +265,9 @@ videoSchema.statics.populateFromFiles = function(callback) {
           return step(null);
         }
         if (video_) {
-          logger.log('Existing video: %s', video_.title);
           return video_.save(function (err) {
             if (err) logger.warn(err);
+            logger.log('Existing video: %s', video_.title);
             step(null);
           });
         }
