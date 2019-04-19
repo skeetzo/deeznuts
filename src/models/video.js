@@ -476,6 +476,8 @@ videoSchema.methods.repairMoov = function(callback) {
   child.on('exit', code => {
     // logger.log(`Exit code is: ${code}`);
     path_name = self.path.replace(".mp4","_fixed.mp4");
+    if (!fs.existsSync(path_name))
+      return callback("Missing Repaired File");
     fs.renameSync(path_name, self.path);
     self.path = path_name;
     // cannot save because this is being called from save but everything else will save it anyways, hopefully
