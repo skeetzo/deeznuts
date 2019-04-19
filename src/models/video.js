@@ -82,6 +82,12 @@ videoSchema.pre('save', function (next) {
             if (err.message.indexOf('Invalid data found when processing input')>-1&&!retried) {
               logger.debug('-- missing moov atom --');
               return self.repairMoov(function (err) {
+                if (err) {
+                  logger.warn(err);
+                  logger.warn('Missing duration: %s', self.title);
+                  self.duration = 0;
+                  return step(null);
+                }
                 logger.debug('retrying probe...');
                 retried = true;
                 probe()
@@ -458,16 +464,21 @@ videoSchema.methods.sendPurchasedEmail = function(callback) {
 }
 
 videoSchema.methods.repairMoov = function(callback) {
-  logger.log('Repairing Moov: %s', this.title);
+  var self = this;
+  logger.log('Repairing Moov: %s', self.title);
   if (!fs.existsSync(config.workingVideoPath))
     return callback("Warning: Missing Working Video Path");
   const { spawn } = require('child_process');
-  const child = spawn('untrunc', [config.workingVideoPath, this.path]);
-  child.stdout.on('data', function (data) {
-    logger.log(data.toString());
-  })
+  const child = spawn('untrunc', [config.workingVideoPath, self.path]);
+  // child.stdout.on('data', function (data) {
+    // logger.log(data.toString());
+  // })
   child.on('exit', code => {
-    logger.log(`Exit code is: ${code}`);
+    // logger.log(`Exit code is: ${code}`);
+    path_name = self.path.replace(".mp4","_fixed.mp4");
+    fs.renameSync(path_name, self.path);
+    self.path = path_name;
+    // cannot save because this is being called from save but everything else will save it anyways, hopefully
     callback(null);
   });
 }
