@@ -173,7 +173,7 @@ async.series([
   },
   // Rebuild
   function (step) {
-    if (!config.rebuildFromFiles) {
+    if (!config.populateFromFiles) {
       logger.log('Skipping: Rebuild From Files');
       return step(null);
     }

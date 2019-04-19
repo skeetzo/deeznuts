@@ -136,7 +136,7 @@ function deploy(environment) {
 	config.debugging_paypal_reset_plans = false;
 	config.debugging_clean_fileNames = false;
 
-	config.rebuildFromFiles = false;
+	config.populateFromFiles = false;
 
 	if (environment=='development') {
 		config.debugging = true;
@@ -186,7 +186,7 @@ function deploy(environment) {
 		config.backupToOnlyFans = true;
 		config.archive_on_publish = true;
 		// config.remoteDatabase = true;
-		// config.rebuildFromFiles = true;
+		config.populateFromFiles = true;
 		config.deleteMissing = true;
 	}
 }
