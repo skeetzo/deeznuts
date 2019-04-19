@@ -81,6 +81,7 @@ module.exports.setup = function (io) {
 	    User.find({'connected':true}, function (err, users) {
 	      if (err) return logger.warn(err);
 	      // logger.log('users: %s', users.length);
+	      logger.io('clients: %s', clients);
 	      _.forEach(users, function (user) {
 	      	if (user.time_added)  
 	      		for (var i=0;i<clients.length;i++)
@@ -94,9 +95,8 @@ module.exports.setup = function (io) {
 	          if (err) logger.warn(err);
 	          if (!synced) return;
 	          client = null;
-	          for (var i=0;i<clients.length;i++)
-	          	logger.log('client: %s', clients[i][0]);
-	          	logger.log('client1: %s', clients[i]);
+	          for (var i=0;i<clients.length;i++) {
+	          	logger.io('client: %s', clients[i][0]);
           		if (clients[i][0]==user._id) {
           			logger.io('client: %s', clients[i][0]);
           			if (user.disconnect) {
@@ -108,6 +108,7 @@ module.exports.setup = function (io) {
 		  			  	clients[i][1].emit('sync', config.status);
 		  			}
           		}
+          	  }
 	        });
 	      });
 	    });
