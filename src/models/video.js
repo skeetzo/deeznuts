@@ -446,10 +446,8 @@ videoSchema.methods.sendPurchasedEmail = function(callback) {
 
 videoSchema.methods.repairMoov = function(callback) {
   logger.log('Repairing Moov: %s', this.title);
-  if (!fs.existsSync(config.workingVideoPath)) {
-    logger.warn("Warning: Missing Working Video Path");
-    return callback(null);
-  } 
+  if (!fs.existsSync(config.workingVideoPath))
+    return callback("Warning: Missing Working Video Path");
   const { spawn } = require('child_process');
   const child = spawn('untrunc', [config.workingVideoPath, this.path]);
   child.stdout.on('data', function (data) {
