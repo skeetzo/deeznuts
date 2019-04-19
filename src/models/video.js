@@ -475,7 +475,7 @@ videoSchema.methods.repairMoov = function(callback) {
   });
   child.on('exit', code => {
     // logger.log(`Exit code is: ${code}`);
-    path_name = self.path.replace(".mp4","_fixed.mp4");
+    path_name = self.path+"_fixed.mp4";
     if (!fs.existsSync(path_name))
       return callback("Missing Repaired File: "+self.title);
     fs.renameSync(path_name, self.path);
