@@ -97,11 +97,14 @@ module.exports.setup = function (io) {
 	          for (var i=0;i<clients.length;i++)
           		if (clients[i][0]==user._id) {
           			logger.io('client: %s', clients[i][0]);
-          			if (user.disconnect) 
+          			if (user.disconnect) {
+          				logger.io('disconnecting: %s', user._id);
 		  			  	clients[i][1].emit('disconnect');
-		  			else
+          			}
+		  			else {
+		  				logger.io('syncing: %s', user._id);
 		  			  	clients[i][1].emit('sync', config.status);
-          			break;        
+		  			}
           		}
 	        });
 	      });
