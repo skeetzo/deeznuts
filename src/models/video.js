@@ -442,9 +442,9 @@ videoSchema.methods.repairMoov = function(callback) {
   logger.log('Repairing Moov: %s', self.title);
   const { spawn } = require('child_process');
   const child = spawn('untrunc', [config.workingVideoPath, self.path]);
-  for await (const data of child.stdout) {
-    logger.log(`${data}`);
-  };
+  child.stdout.on('data', function (data) {
+    logger.log(data.toString());
+  })
   child.on('exit', code => {
     logger.log(`Exit code is: ${code}`);
     callback(null);
