@@ -275,12 +275,13 @@ userSchema.methods.purchaseVideo = function(videoId, callback) {
   });
 }
 
-userSchema.methods.countDown = function (callback) {
+userSchema.methods.countdown = function (callback) {
   var self = this;
-  // logger.debug('syncing user: %s - %s = %s', parseInt(self.time, 10), parseInt(config.syncInterval, 10), parseInt(self.time, 10) - parseInt(config.syncInterval, 10));
+  if (!self.countingDown) return callback("Not Counting Down: "+self._id);
+  // logger.debug('syncing user (%s): %s - %s = %s', self._id, parseInt(self.time, 10), parseInt(config.syncInterval, 10), parseInt(self.time, 10) - parseInt(config.syncInterval, 10));
   self.time = parseInt(self.time, 10) - parseInt(config.syncInterval, 10);
-  if (self.time<=0) 
-    self.disconnect = true;
+  if (self.time<=0) self.disconnect_me = true;
+  else self.disconnect_me = false;
   self.save(function (err) {
     callback(err);
   });
@@ -288,7 +289,7 @@ userSchema.methods.countDown = function (callback) {
 
 userSchema.methods.start = function (callback) {
   var self = this;
-  // logger.debug('starting : %s', self._id);
+  if (self.countingDown) return callback("Already Started: "+self._id);
   self.countingDown = true;
   self.save(function (err) {
     if (err) return callback(err);
@@ -299,7 +300,7 @@ userSchema.methods.start = function (callback) {
 
 userSchema.methods.stop = function (callback) {
   var self = this;
-  // logger.debug('stopping : %s', self._id);
+  if (!self.countingDown) return callback("Already Stopped: "+self._id);
   self.countingDown = false;
   self.save(function (err) {
     if (err) return callback(err);
@@ -309,24 +310,10 @@ userSchema.methods.stop = function (callback) {
 }
 
 userSchema.methods.sync = function (callback) {
-  var self = this;
-  async.series([
-    function (step) {
-      if (self.countingDown)
-        self.countDown(function (err) {
-          if (err) logger.warn(err);
-          step(null);
-        });
-      else step(null);
-    },
-    function (step) {
-      self.save(function (err) {
-        if (err) return callback(err);
-        // logger.debug('synced: %s', self._id);
-        callback(null);
-      });
-    }
-  ])
+  this.countDown(function (err) {
+    if (err) logger.warn(err);
+    callback(null, true);
+  });
 }
 
 

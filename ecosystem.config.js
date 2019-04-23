@@ -23,6 +23,7 @@ module.exports = {
     "development" : {
       user : "deploy",
       host : "104.34.128.2",
+      ssh_options: "port=24",
       ref  : "origin/development",
       repo : "git@github.com:skeetzo/deeznuts.git",
       path : "/var/www/apps/deeznuts",
@@ -34,6 +35,7 @@ module.exports = {
     "staging" : {
       user : "deploy",
       host : "104.34.128.2",
+      ssh_options: "port=24",
       ref  : "origin/staging",
       repo : "git@github.com:skeetzo/deeznuts.git",
       path : "/var/www/apps/deeznuts",
@@ -45,6 +47,7 @@ module.exports = {
     "production" : {
       user : "deploy",
       host : "104.34.128.2",
+      ssh_options: "port=24",
       ref  : "origin/production",
       repo : "git@github.com:skeetzo/deeznuts.git",
       path : "/var/www/apps/deeznuts",

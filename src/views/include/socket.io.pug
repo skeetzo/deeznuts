@@ -5,7 +5,6 @@ if (user)
       var socket = io();
 
       socket.on('connect', function() {
-        console.log("connected: #{user._id}")
         socket.emit('connected', "#{user._id}");
         if (window.location.pathname.indexOf('/live')>-1)
           socket.emit('start', "#{user._id}");
@@ -14,12 +13,11 @@ if (user)
       });
 
       socket.on('time', function(data) {
-        var seconds = parseInt(data.time),
-            time = toTime(data.time_added);
+        var seconds = parseInt(data.time);
         $("#time").text(toTime(seconds));
         $("#timeseconds").text(seconds);
-        if (time)
-          alert('Time added! Added: '+(time.substring(0,time.indexOf('.'))));
+        if (data.time_added)
+          alert('Time added! Added: '+(toTime(data.time_added).substring(0,toTime(data.time_added).indexOf('.'))));
       });
 
       socket.on('video', function(data) {
@@ -27,14 +25,11 @@ if (user)
         window.location.replace("#{domain}/videos");
       });
 
-      socket.on('sync', function(status) {
-        console.log("syncing: #{user._id}")
+      socket.on('status', function(status) {
         updateStatus(status);
       });
 
       socket.on('disconnect', function() {
-        console.log("disconnecting: #{user._id}")
-        socket.emit('end', "#{user._id}");
         window.location.replace("#{domain}/");
       });
 
@@ -50,6 +45,4 @@ if (user)
           window.location.replace("#{domain}/");
         }
       }
-
     })
-

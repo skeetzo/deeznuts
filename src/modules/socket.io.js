@@ -1,104 +1,92 @@
 var config = require('../config/index'),
     logger = config.logger,
-    _ = require('underscore');
+    _ = require('underscore'),
+    User = require('../models/user');
 
-var User = require('../models/user');
-
-var occupancy = 10;
+var occupancy = config.live_occupancy;
 var num_occupants = 0;
-
-var clients = [];
 
 module.exports.setup = function (io) {
 	logger.io('Setting up socket.io');
 
 	io.on('connection', function (client) {
-		
+		client._id = null;
+		client.status = config.status;
+
 		client.on('connected', function (userId) {
-			// logger.io('connecting: %s', userId);
+			logger.io('connecting: %s', userId);
+			client._id = userId;
 			User.connected(userId, function (err) {
-				// if (err) return logger.warn(err);
-				// logger.log(clients);
-				if (!_.contains(clients, userId))
-					clients.push([userId, client]);
-				// logger.log(clients);
+				if (err) logger.warn(err);
+				clearInterval(client.SYNC_INTERVAL);
+				client.SYNC_INTERVAL = setInterval(function () {
+				    User.findById(client._id, function (err, user) {
+				    	if (err) return logger.warn(err);
+				    	if (!user) return logger.warn("Missing Sync User");
+				        // add time
+				        if (user.time_added) {  
+			      	    	client.emit('time', {'time':user.time,'time_added':user.time_added});
+				          	user.time_added = null;
+				        }
+				        // go live
+				        if (config.status!=client.status) {
+				        	client.status = config.status;
+				        	client.emit('status', config.status);
+				        }
+				        // countdown on /live
+				        user.countdown(function (err) {
+				            if (err) {
+				            	// logger.debug(err);
+				            	return;
+				            }
+				            // out of time
+			          		if (user.disconnect_me) {
+			      				logger.io('disconnecting: %s', user._id);
+				  			  	client.emit('disconnect');
+			      			}
+				  			else {
+				  				// logger.io('syncing: %s', user._id);
+				  			  	client.emit('time', {'time':user.time});
+				  			}
+			      		});
+				    });
+			    }, config.syncInterval*1000);
+			});
+		});
+
+		client.on('start', function () {
+			logger.io('starting: %s', client._id);
+			User.start(client._id, function (err) {
+				if (err) {
+					// logger.debug(err);
+					return;
+				}
 				num_occupants++;
-				logger.io('Occupancy (+): %s', num_occupants);
-				if (num_occupants==1) syncOn();
+				logger.io('Occupancy (+): %s', num_occupants);		
 			});
 		});
 
-		client.on('start', function (userId) {
-			// logger.io('starting: %s', userId);
-			User.start(userId, function (err) {
-				// if (err) logger.warn(err);
-			});
-		});
-
-		client.on('stop', function (userId) {
-			// logger.io('stopping: %s', userId);
-			User.stop(userId, function (err) {
-				// if (err) logger.warn(err);
+		client.on('stop', function () {
+			logger.io('stopping: %s', client._id);
+			User.stop(client._id, function (err) {
+				if (err) {
+					// logger.debug(err);
+					return;
+				}
+				num_occupants--;
+				logger.io('Occupancy (-): %s', num_occupants);
 			});
 		});
 		
 		client.on('disconnect', function () {
-			
-		});
-
-		client.on('end', function (userId) {
-			// logger.io('ending: %s', userId);
-			User.disconnected(userId, function (err) {
+			logger.io('disconnecting: %s', client._id);
+			User.disconnected(client._id, function (err) {
 				if (err) logger.warn(err);
-				num_occupants--;
-				logger.io('Occupancy (-): %s', num_occupants);
-				if (num_occupants==0) syncOff();
-				for (var i=0;i<clients.length;i++)
-					if (clients[i]==userId)
-						clients.splice(i,1);	
+				clearInterval(client.SYNC_INTERVAL);
 			});
 		});
 
 	});
-
-	var SYNCING = false;
-	var SYNC_INTERVAL;
-	var redundant;
-	var syncOff = function() {
-	   clearTimeout(redundant);
-	   redundant = setTimeout(function () {
-	  	logger.io('Stopping User Syncs');
-	    clearInterval(SYNC_INTERVAL);
-	    SYNCING = false;
-	  }, 10000);
-	}
-
-	var syncOn = function() {
-	  clearInterval(SYNC_INTERVAL);
-	  SYNCING = true;
-	  logger.io('Starting User Syncs every %s second(s)...', config.syncInterval);
-	  SYNC_INTERVAL = setInterval(function () {
-	    User.find({'connected':true}, function (err, users) {
-	      if (err) return logger.warn(err);
-	      // logger.log('users: %s', users.length);
-	      _.forEach(users, function (user) {
-	      	if (user.time_added) {  
-	          	for (var i=0;i<clients.length;i++)
-	          		if (clients[i][0]==user._id)
-	          			clients[i][1].emit('time', {'time':user.time,'time_added':user.time_added});
-	          	user.time_added = null
-	        }
-	        user.sync(function (err) {
-	          if (err) logger.warn(err);
-	          if (user.disconnect) 
-	          	for (var i=0;i<clients.length;i++)
-	          		if (clients[i][0]==user._id)
-	          			clients[i][1].emit('disconnect');
-	        });
-	      });
-	    });
-	  }, config.syncInterval*1000);
-	}
 }
 
 module.exports.isRoom = function() {

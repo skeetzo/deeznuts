@@ -9,7 +9,8 @@ var _ = require('underscore'),
 
 // Has Paid
 module.exports.hasPaid = function(req, res, next) {
-    if (req.session.user&&(parseInt(req.session.user.time)>=1&&config.status=='Live')||config.debugging_live) {
+    if (config.debugging_live) return next(null);
+    if (req.session.user&&(parseInt(req.session.user.time)>=1&&config.status=='Live')) {
         next(null);
     } 
     else if (config.status!='Live') {
@@ -23,8 +24,6 @@ module.exports.hasPaid = function(req, res, next) {
 }
 
 module.exports.hasRoom = function(req, res, next) {
-    return next(null);
-    // disabled
     var isRoom = require('../modules/socket.io').isRoom();
     if (isRoom) return next(null);
     req.session.locals.error = 'There\'s not enough room for you!';
