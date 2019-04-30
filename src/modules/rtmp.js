@@ -80,10 +80,11 @@ nms.on('postPublish', (id, StreamPath, args) => {
   logger.log('[NodeEvent on postPublish]', `id=${id} StreamPath=${StreamPath} args=${JSON.stringify(args)}`);
   clearTimeout(connectTimeout);
   clearTimeout(disconnectTimeout);
-  connectTimeout = setTimeout(function () {
-    logger.log('Updating Status %s -> %s', config.status, 'Live');
-    config.status = 'Live';
-  }, config.rtmpTimeout);
+  if (config.go_live)
+    connectTimeout = setTimeout(function () {
+      logger.log('Updating Status %s -> %s', config.status, 'Live');
+      config.status = 'Live';
+    }, config.rtmpTimeout);
 });
 
 

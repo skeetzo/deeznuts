@@ -135,6 +135,7 @@ function deploy(environment) {
 	config.debugging_paypal = false;
 	config.debugging_paypal_reset_plans = false;
 	config.debugging_clean_fileNames = false;
+	config.go_live = false;
 
 	config.populateFromFiles = false;
 
@@ -189,6 +190,7 @@ function deploy(environment) {
 		// config.delete_on_publish = true;
 		// config.remoteDatabase = true;
 		// config.populateFromFiles = true;
+		config.go_live = true;
 		config.deleteMissing = true;
 	}
 }
