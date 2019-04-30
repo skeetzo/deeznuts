@@ -14,7 +14,7 @@ module.exports.setup = function (io) {
 		client.status = config.status;
 
 		client.on('connected', function (userId) {
-			logger.io('connecting: %s', userId);
+			// logger.io('connecting: %s', userId);
 			client._id = userId;
 			User.connected(userId, function (err) {
 				if (err) logger.warn(err);
@@ -41,7 +41,7 @@ module.exports.setup = function (io) {
 				            }
 				            // out of time
 			          		if (user.disconnect_me) {
-			      				logger.io('disconnecting: %s', user._id);
+			      				// logger.io('disconnecting: %s', user._id);
 				  			  	client.emit('disconnect');
 			      			}
 				  			else {
@@ -55,7 +55,7 @@ module.exports.setup = function (io) {
 		});
 
 		client.on('start', function () {
-			logger.io('starting: %s', client._id);
+			// logger.io('starting: %s', client._id);
 			User.start(client._id, function (err) {
 				if (err) {
 					// logger.debug(err);
@@ -67,7 +67,7 @@ module.exports.setup = function (io) {
 		});
 
 		client.on('stop', function () {
-			logger.io('stopping: %s', client._id);
+			// logger.io('stopping: %s', client._id);
 			User.stop(client._id, function (err) {
 				if (err) {
 					// logger.debug(err);
@@ -79,7 +79,7 @@ module.exports.setup = function (io) {
 		});
 		
 		client.on('disconnect', function () {
-			logger.io('disconnecting: %s', client._id);
+			// logger.io('disconnecting: %s', client._id);
 			User.disconnected(client._id, function (err) {
 				if (err) logger.warn(err);
 				clearInterval(client.SYNC_INTERVAL);
