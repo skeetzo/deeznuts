@@ -5,6 +5,7 @@
  */
 var config = require('../config/index'),
     logger = config.logger;
+var Log = require('../modules/log').prepare();
 var app = require('../app');
 var debug = require('debug')('deeznuts:server');
 var http = require('http');
@@ -16,7 +17,6 @@ var Video = require('../models/video');
 var path = require('path');
 var fs = require('fs');
 var fss = require('fs-extra');
-var Log = require('../modules/log').prepare();
 
 /**
  * Get port from environment and store in Express.
