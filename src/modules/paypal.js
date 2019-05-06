@@ -141,7 +141,7 @@ var createPaymentSingle = function(req, callback) {
 	async.waterfall([
 		function (step) {
 			var User = require('../models/user');
-			User.findById(req.user._id, function (err, user) {
+			User.findById(req.session.user._id, function (err, user) {
 				if (err) {
 			        logger.warn(err);
 			        return step('There was an error.');
@@ -188,7 +188,7 @@ var createPaymentDouble = function(req, callback) {
 	async.waterfall([
 		function (step) {
 			var User = require('../models/user');
-			User.findById(req.user._id, function (err, user) {
+			User.findById(req.session.user._id, function (err, user) {
 				if (err) {
 			        logger.warn(err);
 			        return step('There was an error.');
@@ -235,7 +235,7 @@ var createPaymentTriple = function(req, callback) {
 	async.waterfall([
 		function (step) {
 			var User = require('../models/user');
-			User.findById(req.user._id, function (err, user) {
+			User.findById(req.session.user._id, function (err, user) {
 				if (err) {
 			        logger.warn(err);
 			        return step('There was an error.');

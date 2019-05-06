@@ -3,56 +3,58 @@ var config = require('../config/index'),
     fs = require('fs'),
     fss = require('fs-extra'),
     moment = require('moment'),
-    async = require('async'),
     path = require('path');
 
-var Log = function() {
-
-}
-
-Log.prototype.backup = function(callback) {
-	// write to dev logs backup
+var backup = function(callback) {
 	var newLog = moment(new Date()).format('MM-DD-YYYY');
 	var year = moment(new Date()).format('YYYY');
 	var month = moment(new Date()).format('MM-YYYY');
+	// if time is within 10 minutes of midnight, set day back 1
+	var hours = newLog.format("HH");
+	var minutes = newLog.format("mm");
+	if (hours=="00"&&parseInt(minutes)<10)
+		newLog.subtract(1, 'day')
 	var file_path = path.resolve(config.logs_dir, year, month);
-	// logger.log('logs backup path: %s', file_path);
-	fss.ensureDir(file_path, err => {
+	// logger.debug('logs backup path: %s', file_path);
+	fss.ensureDir(file_path, function (err) {
 	    if (err) return callback(err);
-	  	// dir has now been created, including the directory it is to be placed in
 	  	logger.log('----- Logs Backed Up: %s -----', newLog);
-  		// read log file text
-	  	var backup = fs.readFileSync(config.logs_file).toString();
+	  	var backedUp = fs.readFileSync(config.logs_file).toString();
 	  	// regex cleanup
-	  	backup = backup.replace(/\[(1|3|2|4)(7|9|3|4|2|1|)m/gi,'');
-	    fs.writeFile(file_path+"/"+newLog, backup, function (err) {
+	  	backedUp = backedUp.replace(/\[(1|3|2|4)(7|9|3|4|2|1|)m/gi,'');
+	    fs.writeFile(file_path+"/"+newLog, backedUp, function (err) {
 	    	if (err) console.error(err);
-	    	callback(null);
+    		callback(null);	
 		});
 	});
 }
+module.exports.backup = backup;
 
-Log.prototype.reset = function(callback) {
+var prepare = function() {
+	fss.ensureDirSync(config.logs_dir);
+	fss.ensureFileSync(config.logs_file);
+	logger.log('Logs Prepared');
+}
+module.exports.prepare = prepare;
+
+var reset = function(callback) {
 	logger.log('----- Resetting Logs -----');
-	log.backup(function (err) {
+	backup(function (err) {
 		if (err) return callback(err);
-		log.clear(function (err) {
+		clear(function (err) {
 			if (err) return callback(err);
-			console.log('Logs Reset');
 			logger.log('----- Logs Reset: %s -----', moment(new Date()).format('MM-DD-YYYY'));
 			callback(null);
 		});
 	});
 }
+module.exports.reset = reset;
 
-Log.prototype.clear = function(callback) {
+var clear = function(callback) {
 	fs.unlink(config.logs_file, function (err) {
-        if (err) logger.warn(err);
+        if (err) return callback(err);
         fss.ensureFileSync(config.logs_file);
-        console.log('Logs Cleared');
         callback(null);
     });
 }
-
-var log = new Log();
-module.exports = log;
+module.exports.clear = clear;

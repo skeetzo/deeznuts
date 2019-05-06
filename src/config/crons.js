@@ -4,7 +4,7 @@ module.exports = function() {
 
         backup : {
             start : true,
-            cronTime : '00 56 23 * * *', // end of night every day
+            cronTime : '00 55 23 * * *', // end of night every day
             timeZone: 'America/Los_Angeles' 
         },
 

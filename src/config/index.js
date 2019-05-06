@@ -200,8 +200,9 @@ if (process.env.NODE_ENV=="development")
 	config.mnt_path = '/mnt/mnt/deeznuts';
 config.local_keys_path = path.join(config.mnt_path, 'dev/localConfig.json');
 config.local_google_keys_path = path.join(config.mnt_path, 'dev/google.json');
-config.logs_dir = path.join(config.mnt_path, 'logs');
-config.logs_file = path.join(config.mnt_path, 'logs/file.log');
+// config.logs_dir = path.join(config.mnt_path, 'logs');
+config.logs_dir = path.join('/var/log', config.botName, 'logs');
+config.logs_file = path.join(config.logs_dir, 'file.log');
 config.videosPath = path.join(config.mnt_path, 'videos');
 config.imagesPath = path.join(config.mnt_path, 'images');
 config.watermarkPath = path.join(config.imagesPath, "watermark.png");
