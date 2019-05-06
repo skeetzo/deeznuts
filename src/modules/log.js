@@ -31,6 +31,7 @@ var backup = function(callback) {
 module.exports.backup = backup;
 
 var prepare = function() {
+	if (fs.existsSync(config.logs_file)) return logger.log("Logs Found");
 	fss.ensureDirSync(config.logs_dir);
 	fss.ensureFileSync(config.logs_file);
 	logger.log('Logs Prepared');
