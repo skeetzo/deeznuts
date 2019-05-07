@@ -27,7 +27,7 @@ if (user)
         $("#address").innerHTML = "bitcoin:"+data.address
         $("#qrcode").src = data.qrcode;
         $("#btc_address").style.display = "block";
-        $("#generate").style.display = "hidden";
+        $("#generate").style.display = "none";
       })
 
       socket.on('video', function(data) {
