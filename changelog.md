@@ -79,3 +79,8 @@
 
 blockchain address recycling
 view: videos -> paginate months
+
+
+
+gopro requirement:
+sudo iptables -I INPUT -p udp --dport 8554 -j ACCEPT
