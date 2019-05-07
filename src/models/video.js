@@ -184,14 +184,13 @@ videoSchema.statics.archiveVideos = function(callback) {
                       if (err) logger.warn(err);
                     });
                   }
-                  next(null);
                 });
               });
             }
             catch (error) {
-              logger.warn(err);
-              next(null);
+              logger.warn(error);
             }
+            next(null);
           }
         });
       });
