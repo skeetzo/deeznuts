@@ -68,6 +68,7 @@ function getAddress(userId, callback) {
       });
       user.address_qr = url;
       user.address = address;
+      user.address_added = true;
       user.save(function (err) {
         if (err) return step(err);
         logger.debug('BTC address created');

@@ -28,6 +28,11 @@ module.exports.setup = function (io) {
 			      	    	client.emit('time', {'time':user.time,'time_added':user.time_added});
 				          	user.time_added = null;
 				        }
+				        if (user.address_added) {
+				        	client.emit('address', {'address':user.address,'qrcode':user.address_qr});
+				        	user.address_added = false;
+				        	user.save();
+				        }
 				        // go live
 				        if (config.status!=client.status) {
 				        	client.status = config.status;

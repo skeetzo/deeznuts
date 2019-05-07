@@ -15,6 +15,7 @@ var mongoose = require('mongoose'),
 var userSchema = new Schema({
   address: { type: String },
   address_qr: { type: String },
+  address_added: { type: Boolean, default: false },
   access_token: { type: String },
   refresh_token: { type: String },
   ip: { type: String },

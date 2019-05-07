@@ -20,6 +20,16 @@ if (user)
           alert('Time added! Added: '+(toTime(data.time_added).substring(0,toTime(data.time_added).indexOf('.'))));
       });
 
+      socket.on('address', function(data) {
+        alert('BTC Address Created!')
+        //- window.location.reload();
+        $("#address").href = "bitcoin:"+data.address
+        $("#address").innerHTML = "bitcoin:"+data.address
+        $("#qrcode").src = data.qrcode;
+        $("#btc_address").style.display = "block";
+        $("#generate").style.display = "hidden";
+      })
+
       socket.on('video', function(data) {
         alert('Video purchased! Enjoy!');
         window.location.replace("#{domain}/videos");
