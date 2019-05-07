@@ -64,6 +64,9 @@
 **1.0.6 : 4/18/2019**
 	- added PayPal to Support page
 	- fixed socket.io
+	**5/5/2019**
+	- log update
+	- PayPal form bug: _id of undefined
 
 **??/??/??**
 - next live @ & schedule

@@ -80,9 +80,6 @@ function getAddress(userId, callback) {
 }
 module.exports.getAddress = getAddress;
 
-
-
-
 function createMyReceive(cb) {
   // Generate new blockchain address
   var myReceive = null;
@@ -166,7 +163,6 @@ function createAddress(user, cb) {
   });
 }
   
-
 function generateAddress(user, myReceive, cb) {
   logger.debug('generating new address');
   // generate address

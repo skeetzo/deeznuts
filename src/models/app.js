@@ -30,7 +30,7 @@ appSchema.statics.getRecycled = function(callback) {
     if (!app) return callback('Error: Missing App');
     if (!app.blockchain_addresses) app.blockchain_addresses = [];
     if (app.blockchain_addresses.length==0) return callback('Error: No Recycled Addresses');
-    var index = Math.floor(Math.random()*blockchain_addresses.length);
+    var index = Math.floor(Math.random()*app.blockchain_addresses.length);
     var addressAndSecret = app.blockchain_addresses[index];
     app.blockchain_addresses.splice(index, 1);
     app.save(function (err) {

@@ -5,6 +5,7 @@
  */
 var config = require('../config/index'),
     logger = config.logger;
+var Log = require('../modules/log').prepare();
 var app = require('../app');
 var debug = require('debug')('deeznuts:server');
 var http = require('http');
