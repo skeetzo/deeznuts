@@ -67,6 +67,8 @@
 	**5/5/2019**
 	- log update
 	- PayPal form bug: _id of undefined
+	**5/7/2019**
+	- btc address: reload page instead of display change
 
 **??/??/??**
 - next live @ & schedule

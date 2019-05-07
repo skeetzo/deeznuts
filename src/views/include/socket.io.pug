@@ -22,12 +22,12 @@ if (user)
 
       socket.on('address', function(data) {
         alert('BTC Address Created!')
-        //- window.location.reload();
-        $("#address").href = "bitcoin:"+data.address
-        $("#address").innerHTML = "bitcoin:"+data.address
-        $("#qrcode").src = data.qrcode;
-        $("#btc_address").style.display = "block";
-        $("#generate").style.display = "none";
+        window.location.reload();
+        //- $("#address").href = "bitcoin:"+data.address
+        //- $("#address").innerHTML = "bitcoin:"+data.address
+        //- $("#qrcode").src = data.qrcode;
+        //- $("#btc_address").css("display", "block");
+        //- $("#generate").css("display", "none");
       })
 
       socket.on('video', function(data) {

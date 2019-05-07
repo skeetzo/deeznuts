@@ -2,20 +2,14 @@
   .col-xs-12
     if (user&&user.address&&user.address_qr)
       #btc_address
-        //- explanation
         p  To Add Time, Pay >=$1 in Bitcoin (BTC) to:
-        //- link
         img#qrcode(src=user.address_qr,style="display:block;margin-left:auto;margin-right:auto;")
         a#address(href="bitcoin:"+user.address, target="_blank") bitcoin:#{user.address}
-    
     else
-      #btc_address(style="display:none")
-        //- explanation
-        p  To Add Time, Pay >=$1 in Bitcoin (BTC) to:
-        //- link
-        img#qrcode(src=user.address_qr,style="display:block;margin-left:auto;margin-right:auto;")
-        a#address(href="bitcoin:"+user.address, target="_blank") bitcoin:#{user.address}
-      
+      //- #btc_address(style="display:none")
+      //-   p  To Add Time, Pay >=$1 in Bitcoin (BTC) to:
+      //-   img#qrcode(src=user.address_qr,style="display:block;margin-left:auto;margin-right:auto;")
+      //-   a#address(href="bitcoin:"+user.address, target="_blank") bitcoin:#{user.address}
       button.btn.btn-primary#generate(onclick="generateAddress()") Generate BTC Address
 
       script.
