@@ -7,11 +7,11 @@ var config = require('../config/index'),
 
 var backup = function(callback) {
 	var newLog = moment(new Date()).format('MM-DD-YYYY');
+	var hours = moment(new Date()).format('HH');
+	var minutes = moment(new Date()).format('mm');
 	var year = moment(new Date()).format('YYYY');
 	var month = moment(new Date()).format('MM-YYYY');
 	// if time is within 10 minutes of midnight, set day back 1
-	var hours = newLog.format("HH");
-	var minutes = newLog.format("mm");
 	if (hours=="00"&&parseInt(minutes)<10)
 		newLog.subtract(1, 'day')
 	var file_path = path.resolve(config.logs_dir, year, month);
