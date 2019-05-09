@@ -40,8 +40,8 @@ module.exports = {
       ref  : "origin/staging",
       repo : "git@github.com:skeetzo/deeznuts.git",
       path : "/var/www/apps/deeznuts",
-      "post-setup": "chown -R deploy:www-data .",
-      "post-deploy" : "npm install && pm2 startOrRestart ecosystem.config.js --env staging --only deeznuts",
+      // "post-setup": "chown -R deploy:www-data .",
+      "post-deploy" : "npm install --unsafe-perm=true --allow-root && chown -R deploy:www-data . && pm2 startOrRestart ecosystem.config.js --env staging --only deeznuts",
       env  : {
         NODE_ENV: "staging"
       }
