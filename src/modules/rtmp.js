@@ -23,7 +23,7 @@ var serverOptions = {
 
 if (process.env.NODE_ENV!="development")
   serverOptions.http.allow_origin = 'https://alexdeeznuts.com';
-logger.log("SERVER OPTIONS ALLOW ORIGIN: "+serverOptions.http.allow_origin);
+
 serverOptions.auth = {};
 
 if (config.ssl) {

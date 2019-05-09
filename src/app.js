@@ -30,6 +30,12 @@ var bodyParser = require('body-parser');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:true}));
 
+// Cors
+app.use(cors({
+    origin: config.domain, 
+    allowedHeaders: [ 'Accept-Version', 'Authorization', 'Credentials', 'Content-Type' ]
+}));
+
 // Validator & Sanitizer
 // var expressValidator = require('express-validator');
 // app.use(expressValidator()); // this line must be immediately after any of the bodyParser middlewares!
