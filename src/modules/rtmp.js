@@ -24,6 +24,8 @@ var serverOptions = {
 if (process.env.NODE_ENV!="development")
   serverOptions.http.allow_origin = 'https://alexdeeznuts.com';
 
+serverOptions.http.allow_origin = '*';
+
 serverOptions.auth = {};
 
 if (config.ssl) {

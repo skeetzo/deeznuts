@@ -33,8 +33,9 @@ app.use(bodyParser.urlencoded({extended:true}));
 // Cors
 var cors = require('cors');
 app.use(cors({
-    origin: config.domain, 
-    allowedHeaders: [ 'Accept-Version', 'Authorization', 'Credentials', 'Content-Type' ]
+    // origin: config.domain,
+    origin: '*',
+    allowedHeaders: ['Authorization', 'Content-Type', 'Accept', 'Origin']
 }));
 
 // Validator & Sanitizer
@@ -117,7 +118,7 @@ if (config.ssl)
       // logger.log('secure: %s', req.secure);
       next();
     } else {
-      logger.log('REDIRECTING: %s', req.secure);
+      logger.warn('REDIRECTING: %s', req.secure);
       res.redirect('https://' + req.headers.host + req.url);
     }
   });
