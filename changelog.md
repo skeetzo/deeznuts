@@ -70,7 +70,9 @@
 	**5/7/2019**
 	- btc address: reload page instead of display change
 	**5/8/2019**
-	- fontawesome fix
+	- gulp: fontawesome fix
+	- nginx: cache permissions fix
+	- cors: added
 
 **??/??/??**
 - next live @ & schedule
