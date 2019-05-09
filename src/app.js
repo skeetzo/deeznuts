@@ -33,8 +33,8 @@ app.use(bodyParser.urlencoded({extended:true}));
 // Cors
 var cors = require('cors');
 app.use(cors({
-    // origin: config.domain,
-    origin: '*',
+    origin: config.domain,
+    // origin: '*',
     allowedHeaders: ['Authorization', 'Content-Type', 'Accept', 'Origin']
 }));
 
