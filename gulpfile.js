@@ -12,7 +12,8 @@ gulp.task('socket.io', function() {
 });
 
 gulp.task('font-awesome', function() {
-  gulp.src('node_modules/font-awesome/css/**.*')
+  // gulp.src('node_modules/@fortawesome/fontawesome-free/css/**.*')
+  gulp.src('node_modules/@fortawesome/fontawesome-free/css/fontawesome.min.css')
     .pipe(gulp.dest('src/public/dist/font-awesome'));
   return;
 });
