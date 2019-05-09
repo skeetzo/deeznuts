@@ -69,6 +69,8 @@
 	- PayPal form bug: _id of undefined
 	**5/7/2019**
 	- btc address: reload page instead of display change
+	**5/8/2019**
+	- fontawesome fix
 
 **??/??/??**
 - next live @ & schedule
