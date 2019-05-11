@@ -6,14 +6,15 @@ var config = require('../config/index'),
     path = require('path');
 
 var backup = function(callback) {
-	var newLog = moment(new Date()).format('MM-DD-YYYY');
 	var hours = moment(new Date()).format('HH');
 	var minutes = moment(new Date()).format('mm');
 	var year = moment(new Date()).format('YYYY');
 	var month = moment(new Date()).format('MM-YYYY');
+	var newLog = moment(new Date());
 	// if time is within 10 minutes of midnight, set day back 1
 	if (hours=="00"&&parseInt(minutes)<10)
 		newLog.subtract(1, 'day')
+	newLog = newLog.format('MM-DD-YYYY');
 	var file_path = path.resolve(config.logs_dir, year, month);
 	// logger.debug('logs backup path: %s', file_path);
 	fss.ensureDir(file_path, function (err) {
