@@ -53,11 +53,9 @@ module.exports = {
       path : "/var/www/apps/deeznuts",
       "post-deploy" : "npm install --unsafe-perm=true --allow-root && chown -R deploy:www-data . && pm2 startOrRestart ecosystem.config.js --env production --only deeznuts",
       env  : {
-        NODE_ENV: "production"
-      },
-      args : [
-        "--colors"
-      ]
+        NODE_ENV: "production",
+        DEBUG_COLORS: true
+      }
     }
   }
 };
