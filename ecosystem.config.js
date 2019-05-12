@@ -3,7 +3,7 @@ module.exports = {
   apps : [{
     name      : 'deeznuts',
     script    : 'npm',
-    args      : 'start',
+    args      : ['start','--color'],
     cwd       : '/var/www/apps/deeznuts/source',
     env: {
       NODE_ENV: 'development',
