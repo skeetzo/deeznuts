@@ -29,7 +29,8 @@ module.exports = {
       path : "/var/www/apps/deeznuts",
       "post-deploy" : "npm install --unsafe-perm=true --allow-root && chown -R deploy:www-data . && pm2 startOrRestart ecosystem.config.js --only deeznuts",
       env  : {
-        NODE_ENV: "development"
+        NODE_ENV: "development",
+        FORCE_COLOR: true
       }
     },
     "staging" : {
@@ -41,7 +42,8 @@ module.exports = {
       path : "/var/www/apps/deeznuts",
       "post-deploy" : "npm install --unsafe-perm=true --allow-root && chown -R deploy:www-data . && pm2 startOrRestart ecosystem.config.js --env staging --only deeznuts",
       env  : {
-        NODE_ENV: "staging"
+        NODE_ENV: "staging",
+        FORCE_COLOR: true
       }
     },
     "production" : {
@@ -55,10 +57,7 @@ module.exports = {
       env  : {
         NODE_ENV: "production",
         FORCE_COLOR: true
-      },
-      // args: [
-      //   "--color"
-      // ]
+      }
     }
   }
 };
