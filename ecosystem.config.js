@@ -3,7 +3,7 @@ module.exports = {
   apps : [{
     name      : 'deeznuts',
     script    : 'npm',
-    args      : ['start','--color'],
+    args      : 'start',
     cwd       : '/var/www/apps/deeznuts/source',
     env: {
       NODE_ENV: 'development',
@@ -54,7 +54,10 @@ module.exports = {
       "post-deploy" : "npm install --unsafe-perm=true --allow-root && chown -R deploy:www-data . && pm2 startOrRestart ecosystem.config.js --env production --only deeznuts",
       env  : {
         NODE_ENV: "production"
-      }
+      },
+      args : [
+        "--colors"
+      ]
     }
   }
 };
