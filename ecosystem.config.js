@@ -55,7 +55,10 @@ module.exports = {
       env  : {
         NODE_ENV: "production",
         DEBUG_COLORS: true
-      }
+      },
+      args : [
+        "--color"
+      ]
     }
   }
 };
