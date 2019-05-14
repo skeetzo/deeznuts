@@ -6,7 +6,7 @@ var config = require('../config/index'),
     path = require('path');
 
 var backupDatabase = function(callback) {
-	logger.log('Backing Up MongoDB: %s', config.botName);
+	logger.log('Backing Up MongoDB');
 	if (!config.backup_db) return callback('Skipping MongoDB Backup');
 	var year = moment(new Date()).format('YYYY');
 	var month = moment(new Date()).format('MM-YYYY');
