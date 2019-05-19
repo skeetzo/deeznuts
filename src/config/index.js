@@ -197,8 +197,8 @@ function deploy(environment) {
 }
 
 config.mnt_path = '/mnt/deeznuts';
-// if (process.env.NODE_ENV=="development")
-	// config.mnt_path = '/mnt/mnt/deeznuts';
+if (process.env.NODE_ENV=="development")
+	config.mnt_path = '/mnt/deeznuts';
 config.local_keys_path = path.join(config.mnt_path, 'dev/localConfig.json');
 config.local_google_keys_path = path.join(config.mnt_path, 'dev/google.json');
 // config.logs_dir = path.join(config.mnt_path, 'logs');
