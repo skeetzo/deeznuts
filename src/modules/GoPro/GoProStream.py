@@ -126,6 +126,7 @@ def gopro_live():
 			print("Note: Preview is not available when saving the stream.")
 			#subprocess.Popen("ffmpeg -re -i 'udp://10.5.5.100:8554' -loglevel "+LOGLEVEL+" -probesize 100M -analyzeduration 100M -f:v mpegts -acodec copy -vcodec copy -f flv rtmp://76.91.217.22:1935/"+DESTINATION, shell=True)
 			#subprocess.Popen("ffmpeg -re -i 'udp://10.5.5.100:8554' -loglevel "+LOGLEVEL+" -movflags faststart -probesize 100M -analyzeduration 100M -preset slow -f:v mpegts -acodec copy -vcodec copy -f flv rtmp://alexdeeznuts.com:1935/"+DESTINATION, shell=True)
+			# subprocess.Popen("ffmpeg -re -i 'udp://10.5.5.100:8554' -loglevel "+LOGLEVEL+" -movflags faststart -probesize 100M -analyzeduration 100M -preset slow -f:v mpegts -acodec copy -vcodec copy -f flv rtmp://127.0.0.1:8935/live/stream?sign=1558308292123-82cade5510d1a06dac14c93c03f8ddce", shell=True)
 			subprocess.Popen("ffmpeg -re -i 'udp://10.5.5.100:8554' -loglevel "+LOGLEVEL+" -movflags faststart -probesize 100M -analyzeduration 100M -preset slow -f:v mpegts -acodec copy -vcodec copy -f flv rtmp://127.0.0.1:1935/shower", shell=True)
 		if sys.version_info.major >= 3:
 			MESSAGE = bytes(MESSAGE, "utf-8")

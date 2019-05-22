@@ -190,7 +190,7 @@ function deploy(environment) {
 		config.archive_on_publish = true;
 		// config.delete_on_publish = true;
 		// config.remoteDatabase = true;
-		// config.populateFromFiles = true;
+		config.populateFromFiles = true;
 		config.go_live = true;
 		config.deleteMissing = true;
 	}

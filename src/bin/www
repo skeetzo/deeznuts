@@ -190,6 +190,7 @@ async.series([
       logger.log('Skipping: Delete Missing');
       return step(null);
     }
+    // deletes video models that are missing mp4s
     Video.deleteMissing(function (err) {
       if (err) logger.warn(err);
       step(null);
