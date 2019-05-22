@@ -104,6 +104,7 @@ function deploy(environment) {
 
 	config.live_enabled = false;
 
+	config.backup_db = false;
 	config.backupToOnlyFans = false;
 	config.archive_on_publish = false;
 	config.delete_on_publish = false;
@@ -192,6 +193,7 @@ function deploy(environment) {
 		// config.remoteDatabase = true;
 		config.populateFromFiles = true;
 		config.go_live = true;
+		config.backup_db = true;
 		config.deleteMissing = true;
 	}
 }
