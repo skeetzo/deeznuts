@@ -237,14 +237,23 @@ videoSchema.statics.deleteMissing = function(callback) {
           if (files[i]==path.basename(videos[j].path))
             videos.splice(j,1);
         }
+      var series = [];
       _.forEach(videos, function (video) {
-        logger.debug("deleting: %s", video.title)
-        // fs.unlinkSync(video.path);
-        // fs.unlinkSync(video.preview_path);
-        video.remove().exec();
+        series.push(function (step) {
+          logger.debug("deleting: %s", video.title)
+          // fs.unlinkSync(video.path);
+          // fs.unlinkSync(video.preview_path);
+          video.remove(function (err) {
+            if (err) logger.warn(err);
+            step(null);
+          });
+        });
       });
-      logger.debug('Deleted Missing: %s', videos.length);
-      callback(null);
+      series.push(function (step) {
+        logger.debug('Deleted Missing: %s', videos.length);
+        callback(null);
+      });
+      async.series(series);
     });
   });
 }
