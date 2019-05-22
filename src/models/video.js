@@ -241,7 +241,7 @@ videoSchema.statics.deleteMissing = function(callback) {
         logger.debug("deleting: %s", video.title)
         // fs.unlinkSync(video.path);
         // fs.unlinkSync(video.preview_path);
-        video.remove();
+        video.remove().exec();
       });
       logger.debug('Deleted Missing: %s', videos.length);
       callback(null);
