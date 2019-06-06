@@ -86,6 +86,8 @@
 
  to:do
 
+ add link to live page in "i've gone live"
+
 blockchain address recycling
 view: videos -> paginate months
 
