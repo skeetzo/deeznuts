@@ -204,7 +204,7 @@ if (process.env.NODE_ENV=="development")
 config.local_keys_path = path.join(config.mnt_path, 'dev/localConfig.json');
 config.local_google_keys_path = path.join(config.mnt_path, 'dev/google.json');
 // config.logs_dir = path.join(config.mnt_path, 'logs');
-config.logs_dir = path.join('/var/log/apps', config.botName, 'logs');
+config.logs_dir = path.join('/var/log/apps', config.botName);
 config.logs_file = path.join(config.logs_dir, 'file.log');
 config.videosPath = path.join(config.mnt_path, 'videos');
 config.imagesPath = path.join(config.mnt_path, 'images');

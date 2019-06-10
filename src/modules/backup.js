@@ -17,7 +17,7 @@ var backupDatabase = function(callback) {
 	MongodbBackup({
 	  uri: config.MONGODB_URI,
 	  root: file_path,
-	  'tar': moment(new Date()).format('MM-DD-YYYY')+'.tar',
+	  // 'tar': moment(new Date()).format('MM-DD-YYYY')+'.tar',
 	  'callback': function(err) {
 	    if (err) return callback(err);
 	    logger.log('MongoDB Backup Successful');
