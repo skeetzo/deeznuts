@@ -474,6 +474,7 @@ videoSchema.methods.sendPurchasedEmail = function(callback) {
 }
 
 videoSchema.methods.repairMoov = function(callback) {
+  if (config.repair_moov==false) return callback("Warning: Skipping Moov Repair");
   var self = this;
   logger.log('Repairing Moov: %s', self.title);
   if (!fs.existsSync(config.workingVideoPath))
