@@ -137,6 +137,7 @@ function deploy(environment) {
 	config.debugging_paypal_reset_plans = false;
 	config.debugging_clean_fileNames = false;
 	config.go_live = false;
+	config.repair_moov = false;
 
 	config.populateFromFiles = false;
 
