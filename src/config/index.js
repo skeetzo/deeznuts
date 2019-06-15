@@ -193,7 +193,7 @@ function deploy(environment) {
 		// config.remoteDatabase = true;
 		config.populateFromFiles = true;
 		config.go_live = true;
-		config.backup_db = true;
+		// config.backup_db = true;
 		config.deleteMissing = true;
 	}
 }
