@@ -52,10 +52,12 @@ if (config.streamRecording)
     'tasks': [
       {
         'app': 'live',
-        'ac': 'copy',
+        // 'ac': 'copy',
+        'ac': 'aac',
         'mp4': true,
         'mp4Flags': '[movflags=faststart]'
       },
+
     // {
     //   app: 'live',
     //   // ac: 'aac',
