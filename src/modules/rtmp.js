@@ -101,17 +101,19 @@ nms.on('donePublish', (id, StreamPath, args) => {
     logger.log('Updating Status %s -> %s', config.status, 'Not Live');
     config.status = 'Not Live';
     if (config.delete_on_publish) {
-      logger.log("Deleting on Publish...");
-      var stream_path = require('path').join(config.videosPath, '/live/stream/*');
-      var fs = require('fs');
-      fs.readdir(stream_path, function(err, items) {
-        if (!items) return logger.warn("no streams found to delete");
-        for (var i=0; i<items.length; i++)
-          fs.unlink(items[i], function (err) {
-            if (err) logger.warn(err);
-            logger.debug('deleted: %s', items[i]);
-          });
-      });
+      setTimeout(function () {
+        logger.log("Deleting on Publish...");
+        var stream_path = require('path').join(config.videosPath, '/live/stream/*');
+        var fs = require('fs');
+        fs.readdir(stream_path, function(err, items) {
+          if (!items) return logger.warn("no streams found to delete");
+          for (var i=0; i<items.length; i++)
+            fs.unlink(items[i], function (err) {
+              if (err) logger.warn(err);
+              logger.debug('deleted: %s', items[i]);
+            });
+        });
+      }, config.archive_delay)
     }
     else if (config.archive_on_publish) {
       setTimeout(function () {
