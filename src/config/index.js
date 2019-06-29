@@ -188,7 +188,7 @@ function deploy(environment) {
 		config.PayPal_syncing_webhooks = false;
 		config.Twitter = true;
 		// config.Twitter_tweeting = true;
-		config.backupToOnlyFans = true;
+		// config.backupToOnlyFans = true;
 		// config.archive_on_publish = true;
 		config.delete_on_publish = true;
 		// config.remoteDatabase = true;
