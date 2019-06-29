@@ -42,6 +42,7 @@ config.defaultPrice = 5; // in dollars
 config.defaultTime = 60; // time in seconds
 config.defaultPreviewDuration = 30;
 config.rtmpTimeout = 1000 * 30;
+if (config.debugging) config.rtmpTimeout = 0;
 config.live_occupancy = 10;
 config.syncInterval = 1; // in seconds
 if (config.debugging) {
@@ -192,7 +193,7 @@ function deploy(environment) {
 		// config.archive_on_publish = true;
 		config.delete_on_publish = true;
 		// config.remoteDatabase = true;
-		config.populateFromFiles = true;
+		// config.populateFromFiles = true;
 		config.go_live = true;
 		// config.backup_db = true;
 		config.deleteMissing = true;

@@ -52,8 +52,8 @@ if (config.streamRecording)
     'tasks': [
       {
         'app': 'live',
-        // 'ac': 'copy',
-        'ac': 'aac',
+        'ac': 'copy',
+        // 'ac': 'aac',
         'mp4': true,
         'mp4Flags': '[movflags=faststart]'
       },
@@ -103,7 +103,7 @@ nms.on('donePublish', (id, StreamPath, args) => {
     if (config.delete_on_publish) {
       setTimeout(function () {
         logger.log("Deleting on Publish...");
-        var stream_path = require('path').join(config.videosPath, '/live/stream/*');
+        var stream_path = require('path').join(config.videosPath, '/live/stream');
         var fs = require('fs');
         fs.readdir(stream_path, function(err, items) {
           if (!items) return logger.warn("no streams found to delete");
