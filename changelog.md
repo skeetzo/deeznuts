@@ -73,25 +73,23 @@
 	- gulp: fontawesome fix
 	- nginx: cache permissions fix
 	- cors: added
+**1.1.0 : 6/29/2019**
+	- switched to wss live streaming
 
 **??/??/??**
-- next live @ & schedule
+	- next live @ & schedule
 
 
 **2.0.0 : Android App : ??/??/??**
- - android rtmp relay?
+	- android rtmp relay?
 
 
+# Bugs
+**1.1.0**
+	- chrome browser on laptop: "HtmlMediaElement.error attribute is not null" 
 
 
- to:do
-
- add link to live page in "i've gone live"
-
-blockchain address recycling
-view: videos -> paginate months
-
-
-
-gopro requirement:
-sudo iptables -I INPUT -p udp --dport 8554 -j ACCEPT
+# To Do
+	- add link to live page in "i've gone live"
+	- blockchain address recycling
+	- view: videos -> paginate months
