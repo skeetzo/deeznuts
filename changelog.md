@@ -73,6 +73,12 @@
 	- gulp: fontawesome fix
 	- nginx: cache permissions fix
 	- cors: added
+**1.1.0 : 7/18/2019**
+	- updated gopro menu with tweetAnds
+	- setDestination & setMode for easier debugging switching
+	
+
+
 
 **??/??/??**
 - next live @ & schedule

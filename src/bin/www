@@ -157,8 +157,8 @@ async.series([
   },
   // Archive
   function (step) {
-    fss.ensureDirSync(path.join(config.videosPath), "0o2775");
-    fss.ensureDirSync(path.join(config.imagesPath), "0o2775");
+    fss.ensureDirSync(config.videosPath, "0o2775");
+    fss.ensureDirSync(config.imagesPath, "0o2775");
     fss.ensureDirSync(path.join(config.videosPath, 'live'), "0o2775");
     fss.ensureDirSync(path.join(config.videosPath, 'archived'), "0o2775");
     fss.ensureDirSync(path.join(config.videosPath, 'previews'), "0o2775");

@@ -156,7 +156,7 @@ function deploy(environment) {
 		config.archive_on_publish = true;
 		config.go_live = true;
 		// config.backupToOnlyFans = true;
-		config.debugging_crons = true;
+		// config.debugging_crons = true;
 		// config.debugging_paypal = true;
 		// config.debugging_paypal_reset_plans = true;
 
@@ -199,13 +199,15 @@ function deploy(environment) {
 	}
 }
 
-config.mnt_path = '/mnt/deeznuts';
-if (process.env.NODE_ENV=="development")
-	config.mnt_path = '/mnt/deeznuts';
+// Mount Paths
+var mountName = config.botName.toLowerCase();
+config.mnt_path = '/opt/apps/'+mountName;
+if (process.env.NODE_ENV!="development")
+	config.mnt_path = '/mnt/apps/'+mountName;	
 config.local_keys_path = path.join(config.mnt_path, 'dev/localConfig.json');
 config.local_google_keys_path = path.join(config.mnt_path, 'dev/google.json');
 // config.logs_dir = path.join(config.mnt_path, 'logs');
-config.logs_dir = path.join('/var/log/apps', config.botName);
+config.logs_dir = path.join('/var/log/apps', mountName);
 config.logs_file = path.join(config.logs_dir, 'file.log');
 config.videosPath = path.join(config.mnt_path, 'videos');
 config.imagesPath = path.join(config.mnt_path, 'images');

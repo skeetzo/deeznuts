@@ -1,12 +1,19 @@
 // Skeetzo
 // 2/12/2019
+// 7/18/2019 
 
-process.env.NODE_ENV = "production";
-var config = require('../../config/index'),
-    logger = config.logger;
-var Twitter = require('../../modules/twitter');
-var util = require('util');
+// process.env.NODE_ENV = "development";
+
+var config = require('../../config/index');
+const logger = config.logger;
 const readline = require('readline');
+const Twitter = require('../../modules/twitter');
+const util = require('util');
+
+var CONNECTED = false;
+var destination = "shower";
+var mode = "remote";
+var pyshell;
 
 function connect(callback) {
   var piWifi = require('pi-wifi');
@@ -25,6 +32,37 @@ function connect(callback) {
   });
 }
 
+// sets destination to: shower, 
+function setDestination(callback) {
+  const rl = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout
+  });
+  // default 'shower'
+  rl.question('destination (shower, ) ', (answer) => {
+    destination = answer.toString();
+    rl.close();
+    callback(null);
+  });
+}
+
+// sets mode to: local, remote, custom
+function setMode(callback) {
+  const rl = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout
+  });
+  // default 'remote'
+  rl.question('mode (remote or local): ', (answer) => {
+    if (answer!="remote"&&answer!="local") 
+      logger.log("Error: please enter a correct setting");
+    else
+      mode = answer;
+    rl.close();
+    callback(null);
+  });
+}
+
 function tweet(callback) {
   const rl = readline.createInterface({
     input: process.stdin,
@@ -36,6 +74,24 @@ function tweet(callback) {
       callback(err);
     });
     rl.close();
+  });
+}
+
+function tweetAndToggle(callback) {
+  tweet(function (err) {
+    if (err) return callback(err);
+    setTimeout(function () {
+      toggleStream();
+    }, 3000);
+  });
+}
+
+function tweetLiveAndToggle(callback) {
+  tweetLive(function (err) {
+    if (err) return callback(err);
+    setTimeout(function () {
+      toggleStream();
+    }, 3000);
   });
 }
 
@@ -52,12 +108,6 @@ function deleteTweet(callback) {
       callback(err);
   });
 }
-
-var CONNECTED = false;
-var pyshell;
-
-var {PythonShell} = require('python-shell');
-var path = require('path');
     
 function toggleStream() {
   if (CONNECTED) {
@@ -78,9 +128,10 @@ function toggleStream() {
       'mode': 'text',
       'pythonPath': '/usr/bin/python3',
       'pythonOptions': ['-u'], // get print results in real-time
-      'scriptPath': path.join(__dirname,'../GoPro'),
-      'args': ['-loglevel', 'debug']
+      'scriptPath': require('path').join(__dirname,'../GoPro'),
+      'args': ['-loglevel', 'debug', '-destination', destination, '-mode', mode]
     };
+    const {PythonShell} = require('python-shell');
     pyshell = new PythonShell('GoProStream.py', options);
     CONNECTED = true;
     pyshell.on('message', function (message) {
@@ -93,10 +144,14 @@ function toggleStream() {
 function menu() {
   // show main menu
   logger.log(colorize("[ 0 ] ", 'blue') + "Connect");
-  logger.log(colorize("[ 1 ] ", 'blue') + "Tweet");
-  logger.log(colorize("[ 2 ] ", 'blue') + "Tweet: Live");
-  logger.log(colorize("[ 3 ] ", 'blue') + "Toggle Stream");
-  logger.log(colorize("[ 4 ] ", 'blue') + "Delete Tweet");
+  logger.log(colorize("[ 1 ] ", 'blue') + "Set Destination");
+  logger.log(colorize("[ 2 ] ", 'blue') + "Set Mode");
+  logger.log(colorize("[ 3 ] ", 'blue') + "Tweet");
+  logger.log(colorize("[ 4 ] ", 'blue') + "Tweet: Live");
+  logger.log(colorize("[ 5 ] ", 'blue') + "Toggle Stream");
+  logger.log(colorize("[ 6 ] ", 'blue') + "Tweet and Toggle");
+  logger.log(colorize("[ 7 ] ", 'blue') + "Tweet Live and Toggle");
+  logger.log(colorize("[ 8 ] ", 'blue') + "Delete Tweet");
 }
 
 function header() {
@@ -138,12 +193,20 @@ function main() {
     if (answer==0)
       connect(handle);
     else if (answer==1)
-      tweet(handle);
+      setDestination(handle);
     else if (answer==2)
-      tweetLive(handle);
+      setMode(handle);
     else if (answer==3)
-      toggleStream(handle);
+      tweet(handle);
     else if (answer==4)
+      tweetLive(handle);
+    else if (answer==5)
+      toggleStream(handle);
+    else if (answer==6)
+      tweetAndToggle(handle);
+    else if (answer==7)
+      tweetLiveAndToggle(handle);
+    else if (answer==8)
       deleteTweet(handle);
   });
 }
