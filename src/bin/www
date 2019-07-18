@@ -157,12 +157,12 @@ async.series([
   },
   // Archive
   function (step) {
-    fss.ensureDirSync(config.videosPath, "0o2775");
-    fss.ensureDirSync(config.imagesPath, "0o2775");
-    fss.ensureDirSync(path.join(config.videosPath, 'live'), "0o2775");
-    fss.ensureDirSync(path.join(config.videosPath, 'archived'), "0o2775");
-    fss.ensureDirSync(path.join(config.videosPath, 'previews'), "0o2775");
-    fss.ensureDirSync(path.join(config.imagesPath, 'thumbnails'), "0o2775");
+    fss.ensureDirSync(config.videosPath);
+    fss.ensureDirSync(config.imagesPath);
+    fss.ensureDirSync(path.join(config.videosPath, 'live'));
+    fss.ensureDirSync(path.join(config.videosPath, 'archived'));
+    fss.ensureDirSync(path.join(config.videosPath, 'previews'));
+    fss.ensureDirSync(path.join(config.imagesPath, 'thumbnails'));
     if (!config.archive_videos) {
       logger.log('Skipping: Archive Videos');
       return step(null);
