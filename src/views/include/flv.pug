@@ -4,7 +4,7 @@ script.
   if (flvjs.isSupported()) {
     try {
       var videoElement = document.getElementById('live');
-      document.getElementById('live').addEventListener('error', function (e) {console.log(err);});
+      document.getElementById('live').addEventListener('error', function (e) {console.log(e)});
       var flvPlayer = flvjs.createPlayer({
         type: 'flv',
         isLive: true,
@@ -14,7 +14,6 @@ script.
       flvPlayer.attachMediaElement(videoElement);
       flvPlayer.load();
       flvPlayer.play();
-
     }
     catch(err) {
       console.log(err)
