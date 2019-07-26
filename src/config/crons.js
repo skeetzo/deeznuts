@@ -3,7 +3,7 @@ module.exports = function() {
     this.crons = {
 
         backup : {
-            start : true,
+            start : false,
             cronTime : '00 55 23 * * *', // end of night every day
             timeZone: 'America/Los_Angeles' 
         },
