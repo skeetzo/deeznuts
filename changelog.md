@@ -93,6 +93,7 @@
 	- chrome browser on laptop: "HtmlMediaElement.error attribute is not null" 
 **1.1.1**
 	- gulp file needs rewrite above version > "gulp": "^3.9.1",
+	- logger needs to ensure /var/log/apps/deeznuts exists
 
 # To Do
 	- add link to live page in "i've gone live"
