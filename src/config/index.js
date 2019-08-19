@@ -203,8 +203,8 @@ function deploy(environment) {
 // Mount Paths
 var mountName = config.botName.toLowerCase();
 config.mnt_path = '/opt/apps/'+mountName;
-if (process.env.NODE_ENV!="development")
-	config.mnt_path = '/mnt/'+mountName;	
+// if (process.env.NODE_ENV!="development")
+	// config.mnt_path = '/mnt/'+mountName;	
 	// config.mnt_path = '/mnt/apps/'+mountName;	
 config.local_keys_path = path.join(config.mnt_path, 'dev/localConfig.json');
 config.local_google_keys_path = path.join(config.mnt_path, 'dev/google.json');
