@@ -78,6 +78,8 @@
 **1.1.1 : 7/18/2019**
 	- updated gopro menu with tweetAnds
 	- setDestination & setMode for easier debugging switching
+**1.2.0 : 9/13/2019**
+	- updated & cleaned menu.js
 
 
 **??/??/??**
