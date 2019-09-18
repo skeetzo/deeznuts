@@ -42,7 +42,7 @@ for (var i=0;i<args.length;i++) {
 
 var colors = {
   'blue': '\033[94m',
-  'header': '\033[48;1;34m',
+  'header': '\033[1;37;40m',
   'teal': '\033[96m',
   'pink': '\033[95m',
   'green': '\033[92m',
