@@ -129,7 +129,7 @@ def gopro_live():
 			print("Recording stored in: " + SAVELOCATION)
 			print("Note: Preview is not available when saving the stream.")
 			if str(MODE)=="remote":
-				subprocess.Popen("ffmpeg -re -i 'udp://10.5.5.101:8554' -loglevel "+str(LOGLEVEL)+" -movflags faststart -probesize 100M -analyzeduration 100M -preset slow -f:v mpegts -acodec copy -vcodec copy -f flv rtmp://alexdeeznuts.com:1935/"+str(DESTINATION), shell=True)
+				subprocess.Popen("ffmpeg -re -i 'udp://10.5.5.101:8554' -loglevel "+str(LOGLEVEL)+" -movflags faststart -probesize 100M -analyzeduration 100M -preset slow -f:v mpegts -acodec copy -vcodec copy -f flv rtmp://104.34.128.2:1935/"+str(DESTINATION), shell=True)
 			else:
 				subprocess.Popen("ffmpeg -re -i 'udp://10.5.5.100:8554' -loglevel "+str(LOGLEVEL)+" -movflags faststart -probesize 100M -analyzeduration 100M -preset slow -f:v mpegts -acodec copy -vcodec copy -f flv rtmp://127.0.0.1:8935/"+str(DESTINATION), shell=True)
 		if sys.version_info.major >= 3:
