@@ -101,3 +101,4 @@
 	- add link to live page in "i've gone live"
 	- blockchain address recycling
 	- view: videos -> paginate months
+	- add menu option to show menu is connected
