@@ -89,6 +89,13 @@ function main() {
     // 3 is stream
     else if (answer==3)
       toggleStream(handle);
+    else if (answer==4)
+      toggleStream(function (err) {
+        if (err) logger.warn(err);
+        setTimeout(function () {
+          process.exit(1);
+        },3000)
+      });
     else {
       logger.warn("Warning: Missing selection choice")
       return main();
@@ -158,8 +165,10 @@ function menu() {
   logger.log(colorize("[ 2 ] ", 'blue') + "Twitter");
   if (!CONNECTED)
     logger.log(colorize("[ 3 ] ", 'blue') + "Stream");
-  else
+  else {
     logger.log(colorize("[ 3 ] ", 'pink') + "End Stream");
+    logger.log(colorize("[ 4 ] ", 'pink') + "End & Quit");
+  }
 }
 
 function showSettings() {
@@ -197,7 +206,7 @@ function twitterMenu(cb) {
 
 function handle(err) {
   if (err) logger.log(err);
-  setTimeout((step) => {main()}, 6000);    
+  setTimeout((step) => {main()}, 10000);    
 }
 
 function checkWiFi(callback) {
@@ -225,9 +234,7 @@ function connect(callback) {
     if (err) return callback(err);
     piWifi.setCurrentInterface('eth0', function (err) {
       if (err) return callback(err);
-
-      return checkWiFi(callback);
-
+      // return checkWiFi(callback);
       piWifi.status('wlan0', function (err, status) {
         if (err) return callback(err);
         // logger.log(status);
