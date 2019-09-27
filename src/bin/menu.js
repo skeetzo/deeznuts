@@ -3,6 +3,7 @@
 // 7/18/2019 
 // 9/12/2019
 
+// todo:
 // need to figure out a way to have args from here -> deeznuts running process
 
 // process.env.NODE_ENV = "development";
@@ -40,7 +41,6 @@ for (var i=0;i<args.length;i++) {
   else if (val.indexOf("-mode")>=0) 
     MODE = args[i+1]
 }
-// });
 
 var colors = {
   'blue': '\033[94m',
@@ -58,7 +58,7 @@ function colorize(string, color) {
 }
 
 function header() {
-  // process.stdout.write('\033c');
+  process.stdout.write('\033c');
   return console.log(colorize('\n________                        _______          __\n'+        
     '\\______ \\   ____   ____ ________\\      \\  __ ___/  |_  ______\n' +
     ' |    |  \\_/ __ \\_/ __ \\\\___   //   |   \\|  |  \\   __\\/  ___/\n' +
@@ -197,7 +197,7 @@ function twitterMenu(cb) {
 
 function handle(err) {
   if (err) logger.log(err);
-  setTimeout((step) => {main()}, 10000);    
+  setTimeout((step) => {main()}, 6000);    
 }
 
 function checkWiFi(callback) {
