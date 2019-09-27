@@ -203,13 +203,20 @@ function handle(err) {
 function checkWiFi(callback) {
   logger.log("Checking WiFi...");
   var piWifi = require('pi-wifi');
-  piWifi.check(GOPRO_SSID, function(err, result) {
-    if (err) return callback(err.message);
-    logger.log(result);
-    if (result&&result.selected)
-      WIFI = result.selected;
-    else WIFI = "Disconnected";
-    return callback(null);
+  // piWifi.check(GOPRO_SSID, function(err, result) {
+  //   if (err) return callback(err.message);
+  //   logger.log(result);
+  //   if (result&&result.selected)
+  //     WIFI = result.selected;
+  //   else WIFI = "Disconnected";
+  // //   return callback(null);
+  // });
+  piWifi.status('wlan0', function (err, status) {
+    if (err) return callback(err);
+    logger.log(status);
+    WIFI = GOPRO_SSID;
+    logger.log('GoPro connection restarted');
+    callback(null);
   });
 }
 
