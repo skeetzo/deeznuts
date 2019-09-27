@@ -13,6 +13,7 @@ const readline = require('readline');
 const Twitter = require('../modules/twitter');
 const util = require('util');
 
+var GOPRO_SSID = "Whorus";
 var CONNECTED = false;
 var DESTINATION = "shower";
 var MODE = "remote";
@@ -24,6 +25,7 @@ var ARGS = {
   live:false,
   tweeting:false
 };
+var WIFI = "Disconnected";
 
 var args = process.argv.slice(2);
 for (var i=0;i<args.length;i++) {
@@ -168,6 +170,7 @@ function showSettings() {
   console.log(colorize("Live", 'blue') +" = " + ARGS.live);
   console.log(colorize("Mode", 'blue') +" = " + MODE);
   console.log(colorize("Tweeting", 'blue') +" = " + ARGS.tweeting);
+  console.log(colorize("WiFi", 'blue') +" = " + WIFI);
 }
 
 function optionsMenu(cb) {  
@@ -195,6 +198,18 @@ function twitterMenu(cb) {
 function handle(err) {
   if (err) logger.log(err);
   setTimeout((step) => {main()}, 10000);    
+}
+
+function checkWiFi(callback) {
+  var piWifi = require('pi-wifi');
+  piWifi.check(GOPRO_SSID, function(err, result) {
+    if (err) return callback(err.message);
+    logger.log(result);
+    if (result&&result.selected)
+      WIFI = result.selected;
+    else WIFI = "Disconnected";
+    return callback(null);
+  });
 }
 
 function connect(callback) {
@@ -337,7 +352,10 @@ function toggleStream() {
       logger.log(message);
     });
   }
-  setTimeout((step) => {main()}, 10000);
+  handle(null);
 }
 
-main()
+checkWiFi(function (err) {
+  if (err) logger.warn(err);
+  main();
+});
