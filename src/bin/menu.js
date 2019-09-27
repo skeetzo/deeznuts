@@ -226,7 +226,7 @@ function connect(callback) {
     piWifi.setCurrentInterface('eth0', function (err) {
       if (err) return callback(err);
 
-      return checkWifi(callback);
+      return checkWiFi(callback);
 
       piWifi.status('wlan0', function (err, status) {
         if (err) return callback(err);
