@@ -206,9 +206,14 @@ function checkWiFi(callback) {
   piWifi.check(GOPRO_SSID, function(err, result) {
     if (err) return callback(err.message);
     // logger.log(result);
-    if (result&&result.selected)
-      WIFI = result.selected;
-    else WIFI = "Disconnected";
+    if (result&&result.selected) {
+      WIFI = GOPRO_SSID;
+      logger.log("GoPro Connected");
+    }
+    else {
+      WIFI = "Disconnected";
+      logger.log("GoPro Disconnected");
+    }
     return callback(null);
   });
 }
@@ -220,9 +225,12 @@ function connect(callback) {
     if (err) return callback(err);
     piWifi.setCurrentInterface('eth0', function (err) {
       if (err) return callback(err);
+
+      return checkWifi(callback);
+
       piWifi.status('wlan0', function (err, status) {
         if (err) return callback(err);
-        logger.log(status);
+        // logger.log(status);
         logger.log('GoPro connection restarted');
         callback(null);
       });  
