@@ -58,7 +58,7 @@ function colorize(string, color) {
 }
 
 function header() {
-  process.stdout.write('\033c');
+  // process.stdout.write('\033c');
   return console.log(colorize('\n________                        _______          __\n'+        
     '\\______ \\   ____   ____ ________\\      \\  __ ___/  |_  ______\n' +
     ' |    |  \\_/ __ \\_/ __ \\\\___   //   |   \\|  |  \\   __\\/  ___/\n' +
@@ -201,6 +201,7 @@ function handle(err) {
 }
 
 function checkWiFi(callback) {
+  logger.log("Checking WiFi...");
   var piWifi = require('pi-wifi');
   piWifi.check(GOPRO_SSID, function(err, result) {
     if (err) return callback(err.message);
@@ -213,8 +214,8 @@ function checkWiFi(callback) {
 }
 
 function connect(callback) {
-  var piWifi = require('pi-wifi');
   logger.log('Reconnecting to GoPro...');
+  var piWifi = require('pi-wifi');
   piWifi.restartInterface('wlan0', function (err) {
     if (err) return callback(err);
     piWifi.setCurrentInterface('eth0', function (err) {
