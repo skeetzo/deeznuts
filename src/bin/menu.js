@@ -339,7 +339,7 @@ function deleteTweet(callback) {
   });
 }
     
-function toggleStream() {
+function toggleStream(cb) {
   if (CONNECTED) {
     logger.log('Ending Python process...')
     pyshell.send("q")
@@ -368,7 +368,7 @@ function toggleStream() {
       logger.log(message);
     });
   }
-  handle(null);
+  cb(null);
 }
 
 checkWiFi(function (err) {
