@@ -114,7 +114,7 @@ nms.on('donePublish', (id, StreamPath, args) => {
             });
         });
       }, config.archive_delay)
-    }z
+    }
     else if (config.archive_on_publish) {
       setTimeout(function () {
         require('../models/video').processPublished(function (err) {
