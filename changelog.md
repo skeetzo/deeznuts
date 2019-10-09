@@ -80,8 +80,9 @@
 	- setDestination & setMode for easier debugging switching
 **1.2.0 : 9/13/2019**
 	- updated & cleaned menu.js
-
-
+**1.3.0 : 10/9/2019**
+	- upload -> onlyfans
+	
 **??/??/??**
 	- next live @ & schedule
 

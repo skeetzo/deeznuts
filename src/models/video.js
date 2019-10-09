@@ -33,7 +33,8 @@ var videoSchema = new Schema({
   path_image: { type: String },
   performers: { type: Array, default: [] },
   price: { type: Number },
-  title: { type: String }
+  title: { type: String },
+  uploaded: { type: Boolean, default: false }
 });
 
 videoSchema.pre('save', function (next) {
@@ -177,16 +178,24 @@ videoSchema.statics.archiveVideos = function(callback) {
                 var newVideo = new Video({'path':file_path_archived,'isOriginal':true});
                 newVideo.save(function (err) {
                   if (err) logger.warn(err);
-                  newVideo.backup(function (err) {
-                    if (err) logger.warn(err);
-                    if (config.Twitter_tweet_on_publish) {
-                      // tweet about having just uploaded a new video and include link to video
-                      var Twitter = require('../modules/twitter');
-                      Twitter.tweetOnPublish(newVideo, function (err) {
+                  // if (config.backup_on_archive)
+
+                    newVideo.backup(function (err) {
+                      if (err) logger.warn(err);
+                      // if (config.Twitter_tweet_on_publish) {
+                        // tweet about having just uploaded a new video and include link to video
+                        // var Twitter = require('../modules/twitter');
+                        // Twitter.tweetOnPublish(newVideo, function (err) {
+                        //   if (err) logger.warn(err);
+                        // });
+                      // }
+                      newVideo.upload(function (err) {
                         if (err) logger.warn(err);
                       });
-                    }
-                  });
+                    });
+                  // else if (config.upload_on_publish) {
+                    
+                  // }
                 });
               }
               catch (error) {
@@ -351,7 +360,7 @@ videoSchema.statics.processPublished = function(callback) {
 // uploads to Google Drive - OnlyFans folder
 videoSchema.methods.backup = function(callback) {
   var self = this;
-  if (!config.backupToOnlyFans) return callback('Skipping OnlyFans folder Backup');
+  if (!config.backup_on_archive) return callback('Skipping OnlyFans Folder Backup');
   logger.log('Backing up: %s', self.title);
   if (self.backedUp) {
     logger.debug('Skipping Backup: Already Backed Up');
@@ -639,22 +648,24 @@ videoSchema.methods.watermark = function(callback) {
   .saveToFile(self.path_preview); 
 }
 
+videoSchema.methods.upload = function(callback) {
+  var self = this;
+  if (!config.upload_on_archive) return callback('Skipping OnlyFans Upload');
+  if (self.uploaded) return callback("Video already uploaded")
+  logger.log("Uploadeding : "+self.title);
+  var OnlyFans = require('../modules/onlyfans');
+  OnlyFans.spawn(['-type','video','-input',self.path,'-text',self.title], 
+    function (err) {
+      if (err) return callback(err)
+      self.uploaded = true;
+      self.save(function (err) {
+        callback(err);
+      });
+    }
+  );
+}
+
 videoSchema.set('redisCache', true);
 var Video = mongoose.model('videos', videoSchema,'videos');
 
-
-
-
-
-// // knex
-// var db = require("mongoose-sql");
-// db.migreateSchemas([Video]).then(function() { // call migreateSchemas with model
-//     console.log("moved video data to PostgreSQL from Mongoose");
-// });
-
-
-
-
 module.exports = Video;
-
-
