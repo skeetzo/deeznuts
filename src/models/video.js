@@ -654,7 +654,7 @@ videoSchema.methods.upload = function(callback) {
   if (self.uploaded) return callback("Video already uploaded")
   logger.log("Uploadeding : "+self.title);
   var OnlyFans = require('../modules/onlyfans');
-  OnlyFans.spawn(['-type','video','-input',self.path,'-text',self.title], 
+  OnlyFans.spawn(['-type','video','-method','input','-input',self.path,'-text',self.title], 
     function (err) {
       if (err) return callback(err)
       self.uploaded = true;
