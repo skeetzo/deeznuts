@@ -35,7 +35,7 @@ function backupVideo(video, callback) {
       authenticate(step);
     },
     function (step) {
-      logger.log('Uploading to OnlyFans folder: %s', video.title);
+      logger.log('Backing up to OnlyFans folder: %s', video.title);
       if (video.path.indexOf(config.videosPath)==-1)
         video.path = path.join(config.videosPath, 'archived/stream', video.path);
       logger.debug(video.path);
