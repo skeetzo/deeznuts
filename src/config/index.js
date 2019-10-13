@@ -200,7 +200,7 @@ function deploy(environment) {
 		// config.go_live = true;
 		// config.backup_db = true;
 		config.deleteMissing = true;
-		// config.backup_on_archive = true;
+		config.backup_on_archive = true;
 		config.upload_on_archive = true;
 		config.concat_on_publish = true;
 	}
