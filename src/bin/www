@@ -210,7 +210,7 @@ async.series([
       if (err) logger.warn(err);
       step(null);
     });
-  }
+  },
   // PayPal
   function (step) {
     if (!config.PayPal||!config.PayPal_syncing_webhooks) {
