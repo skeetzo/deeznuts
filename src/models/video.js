@@ -281,9 +281,10 @@ videoSchema.statics.deleteMissing = function(callback) {
       if (err) return callback(err);
       for (var i=0;i<files.length;i++) 
         for (var j=0;j<videos.length;j++) {
-          // logger.log('file: %s | %s :video', files[i],path.basename(videos[j].path));
-          if (files[i]==path.basename(videos[j].path))
+          if (files[i]==path.basename(videos[j].path)) {
+            logger.log('file: %s | %s :video', files[i],path.basename(videos[j].path));
             videos.splice(j,1);
+          }
         }
       var series = [];
       _.forEach(videos, function (video) {
