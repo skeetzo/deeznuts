@@ -215,6 +215,7 @@ videoSchema.statics.archiveVideos = function(callback) {
 }
 
 videoSchema.statics.concatLives = function(callback) {
+  if (!config.concat_on_publish) return callback("Skipping Concat");
   // concat them all using ffmpeg
   // output to same location
   var fs = require('fs');
@@ -655,8 +656,11 @@ videoSchema.methods.upload = function(callback) {
   // if (self.uploaded) return callback("Video already uploaded")
   logger.log("Uploading : "+self.title);
   var OnlyFans = require('../modules/onlyfans');
-  logger.debug(path.join(config.videosPath, 'archived/stream', self.path))
-  OnlyFans.spawn(['-type','video','-method','input','-input',"\""+path.join(config.videosPath, 'archived/stream', self.path)+"\"",'-text',"\""+self.title+"\"",'-keywords','"deeznuts"','-verbose'], 
+  var path_ = self.path;
+  if (path_.indexOf(config.videosPath)==-1)
+    path_ = path.join(config.videosPath, 'archived/stream', path_);
+  logger.debug(path_)
+  OnlyFans.spawn(['-type','video','-method','input','-input',"\""+path_+"\"",'-text',"\""+self.title+"\"",'-keywords','"deeznuts"','-verbose'], 
     function (err) {
       if (err) return callback(err)
       self.uploaded = true;
