@@ -651,10 +651,10 @@ videoSchema.methods.watermark = function(callback) {
 videoSchema.methods.upload = function(callback) {
   var self = this;
   if (!config.upload_on_archive) return callback('Skipping OnlyFans Upload');
-  if (self.uploaded) return callback("Video already uploaded")
+  // if (self.uploaded) return callback("Video already uploaded")
   logger.log("Uploading : "+self.title);
   var OnlyFans = require('../modules/onlyfans');
-  OnlyFans.spawn(['-type','video','-method','input','-input',"\""+self.path+"\"",'-text',"\""+self.title+"\"",'-keywords','"deeznuts"'], 
+  OnlyFans.spawn(['-type','video','-method','input','-input',"\""+self.path+"\"",'-text',"\""+self.title+"\"",'-keywords','"deeznuts"','-verbose'], 
     function (err) {
       if (err) return callback(err)
       self.uploaded = true;
