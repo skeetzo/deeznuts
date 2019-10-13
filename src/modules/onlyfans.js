@@ -13,7 +13,7 @@ module.exports.spawn = function(args, callback) {
         'pythonPath': '/usr/bin/python3',
         'pythonOptions': ['-u'],
         'scriptPath': '/usr/local/lib/python3.5/dist-packages/OnlySnarf',
-        'args': args
+        'args': args.join(" ")
       };
       let pyshell = new PythonShell('onlysnarf.py', options);
       pyshell.on('message', function (message) {
