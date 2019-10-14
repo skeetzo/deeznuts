@@ -26,6 +26,22 @@ module.exports.spawn = function(args, callback) {
         logger.debug('The exit signal was: ' + signal);
         step(null);
       });  
+
+      // const { spawn } = require('child_process');
+      // const ls = spawn('onlysnarfpy', args);
+
+      // ls.stdout.on('data', (data) => {
+      //   logger.debug(`stdout: ${data}`);
+      // });
+
+      // ls.stderr.on('data', (data) => {
+      //   logger.debug(`stderr: ${data}`);
+      // });
+
+      // ls.on('close', (code) => {
+      //   logger.debug(`child process exited with code ${code}`);
+      //   step(null);
+      // });
     },
     function (step) {
       logger.log('--- OnlyFans Upload Completed ---');

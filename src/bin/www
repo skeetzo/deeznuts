@@ -163,14 +163,7 @@ async.series([
     fss.ensureDirSync(path.join(config.videosPath, 'archived'));
     fss.ensureDirSync(path.join(config.videosPath, 'previews'));
     fss.ensureDirSync(path.join(config.imagesPath, 'thumbnails'));
-    if (!config.archive_videos) {
-      logger.log('Skipping: Archive Videos');
-      return step(null);
-    }
-    Video.archiveVideos(function (err) {
-      if (err) logger.warn(err);
-      step(null);
-    });
+    step(null);
   },
   // Rebuild
   function (step) {
@@ -206,6 +199,17 @@ async.series([
       if (err) logger.warn(err);
       step(null);
     });    
+  },
+  // Archive
+  function (step) {
+    if (!config.archive_videos) {
+      logger.log('Skipping: Archive Videos');
+      return step(null);
+    }
+    Video.archiveVideos(function (err) {
+      if (err) logger.warn(err);
+      step(null);
+    });
   },
   // PayPal
   function (step) {

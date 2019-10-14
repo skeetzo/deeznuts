@@ -144,6 +144,7 @@ function deploy(environment) {
 	config.repair_moov = false;
 
 	config.populateFromFiles = false;
+	config.concat_on_publish = false;
 
 	if (environment=='development') {
 		config.debugging = true;
@@ -190,7 +191,7 @@ function deploy(environment) {
 		config.PayPal = true;
 		config.PayPal_environment = 'live';
 		config.PayPal_syncing_webhooks = false;
-		config.Twitter = true;
+		// config.Twitter = true;
 		// config.Twitter_tweeting = true;
 		config.archive_on_publish = true;
 		// config.delete_on_publish = true;
@@ -198,9 +199,10 @@ function deploy(environment) {
 		// config.populateFromFiles = true;
 		// config.go_live = true;
 		// config.backup_db = true;
-		// config.deleteMissing = true;
+		config.deleteMissing = true;
 		config.backup_on_archive = true;
 		config.upload_on_archive = true;
+		config.concat_on_publish = true;
 	}
 }
 

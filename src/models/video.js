@@ -215,6 +215,7 @@ videoSchema.statics.archiveVideos = function(callback) {
 }
 
 videoSchema.statics.concatLives = function(callback) {
+  if (!config.concat_on_publish) return callback("Skipping Concat");
   // concat them all using ffmpeg
   // output to same location
   var fs = require('fs');
@@ -281,9 +282,10 @@ videoSchema.statics.deleteMissing = function(callback) {
       if (err) return callback(err);
       for (var i=0;i<files.length;i++) 
         for (var j=0;j<videos.length;j++) {
-          // logger.log('file: %s | %s :video', files[i],path.basename(videos[j].path));
-          if (files[i]==path.basename(videos[j].path))
+          if (files[i]==path.basename(videos[j].path)) {
+            // logger.log('file: %s | %s :video', files[i],path.basename(videos[j].path));
             videos.splice(j,1);
+          }
         }
       var series = [];
       _.forEach(videos, function (video) {
@@ -651,10 +653,14 @@ videoSchema.methods.watermark = function(callback) {
 videoSchema.methods.upload = function(callback) {
   var self = this;
   if (!config.upload_on_archive) return callback('Skipping OnlyFans Upload');
-  if (self.uploaded) return callback("Video already uploaded")
+  // if (self.uploaded) return callback("Video already uploaded")
   logger.log("Uploading : "+self.title);
   var OnlyFans = require('../modules/onlyfans');
-  OnlyFans.spawn(['-type','video','-method','input','-input',"\""+self.path+"\"",'-text',"\""+self.title+"\"",'-keywords','"deeznuts"'], 
+  var path_ = self.path;
+  if (path_.indexOf(config.videosPath)==-1)
+    path_ = path.join(config.videosPath, 'archived/stream', path_);
+  logger.debug(path_)
+  OnlyFans.spawn(['-type','video','-method','input','-input',"\""+path_+"\"",'-text',"\""+self.title+"\"",'-keywords','"deeznuts"','-verbose'], 
     function (err) {
       if (err) return callback(err)
       self.uploaded = true;
