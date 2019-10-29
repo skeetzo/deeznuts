@@ -60,7 +60,7 @@
     "md5": "^2.2.1",
     "moment": "^2.22.2",
     "mongodb-backup": "^1.6.9",
-    "mongoose": "^5.1.5",
+    "mongoose": "^5.7.5",
     "morgan": "^1.9.1",
     "nodalytics": "^1.1.0",
     "node-media-server": "^1.4.1",
