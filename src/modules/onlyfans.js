@@ -12,10 +12,10 @@ module.exports.spawn = function(args, callback) {
         'mode': 'text',
         'pythonPath': '/usr/bin/python3',
         'pythonOptions': ['-u'],
-        'scriptPath': '/usr/local/lib/python3.5/dist-packages/OnlySnarf',
+        'scriptPath': '/usr/local/bin',
         'args': args
       };
-      let pyshell = new PythonShell('onlysnarf.py', options);
+      let pyshell = new PythonShell('onlysnarfpy', options);
       pyshell.on('message', function (message) {
         logger.log(message);
       });
