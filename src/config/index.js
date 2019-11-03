@@ -202,7 +202,7 @@ function deploy(environment) {
 		config.deleteMissing = true;
 		config.backup_on_archive = true;
 		config.upload_on_archive = true;
-		config.concat_on_publish = true;
+		config.concat_on_publish = false;
 	}
 }
 
