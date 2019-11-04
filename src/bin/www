@@ -135,8 +135,8 @@ async.series([
       videos = [videos[videos.length-1]]
       _.forEach(videos, function (video) {
         series.push(function (next) {
-          logger.log("Upload video: %s", video[i].title);
-          video[i].upload(function (err) {
+          logger.log("Upload video: %s", video.title);
+          video.upload(function (err) {
             if (err) logger.warn(err);
             next(null);
           });
