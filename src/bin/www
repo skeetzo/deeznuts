@@ -17,6 +17,7 @@ var Video = require('../models/video');
 var path = require('path');
 var fs = require('fs');
 var fss = require('fs-extra');
+var _ = require('underscore');
 
 /**
  * Get port from environment and store in Express.
