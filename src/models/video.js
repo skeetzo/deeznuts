@@ -660,7 +660,7 @@ videoSchema.methods.upload = function(callback) {
   if (path_.indexOf(config.videosPath)==-1)
     path_ = path.join(config.videosPath, 'archived/stream', path_);
   logger.debug(path_)
-  OnlyFans.spawn(['-debug','-type','video','-method','input','-input',path_,'-text',self.title,'-keywords','deeznuts','-verbose'], 
+  OnlyFans.spawn(['-type','video','-method','input','-input',path_,'-text',self.title,'-keywords','deeznuts','-verbose','-tweeting'], 
     function (err) {
       if (err) return callback(err)
       self.uploaded = true;
