@@ -143,6 +143,8 @@ function deploy(environment) {
 	config.go_live = false;
 	config.repair_moov = false;
 
+	config.upload_all_on_boot = false;
+
 	config.populateFromFiles = false;
 	config.concat_on_publish = false;
 
@@ -199,6 +201,7 @@ function deploy(environment) {
 		// config.populateFromFiles = true;
 		// config.go_live = true;
 		// config.backup_db = true;
+		config.upload_all_on_boot = true;
 		config.deleteMissing = true;
 		config.backup_on_archive = true;
 		config.upload_on_archive = true;

@@ -126,6 +126,36 @@ async.series([
       else step(null);
     });
   },
+  // upload all unuploaded videos
+  function (step) {
+    if (!config.upload_all_on_boot) return step(null);
+    Video.find({"uploaded":false}, function (err, videos) {
+      var series = [];
+      const readline = require("readline");
+      const rl = readline.createInterface({
+          input: process.stdin,
+          output: process.stdout
+      });
+      _.forEach(videos, function (video) {
+        series.push(function (next) {
+          logger.log("Upload video: %s", video[i].title);
+          rl.question("Upload video: "+video.title, function (input) {
+            rl.close();
+            if (input=="y")
+              video[i].upload(function (err) {
+                if (err) logger.warn(err);
+                next(null);
+              });
+            else next(null);
+          });
+        }
+      });
+      series.push(function (next) {
+        step(null);
+      });
+      async.series(series);
+    });
+  },
   function (step) {
     if (config.ssl) {
       /**
