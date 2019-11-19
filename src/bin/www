@@ -213,20 +213,33 @@ async.series([
       step(null);
     });
   },
+  function (step) {
+    if (!config.upload_force_save) return step(null);
+    Video.find({}, function (err, videos) {
+      if (err) return step(null);
+      for (var i=0;i<videos.length;i++) {
+        videos[i].uploaded = true;
+        videos[i].save();
+      }
+    });
+    setTimeout(next => {
+      step(null);
+    },3000);
+  },
   // upload all unuploaded videos
   function (step) {
     if (!config.upload_all_on_boot) return step(null);
     logger.log("Uploading Forgotten");
-    Video.find({"uploaded":false }, function (err, videos) {
+    Video.find({"uploaded":false}, function (err, videos) {
       var series = [];
       _.forEach(videos, function (video) {
         // fixes dates
         // video.save(function (uhh) {
-          var date_ = moment(video.date);
-          var otherDate = moment(new Date(2019,10,15));
-          // logger.log(date_.format('MM-DD-YYYY'));
-          // logger.log(otherDate.format('MM-DD-YYYY'));
-          if (date_<otherDate) return;
+          // var date_ = moment(video.date);
+          // var otherDate = moment(new Date(2019,10,15));
+          // // logger.log(date_.format('MM-DD-YYYY'));
+          // // logger.log(otherDate.format('MM-DD-YYYY'));
+          // if (date_<otherDate) return;
           series.push(function (next) {
             logger.log("Upload video: %s", video.title);
             video.upload(function (err) {

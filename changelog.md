@@ -84,7 +84,9 @@
 	- upload -> onlyfans
 	**1.3.1 : 11/15/2019**
 	- local scripts cleanup
-
+	**1.3.2 : 11/19/2019**
+	- save all on boot
+	- upload forgotten on boot fixed
 
 
 

@@ -145,6 +145,7 @@ function deploy(environment) {
 
 	config.upload_all_on_boot = false;
 	config.upload_to_OnlyFans = false;
+	config.upload_force_save = false;
 
 	config.populateFromFiles = false;
 	config.concat_on_publish = false;
@@ -168,7 +169,7 @@ function deploy(environment) {
 		// config.debugging_paypal = true;
 		// config.debugging_paypal_reset_plans = true;
 		// config.populateFromFiles = true;	
-		config.upload_all_on_boot = true;
+		// config.upload_all_on_boot = true;
 		config.upload_to_OnlyFans = true;
 	}
 	else if (environment=='staging') {
@@ -204,12 +205,13 @@ function deploy(environment) {
 		// config.populateFromFiles = true;
 		// config.go_live = true;
 		// config.backup_db = true;
-		config.upload_all_on_boot = true;
+		// config.upload_all_on_boot = true;
 		config.deleteMissing = true;
 		config.backup_on_archive = true;
 		config.upload_on_archive = true;
 		config.upload_to_OnlyFans = true;
 		// config.concat_on_publish = true;
+		config.upload_force_save = true;
 	}
 }
 
