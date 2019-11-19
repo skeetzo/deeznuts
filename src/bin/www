@@ -218,7 +218,6 @@ async.series([
     logger.log("Uploading Forgotten");
     Video.find({"uploaded":false,"date" : { $gte : new Date("2019-11-15T20:15:31Z") }}, function (err, videos) {
       var series = [];
-      videos = [videos[videos.length-1]]
       _.forEach(videos, function (video) {
         series.push(function (next) {
           logger.log("Upload video: %s", video.title);
