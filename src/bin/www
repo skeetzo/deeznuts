@@ -222,8 +222,8 @@ async.series([
       _.forEach(videos, function (video) {
         var date_ = moment(video.date);
         var otherDate = moment(new Date(2019,10,15));
-        // logger.log(date_);
-        // logger.log(otherDate);
+        logger.log(date_.format('MM-DD-YYYY'));
+        logger.log(otherDate.format('MM-DD-YYYY'));
         
         if (date_<otherDate) logger.log("less than");
         else logger.log("greater than")
