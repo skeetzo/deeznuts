@@ -219,8 +219,8 @@ async.series([
     Video.find({"uploaded":false }, function (err, videos) {
       var series = [];
       _.forEach(videos, function (video) {
-        var date_ = new Date(video.date);
-        var otherDate = new Date(2019,10,15);
+        var date_ = moment(video.date);
+        var otherDate = moment(new Date(2019,10,15));
         logger.log(date_);
         logger.log(otherDate);
         return;
