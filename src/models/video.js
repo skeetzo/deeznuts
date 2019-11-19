@@ -22,7 +22,7 @@ var mongoose = require('mongoose'),
 */
 var videoSchema = new Schema({
   backedUp: { type: Boolean, default: false },
-  date: { type: String, default: moment(new Date()).format('MM-DD-YYYY') },
+  date: { type: String },
   description: { type: String, default: '' },
   duration: { type: Number },
   hasPreview: { type: Boolean, default: false },
@@ -47,7 +47,7 @@ videoSchema.pre('save', function (next) {
     var title = path.basename(this.path.toLowerCase().replace('.mp4',''));
     var time = title.substring(11);
     title = title.substring(0,10);
-    // logger.debug('time: %s | %s', title, time);
+    logger.debug('time: %s | %s', title, time);
     //////
     var date = moment(new Date(title));
     var month = date.month()+1;
@@ -60,7 +60,7 @@ videoSchema.pre('save', function (next) {
     //////
     var hours = time.substring(0,2);
     var minutes = time.substring(3,5);
-    // logger.debug('%s:%s:%s %s:%s', month, day, year, hours, minutes);
+    logger.debug('%s:%s:%s %s:%s', month, day, year, hours, minutes);
     title = month+"-"+day+"-"+year+" "+hours+":"+minutes;
     self.title = title;
   }
