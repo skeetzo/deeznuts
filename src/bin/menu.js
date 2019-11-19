@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 // Skeetzo
 // 2/12/2019
 // 7/18/2019 
@@ -172,9 +174,9 @@ function menu() {
 }
 
 function showSettings() {
-  console.log(colorize("Archive", 'blue') +" = " + ARGS.archive);
-  console.log(colorize("Backup", 'blue') +" = " + ARGS.backup);
-  console.log(colorize("Delete", 'blue') +" = " + ARGS.delete);
+  // console.log(colorize("Archive", 'blue') +" = " + ARGS.archive);
+  // console.log(colorize("Backup", 'blue') +" = " + ARGS.backup);
+  // console.log(colorize("Delete", 'blue') +" = " + ARGS.delete);
   console.log(colorize("Destination", 'blue') +" = " + DESTINATION);
   console.log(colorize("Live", 'blue') +" = " + ARGS.live);
   console.log(colorize("Mode", 'blue') +" = " + MODE);
@@ -185,9 +187,9 @@ function showSettings() {
 function optionsMenu(cb) {  
   logger.log(colorize("Set:", 'menu'));
   logger.log(colorize("[ 0 ] ", 'blue') + "Back");
-  logger.log(colorize("[ 1 ] ", 'blue') + "Archive On Publish");
-  logger.log(colorize("[ 2 ] ", 'blue') + "Backup To OnlyFans");
-  logger.log(colorize("[ 3 ] ", 'blue') + "Delete On Publish");
+  // logger.log(colorize("[ 1 ] ", 'blue') + "Archive On Publish");
+  // logger.log(colorize("[ 2 ] ", 'blue') + "Backup To OnlyFans");
+  // logger.log(colorize("[ 3 ] ", 'blue') + "Delete On Publish");
   logger.log(colorize("[ 4 ] ", 'blue') + "Destination");
   logger.log(colorize("[ 5 ] ", 'blue') + "Live");
   logger.log(colorize("[ 6 ] ", 'blue') + "Mode");

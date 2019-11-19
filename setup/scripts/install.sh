@@ -1,12 +1,8 @@
 #!/bin/bash
+# DeezNuts Installation
+# 11/15/2019 - Skeetzo
 
-# pi setup
-echo "Prepping Directories..."
-
-sudo mkdir -p $HOME/tmp
-cd $HOME/tmp
-# node apps dir
-mkdir -p /var/www/apps/deeznuts
+echo "Installing DeezNuts"
 
 ##############################################
 ##############################################
@@ -111,7 +107,6 @@ apt-get install -y nginx-full certbot
 # | nginx.conf
 ###########################
 
-
 ###
 # install ffmpeg and dependencies
 ###
@@ -138,31 +133,30 @@ cd ffmpeg
 ./configure --arch=armel --target-os=linux --enable-gpl --enable-libx264 --enable-nonfree --enable-libmp3lame
 make
 make install
-
 cd ..
 
-git clone https://github.com/skeetzo/deeznuts.git
-cd deeznuts
+# install DeezNuts
+mkdir -p /var/www/apps/deeznuts
+git clone https://github.com/skeetzo/deeznuts.git /var/www/apps/deeznuts
+cd /var/www/apps/deeznuts
 # nginx.conf and watermark.png
-sudo cp setup/nginx/nginx.conf /etc/nginx/nginx.conf
-sudo cp setup/watermark.png /etc/nginx
-
-
-
-
-
+sudo cp setup/conf/nginx.conf /etc/nginx/nginx.conf
+# sudo cp src/public/images/watermark.png /etc/nginx
 
 # unzip and install node_modules
-tar -zxvf setup/build.tar.gz -C /var/www/apps/deeznuts
-cd /var/www/apps/deeznuts
+# tar -zxvf setup/build.tar.gz -C /var/www/apps/deeznuts
+# cd /var/www/apps/deeznuts
 npm install --save
+chown -R $USER /var/www/apps/deeznuts
+
+echo "DeezNuts Installed"
 
 ####################################
-cd $HOME/tmp/deeznuts/setup
-# auto sets up autohotspot scripts
-echo 'Setting Up Auto Hotspot - '$1
 
-apt-get update 
+# auto sets up autohotspot scripts
+echo 'Setting Up Auto Hotspot'
+
+apt-get update
 apt-get upgrade -y
 apt-get install -y iw hostapd dnsmasq
 
@@ -171,28 +165,28 @@ systemctl disable hostapd
 systemctl disable dnsmasq	
 
 # copy hostapd.conf file
-cp conf/hotspot/hostapd.conf /etc/hostapd/hostapd.conf
+cp ../conf/hostapd.conf /etc/hostapd/hostapd.conf
 
 # update hostapd to point to hostapd.conf
-cp conf/hotspot/hostapd /etc/default/hostapd
+cp ../conf/hostapd /etc/default/hostapd
 
 # update dnsmasq file
-cp conf/hotspot/dnsmasq.conf /etc/dnsmasq.conf
+cp ../conf/dnsmasq.conf /etc/dnsmasq.conf
 
 # update interfaces file
-cp conf/hotspot/interfaces /etc/network/interfaces
+cp ../conf/interfaces /etc/network/interfaces
 
 # port forwarding
-cp conf/hotspot/sysctl.conf /etc/sysctl.conf
+cp ../conf/sysctl.conf /etc/sysctl.conf
 
 # update wpa_supplicant
-cp conf/hotspot/wpa_supplicant-master.conf /etc/wpa_supplicant/wpa_supplicant.conf 
+cp ../conf/wpa_supplicant.conf /etc/wpa_supplicant/wpa_supplicant.conf 
 
 # DHCPCD
-cp conf/hotspot/dhcpcd.conf /etc/dhcpcd.conf
+cp ../conf/dhcpcd.conf /etc/dhcpcd.conf
 
 # service script
-cp conf/hotspot/autohotspot.service /etc/systemd/system/autohotspot.service
+cp ../conf/autohotspot.service /etc/systemd/system/autohotspot.service
 systemctl enable autohotspot.service
 
 ###
@@ -201,7 +195,7 @@ systemctl enable autohotspot.service
 ###
 
 # autohotspot script
-cp ../conf/hotspot/autohotspot.sh /usr/bin/autohotspot
+cp ../conf/autohotspot.sh /usr/bin/autohotspot
 chmod +x /usr/bin/autohotspot
 
 # create cron
@@ -211,8 +205,5 @@ chmod +x /usr/bin/autohotspot
 ##############################################
 ##############################################
 
-# remove tmp install
-sudo rm -rf $HOME/tmp
-
 # reboot wifi networks
-
+# sudo reboot now

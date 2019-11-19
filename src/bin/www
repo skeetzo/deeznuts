@@ -127,27 +127,6 @@ async.series([
       else step(null);
     });
   },
-  // upload all unuploaded videos
-  function (step) {
-    if (!config.upload_all_on_boot) return step(null);
-    Video.find({"uploaded":false}, function (err, videos) {
-      var series = [];
-      videos = [videos[videos.length-1]]
-      _.forEach(videos, function (video) {
-        series.push(function (next) {
-          logger.log("Upload video: %s", video.title);
-          video.upload(function (err) {
-            if (err) logger.warn(err);
-            next(null);
-          });
-        });
-      });
-      series.push(function (next) {
-        step(null);
-      });
-      async.series(series);
-    });
-  },
   function (step) {
     if (config.ssl) {
       /**
@@ -231,6 +210,28 @@ async.series([
     Video.archiveVideos(function (err) {
       if (err) logger.warn(err);
       step(null);
+    });
+  },
+  // upload all unuploaded videos
+  function (step) {
+    if (!config.upload_all_on_boot) return step(null);
+    logger.log("Uploading Forgotten");
+    Video.find({"uploaded":false}, function (err, videos) {
+      var series = [];
+      videos = [videos[videos.length-1]]
+      _.forEach(videos, function (video) {
+        series.push(function (next) {
+          logger.log("Upload video: %s", video.title);
+          video.upload(function (err) {
+            if (err) logger.warn(err);
+            next(null);
+          });
+        });
+      });
+      series.push(function (next) {
+        step(null);
+      });
+      async.series(series);
     });
   },
   // PayPal

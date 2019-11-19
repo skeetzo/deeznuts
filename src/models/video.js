@@ -652,7 +652,7 @@ videoSchema.methods.watermark = function(callback) {
 
 videoSchema.methods.upload = function(callback) {
   var self = this;
-  if (!config.upload_on_archive) return callback('Skipping OnlyFans Upload');
+  if (!config.upload_to_OnlyFans) return callback('Skipping OnlyFans Upload');
   // if (self.uploaded) return callback("Video already uploaded")
   logger.log("Uploading : "+self.title);
   var OnlyFans = require('../modules/onlyfans');

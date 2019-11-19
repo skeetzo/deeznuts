@@ -144,6 +144,7 @@ function deploy(environment) {
 	config.repair_moov = false;
 
 	config.upload_all_on_boot = false;
+	config.upload_to_OnlyFans = false;
 
 	config.populateFromFiles = false;
 	config.concat_on_publish = false;
@@ -153,20 +154,22 @@ function deploy(environment) {
 		config.debugging_live = true;
 		// config.debugging_address = true;
 		// config.debugging_sync = true;
-		config.debugging_reset_db = true;
+		// config.debugging_reset_db = true;
 		// config.debugging_reset_files = true;
-		config.debugging_reset_logs = true;
+		// config.debugging_reset_logs = true;
 		// config.debugging_blockchain = true;
 		config.local = true;
 		// config.remoteDatabase = true;
 		// config.delete_on_publish = true;
 		config.archive_on_publish = true;
-		config.go_live = true;
+		// config.go_live = true;
 		// config.backup_on_archive = true;
 		// config.debugging_crons = true;
 		// config.debugging_paypal = true;
 		// config.debugging_paypal_reset_plans = true;
-
+		// config.populateFromFiles = true;	
+		config.upload_all_on_boot = true;
+		config.upload_to_OnlyFans = true;
 	}
 	else if (environment=='staging') {
 		config.debugging = true;
@@ -205,7 +208,8 @@ function deploy(environment) {
 		config.deleteMissing = true;
 		config.backup_on_archive = true;
 		config.upload_on_archive = true;
-		config.concat_on_publish = false;
+		config.upload_to_OnlyFans = true;
+		// config.concat_on_publish = true;
 	}
 }
 
