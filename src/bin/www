@@ -220,7 +220,7 @@ async.series([
       var series = [];
       _.forEach(videos, function (video) {
         var date_ = new Date(video.date);
-        var otherDate = new Date(2019,11,15);
+        var otherDate = new Date(2019,10,15);
         if (date_<otherDate) return;
         series.push(function (next) {
           logger.log("Upload video: %s", video.title);
