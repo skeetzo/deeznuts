@@ -224,8 +224,10 @@ async.series([
         var otherDate = moment(new Date(2019,10,15));
         logger.log(date_);
         logger.log(otherDate);
+        
+        if (date_<otherDate) logger.log("less than");
+        else logger.log("greater than")
         return;
-        if (date_<otherDate) return;
         series.push(function (next) {
           logger.log("Upload video: %s", video.title);
           video.upload(function (err) {
