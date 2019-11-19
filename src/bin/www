@@ -221,7 +221,7 @@ async.series([
       var series = [];
       _.forEach(videos, function (video) {
         // fixes dates
-        video.save(function (uhh) {
+        // video.save(function (uhh) {
           var date_ = moment(video.date);
           var otherDate = moment(new Date(2019,10,15));
           // logger.log(date_.format('MM-DD-YYYY'));
@@ -234,7 +234,7 @@ async.series([
               next(null);
             });
           });
-        })
+        // })
       });
       series.push(function (next) {
         step(null);
