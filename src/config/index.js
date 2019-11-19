@@ -211,7 +211,7 @@ function deploy(environment) {
 		config.upload_on_archive = true;
 		config.upload_to_OnlyFans = true;
 		// config.concat_on_publish = true;
-		config.upload_force_save = true;
+		// config.upload_force_save = true;
 	}
 }
 
