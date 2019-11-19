@@ -221,7 +221,7 @@ async.series([
       _.forEach(videos, function (video) {
         var date_ = new Date(video.date);
         var otherDate = new Date(2019,11,15);
-        if (date_<date__) return;
+        if (date_<otherDate) return;
         series.push(function (next) {
           logger.log("Upload video: %s", video.title);
           video.upload(function (err) {
