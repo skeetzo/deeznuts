@@ -216,7 +216,7 @@ async.series([
   function (step) {
     if (!config.upload_all_on_boot) return step(null);
     logger.log("Uploading Forgotten");
-    Video.find({"uploaded":false }}, function (err, videos) {
+    Video.find({"uploaded":false }, function (err, videos) {
       var series = [];
       _.forEach(videos, function (video) {
         var date_ = new Date(video.date);
