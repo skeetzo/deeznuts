@@ -23,7 +23,7 @@ var serverOptions = {
 };
 
 if (process.env.NODE_ENV!="development")
-  serverOptions.http.allow_origin = 'https://alexdeeznuts.com';
+  serverOptions.http.allow_origin = config.domain;
 
 serverOptions.auth = {};
 
@@ -81,11 +81,13 @@ nms.run();
 
 var connectTimeout;
 var disconnectTimeout;
+var disconnectCount = 0;
 
 nms.on('postPublish', (id, StreamPath, args) => {
   logger.log('[NodeEvent on postPublish]', `id=${id} StreamPath=${StreamPath} args=${JSON.stringify(args)}`);
   clearTimeout(connectTimeout);
   clearTimeout(disconnectTimeout);
+  disconnectCount = 0;
   if (config.go_live)
     connectTimeout = setTimeout(function () {
       logger.log('Updating Status %s -> %s', config.status, 'Live');
@@ -98,31 +100,50 @@ nms.on('donePublish', (id, StreamPath, args) => {
   logger.log('[NodeEvent on donePublish]', `id=${id} StreamPath=${StreamPath} args=${JSON.stringify(args)}`);
   clearTimeout(connectTimeout);
   clearTimeout(disconnectTimeout);
+  disconnectCount++;
   disconnectTimeout = setTimeout(function () {
     logger.log('Updating Status %s -> %s', config.status, 'Not Live');
     config.status = 'Not Live';
-    if (config.delete_on_publish) {
-      setTimeout(function () {
-        logger.log("Deleting on Publish...");
-        var stream_path = require('path').join(config.videosPath, '/live/stream');
-        var fs = require('fs');
-        fs.readdir(stream_path, function(err, items) {
-          if (!items) return logger.warn("no streams found to delete");
-          for (var i=0; i<items.length; i++)
-            fs.unlink(items[i], function (err) {
-              if (err) logger.warn(err);
-              logger.debug('deleted: %s', items[i]);
-            });
-        });
-      }, config.archive_delay)
-    }
-    else if (config.archive_on_publish) {
-      setTimeout(function () {
-        require('../models/video').processPublished(function (err) {
+    async.series([
+      // concatenate if multiple disconnects between final end
+      function (step) {
+        if (disconnectCount<=1||!config.concatenate_on_publish) {
+          logger.log("Skipping Concat on Publish");
+          return step(null);
+        }
+        var Video = require('../models/video');
+        Video.concatLives(function (err) {
           if (err) logger.warn(err);
+          step(null);
         });
-      }, config.archive_delay);
-    }
+      },
+      // archive or delete
+      function (step) {
+        if (config.delete_on_publish) {
+          setTimeout(function () {
+            logger.log("Deleting on Publish");
+            var stream_path = require('path').join(config.videosPath, '/live/stream');
+            var fs = require('fs');
+            fs.readdir(stream_path, function(err, items) {
+              if (!items) return logger.warn("no streams found to delete");
+              for (var i=0; i<items.length; i++)
+                fs.unlink(items[i], function (err) {
+                  if (err) logger.warn(err);
+                  logger.debug('deleted: %s', items[i]);
+                });
+            });
+          }, config.archive_delay)
+        }
+        else if (config.archive_on_publish) {
+          setTimeout(function () {
+            require('../models/video').processPublished(function (err) {
+              if (err) logger.warn(err);
+              else logger.log("Stream Published Successfully!");
+            });
+          }, config.archive_delay);
+        }
+      }
+    ]);
   }, config.rtmpTimeout);
 });
 

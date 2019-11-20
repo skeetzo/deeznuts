@@ -133,94 +133,85 @@ videoSchema.pre('save', function (next) {
 // move any mp4s from public/videos/live/stream -> public/videos/archived
 videoSchema.statics.archiveVideos = function(callback) {
   var fs = require('fs');
-  logger.log('Archiving MP4s...');
-  Video.concatLives(function (err) {
-    if (err) logger.warn(err);
-    // stream directories
-    fs.readdir(path.join(config.videosPath, 'live/'), function (err, streams) {
-      if (err) {
-        logger.warn(err);
-        return callback(null);
-      }
-      logger.debug('streams: %s', streams);
+  logger.log('Archiving Videos');
+  async.waterfall([
+    function (step) {
+      streams = [...fs.readdirSync(path.join(config.videosPath, 'live/'))]
+      // logger.debug('streams: %s', streams);
+      step(null, streams);
+    },
+    function (streams, step) {
+      var newVideos = [];
       var series = [];
-      for (var i=0;i<streams.length;i++)
+      _.forEach(streams, function (stream_name) {
+        // mp4s in directories
+        var stream_path = path.join(config.videosPath, '/live/', stream_name);
+        var archived_path = path.join(config.videosPath, '/archived/', stream_name);
+        // logger.debug('stream_name: %s', stream_name);
+        // logger.debug('stream: %s', stream_name);
+        // logger.debug('stream_path: %s', stream_path);
+        // logger.debug('archived_path: %s', archived_path);
+        fss.ensureDirSync(path.join(config.videosPath, '/archived/', stream_name), "0o2775");
+        // fss.ensureSymlinkSync(path.join(config.videosPath, 'archived', stream_name), archived_path);
+        var mp4s = fs.readdirSync(stream_path)
+        if (mp4s.length==0) return logger.debug("No Videos Found");
+        for (var i=0; i<mp4s.length; i++) {
+          try {
+            logger.log('Archiving: %s', mp4s[i]);
+            var file_path = path.join(config.videosPath, '/live/', stream_name, mp4s[i]);
+            var file_path_archived = path.join(config.videosPath, '/archived/', stream_name, mp4s[i].toLowerCase());
+            // logger.debug('file_path: %s', file_path);
+            // logger.debug('file_path_archived: %s', file_path_archived);
+            fss.moveSync(file_path, file_path_archived);
+            var newVideo = new Video({'path':file_path_archived,'isOriginal':true});
+            newVideos.push(newVideo);
+          }
+          catch (error) {
+            logger.warn(error);
+          }
+        }
+      });
+      step(null, newVideos);
+    },
+    function (newVideos, step) {
+      var series = [];
+      _.forEach(newVideos, function (video) {
         series.push(function (next) {
-          // mp4s in directories
-          var stream_name = streams.shift();
-          var stream_path = path.join(config.videosPath, '/live/', stream_name);
-          var archived_path = path.join(config.videosPath, '/archived/', stream_name);
-          // logger.debug('stream_name: %s', stream_name);
-          logger.log('stream: %s', stream_name);
-          logger.debug('stream_path: %s', stream_path);
-          logger.debug('archived_path: %s', archived_path);
-          // fss.ensureDirSync(archived_path);
-          fss.ensureDirSync(path.join(config.videosPath, '/archived/', stream_name), "0o2775");
-          // fss.ensureSymlinkSync(path.join(config.videosPath, 'archived', stream_name), archived_path);
-          fs.readdir(stream_path, function (err, mp4s) {
+          video.save(function (err) {
             if (err) {
               logger.warn(err);
               return next(null);
             }
-            logger.debug('MP4s:');
-            logger.debug(mp4s);
-            if (mp4s.length==0) {
-              logger.debug('skipping empty');
-              return next(null);
-            }
-            for (var i=0; i<mp4s.length; i++) {
-              try {
-                logger.log('Archiving: %s', mp4s[i]);
-                var file_path = path.join(config.videosPath, '/live/', stream_name, mp4s[i]);
-                var file_path_archived = path.join(config.videosPath, '/archived/', stream_name, mp4s[i].toLowerCase());
-                // logger.debug('file_path: %s', file_path);
-                // logger.debug('file_path_archived: %s', file_path_archived);
-                fss.moveSync(file_path, file_path_archived);
-                var newVideo = new Video({'path':file_path_archived,'isOriginal':true});
-                newVideo.save(function (err) {
-                  if (err) logger.warn(err);
-                  // if (config.backup_on_archive)
-
-                    newVideo.backup(function (err) {
-                      if (err) logger.warn(err);
-                      // if (config.Twitter_tweet_on_publish) {
-                        // tweet about having just uploaded a new video and include link to video
-                        // var Twitter = require('../modules/twitter');
-                        // Twitter.tweetOnPublish(newVideo, function (err) {
-                        //   if (err) logger.warn(err);
-                        // });
-                      // }
-                      newVideo.upload(function (err) {
-                        if (err) logger.warn(err);
-                      });
-                    });
-                  // else if (config.upload_on_publish) {
-                    
-                  // }
-                });
-              }
-              catch (error) {
-                logger.warn(error);
-              }
+            video.archive(function (err) {
+              if (err) logger.warn(err);
               next(null);
-            }
+            });
           });
         });
+      });
       series.push(function (next) {
-        logger.log('Archiving Complete');
-        callback(null);
+        step(null);
       });
       async.series(series);
-    });
+    },
+    function (step) {
+      logger.log('Archiving Complete');
+      callback(null);
+    }
+  ],
+  function (err) {
+    logger.log("Archiving Interrupted");
+    if (err) logger.warn(err);
+    callback(null);
   });
 }
 
 videoSchema.statics.concatLives = function(callback) {
-  if (!config.concat_on_publish) return callback("Skipping Concat");
+  if (!config.concatting) return callback("Skipping Concat");
   // concat them all using ffmpeg
   // output to same location
   var fs = require('fs');
-  logger.log('Concating MP4s...');
+  logger.log('Concating MP4s');
   // get all mp3s in whatever folder that is
   fs.readdir(path.join(config.videosPath, 'live/'), function (err, streams) {
     if (err) {
@@ -239,14 +230,13 @@ videoSchema.statics.concatLives = function(callback) {
     videoNames.forEach(function(videoName){
         mergedVideo = mergedVideo.addInput(videoName);
     });
-
     mergedVideo.mergeToFile(path.join(config.videosPath, '/live/',streamName))
     .on('error', function(err) {
       logger.warn('Error ' + err.message);
       callback(null);
     })
     .on('end', function() {
-      logger.log('Concat Completed');
+      logger.log('Concatenation Completed');
       callback(null);
     });
   });
@@ -358,6 +348,39 @@ videoSchema.statics.processPublished = function(callback) {
       callback(null);
     });
   });
+}
+
+videoSchema.methods.archive = function(callback) {
+  var self = this;
+  logger.debug("Archiving: %s", self.title);
+  async.series([
+    function (step) {
+      if (!config.Twitter_tweet_on_archive) return step(null);
+      var Twitter = require('../modules/twitter');
+      Twitter.tweetOnArchive(self, function (err) {
+        if (err) logger.warn(err);
+        step(null);
+      });
+    },
+    function (step) {
+      if (!config.backup_on_archive) return step(null);
+      self.backup(function (err) {
+        if (err) logger.warn(err);
+        step(null);
+      });
+    },
+    function (step) {
+      if (!config.upload_on_archive) return step(null);
+      self.upload(function (err) {
+        if (err) logger.warn(err);
+        step(null);
+      });
+    },
+    function (step) {
+      logger.debug("Archiving Complete: %s", self.title);
+      callback(null);
+    }
+  ])
 }
 
 // uploads to Google Drive - OnlyFans folder
