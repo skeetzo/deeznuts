@@ -1,11 +1,12 @@
 // Config file
 var config = {};
 
+config.botName = "DeezNuts";
+
 // Deploy Environment
 require('./deploy').call(config);
 
 // App Settings
-config.botName = "DeezNuts";
 config.port = Number(process.env.PORT || 3000);
 config.Crons_On = true;
 
