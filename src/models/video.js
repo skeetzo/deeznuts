@@ -143,7 +143,7 @@ videoSchema.statics.archiveVideos = function(callback) {
     function (streams, step) {
       var newVideos = [];
       var series = [];
-      _.forEach(stream_name, function (stream) {
+      _.forEach(streams, function (stream_name) {
         // mp4s in directories
         // var stream_name = streams.shift();
         var stream_path = path.join(config.videosPath, '/live/', stream_name);
