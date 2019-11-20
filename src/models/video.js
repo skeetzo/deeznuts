@@ -136,7 +136,7 @@ videoSchema.statics.archiveVideos = function(callback) {
   logger.log('Archiving Videos');
   async.series([
     function (step) {
-      streams = fs.readdirSync(path.join(config.videosPath, 'live/'))
+      streams = [...fs.readdirSync(path.join(config.videosPath, 'live/'))]
       logger.debug('streams: %s', streams);
       step(null, streams);
     },
