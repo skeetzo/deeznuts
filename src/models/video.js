@@ -137,17 +137,14 @@ videoSchema.statics.archiveVideos = function(callback) {
   async.waterfall([
     function (step) {
       streams = [...fs.readdirSync(path.join(config.videosPath, 'live/'))]
-      logger.debug('streams: %s', streams);
+      // logger.debug('streams: %s', streams);
       step(null, streams);
     },
     function (streams, step) {
       var newVideos = [];
       var series = [];
-      logger.log(streams);
       _.forEach(streams, function (stream_name) {
         // mp4s in directories
-        // var stream_name = streams.shift();
-        logger.log(stream_name);
         var stream_path = path.join(config.videosPath, '/live/', stream_name);
         var archived_path = path.join(config.videosPath, '/archived/', stream_name);
         // logger.debug('stream_name: %s', stream_name);
@@ -158,6 +155,7 @@ videoSchema.statics.archiveVideos = function(callback) {
         fss.ensureDirSync(path.join(config.videosPath, '/archived/', stream_name), "0o2775");
         // fss.ensureSymlinkSync(path.join(config.videosPath, 'archived', stream_name), archived_path);
         var mp4s = fs.readdirSync(stream_path)
+        if (mp4s.length==0) return logger.debug("No Videos Found");
         for (var i=0; i<mp4s.length; i++) {
           try {
             logger.log('Archiving: %s', mp4s[i]);
