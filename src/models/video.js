@@ -134,7 +134,7 @@ videoSchema.pre('save', function (next) {
 videoSchema.statics.archiveVideos = function(callback) {
   var fs = require('fs');
   logger.log('Archiving Videos');
-  async.series([
+  async.waterfall([
     function (step) {
       streams = [...fs.readdirSync(path.join(config.videosPath, 'live/'))]
       logger.debug('streams: %s', streams);
@@ -201,7 +201,12 @@ videoSchema.statics.archiveVideos = function(callback) {
       logger.log('Archiving Complete');
       callback(null);
     }
-  ]);
+  ],
+  function (err) {
+    logger.log("Archiving Interrupted");
+    if (err) logger.warn(err);
+    callback(null);
+  });
 }
 
 videoSchema.statics.concatLives = function(callback) {
