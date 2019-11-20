@@ -1,5 +1,3 @@
 #!/usr/bin/env bash
-if [ -z "$1" ]; then
-	set "production"
-fi
-pm2 deploy $1 update
+sudo bin/save.sh $1
+pm2 deploy production update
