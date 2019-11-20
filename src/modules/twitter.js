@@ -38,9 +38,9 @@ var tweet = function(tw, callback) {
 }
 module.exports.tweet = tweet;
 
-var tweetOnPublishLock = false;
-var tweetOnPublish = function(video, callback) {
-    if (tweetOnPublishLock) return callback('Recently Tweeted');
+var tweetOnArchiveLock = false;
+var tweetOnArchive = function(video, callback) {
+    if (tweetOnArchiveLock) return callback('Recently Tweeted');
     logger.log('Tweeting Published Video: ', video.title);
     var tw = "I\'ve just uploaded another video! "+video.link;
     logger.debug('tweet: %s', tw);
@@ -51,15 +51,14 @@ var tweetOnPublish = function(video, callback) {
         if (err) return callback(err);
         logger.log('Published Tweet posted');
         callback(null);
-        tweetOnPublishLock = true;
-        setTimeout(function publishTimeout() {
-            tweetOnPublishLock = false;
-            logger.debug('tweetOnPublishLock released');
+        tweetOnArchiveLock = true;
+        setTimeout(function archiveTimeout() {
+            tweetOnArchiveLock = false;
+            logger.debug('tweetOnArchiveLock released');
         }, 10000);
     });
 }
-module.exports.tweetOnPublish = tweetOnPublish;
-
+module.exports.tweetOnArchive = tweetOnArchive;
 
 var deleteLiveTweet = function(callback) {
     logger.log('Deleting Live Tweet');

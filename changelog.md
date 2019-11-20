@@ -87,7 +87,9 @@
 	**1.3.2 : 11/19/2019**
 	- save all on boot
 	- upload forgotten on boot fixed
-
+	- updated concat on publish
+	- updated video.archiveVideos
+	- added/moved environment settings to deploy
 
 
 
