@@ -1,5 +1,6 @@
 var config = require('../config/index'),
-    logger = config.logger;
+    logger = config.logger,
+    async = require('async');
 
 const { NodeMediaServer } = require('node-media-server');
 
