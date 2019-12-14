@@ -237,7 +237,7 @@ async.series([
         // fixes dates
         video.save(function (uhh) {
           var date_ = moment(video.date);
-          var otherDate = moment(new Date(2019,12,1));
+          var otherDate = moment(new Date(2019,11,1));
           // logger.log(date_.format('MM-DD-YYYY'));
           // logger.log(otherDate.format('MM-DD-YYYY'));
           if (date_<otherDate) return;
