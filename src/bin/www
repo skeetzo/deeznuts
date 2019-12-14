@@ -246,11 +246,12 @@ async.series([
             var otherDate = moment(new Date(2019,11,1));
             logger.log("date: %s - %s:limit", date_.format('MM-DD-YYYY'), otherDate.format('MM-DD-YYYY'));
             if (date_<otherDate) return next(null);
-            uploads.push(function (next) {
+            logger.log("adding: %s", video.title)
+            uploads.push(function (next_) {
               logger.log("Forgotten video: %s", video.title);
               video.upload(function (err) {
                 if (err) logger.warn(err);
-                next(null);
+                next_(null);
               });
             });
             next(null);
@@ -258,11 +259,9 @@ async.series([
         });
       });
       series.push(function (next) {
-        logger.log("balls")
         async.series(uploads)
       });
-      uploads.push(function (next) {
-        logger.log("no balls")
+      uploads.push(function (next_) {
         step(null);
       })
       async.series(series);
