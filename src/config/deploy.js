@@ -111,7 +111,7 @@ module.exports = function Deploy_Config() {
 		this.archive_on_publish = true;
 		// this.delete_on_publish = true;
 		// this.remoteDatabase = true;
-		// this.populateFromFiles = true;
+		this.populateFromFiles = true;
 		// this.go_live = true;
 		// this.backup_db = true;
 		this.upload_all_on_boot = true;
@@ -119,7 +119,7 @@ module.exports = function Deploy_Config() {
 		this.backup_on_archive = true;
 		this.upload_on_archive = true;
 		this.upload_to_OnlyFans = true;
-		// this.upload_force_save = true;
+		// this.upload_force_save = true; // forces all videos to save as uploaded before boot can do anything else
 		this.concatting = true;
 		this.concatenate_on_publish = true;
 	}
