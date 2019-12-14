@@ -124,7 +124,7 @@ videoSchema.pre('save', function (next) {
         self.price = Math.round(self.price);
       }
       // Normal
-      logger.debug('Video Saved: %s', self.title);
+      // logger.debug('Video Saved: %s', self.title);
       next();
     }
   ]);

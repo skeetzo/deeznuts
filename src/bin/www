@@ -258,9 +258,11 @@ async.series([
         });
       });
       series.push(function (next) {
+        logger.log("balls")
         async.series(uploads)
       });
       uploads.push(function (next) {
+        logger.log("no balls")
         step(null);
       })
       async.series(series);
