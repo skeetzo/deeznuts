@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
-# bin/save.sh
-# wait
+bin/save.sh
+wait
 if [ -z "$1" ]; then
 	set "production"
 fi

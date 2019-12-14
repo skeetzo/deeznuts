@@ -243,8 +243,8 @@ async.series([
             }
             var date_ = moment(new Date(video.date));
             var otherDate = moment(new Date(2019,11,1));
-            // logger.log(date_.format('MM-DD-YYYY'));
-            // logger.log(otherDate.format('MM-DD-YYYY'));
+            logger.log(date_.format('MM-DD-YYYY'));
+            logger.log(otherDate.format('MM-DD-YYYY'));
             if (date_<otherDate) return next(null);
             series.push(function (next) {
               logger.log("Upload video: %s", video.title);
