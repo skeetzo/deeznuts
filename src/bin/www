@@ -246,24 +246,27 @@ async.series([
             var otherDate = moment(new Date(2019,11,1));
             logger.log("date: %s - %s:limit", date_.format('MM-DD-YYYY'), otherDate.format('MM-DD-YYYY'));
             if (date_<otherDate) return next(null);
-            logger.log("adding: %s", video.title)
-            uploads.push(function (next_) {
-              logger.log("Forgotten video: %s", video.title);
-              video.upload(function (err) {
-                if (err) logger.warn(err);
-                next_(null);
-              });
-            });
+            uploads.push(video)
             next(null);
           })
         });
       });
       series.push(function (next) {
-        async.series(uploads)
+        uploadMe = []
+        _.forEach(uploads, function (video) {
+          uploadMe.push(function (next) {
+            logger.log("Forgotten video: %s", video.title);
+            video.upload(function (err) {
+              if (err) logger.warn(err);
+              next(null);
+            });
+          });
+        });
+        uploads.push(function (next) {
+          step(null);
+        })
+        async.series(uploadMe)
       });
-      uploads.push(function (next_) {
-        step(null);
-      })
       async.series(series);
     });
   },
