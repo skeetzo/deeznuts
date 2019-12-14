@@ -253,6 +253,7 @@ async.series([
                 next(null);
               });
             });
+            next(null);
           })
         });
       });
