@@ -229,17 +229,18 @@ async.series([
   // upload all unuploaded videos
   function (step) {
     if (!config.upload_all_on_boot) return step(null);
-    logger.log("Uploading Forgotten");
-    Video.find({"uploaded":false}, function (err, videos) {
+    // Video.find({"uploaded":false}, function (err, videos) {
+    Video.find({}, function (err, videos) {
       var series = [];
+      logger.log("Uploading Forgotten: %s", videos.length);
       _.forEach(videos, function (video) {
         // fixes dates
-        // video.save(function (uhh) {
-          // var date_ = moment(video.date);
-          // var otherDate = moment(new Date(2019,10,15));
-          // // logger.log(date_.format('MM-DD-YYYY'));
-          // // logger.log(otherDate.format('MM-DD-YYYY'));
-          // if (date_<otherDate) return;
+        video.save(function (uhh) {
+          var date_ = moment(video.date);
+          var otherDate = moment(new Date(2019,12,1));
+          // logger.log(date_.format('MM-DD-YYYY'));
+          // logger.log(otherDate.format('MM-DD-YYYY'));
+          if (date_<otherDate) return;
           series.push(function (next) {
             logger.log("Upload video: %s", video.title);
             video.upload(function (err) {
@@ -247,7 +248,7 @@ async.series([
               next(null);
             });
           });
-        // })
+        })
       });
       series.push(function (next) {
         step(null);
