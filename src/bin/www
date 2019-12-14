@@ -235,24 +235,26 @@ async.series([
       logger.log("Uploading Forgotten: %s", videos.length);
       _.forEach(videos, function (video) {
         // fixes dates
-        video.save(function (err) {
-          if (err) {
-            logger.warn(err);
-            return next(null);
-          }
-          var date_ = moment(new Date(video.date));
-          var otherDate = moment(new Date(2019,12,1));
-          // logger.log(date_.format('MM-DD-YYYY'));
-          // logger.log(otherDate.format('MM-DD-YYYY'));
-          if (date_<otherDate) return next(null);
-          series.push(function (next) {
-            logger.log("Upload video: %s", video.title);
-            video.upload(function (err) {
-              if (err) logger.warn(err);
-              next(null);
+        series.push(function (next) {
+          video.save(function (err) {
+            if (err) {
+              logger.warn(err);
+              return next(null);
+            }
+            var date_ = moment(new Date(video.date));
+            var otherDate = moment(new Date(2019,12,1));
+            // logger.log(date_.format('MM-DD-YYYY'));
+            // logger.log(otherDate.format('MM-DD-YYYY'));
+            if (date_<otherDate) return next(null);
+            series.push(function (next) {
+              logger.log("Upload video: %s", video.title);
+              video.upload(function (err) {
+                if (err) logger.warn(err);
+                next(null);
+              });
             });
-          });
-        })
+          })
+        });
       });
       series.push(function (next) {
         step(null);
