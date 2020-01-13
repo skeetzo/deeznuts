@@ -90,6 +90,9 @@
 	- updated concat on publish
 	- updated video.archiveVideos
 	- added/moved environment settings to deploy
+	**1.3.3 : 1/13/2020**
+	- fixed watermarking path
+	- rehoused to desktop
 
 
 **??/??/??**
