@@ -27,7 +27,7 @@ module.exports = {
       ref  : "origin/development",
       repo : "git@github.com:skeetzo/deeznuts.git",
       path : "/var/www/apps/deeznuts",
-      "post-deploy" : "npm install --unsafe-perm=true --allow-root && chown -R sorreah:www-data . && pm2 startOrRestart ecosystem.config.js --only deeznuts",
+      "post-deploy" : "npm install --unsafe-perm=true --allow-root && pm2 startOrRestart ecosystem.config.js --only deeznuts",
       env  : {
         NODE_ENV: "development",
         FORCE_COLOR: true
@@ -40,7 +40,7 @@ module.exports = {
       ref  : "origin/staging",
       repo : "git@github.com:skeetzo/deeznuts.git",
       path : "/var/www/apps/deeznuts",
-      "post-deploy" : "npm install --unsafe-perm=true --allow-root && chown -R sorreah:www-data . && pm2 startOrRestart ecosystem.config.js --env staging --only deeznuts",
+      "post-deploy" : "npm install --unsafe-perm=true --allow-root && pm2 startOrRestart ecosystem.config.js --env staging --only deeznuts",
       env  : {
         NODE_ENV: "staging",
         FORCE_COLOR: true
@@ -53,7 +53,7 @@ module.exports = {
       ref  : "origin/production",
       repo : "git@github.com:skeetzo/deeznuts.git",
       path : "/var/www/apps/deeznuts",
-      "post-deploy" : "npm install --unsafe-perm=true --allow-root && chown -R sorreah:www-data . && pm2 startOrRestart ecosystem.config.js --env production --only deeznuts",
+      "post-deploy" : "npm install --unsafe-perm=true --allow-root && pm2 startOrRestart ecosystem.config.js --env production --only deeznuts",
       env  : {
         NODE_ENV: "production",
         FORCE_COLOR: true
