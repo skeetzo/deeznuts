@@ -670,8 +670,8 @@ videoSchema.methods.watermark = function(callback) {
     logger.log('--- Watermarked: %s', self.title);
     callback(null);
   })
-  // .saveToFile(self.path.replace('.mp4', '-w.mp4')); 
-  .saveToFile(self.path_preview); 
+  .saveToFile(self.path_preview.replace('.mp4', '-w.mp4'));
+  // .saveToFile(self.path_preview); 
 }
 
 videoSchema.methods.upload = function(callback) {
