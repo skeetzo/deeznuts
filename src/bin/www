@@ -254,6 +254,7 @@ async.series([
       series.push(function (next) {
         uploadMe = []
         _.forEach(uploads, function (video) {
+          if (video.title=="Example") return;
           uploadMe.push(function (next) {
             logger.log("Forgotten video: %s", video.title);
             video.upload(function (err) {
