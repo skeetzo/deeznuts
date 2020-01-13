@@ -77,7 +77,7 @@ module.exports = function Deploy_Config() {
 		// this.debugging_paypal = true;
 		// this.debugging_paypal_reset_plans = true;
 		this.populateFromFiles = true;	
-		// this.upload_all_on_boot = true;
+		this.upload_all_on_boot = true;
 		this.upload_to_OnlyFans = true;
 	}
 	else if (environment=='staging') {
