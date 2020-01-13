@@ -76,7 +76,7 @@ module.exports = function Deploy_Config() {
 		// this.debugging_crons = true;
 		// this.debugging_paypal = true;
 		// this.debugging_paypal_reset_plans = true;
-		// this.populateFromFiles = true;	
+		this.populateFromFiles = true;	
 		// this.upload_all_on_boot = true;
 		this.upload_to_OnlyFans = true;
 	}
@@ -114,7 +114,7 @@ module.exports = function Deploy_Config() {
 		this.populateFromFiles = true;
 		// this.go_live = true;
 		// this.backup_db = true;
-		// this.upload_all_on_boot = true;
+		this.upload_all_on_boot = true;
 		this.deleteMissing = true;
 		this.backup_on_archive = true;
 		// this.upload_on_archive = true;
