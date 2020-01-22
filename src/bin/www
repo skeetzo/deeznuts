@@ -129,33 +129,7 @@ async.series([
     });
   },
   function (step) {
-    if (config.ssl) {
-      /**
-       * Create HTTPS server.
-       */
-      var privateKey  = fs.readFileSync(config.ssl_key, 'utf8');
-      var certificate = fs.readFileSync(config.ssl_cert, 'utf8');
-      var credentials = {'key': privateKey, 'cert': certificate};
-      server = https.createServer(credentials, app);
-    }
-    else {
-      server = http.createServer(app);
-    }
-
-    // socket.io
-    const io = require('socket.io')(server);    
-    require('../modules/socket.io').setup(io);
-
-    /**
-     * Listen on provided port, on all network interfaces.
-     */
-    // server.listen(port, "127.0.0.1", function () {
-    server.listen(port, "0.0.0.0", function () {
-      logger.log("Live at Port %s", port);
-      step(null);
-    });
-    server.on('error', onError);
-    server.on('listening', onListening);
+    spawnServer(step);
   },
   // Archive
   function (step) {
@@ -297,6 +271,53 @@ async.series([
     logger.log('--- Launched %s ---', config.domain)
   }
 ]);
+
+
+var server;
+var port = normalizePort(config.port);
+
+function spawnServer(cb) {
+  /**
+   * Get port from environment and store in Express.
+   */
+  // app.set('port', port);
+
+  if (config.ssl) {
+    /**
+     * Create HTTPS server.
+     */
+    var privateKey  = fs.readFileSync(config.ssl_key, 'utf8');
+    var certificate = fs.readFileSync(config.ssl_cert, 'utf8');
+    var credentials = {'key': privateKey, 'cert': certificate};
+    server = https.createServer(credentials, app);
+  }
+  else {
+    server = http.createServer(app);
+  }
+
+  // socket.io
+  const io = require('socket.io')(server);    
+  require('../modules/socket.io').setup(io);
+
+  /**
+   * Listen on provided port, on all network interfaces.
+   */
+
+  // server.listen(port, "127.0.0.1", function () {
+  server.listen(port, "0.0.0.0", function () {
+    logger.log("Live at Port %s", port);
+    cb(null);
+  });
+  server.on('error', onError);
+  server.on('listening', onListening);
+
+  process.on('SIGINT', function() {
+    logger.debug('Shutting Down Server');
+    server.close(function (err) {
+      process.exit(err ? 1 : 0);
+    });
+  });
+}
 
 /**
  * Normalize a port into a number, string, or false.

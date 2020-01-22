@@ -7,6 +7,7 @@ config.botName = "DeezNuts";
 require('./deploy').call(config);
 
 // App Settings
+process.title = 'deeznuts';
 config.port = Number(process.env.PORT || 3000);
 config.Crons_On = true;
 
