@@ -21,7 +21,7 @@ module.exports = {
   // Deployment part
   deploy : {
     "development" : {
-      user : "sorreah",
+      user : "deploy",
       host : "47.156.159.127",
       ssh_options: "port=26",
       ref  : "origin/development",
@@ -34,7 +34,7 @@ module.exports = {
       }
     },
     "staging" : {
-      user : "sorreah",
+      user : "deploy",
       host : "47.156.159.127",
       ssh_options: "port=26",
       ref  : "origin/staging",
@@ -47,7 +47,7 @@ module.exports = {
       }
     },
     "production" : {
-      user : "sorreah",
+      user : "deploy",
       host : "47.156.159.127",
       ssh_options: "port=26",
       ref  : "origin/production",
