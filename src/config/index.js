@@ -18,8 +18,8 @@ config.author = "Skeetzo";
 config.description = "Porn Star Streamer";
 config.Google_Analytics = "UA-82463743-8";
 config.pages = ['privacy','terms','support','2257-compliance','callback'];
-config.ssl_key = '/etc/letsencrypt/live/alexdeeznuts-0001.com/privkey.pem';
-config.ssl_cert = '/etc/letsencrypt/live/alexdeeznuts-0001.com/fullchain.pem';
+config.ssl_key = '/etc/letsencrypt/live/alexdeeznuts.com-0001/privkey.pem';
+config.ssl_cert = '/etc/letsencrypt/live/alexdeeznuts.com-0001/fullchain.pem';
 
 config.domain = "alexdeeznuts.com";
 if (config.local) config.domain = "localhost";
