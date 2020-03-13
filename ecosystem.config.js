@@ -67,7 +67,7 @@ module.exports = {
       path : "/var/www/apps/deeznuts",
       "post-deploy" : "npm install --unsafe-perm=true --allow-root && pm2 startOrRestart ecosystem.config.js --env pi --only deeznuts && /var/www/apps/deeznuts/source/bin/menu-deploy.sh",
       env  : {
-        NODE_ENV: "production",
+        NODE_ENV: "pi",
         FORCE_COLOR: true
       }
     }
