@@ -4,4 +4,4 @@
 # copies recent to bin
 sudo cp /var/www/apps/deeznuts/src/bin/menu.sh /usr/bin/menu
 sudo chmod +x /usr/bin/menu
-sudo node /var/www/apps/deeznuts/src/bin/menu.js "$@"
+sudo node /var/www/apps/deeznuts/source/src/bin/menu.js "$@"
