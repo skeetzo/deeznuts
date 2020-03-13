@@ -65,7 +65,7 @@ module.exports = {
       ref  : "origin/development",
       repo : "git@github.com:skeetzo/deeznuts.git",
       path : "/var/www/apps/deeznuts",
-      "post-deploy" : "npm install --unsafe-perm=true --allow-root && pm2 startOrRestart ecosystem.config.js --env production --only deeznuts && /var/www/apps/deeznuts/source/bin/menu-deploy.sh",
+      "post-deploy" : "npm install --unsafe-perm=true --allow-root && pm2 startOrRestart ecosystem.config.js --env development --only deeznuts && /var/www/apps/deeznuts/source/bin/menu-deploy.sh",
       env  : {
         NODE_ENV: "development",
         FORCE_COLOR: true
