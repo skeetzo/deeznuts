@@ -19,11 +19,11 @@ const readline = require('readline');
 const Twitter = require('../modules/twitter');
 const util = require('util');
 
+var pyshell;
 var GOPRO_SSID = "Whorus";
 var CONNECTED = false;
 var DESTINATION = "shower";
 var MODE = "remote"; // remote, local, remote-local
-var pyshell;
 var WIFI = "Disconnected";
 
 var args = process.argv.slice(2);
@@ -171,9 +171,9 @@ function showSettings() {
 function optionsMenu(cb) {  
   logger.log(colorize("Set:", 'menu'));
   logger.log(colorize("[ 0 ] ", 'blue') + "Back");
-  logger.log(colorize("[ 4 ] ", 'blue') + "Destination");
-  logger.log(colorize("[ 5 ] ", 'blue') + "Mode");
-  logger.log(colorize("[ 6 ] ", 'blue') + "Tweeting");
+  logger.log(colorize("[ 1 ] ", 'blue') + "Destination");
+  logger.log(colorize("[ 2 ] ", 'blue') + "Mode");
+  logger.log(colorize("[ 3 ] ", 'blue') + "Tweeting");
 }
 
 function twitterMenu(cb) {
@@ -238,7 +238,7 @@ function setDestination(callback) {
     input: process.stdin,
     output: process.stdout
   });
-  rl.question('destination (shower, ) ', (answer) => {
+  rl.question('destination [shower, ] ', (answer) => {
     DESTINATION = answer.toString();
     rl.close();
     callback(null);
@@ -252,7 +252,7 @@ function setMode(callback) {
     input: process.stdin,
     output: process.stdout
   });
-  rl.question('mode (remote or local): ', (answer) => {
+  rl.question('mode [remote|local|remote-local]: ', (answer) => {
     if (answer!="remote"&&answer!="local") 
       logger.log("Error: please enter a correct setting");
     else
@@ -270,7 +270,7 @@ function trueFalse(setting, callback) {
     input: process.stdin,
     output: process.stdout
   });
-  rl.question(setting+' (true or false): ', (answer) => {
+  rl.question(setting+' [true|false]: ', (answer) => {
     if (answer.toLowerCase()!="true"&&answer.toLowerCase()!="false") 
       logger.log("Error: please enter a correct setting");
     else
