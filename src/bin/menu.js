@@ -1,9 +1,11 @@
 #!/usr/bin/env node
+// menu for interacting with GoPro w/
 
 // Skeetzo
 // 2/12/2019
 // 7/18/2019 
 // 9/12/2019
+// 2/12/2020
 
 // todo:
 // need to figure out a way to have args from here -> deeznuts running process
@@ -12,6 +14,7 @@
 
 var config = require('../config/index');
 const logger = config.logger;
+const {PythonShell} = require('python-shell');
 const readline = require('readline');
 const Twitter = require('../modules/twitter');
 const util = require('util');
@@ -19,15 +22,8 @@ const util = require('util');
 var GOPRO_SSID = "Whorus";
 var CONNECTED = false;
 var DESTINATION = "shower";
-var MODE = "remote";
+var MODE = "remote"; // remote, local, remote-local
 var pyshell;
-var ARGS = {
-  archive:false,
-  backup:false,
-  delete:false,
-  live:false,
-  tweeting:false
-};
 var WIFI = "Disconnected";
 
 var args = process.argv.slice(2);
@@ -117,18 +113,10 @@ function settings() {
     if (answer==0)
       return main();
     else if (answer==1)
-      trueFalse("archive", handle);
-    else if (answer==2)
-      trueFalse("backup", handle);
-    else if (answer==3)
-      trueFalse("delete", handle);
-    else if (answer==4)
       setDestination(handle);
-    else if (answer==5)
-      trueFalse("live", handle);
-    else if (answer==6)
+    else if (answer==2)
       setMode(handle);
-    else if (answer==5)
+    else if (answer==3)
       trueFalse("tweeting", handle);
     else
       return main();
@@ -174,26 +162,18 @@ function menu() {
 }
 
 function showSettings() {
-  // console.log(colorize("Archive", 'blue') +" = " + ARGS.archive);
-  // console.log(colorize("Backup", 'blue') +" = " + ARGS.backup);
-  // console.log(colorize("Delete", 'blue') +" = " + ARGS.delete);
   console.log(colorize("Destination", 'blue') +" = " + DESTINATION);
-  console.log(colorize("Live", 'blue') +" = " + ARGS.live);
   console.log(colorize("Mode", 'blue') +" = " + MODE);
-  console.log(colorize("Tweeting", 'blue') +" = " + ARGS.tweeting);
+  console.log(colorize("Tweeting", 'blue') +" = " + config.Twitter_tweeting);
   console.log(colorize("WiFi", 'blue') +" = " + WIFI);
 }
 
 function optionsMenu(cb) {  
   logger.log(colorize("Set:", 'menu'));
   logger.log(colorize("[ 0 ] ", 'blue') + "Back");
-  // logger.log(colorize("[ 1 ] ", 'blue') + "Archive On Publish");
-  // logger.log(colorize("[ 2 ] ", 'blue') + "Backup To OnlyFans");
-  // logger.log(colorize("[ 3 ] ", 'blue') + "Delete On Publish");
   logger.log(colorize("[ 4 ] ", 'blue') + "Destination");
-  logger.log(colorize("[ 5 ] ", 'blue') + "Live");
-  logger.log(colorize("[ 6 ] ", 'blue') + "Mode");
-  logger.log(colorize("[ 7 ] ", 'blue') + "Tweeting");
+  logger.log(colorize("[ 5 ] ", 'blue') + "Mode");
+  logger.log(colorize("[ 6 ] ", 'blue') + "Tweeting");
 }
 
 function twitterMenu(cb) {
@@ -210,6 +190,8 @@ function handle(err) {
   if (err) logger.log(err);
   setTimeout((step) => {main()}, 10000);    
 }
+
+//////
 
 function checkWiFi(callback) {
   // logger.log("Checking WiFi...");
@@ -247,6 +229,8 @@ function connect(callback) {
   });
 }
 
+//////
+
 // sets destination to: shower, 
 function setDestination(callback) {
   // default 'shower'
@@ -278,6 +262,8 @@ function setMode(callback) {
   });
 }
 
+//////
+
 function trueFalse(setting, callback) {
   // default 'remote'
   const rl = readline.createInterface({
@@ -294,6 +280,8 @@ function trueFalse(setting, callback) {
     callback(null);
   });
 }
+
+//////
 
 function tweet(callback) {
   const rl = readline.createInterface({
@@ -340,6 +328,8 @@ function deleteTweet(callback) {
       callback(err);
   });
 }
+
+//////
     
 function toggleStream(cb) {
   if (CONNECTED) {
@@ -362,8 +352,7 @@ function toggleStream(cb) {
       'pythonOptions': ['-u'], // get print results in real-time
       'scriptPath': require('path').join(__dirname,'../modules/GoPro'),
       'args': ['-loglevel', 'debug', '-destination', DESTINATION, '-mode', MODE]
-    };
-    const {PythonShell} = require('python-shell');
+    }; 
     pyshell = new PythonShell('GoProStream.py', options);
     CONNECTED = true;
     pyshell.on('message', function (message) {

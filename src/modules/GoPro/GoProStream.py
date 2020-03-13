@@ -128,10 +128,16 @@ def gopro_live():
 			print("Recording locally: " + str(SAVE))
 			print("Recording stored in: " + SAVELOCATION)
 			print("Note: Preview is not available when saving the stream.")
-			if str(MODE)=="remote":
+			if str(MODE) == "remote":
 				subprocess.Popen("ffmpeg -re -i 'udp://10.5.5.101:8554' -loglevel {} -movflags faststart -probesize 100M -analyzeduration 15M -preset slow -f:v mpegts -crf 16 -b:a 128k -acodec copy -vcodec copy -flags global_header -f flv rtmp://104.34.128.2:1935/{}".format(LOGLEVEL,DESTINATION), shell=True)
-			else:
+			elif str(MODE) == "local":
+				from pathlib import Path
+				Path("/opt/deeznuts").mkdir(parents=True, exist_ok=True)
+				subprocess.Popen("ffmpeg -re -i 'udp://10.5.5.100:8554' -loglevel {} -movflags faststart -probesize 100M -analyzeduration 15M -preset slow -f:v mpegts -crf 16 -b:a 128k -acodec copy -vcodec copy -flags global_header -f flv /opt/deeznuts/{}".format(DESTINATION), shell=True)
+			elif str(MODE) == "remote-local":
 				subprocess.Popen("ffmpeg -re -i 'udp://10.5.5.100:8554' -loglevel {} -movflags faststart -probesize 100M -analyzeduration 15M -preset slow -f:v mpegts -crf 16 -b:a 128k -acodec copy -vcodec copy -flags global_header -f flv rtmp://127.0.0.1:1935/{}".format(LOGLEVEL,DESTINATION), shell=True)
+			else:
+				print("Error: Missing Recording Mode")
 		if sys.version_info.major >= 3:
 			MESSAGE = bytes(MESSAGE, "utf-8")
 		print("Press ctrl+C to quit this application.\n")
