@@ -4,9 +4,10 @@ var mongoose = require('mongoose'),
     config = require('../config/index'),
     logger = config.logger;
 
-var redis = require('ioredis'),
-    MongooseRedis = require('mongoose-with-redis'),
-    redisClient = redis.createClient(config.REDIS_URL);
+if (config.database_redis)
+  var redis = require('ioredis'),
+      MongooseRedis = require('mongoose-with-redis'),
+      redisClient = redis.createClient(config.REDIS_URL);
 
 // squelch mpromise is deprecated warning
 mongoose.Promise = global.Promise;
@@ -32,7 +33,8 @@ var cacheOptions = {
   prefix: 'RedisCache'
 };
 
-MongooseRedis(mongoose, redisClient, cacheOptions);
+if (config.database_redis)
+  MongooseRedis(mongoose, redisClient, cacheOptions);
 
 var store = new MongoDBStore(
     {

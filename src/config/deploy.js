@@ -60,6 +60,7 @@ module.exports = function Deploy_Config() {
 
 	this.database_retain = false;
 	this.database_type = "local";
+	this.database_redis = false;
 
 	if (environment=='development') {
 		this.debugging = true;
@@ -128,6 +129,7 @@ module.exports = function Deploy_Config() {
 	}
 	else if (environment=='pi') {
 		this.debugging = true;
+		this.database_redis = false;
 		this.local = true;
 		this.remoteDatabase = true;
 		this.archive_on_publish = true;
