@@ -397,9 +397,14 @@ videoSchema.methods.backup = function(callback) {
     logger.log('Backed Up: %s', self.title);
     self.backedUp = true;
     self.save(function (err) {
-      callback(err);
+      if (err) logger.warn(err);
+      if (config.delete_on_backup)
+        self.delete(callback)
+      else
+        callback(null);
     });
   });
+
 }
 
 // get file at location
@@ -483,6 +488,20 @@ videoSchema.methods.createPreview = function(callback) {
       callback(err);
     });
   });
+}
+
+videoSchema.methods.delete = function(callback) {
+  logger.log("Deleting Video File: %s", this.title)
+  // delete from filesystem
+  fs.unlink(this.path)
+  // remove from db
+  if (!config.database_retain) {
+    print("Deleting Video from DB (%s): %s", config.database_type, this.title)
+    this.remove(function (err) {
+      if (err) logger.warn(err);
+      callback(null);
+    });
+  }
 }
 
 videoSchema.methods.extract = function(callback, retryReason) {

@@ -58,6 +58,9 @@ module.exports = function Deploy_Config() {
 
 	this.concatting = false;
 
+	this.database_retain = false;
+	this.database_type = "local";
+
 	if (environment=='development') {
 		this.debugging = true;
 		this.debugging_live = true;
@@ -122,6 +125,22 @@ module.exports = function Deploy_Config() {
 		// this.upload_force_save = true; // forces all videos to save as uploaded before boot can do anything else
 		this.concatting = true;
 		this.concatenate_on_publish = true;
+	}
+	else if (environment=='pi') {
+		this.debugging = true;
+		this.local = true;
+		this.remoteDatabase = true;
+		this.archive_on_publish = true;
+		// this.delete_on_publish = true;
+		this.concatenate_on_publish = true;
+		// this.go_live = true;
+		this.backup_on_archive = true;
+		this.delete_on_backup = true;
+		this.database_retain = true;
+		this.database_type = "remote";
+		this.populateFromFiles = true;	
+		// this.upload_all_on_boot = true;
+		// this.upload_to_OnlyFans = true;
 	}
 
 	// Mount Paths

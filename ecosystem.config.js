@@ -62,12 +62,12 @@ module.exports = {
     "pi" : {
       user : "pi",
       host : "192.168.1.69",
-      ref  : "origin/development",
+      ref  : "origin/production",
       repo : "git@github.com:skeetzo/deeznuts.git",
       path : "/var/www/apps/deeznuts",
-      "post-deploy" : "npm install --unsafe-perm=true --allow-root && pm2 startOrRestart ecosystem.config.js --env development --only deeznuts && /var/www/apps/deeznuts/source/bin/menu-deploy.sh",
+      "post-deploy" : "npm install --unsafe-perm=true --allow-root && pm2 startOrRestart ecosystem.config.js --env pi --only deeznuts && /var/www/apps/deeznuts/source/bin/menu-deploy.sh",
       env  : {
-        NODE_ENV: "development",
+        NODE_ENV: "production",
         FORCE_COLOR: true
       }
     }
