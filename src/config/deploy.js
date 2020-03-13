@@ -72,13 +72,13 @@ module.exports = function Deploy_Config() {
 		// this.delete_on_publish = true;
 		this.archive_on_publish = true;
 		// this.go_live = true;
-		// this.backup_on_archive = true;
+		this.backup_on_archive = true;
 		// this.debugging_crons = true;
 		// this.debugging_paypal = true;
 		// this.debugging_paypal_reset_plans = true;
 		this.populateFromFiles = true;	
-		this.upload_all_on_boot = true;
-		this.upload_to_OnlyFans = true;
+		// this.upload_all_on_boot = true;
+		// this.upload_to_OnlyFans = true;
 	}
 	else if (environment=='staging') {
 		this.debugging = true;
