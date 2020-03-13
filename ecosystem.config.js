@@ -60,7 +60,7 @@ module.exports = {
       }
     },
     "pi" : {
-      user : "deploy",
+      user : "pi",
       host : "192.168.1.69",
       ref  : "origin/production",
       repo : "git@github.com:skeetzo/deeznuts.git",
