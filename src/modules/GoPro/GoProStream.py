@@ -135,11 +135,13 @@ def gopro_live():
 				print("Recording locally: " + str(DESTINATION))
 				subprocess.Popen("ffmpeg -re -i 'udp://10.5.5.100:8554' -loglevel {} -movflags faststart -probesize 100M -analyzeduration 15M -preset slow -f:v mpegts -crf 16 -b:a 128k -acodec copy -vcodec copy -flags global_header -f flv /opt/apps/deeznuts/videos/live/stream".format(LOGLEVEL), shell=True)
 				while True:
-					output = process.stdout.readline()
-					if output == '' and process.poll() is not None:
-						break
-					if output:
-						print(output.strip())
+					try:
+						output = process.stdout.readline()
+						if output == '' and process.poll() is not None:
+							break
+						if output:
+							print(output.strip())
+					except: pass
 				rc = process.poll()
 			elif str(MODE) == "remote-local":
 				print("Recording remote-locally: " + str(DESTINATION))
