@@ -161,3 +161,7 @@ module.exports = function Deploy_Config() {
 	this.watermarkPath = path.join(this.imagesPath, "watermark.png");
 	this.workingVideoPath = path.join(this.videosPath, "working.mp4");
 }
+
+
+
+// update ffmpeg to 4.0 on rasp pi

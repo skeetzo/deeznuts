@@ -359,7 +359,7 @@ function toggleStream(cb) {
       logger.log(message);
     });
   }
-  cb(null);
+  // cb(null);
 }
 
 checkWiFi(function (err) {
