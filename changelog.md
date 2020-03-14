@@ -78,6 +78,8 @@
 	**1.1.1 : 7/18/2019**
 	- updated gopro menu with tweetAnds
 	- setDestination & setMode for easier debugging switching
+	- gulp file needs rewrite above version > "gulp": "^3.9.1",
+	- logger needs to ensure /var/log/apps/deeznuts exists
 	**1.2.0 : 9/13/2019**
 	- updated & cleaned menu.js
 	**1.3.0 : 10/9/2019**
@@ -102,12 +104,8 @@
 	- android rtmp relay?
 # Bugs
 **1.1.0**
-	- chrome browser on laptop: "HtmlMediaElement.error attribute is not null" 
-**1.1.1**
-	- gulp file needs rewrite above version > "gulp": "^3.9.1",
-	- logger needs to ensure /var/log/apps/deeznuts exists
+	- chrome browser on laptop: "HtmlMediaElement.error attribute is not null"
 # To Do
 	- add link to live page in "i've gone live"
 	- blockchain address recycling
 	- view: videos -> paginate months
-	- add menu option to show menu is connected
