@@ -93,23 +93,19 @@
 	**1.3.3 : 1/13/2020**
 	- fixed watermarking path
 	- rehoused to desktop
-
-
+	**1.3.4 : 2/13/2020**
+	- updated: GoProStream.py w/ local -> .flv file
+	- fixed: video titles
 **??/??/??**
 	- next live @ & schedule
-
-
 **2.0.0 : Android App : ??/??/??**
 	- android rtmp relay?
-
-
 # Bugs
 **1.1.0**
 	- chrome browser on laptop: "HtmlMediaElement.error attribute is not null" 
 **1.1.1**
 	- gulp file needs rewrite above version > "gulp": "^3.9.1",
 	- logger needs to ensure /var/log/apps/deeznuts exists
-
 # To Do
 	- add link to live page in "i've gone live"
 	- blockchain address recycling

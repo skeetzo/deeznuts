@@ -110,7 +110,7 @@ module.exports = function() {
          Google_Oauth_Opts.private_key,
          this.Google_scopes);
 
-    this.driveFolderId = localConfig.driveFolderId || process.env.driveFolderId;
+    this.drive_folder_id = localConfig.drive_folder_id || process.env.drive_folder_id;
 
     // Google Sheets
     // this.Google_Spreadsheet_id = localConfig.Google_Spreadsheet_id || process.env.Google_Spreadsheet_id;

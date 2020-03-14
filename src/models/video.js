@@ -44,7 +44,7 @@ videoSchema.pre('save', function (next) {
     self.path_preview = path.join(config.videosPath, '/previews', self.path.replace('.mp4','-preview.mp4'));
   // if (self.title) {
   if (self.title!='Example') {
-    var title = path.basename(this.path.toLowerCase().replace('.mp4',''));
+    var title = path.basename(this.path.toLowerCase().replace('.mp4','').replace('.flv',''));
     var time = title.substring(11);
     title = title.substring(0,10);
     // logger.debug('time: %s | %s', title, time);
@@ -62,10 +62,15 @@ videoSchema.pre('save', function (next) {
     var minutes = time.substring(3,5);
     // logger.debug('%s:%s:%s %s:%s', month, day, year, hours, minutes);
     title = month+"-"+day+"-"+year+" "+hours+":"+minutes;
-    self.date = new moment(new Date(year,month-1,day)).format("MM-DD-YYYY");
-    self.title = title;
+    if (title.toLowerCase().indexOf("nan")>-1) {
+      self.date = new moment(new Date())
+      self.title = path.basename(this.path.toLowerCase().replace('.mp4','').replace('.flv',''));
+    }
+    else {
+      self.date = new moment(new Date(year,month-1,day)).format("MM-DD-YYYY");
+      self.title = title;
+    }
   }
-
   if ((self.isModified('description')||self.isModified('performers'))&&self.performers)
     self.description = [self.performers.slice(0, -1).join(', '), self.performers.slice(-1)[0]].join(self.performers.length < 2 ? '' : ' and ');
   if (!self.path)

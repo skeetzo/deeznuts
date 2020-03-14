@@ -42,7 +42,7 @@ function backupVideo(video, callback) {
       // file is string of path
       var fileMetadata = {
         'name': video.title,
-        'parents': [config.driveFolderId],
+        'parents': [config.drive_folder_id],
         'uploadType': 'resumable'
       };
       var media = {
