@@ -17,11 +17,11 @@ import socket
 #from urllib.request import urlopen --> module import error
 # https://stackoverflow.com/questions/2792650/python3-error-import-error-no-module-name-urllib2
 try:
-    # For Python 3.0 and later
-    from urllib.request import urlopen
+	# For Python 3.0 and later
+	from urllib.request import urlopen
 except ImportError:
-    # Fall back to Python 2's urllib2
-    from urllib2 import urlopen
+	# Fall back to Python 2's urllib2
+	from urllib2 import urlopen
 import subprocess
 from time import sleep
 import signal
@@ -51,13 +51,13 @@ MODE="remote"
 # arguments
 i = 0
 while i < len(sys.argv):
-    if '-destination' in str(sys.argv[i]):
-        DESTINATION = str(sys.argv[i+1])
-    if '-loglevel' in str(sys.argv[i]):
-        LOGLEVEL = str(sys.argv[i+1])
-    if '-mode' in str(sys.argv[i]):
-        MODE = str(sys.argv[i+1])
-    i += 1
+	if '-destination' in str(sys.argv[i]):
+		DESTINATION = str(sys.argv[i+1])
+	if '-loglevel' in str(sys.argv[i]):
+		LOGLEVEL = str(sys.argv[i+1])
+	if '-mode' in str(sys.argv[i]):
+		MODE = str(sys.argv[i+1])
+	i += 1
 
 print("LOGLEVEL: "+LOGLEVEL)
 print("DESTINATION: "+DESTINATION)
@@ -77,7 +77,7 @@ def gopro_live():
 	print('...')
 	sys.stdout.flush()
 	try:
-        # original code - response_raw = urllib.request.urlopen('http://10.5.5.9/gp/gpControl').read().decode('utf-8')
+		# original code - response_raw = urllib.request.urlopen('http://10.5.5.9/gp/gpControl').read().decode('utf-8')
 		response_raw = urlopen('http://10.5.5.9/gp/gpControl').read().decode('utf-8')
 		jsondata=json.loads(response_raw)
 		response=jsondata["info"]["firmware_version"]
@@ -140,12 +140,12 @@ def gopro_live():
 
 
 				while True:
-			        output = process.stdout.readline()
-			        if output == '' and process.poll() is not None:
-			            break
-			        if output:
-			            print(output.strip())
-			    rc = process.poll()
+					output = process.stdout.readline()
+					if output == '' and process.poll() is not None:
+						break
+					if output:
+						print(output.strip())
+				rc = process.poll()
 
 			else:
 				print("Error: Missing Recording Mode")
