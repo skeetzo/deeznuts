@@ -130,10 +130,13 @@ def gopro_live():
 			print("Note: Preview is not available when saving the stream.")
 			if str(MODE) == "remote":
 				print("Recording remotely: " + str(DESTINATION))
-				subprocess.Popen("ffmpeg -re -i 'udp://10.5.5.100:8554' -loglevel {} -movflags faststart -probesize 100M -analyzeduration 15M -preset slow -f:v mpegts -crf 16 -b:a 128k -acodec copy -vcodec copy -flags global_header -f flv rtmp://104.34.128.2:1935/{}".format(LOGLEVEL,DESTINATION), shell=True)
+				subprocess.Popen("ffmpeg -re -i 'udp://10.5.5.100:8554' -loglevel {} -movflags faststart -analyzeduration 15M -preset slow -fflags nobuffer -f:v mpegts -probesize 8192 -crf 16 -b:a 128k -acodec copy -vcodec copy -flags global_header -f flv rtmp://104.34.128.2:1935/{}".format(LOGLEVEL,DESTINATION), shell=True)
 			elif str(MODE) == "local":
 				print("Recording locally: " + str(DESTINATION))
-				subprocess.Popen("ffmpeg -re -i 'udp://10.5.5.100:8554' -loglevel {} -movflags faststart -probesize 100M -analyzeduration 15M -preset slow -f:v mpegts -crf 16 -b:a 128k -acodec copy -vcodec copy -flags global_header -f flv /opt/apps/deeznuts/videos/live/stream".format(LOGLEVEL), shell=True, stdout=subprocess.PIPE)
+				process = subprocess.Popen("ffmpeg -re -i 'udp://10.5.5.100:8554' -loglevel {} -movflags faststart -analyzeduration 15M -preset slow -fflags nobuffer -f:v mpegts -probesize 8192 -crf 16 -b:a 128k -acodec copy -vcodec copy -flags global_header -f flv /opt/apps/deeznuts/videos/live/stream".format(LOGLEVEL), shell=True, stdout=subprocess.PIPE, , stderr=subprocess.PIPE)
+				# out, err = process.communicate()
+				# print(out)
+				
 				while True:
 					try:
 						output = process.stdout.readline()
@@ -145,7 +148,7 @@ def gopro_live():
 				rc = process.poll()
 			elif str(MODE) == "remote-local":
 				print("Recording remote-locally: " + str(DESTINATION))
-				subprocess.Popen("ffmpeg -re -i 'udp://10.5.5.100:8554' -loglevel {} -movflags faststart -probesize 100M -analyzeduration 15M -preset slow -f:v mpegts -crf 16 -b:a 128k -acodec copy -vcodec copy -flags global_header -f flv rtmp://127.0.0.1:1935/{}".format(LOGLEVEL,DESTINATION), shell=True)
+				subprocess.Popen("ffmpeg -re -i 'udp://10.5.5.100:8554' -loglevel {} -movflags faststart -analyzeduration 15M -preset slow -fflags nobuffer -f:v mpegts -probesize 8192 -crf 16 -b:a 128k -acodec copy -vcodec copy -flags global_header -f flv rtmp://127.0.0.1:1935/{}".format(LOGLEVEL,DESTINATION), shell=True)
 			else:
 				print("Error: Missing Recording Mode")
 		if sys.version_info.major >= 3:
