@@ -1,3 +1,7 @@
+from __future__ import print_function
+# This must be the first statement before other statements.
+# You may only put a quoted or triple quoted string, 
+# Python comments, other future statements, or blank lines before the __future__ line.
 ## GoPro Instant Streaming v1.0
 ##
 ## By @Sonof8Bits and @KonradIT
@@ -11,6 +15,22 @@
 ##
 ## That's all! When done, press CTRL+C to quit this application.
 ##
+
+try:
+    import __builtin__
+except ImportError:
+    # Python 3
+    import builtins as __builtin__
+
+def print(*args, **kwargs):
+    """My custom print() function."""
+    # Adding new arguments to the print function signature 
+    # is probably a bad idea.
+    # Instead consider testing if custom argument keywords
+    # are present in kwargs
+    # __builtin__.print('My overridden print() function!')
+    __builtin__.print(*args, **kwargs)
+    sys.stdout.flush()
 
 import sys
 import socket
@@ -28,6 +48,7 @@ import signal
 import json
 import re
 import http
+from datetime import datetime
 
 def get_command_msg(id):
 	return "_GPHD_:%u:%u:%d:%1lf\n" % (0, 0, 2, 0)
@@ -40,9 +61,9 @@ RECORD=False
 ##
 ## Saves the feed to a custom location
 SAVE=True
-SAVE_FILENAME="goprofeed3"
-SAVE_FORMAT="ts"
-SAVE_LOCATION="/tmp/"
+SAVE_FILENAME = datetime.now().strftime("%Y-%m-%d-%H-%M")
+SAVE_FORMAT="flv"
+SAVE_LOCATION="/opt/apps/deeznuts/videos/live/stream/"
 # destination rtmp application to determine text sent to Tweet
 LOGLEVEL="debug"
 DESTINATION="shower"
@@ -62,27 +83,22 @@ while i < len(sys.argv):
 print("LOGLEVEL: "+LOGLEVEL)
 print("DESTINATION: "+DESTINATION)
 print("MODE: "+MODE)
-
 print("Connecting to GoPro Media...")
-sys.stdout.flush()
 
 def gopro_live():
 	UDP_IP = "10.5.5.9"
 	UDP_PORT = 8554
 	KEEP_ALIVE_PERIOD = 2500
 	KEEP_ALIVE_CMD = 2
-
 	MESSAGE = get_command_msg(KEEP_ALIVE_CMD)
 	URL = "http://10.5.5.9:8080/live/amba.m3u8"
 	print('...')
-	sys.stdout.flush()
 	try:
 		# original code - response_raw = urllib.request.urlopen('http://10.5.5.9/gp/gpControl').read().decode('utf-8')
 		response_raw = urlopen('http://10.5.5.9/gp/gpControl').read().decode('utf-8')
 		jsondata=json.loads(response_raw)
 		response=jsondata["info"]["firmware_version"]
 		print('......')
-		sys.stdout.flush()
 	except http.client.BadStatusLine:
 		response = urlopen('http://10.5.5.9/camera/cv').read().decode('utf-8')
 	if "HD4" in response or "HD3.2" in response or "HD5" in response or "HX" in response or "HD6" in response:
@@ -99,7 +115,6 @@ def gopro_live():
 		print("UDP target port:", UDP_PORT)
 		print("message:", MESSAGE)
 		print("Recording on camera: " + str(RECORD))
-
 		## GoPro HERO4 Session needs status 31 to be greater or equal than 1 in order to start the live feed.
 		if "HX" in response:
 			connectedStatus=False
@@ -124,29 +139,16 @@ def gopro_live():
 				TS_PARAMS = " -acodec copy -vcodec copy "
 			else:
 				TS_PARAMS = ""
-			# SAVELOCATION = SAVE_LOCATION + SAVE_FILENAME + "." + SAVE_FORMAT
+			SAVELOCATION = SAVE_LOCATION + SAVE_FILENAME + "." + SAVE_FORMAT
 			# print("Recording locally: " + str(SAVE))
-			# print("Recording stored in: " + SAVELOCATION)
 			print("Note: Preview is not available when saving the stream.")
 			if str(MODE) == "remote":
 				print("Recording remotely: " + str(DESTINATION))
 				subprocess.Popen("ffmpeg -re -i 'udp://10.5.5.100:8554' -loglevel {} -movflags faststart -analyzeduration 15M -preset slow -fflags nobuffer -f:v mpegts -probesize 8192 -crf 16 -b:a 128k -acodec copy -vcodec copy -flags global_header -f flv rtmp://104.34.128.2:1935/{}".format(LOGLEVEL,DESTINATION), shell=True)
 			elif str(MODE) == "local":
 				print("Recording locally: " + str(DESTINATION))
-				process = subprocess.Popen("ffmpeg -re -i 'udp://10.5.5.100:8554' -loglevel {} -movflags faststart -analyzeduration 15M -preset slow -fflags nobuffer -f:v mpegts -probesize 8192 -crf 16 -b:a 128k -acodec copy -vcodec copy -flags global_header -f flv /opt/apps/deeznuts/videos/live/stream".format(LOGLEVEL), shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-				out, err = process.communicate()
-				print(out)
-
-				# while True:
-				# 	try:
-				# 		output = process.stdout.readline()
-				# 		if output == '' and process.poll() is not None:
-				# 			break
-				# 		if output:
-				# 			print(output.strip())
-				# 	except: pass
-				# rc = process.poll()
-				
+				print("Recording stored in: " + SAVELOCATION)
+				subprocess.Popen("ffmpeg -re -i 'udp://10.5.5.100:8554' -loglevel {} -movflags faststart -analyzeduration 15M -preset slow -fflags nobuffer -f:v mpegts -probesize 8192 -crf 16 -b:a 128k -acodec copy -vcodec copy -flags global_header -f flv {}".format(LOGLEVEL, SAVELOCATION), shell=True)
 			elif str(MODE) == "remote-local":
 				print("Recording remote-locally: " + str(DESTINATION))
 				subprocess.Popen("ffmpeg -re -i 'udp://10.5.5.100:8554' -loglevel {} -movflags faststart -analyzeduration 15M -preset slow -fflags nobuffer -f:v mpegts -probesize 8192 -crf 16 -b:a 128k -acodec copy -vcodec copy -flags global_header -f flv rtmp://127.0.0.1:1935/{}".format(LOGLEVEL,DESTINATION), shell=True)
@@ -155,7 +157,6 @@ def gopro_live():
 		if sys.version_info.major >= 3:
 			MESSAGE = bytes(MESSAGE, "utf-8")
 		print("Press ctrl+C to quit this application.\n")
-		sys.stdout.flush()
 		while True:
 			sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 			sock.sendto(MESSAGE, (UDP_IP, UDP_PORT))
@@ -170,8 +171,6 @@ def gopro_live():
 			text=re.sub(r'\W+', '', Password)
 			urlopen("http://10.5.5.9/camera/PV?t=" + text + "&p=%02")
 			subprocess.Popen("ffplay " + URL, shell=True)
-
-
 
 def quit_gopro(signal, frame):
 	if RECORD:
