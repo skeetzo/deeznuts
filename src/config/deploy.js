@@ -140,7 +140,8 @@ module.exports = function Deploy_Config() {
 		this.delete_on_backup = true;
 		this.database_retain = true;
 		this.database_type = "remote";
-		this.populateFromFiles = true;	
+		this.deleteMissing = true;
+		this.populateFromFiles = true;
 		// this.upload_all_on_boot = true;
 		// this.upload_to_OnlyFans = true;
 	}
