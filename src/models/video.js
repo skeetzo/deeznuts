@@ -498,7 +498,7 @@ videoSchema.methods.createPreview = function(callback) {
 videoSchema.methods.delete = function(callback) {
   logger.log("Deleting Video File: %s", this.title)
   // delete from filesystem
-  fs.unlink(this.path)
+  fs.unlinkSync(this.path)
   // remove from db
   if (!config.database_retain) {
     print("Deleting Video from DB (%s): %s", config.database_type, this.title)

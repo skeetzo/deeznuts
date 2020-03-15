@@ -8,23 +8,21 @@ module.exports = function() {
 
 	self.logger = require('tracer').colorConsole(
         {	
-        	methods : ['log','debug','warn','error','load','test','save','remove','bank','io'],
+        	methods : ['log','debug','warn','error','load','test','save','remove','io'],
             format : [
                   colors.white("{{timestamp}} ")+colors.yellow(self.botName)+": {{message}}",
                   {
                       error : colors.white("{{timestamp}} ")+" <{{title}}> {{message}} (in {{file}}:({{method}}):{{line}})\nCall Stack:\n{{stack}}",
                       warn : colors.white("{{timestamp}} ")+" {{message}}",
-                      debug : colors.white("{{timestamp}} ")+colors.yellow(self.botName)+": {{message}}",
+                      debug : colors.white("{{timestamp}} ")+colors.yellow(self.botName)+": "+colors.blue("{{message}}"),
                       test : colors.white("{{timestamp}} ")+colors.bgRed(self.botName)+": "+colors.white("{{message}}"),
                       save : colors.white("{{timestamp}} ")+colors.green(self.botName)+": "+colors.white("{{message}}"),
                       remove : colors.white("{{timestamp}} ")+colors.red(self.botName)+": "+colors.white("{{message}}"),
-                      bank : colors.white("{{timestamp}} ")+colors.blue(self.botName)+": "+colors.white("{{message}}"),
                       io : colors.white("{{timestamp}} ")+colors.blue(self.botName)+": "+colors.white("{{message}}")                  
                   }
             ],
             filters : {
 	            trace : colors.magenta,
-	            debug : colors.blue,
 	            info : colors.green,
 	            warn : [ colors.yellow, colors.bold ],
 	            error : [ colors.red, colors.bold ],
