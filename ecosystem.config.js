@@ -64,6 +64,7 @@ module.exports = {
     "pi" : {
       user : "pi",
       host : "192.168.1.70",
+      key: '~/.ssh/id_rsa',
       "ssh_options": [
         "StrictHostKeyChecking=no",
         "PasswordAuthentication=no"
