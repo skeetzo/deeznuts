@@ -61,7 +61,7 @@ module.exports = {
     },
     "pi" : {
       user : "pi",
-      host : "192.168.1.69",
+      host : "192.168.1.70",
       ref  : "origin/production",
       repo : "git@github.com:skeetzo/deeznuts.git",
       path : "/var/www/apps/deeznuts",
