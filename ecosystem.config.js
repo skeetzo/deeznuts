@@ -38,7 +38,7 @@ module.exports = {
       host : "104.34.128.2",
       ssh_options: [
         "StrictHostKeyChecking=no"
-      ]
+      ],
       ref  : "origin/staging",
       repo : "git@github.com:skeetzo/deeznuts.git",
       path : "/var/www/apps/deeznuts",
@@ -64,7 +64,7 @@ module.exports = {
     "pi" : {
       user : "pi",
       host : "192.168.1.70",
-      ssh_options: [
+      "ssh_options": [
         "StrictHostKeyChecking=no"
       ],
       ref  : "origin/production",
