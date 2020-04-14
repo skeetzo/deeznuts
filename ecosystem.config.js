@@ -65,7 +65,8 @@ module.exports = {
       user : "pi",
       host : "192.168.1.70",
       "ssh_options": [
-        "StrictHostKeyChecking=no"
+        "StrictHostKeyChecking=no",
+        "PasswordAuthentication=no"
       ],
       ref  : "origin/production",
       repo : "git@github.com:skeetzo/deeznuts.git",
