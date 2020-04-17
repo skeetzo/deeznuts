@@ -63,11 +63,12 @@ module.exports = {
     },
     "pi" : {
       user : "pi",
-      host : "192.168.1.70",
+      host : "192.168.1.69",
       // key: '~/.ssh/id_rsa',
       "ssh_options": [
         "StrictHostKeyChecking=no",
-        "PasswordAuthentication=no"
+        "PasswordAuthentication=no",
+        "ForwardAgent=yes"
       ],
       ref  : "origin/production",
       repo : "git@github.com:skeetzo/deeznuts.git",
