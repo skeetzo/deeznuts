@@ -3,3 +3,20 @@
 # For static IP, consult /etc/dhcpcd.conf and 'man dhcpcd.conf'
 # Include files from /etc/network/interfaces.d:
 source-directory /etc/network/interfaces.d
+
+# DeezNuts RPi eth + wlan | wlan + wlan
+auto lo
+iface lo inet loopback
+
+auto eth0
+iface eth0 inet manual
+
+auto wlan0
+allow-hotplug wlan0
+iface wlan0 inet manual
+    wpa-roam /etc/wpa_supplicant/wpa_supplicant.conf
+
+auto wlan1
+allow-hotplug wlan1
+iface wlan1 inet manual
+    wpa-roam /etc/wpa_supplicant/wpa_supplicant.conf

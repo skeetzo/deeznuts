@@ -18,9 +18,18 @@ const {PythonShell} = require('python-shell');
 const readline = require('readline');
 const Twitter = require('../modules/twitter');
 const util = require('util');
+var piWifi = require('pi-wifi');
+
+require('../modules/log').prepare();
+
+var GOPRO_SSID = "Whorus";
+var GoProDetails = {
+  ssid: GOPRO_SSID,
+  username: '',
+  password: 'seesnoevil66'
+};
 
 var pyshell;
-var GOPRO_SSID = "Whorus";
 var CONNECTED = false;
 var DESTINATION = "shower";
 var MODE = "remote"; // remote, local, remote-local
@@ -195,7 +204,6 @@ function handle(err) {
 
 function checkWiFi(callback) {
   // logger.log("Checking WiFi...");
-  var piWifi = require('pi-wifi');
   piWifi.check(GOPRO_SSID, function(err, result) {
     if (err) return callback(err.message);
     // logger.log(result);
@@ -212,20 +220,11 @@ function checkWiFi(callback) {
 }
 
 function connect(callback) {
-  logger.log('Reconnecting to GoPro...');
-  var piWifi = require('pi-wifi');
-  piWifi.restartInterface('wlan0', function (err) {
-    if (err) return callback(err);
-    piWifi.setCurrentInterface('eth0', function (err) {
-      if (err) return callback(err);
-      // return checkWiFi(callback);
-      piWifi.status('wlan0', function (err, status) {
-        if (err) return callback(err);
-        // logger.log(status);
-        logger.log('GoPro connection restarted');
-        callback(null);
-      });  
-    });
+  logger.log('Connecting to GoPro...');
+  piWifi.connectTo(GoProDetails, function (err) {
+    if (err) return callback(err);      
+    logger.log('Connected to GoPro');
+    callback(null);
   });
 }
 
