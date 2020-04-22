@@ -69,7 +69,6 @@ module.exports = {
       "pre-setup" : "npm i pm2 -g && rm -r /var/www/apps/deeznuts/source",
       "ssh_options": [
         "StrictHostKeyChecking=no",
-        "PasswordAuthentication=no",
         "ForwardAgent=yes"
       ],
       ref  : "origin/production",
