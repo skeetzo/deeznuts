@@ -3,6 +3,7 @@ module.exports = {
   apps : [{
     name      : 'deeznuts',
     "interpreter" : "node@11.15.0",
+    force  : true,
     script    : 'npm',
     args      : ['start'],
     cwd       : '/var/www/apps/deeznuts/source',
