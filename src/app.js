@@ -69,7 +69,7 @@ app.use(csrf({cookie: true}));
 app.enable('trust proxy');
 app.set('trust proxy', 1) // trust first proxy
 
-var MongoStore = require('./modules/mongo');
+var MongoStore = require('./modules/mongo').store;
 var session = require('express-session');
 
 var maxAge = 1 * 12 * 60 * 60 * 1000; // half a day

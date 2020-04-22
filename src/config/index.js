@@ -9,7 +9,6 @@ require('./deploy').call(config);
 // App Settings
 process.title = 'deeznuts';
 config.port = Number(process.env.PORT || 3000);
-config.Crons_On = true;
 
 // Site Settings
 config.title = "Alex D.'s Nuts";
@@ -18,10 +17,8 @@ config.author = "Skeetzo";
 config.description = "Porn Star Streamer";
 config.Google_Analytics = "UA-82463743-8";
 config.pages = ['privacy','terms','support','2257-compliance','callback'];
-config.ssl_key = '/etc/letsencrypt/live/alexdeeznuts.com-0001/privkey.pem';
-config.ssl_cert = '/etc/letsencrypt/live/alexdeeznuts.com-0001/fullchain.pem';
-
 config.domain = "alexdeeznuts.com";
+
 if (config.local) config.domain = "localhost";
 var live_url = "wss://"+config.domain+":8443/live/stream.flv?sign=";
 // var live_url = "https://"+config.domain+":8443/live/stream/index.mpd";
@@ -34,9 +31,7 @@ else config.domain = "http://"+config.domain;
 
 // DeezNuts Settings
 config.archive_videos = true;
-config.archive_delay = 10000;
 config.conversionRate = 6; // $1 per 6 minutes
-config.createPreviews = true;
 config.defaultPrice = 5; // in dollars
 config.defaultTime = 60; // time in seconds
 config.defaultPreviewDuration = 30;
@@ -48,7 +43,8 @@ if (config.debugging) {
 	config.defaultTime = 60*60*23+45*60;
 	config.syncInterval = config.syncInterval*3;
 }
-config.status = "Not Live";
+config.live_status = "Not Live";
+
 // Bitcoin & Blockchain
 config.bitcoin_address = "7h15157o74lly4b17co1n4ddre55";
 config.bitcoin_qr = "http://placehold.it/150x150";
@@ -70,11 +66,9 @@ config.streamRecording = true;
 
 // Email
 config.emailing = true;
-config.emailing_testing = false;
 config.emailing_on_new = true;
 config.emailing_on_error = true;
 config.emailing_on_buy = true;
-config.emailing_on_transaction = true;
 
 // Twitter
 config.Twitter_link = config.domain+'/live';
@@ -88,7 +82,7 @@ config.siteData =
 		author: config.author,
 		description: config.description,
 		Google_Analytics: config.Google_Analytics,
-		status: config.status,
+		status: config.live_status,
 		live_url: live_url,
 		syncInterval: config.syncInterval
 	};

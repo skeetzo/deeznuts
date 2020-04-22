@@ -304,6 +304,18 @@ videoSchema.statics.deleteMissing = function(callback) {
   });
 }
 
+videoSchema.statics.deleteOnPublish = function(callback) {
+  var stream_path = path.join(config.videosPath, '/live/stream');
+  fs.readdir(stream_path, function(err, items) {
+    if (!items) return logger.warn("no streams found to delete");
+    for (var i=0; i<items.length; i++) {
+      fs.unlinkSync(items[i]);
+      logger.debug('deleted: %s', items[i]);
+    }
+    callback(null);
+  });
+}
+
 videoSchema.statics.populateFromFiles = function(callback) {
   logger.log('Populating Video Database...');
   // read videos/archived for all the files
@@ -417,6 +429,10 @@ videoSchema.methods.backup = function(callback) {
 // save ref
 videoSchema.methods.createPreview = function(callback) {
   var self = this;
+  if (!config.createPreviews) {
+    logger.debug("Skipping Create Preview: %s", self.title)
+    return callback(null);
+  }
   logger.log('Creating Preview: %s', self.title);
   logger.debug(self.path);
   async.waterfall([
@@ -563,7 +579,7 @@ videoSchema.methods.extract = function(callback, retryReason) {
 }
 
 videoSchema.methods.sendPurchasedEmail = function(callback) {
-  if (!config.emailing_on_buy) return callback('Skipping - Email Notification On Purchase');
+  if (!config.emailing_on_buy) return callback(null);
   logger.log('Sending Video Purchased Email: %s', this._id);
   var mailOptions = config.email_video_purchased(this);
   require('../modules/gmail').sendEmail(mailOptions, function (err) {

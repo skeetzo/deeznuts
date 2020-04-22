@@ -11,7 +11,7 @@ module.exports.setup = function (io) {
 
 	io.on('connection', function (client) {
 		client._id = null;
-		client.status = config.status;
+		client.status = config.live_status;
 
 		client.on('connected', function (userId) {
 			// logger.io('connecting: %s', userId);
@@ -34,9 +34,9 @@ module.exports.setup = function (io) {
 				        	user.save();
 				        }
 				        // go live
-				        if (config.status!=client.status) {
-				        	client.status = config.status;
-				        	client.emit('status', config.status);
+				        if (config.live_status!=client.status) {
+				        	client.status = config.live_status;
+				        	client.emit('status', config.live_status);
 				        }
 				        // countdown on /live
 				        user.countdown(function (err) {

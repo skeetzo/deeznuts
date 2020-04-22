@@ -2,7 +2,8 @@ var _ = require('underscore'),
     config = require('../config/index'),
     fs = require('fs'),
     logger = config.logger,
-    async = require('async');
+    async = require('async'),
+    path = require('path');
 
 var authenticated = false; // 6 hour expiration
 
@@ -25,7 +26,6 @@ function authenticate(callback) {
 module.exports.authenticate = authenticate;
 
 // Functions
-var path = require('path');
 // upload file at path to OnlyFans folder
 function backupVideo(video, callback) {
   // return callback('Skipping!');

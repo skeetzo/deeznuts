@@ -25,7 +25,7 @@ module.exports.debug = function(callback) {
 
         function backupDatabase(cb) {
             if (!config.debugging_backup_db) return cb(null);
-            require('../modules/backup').backupDatabase(function (err) {
+            require('../modules/mongo').backup(function (err) {
                 if (err) logger.warn(err);
                 cb(null);
             });
@@ -152,7 +152,7 @@ module.exports.debug = function(callback) {
 
         // Email Tests
         function testEmails(cb) {
-            if (!config.emailing_testing) {
+            if (!config.emailing_debugging) {
                 logger.test('Skipping Email Tests');
                 return cb(null);
             }

@@ -53,7 +53,6 @@ crons.prototype = {
         _.forEach(jobs, function(job) {
             if (job.started) logger.log('started cron - %s',job.label);
         });
-        
     },
 
     backup: function(callback) {
@@ -84,8 +83,8 @@ crons.prototype = {
             // },
             function (step) {
                 logger.log('Backing Up DB...');
-                var Backup = require('../modules/backup');
-                Backup.backupDatabase(function (err) {
+                var Mongo = require('../modules/mongo');
+                Mongo.backup(function (err) {
                     if (err) logger.warn(err);
                     step(null);
                 });

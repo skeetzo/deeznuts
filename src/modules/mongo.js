@@ -1,8 +1,12 @@
-var mongoose = require('mongoose'),
+var config = require('../config/index'),
+    logger = config.logger;
+    mongoose = require('mongoose'),
     session = require('express-session'),
     MongoDBStore = require('connect-mongodb-session')(session),
-    config = require('../config/index'),
-    logger = config.logger;
+    MongodbBackup = require('mongodb-backup'),
+    moment = require('moment'),
+    fss = require('fs-extra'),
+    path = require('path');
 
 if (config.database_redis)
   var redis = require('ioredis'),
@@ -15,7 +19,7 @@ mongoose.useMongoClient = true;
 
 const connection = mongoose.createConnection(config.MONGODB_URI);
 
-mongoose.connect(config.MONGODB_URI,{
+mongoose.connect(config.MONGODB_URI, {
   server: {
     socketOptions: {
       ssl: 'prefer',
@@ -37,12 +41,12 @@ if (config.database_redis)
   MongooseRedis(mongoose, redisClient, cacheOptions);
 
 var store = new MongoDBStore(
-    {
-      uri: config.MONGODB_URI,
-      collection: 'sessions',
-      auto_reconnect: true,
-      mongooseConnection: connection,
-    });
+  {
+    uri: config.MONGODB_URI,
+    collection: 'sessions',
+    auto_reconnect: true,
+    mongooseConnection: connection,
+  });
 
 // CONNECTION EVENTS
 // When successfully connected
@@ -51,7 +55,7 @@ mongoose.connection.on('connected', function () {
 }); 
 
 // If the connection throws an error
-mongoose.connection.on('error',function (err) {  
+mongoose.connection.on('error', function (err) {  
   logger.debug('Mongoose connection error: ' + err);
 }); 
 
@@ -60,7 +64,7 @@ var timeoutDelay = 3000;
 // When the connection is disconnected
 mongoose.connection.on('disconnected', function () {  
   logger.debug('Mongoose connection disconnected');
-  logger.debug('Reconnecting to MongoDB in %s...',timeoutDelay);
+  logger.debug('Reconnecting to MongoDB in %s...', timeoutDelay);
   setTimeout(function() {
     timeoutDelay+=3000;  
     mongoose.connect(config.MONGODB_URI);
@@ -75,4 +79,26 @@ process.on('SIGINT', function() {
   }); 
 }); 
 
-module.exports = store;
+module.exports.store = store;
+
+var backup = function(callback) {
+  logger.log('Backing Up MongoDB');
+  if (!config.backup_db) return callback('Skipping MongoDB Backup');
+  var year = moment(new Date()).format('YYYY');
+  var month = moment(new Date()).format('MM-YYYY');
+  var file_path = path.join(config.mnt_path, 'backups/mongo', year, month);
+  // logger.debug('mongo backup path: %s/%s', file_path, moment(new Date()).format('MM-DD-YYYY')+'.tar');
+  // logger.debug('file path: %s', file_path);
+  fss.ensureDirSync(file_path);
+  MongodbBackup({
+    uri: config.MONGODB_URI,
+    root: file_path,
+    // 'tar': moment(new Date()).format('MM-DD-YYYY')+'.tar',
+    'callback': function(err) {
+      if (err) return callback(err);
+      logger.log('MongoDB Backup Successful');
+      callback(null);
+    }
+  });
+}
+module.exports.backup = backup;

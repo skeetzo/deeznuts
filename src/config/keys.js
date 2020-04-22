@@ -124,6 +124,10 @@ module.exports = function() {
     this.REDIS_URL = localConfig.REDIS_URL_local;
     if (this.remoteDatabase) this.REDIS_URL = localConfig.REDIS_URL;
 
+    // SSL
+    this.ssl_key = '/etc/letsencrypt/live/alexdeeznuts.com-0001/privkey.pem';
+    this.ssl_cert = '/etc/letsencrypt/live/alexdeeznuts.com-0001/fullchain.pem';
+
     // Twitter
 	this.Twitter_consumer_key = localConfig.Twitter_consumer_key || process.env.Twitter_consumer_key; 
 	this.Twitter_consumer_secret = localConfig.Twitter_consumer_secret || process.env.Twitter_consumer_secret;

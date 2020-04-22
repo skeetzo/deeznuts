@@ -10,10 +10,10 @@ var _ = require('underscore'),
 // Has Paid
 module.exports.hasPaid = function(req, res, next) {
     if (config.debugging_live) return next(null);
-    if (req.session.user&&(parseInt(req.session.user.time)>=1&&config.status=='Live')) {
+    if (req.session.user&&(parseInt(req.session.user.time)>=1&&config.live_status=='Live')) {
         next(null);
     } 
-    else if (config.status!='Live') {
+    else if (config.live_status!='Live') {
         req.flash('error','Please wait until I am live!');
         res.redirect('/');
     }
@@ -82,7 +82,7 @@ module.exports.resetLocals = function(req, res, next) {
 		    req.session.locals[setting] = config.pageData[setting];
 	});
 
-    req.session.locals.status = config.status;
+    req.session.locals.status = config.live_status;
 
     // Flash Messages
     if (!req.session.flashSkip) req.session.flashSkip = -1;

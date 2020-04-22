@@ -9,7 +9,10 @@ module.exports = function Deploy_Config() {
 	this.ssl = false;
 	this.local = false;
 
-	this.live_enabled = false;
+	this.cron_enabled = false;
+	this.emailing_debugging = false;
+
+	this.createPreviews = true;
 
 	this.backup_db = false;
 	this.backupToOnlyFans = false;
@@ -46,7 +49,7 @@ module.exports = function Deploy_Config() {
 	this.debugging_paypal = false;
 	this.debugging_paypal_reset_plans = false;
 	this.debugging_clean_fileNames = false;
-	this.go_live = false;
+	this.live_enabled = false;
 	this.repair_moov = false;
 
 	this.upload_all_on_boot = false;
@@ -63,6 +66,7 @@ module.exports = function Deploy_Config() {
 	this.database_redis = false;
 
 	if (environment=='development') {
+		this.cron_enabled = true;
 		this.debugging = true;
 		this.debugging_live = true;
 		// this.debugging_address = true;
@@ -75,7 +79,7 @@ module.exports = function Deploy_Config() {
 		// this.remoteDatabase = true;
 		// this.delete_on_publish = true;
 		this.archive_on_publish = true;
-		// this.go_live = true;
+		// this.live_enabled = true;
 		this.backup_on_archive = true;
 		// this.debugging_crons = true;
 		// this.debugging_paypal = true;
@@ -85,6 +89,7 @@ module.exports = function Deploy_Config() {
 		// this.upload_to_OnlyFans = true;
 	}
 	else if (environment=='staging') {
+		this.cron_enabled = true;
 		this.debugging = true;
 		// this.debugging_blockchain = true;
 		this.debugging_live = true;
@@ -105,6 +110,7 @@ module.exports = function Deploy_Config() {
 		// this.debugging_clean_fileNames = true;
 	}
 	else if (environment=='production') {
+		this.cron_enabled = true;
 		this.ssl = true;
 		this.PayPal = true;
 		this.PayPal_environment = 'live';
@@ -116,7 +122,7 @@ module.exports = function Deploy_Config() {
 		// this.delete_on_publish = true;
 		// this.remoteDatabase = true;
 		this.populateFromFiles = true;
-		// this.go_live = true;
+		// this.live_enabled = true;
 		// this.backup_db = true;
 		// this.upload_all_on_boot = true;
 		this.deleteMissing = true;
@@ -135,7 +141,7 @@ module.exports = function Deploy_Config() {
 		this.archive_on_publish = true;
 		// this.delete_on_publish = true;
 		this.concatenate_on_publish = true;
-		// this.go_live = true;
+		// this.live_enabled = true;
 		this.backup_on_archive = true;
 		this.delete_on_backup = true;
 		this.database_retain = true;

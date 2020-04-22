@@ -1,7 +1,6 @@
 var passport = require('passport'),
     LocalStrategy = require('passport-local').Strategy,
     _ = require('underscore'),
-    // Gmail = require('../mods/gmail'),
     User = require('../models/user'),
     config = require('../config/index'),
     logger = config.logger;
@@ -38,10 +37,6 @@ passport.use(new LocalStrategy({
           req.flash('message','Account created!');
           return next(null, user);
         }); 
-        
-        // Gmail.notifyNewAccount(function (err) {
-        //   if (err) logger.warn(err);
-        // });
       }
       else {
         logger.log('User found: %s', user.username);
