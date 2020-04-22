@@ -7,9 +7,7 @@
   "main": "src/bin/www",
   "scripts": {
     "postinstall": "gulp",
-    "start": "node src/bin/www",
-    "setup": "setup/scripts/install.sh",
-    "setup-config": "setup/scripts/config.sh"
+    "start": "node src/bin/www"
   },
   "license": "MIT",
   "engines": {
