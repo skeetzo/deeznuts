@@ -63,6 +63,7 @@ module.exports = {
     },
     "pi" : {
       user : "pi",
+      "interpreter" : "node@11.15.0",
       // host : "192.168.1.69",
       host : "192.168.1.13",
       // key: '~/.ssh/id_rsa',
