@@ -8,13 +8,14 @@ source-directory /etc/network/interfaces.d
 auto lo
 iface lo inet loopback
 
-auto eth0
-iface eth0 inet manual
+#auto eth0
+#iface eth0 inet manual
 
 auto wlan0
 allow-hotplug wlan0
 iface wlan0 inet manual
-    wpa-roam /etc/wpa_supplicant/wpa_supplicant.conf
+    wpa-ssid "Whorus"
+    wpa-psk "seesnoevil66"
 
 auto wlan1
 allow-hotplug wlan1

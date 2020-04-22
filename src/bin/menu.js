@@ -208,7 +208,7 @@ function checkWiFi(callback) {
     else {
       WIFI = "Disconnected";
       logger.log("GoPro Disconnected");
-    }
+    } 
     return callback(null);
   });
 }
