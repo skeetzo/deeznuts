@@ -6,19 +6,21 @@
 // 7/18/2019 
 // 9/12/2019
 // 2/12/2020
+// 4/21/2020
 
 // todo:
 // need to figure out a way to have args from here -> deeznuts running process
 
 // process.env.NODE_ENV = "development";
-
-var config = require('../config/index');
-const logger = config.logger;
+const async = require('async');
 const {PythonShell} = require('python-shell');
 const readline = require('readline');
 const Twitter = require('../modules/twitter');
 const util = require('util');
+const piWifi = require('pi-wifi');
 
+var config = require('../config/index');
+const logger = config.logger;
 require('../modules/log').prepare();
 
 var pyshell;
@@ -197,7 +199,6 @@ function handle(err) {
 
 function checkWiFi(callback) {
   // logger.log("Checking WiFi...");
-  var piWifi = require('pi-wifi');
   piWifi.check(GOPRO_SSID, function(err, result) {
     if (err) return callback(err.message);
     // logger.log(result);
@@ -213,28 +214,73 @@ function checkWiFi(callback) {
   });
 }
 
-// need to add a couple functions to determine wifi capabilities
-// ) prefer eth + wifi
-// ) wifi + wifi
-// ) if only 1 wifi... ? no streaming only local
-// ) if only connecting to GoPro, same as above
-
 function connect(callback) {
   logger.log('Reconnecting to GoPro...');
-  var piWifi = require('pi-wifi');
-  piWifi.restartInterface('wlan0', function (err) {
-    if (err) return callback(err);
-    piWifi.setCurrentInterface('wlan1', function (err) {
-      if (err) return callback(err);
-      // return checkWiFi(callback);
-      piWifi.status('wlan0', function (err, status) {
+  async.waterfall([
+    function (step) {
+      piWifi.listInterfaces(function (err, interfacesArray) {
+        if (err) {
+          logger.debug(err.message);
+          logger.warn("Unable to find interfaces");
+          return callback(null)
+        }
+        console.log(interfacesArray); // ['eth0','wlan0','wlan1']
+        var eth0 = false,
+            eth1 = false,
+            wlan0 = false,
+            wlan1 = false,
+            wlan2 = false;
+        for (var i=0;i<interfacesArray.length;i++) {
+          iface = interfacesArray[i];
+          if (iface == "eth0") eth0 = true;
+          else if (iface == "eth1") eth1 = true;
+          else if (iface == "wlan0") wlan0 = true;
+          else if (iface == "wlan1") wlan1 = true;
+          else if (iface == "wlan2") wlan2 = true;
+        }
+
+        /* preferance conditions:
+         0) eth + eth
+         1) eth + wifi
+         2) wifi + wifi
+         3) wifi -> save local
+        */
+        var interfaces = null;
+        if (eth0&&eth1) interfaces = [eth0, eth1];
+        else if (eth0&&wlan0) interfaces = [wlan0, eth0];
+        else if (eth0&&wlan1) interfaces = [wlan1, eth0];
+        else if (eth0&&wlan2) interfaces = [wlan2, eth0];
+        else if (eth1&&wlan0) interfaces = [wlan0, eth1];
+        else if (eth1&&wlan1) interfaces = [wlan1, eth1];
+        else if (eth1&&wlan2) interfaces = [wlan2, eth1];
+        else if (wlan0&&wlan1) interfaces = [wlan1, wlan0];
+        else if (wlan0) interfaces = [wlan0];
+        else if (wlan1) interfaces = [wlan1];
+        else return callback("Error: Missing Network Interface")
+        if (!interfaces) return callback("Error: Missing Network Interface")
+        var goProInterface = false;
+        var streamInterface = false;
+        goProInterface = interfaces[0]
+        if (interfaces.length==2) streamInterface = interfaces[1];
+        else streamInterface = interfaces[0];
+        step(null, goProInterface, streamInterface);
+      });
+    },
+    function (step, goProInterface, streamInterface) {
+      piWifi.restartInterface(goProInterface, function (err) {
         if (err) return callback(err);
-        // logger.log(status);
-        logger.log('GoPro connection restarted');
-        callback(null);
-      });  
-    });
-  });
+        piWifi.setCurrentInterface(streamInterface, function (err) {
+          if (err) return callback(err);
+          step(null);
+        });
+      });
+    },
+    function (step) {
+      checkWiFi(function (err) {
+        callback(err);
+      });
+    }
+  ]);
 }
 
 //////
@@ -369,6 +415,8 @@ function toggleStream(cb) {
   }
   cb(null);
 }
+
+////////////////////////////////////////////////////////////////////////////////////
 
 checkWiFi(function (err) {
   if (err) logger.warn(err);
