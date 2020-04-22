@@ -66,7 +66,7 @@ module.exports = {
       // host : "192.168.1.69",
       host : "192.168.1.13",
       // key: '~/.ssh/id_rsa',
-      "pre-setup" : "npm i pm2 -g",
+      "pre-setup" : "npm i pm2 -g && rm -r /var/www/apps/deeznuts/source",
       "ssh_options": [
         "StrictHostKeyChecking=no",
         "PasswordAuthentication=no",
