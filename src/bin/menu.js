@@ -17,7 +17,7 @@ const {PythonShell} = require('python-shell');
 const readline = require('readline');
 const Twitter = require('../modules/twitter');
 const util = require('util');
-var piWifi = require('pi-wifi');
+const piWifi = require('pi-wifi');
 
 var config = require('../config/index');
 const logger = config.logger;
