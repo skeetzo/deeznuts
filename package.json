@@ -9,7 +9,8 @@
     "postinstall": "gulp",
     "start": "node src/bin/www",
     "setup": "setup/scripts/install.sh",
-    "setup-config": "setup/scripts/config.sh"
+    "setup-config": "setup/scripts/config.sh",
+    "interpreter" : "node@11.15.0"
   },
   "license": "MIT",
   "engines": {
