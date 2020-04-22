@@ -18,18 +18,11 @@ const {PythonShell} = require('python-shell');
 const readline = require('readline');
 const Twitter = require('../modules/twitter');
 const util = require('util');
-var piWifi = require('pi-wifi');
 
 require('../modules/log').prepare();
 
-var GOPRO_SSID = "Whorus";
-var GoProDetails = {
-  ssid: GOPRO_SSID,
-  username: '',
-  password: 'seesnoevil66'
-};
-
 var pyshell;
+var GOPRO_SSID = "Whorus";
 var CONNECTED = false;
 var DESTINATION = "shower";
 var MODE = "remote"; // remote, local, remote-local
@@ -204,6 +197,7 @@ function handle(err) {
 
 function checkWiFi(callback) {
   // logger.log("Checking WiFi...");
+  var piWifi = require('pi-wifi');
   piWifi.check(GOPRO_SSID, function(err, result) {
     if (err) return callback(err.message);
     // logger.log(result);
@@ -219,12 +213,27 @@ function checkWiFi(callback) {
   });
 }
 
+// need to add a couple functions to determine wifi capabilities
+// ) prefer eth + wifi
+// ) wifi + wifi
+// ) if only 1 wifi... ? no streaming only local
+// ) if only connecting to GoPro, same as above
+
 function connect(callback) {
-  logger.log('Connecting to GoPro...');
-  piWifi.connectTo(GoProDetails, function (err) {
-    if (err) return callback(err);      
-    logger.log('Connected to GoPro');
-    callback(null);
+  logger.log('Reconnecting to GoPro...');
+  var piWifi = require('pi-wifi');
+  piWifi.restartInterface('wlan0', function (err) {
+    if (err) return callback(err);
+    piWifi.setCurrentInterface('wlan1', function (err) {
+      if (err) return callback(err);
+      // return checkWiFi(callback);
+      piWifi.status('wlan0', function (err, status) {
+        if (err) return callback(err);
+        // logger.log(status);
+        logger.log('GoPro connection restarted');
+        callback(null);
+      });  
+    });
   });
 }
 
