@@ -64,10 +64,9 @@ userSchema.pre('save', function (next) {
 });
 
 userSchema.statics.deactivateOldUsers = function(callback) {
-  var self = this;
   logger.remove('Deactivating Old Users');
   // if deactivated and expired or unverified and oldder than 30 days
-  self.find( {'lastVisit': { '$gt': Date.now()+(1000*60*60*24*30)}}, function (err, users) {
+  this.find( {'lastVisit': { '$gt': Date.now()+(1000*60*60*24*30)}}, function (err, users) {
     if (err) return callback(err);
     if (!users||users.length==0) {
       logger.remove('No users to deactivate!');
@@ -91,10 +90,9 @@ userSchema.statics.deactivateOldUsers = function(callback) {
 };
 
 userSchema.statics.deleteOldUsers = function(callback) {
-  var self = this;
   logger.remove('Deleting Old Deactivated Users');
   // if deactivated and older than 30 days
-  self.find( { '$or': [ {'deactivated': true, 'expiresOn': { '$lt': Date.now() } } ] }, function (err, users) {
+  this.find( { '$or': [ {'deactivated': true, 'expiresOn': { '$lt': Date.now() } } ] }, function (err, users) {
     if (err) return callback(err);
     if (!users||users.length==0) {
       logger.remove('No users to delete!');
@@ -207,9 +205,6 @@ userSchema.methods.deactivate = function(callback) {
   logger.log('Deactivating User: %s', self._id);
   self.deactivated = true;
   self.expiresOn = Date.now() + 1000*60*60*24*30;
-  self.recycle(function (err) {
-    callback(err);
-  });
 }
 
 userSchema.methods.delete = function(callback) {
@@ -223,22 +218,6 @@ userSchema.methods.delete = function(callback) {
   });  
 }
 
-userSchema.methods.recycle = function(callback) {
-  var self = this;
-  if (!self.address) return callback('Unable to recycle: missing address');
-  var App = require('../models/app');
-  App.recycleAddress([self.address, self.secret], function (err) {
-    if (err) return callback(err);
-    self.address = null;
-    self.address_qr = null;
-    self.secret = null;
-    self.save(function (err) {
-      callback(err);
-    });
-  });
-}
-
-
 // find video and duration
 // if self.time > duration
 // purchase video
@@ -248,7 +227,7 @@ userSchema.methods.purchaseVideo = function(videoId, callback) {
   logger.log('Purchasing Video: %s -> %s', self._id, videoId);
   async.waterfall([
     function (step) {
-      require('../models/video').findOne({'_id':videoId,'isOriginal':true}, function (err, video) {
+      Video.findOne({'_id':videoId,'isOriginal':true}, function (err, video) {
         if (err) return step(err);
         if (!video) return step('Error Purchasing Video: Missing Video: '+videoId);
         step(null, video);
@@ -263,7 +242,7 @@ userSchema.methods.purchaseVideo = function(videoId, callback) {
       self.videos.push(video._id);
       logger.debug('self.time: %s - %s = %s', parseInt(self.time, 10), parseInt(video.duration, 10), parseInt(self.time, 10)-parseInt(video.duration, 10));
       self.time = parseInt(self.time, 10)-parseInt(video.duration, 10);
-      logger.log('Video Purchaed: %s -> %s', video.title, self._id);
+      logger.log('Video Purchased: %s -> %s', video.title, self._id);
       video.sendPurchasedEmail(function (err) {
         if (err) logger.warn(err);
       });
@@ -311,12 +290,11 @@ userSchema.methods.stop = function (callback) {
 }
 
 userSchema.methods.sync = function (callback) {
-  this.countDown(function (err) {
+  this.countdown(function (err) {
     if (err) logger.warn(err);
     callback(null, true);
   });
 }
-
 
 userSchema.methods.verifyPassword = function(candidatePassword, callback) {
   bcrypt.compare(candidatePassword, this.password, function (err, isMatch) {
