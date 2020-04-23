@@ -217,7 +217,10 @@ function checkWiFi(callback) {
 function connect(callback) {
   logger.log('Reconnecting to GoPro...');
   async.waterfall([
+    // none of this works because the api call listInterfaces doesn't actually exist
     function (step) {
+      return step(null);
+      // disabled
       piWifi.listInterfaces(function (err, interfacesArray) {
         if (err) {
           logger.debug(err.message);
@@ -267,12 +270,22 @@ function connect(callback) {
       });
     },
     function (step, goProInterface, streamInterface) {
+      if (!goProInterface) goProInterface = "wlan0";
+      if (!streamInterface) streamInterface = "wlan1";
+
       piWifi.restartInterface(goProInterface, function (err) {
         if (err) return callback(err);
         piWifi.setCurrentInterface(streamInterface, function (err) {
           if (err) return callback(err);
           step(null);
         });
+
+        // piWifi.status('wlan0', function (err, status) {
+        //   if (err) return callback(err);
+        //   // logger.log(status);
+        //   logger.log('GoPro connection restarted');
+        //   callback(null);
+        // });  
       });
     },
     function (step) {
