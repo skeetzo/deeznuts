@@ -16,7 +16,7 @@ config.siteTitle = "AlexDeezNuts.com";
 config.author = "Skeetzo";
 config.description = "Porn Star Streamer";
 config.Google_Analytics = "UA-82463743-8";
-config.pages = ['privacy','terms','support','2257-compliance','callback'];
+config.pages = ['privacy','terms','support','2257-compliance','callback', 'key'];
 config.domain = "alexdeeznuts.com";
 
 if (config.local) config.domain = "localhost";

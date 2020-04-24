@@ -18,6 +18,7 @@ const readline = require('readline');
 const Twitter = require('../modules/twitter');
 const util = require('util');
 const piWifi = require('pi-wifi');
+const { exec } = require("child_process");
 
 var config = require('../config/index');
 const logger = config.logger;
@@ -30,6 +31,9 @@ var DESTINATION = "shower";
 var MODE = "remote"; // remote, local, remote-local
 var WIFI = "Disconnected";
 
+var goProInterface = false;
+var streamInterface = false;
+  
 var args = process.argv.slice(2);
 for (var i=0;i<args.length;i++) {
   var val = args[i];
@@ -198,100 +202,157 @@ function handle(err) {
 //////
 
 function checkWiFi(callback) {
-  // logger.log("Checking WiFi...");
-  piWifi.check(GOPRO_SSID, function(err, result) {
-    if (err) return callback(err.message);
-    // logger.log(result);
-    if (result&&result.selected) {
-      WIFI = GOPRO_SSID;
-      logger.log("GoPro Connected");
-    }
-    else {
-      WIFI = "Disconnected";
-      logger.log("GoPro Disconnected");
-    } 
-    return callback(null);
-  });
-}
-
-function connect(callback) {
-  logger.log('Reconnecting to GoPro...');
-  async.waterfall([
-    // none of this works because the api call listInterfaces doesn't actually exist
+  logger.log("Checking WiFi...");
+  WIFI = "Disconnected"
+  async.series([
     function (step) {
-      return step(null);
-      // disabled
-      piWifi.listInterfaces(function (err, interfacesArray) {
-        if (err) {
-          logger.debug(err.message);
-          logger.warn("Unable to find interfaces");
-          return callback(null)
-        }
-        console.log(interfacesArray); // ['eth0','wlan0','wlan1']
-        var eth0 = false,
-            eth1 = false,
-            wlan0 = false,
-            wlan1 = false,
-            wlan2 = false;
-        for (var i=0;i<interfacesArray.length;i++) {
-          iface = interfacesArray[i];
-          if (iface == "eth0") eth0 = true;
-          else if (iface == "eth1") eth1 = true;
-          else if (iface == "wlan0") wlan0 = true;
-          else if (iface == "wlan1") wlan1 = true;
-          else if (iface == "wlan2") wlan2 = true;
-        }
-
-        /* preferance conditions:
-         0) eth + eth
-         1) eth + wifi
-         2) wifi + wifi
-         3) wifi -> save local
-        */
-        var interfaces = null;
-        if (eth0&&eth1) interfaces = [eth0, eth1];
-        else if (eth0&&wlan0) interfaces = [wlan0, eth0];
-        else if (eth0&&wlan1) interfaces = [wlan1, eth0];
-        else if (eth0&&wlan2) interfaces = [wlan2, eth0];
-        else if (eth1&&wlan0) interfaces = [wlan0, eth1];
-        else if (eth1&&wlan1) interfaces = [wlan1, eth1];
-        else if (eth1&&wlan2) interfaces = [wlan2, eth1];
-        else if (wlan0&&wlan1) interfaces = [wlan1, wlan0];
-        else if (wlan0) interfaces = [wlan0];
-        else if (wlan1) interfaces = [wlan1];
-        else return callback("Error: Missing Network Interface")
-        if (!interfaces) return callback("Error: Missing Network Interface")
-        var goProInterface = false;
-        var streamInterface = false;
-        goProInterface = interfaces[0]
-        if (interfaces.length==2) streamInterface = interfaces[1];
-        else streamInterface = interfaces[0];
-        step(null, goProInterface, streamInterface);
+      piWifi.check(GOPRO_SSID, function(err, result) {
+        if (err) return callback(err.message);
+        logger.debug(result);
+        if (result&&result.selected) 
+          WIFI = GOPRO_SSID;
+        else
+          WIFI = "Disconnected";
+        step(null);
       });
     },
-    function (step, goProInterface, streamInterface) {
+    function (step) {
+      piWifi.status(goProInterface, function (err, status) {
+        if (err) return callback(err);
+        logger.debug(status);
+        if (status.ssid && status.ssid == GOPRO_SSID && status.wpa_state && status.wpa_state == "COMPLETED")
+          WIFI = GOPRO_SSID;
+        step(null);
+      });  
+    },
+    function (step) {
+      logger.log(`GoPro WiFi - ${WIFI}`);
+      callback(null);
+    }
+  ]);
+}
+
+var retryCount = 0;
+function connect(callback) {
+  logger.log('Reconnecting to GoPro...');
+  async.series([
+    function (step) {
+      return step(null);
+      //
+      // none of this works because the api call listInterfaces doesn't actually exist
+      // but it would go here
+      //
+      // piWifi.listInterfaces(function (err, interfacesArray) {
+      //   if (err) {
+      //     logger.debug(err.message);
+      //     logger.warn("Unable to find interfaces");
+      //     return callback(null)
+      //   }
+      //   console.log(interfacesArray); // ['eth0','wlan0','wlan1']
+      //   var eth0 = false,
+      //       eth1 = false,
+      //       wlan0 = false,
+      //       wlan1 = false,
+      //       wlan2 = false;
+      //   for (var i=0;i<interfacesArray.length;i++) {
+      //     iface = interfacesArray[i];
+      //     if (iface == "eth0") eth0 = true;
+      //     else if (iface == "eth1") eth1 = true;
+      //     else if (iface == "wlan0") wlan0 = true;
+      //     else if (iface == "wlan1") wlan1 = true;
+      //     else if (iface == "wlan2") wlan2 = true;
+      //   }
+
+      //   /* preferance conditions:
+      //    0) eth + eth
+      //    1) eth + wifi
+      //    2) wifi + wifi
+      //    3) wifi -> save local
+      //   */
+      //   var interfaces = null;
+      //   if (eth0&&eth1) interfaces = [eth0, eth1];
+      //   else if (eth0&&wlan0) interfaces = [wlan0, eth0];
+      //   else if (eth0&&wlan1) interfaces = [wlan1, eth0];
+      //   else if (eth0&&wlan2) interfaces = [wlan2, eth0];
+      //   else if (eth1&&wlan0) interfaces = [wlan0, eth1];
+      //   else if (eth1&&wlan1) interfaces = [wlan1, eth1];
+      //   else if (eth1&&wlan2) interfaces = [wlan2, eth1];
+      //   else if (wlan0&&wlan1) interfaces = [wlan1, wlan0];
+      //   else if (wlan0) interfaces = [wlan0];
+      //   else if (wlan1) interfaces = [wlan1];
+      //   else return callback("Error: Missing Network Interface")
+      //   if (!interfaces) return callback("Error: Missing Network Interface")
+      //   goProInterface = interfaces[0]
+      //   if (interfaces.length==2) streamInterface = interfaces[1];
+      //   else streamInterface = interfaces[0];
+      //   step(null);
+      // });
+    },
+    function (step) {
       if (!goProInterface) goProInterface = "wlan0";
       if (!streamInterface) streamInterface = "wlan1";
-
+      logger.debug("restarting interfaces");
       piWifi.restartInterface(goProInterface, function (err) {
+        if (err) {
+          if (retryCount<3) {
+            retryCount++;
+            return connect(callback);
+          }
+          else {
+            retryCount = 0;
+            return callback(err);
+          }
+        }
+        step(null);
+      });
+    },
+    function (step) {
+      // doesn't work so running shell command instead to delete wlan0 / GoPro iface
+      logger.debug("setting default route")
+      piWifi.setCurrentInterface(streamInterface, function (err) {
         if (err) return callback(err);
-        piWifi.setCurrentInterface(streamInterface, function (err) {
-          if (err) return callback(err);
-          step(null);
-        });
-
-        // piWifi.status('wlan0', function (err, status) {
-        //   if (err) return callback(err);
-        //   // logger.log(status);
-        //   logger.log('GoPro connection restarted');
-        //   callback(null);
-        // });  
+        step(null);
+      });
+    },
+    function (step) {
+      logger.log("waiting 10 sec...");
+      setTimeout(function () {step(null)}, 10000);
+    },
+    // function (step) {
+    //   logger.debug("deleting GoPro default route")
+    //   // exec("sudo /sbin/route del default wlan0", () => {
+    //   exec("sudo /sbin/ip addr flush dev wlan1", () => {
+    //     exec("sudo /sbin/ip route del default via 10.5.5.9", () => {
+    //       exec("sudo /sbin/ip route add default via 192.168.1.1", () => {
+    //         step(null);
+    //       });
+    //     });
+    //   });
+    // },
+    function (step) {
+      logger.log("Routes:");
+      exec("/sbin/ip route", (error, stdout, stderr) => {
+        if (error) {
+          console.log(`error: ${error.message}`);
+          return;
+        }
+        if (stderr) {
+          console.log(`stderr: ${stderr}`);
+          return;
+        }
+        console.log(stdout);
+        step(null);
       });
     },
     function (step) {
       checkWiFi(function (err) {
-        callback(err);
+        if (err) return callback(err);
+        step(null);
       });
+    },
+    function (step) {
+      logger.log('GoPro Connection Restarted');
+      callback(null);
     }
   ]);
 }
