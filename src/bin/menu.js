@@ -64,7 +64,7 @@ function colorize(string, color) {
 }
 
 function header() {
-  process.stdout.write('\033c');
+  // process.stdout.write('\033c');
   return console.log(colorize('\n________                        _______          __\n'+        
     '\\______ \\   ____   ____ ________\\      \\  __ ___/  |_  ______\n' +
     ' |    |  \\_/ __ \\_/ __ \\\\___   //   |   \\|  |  \\   __\\/  ___/\n' +
@@ -315,20 +315,47 @@ function connect(callback) {
       });
     },
     function (step) {
-      logger.log("waiting 10 sec...");
-      setTimeout(function () {step(null)}, 10000);
+      logger.log("waiting 3 sec...");
+      setTimeout(function () {step(null)}, 3000);
     },
-    // function (step) {
-    //   logger.debug("deleting GoPro default route")
-    //   // exec("sudo /sbin/route del default wlan0", () => {
-    //   exec("sudo /sbin/ip addr flush dev wlan1", () => {
-    //     exec("sudo /sbin/ip route del default via 10.5.5.9", () => {
-    //       exec("sudo /sbin/ip route add default via 192.168.1.1", () => {
-    //         step(null);
-    //       });
-    //     });
-    //   });
-    // },
+    function (step) {
+      logger.debug("deleting GoPro default route")
+      // exec("sudo /sbin/route del default wlan0", () => {
+      exec("sudo /sbin/ip addr flush dev wlan1", (error, stdout, stderr) => {
+        if (error) {
+            console.log(`error: ${error.message}`);
+            return;
+        }
+        if (stderr) {
+            console.log(`stderr: ${stderr}`);
+            return;
+        }
+        // console.log(`stdout: ${stdout}`);
+        exec("sudo /sbin/ip route add default via 192.168.1.1", (error, stdout, stderr) => {
+          if (error) {
+              console.log(`error: ${error.message}`);
+              return;
+          }
+          if (stderr) {
+              console.log(`stderr: ${stderr}`);
+              return;
+          }
+          console.log(`stdout: ${stdout}`);
+          exec("sudo /sbin/ip route del default via 10.5.5.9", (error, stdout, stderr) => {
+            if (error) {
+                console.log(`error: ${error.message}`);
+                return;
+            }
+            if (stderr) {
+                console.log(`stderr: ${stderr}`);
+                return;
+            }
+            console.log(`stdout: ${stdout}`);
+            step(null);
+          });
+        });
+      });
+    },
     function (step) {
       logger.log("Routes:");
       exec("/sbin/ip route", (error, stdout, stderr) => {
