@@ -69,6 +69,7 @@ module.exports = function Deploy_Config() {
 		this.cron_enabled = true;
 		this.debugging = true;
 		this.debugging_live = true;
+		this.remoteDatabase = true;
 		// this.debugging_address = true;
 		// this.debugging_sync = true;
 		// this.debugging_reset_db = true;
