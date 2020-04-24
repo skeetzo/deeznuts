@@ -2,7 +2,7 @@ module.exports = {
   // Applications part
   apps : [{
     name      : 'deeznuts',
-    interpreter      : "node@11.15.0",
+    // interpreter      : "node@11.15.0",
     script    : 'npm',
     args      : ['start'],
     cwd       : '/var/www/apps/deeznuts/source',
