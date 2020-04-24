@@ -24,7 +24,11 @@ module.exports = {
     "development" : {
       user : "deploy",
       host : "104.34.128.2",
-      // ssh_options: "port=26",
+      "ssh_options": [
+        "StrictHostKeyChecking=no",
+        "PasswordAuthentication=no",
+        "ForwardAgent=yes"
+      ],
       ref  : "origin/development",
       repo : "git@github.com:skeetzo/deeznuts.git",
       path : "/var/www/apps/deeznuts",
