@@ -291,83 +291,171 @@ function connect(callback) {
     function (step) {
       if (!goProInterface) goProInterface = "wlan0";
       if (!streamInterface) streamInterface = "wlan1";
-      logger.debug("restarting interfaces");
-      piWifi.restartInterface(goProInterface, function (err) {
-        if (err) {
-          if (retryCount<3) {
-            retryCount++;
-            return connect(callback);
-          }
-          else {
-            retryCount = 0;
-            return callback(err);
-          }
-        }
+      step(null);
+    },
+    // function (step) {
+    //   logger.debug("restarting interfaces");
+    //   piWifi.restartInterface(goProInterface, function (err) {
+    //     if (err) {
+    //       logger.debug(err);
+    //       if (retryCount<10) {
+    //         retryCount++;
+    //         return connect(callback);
+    //       }
+    //       else {
+    //         retryCount = 0;
+    //         logger.warn(err);
+    //         return step(null);
+    //       }
+    //     }
+    //     step(null);
+    //   });
+    // },
+    // function (step) {
+    //   // doesn't work so running shell command instead to delete wlan0 / GoPro iface
+    //   logger.debug("setting default interface (not working)")
+    //   piWifi.setCurrentInterface(streamInterface, function (err) {
+    //     if (err) return callback(err);
+    //     step(null);
+    //   });
+    // },
+    // function (step) {
+    //   logger.log("waiting 10 sec...");
+    //   setTimeout(function () {step(null)}, 10000);
+    // },
+    function (step) {
+      logger.debug("flushing network: wlan0");
+      exec("sudo /sbin/ip addr flush dev wlan0", (error, stdout, stderr) => {
+        if (error) logger.warn(error.message);
+        if (stderr) logger.debug(stderr);
+        // logger.log(stdout);
         step(null);
       });
     },
     function (step) {
-      // doesn't work so running shell command instead to delete wlan0 / GoPro iface
-      logger.debug("setting default route")
-      piWifi.setCurrentInterface(streamInterface, function (err) {
-        if (err) return callback(err);
+      logger.debug("flushing network: wlan1");
+      exec("sudo /sbin/ip addr flush dev wlan1", (error, stdout, stderr) => {
+        if (error) logger.warn(error.message);
+        if (stderr) logger.debug(stderr);
+        // logger.log(stdout);
         step(null);
       });
     },
     function (step) {
-      logger.log("waiting 3 sec...");
+      logger.debug("waiting 3 sec...");
       setTimeout(function () {step(null)}, 3000);
     },
     function (step) {
-      logger.debug("deleting GoPro default route")
-      // exec("sudo /sbin/route del default wlan0", () => {
-      exec("sudo /sbin/ip addr flush dev wlan1", (error, stdout, stderr) => {
-        if (error) {
-            console.log(`error: ${error.message}`);
-            return;
-        }
-        if (stderr) {
-            console.log(`stderr: ${stderr}`);
-            return;
-        }
-        // console.log(`stdout: ${stdout}`);
-        exec("sudo /sbin/ip route add default via 192.168.1.1", (error, stdout, stderr) => {
-          if (error) {
-              console.log(`error: ${error.message}`);
-              return;
-          }
-          if (stderr) {
-              console.log(`stderr: ${stderr}`);
-              return;
-          }
-          console.log(`stdout: ${stdout}`);
-          exec("sudo /sbin/ip route del default via 10.5.5.9", (error, stdout, stderr) => {
-            if (error) {
-                console.log(`error: ${error.message}`);
-                return;
-            }
-            if (stderr) {
-                console.log(`stderr: ${stderr}`);
-                return;
-            }
-            console.log(`stdout: ${stdout}`);
-            step(null);
-          });
-        });
+      logger.debug("bringing down wlan0");
+      exec("sudo /sbin/ifdown wlan0 --force", (error, stdout, stderr) => {
+        if (error) logger.warn(error.message);
+        if (stderr) logger.debug(stderr);
+        logger.log(stdout);
+        step(null);
       });
     },
     function (step) {
-      logger.log("Routes:");
+      logger.debug("bringing up wlan0")
+      exec("sudo /sbin/ifup wlan0 --force", (error, stdout, stderr) => {
+        if (error) logger.warn(error.message);
+        if (stderr) logger.debug(stderr);
+        logger.log(stdout);
+        step(null);
+      });
+    },
+    function (step) {
+      logger.debug("waiting 3 sec...");
+      setTimeout(function () {step(null)}, 3000);
+    },
+    function (step) {
+      logger.debug("bringing down wlan1");
+      exec("sudo /sbin/ifdown wlan1 --force", (error, stdout, stderr) => {
+        if (error) logger.warn(error.message);
+        if (stderr) logger.debug(stderr);
+        logger.log(stdout);
+        step(null);
+      });
+    },
+    function (step) {
+      logger.debug("bringing up wlan1")
+      exec("sudo /sbin/ifup wlan1 --force", (error, stdout, stderr) => {
+        if (error) logger.warn(error.message);
+        if (stderr) logger.debug(stderr);
+        logger.log(stdout);
+        step(null);
+      });
+    },
+    function (step) {
+      logger.log("waiting 4 sec...");
+      setTimeout(function () {step(null)}, 4000);
+    },
+    function (step) {
+      logger.debug("deleting GoPro default route");
+      exec("sudo /sbin/ip route del default via 10.5.5.9", (error, stdout, stderr) => {
+        if (error) logger.warn(error.message);
+        if (stderr) logger.debug(stderr);
+        logger.log(stdout);
+        step(null);
+      });
+    },
+    function (step) {
+      logger.debug("adding Stream default route");
+      exec("sudo /sbin/ip route add default via 192.168.1.13", (error, stdout, stderr) => {
+        if (error) logger.debug(`error: ${error.message}`);
+        if (stderr) logger.debug(`stderr: ${stderr}`);
+        if (stdout) logger.debug(`stdout: ${stdout}`);
+        step(null);
+      });
+    },
+    // function (step) {
+    //   logger.log("waiting 5 sec...");
+    //   setTimeout(function () {step(null)}, 5000);
+    // },
+    // function (step) {
+    //   logger.log("flushing iptables");
+    //   exec("sudo /sbin/iptables -F", (error, stdout, stderr) => {
+    //     if (error) {
+    //       console.log(`error: ${error.message}`);
+    //     }
+    //     if (stderr) {
+    //       console.log(`stderr: ${stderr}`);
+    //     }
+    //     console.log(stdout);
+    //     step(null);
+    //   });
+    // },
+    // function (step) {
+    //   logger.log("preparing iptables");
+    //   exec("sudo /sbin/iptables -A PREROUTING -i wlan0 -p udp -m udp --dport 8554 -j DNAT --to-destination 192.168.1.13:8554", (error, stdout, stderr) => {
+    //     if (error) {
+    //       console.log(`error: ${error.message}`);
+    //     }
+    //     if (stderr) {
+    //       console.log(`stderr: ${stderr}`);
+    //     }
+    //     console.log(stdout);
+    //     step(null);
+    //   });
+    // },
+    // function (step) {
+    //   logger.log("restoring iptables");
+    //   exec("sudo /sbin/iptables-restore", (error, stdout, stderr) => {
+    //     if (error) {
+    //       console.log(`error: ${error.message}`);
+    //     }
+    //     if (stderr) {
+    //       console.log(`stderr: ${stderr}`);
+    //     }
+    //     console.log(stdout);
+    //     step(null);
+    //   });
+    // },
+    function (step) {
+      logger.log();
       exec("/sbin/ip route", (error, stdout, stderr) => {
-        if (error) {
-          console.log(`error: ${error.message}`);
-          return;
-        }
-        if (stderr) {
-          console.log(`stderr: ${stderr}`);
-          return;
-        }
-        console.log(stdout);
+        if (error) logger.warn(error.message);
+        if (stderr) logger.debug(stderr);
+        logger.log(`Routes:\n${stdout}`);
         step(null);
       });
     },

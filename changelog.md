@@ -98,6 +98,10 @@
 	**1.3.4 : 2/13/2020**
 	- updated: GoProStream.py w/ local -> .flv file
 	- fixed: video titles
+	**1.4.0 : 4/25/2020**
+	- updated DeezNuts RPi from wlan+eth to wlan+wlan
+	- updated DeezNuts configuration
+	- updated GoProStream.py w/ ${ip} arg
 **??/??/??**
 	- next live @ & schedule
 **2.0.0 : Android App : ??/??/??**
