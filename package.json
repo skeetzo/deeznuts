@@ -6,6 +6,7 @@
   "author": "Skeetzo",
   "main": "src/bin/www",
   "scripts": {
+    "postinstall": "gulp",
     "start": "node src/bin/www"
   },
   "license": "MIT",
@@ -58,7 +59,7 @@
     "fstream-ignore": "^1.0.5",
     "google-auth-library": "^6.0.0",
     "googleapis": "^41.0.1",
-    "gulp": "^4.0.2",
+    "gulp": "^3.9.1",
     "gulp-concat": "^2.6.1",
     "gulp-sourcemaps": "^2.6.4",
     "helmet": "^3.21.2",
