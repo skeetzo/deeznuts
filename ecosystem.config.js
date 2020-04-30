@@ -68,8 +68,7 @@ module.exports = {
     },
     "pi" : {
       user : "pi",
-      // host : "192.168.1.69",
-      host : "192.168.1.13",
+      host : "192.168.1.69",
       "pre-setup" : "npm list pm2 -g || npm i pm2 -g",
       "ssh_options": [
         "StrictHostKeyChecking=no",
