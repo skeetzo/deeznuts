@@ -400,7 +400,7 @@ function connect(callback) {
     },
     function (step) {
       logger.debug("adding Stream default route");
-      exec("sudo /sbin/ip route add default via 192.168.1.13", (error, stdout, stderr) => {
+      exec("sudo /sbin/ip route add default via 192.168.1.69", (error, stdout, stderr) => {
         if (error) logger.debug(`error: ${error.message}`);
         if (stderr) logger.debug(`stderr: ${stderr}`);
         if (stdout) logger.debug(`stdout: ${stdout}`);
