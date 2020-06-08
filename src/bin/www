@@ -20,13 +20,6 @@ var fss = require('fs-extra');
 var _ = require('underscore');
 var moment = require('moment');
 
-/**
- * Get port from environment and store in Express.
- */
-var server;
-var port = normalizePort(config.port);
-app.set('port', port);
-
 // Startup
 async.series([
   function (step) {
@@ -184,6 +177,7 @@ async.series([
       step(null);
     });
   },
+  // Backups
   function (step) {
     if (!config.upload_force_save) return step(null);
     Video.find({}, function (err, videos) {
@@ -200,23 +194,22 @@ async.series([
   // upload all unuploaded videos
   function (step) {
     if (!config.upload_all_on_boot) return step(null);
-    // Video.find({"uploaded":false}, function (err, videos) {
-    Video.find({}, function (err, videos) {
+    Video.find({"uploaded":false}, function (err, videos) {
+    // Video.find({}, function (err, videos) {
       var series = [],
           uploads = [];
       logger.log("Uploading Forgotten: %s", videos.length);
       _.forEach(videos, function (video) {
-        // fixes dates
         series.push(function (next) {
           video.save(function (err) {
             if (err) {
               logger.warn(err);
               return next(null);
             }
-            var date_ = moment(new Date(video.date));
-            var otherDate = moment(new Date(2019,11,1));
+            // var date_ = moment(new Date(video.date));
+            // var otherDate = moment(new Date(2019,11,1));
             // logger.debug("date: %s - %s:limit", date_.format('MM-DD-YYYY'), otherDate.format('MM-DD-YYYY'));
-            if (date_<otherDate) return next(null);
+            // if (date_<otherDate) return next(null);
             uploads.push(video)
             next(null);
           })
@@ -250,7 +243,6 @@ async.series([
   }
 ]);
 
-
 var server;
 var port = normalizePort(config.port);
 
@@ -258,7 +250,7 @@ function spawnServer(cb) {
   /**
    * Get port from environment and store in Express.
    */
-  // app.set('port', port);
+  app.set('port', port);
 
   if (config.ssl) {
     /**

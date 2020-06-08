@@ -16,41 +16,24 @@ var userSchema = new Schema({
   address: { type: String },
   address_qr: { type: String },
   address_added: { type: Boolean, default: false },
-  access_token: { type: String },
-  refresh_token: { type: String },
-  ip: { type: String },
-  ips: { type: Array, default: [] },
   lastVisit: { type: Date, default: moment(new Date()).format('MM/DD/YYYY') },
   logins: { type: Number, default: 0 },
   password: { type: String },
-  secret : { type: String }, // crypto sig
-  syncing : { type: Boolean, default: false },
   start_date: { type: String, default: moment(new Date()).format('MM/DD/YYYY') },
   time: { type: Number, default: config.defaultTime }, // time allotted for live
   time_added: { type: Number },
-  transactions: { type: Array, default: [] },
+
   username: { type: String },
   videos: { type: Array, default: [] },
-  paypal_tokens: { type: Array, default: [] },
-  paypal_total: { type: String },
   countingDown: { type: Boolean, default: false },
   connected: { type: Boolean, default: false },
 
   deactivated: { type: Boolean, default: false },
-  expiresOn: { type: String },
-
+  deactivatesOn: { type: String }
  });
 
 userSchema.pre('save', function (next) {
   var self = this;
-  if (!self.ip||self.isModified('ip')||self.isModified('ips')) {
-    var i = 0;
-    self.ip = self.ips[i];
-    while (self.ip=='unknown'&&i<self.ips.length) {
-      self.ip = self.ips[i];
-      i++;
-    }
-  }
   if (!self.isModified('password')) return next();
   var SALT_FACTOR = 5;
   bcrypt.genSalt(SALT_FACTOR, function(err, salt) {
@@ -92,7 +75,7 @@ userSchema.statics.deactivateOldUsers = function(callback) {
 userSchema.statics.deleteOldUsers = function(callback) {
   logger.remove('Deleting Old Deactivated Users');
   // if deactivated and older than 30 days
-  this.find( { '$or': [ {'deactivated': true, 'expiresOn': { '$lt': Date.now() } } ] }, function (err, users) {
+  this.find( { '$or': [ {'deactivated': true, 'deactivatesOn': { '$lt': Date.now() } } ] }, function (err, users) {
     if (err) return callback(err);
     if (!users||users.length==0) {
       logger.remove('No users to delete!');
@@ -157,20 +140,30 @@ userSchema.statics.stop = function (userId, callback) {
 
 userSchema.statics.generateAddress = function(userId, callback) {
   logger.log('Generating Address: %s', userId);
-  var Blockchain = require('../modules/blockchain');
-  Blockchain.getAddress(userId, function (err) {
-    callback(err);
+  var BCoin_Wallet = require('../modules/bcoin-wallet');
+  BCoin_Wallet.getAddress(function (err, address) {
+    if (err) return callback(err);
+    user.address = address;
+    BCoin_Wallet.createQR(address, function (err, url) {
+      if (err) logger.warn(err);
+      else user.address_qr = url;
+      user.address_added = true;
+      user.save(function (err) {
+        if (err) return step(err);
+        logger.debug('BTC address created');
+        callback(null);
+      });
+    });
   });
 }
 
 // amount in satoshi, so divide by 100,000,000 to get the value in BTC
 userSchema.methods.addTime = function(value_in_dollars, callback) {
   var self = this;
-  logger.log('Calculating time: %s dollars', value_in_dollars);
-  var timeAdded = value_in_dollars*(config.conversionRate*60); // 6 minutes per dollar
+  // logger.log('Calculating time: %s dollars', value_in_dollars);
+  var timeAdded = value_in_dollars*config.conversionRate;
   logger.debug('dollar to seconds: $%s -> %s seconds', value_in_dollars, timeAdded);
   logger.log('Time Added: %s seconds + %s seconds = %s seconds', self.time, timeAdded, (self.time+timeAdded));
-  // Google.logTime(value_in_satoshi, dollar, self.time, timeAdded);
   self.time_added = timeAdded;
   self.time+= timeAdded;
   self.save(function (err) {
@@ -204,7 +197,7 @@ userSchema.methods.deactivate = function(callback) {
   var self = this;
   logger.log('Deactivating User: %s', self._id);
   self.deactivated = true;
-  self.expiresOn = Date.now() + 1000*60*60*24*30;
+  self.deactivatesOn = Date.now() + 1000*60*60*24*30;
 }
 
 userSchema.methods.delete = function(callback) {

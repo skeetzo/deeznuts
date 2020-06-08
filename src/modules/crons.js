@@ -6,10 +6,6 @@ var _ = require('underscore'),
 
 var crons = function() {
     var self = this;
-
-    this.debugging = [
-        'deactivate'
-    ];
 }
 
 crons.prototype = {
@@ -138,5 +134,4 @@ crons.prototype = {
 }
 
 var Crons = new crons();
-
 module.exports = Crons;

@@ -18,6 +18,8 @@ config.description = "Pron Star";
 config.Google_Analytics = "UA-82463743-8";
 config.pages = ['privacy','terms','support','2257-compliance','callback', 'key'];
 config.domain = "alexdeeznuts.com";
+config.ssl_key = `/etc/letsencrypt/live/${config.domain}-0001/privkey.pem`;
+config.ssl_cert = `/etc/letsencrypt/live/${config.domain}-0001/fullchain.pem`;
 
 if (config.local) config.domain = "localhost";
 var live_url = "wss://"+config.domain+":8443/live/stream.flv?sign=";
@@ -31,7 +33,7 @@ else config.domain = "http://"+config.domain;
 
 // DeezNuts Settings
 config.archive_videos = true;
-config.conversionRate = 6; // $1 per 6 minutes
+config.conversionRate = (6*60); // 6 minutes per dollar
 config.defaultPrice = 5; // in dollars
 config.defaultTime = 60; // time in seconds
 config.defaultPreviewDuration = 30;

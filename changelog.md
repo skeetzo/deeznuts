@@ -66,7 +66,7 @@
 	- fixed socket.io
 	**5/5/2019**
 	- log update
-	- PayPal form bug: _id of undefined
+	- PayPal form bug: id of undefined
 	**5/7/2019**
 	- btc address: reload page instead of display change
 	**5/8/2019**
@@ -102,14 +102,19 @@
 	- updated DeezNuts RPi from wlan+eth to wlan+wlan
 	- updated DeezNuts configuration
 	- updated GoProStream.py w/ ${ip} arg
-**??/??/??**
+	**1.5.0 : 6/8/2020**
+	- cleanup
+	- removed PayPal
+	- added BTC Wallet from Kairos
+
+
+**?.0.0 : ??/??/??**
 	- next live @ & schedule
-**2.0.0 : Android App : ??/??/??**
+**?.0.0 : Android App : ??/??/??**
 	- android rtmp relay?
 # Bugs
 **1.1.0**
 	- chrome browser on laptop: "HtmlMediaElement.error attribute is not null"
 # To Do
 	- add link to live page in "i've gone live"
-	- blockchain address recycling
 	- view: videos -> paginate months

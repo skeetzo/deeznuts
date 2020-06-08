@@ -1,5 +1,7 @@
+let HOST = "104.34.128.2"
+let HOST_PI = "192.168.1.69"
+
 module.exports = {
-  // Applications part
   apps : [{
     name      : 'deeznuts',
     // interpreter      : "node@11.15.0",
@@ -19,11 +21,10 @@ module.exports = {
       PORT: "3020"
     }
   }],
-  // Deployment part
   deploy : {
     "development" : {
       user : "deploy",
-      host : "104.34.128.2",
+      host : HOST,
       "ssh_options": [
         "StrictHostKeyChecking=no",
         "PasswordAuthentication=no",
@@ -40,9 +41,11 @@ module.exports = {
     },
     "staging" : {
       user : "deploy",
-      host : "104.34.128.2",
-      ssh_options: [
-        "StrictHostKeyChecking=no"
+      host : HOST,
+      "ssh_options": [
+        "StrictHostKeyChecking=no",
+        "PasswordAuthentication=no",
+        "ForwardAgent=yes"
       ],
       ref  : "origin/staging",
       repo : "git@github.com:skeetzo/deeznuts.git",
@@ -55,8 +58,12 @@ module.exports = {
     },
     "production" : {
       user : "deploy",
-      host : "104.34.128.2",
-      // ssh_options: "port=26",
+      host : HOST,
+      "ssh_options": [
+        "StrictHostKeyChecking=no",
+        "PasswordAuthentication=no",
+        "ForwardAgent=yes"
+      ],
       ref  : "origin/production",
       repo : "git@github.com:skeetzo/deeznuts.git",
       path : "/var/www/apps/deeznuts",
@@ -68,7 +75,7 @@ module.exports = {
     },
     "pi" : {
       user : "pi",
-      host : "192.168.1.69",
+      host : HOST_PI,
       "pre-setup" : "npm list pm2 -g || npm i pm2 -g",
       "ssh_options": [
         "StrictHostKeyChecking=no",

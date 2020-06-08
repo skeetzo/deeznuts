@@ -36,7 +36,7 @@ videoSchema.pre('save', function (next) {
     self.path_preview = path.join(config.videosPath, '/previews', self.path.replace('.mp4','-preview.mp4'));
   // if (self.title) {
   if (self.title!='Example') {
-    var title = path.basename(this.path.toLowerCase().replace('.mp4','').replace('.flv',''));
+    var title = path.basename(self.path.toLowerCase().replace('.mp4','').replace('.flv',''));
     var time = title.substring(11);
     title = title.substring(0,10);
     // logger.debug('time: %s | %s', title, time);
@@ -56,7 +56,7 @@ videoSchema.pre('save', function (next) {
     title = month+"-"+day+"-"+year+" "+hours+":"+minutes;
     if (title.toLowerCase().indexOf("nan")>-1) {
       self.date = new moment(new Date())
-      self.title = path.basename(this.path.toLowerCase().replace('.mp4','').replace('.flv',''));
+      self.title = path.basename(self.path.toLowerCase().replace('.mp4','').replace('.flv',''));
     }
     else {
       self.date = new moment(new Date(year,month-1,day)).format("MM-DD-YYYY");
@@ -109,11 +109,11 @@ videoSchema.pre('save', function (next) {
       if (self.isModified('duration')||self.isModified('price')||!self.price) {
         if (self.duration<config.defaultPrice) { // 5 minutes / default time
           self.price = config.defaultPrice;
-          logger.log('minimum price set: %s', self.price);
+          logger.debug('minimum price set: %s', self.price);
         }
         else if (self.duration) {
           self.price = self.duration;
-          logger.log('price set: %s', self.price);
+          logger.debug('price set: %s', self.price);
         }
         else
           self.price = config.defaultPrice;
@@ -121,7 +121,7 @@ videoSchema.pre('save', function (next) {
         self.price = Math.round(self.price);
       }
       // Normal
-      // logger.debug('Video Saved: %s', self.title);
+      logger.debug('Video Saved: %s', self.title);
       next();
     }
   ]);
@@ -312,7 +312,7 @@ videoSchema.statics.populateFromFiles = function(callback) {
   logger.log('Populating Video Database...');
   // read videos/archived for all the files
   var videoFiles = fs.readdirSync(config.videosPath+'/archived/stream');
-  logger.log('videoFiles: %s', videoFiles);
+  logger.debug('videoFiles: %s', videoFiles);
   // create a video model for each
   var series = [];
   _.forEach(videoFiles, function (video) {
@@ -715,11 +715,12 @@ videoSchema.methods.upload = function(callback) {
   if (path_.indexOf(config.videosPath)==-1)
     path_ = path.join(config.videosPath, 'archived/stream', path_);
   logger.debug(path_)
-  OnlyFans.spawn(['-type','video','-method','input','-input',path_,'-text',self.title,'-keywords','deeznuts','-verbose','-skip-backup','-skip-reduce','-force-upload'], 
+  OnlyFans.spawn(['-action','upload','-text',`DeezNuts - ${self.title}`,'-keywords','deeznuts','-skip-backup','-skip-reduce','-force-upload', path_], 
     function (err) {
       if (err) return callback(err)
       self.uploaded = true;
       self.save(function (err) {
+        logger.log("Upload Successful");
         callback(err);
       });
     }
@@ -728,5 +729,4 @@ videoSchema.methods.upload = function(callback) {
 
 videoSchema.set('redisCache', true);
 var Video = mongoose.model('videos', videoSchema,'videos');
-
 module.exports = Video;

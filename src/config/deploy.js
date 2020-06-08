@@ -21,10 +21,6 @@ module.exports = function Deploy_Config() {
 	this.backup_on_archive = false;
 	this.upload_on_archive = false;
 
-	this.PayPal = false;
-	this.PayPal_process.env.NODE_ENV = 'sandbox';
-	this.PayPal_syncing_webhooks = false;
-
 	this.Twitter = false;
 	this.Twitter_tweeting = false;
 	this.Twitter_deleting_tweet = true;
@@ -64,6 +60,13 @@ module.exports = function Deploy_Config() {
 	this.database_type = "local";
 	this.database_redis = false;
 
+	// bcoin & wallet
+	this.bcoin_delay = 10000;
+	this.bcoin_syncing_chain = false;
+	this.wallet_confirmations_required = false;
+	this.wallet_confirmations_number = 2;
+	this.wallet_cache_timeout = 600000; // ten minutes
+
 	if (process.env.NODE_ENV=='development') {
 		this.cron_enabled = true;
 		this.debugging = true;
@@ -90,8 +93,6 @@ module.exports = function Deploy_Config() {
 		this.debugging = true;
 		this.debugging_live = true;
 		this.ssl = true;
-		this.PayPal = true;
-		this.PayPal_process.env.NODE_ENV = 'sandbox';
 		this.Twitter = true;
 		this.delete_on_publish = true;
 		//
@@ -106,13 +107,12 @@ module.exports = function Deploy_Config() {
 		// this.deleteMissing = true;
 		// this.debugging_crons = true;
 		// this.debugging_clean_fileNames = true;
+		//
+		this.bcoin_syncing_chain = true;
 	}
 	else if (process.env.NODE_ENV=='production') {
 		this.cron_enabled = true;
 		this.ssl = true;
-		this.PayPal = true;
-		this.PayPal_process.env.NODE_ENV = 'live';
-		this.PayPal_syncing_webhooks = false;
 		this.archive_on_publish = true;
 		this.populateFromFiles = true;
 		this.deleteMissing = true;
@@ -131,6 +131,10 @@ module.exports = function Deploy_Config() {
 		// this.upload_all_on_boot = true;
 		// this.upload_on_archive = true;
 		// this.upload_force_save = true; // forces all videos to save as uploaded before boot can do anything else
+		//
+		this.bcoin_syncing_chain = true;
+		this.wallet_confirmations_required = true;
+		this.wallet_confirmations_number = 6;
 	}
 	else if (process.env.NODE_ENV=='pi') {
 		this.debugging = true;

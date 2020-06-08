@@ -43,41 +43,6 @@ module.exports = function() {
     this.blockchainKey = localConfig.blockchainKey || process.env.blockchainKey;
     this.blockchainXpub = localConfig.blockchainXpub || process.env.blockchainXpub;
 
-    // PayPal
-    this.paypal_account_sandbox = localConfig.paypal_account_sandbox;
-    this.paypal_clientid_sandbox = localConfig.paypal_clientid_sandbox;
-    this.paypal_client_secret_sandbox = localConfig.paypal_client_secret_sandbox;
-    this.paypal_account = localConfig.paypal_account;
-    this.paypal_clientid = localConfig.paypal_clientid;
-    this.paypal_client_secret = localConfig.paypal_client_secret;
-    this.paypal_cancel_url = this.domain+'/paypal/cancel';
-    this.paypal_success_url = this.domain+'/paypal/approval';
-    this.paypal_creds = {
-        'mode': this.PayPal_environment
-    };
-    if (this.PayPal_environment=='sandbox') {
-        this.paypal_creds.client_id = this.paypal_clientid_sandbox;
-        this.paypal_creds.client_secret = this.paypal_client_secret_sandbox;
-    }
-    else {
-        this.paypal_creds.client_id = this.paypal_clientid;
-        this.paypal_creds.client_secret = this.paypal_client_secret;
-    }
-    this.paypal_email = "WebmasterSkeetzo@gmail.com";
-    this.paypal_webhooks = [
-        'CHECKOUT.ORDER.PROCESSED',
-        'CHECKOUT.ORDER.COMPLETED',
-        'BILLING.SUBSCRIPTION.CREATED',
-        'BILLING.SUBSCRIPTION.CANCELLED',
-        'BILLING.SUBSCRIPTION.RE-ACTIVATED',
-        'BILLING.SUBSCRIPTION.SUSPENDED',
-        'BILLING.SUBSCRIPTION.UPDATED',
-        'PAYMENT.SALE.COMPLETED',
-        'PAYMENT.SALE.REVERSED',
-        'BILLING.PLAN.CREATED',
-        'BILLING.PLAN.UPDATED'
-    ];
-
     // Google
     this.Google_service_email = localGoogle.client_email || process.env.google_client_email;
     this.Google_key = localGoogle.private_key || process.env.google_private_key;
@@ -128,10 +93,6 @@ module.exports = function() {
     // Redis
     this.REDIS_URL = localConfig.REDIS_URL_local;
     if (this.remoteDatabase) this.REDIS_URL = localConfig.REDIS_URL;
-
-    // SSL
-    this.ssl_key = '/etc/letsencrypt/live/alexdeeznuts.com-0001/privkey.pem';
-    this.ssl_cert = '/etc/letsencrypt/live/alexdeeznuts.com-0001/fullchain.pem';
 
     // Twitter
 	this.Twitter_consumer_key = localConfig.Twitter_consumer_key || process.env.Twitter_consumer_key; 
