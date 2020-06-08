@@ -12,14 +12,6 @@ var mongoose = require('mongoose'),
 
 
 // Video Schema
-/*
-
-  a 'new Video()' is created for each User for each Video
-    each video has a separate address generated attached to their User
-
-  a single instance of each Video exists from which videos_all is populated
-
-*/
 var videoSchema = new Schema({
   backedUp: { type: Boolean, default: false },
   date: { type: String, default: moment(new Date()).format('MM-DD-YYYY') },
@@ -421,7 +413,6 @@ videoSchema.methods.backup = function(callback) {
         callback(null);
     });
   });
-
 }
 
 // get file at location

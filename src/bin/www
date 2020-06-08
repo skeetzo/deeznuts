@@ -128,9 +128,6 @@ async.series([
       else step(null);
     });
   },
-  function (step) {
-    spawnServer(step);
-  },
   // Archive
   function (step) {
     fss.ensureDirSync(config.videosPath);
@@ -245,27 +242,8 @@ async.series([
       async.series(series);
     });
   },
-  // PayPal
   function (step) {
-    if (!config.PayPal||!config.PayPal_syncing_webhooks) {
-      logger.debug('Skipping: PayPal Webhook Syncs');
-      return step(null);
-    }
-    var PayPal = require('../modules/paypal');
-    PayPal.syncWebhooks(function (err) {
-      if (err) logger.warn(err);
-      step(null);
-    });
-    if (config.debugging_paypal&&config.debugging_paypal_reset_plans) {
-      logger.debug('Resetting: PayPal Plans');
-      var Plan = require('../models/plan');
-      Plan.find({}, function (err, plans) {
-        if (err) return logger.warn(err);
-        _.forEach(plans, function (plan) {
-          plan.remove();
-        });
-      });
-    }
+    spawnServer(step);
   },
   function (step) {
     logger.log('--- Launched %s ---', config.domain)

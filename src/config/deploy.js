@@ -3,9 +3,7 @@ var path = require('path');
 // Deploys Environment Configurations
 module.exports = function Deploy_Config() {
 	if (!process.env.NODE_ENV) process.env.NODE_ENV = "development";
-	var environment = process.env.NODE_ENV;
 
-	this.debugging = false;
 	this.ssl = false;
 	this.local = false;
 
@@ -24,7 +22,7 @@ module.exports = function Deploy_Config() {
 	this.upload_on_archive = false;
 
 	this.PayPal = false;
-	this.PayPal_environment = 'sandbox';
+	this.PayPal_process.env.NODE_ENV = 'sandbox';
 	this.PayPal_syncing_webhooks = false;
 
 	this.Twitter = false;
@@ -34,6 +32,7 @@ module.exports = function Deploy_Config() {
 	this.Twitter_tweet_on_archive = false;
 	this.remoteDatabase = false;
 
+	this.debugging = false;
 	this.debugging_blockchain = false;
 	this.debugging_live = false;
 	this.debugging_address = false;
@@ -65,92 +64,92 @@ module.exports = function Deploy_Config() {
 	this.database_type = "local";
 	this.database_redis = false;
 
-	if (environment=='development') {
+	if (process.env.NODE_ENV=='development') {
 		this.cron_enabled = true;
 		this.debugging = true;
 		this.debugging_live = true;
 		this.remoteDatabase = true;
-		// this.debugging_address = true;
-		// this.debugging_sync = true;
-		// this.debugging_reset_db = true;
-		// this.debugging_reset_files = true;
-		// this.debugging_reset_logs = true;
-		// this.debugging_blockchain = true;
+		this.debugging_address = true;
+		this.debugging_reset_db = true;
+		this.debugging_reset_files = true;
+		this.debugging_reset_logs = true;
+		this.debugging_blockchain = true;
 		this.local = true;
-		// this.remoteDatabase = true;
-		// this.delete_on_publish = true;
+		this.delete_on_publish = true;
 		this.archive_on_publish = true;
-		// this.live_enabled = true;
 		this.backup_on_archive = true;
-		// this.debugging_crons = true;
-		// this.debugging_paypal = true;
-		// this.debugging_paypal_reset_plans = true;
 		this.populateFromFiles = true;	
+		//
+		// this.live_enabled = true;
+		// this.debugging_crons = true;
 		// this.upload_all_on_boot = true;
 		// this.upload_to_OnlyFans = true;
 	}
-	else if (environment=='staging') {
+	else if (process.env.NODE_ENV=='staging') {
 		this.cron_enabled = true;
 		this.debugging = true;
-		// this.debugging_blockchain = true;
 		this.debugging_live = true;
+		this.ssl = true;
+		this.PayPal = true;
+		this.PayPal_process.env.NODE_ENV = 'sandbox';
+		this.Twitter = true;
+		this.delete_on_publish = true;
+		//
+		// this.debugging_blockchain = true;
 		// this.debugging_reset_db = true;
 		// this.debugging_reset_files = true;
 		// this.debugging_address = true;
 		// this.debugging_sync = true;
-		this.ssl = true;
-		this.PayPal = true;
-		this.PayPal_environment = 'sandbox';
-		this.Twitter = true;
 		// this.remoteDatabase = true;
 		// this.archive_on_publish = true;
 		// this.backup_on_archive = true;
-		this.delete_on_publish = true;
 		// this.deleteMissing = true;
 		// this.debugging_crons = true;
 		// this.debugging_clean_fileNames = true;
 	}
-	else if (environment=='production') {
+	else if (process.env.NODE_ENV=='production') {
 		this.cron_enabled = true;
 		this.ssl = true;
 		this.PayPal = true;
-		this.PayPal_environment = 'live';
+		this.PayPal_process.env.NODE_ENV = 'live';
 		this.PayPal_syncing_webhooks = false;
+		this.archive_on_publish = true;
+		this.populateFromFiles = true;
+		this.deleteMissing = true;
+		this.backup_on_archive = true;
+		this.upload_to_OnlyFans = true;
+		this.concatting = true;
+		this.concatenate_on_publish = true;
+		//
 		// this.Twitter = true;
 		// this.Twitter_tweeting = true;
 		// this.Twitter_tweet_on_archive = true;
-		this.archive_on_publish = true;
 		// this.delete_on_publish = true;
 		// this.remoteDatabase = true;
-		this.populateFromFiles = true;
 		// this.live_enabled = true;
 		// this.backup_db = true;
 		// this.upload_all_on_boot = true;
-		this.deleteMissing = true;
-		this.backup_on_archive = true;
 		// this.upload_on_archive = true;
-		this.upload_to_OnlyFans = true;
 		// this.upload_force_save = true; // forces all videos to save as uploaded before boot can do anything else
-		this.concatting = true;
-		this.concatenate_on_publish = true;
 	}
-	else if (environment=='pi') {
+	else if (process.env.NODE_ENV=='pi') {
 		this.debugging = true;
 		this.database_redis = false;
 		this.local = true;
 		this.remoteDatabase = true;
 		this.archive_on_publish = true;
-		// this.delete_on_publish = true;
 		this.concatenate_on_publish = true;
-		// this.live_enabled = true;
+		this.live_enabled = true;
 		this.backup_on_archive = true;
 		this.delete_on_backup = true;
 		this.database_retain = true;
 		this.database_type = "remote";
 		this.deleteMissing = true;
 		this.populateFromFiles = true;
+		this.upload_to_OnlyFans = true;
+		//
+		// this.delete_on_publish = true;
 		// this.upload_all_on_boot = true;
-		// this.upload_to_OnlyFans = true;
 	}
 
 	// Mount Paths

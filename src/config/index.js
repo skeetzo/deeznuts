@@ -14,7 +14,7 @@ config.port = Number(process.env.PORT || 3000);
 config.title = "Alex D.'s Nuts";
 config.siteTitle = "AlexDeezNuts.com";
 config.author = "Skeetzo";
-config.description = "Porn Star Streamer";
+config.description = "Pron Star";
 config.Google_Analytics = "UA-82463743-8";
 config.pages = ['privacy','terms','support','2257-compliance','callback', 'key'];
 config.domain = "alexdeeznuts.com";
@@ -37,7 +37,7 @@ config.defaultTime = 60; // time in seconds
 config.defaultPreviewDuration = 30;
 config.rtmpTimeout = 1000 * 30;
 if (config.debugging) config.rtmpTimeout = 0;
-config.live_occupancy = 10;
+config.live_occupancy = 50;
 config.syncInterval = 1; // in seconds
 if (config.debugging) {
 	config.defaultTime = 60*60*23+45*60;
@@ -54,8 +54,6 @@ config.blockchainCallback = config.domain+config.blockchainRoute;
 config.blockchainConfirmationLimit = 6;
 config.blockchainGapLimit = 20;
 config.blockchainCheckGap = true;
-// PayPal
-config.paypal_ips = ["64.4.248", "64.4.249", "66.211.168", "66.211.168", "173.0.84", "173.0.84", "173.0.88", "173.0.88", "173.0.92", "173.0.93", "173.0.82", "173.0.81"];
 
 // RTMP Stream
 config.streamKeyExpire = 3600000;

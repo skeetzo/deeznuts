@@ -8,14 +8,19 @@ module.exports = function() {
     try {
         localConfig = fs.readFileSync(this.local_keys_path).toString();
         localConfig = JSON.parse(localConfig);
-        localGoogle = fs.readFileSync(this.local_google_keys_path).toString();
-        localGoogle = JSON.parse(localGoogle);
         console.log('Local Keys Loaded; Loading Environment: %s', process.env.NODE_ENV);
     }
     catch (err) {
         console.log('Local Keys Not Found');
         process.exit(1);
         return;
+    }
+    try {
+        localGoogle = fs.readFileSync(this.local_google_keys_path).toString();
+        localGoogle = JSON.parse(localGoogle);    
+    }
+    catch (err) {
+        console.log("Warning: Google Keys Not Found")
     }
 
     this.deeznutsUser = {

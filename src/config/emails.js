@@ -43,6 +43,18 @@ module.exports = function() {
     }
   }
 
+  // Video Purchased
+  this.email_transaction_customer = function(transaction) {
+    return {
+      to: self.email_self,
+      from: 'Support - '+self.botName+' <support@'+self.siteTitle+'>',
+      subject: 'Transaction Confirmed!',
+      text: '<p>' + 'Your account has confirmed a transaction for: <strong>'+transaction.value+'</strong> BTC / $<strong>'+transaction.value_in_dollars+'</strong> or <strong>'+(transaction.value_in_dollars*(self.conversionRate*60))+'</strong> seconds </p>'
+          + '<br>'
+          + self.email_footer
+    }
+  }
+
   // Please Ignore if not Requested
   this.email_footer_ignore = "<p><small>If you did not request this change, please ignore this email.</small></p>"
   // Footer
