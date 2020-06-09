@@ -30,6 +30,15 @@ prepend content
   .row
     //- all videos
     if (videos_unowned)
+
+
+      //- this will simply generate a link to sort by title
+      //- note how we only have to pass the querystring param
+      //- that we want to modify here, not the entire querystring
+      a(href=paginate.href({ sort: 'title' })) Sort by title
+
+
+
       for video in videos_unowned
         .col-md-3.col-sm-4.col-xs-12
           h3.videoTitle=video.title
@@ -42,6 +51,8 @@ prepend content
   br
 
   include ../include/bitcoin
+
+  include ../include/_paginate
 
 prepend javascript
   script.

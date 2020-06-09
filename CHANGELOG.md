@@ -106,7 +106,7 @@
 	- cleanup
 	- removed PayPal
 	- added BTC Wallet from Kairos
-
+	- added paginate: needs testing
 
 **?.0.0 : ??/??/??**
 	- next live @ & schedule

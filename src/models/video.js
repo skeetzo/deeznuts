@@ -10,7 +10,6 @@ var mongoose = require('mongoose'),
     fs = require('fs'),
     fss = require('fs-extra');
 
-
 // Video Schema
 var videoSchema = new Schema({
   archived: { type: Boolean, default: false }, // unused. should be for older videos that are now for free
