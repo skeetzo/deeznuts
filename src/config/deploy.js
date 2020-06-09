@@ -6,7 +6,7 @@ module.exports = function Deploy_Config() {
 
 	this.ssl = false;
 	this.local = false;
-
+	this.Blockchain = false;
 	this.cron_enabled = false;
 	this.emailing_debugging = false;
 
@@ -87,6 +87,8 @@ module.exports = function Deploy_Config() {
 		// this.debugging_crons = true;
 		// this.upload_all_on_boot = true;
 		// this.upload_to_OnlyFans = true;
+		this.Blockchain = true;
+		this.bcoin_syncing_chain = true;
 	}
 	else if (process.env.NODE_ENV=='staging') {
 		this.cron_enabled = true;
@@ -108,6 +110,7 @@ module.exports = function Deploy_Config() {
 		// this.debugging_crons = true;
 		// this.debugging_clean_fileNames = true;
 		//
+		this.Blockchain = true;
 		this.bcoin_syncing_chain = true;
 	}
 	else if (process.env.NODE_ENV=='production') {
@@ -132,6 +135,7 @@ module.exports = function Deploy_Config() {
 		// this.upload_on_archive = true;
 		// this.upload_force_save = true; // forces all videos to save as uploaded before boot can do anything else
 		//
+		this.Blockchain = true;
 		this.bcoin_syncing_chain = true;
 		this.wallet_confirmations_required = true;
 		this.wallet_confirmations_number = 6;

@@ -11,5 +11,4 @@ OBS -> 1935
 
 ## Install
   * `git clone git@github.com:skeetzo/deeznuts`
-  * install node_modules via `npm install --save`
-  * TO DO: Setup config via `npm run-script setup`
+  * `cd deeznuts && npm install`

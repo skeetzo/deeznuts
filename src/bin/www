@@ -235,6 +235,22 @@ async.series([
       async.series(series);
     });
   },
+  // Blockchains - BCoin
+  function (step) {
+    if (!config.Blockchain) {
+      logger.warn("Skipping Blockchains");
+      return step(null);
+    }
+    logger.log("Initializing BCoin");
+    try {
+      var bcoin = require('../modules/bcoin').init(step);
+    }
+    catch(err) {
+      logger.warn("Warning: Unable to start BCoin")
+      logger.warn(err.message)
+      step(null)
+    }
+  },
   function (step) {
     spawnServer(step);
   },

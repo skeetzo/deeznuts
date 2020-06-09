@@ -1,0 +1,11 @@
+extends ../layout/page
+
+prepend content
+    h2 Archive
+    small older videos no longer for sale
+    if (videos)
+      .row
+        ul
+          for video in videos
+            li
+              a(href=video.path, download) video.title

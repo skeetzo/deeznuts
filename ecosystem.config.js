@@ -33,7 +33,7 @@ module.exports = {
       ref  : "origin/development",
       repo : "git@github.com:skeetzo/deeznuts.git",
       path : "/var/www/apps/deeznuts",
-      "post-deploy" : "npm install --unsafe-perm=true --allow-root && pm2 startOrRestart ecosystem.config.js --only deeznuts",
+      "post-deploy" : "npm install --unsafe-perm=true --allow-root && bin/setup.sh development && pm2 startOrRestart ecosystem.config.js --only deeznuts",
       env  : {
         NODE_ENV: "development",
         FORCE_COLOR: true
@@ -50,7 +50,7 @@ module.exports = {
       ref  : "origin/staging",
       repo : "git@github.com:skeetzo/deeznuts.git",
       path : "/var/www/apps/deeznuts",
-      "post-deploy" : "npm install --unsafe-perm=true --allow-root && pm2 startOrRestart ecosystem.config.js --env staging --only deeznuts",
+      "post-deploy" : "npm install --unsafe-perm=true --allow-root && bin/setup.sh staging && pm2 startOrRestart ecosystem.config.js --only deeznuts",
       env  : {
         NODE_ENV: "staging",
         FORCE_COLOR: true
@@ -67,7 +67,7 @@ module.exports = {
       ref  : "origin/production",
       repo : "git@github.com:skeetzo/deeznuts.git",
       path : "/var/www/apps/deeznuts",
-      "post-deploy" : "npm install --unsafe-perm=true --allow-root && pm2 startOrRestart ecosystem.config.js --env production --only deeznuts",
+      "post-deploy" : "npm install --unsafe-perm=true --allow-root && bin/setup.sh production && pm2 startOrRestart ecosystem.config.js --only deeznuts",
       env  : {
         NODE_ENV: "production",
         FORCE_COLOR: true
@@ -85,7 +85,7 @@ module.exports = {
       ref  : "origin/development",
       repo : "git@github.com:skeetzo/deeznuts.git",
       path : "/var/www/apps/deeznuts",
-      "post-deploy" : "/var/www/apps/deeznuts/source/bin/menu-deploy.sh && npm install && pm2 startOrRestart ecosystem.config.js --env pi --only deeznuts",
+      "post-deploy" : "/var/www/apps/deeznuts/source/bin/menu-deploy.sh && npm install && bin/setup.sh pi && pm2 startOrRestart ecosystem.config.js --env pi --only deeznuts",
       env  : {
         NODE_ENV: "pi",
         FORCE_COLOR: true

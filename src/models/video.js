@@ -13,6 +13,7 @@ var mongoose = require('mongoose'),
 
 // Video Schema
 var videoSchema = new Schema({
+  archived: { type: Boolean, default: false }, // unused. should be for older videos that are now for free
   backedUp: { type: Boolean, default: false },
   date: { type: String, default: moment(new Date()).format('MM-DD-YYYY') },
   description: { type: String, default: '' },

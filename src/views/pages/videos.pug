@@ -7,9 +7,9 @@ prepend content
   // this is a list of videos
   h3 Purchased
   hr
-  .row
+  if (videos)
+    .row
     //- users videos
-    if (videos)
       for video in videos
         .col-md-3.col-sm-4.col-xs-12
           h3.videoTitle=video.title

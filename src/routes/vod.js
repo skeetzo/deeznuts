@@ -5,6 +5,17 @@ var config = require('../config/index'),
 
 module.exports = function homeRoutes(router) {
 
+  router.get("/archive", mixins.loggedIn, function (req, res, next) {
+    var Video = require('../models/video');
+    // logger.debug('video ids: %s', req.session.user.videos);
+    Video.find({'archived':true}, function (err, videos) {
+      if (err) logger.warn(err);
+      // logger.debug('videos: %s', videos.length);
+      req.session.locals.videos = mixins.Videos(videos);
+      res.render('archive', req.session.locals);
+    });
+  });
+
   router.get("/videos", mixins.loggedIn, function (req, res, next) {
     var Video = require('../models/video');
     // logger.debug('video ids: %s', req.session.user.videos);

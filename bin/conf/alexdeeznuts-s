@@ -1,0 +1,296 @@
+# alexdeeznuts
+
+server { 
+	listen 80;
+	listen [::]:80;
+	server_name alexdeeznuts.com www.alexdeeznuts.com alexdeeznutz.com www.alexdeeznutz.com;
+	return 301 https://$server_name$request_uri;
+}
+
+server {
+	listen 443 ssl http2;
+	server_name www.alexdeeznuts.com www.alexdeeznutz.com;
+	return 301 $scheme://$server_name$request_uri;
+}
+
+server {
+	listen 8443 ssl http2;
+	server_name www.alexdeeznuts.com www.alexdeeznutz.com;
+	return 301 $scheme://$server_name:8443$request_uri;
+}
+
+server {
+	listen 8443 ssl http2;
+	listen [::]:8443 ssl http2;
+	server_name alexdeeznuts.com;
+
+	ssl_certificate /etc/letsencrypt/live/alexdeeznuts.com-0001/fullchain.pem;
+	ssl_certificate_key /etc/letsencrypt/live/alexdeeznuts.com-0001/privkey.pem;
+	ssl_trusted_certificate /etc/letsencrypt/live/alexdeeznuts.com-0001/chain.pem;
+	##
+	# SSL
+	##
+
+	# This file contains important security parameters. If you modify this file
+	# manually, Certbot will be unable to automatically provide future security
+	# updates. Instead, Certbot will print and log an error message with a path to
+	# the up-to-date file that you will need to refer to when manually updating
+	# this file.
+
+	ssl_session_cache shared:le_nginx_SSL:1m;
+	ssl_session_timeout 1440m;
+
+	ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
+	ssl_prefer_server_ciphers on;
+
+	ssl_ciphers "ECDHE-ECDSA-CHACHA20-POLY1305:ECDHE-RSA-CHACHA20-POLY1305:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-$
+
+
+	# Disable preloading HSTS for now.  You can use the commented out header line that includes
+	# the "preload" directive if you understand the implications.
+	#add_header Strict-Transport-Security "max-age=63072000; includeSubdomains; preload";
+	add_header Strict-Transport-Security "max-age=63072000; includeSubdomains";
+	add_header X-Frame-Options DENY;
+	add_header X-Content-Type-Options nosniff;
+
+	#ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem
+	ssl on;
+
+	root /var/www/apps/deeznuts/source/src/public/videos;
+
+	access_log /var/log/nginx/deeznuts-stream-access.log;
+	error_log /var/log/nginx/deeznuts-stream-error.log;
+
+	location / {
+		aio threads;
+
+  		try_files $uri @deeznuts_livestream;
+    }
+
+    location @deeznuts_livestream {
+    	proxy_ssl_session_reuse on;
+    	proxy_ssl_name "deeznutsdeeznuts_livestream";
+     	proxy_ssl_server_name on;
+
+	    proxy_http_version 1.1;
+	    proxy_set_header Host $host;
+	    proxy_set_header Upgrade $http_upgrade;
+	    proxy_set_header Connection 'upgrade';
+	    proxy_cache_bypass $http_upgrade;
+	    proxy_set_header X-Real-IP $remote_addr;
+	    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+	    proxy_set_header X-Forwarded-Proto $scheme;
+	    proxy_set_header X-NginX-Proxy true;
+	    proxy_set_header 'Access-Control-Allow-Origin' 'https://alexdeeznuts.com';
+	    proxy_set_header 'Access-Control-Allow-Headers' 'Authorization,Content-Type,Accept,Origin';
+
+		# proxy_buffering off;
+	    proxy_redirect off;
+
+	    proxy_cache streamcache;
+	    proxy_cache_bypass $http_cache_control;
+	    add_header X-Proxy-Cache $upstream_cache_status;
+
+	    gzip off;
+	    gzip_static off;
+
+	    flv;
+	    mp4;
+	    mp4_buffer_size 4M;
+	    mp4_max_buffer_size 10M;
+	    client_max_body_size 80m;
+
+	    proxy_pass https://deeznuts_livestream;
+	}
+}
+
+proxy_cache_path /tmp/nginx/streamcache levels=1:2 keys_zone=streamcache:10m inactive=60m;
+proxy_cache_key "$scheme$request_method$host$request_uri$is_args$args";
+proxy_cache_valid 200 302 10m;
+proxy_cache_valid 404 1m;
+
+server {
+	## SSL settings
+	listen 443 ssl http2;
+	listen [::]:443 ssl http2;
+	server_name alexdeeznuts.com;
+
+	ssl_certificate /etc/letsencrypt/live/alexdeeznuts.com-0001/fullchain.pem;
+	ssl_certificate_key /etc/letsencrypt/live/alexdeeznuts.com-0001/privkey.pem;
+	ssl_trusted_certificate /etc/letsencrypt/live/alexdeeznuts.com-0001/chain.pem;
+	##
+	# SSL
+	##
+
+	# This file contains important security parameters. If you modify this file
+	# manually, Certbot will be unable to automatically provide future security
+	# updates. Instead, Certbot will print and log an error message with a path to
+	# the up-to-date file that you will need to refer to when manually updating
+	# this file.
+
+	ssl_session_cache shared:le_nginx_SSL:1m;
+	ssl_session_timeout 1440m;
+
+	ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
+	ssl_prefer_server_ciphers on;
+
+	ssl_ciphers "ECDHE-ECDSA-CHACHA20-POLY1305:ECDHE-RSA-CHACHA20-POLY1305:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-$
+
+
+	# Disable preloading HSTS for now.  You can use the commented out header line that includes
+	# the "preload" directive if you understand the implications.
+	#add_header Strict-Transport-Security "max-age=63072000; includeSubdomains; preload";
+	add_header Strict-Transport-Security "max-age=63072000; includeSubdomains";
+	add_header X-Frame-Options DENY;
+	add_header X-Content-Type-Options nosniff;
+
+	#ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem
+	ssl on;
+
+	root /var/www/apps/deeznuts/source/src/public;
+
+	# Logging Settings
+	access_log /var/log/nginx/deeznuts-access.log;
+	error_log /var/log/nginx/deeznuts-error.log;
+
+	# General Site Paths
+	# Browser and robot always look for these
+	# Turn off logging for them
+	location = /favicon.ico { log_not_found off; access_log off; }
+	location = /robots.txt  { log_not_found off; access_log off; }
+
+	##
+	# Static files
+	##
+
+	# cache.appcache
+	location ~* \.(?:manifest\appcache|html?|xml|json)$ {
+		expires -1;
+	}
+
+	# Feed
+	location ~* \.(?:rss|atom)$ {
+		expires 1h;
+		add_header Cache-Control "public";
+	}
+
+	# Media: images, icons, video, audio, HTC
+	location ~* \.(?:jpg|jpeg|gif|ico|cur|gz|svg|svgz|ogg|ogv|webm|htc|flv|txt)$ {
+		expires 1M;
+		access_log off;
+		add_header Cache-Control "public";
+	}
+
+	# CSS and Javascript
+	location ~* \.(?:css|js)$ {
+		expires 1y;
+		access_log off;
+		add_header Cache-Control "public";
+	}
+
+	# LetsEncrypt
+	location ^~ /.well-known/acme-challenge/ {
+		default_type "text/plain";
+		root /var/www/letsencrypt;
+	}
+
+	location /videos/* {
+		root /opt/apps/deeznuts/videos;
+		autoindex on;
+		add_header Cache-Control public;		
+		# access_log off;
+
+		location ~* \.(js|css|png|jpg|jpeg|mp4)$ {
+			expires 7d;
+		}
+	}
+
+	location /socket.io/* {
+		root /var/www/apps/deeznuts/source/src/public;
+		access_log off;
+		add_header Cache-Control public;
+		expires 30d;
+	}
+
+	location /dist/* {
+		root /var/www/apps/deeznuts/source/src/public;
+		access_log off;
+		add_header Cache-Control public;
+		expires 30d;
+	}
+
+	location /stylesheets/* {
+		root /var/www/apps/deeznuts/source/src/public;
+		access_log off;
+		add_header Cache-Control public;
+		expires 7d;
+	}
+
+	location /favicon/* {
+		access_log off;
+		root /var/www/apps/deeznuts/source/src/public;
+		add_header Cache_Control public;
+		expires 30d;
+	}
+	
+	location /images/* {
+		root /opt/apps/deeznuts/images;
+		autoindex on;
+		add_header Cache-Control public;
+		# access_log off;
+
+		location ~* \.(js|css|png|jpg|jpeg|mp4)$ {
+			expires 7d;
+		}
+	}
+
+	location / {
+		aio threads;
+		# proxy_cache_use_stale error timeout http_500 http_502 http_503 http_504;
+		try_files $uri @deeznuts;
+	}
+
+	location @deeznuts {
+		proxy_ssl_session_reuse on;
+		proxy_ssl_name "deeznuts";
+		proxy_ssl_server_name on;
+
+		proxy_cache streamcache;
+		proxy_cache_bypass $http_cache_control;
+		proxy_cache_use_stale error timeout updating http_500 http_502 http_503 http_504;
+		proxy_cache_revalidate on;
+		proxy_cache_valid 200 302 10m;
+		proxy_cache_valid 404 1m;
+		# proxy_cache_min_uses 1;
+		proxy_cache_background_update on;
+		proxy_cache_lock on;
+		add_header X-Proxy-Cache $upstream_cache_status;
+	
+		proxy_pass https://deeznuts;
+
+		# proxy_buffering off;
+
+		proxy_set_header Host $http_host;
+		proxy_http_version 1.1;
+
+		proxy_set_header Upgrade $http_upgrade;
+		proxy_set_header Connection "upgrade";
+		proxy_cache_bypass $http_upgrade;
+
+		proxy_set_header X-Real-IP $remote_addr;
+		proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+		proxy_set_header X-Forwarded-Proto $scheme;
+		proxy_set_header X-NginX-Proxy true;
+		proxy_redirect off;
+	}
+}
+
+upstream deeznuts {
+	server 127.0.0.1:3000;
+	keepalive 16;
+}
+
+upstream deeznuts_livestream {
+	server 127.0.0.1:8643;
+	keepalive 16;
+}

@@ -1,0 +1,75 @@
+# alexdeeznuts
+
+server {
+	listen 80;
+	listen [::]:80;
+    
+    server_name alexdeeznuts.com www.alexdeeznuts.com alexdeeznutz.com www.alexdeeznutz.com;
+
+    #root /var/www/apps/alexdeeznuts;
+
+	# Logging Settings
+	access_log logs/alexdeeznuts-access.log;
+	error_log logs/alexdeeznuts-error.log;
+
+	# General Site Paths
+	# Browser and robot always look for these
+	# Turn off logging for them
+	location = /favicon.ico { log_not_found off; access_log off; }
+	location = /robots.txt  { log_not_found off; access_log off; }
+
+	##
+	# Static files
+	##
+
+	# cache.appcache
+	location ~* \.(?:manifest\appcache|html?|xml|json)$ {
+		expires -1;
+	}
+
+	# Feed
+	location ~* \.(?:rss|atom)$ {
+		expires 1h;
+		add_header Cache-Control "public";
+	}
+
+	# Media: images, icons, video, audio, HTC
+	location ~* \.(?:jpg|jpeg|gif|ico|cur|gz|svg|svgz|ogg|ogv|webm|htc|flv|txt)$ {
+		expires 1M;
+		access_log off;
+		add_header Cache-Control "public";
+	}
+
+	# CSS and Javascript
+	location ~* \.(?:css|js)$ {
+		expires 1y;
+		access_log off;
+		add_header Cache-Control "public";
+	}
+
+
+	# LetsEncrypt
+	location ^~ /.well-known/acme-challenge/ {
+		default_type "text/plain";
+		root /var/www/letsencrypt;
+	}
+
+	location / {
+		proxy_pass http://127.0.0.1:3000;
+
+		proxy_set_header Host $http_host;
+		proxy_http_version 1.1;
+
+		proxy_set_header Upgrade $http_upgrade;
+		proxy_set_header Connection "upgrade";
+		proxy_cache_bypass $http_upgrade;
+
+		proxy_set_header X-Real-IP $remote_addr;
+		proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+		proxy_set_header X-Forwarded-Proto $scheme;
+		proxy_set_header X-NginX-Proxy true;
+		proxy_redirect off;
+
+		try_files $uri $uri/ =404;
+	}
+}
