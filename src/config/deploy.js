@@ -93,10 +93,10 @@ module.exports = function Deploy_Config() {
 	else if (process.env.NODE_ENV=='staging') {
 		this.cron_enabled = true;
 		this.debugging = true;
-		this.debugging_live = true;
+		// this.debugging_live = true;
 		this.ssl = true;
-		this.Twitter = true;
-		this.delete_on_publish = true;
+		// this.Twitter = true;
+		// this.delete_on_publish = true;
 		//
 		// this.debugging_blockchain = true;
 		// this.debugging_reset_db = true;
@@ -104,14 +104,15 @@ module.exports = function Deploy_Config() {
 		// this.debugging_address = true;
 		// this.debugging_sync = true;
 		// this.remoteDatabase = true;
-		// this.archive_on_publish = true;
-		// this.backup_on_archive = true;
+		this.archive_on_publish = true;
+		this.backup_on_archive = true;
+		this.upload_to_OnlyFans = true;
 		// this.deleteMissing = true;
 		// this.debugging_crons = true;
 		// this.debugging_clean_fileNames = true;
 		//
-		this.Blockchain = true;
-		this.bcoin_syncing_chain = true;
+		// this.Blockchain = true;
+		// this.bcoin_syncing_chain = true;
 	}
 	else if (process.env.NODE_ENV=='production') {
 		this.cron_enabled = true;
