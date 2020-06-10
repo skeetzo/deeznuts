@@ -5,10 +5,11 @@ var config = require('../config/index'),
 
 const paginate = require('express-paginate');
 
-// keep this before all routes that will use pagination
-router.use(paginate.middleware(10, 50));
 
 module.exports = function homeRoutes(router) {
+  
+  // keep this before all routes that will use pagination
+  router.use(paginate.middleware(10, 50));
 
   router.get("/archive", mixins.loggedIn, function (req, res, next) {
     var Video = require('../models/video');
