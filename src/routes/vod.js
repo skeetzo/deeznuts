@@ -29,61 +29,61 @@ module.exports = function homeRoutes(router) {
     // and that you are using Node v7.6.0+ which has async/await support
     try {
 
-      const [ results, itemCount ] = await Promise.all([
-        Video.find({'hasPreview':true,'_id':{'$nin':req.session.user.videos}}).limit(req.query.limit).skip(req.skip).lean().exec(),
-        Video.count({'hasPreview':true,'_id':{'$nin':req.session.user.videos}})
-      ]);
+      // const [ results, itemCount ] = await Promise.all([
+      //   Video.find({'hasPreview':true,'_id':{'$nin':req.session.user.videos}}).limit(req.query.limit).skip(req.skip).lean().exec(),
+      //   Video.count({'hasPreview':true,'_id':{'$nin':req.session.user.videos}})
+      // ]);
 
-      const pageCount = Math.ceil(itemCount / req.query.limit);
+      // const pageCount = Math.ceil(itemCount / req.query.limit);
 
-      if (req.accepts('json')) {
-        // inspired by Stripe's API response for list objects
-        res.json({
-          object: 'list',
-          has_more: paginate.hasNextPages(req)(pageCount),
-          data: results
-        });
-      } else {
-        req.session.locals.videos = results
-        req.session.locals.pageCount = pageCount
-        req.session.locals.itemCount = itemCount
-        req.session.locals.pages = paginate.getArrayPages(req)(3, pageCount, req.query.page)
+      // if (req.accepts('json')) {
+      //   // inspired by Stripe's API response for list objects
+      //   res.json({
+      //     object: 'list',
+      //     has_more: paginate.hasNextPages(req)(pageCount),
+      //     data: results
+      //   });
+      // } else {
+      //   req.session.locals.videos = results
+      //   req.session.locals.pageCount = pageCount
+      //   req.session.locals.itemCount = itemCount
+      //   req.session.locals.pages = paginate.getArrayPages(req)(3, pageCount, req.query.page)
 
-        // res.render('videos', {
-        //   users: results,
-        //   pageCount,
-        //   itemCount,
-        //   pages: paginate.getArrayPages(req)(3, pageCount, req.query.page)
-        // });
-      }
+      //   // res.render('videos', {
+      //   //   users: results,
+      //   //   pageCount,
+      //   //   itemCount,
+      //   //   pages: paginate.getArrayPages(req)(3, pageCount, req.query.page)
+      //   // });
+      // }
 
-      const [ results2, itemCount2 ] = await Promise.all([
-        Video.find({'hasPreview':true,'_id':{'$nin':req.session.user.videos}}).limit(req.query.limit).skip(req.skip).lean().exec(),
-        Video.count({'hasPreview':true,'_id':{'$nin':req.session.user.videos}})
-      ]);
+      // const [ results2, itemCount2 ] = await Promise.all([
+      //   Video.find({'hasPreview':true,'_id':{'$nin':req.session.user.videos}}).limit(req.query.limit).skip(req.skip).lean().exec(),
+      //   Video.count({'hasPreview':true,'_id':{'$nin':req.session.user.videos}})
+      // ]);
 
-      const pageCount = Math.ceil(itemCount2 / req.query.limit);
+      // const pageCount = Math.ceil(itemCount2 / req.query.limit);
 
-      if (req.accepts('json')) {
-        // inspired by Stripe's API response for list objects
-        res.json({
-          object: 'list',
-          has_more: paginate.hasNextPages(req)(pageCount),
-          data: results2
-        });
-      } else {
-        req.session.locals.videos_unowned = results2
-        req.session.locals.pageCount_unowned = pageCount
-        req.session.locals.itemCount_unowned = itemCount2
-        req.session.locals.pages_unowned = paginate.getArrayPages(req)(3, pageCount, req.query.page)
+      // if (req.accepts('json')) {
+      //   // inspired by Stripe's API response for list objects
+      //   res.json({
+      //     object: 'list',
+      //     has_more: paginate.hasNextPages(req)(pageCount),
+      //     data: results2
+      //   });
+      // } else {
+      //   req.session.locals.videos_unowned = results2
+      //   req.session.locals.pageCount_unowned = pageCount
+      //   req.session.locals.itemCount_unowned = itemCount2
+      //   req.session.locals.pages_unowned = paginate.getArrayPages(req)(3, pageCount, req.query.page)
 
-        // res.render('videos', {
-        //   users: results,
-        //   pageCount,
-        //   itemCount,
-        //   pages: paginate.getArrayPages(req)(3, pageCount, req.query.page)
-        // });
-      }
+      //   // res.render('videos', {
+      //   //   users: results,
+      //   //   pageCount,
+      //   //   itemCount,
+      //   //   pages: paginate.getArrayPages(req)(3, pageCount, req.query.page)
+      //   // });
+      // }
 
 
     // logger.debug('video ids: %s', req.session.user.videos);
