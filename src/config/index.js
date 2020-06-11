@@ -18,10 +18,10 @@ config.description = "Pron Star";
 config.Google_Analytics = "UA-82463743-8";
 config.pages = ['privacy','terms','support','2257-compliance','callback', 'key'];
 config.domain = "alexdeeznuts.com";
-config.ssl_key = `/etc/letsencrypt/live/${config.domain}-0001/privkey.pem`;
-config.ssl_cert = `/etc/letsencrypt/live/${config.domain}-0001/fullchain.pem`;
+config.ssl_key = `/etc/letsencrypt/live/${config.domain}/privkey.pem`;
+config.ssl_cert = `/etc/letsencrypt/live/${config.domain}/fullchain.pem`;
 
-if (config.local) config.domain = "localhost";
+// if (config.local) config.domain = "localhost";
 var live_url = "wss://"+config.domain+":8443/live/stream.flv?sign=";
 // var live_url = "https://"+config.domain+":8443/live/stream/index.mpd";
 // var live_url = "https://"+config.domain+":8443/live/stream.flv?sign=";
