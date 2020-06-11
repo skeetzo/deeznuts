@@ -154,8 +154,8 @@ module.exports = function bcoin_Config() {
 	}
 	else if (process.env.NODE_ENV=="staging") {
 		this.bcoin.logLevel = "info";
-		// this.bcoin.ssl = true;
-		// this.wallet.ssl = true;
+		this.bcoin.ssl = true;
+		this.wallet.ssl = true;
 		this.wallet.network = 'testnet';
 		this.bcoin.network = 'testnet';	
 		this.wallet.memory = false;

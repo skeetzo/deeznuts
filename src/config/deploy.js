@@ -94,7 +94,7 @@ module.exports = function Deploy_Config() {
 		this.cron_enabled = true;
 		// this.debugging = true;
 		// this.debugging_live = true;
-		// this.ssl = true;
+		this.ssl = true;
 		// this.Twitter = true;
 		// this.delete_on_publish = true;
 		//
