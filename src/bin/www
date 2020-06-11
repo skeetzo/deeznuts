@@ -26,6 +26,16 @@ async.series([
     logger.log("--- Launching %s --- ", config.domain);
     step(null);
   },
+  // File Prep
+  function (step) {
+    fss.ensureDirSync(config.videosPath);
+    fss.ensureDirSync(config.imagesPath);
+    fss.ensureDirSync(path.join(config.videosPath, 'live'));
+    fss.ensureDirSync(path.join(config.videosPath, 'archived'));
+    fss.ensureDirSync(path.join(config.videosPath, 'previews'));
+    fss.ensureDirSync(path.join(config.imagesPath, 'thumbnails'));
+    step(null);
+  },
   function (step) {
     var App = require('../models/app');
     App.findOne({}, function (err, app) {
@@ -120,16 +130,6 @@ async.series([
       }
       else step(null);
     });
-  },
-  // Archive
-  function (step) {
-    fss.ensureDirSync(config.videosPath);
-    fss.ensureDirSync(config.imagesPath);
-    fss.ensureDirSync(path.join(config.videosPath, 'live'));
-    fss.ensureDirSync(path.join(config.videosPath, 'archived'));
-    fss.ensureDirSync(path.join(config.videosPath, 'previews'));
-    fss.ensureDirSync(path.join(config.imagesPath, 'thumbnails'));
-    step(null);
   },
   // Rebuild
   function (step) {

@@ -69,7 +69,7 @@ module.exports = function Deploy_Config() {
 
 	if (process.env.NODE_ENV=='development') {
 		this.cron_enabled = true;
-		this.debugging = true;
+		// this.debugging = true;
 		this.debugging_live = true;
 		this.remoteDatabase = true;
 		this.debugging_address = true;
@@ -81,13 +81,13 @@ module.exports = function Deploy_Config() {
 		this.delete_on_publish = true;
 		this.archive_on_publish = true;
 		this.backup_on_archive = true;
-		this.populateFromFiles = true;	
+		// this.populateFromFiles = true;	
 		//
 		// this.live_enabled = true;
 		// this.debugging_crons = true;
 		// this.upload_all_on_boot = true;
 		// this.upload_to_OnlyFans = true;
-		this.Blockchain = true;
+		// this.Blockchain = true;
 		this.bcoin_syncing_chain = true;
 	}
 	else if (process.env.NODE_ENV=='staging') {
