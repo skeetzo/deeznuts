@@ -140,21 +140,24 @@ userSchema.statics.stop = function (userId, callback) {
 
 userSchema.statics.generateAddress = function(userId, callback) {
   logger.log('Generating Address: %s', userId);
-  var BCoin_Wallet = require('../modules/bcoin-wallet');
-  BCoin_Wallet.getAddress(function (err, address) {
+  User.findById(userId, function (err, user) {
     if (err) return callback(err);
-    user.address = address;
-    BCoin_Wallet.createQR(address, function (err, url) {
-      if (err) logger.warn(err);
-      else user.address_qr = url;
-      user.address_added = true;
-      user.save(function (err) {
-        if (err) return step(err);
-        logger.debug('BTC address created');
-        callback(null);
+    var BCoin_Wallet = require('../modules/bcoin-wallet');
+    BCoin_Wallet.getAddress(function (err, address) {
+      if (err) return callback(err);
+      user.address = address;
+      BCoin_Wallet.createQR(address, function (err, url) {
+        if (err) logger.warn(err);
+        else user.address_qr = url;
+        user.address_added = true;
+        user.save(function (err) {
+          if (err) return step(err);
+          logger.debug('BTC address created');
+          callback(null);
+        });
       });
     });
-  });
+  })
 }
 
 // amount in satoshi, so divide by 100,000,000 to get the value in BTC

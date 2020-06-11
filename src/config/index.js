@@ -100,5 +100,6 @@ require('./keys').call(config);
 require('./logger').call(config);
 require('./emails').call(config);
 require('./crons').call(config);
+require('./bcoin').call(config);
 
 module.exports = config;

@@ -20,6 +20,7 @@ const walletOptions = {
 const walletClient = new WalletClient(walletOptions);
 const PRIMARY_WALLET = walletClient.wallet('primary');
 
+
 ////////////////////////////////////////////////////////////////////////
 
 function checkCache(value) {
@@ -106,7 +107,7 @@ module.exports.convertToBTC = function(value_in_dollar, callback) {
   });
 }
 
-function createQR(address, cb) {
+module.exports.createQR = function(address, cb) {
   var QRCode = require('qrcode');
   QRCode.toDataURL(address, function (err, url) {
     if (err) return cb(err);
@@ -115,13 +116,37 @@ function createQR(address, cb) {
   });
 }
 
-module.exports.getAddress = async function() {
+// async function getAccount(accountName, walletName) {
+//   // logger.crypto("Getting Wallet Account: %s - %s", accountName, walletName);
+//   var wallet = await getWallet(walletName);
+//   var account = await wallet.getAccount(accountName);
+//   if (!account) {
+//     logger.crypto("Creating Wallet Account: %s", accountName);
+//     account = await wallet.createAccount(accountName, {name:accountName});
+//   }
+//   // else logger.crypto("Found Wallet Account: %s", accountName);
+//   if (!account) logger.warn("Warning: Unable to create account");
+//   // logger.debug(account);
+//   return account;
+// }
+// module.exports.getAccount = getAccount;
+
+// async function getAccounts(walletName) {
+//   // logger.crypto("Getting Wallet Accounts: %s", walletName);
+//   var wallet = await getWallet(walletName);
+//   const result = await wallet.getAccounts();
+//   // logger.crypto(result);
+//   return result;
+// }
+// module.exports.getAccounts = getAccounts;
+
+module.exports.getAddress = async function(cb) {
   // logger.crypto("Getting Address: %s - %s - %s", accountName, walletName, i);
   var wallet = await getWallet();
-  const result = await wallet.createAddress();
+  const result = await wallet.createAddress("default");
   var address = result.address;
-  // logger.crypto("address: %s", address);
-  return address;
+  logger.crypto("address: %s", address);
+  return cb(null, address);
 }
 
 module.exports.getBalance = async function () {
@@ -133,18 +158,21 @@ module.exports.getBalance = async function () {
 }
 
 async function getWallet() {
-  var result = await walletClient.getWallets();
+  // return await walletClient.createWallet('primary');
+
+  // var result = await walletClient.getWallets();
   // logger.log('Wallets Available: %s', result);
-  var wallet = walletClient.wallet();
+  // return PRIMARY_WALLET
+  var wallet = walletClient.wallet("primary");
   const info = await wallet.getInfo();
   // logger.debug('wallet info: %s', JSON.stringify(info, null, 4));
-  if (!wallet||!info) {
-    logger.warn("Wallet Not Found: %s", );
-    logger.crypto("Creating Wallet: %s", );
-    wallet = await walletClient.createWallet();
-    wallet = walletClient.wallet();
-  }
-  // else logger.crypto("Wallet Found: %s", walletName);
+  // if (!wallet||!info) {
+  //   logger.warn("Wallet Not Found: %s", );
+  //   logger.crypto("Creating Wallet: %s", );
+  //   wallet = await walletClient.createWallet();
+  //   wallet = walletClient.wallet();
+  // }
+  // else logger.crypto("Wallet Found: primary");
   // result = await wallet.getAccounts();
   // logger.debug('accounts: %s', result);
   return wallet;
@@ -167,10 +195,6 @@ async function getWalletHistory() {
   return results;
 }
 module.exports.getWalletHistory = getWalletHistory;
-
-
-
-
 
 
 

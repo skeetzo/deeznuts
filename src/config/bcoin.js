@@ -128,8 +128,8 @@ module.exports = function bcoin_Config() {
 		this.bcoin.selfish = true; // Enable "selfish" mode (no relaying of txes or blocks) (default = false).	
 		this.wallet.memory = false;
 		this.bcoin.memory = false;
-		// this.bcoin.prefix = '~/.bcoin';
-		// this.wallet.prefix = '~/.bcoin';
+		this.bcoin.prefix = '~/.bcoin';
+		this.wallet.prefix = '~/.bcoin';
 		// this.wallet.network = "main";
 		// this.bcoin.network = "main";
 		// this.bcoin.logLevel = "error";

@@ -3,6 +3,8 @@ var config = require('../config/index'),
     _ = require('underscore'),
     mixins = require('../modules/mixins');
 
+var Video = require('../models/video');
+
 const paginate = require('express-paginate');
 
 
@@ -12,7 +14,6 @@ module.exports = function homeRoutes(router) {
   router.use(paginate.middleware(10, 50));
 
   router.get("/archive", mixins.loggedIn, function (req, res, next) {
-    var Video = require('../models/video');
     // logger.debug('video ids: %s', req.session.user.videos);
     Video.find({'archived':true}, function (err, videos) {
       if (err) logger.warn(err);
@@ -23,116 +24,39 @@ module.exports = function homeRoutes(router) {
   });
 
   router.get("/videos", mixins.loggedIn, function (req, res, next) {
-    var Video = require('../models/video');
 
-    // This example assumes you've previously defined `Users`
-    // as `const Users = db.model('Users')` if you are using `mongoose`
-    // and that you are using Node v7.6.0+ which has async/await support
-    try {
+    // pagination  
+    // require('async').series([
+    //   function (step) {
+    //     paginater(req, res, function (err) {
+    //       if (err) logger.warn(err);
+    //       step(null);
+    //     });
+    //   },
+    //   function (step) {
+    //     paginater(req, res, function (err) {
+    //       if (err) logger.warn(err);
+    //       step(null);
+    //     });
+    //   },
+    //   function (step) {
+    //     res.render('videos', req.session.locals);
+    //   }
+    // ])
 
-      // const [ results, itemCount ] = await Promise.all([
-      //   Video.find({'hasPreview':true,'_id':{'$nin':req.session.user.videos}}).limit(req.query.limit).skip(req.skip).lean().exec(),
-      //   Video.count({'hasPreview':true,'_id':{'$nin':req.session.user.videos}})
-      // ]);
-
-      // const pageCount = Math.ceil(itemCount / req.query.limit);
-
-      // if (req.accepts('json')) {
-      //   // inspired by Stripe's API response for list objects
-      //   res.json({
-      //     object: 'list',
-      //     has_more: paginate.hasNextPages(req)(pageCount),
-      //     data: results
-      //   });
-      // } else {
-      //   req.session.locals.videos = results
-      //   req.session.locals.pageCount = pageCount
-      //   req.session.locals.itemCount = itemCount
-      //   req.session.locals.pages = paginate.getArrayPages(req)(3, pageCount, req.query.page)
-
-      //   // res.render('videos', {
-      //   //   users: results,
-      //   //   pageCount,
-      //   //   itemCount,
-      //   //   pages: paginate.getArrayPages(req)(3, pageCount, req.query.page)
-      //   // });
-      // }
-
-      // const [ results2, itemCount2 ] = await Promise.all([
-      //   Video.find({'hasPreview':true,'_id':{'$nin':req.session.user.videos}}).limit(req.query.limit).skip(req.skip).lean().exec(),
-      //   Video.count({'hasPreview':true,'_id':{'$nin':req.session.user.videos}})
-      // ]);
-
-      // const pageCount = Math.ceil(itemCount2 / req.query.limit);
-
-      // if (req.accepts('json')) {
-      //   // inspired by Stripe's API response for list objects
-      //   res.json({
-      //     object: 'list',
-      //     has_more: paginate.hasNextPages(req)(pageCount),
-      //     data: results2
-      //   });
-      // } else {
-      //   req.session.locals.videos_unowned = results2
-      //   req.session.locals.pageCount_unowned = pageCount
-      //   req.session.locals.itemCount_unowned = itemCount2
-      //   req.session.locals.pages_unowned = paginate.getArrayPages(req)(3, pageCount, req.query.page)
-
-      //   // res.render('videos', {
-      //   //   users: results,
-      //   //   pageCount,
-      //   //   itemCount,
-      //   //   pages: paginate.getArrayPages(req)(3, pageCount, req.query.page)
-      //   // });
-      // }
-
-
-    // logger.debug('video ids: %s', req.session.user.videos);
-    // Video.find({'_id':{'$in':req.session.user.videos}}, function (err, videos) {
-      // if (err) logger.warn(err);
-      // logger.debug('videos: %s', videos.length);
-      // req.session.locals.videos = mixins.Videos(videos);
-      req.session.locals.videos = mixins.Videos(results);
-      // Video.find({'hasPreview':true,'_id':{'$nin':req.session.user.videos}}, function (err, videos_unowned) {
-        // if (err) logger.warn(err);
-        // logger.debug('videos_unowned: %s', videos_unowned.length);
-        req.session.locals.videos_unowned = mixins.Video_Previews(results2);
-        // req.session.locals.videos_unowned = mixins.Video_Previews(videos_unowned);
-        if (videos.length==0&&videos_unowned.length>0) req.session.locals.message = 'Purchase a video below!';
+    logger.debug('video ids: %s', req.session.user.videos);
+    Video.find({'_id':{'$in':req.session.user.videos}}, function (err, videos) {
+      if (err) logger.warn(err);
+      logger.debug('videos: %s', videos.length);
+      req.session.locals.videos = mixins.Videos(videos);
+      Video.find({'hasPreview':true,'_id':{'$nin':req.session.user.videos}}, function (err, videos_unowned) {
+        if (err) logger.warn(err);
+        logger.debug('videos_unowned: %s', videos_unowned.length);
+        req.session.locals.videos_unowned = mixins.Video_Previews(videos_unowned);
+        if (req.session.locals.videos.length==0&&req.session.locals.videos_unowned.length>0) req.session.locals.message = 'Purchase a video below!';
         res.render('videos', req.session.locals);
-      // });
-    // });
-
-    } catch (err) {
-      next(err);
-    }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+      });
+    });
   });
 
   router.post("/buy", mixins.loggedIn,  function (req, res, next) {
@@ -185,4 +109,63 @@ module.exports = function homeRoutes(router) {
   //   });
   // });
 
+}
+
+
+
+async function paginater(req, res, callback) {
+  try {
+
+    const [ results, itemCount, results2, itemCount2 ] = await Promise.all([
+      Video.find({'hasPreview':true}).limit(req.query.limit).skip(req.skip).lean().exec(),
+      Video.count({'hasPreview':true}),
+      Video.find({'hasPreview':true,'_id':{'$nin':req.session.user.videos}}).limit(req.query.limit).skip(req.skip).lean().exec(),
+      Video.count({'hasPreview':true,'_id':{'$nin':req.session.user.videos}})
+    ]);
+
+    const pageCount = Math.ceil(itemCount / req.query.limit);
+    const pageCount2 = Math.ceil(itemCount2 / req.query.limit);
+
+    if (req.accepts('json')) {
+      // inspired by Stripe's API response for list objects
+      res.json({
+        object: 'list',
+        has_more: paginate.hasNextPages(req)(pageCount),
+        data: results
+      });
+    } else {
+      req.session.locals.videos = mixins.Videos(results)
+      req.session.locals.pageCount = pageCount
+      req.session.locals.itemCount = itemCount
+      req.session.locals.pages = paginate.getArrayPages(req)(3, pageCount, req.query.page)
+
+    } 
+
+    if (req.accepts('json')) {
+      // inspired by Stripe's API response for list objects
+      res.json({
+        object: 'list',
+        has_more: paginate.hasNextPages(req)(pageCount2),
+        data: results2
+      });
+    } else {
+
+      req.session.locals.videos = mixins.Videos(results2)
+      req.session.locals.pageCount_unowned = pageCount2
+      req.session.locals.itemCount_unowned = itemCount2
+      req.session.locals.pages_unowned = paginate.getArrayPages(req)(3, pageCount2, req.query.page)
+
+      // res.render('videos', {
+      //   users: results,
+      //   pageCount,
+      //   itemCount,
+      //   pages: paginate.getArrayPages(req)(3, pageCount, req.query.page)
+      // });
+    }
+
+  } catch (err) {
+    // callback(err);
+    logger.warn(err);
+  }
+  callback(null)
 }

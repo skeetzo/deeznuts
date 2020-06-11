@@ -6,7 +6,7 @@
   "author": "Skeetzo",
   "main": "src/bin/www",
   "scripts": {
-    "install": "bin/install.sh",
+    "install": "bin/install-bcoin.sh",
     "postinstall": "gulp",
     "start": "node src/bin/www"
   },
@@ -32,6 +32,7 @@
     "@fortawesome/fontawesome-free": "^5.11.2",
     "async": "^2.6.3",
     "base64url": "^3.0.1",
+    "bclient": "^0.1.7",
     "bcrypt-nodejs": "0.0.3",
     "blockchain.info": "^2.12.1",
     "body-parser": "^1.19.0",
