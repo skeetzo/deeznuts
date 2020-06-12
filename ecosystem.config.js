@@ -4,7 +4,7 @@ let HOST_PI = "192.168.1.69"
 module.exports = {
   apps : [{
     name      : 'deeznuts',
-    // interpreter      : "node@11.15.0",
+    interpreter: "node@11.15.0",
     script    : 'npm',
     args      : ['start'],
     cwd       : '/var/www/apps/deeznuts/source',
@@ -33,7 +33,7 @@ module.exports = {
       ref  : "origin/development",
       repo : "git@github.com:skeetzo/deeznuts.git",
       path : "/var/www/apps/deeznuts",
-      "post-deploy" : "npm install --unsafe-perm=true --allow-root && bin/setup.sh development && pm2 startOrRestart ecosystem.config.js --only deeznuts",
+      "post-deploy" : "npm install --unsafe-perm=true --allow-root && bin/start-eth.sh light && bin/setup.sh development && pm2 startOrRestart ecosystem.config.js --only deeznuts",
       env  : {
         NODE_ENV: "development",
         FORCE_COLOR: true
@@ -50,7 +50,7 @@ module.exports = {
       ref  : "origin/staging",
       repo : "git@github.com:skeetzo/deeznuts.git",
       path : "/var/www/apps/deeznuts",
-      "post-deploy" : "npm install --unsafe-perm=true --allow-root && bin/setup.sh staging && pm2 startOrRestart ecosystem.config.js --only deeznuts",
+      "post-deploy" : "npm install --unsafe-perm=true --allow-root && bin/start-eth.sh && bin/setup.sh staging && pm2 startOrRestart ecosystem.config.js --only deeznuts",
       env  : {
         NODE_ENV: "staging",
         FORCE_COLOR: true
@@ -67,7 +67,7 @@ module.exports = {
       ref  : "origin/production",
       repo : "git@github.com:skeetzo/deeznuts.git",
       path : "/var/www/apps/deeznuts",
-      "post-deploy" : "npm install --unsafe-perm=true --allow-root && bin/setup.sh production && pm2 startOrRestart ecosystem.config.js --only deeznuts",
+      "post-deploy" : "npm install --unsafe-perm=true --allow-root && bin/start-eth.sh full && bin/setup.sh production && pm2 startOrRestart ecosystem.config.js --only deeznuts",
       env  : {
         NODE_ENV: "production",
         FORCE_COLOR: true

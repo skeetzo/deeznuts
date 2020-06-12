@@ -21,5 +21,5 @@ then
     echo "Running"
 else
     echo "Stopped"
-    nginx
+    sudo nginx
 fi
