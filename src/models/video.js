@@ -301,7 +301,7 @@ videoSchema.statics.deleteOnPublish = function(callback) {
   fs.readdir(stream_path, function(err, items) {
     if (!items) return logger.warn("no streams found to delete");
     for (var i=0; i<items.length; i++) {
-      fs.unlinkSync(items[i]);
+      fs.unlinkSync(path.join(config.videosPath, '/live/stream', items[i]));
       logger.debug('deleted: %s', items[i]);
     }
     callback(null);

@@ -125,7 +125,7 @@ nms.on('donePublish', (id, StreamPath, args) => {
           Video.deleteOnPublish(function (err) {
             if (err) logger.warn(err);
             else logger.log("Stream Deleted Successfully!");
-          })
+          });
         }
         else if (config.archive_on_publish) {
           logger.log("Archiving on Publish");
