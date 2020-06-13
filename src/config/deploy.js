@@ -110,6 +110,7 @@ module.exports = function Deploy_Config() {
 		// this.deleteMissing = true;
 		// this.debugging_crons = true;
 		// this.debugging_clean_fileNames = true;
+		this.upload_all_on_boot = true;
 		//
 		// this.Blockchain = true;
 		// this.bcoin_syncing_chain = true;
