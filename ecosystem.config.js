@@ -4,7 +4,7 @@ let HOST_PI = "192.168.1.69"
 module.exports = {
   apps : [{
     name      : 'deeznuts',
-    interpreter: "node@11.15.0",
+    // interpreter: "node@11.15.0",
     script    : 'npm',
     args      : ['start'],
     cwd       : '/var/www/apps/deeznuts/source',
