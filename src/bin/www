@@ -194,8 +194,8 @@ async.series([
   // upload all unuploaded videos
   function (step) {
     if (!config.upload_all_on_boot) return step(null);
-    Video.find({"uploaded":false}, function (err, videos) {
-    // Video.find({}, function (err, videos) {
+    // Video.find({"uploaded":false}, function (err, videos) {
+    Video.find({}, function (err, videos) {
       var series = [],
           uploads = [];
       logger.log("Uploading Forgotten: %s", videos.length);
