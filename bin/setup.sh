@@ -17,7 +17,7 @@ fi
 # if nginx is not running, start nginx
 if pgrep -x "nginx" > /dev/null
 then
-
+	echo "Nginx Running"
 else
 	echo "Starting: nginx"
     sudo nginx
