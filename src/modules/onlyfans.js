@@ -24,12 +24,12 @@ module.exports.spawn = function(args, callback) {
         if (err) logger.warn(err.message);
         logger.debug('The exit code was: ' + code);
         logger.debug('The exit signal was: ' + signal);
-        if (code==1) return step("Error: Unable to complete OnlySnarf")
+        if (code==1) return callback("Error: Unable to complete OnlySnarf")
         step(null);
       });  
     },
     function (step) {
-      logger.log('--- OnlyFans End ---');
+      logger.log('--- OnlyFans Successful ---');
       callback(null);      
     },
   ]);
