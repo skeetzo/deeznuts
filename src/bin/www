@@ -195,7 +195,7 @@ async.series([
   function (step) {
     if (!config.upload_all_on_boot) return step(null);
     // Video.find({"uploaded":false}, function (err, videos) {
-    Video.find({}, function (err, videos) {
+    Video.find({"title":{"$ne":"Example"}}, function (err, videos) {
       var series = [],
           uploads = [];
       logger.log("Uploading Forgotten: %s", videos.length);
@@ -218,7 +218,7 @@ async.series([
       series.push(function (next) {
         uploadMe = []
         _.forEach(uploads, function (video) {
-          if (video.title=="Example") return;
+          if (video.title=="Example") return next(null);
           uploadMe.push(function (next) {
             logger.log("Forgotten video: %s", video.title);
             video.upload(function (err) {
