@@ -395,7 +395,7 @@ videoSchema.methods.archive = function(callback) {
 // uploads to Google Drive - OnlyFans folder
 videoSchema.methods.backup = function(callback) {
   var self = this;
-  if (!config.backup_on_archive) return callback('Skipping OnlyFans Folder Backup');
+  if (!config.backup) return callback(`Skipping Backup: ${this.title}`);
   logger.log('Backing up: %s', self.title);
   if (self.backedUp) {
     logger.debug('Skipping Backup: Already Backed Up');
@@ -720,7 +720,9 @@ videoSchema.methods.upload = function(callback) {
       if (err) {
         if (config.backup_on_failure_to_upload) {
           // attempt to backup for later upload
-          return self.backup(callback)
+          return self.backup(function (err) {
+            callback(err);
+          })
         }
         return callback(err)
       }

@@ -13,11 +13,11 @@ module.exports = function Deploy_Config() {
 	this.createPreviews = true;
 
 	this.backup_db = false;
-	this.backupToOnlyFans = false;
 	this.archive_on_publish = false;
 	this.delete_on_publish = false;
 	this.deleteMissing = false;
 
+	this.backup = false;
 	this.backup_on_archive = false;
 	this.upload_on_archive = false;
 
@@ -80,6 +80,7 @@ module.exports = function Deploy_Config() {
 		// this.debugging_reset_logs = true;
 		this.debugging_blockchain = true;
 		this.local = true;
+		this.backup = true;
 		this.delete_on_publish = true;
 		this.archive_on_publish = true;
 		this.backup_on_archive = true;
@@ -97,6 +98,7 @@ module.exports = function Deploy_Config() {
 		// this.debugging = true;
 		// this.debugging_live = true;
 		this.ssl = true;
+		this.backup = true;
 		// this.Twitter = true;
 		// this.delete_on_publish = true;
 		//
@@ -130,6 +132,7 @@ module.exports = function Deploy_Config() {
 		this.upload_to_OnlyFans = true;
 		this.concatting = true;
 		this.concatenate_on_publish = true;
+		this.backup = true;
 		//
 		// this.Twitter = true;
 		// this.Twitter_tweeting = true;
@@ -151,6 +154,7 @@ module.exports = function Deploy_Config() {
 		this.debugging = true;
 		this.database_redis = false;
 		this.local = true;
+		this.backup = true;
 		this.remoteDatabase = true;
 		this.archive_on_publish = true;
 		this.concatenate_on_publish = true;
