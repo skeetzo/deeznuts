@@ -715,7 +715,7 @@ videoSchema.methods.upload = function(callback) {
   if (path_.indexOf(config.videosPath)==-1)
     path_ = path.join(config.videosPath, 'archived/stream', path_);
   logger.debug(path_)
-  OnlyFans.spawn(['-action','post','-text',`DeezNuts - ${self.title}`,'-keywords','deeznuts','-skip-backup','-skip-reduce','-force-upload', path_], 
+  OnlyFans.spawn(['-action','post','-text',`DeezNuts - ${self.title}`,'-keywords','deeznuts','-force-upload', path_], 
     function (err) {
       if (err) {
         if (config.backup_on_failure_to_upload) {
