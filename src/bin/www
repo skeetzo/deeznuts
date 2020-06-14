@@ -191,10 +191,54 @@ async.series([
       step(null);
     },3000);
   },
+  // backup all unuploaded videos
+  function (step) {
+    if (!config.backup_all_on_boot) return step(null);
+    // Video.find({"backedUp":false,"title":{"$ne":"Example"}}, function (err, videos) {
+    Video.find({"title":{"$ne":"Example"}}, function (err, videos) {
+      var series = [],
+          uploads = [];
+      logger.log("Backing up Forgotten: %s", videos.length);
+      _.forEach(videos, function (video) {
+        series.push(function (next) {
+          video.save(function (err) {
+            if (err) {
+              logger.warn(err);
+              return next(null);
+            }
+            // var date_ = moment(new Date(video.date));
+            // var otherDate = moment(new Date(2019,11,1));
+            // logger.debug("date: %s - %s:limit", date_.format('MM-DD-YYYY'), otherDate.format('MM-DD-YYYY'));
+            // if (date_<otherDate) return next(null);
+            uploads.push(video)
+            next(null);
+          })
+        });
+      });
+      series.push(function (next) {
+        uploadMe = []
+        _.forEach(uploads, function (video) {
+          if (video.title=="Example") return next(null);
+          uploadMe.push(function (next) {
+            logger.log("Forgotten video: %s", video.title);
+            video.upload(function (err) {
+              if (err) logger.warn(err);
+              next(null);
+            });
+          });
+        });
+        uploads.push(function (next) {
+          step(null);
+        })
+        async.series(uploadMe)
+      });
+      async.series(series);
+    });
+  },
   // upload all unuploaded videos
   function (step) {
     if (!config.upload_all_on_boot) return step(null);
-    // Video.find({"uploaded":false}, function (err, videos) {
+    // Video.find({"uploaded":false,"title":{"$ne":"Example"}}, function (err, videos) {
     Video.find({"title":{"$ne":"Example"}}, function (err, videos) {
       var series = [],
           uploads = [];
