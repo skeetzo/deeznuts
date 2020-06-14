@@ -104,6 +104,7 @@ module.exports = function Deploy_Config() {
 		// this.debugging_address = true;
 		// this.debugging_sync = true;
 		// this.remoteDatabase = true;
+		this.populateFromFiles = true;
 		this.archive_on_publish = true;
 		this.backup_on_archive = true;
 		this.upload_to_OnlyFans = true;
