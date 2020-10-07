@@ -50,6 +50,10 @@ import re
 import http
 from datetime import datetime
 
+USER = os.getenv('USER')
+if str(os.getenv('SUDO_USER')) != "root" and str(os.getenv('SUDO_USER')) != "None":
+  USER = os.getenv('SUDO_USER')
+
 def get_command_msg(id):
 	return "_GPHD_:%u:%u:%d:%1lf\n" % (0, 0, 2, 0)
 
@@ -68,7 +72,7 @@ SAVE_LOCATION="/opt/apps/deeznuts/videos/live/stream/"
 LOGLEVEL="debug"
 DESTINATION="shower"
 MODE="remote"
-REMOTE_IP = "104.34.128.2"
+HOST = "127.0.0.1"
 
 # arguments
 i = 0
@@ -79,14 +83,14 @@ while i < len(sys.argv):
 		LOGLEVEL = str(sys.argv[i+1])
 	if '-mode' in str(sys.argv[i]):
 		MODE = str(sys.argv[i+1])
-	if '-ip' in str(sys.argv[i]):
-		REMOTE_IP = str(sys.argv[i+1])
+	if '-host' in str(sys.argv[i]):
+		HOST = str(sys.argv[i+1])
 	i += 1
 
 print("LOGLEVEL: "+LOGLEVEL)
 print("MODE: "+MODE)
-print("HOST: "+REMOTE_IP)
-print("DESTINATION: "+DESTINATION)
+print("HOST: "+HOST)
+print("STREAM: "+DESTINATION)
 print("Connecting to GoPro Media...")
 
 def gopro_live():
@@ -143,19 +147,17 @@ def gopro_live():
 				TS_PARAMS = " -acodec copy -vcodec copy "
 			else:
 				TS_PARAMS = ""
-			SAVE_LOCATION = "rtmp://127.0.0.1:1935"
+			SAVE_LOCATION_STREAM = "rtmp://127.0.0.1:1935"
+			SAVE_LOCATION = "/home/{}".format(USER)
 			LOCAL_LOCATION = SAVE_LOCATION + SAVE_FILENAME + "." + SAVE_FORMAT
 			# print("Recording locally: " + str(SAVE))
 			print("Note: Preview is not available when saving the stream.")
-			if str(MODE) == "remote":
-				print("Recording remotely: " + str(DESTINATION))
-				SAVE_LOCATION = "rtmp://{}:1935".format(REMOTE_IP)
+			if str(MODE) == "stream":
+				print("Recording stream: " + str(DESTINATION))
+				SAVE_LOCATION = "rtmp://{}:1935".format(HOST)
 			elif str(MODE) == "local":
 				print("Recording locally: " + str(DESTINATION))
 				SAVE_LOCATION = LOCAL_LOCATION
-			elif str(MODE) == "remote-local":
-				print("Recording remote-locally: " + str(DESTINATION))
-				SAVE_LOCATION = "rtmp://127.0.0.1:1935"
 			else:
 				print("Recording location unknown: " + str(DESTINATION))
 			print("Save Location: " + str(SAVE_LOCATION))

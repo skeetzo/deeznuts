@@ -21,8 +21,8 @@ const piWifi = require('pi-wifi');
 const { exec } = require("child_process");
 
 var config = require('../config/index');
-const logger = config.logger;
-require('../modules/log').prepare();
+// const logger = config.logger;
+// require('../modules/log').prepare();
 
 var pyshell;
 var GOPRO_SSID = "Whorus";
@@ -97,13 +97,13 @@ function main() {
       toggleStream(handle);
     else if (answer==4)
       toggleStream(function (err) {
-        if (err) logger.warn(err);
+        if (err) console.warn(err);
         setTimeout(function () {
           process.exit(1);
         },3000)
       });
     else {
-      logger.warn("Warning: Missing selection choice")
+      console.warn("Warning: Missing selection choice")
       return main();
     }
   });
@@ -157,15 +157,15 @@ function twitter() {
 
 function menu() {
   // show main menu
-  logger.log(colorize("Select:", 'menu'));
-  logger.log(colorize("[ 0 ] ", 'blue') + "Connect");
-  logger.log(colorize("[ 1 ] ", 'blue') + "Options"); 
-  logger.log(colorize("[ 2 ] ", 'blue') + "Twitter");
+  console.log(colorize("Select:", 'menu'));
+  console.log(colorize("[ 0 ] ", 'blue') + "Connect");
+  console.log(colorize("[ 1 ] ", 'blue') + "Options"); 
+  console.log(colorize("[ 2 ] ", 'blue') + "Twitter");
   if (!CONNECTED)
-    logger.log(colorize("[ 3 ] ", 'blue') + "Stream");
+    console.log(colorize("[ 3 ] ", 'blue') + "Stream");
   else {
-    logger.log(colorize("[ 3 ] ", 'pink') + "End Stream");
-    logger.log(colorize("[ 4 ] ", 'pink') + "End & Quit");
+    console.log(colorize("[ 3 ] ", 'pink') + "End Stream");
+    console.log(colorize("[ 4 ] ", 'pink') + "End & Quit");
   }
 }
 
@@ -177,38 +177,38 @@ function showSettings() {
 }
 
 function optionsMenu(cb) {  
-  logger.log(colorize("Set:", 'menu'));
-  logger.log(colorize("[ 0 ] ", 'blue') + "Back");
-  logger.log(colorize("[ 1 ] ", 'blue') + "Destination");
-  logger.log(colorize("[ 2 ] ", 'blue') + "Mode");
-  logger.log(colorize("[ 3 ] ", 'blue') + "Tweeting");
+  console.log(colorize("Set:", 'menu'));
+  console.log(colorize("[ 0 ] ", 'blue') + "Back");
+  console.log(colorize("[ 1 ] ", 'blue') + "Destination");
+  console.log(colorize("[ 2 ] ", 'blue') + "Mode");
+  console.log(colorize("[ 3 ] ", 'blue') + "Tweeting");
 }
 
 function twitterMenu(cb) {
-  logger.log(colorize("Set:", 'menu'));
-  logger.log(colorize("[ 0 ] ", 'blue') + "Back");
-  logger.log(colorize("[ 1 ] ", 'blue') + "Tweet");
-  logger.log(colorize("[ 2 ] ", 'blue') + "Tweet: Live");
+  console.log(colorize("Set:", 'menu'));
+  console.log(colorize("[ 0 ] ", 'blue') + "Back");
+  console.log(colorize("[ 1 ] ", 'blue') + "Tweet");
+  console.log(colorize("[ 2 ] ", 'blue') + "Tweet: Live");
   if (!CONNECTED)
-    logger.log(colorize("[ 3 ] ", 'blue') + "Tweet and Toggle");
-  logger.log(colorize("[ 4 ] ", 'blue') + "Delete Tweet");
+    console.log(colorize("[ 3 ] ", 'blue') + "Tweet and Toggle");
+  console.log(colorize("[ 4 ] ", 'blue') + "Delete Tweet");
 }
 
 function handle(err) {
-  if (err) logger.log(err);
+  if (err) console.log(err);
   setTimeout((step) => {main()}, 10000);    
 }
 
 //////
 
 function checkWiFi(callback) {
-  logger.log("Checking WiFi...");
+  console.log("Checking WiFi...");
   WIFI = "Disconnected"
   async.series([
     function (step) {
       piWifi.check(GOPRO_SSID, function(err, result) {
         if (err) return callback(err.message);
-        logger.debug(result);
+        console.debug(result);
         if (result&&result.selected) 
           WIFI = GOPRO_SSID;
         else
@@ -219,14 +219,14 @@ function checkWiFi(callback) {
     function (step) {
       piWifi.status(goProInterface, function (err, status) {
         if (err) return callback(err);
-        logger.debug(status);
+        console.debug(status);
         if (status.ssid && status.ssid == GOPRO_SSID && status.wpa_state && status.wpa_state == "COMPLETED")
           WIFI = GOPRO_SSID;
         step(null);
       });  
     },
     function (step) {
-      logger.log(`GoPro WiFi - ${WIFI}`);
+      console.log(`GoPro WiFi - ${WIFI}`);
       callback(null);
     }
   ]);
@@ -234,7 +234,7 @@ function checkWiFi(callback) {
 
 var retryCount = 0;
 function connect(callback) {
-  logger.log('Reconnecting to GoPro...');
+  console.log('Reconnecting to GoPro...');
   async.series([
     function (step) {
       return step(null);
@@ -244,8 +244,8 @@ function connect(callback) {
       //
       // piWifi.listInterfaces(function (err, interfacesArray) {
       //   if (err) {
-      //     logger.debug(err.message);
-      //     logger.warn("Unable to find interfaces");
+      //     console.debug(err.message);
+      //     console.warn("Unable to find interfaces");
       //     return callback(null)
       //   }
       //   console.log(interfacesArray); // ['eth0','wlan0','wlan1']
@@ -294,17 +294,17 @@ function connect(callback) {
       step(null);
     },
     // function (step) {
-    //   logger.debug("restarting interfaces");
+    //   console.debug("restarting interfaces");
     //   piWifi.restartInterface(goProInterface, function (err) {
     //     if (err) {
-    //       logger.debug(err);
+    //       console.debug(err);
     //       if (retryCount<10) {
     //         retryCount++;
     //         return connect(callback);
     //       }
     //       else {
     //         retryCount = 0;
-    //         logger.warn(err);
+    //         console.warn(err);
     //         return step(null);
     //       }
     //     }
@@ -313,106 +313,106 @@ function connect(callback) {
     // },
     // function (step) {
     //   // doesn't work so running shell command instead to delete wlan0 / GoPro iface
-    //   logger.debug("setting default interface (not working)")
+    //   console.debug("setting default interface (not working)")
     //   piWifi.setCurrentInterface(streamInterface, function (err) {
     //     if (err) return callback(err);
     //     step(null);
     //   });
     // },
     // function (step) {
-    //   logger.log("waiting 10 sec...");
+    //   console.log("waiting 10 sec...");
     //   setTimeout(function () {step(null)}, 10000);
     // },
     function (step) {
-      logger.debug("flushing network: wlan0");
+      console.debug("flushing network: wlan0");
       exec("sudo /sbin/ip addr flush dev wlan0", (error, stdout, stderr) => {
-        if (error) logger.warn(error.message);
-        if (stderr) logger.debug(stderr);
-        // logger.log(stdout);
+        if (error) console.warn(error.message);
+        if (stderr) console.debug(stderr);
+        // console.log(stdout);
         step(null);
       });
     },
     function (step) {
-      logger.debug("flushing network: wlan1");
+      console.debug("flushing network: wlan1");
       exec("sudo /sbin/ip addr flush dev wlan1", (error, stdout, stderr) => {
-        if (error) logger.warn(error.message);
-        if (stderr) logger.debug(stderr);
-        // logger.log(stdout);
+        if (error) console.warn(error.message);
+        if (stderr) console.debug(stderr);
+        // console.log(stdout);
         step(null);
       });
     },
     function (step) {
-      logger.debug("waiting 3 sec...");
+      console.debug("waiting 3 sec...");
       setTimeout(function () {step(null)}, 3000);
     },
     function (step) {
-      logger.debug("bringing down wlan0");
+      console.debug("bringing down wlan0");
       exec("sudo /sbin/ifdown wlan0 --force", (error, stdout, stderr) => {
-        if (error) logger.warn(error.message);
-        if (stderr) logger.debug(stderr);
-        logger.log(stdout);
+        if (error) console.warn(error.message);
+        if (stderr) console.debug(stderr);
+        console.log(stdout);
         step(null);
       });
     },
     function (step) {
-      logger.debug("bringing up wlan0")
+      console.debug("bringing up wlan0")
       exec("sudo /sbin/ifup wlan0 --force", (error, stdout, stderr) => {
-        if (error) logger.warn(error.message);
-        if (stderr) logger.debug(stderr);
-        logger.log(stdout);
+        if (error) console.warn(error.message);
+        if (stderr) console.debug(stderr);
+        console.log(stdout);
         step(null);
       });
     },
     function (step) {
-      logger.debug("waiting 3 sec...");
+      console.debug("waiting 3 sec...");
       setTimeout(function () {step(null)}, 3000);
     },
     function (step) {
-      logger.debug("bringing down wlan1");
+      console.debug("bringing down wlan1");
       exec("sudo /sbin/ifdown wlan1 --force", (error, stdout, stderr) => {
-        if (error) logger.warn(error.message);
-        if (stderr) logger.debug(stderr);
-        logger.log(stdout);
+        if (error) console.warn(error.message);
+        if (stderr) console.debug(stderr);
+        console.log(stdout);
         step(null);
       });
     },
     function (step) {
-      logger.debug("bringing up wlan1")
+      console.debug("bringing up wlan1")
       exec("sudo /sbin/ifup wlan1 --force", (error, stdout, stderr) => {
-        if (error) logger.warn(error.message);
-        if (stderr) logger.debug(stderr);
-        logger.log(stdout);
+        if (error) console.warn(error.message);
+        if (stderr) console.debug(stderr);
+        console.log(stdout);
         step(null);
       });
     },
     function (step) {
-      logger.log("waiting 4 sec...");
+      console.log("waiting 4 sec...");
       setTimeout(function () {step(null)}, 4000);
     },
     function (step) {
-      logger.debug("deleting GoPro default route");
+      console.debug("deleting GoPro default route");
       exec("sudo /sbin/ip route del default via 10.5.5.9", (error, stdout, stderr) => {
-        if (error) logger.warn(error.message);
-        if (stderr) logger.debug(stderr);
-        logger.log(stdout);
+        if (error) console.warn(error.message);
+        if (stderr) console.debug(stderr);
+        console.log(stdout);
         step(null);
       });
     },
     function (step) {
-      logger.debug("adding Stream default route");
+      console.debug("adding Stream default route");
       exec("sudo /sbin/ip route add default via 192.168.1.69", (error, stdout, stderr) => {
-        if (error) logger.debug(`error: ${error.message}`);
-        if (stderr) logger.debug(`stderr: ${stderr}`);
-        if (stdout) logger.debug(`stdout: ${stdout}`);
+        if (error) console.debug(`error: ${error.message}`);
+        if (stderr) console.debug(`stderr: ${stderr}`);
+        if (stdout) console.debug(`stdout: ${stdout}`);
         step(null);
       });
     },
     // function (step) {
-    //   logger.log("waiting 5 sec...");
+    //   console.log("waiting 5 sec...");
     //   setTimeout(function () {step(null)}, 5000);
     // },
     // function (step) {
-    //   logger.log("flushing iptables");
+    //   console.log("flushing iptables");
     //   exec("sudo /sbin/iptables -F", (error, stdout, stderr) => {
     //     if (error) {
     //       console.log(`error: ${error.message}`);
@@ -425,7 +425,7 @@ function connect(callback) {
     //   });
     // },
     // function (step) {
-    //   logger.log("preparing iptables");
+    //   console.log("preparing iptables");
     //   exec("sudo /sbin/iptables -A PREROUTING -i wlan0 -p udp -m udp --dport 8554 -j DNAT --to-destination 192.168.1.13:8554", (error, stdout, stderr) => {
     //     if (error) {
     //       console.log(`error: ${error.message}`);
@@ -438,7 +438,7 @@ function connect(callback) {
     //   });
     // },
     // function (step) {
-    //   logger.log("restoring iptables");
+    //   console.log("restoring iptables");
     //   exec("sudo /sbin/iptables-restore", (error, stdout, stderr) => {
     //     if (error) {
     //       console.log(`error: ${error.message}`);
@@ -451,11 +451,11 @@ function connect(callback) {
     //   });
     // },
     function (step) {
-      logger.log();
+      console.log();
       exec("/sbin/ip route", (error, stdout, stderr) => {
-        if (error) logger.warn(error.message);
-        if (stderr) logger.debug(stderr);
-        logger.log(`Routes:\n${stdout}`);
+        if (error) console.warn(error.message);
+        if (stderr) console.debug(stderr);
+        console.log(`Routes:\n${stdout}`);
         step(null);
       });
     },
@@ -466,7 +466,7 @@ function connect(callback) {
       });
     },
     function (step) {
-      logger.log('GoPro Connection Restarted');
+      console.log('GoPro Connection Restarted');
       callback(null);
     }
   ]);
@@ -495,9 +495,9 @@ function setMode(callback) {
     input: process.stdin,
     output: process.stdout
   });
-  rl.question('mode [remote|local|remote-local]: ', (answer) => {
+  rl.question('mode [local|stream]: ', (answer) => {
     if (answer!="remote"&&answer!="local") 
-      logger.log("Error: please enter a correct setting");
+      console.log("Error: please enter a correct setting");
     else
       MODE = answer;
     rl.close();
@@ -515,10 +515,10 @@ function trueFalse(setting, callback) {
   });
   rl.question(setting+' [true|false]: ', (answer) => {
     if (answer.toLowerCase()!="true"&&answer.toLowerCase()!="false") 
-      logger.log("Error: please enter a correct setting");
+      console.log("Error: please enter a correct setting");
     else
       ARGS[setting] = answer;
-    logger.log("setting: %s -> %s", answer, ARGS[setting]);
+    console.log("setting: %s -> %s", answer, ARGS[setting]);
     rl.close();
     callback(null);
   });
@@ -532,7 +532,7 @@ function tweet(callback) {
     output: process.stdout
   });
   rl.question('Text: ', (answer) => {
-    logger.log('answer: %s', answer);
+    console.log('answer: %s', answer);
     Twitter.tweet(answer, function (err) {
       callback(err);
     });
@@ -576,19 +576,19 @@ function deleteTweet(callback) {
     
 function toggleStream(cb) {
   if (CONNECTED) {
-    logger.log('Ending Python process...')
+    console.log('Ending Python process...')
     pyshell.send("q")
     // end the input stream and allow the process to exit
     pyshell.end(function (err, code, signal) {
-      if (err) logger.warn(err);
-      logger.log('The exit code was: ' + code);
-      logger.log('The exit signal was: ' + signal);
+      if (err) console.warn(err);
+      console.log('The exit code was: ' + code);
+      console.log('The exit signal was: ' + signal);
     });
     pyshell.terminate('SIGINT');
     CONNECTED = false;
   }
   else {
-    logger.log('Spawning Python process...');
+    console.log('Spawning Python process...');
     var options = {
       'mode': 'text',
       'pythonPath': '/usr/bin/python3',
@@ -599,7 +599,7 @@ function toggleStream(cb) {
     pyshell = new PythonShell('GoProStream.py', options);
     CONNECTED = true;
     pyshell.on('message', function (message) {
-      logger.log(message);
+      console.log(message);
     });
   }
   cb(null);
@@ -608,6 +608,6 @@ function toggleStream(cb) {
 ////////////////////////////////////////////////////////////////////////////////////
 
 checkWiFi(function (err) {
-  if (err) logger.warn(err);
+  if (err) console.warn(err);
   main();
 });
