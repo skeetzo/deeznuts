@@ -29,8 +29,9 @@ var pyshell;
 var GOPRO_SSID = "Whorus";
 var CONNECTED = false;
 var DESTINATION = "shower";
-var MODE = "remote"; // remote, local, remote-local
+var MODE = "stream"; // stream, local, local-stream
 var WIFI = "Disconnected";
+var DEBUG = false;
 
 var goProInterface = false;
 var streamInterface = false;
@@ -42,6 +43,7 @@ for (var i=0;i<args.length;i++) {
     // debug settings
     // DESTINATION = "test"
     MODE = "local";
+    DEBUG = true;
   }
   else if (val.indexOf("-destination")>=0)
     DESTINATION = args[i+1]
@@ -96,13 +98,15 @@ function main() {
     // 3 is stream
     else if (answer==3)
       toggleStream(handle);
-    else if (answer==4)
+    else if (answer==4 && CONNECTED)
       toggleStream(function (err) {
         if (err) console.warn(err);
         setTimeout(function () {
           process.exit(1);
         },3000)
       });
+    else if (answer==4 && !CONNECTED)
+      process.exit(1);
     else {
       console.warn("Warning: Missing selection choice")
       return main();
@@ -162,8 +166,10 @@ function menu() {
   console.log(colorize("[ 0 ] ", 'blue') + "Connect");
   console.log(colorize("[ 1 ] ", 'blue') + "Options"); 
   console.log(colorize("[ 2 ] ", 'blue') + "Twitter");
-  if (!CONNECTED)
+  if (!CONNECTED) {
     console.log(colorize("[ 3 ] ", 'blue') + "Stream");
+    console.log(colorize("[ 4 ] ", 'pink') + "Quit");
+  }
   else {
     console.log(colorize("[ 3 ] ", 'pink') + "End Stream");
     console.log(colorize("[ 4 ] ", 'pink') + "End & Quit");
@@ -208,7 +214,8 @@ function checkWiFi(callback) {
   async.series([
     function (step) {
       piWifi.check(GOPRO_SSID, function(err, result) {
-        if (err) return callback(err.message);
+        // if (err) return callback(err.message);
+        if (err) return callback("Warning: Unable to Connect");
         console.debug(result);
         if (result&&result.selected) 
           WIFI = GOPRO_SSID;
@@ -327,8 +334,10 @@ function connect(callback) {
     function (step) {
       console.debug("flushing network: wlan0");
       exec("sudo /sbin/ip addr flush dev wlan0", (error, stdout, stderr) => {
-        if (error) console.warn(error.message);
-        if (stderr) console.debug(stderr);
+        if (DEBUG) {
+          if (error) console.warn(error.message);
+          if (stderr) console.debug(stderr);
+        }
         // console.log(stdout);
         step(null);
       });
@@ -336,31 +345,38 @@ function connect(callback) {
     function (step) {
       console.debug("flushing network: wlan1");
       exec("sudo /sbin/ip addr flush dev wlan1", (error, stdout, stderr) => {
-        if (error) console.warn(error.message);
-        if (stderr) console.debug(stderr);
+        if (DEBUG) {
+          if (error) console.warn(error.message);
+          if (stderr) console.debug(stderr);
+        }
         // console.log(stdout);
         step(null);
       });
     },
     function (step) {
-      console.debug("waiting 3 sec...");
+      if (DEBUG)
+        console.debug("waiting 3 sec...");
       setTimeout(function () {step(null)}, 3000);
     },
     function (step) {
       console.debug("bringing down wlan0");
       exec("sudo /sbin/ifdown wlan0 --force", (error, stdout, stderr) => {
-        if (error) console.warn(error.message);
-        if (stderr) console.debug(stderr);
-        console.log(stdout);
+        if (DEBUG) {
+          if (error) console.warn(error.message);
+          if (stderr) console.debug(stderr);
+          console.log(stdout);
+        }
         step(null);
       });
     },
     function (step) {
       console.debug("bringing up wlan0")
       exec("sudo /sbin/ifup wlan0 --force", (error, stdout, stderr) => {
-        if (error) console.warn(error.message);
-        if (stderr) console.debug(stderr);
-        console.log(stdout);
+        if (DEBUG) {
+          if (error) console.warn(error.message);
+          if (stderr) console.debug(stderr);
+          console.log(stdout);
+        }
         step(null);
       });
     },
@@ -371,40 +387,49 @@ function connect(callback) {
     function (step) {
       console.debug("bringing down wlan1");
       exec("sudo /sbin/ifdown wlan1 --force", (error, stdout, stderr) => {
-        if (error) console.warn(error.message);
-        if (stderr) console.debug(stderr);
-        console.log(stdout);
+        if (DEBUG) {
+          if (error) console.warn(error.message);
+          if (stderr) console.debug(stderr);
+          console.log(stdout);
+        }
         step(null);
       });
     },
     function (step) {
       console.debug("bringing up wlan1")
       exec("sudo /sbin/ifup wlan1 --force", (error, stdout, stderr) => {
-        if (error) console.warn(error.message);
-        if (stderr) console.debug(stderr);
-        console.log(stdout);
+        if (DEBUG) {
+          if (error) console.warn(error.message);
+          if (stderr) console.debug(stderr);
+          console.log(stdout);
+        }
         step(null);
       });
     },
     function (step) {
-      console.log("waiting 4 sec...");
+      if (DEBUG)
+        console.log("waiting 4 sec...");
       setTimeout(function () {step(null)}, 4000);
     },
     function (step) {
       console.debug("deleting GoPro default route");
       exec("sudo /sbin/ip route del default via 10.5.5.9", (error, stdout, stderr) => {
-        if (error) console.warn(error.message);
-        if (stderr) console.debug(stderr);
-        console.log(stdout);
+        if (DEBUG) {
+          if (error) console.warn(error.message);
+          if (stderr) console.debug(stderr);
+          console.log(stdout);
+        }
         step(null);
       });
     },
     function (step) {
       console.debug("adding Stream default route");
       exec("sudo /sbin/ip route add default via 192.168.1.69", (error, stdout, stderr) => {
-        if (error) console.debug(`error: ${error.message}`);
-        if (stderr) console.debug(`stderr: ${stderr}`);
-        if (stdout) console.debug(`stdout: ${stdout}`);
+        if (DEBUG) {
+          if (error) console.debug(`error: ${error.message}`);
+          if (stderr) console.debug(`stderr: ${stderr}`);
+          if (stdout) console.debug(`stdout: ${stdout}`);
+        }
         step(null);
       });
     },
@@ -454,9 +479,11 @@ function connect(callback) {
     function (step) {
       console.log();
       exec("/sbin/ip route", (error, stdout, stderr) => {
-        if (error) console.warn(error.message);
-        if (stderr) console.debug(stderr);
-        console.log(`Routes:\n${stdout}`);
+        if (DEBUG) {
+          if (error) console.warn(error.message);
+          if (stderr) console.debug(stderr);
+          console.log(`Routes:\n${stdout}`);
+        }
         step(null);
       });
     },
@@ -467,7 +494,7 @@ function connect(callback) {
       });
     },
     function (step) {
-      console.log('GoPro Connection Restarted');
+      console.log('Connection Successful');
       callback(null);
     }
   ]);
@@ -489,15 +516,15 @@ function setDestination(callback) {
   });
 }
 
-// sets mode to: local, remote, custom
+// sets mode to: local, stream
 function setMode(callback) {
-  // default 'remote'
+  // default 'stream'
   const rl = readline.createInterface({
     input: process.stdin,
     output: process.stdout
   });
   rl.question('mode [local|stream]: ', (answer) => {
-    if (answer!="remote"&&answer!="local") 
+    if (answer!="stream"&&answer!="local") 
       console.log("Error: please enter a correct setting");
     else
       MODE = answer;
@@ -589,13 +616,18 @@ function toggleStream(cb) {
     CONNECTED = false;
   }
   else {
+    var loglevel = "quiet";
+    if (DEBUG) {
+      loglevel = "debug";
+      MODE = "debug";
+    }
     console.log('Spawning Python process...');
     var options = {
       'mode': 'text',
       'pythonPath': '/usr/bin/python3',
       'pythonOptions': ['-u'], // get print results in real-time
       'scriptPath': require('path').join(__dirname,'../modules/GoPro'),
-      'args': ['-loglevel', 'debug', '-destination', DESTINATION, '-mode', MODE]
+      'args': ['-loglevel',loglevel, '-destination', DESTINATION, '-mode', MODE]
     }; 
     pyshell = new PythonShell('GoProStream.py', options);
     CONNECTED = true;

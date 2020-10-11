@@ -50,16 +50,16 @@ import re
 import http
 from datetime import datetime
 
-USER = os.getenv('USER')
-if str(os.getenv('SUDO_USER')) != "root" and str(os.getenv('SUDO_USER')) != "None":
-  USER = os.getenv('SUDO_USER')
+# import os
+# USER = os.getenv('USER')
+# if str(os.getenv('SUDO_USER')) != "root" and str(os.getenv('SUDO_USER')) != "None":
+  # USER = os.getenv('SUDO_USER')
 
 def get_command_msg(id):
 	return "_GPHD_:%u:%u:%d:%1lf\n" % (0, 0, 2, 0)
 
 ## Parameters:
 ##
-VERBOSE=False
 ## Sends Record command to GoPro Camera, must be in Video mode!
 RECORD=False
 ##
@@ -67,10 +67,9 @@ RECORD=False
 SAVE=True
 SAVE_FILENAME = datetime.now().strftime("%Y-%m-%d-%H-%M")
 SAVE_FORMAT="flv"
-SAVE_LOCATION="/opt/apps/deeznuts/videos/live/stream/"
+# SAVE_LOCATION = "/home/{}/".format(USER)
 # destination rtmp application to determine text sent to Tweet
-LOGLEVEL="debug"
-DESTINATION="shower"
+DESTINATION=None
 MODE="remote"
 HOST = "127.0.0.1"
 
@@ -79,18 +78,16 @@ i = 0
 while i < len(sys.argv):
 	if '-destination' in str(sys.argv[i]):
 		DESTINATION = str(sys.argv[i+1])
-	if '-loglevel' in str(sys.argv[i]):
-		LOGLEVEL = str(sys.argv[i+1])
 	if '-mode' in str(sys.argv[i]):
 		MODE = str(sys.argv[i+1])
 	if '-host' in str(sys.argv[i]):
 		HOST = str(sys.argv[i+1])
 	i += 1
 
-print("LOGLEVEL: "+LOGLEVEL)
 print("MODE: "+MODE)
-print("HOST: "+HOST)
-print("STREAM: "+DESTINATION)
+if str(MODE) != "local":
+	print("HOST: "+HOST)
+	print("STREAM: "+DESTINATION)
 print("Connecting to GoPro Media...")
 
 def gopro_live():
@@ -137,34 +134,33 @@ def gopro_live():
 		## Opens the stream over udp in ffplay. This is a known working configuration by Reddit user hoppjerka:
 		## https://www.reddit.com/r/gopro/comments/2md8hm/how_to_livestream_from_a_gopro_hero4/cr1b193
 		##
-		loglevel_verbose=""
-		if VERBOSE==False:
-			loglevel_verbose = "-loglevel panic"
+		loglevel_verbose="quiet"
+		if str(MODE) == "debug":
+			loglevel_verbose = "debug"
 		if SAVE == False:
 			subprocess.Popen("ffplay " + loglevel_verbose + " -fflags nobuffer -f:v mpegts -probesize 8192 udp://10.5.5.100:8554", shell=True)
 		else:
-			if SAVE_FORMAT=="ts":
-				TS_PARAMS = " -acodec copy -vcodec copy "
-			else:
-				TS_PARAMS = ""
+			# if SAVE_FORMAT=="ts":
+			# 	TS_PARAMS = " -acodec copy -vcodec copy "
+			# else:
+			# 	TS_PARAMS = ""
+			SAVE_LOCATION="/opt/apps/deeznuts/videos/live/stream/"
 			SAVE_LOCATION_STREAM = "rtmp://127.0.0.1:1935"
-			SAVE_LOCATION = "/home/{}".format(USER)
-			LOCAL_LOCATION = SAVE_LOCATION + SAVE_FILENAME + "." + SAVE_FORMAT
-			# print("Recording locally: " + str(SAVE))
 			print("Note: Preview is not available when saving the stream.")
-			if str(MODE) == "stream":
+			if str(MODE) == "stream" and str(DESTINATION) != "None":
 				print("Recording stream: " + str(DESTINATION))
-				SAVE_LOCATION = "rtmp://{}:1935".format(HOST)
-			elif str(MODE) == "local":
-				print("Recording locally: " + str(DESTINATION))
-				SAVE_LOCATION = LOCAL_LOCATION
+				SAVE_LOCATION = "rtmp://{}:1935/{}".format(HOST, DESTINATION)
+			elif str(MODE) == "local" or str(MODE) == "debug":
+				print("Recording locally")
+				SAVE_LOCATION = SAVE_LOCATION + SAVE_FILENAME + "." + SAVE_FORMAT
 			else:
 				print("Recording location unknown: " + str(DESTINATION))
+				return
 			print("Save Location: " + str(SAVE_LOCATION))
-			subprocess.Popen("ffmpeg -re -i 'udp://10.5.5.100:8554' -loglevel {} -movflags faststart -analyzeduration 15M -preset slow -fflags nobuffer -f:v mpegts -probesize 8192 -crf 16 -b:a 128k -acodec copy -vcodec copy -flags global_header -f flv {}/{}".format(LOGLEVEL, SAVE_LOCATION, DESTINATION), shell=True)
+			subprocess.Popen("ffmpeg -re -i 'udp://10.5.5.100:8554' -loglevel {} -movflags faststart -analyzeduration 15M -preset slow -fflags nobuffer -f:v mpegts -probesize 8192 -crf 16 -b:a 128k -acodec copy -vcodec copy -flags global_header -f flv {}".format(loglevel_verbose, SAVE_LOCATION), shell=True)
 		if sys.version_info.major >= 3:
 			MESSAGE = bytes(MESSAGE, "utf-8")
-		print("Press ctrl+C to quit this application.\n")
+		# print("Press ctrl+C to quit this application.\n")
 		while True:
 			sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 			sock.sendto(MESSAGE, (UDP_IP, UDP_PORT))

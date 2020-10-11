@@ -2,6 +2,15 @@
 auto lo
 iface lo inet loopback
 
+auto eth0
+iface eth0 inet static
+    address 192.168.1.69
+    netmask 255.255.255.0
+
 allow-hotplug wlan0
-iface wlan0 inet manual
-    wpa-roam /etc/wpa_supplicant/wpa_supplicant.conf
+iface wlan0 inet static
+    wpa-ssid "Whorus"
+    wpa-psk "seesnoevil66"
+    address 10.5.5.101
+    netmask 255.0.0.0
+    gateway 10.5.5.9
