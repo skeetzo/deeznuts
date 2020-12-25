@@ -38,7 +38,7 @@ module.exports = {
       path : `/var/www/apps/${app}`,
       "post-deploy" : `nvm exec 11.15.0 npm install && \
                        chown -R ${user} . && \
-                       pm2 startOrRestart ecosystem.config.js --only ${app}`,
+                       pm2 startOrRestart ecosystem.config.js --env development --only ${app}`,
       env  : {
         NODE_ENV: "development",
         FORCE_COLOR: true
