@@ -74,7 +74,7 @@ module.exports = function Deploy_Config() {
 
 	if (process.env.NODE_ENV=='development') {
 		this.cron_enabled = true;
-		// this.debugging = true;
+		this.debugging = true;
 		this.debugging_live = true;
 		this.debugging_address = true;
 		// this.debugging_reset_db = true;
