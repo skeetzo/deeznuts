@@ -18,10 +18,6 @@ module.exports = {
       NODE_ENV: 'development',
       PORT: port
     },
-    env_development: {
-      NODE_ENV: 'development',
-      PORT: port
-    },
     env_staging : {
       NODE_ENV : "staging",
       PORT: port
