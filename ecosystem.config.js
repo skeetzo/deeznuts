@@ -1,6 +1,5 @@
 app = "deeznuts"
 host = "127.0.0.1"
-host = "192.168.1.99"
 port = 3000
 ssh_options = ["port=22"]
 repo = "git@github.com:skeetzo/deeznuts.git"
@@ -35,7 +34,7 @@ module.exports = {
       ref  : "origin/development",
       repo : repo,
       path : `/var/www/apps/${app}`,
-      "post-deploy" : `npm install && \
+      "post-deploy" : `nvm exec 11.15.0 npm install && \
                        chown -R ${user} . && \
                        pm2 startOrRestart ecosystem.config.js --only ${app}`,
       env  : {
@@ -50,7 +49,7 @@ module.exports = {
       ref  : "origin/staging",
       repo : repo,
       path : `/var/www/apps/${app}`,
-      "post-deploy" : `npm install && \
+      "post-deploy" : `nvm exec 11.15.0 npm install && \
                        chown -R ${user} . && \
                        pm2 startOrRestart ecosystem.config.js --env staging --only ${app}`,
       env  : {
@@ -65,7 +64,7 @@ module.exports = {
       ref  : "origin/production",
       repo : repo,
       path : `/var/www/apps/${app}`,
-      "post-deploy" : `npm install && \
+      "post-deploy" : `nvm exec 11.15.0 npm install && \
                        chown -R ${user} . && \
                        pm2 startOrRestart ecosystem.config.js --env production --only ${app}`,
       env  : {
@@ -85,7 +84,7 @@ module.exports = {
       ref  : "origin/development",
       repo : `git@github.com:skeetzo/${app}.git`,
       path : `/var/www/apps/${app}`,
-      "post-deploy" : `/var/www/apps/${app}/source/bin/menu-deploy.sh && npm install && bin/setup.sh pi && pm2 startOrRestart ecosystem.config.js --env pi --only ${app}`,
+      "post-deploy" : `/var/www/apps/${app}/source/bin/menu-deploy.sh && nvm exec 11.15.0 npm install && bin/setup.sh pi && pm2 startOrRestart ecosystem.config.js --env pi --only ${app}`,
       env  : {
         NODE_ENV: "pi",
         FORCE_COLOR: true
