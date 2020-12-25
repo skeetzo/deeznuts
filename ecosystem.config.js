@@ -13,6 +13,7 @@ module.exports = {
     script    : 'npm',
     args      : ['start'],
     cwd       : `/var/www/apps/${app}/source`,
+    interpreter : 'node@11.15.1',
     env: {
       NODE_ENV: 'development',
       PORT: port

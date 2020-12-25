@@ -8,7 +8,7 @@
   "scripts": {
     "install": "bin/install-bcoin.sh",
     "postinstall": "gulp",
-    "start": "nvm exec 11.15.0 node src/bin/www"
+    "start": "node src/bin/www"
   },
   "license": "MIT",
   "engines": {
