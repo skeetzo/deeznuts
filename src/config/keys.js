@@ -88,11 +88,9 @@ module.exports = function() {
     // Mongo
     this.MONGODB_URI = localConfig.MONGODB_URI || process.env.MONGODB_URI;
     if (process.env.NODE_ENV!='production') this.MONGODB_URI = localConfig.MONGODB_URI_dev;
-    if (this.remoteDatabase) this.MONGODB_URI = localConfig.MONGODB_URI_remote;
 
     // Redis
-    this.REDIS_URL = localConfig.REDIS_URL_local;
-    if (this.remoteDatabase) this.REDIS_URL = localConfig.REDIS_URL;
+    this.REDIS_URL = localConfig.REDIS_URL;
 
     // Twitter
 	this.Twitter_consumer_key = localConfig.Twitter_consumer_key || process.env.Twitter_consumer_key; 
