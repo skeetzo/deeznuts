@@ -114,12 +114,8 @@ module.exports = function Deploy_Config() {
 		// this.remoteDatabase = true;
 		this.populateFromFiles = true;
 		this.archive_on_publish = true;
-<<<<<<< HEAD
 		this.backup_on_archive = true;
 		this.trim_on_archive = true;
-=======
-		// this.backup_on_archive = true;
->>>>>>> 728beeb941b2185c150efac3caefbb80a182088b
 		this.upload_to_OnlyFans = true;
 		// this.deleteMissing = true;
 		// this.debugging_crons = true;
@@ -141,11 +137,8 @@ module.exports = function Deploy_Config() {
 		this.upload_to_OnlyFans = true;
 		this.concatting = true;
 		this.concatenate_on_publish = true;
-<<<<<<< HEAD
 		this.trim_on_archive = true;
-=======
 		this.backup = true;
->>>>>>> 728beeb941b2185c150efac3caefbb80a182088b
 		//
 		// this.Twitter = true;
 		// this.Twitter_tweeting = true;

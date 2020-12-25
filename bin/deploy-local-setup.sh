@@ -9,6 +9,6 @@ sed -i "s/host\s=\s\"[0-9]*\.[0-9]*\.[0-9]*\.[0-9]*\"/host = \"$IP_LOCAL\"/g" ..
 sed -i "s/ssh_options\s=\s[\"port=[0-9]*\"]/ssh_options = [\"port=22\"]/g" ../deeznuts/ecosystem.config.js
 # pm2 deploy staging setup
 bin/save.sh
-pm2 deploy staging setup
+pm2 deploy $1 setup
 mv ../deeznuts/ecosystem.config.js-b ../deeznuts/ecosystem.config.js
 bin/save.sh
