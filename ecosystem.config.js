@@ -36,7 +36,7 @@ module.exports = {
       ref  : "origin/development",
       repo : repo,
       path : `/var/www/apps/${app}`,
-      "post-deploy" : `nvm exec 11.15.0 npm install && \
+      "post-deploy" : `nvm exec 10.15.0 npm install && \
                        chown -R ${user} . && \
                        pm2 startOrRestart ecosystem.config.js --env development --only ${app}`,
       env  : {
@@ -51,7 +51,7 @@ module.exports = {
       ref  : "origin/staging",
       repo : repo,
       path : `/var/www/apps/${app}`,
-      "post-deploy" : `nvm exec 11.15.0 npm install && \
+      "post-deploy" : `nvm exec 10.15.0 npm install && \
                        chown -R ${user} . && \
                        pm2 startOrRestart ecosystem.config.js --env staging --only ${app}`,
       env  : {
@@ -66,7 +66,7 @@ module.exports = {
       ref  : "origin/production",
       repo : repo,
       path : `/var/www/apps/${app}`,
-      "post-deploy" : `nvm exec 11.15.0 npm install && \
+      "post-deploy" : `nvm exec 10.15.0 npm install && \
                        chown -R ${user} . && \
                        pm2 startOrRestart ecosystem.config.js --env production --only ${app}`,
       env  : {
@@ -86,7 +86,7 @@ module.exports = {
       ref  : "origin/development",
       repo : `git@github.com:skeetzo/${app}.git`,
       path : `/var/www/apps/${app}`,
-      "post-deploy" : `/var/www/apps/${app}/source/bin/menu-deploy.sh && nvm exec 11.15.0 npm install && bin/setup.sh pi && pm2 startOrRestart ecosystem.config.js --env pi --only ${app}`,
+      "post-deploy" : `/var/www/apps/${app}/source/bin/menu-deploy.sh && nvm exec 10.15.0 npm install && bin/setup.sh pi && pm2 startOrRestart ecosystem.config.js --env pi --only ${app}`,
       env  : {
         NODE_ENV: "pi",
         FORCE_COLOR: true
