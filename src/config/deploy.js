@@ -20,6 +20,7 @@ module.exports = function Deploy_Config() {
 	this.trim_on_archive = false;
 	this.deleteMissing = false;
 
+	this.backup = false;
 	this.backup_on_archive = false;
 	this.upload_on_archive = false;
 
@@ -49,6 +50,8 @@ module.exports = function Deploy_Config() {
 	this.live_enabled = false;
 	this.repair_moov = false;
 
+	this.backup_on_failure_to_upload = false;
+	this.backup_all_on_boot = false;
 	this.upload_all_on_boot = false;
 	this.upload_to_OnlyFans = false;
 	this.upload_force_save = false;
@@ -80,6 +83,7 @@ module.exports = function Deploy_Config() {
 		// this.debugging_reset_logs = true;
 		this.debugging_blockchain = true;
 		this.local = true;
+		this.backup = true;
 		this.delete_on_publish = true;
 		this.archive_on_publish = true;
 		this.backup_on_archive = true;
@@ -98,6 +102,7 @@ module.exports = function Deploy_Config() {
 		// this.debugging = true;
 		// this.debugging_live = true;
 		this.ssl = true;
+		this.backup = true;
 		// this.Twitter = true;
 		// this.delete_on_publish = true;
 		//
@@ -107,13 +112,21 @@ module.exports = function Deploy_Config() {
 		// this.debugging_address = true;
 		// this.debugging_sync = true;
 		// this.remoteDatabase = true;
+		this.populateFromFiles = true;
 		this.archive_on_publish = true;
+<<<<<<< HEAD
 		this.backup_on_archive = true;
 		this.trim_on_archive = true;
+=======
+		// this.backup_on_archive = true;
+>>>>>>> 728beeb941b2185c150efac3caefbb80a182088b
 		this.upload_to_OnlyFans = true;
 		// this.deleteMissing = true;
 		// this.debugging_crons = true;
 		// this.debugging_clean_fileNames = true;
+		this.backup_on_failure_to_upload = true;
+		this.backup_all_on_boot = true;
+		this.upload_all_on_boot = true;
 		//
 		// this.Blockchain = true;
 		// this.bcoin_syncing_chain = true;
@@ -124,11 +137,15 @@ module.exports = function Deploy_Config() {
 		this.archive_on_publish = true;
 		this.populateFromFiles = true;
 		this.deleteMissing = true;
-		this.backup_on_archive = true;
+		// this.backup_on_archive = true;
 		this.upload_to_OnlyFans = true;
 		this.concatting = true;
 		this.concatenate_on_publish = true;
+<<<<<<< HEAD
 		this.trim_on_archive = true;
+=======
+		this.backup = true;
+>>>>>>> 728beeb941b2185c150efac3caefbb80a182088b
 		//
 		// this.Twitter = true;
 		// this.Twitter_tweeting = true;
@@ -150,6 +167,7 @@ module.exports = function Deploy_Config() {
 		this.debugging = true;
 		this.database_redis = false;
 		this.local = true;
+		this.backup = true;
 		this.remoteDatabase = true;
 		this.archive_on_publish = true;
 		this.concatenate_on_publish = true;

@@ -1,6 +1,6 @@
 // Config file
 var config = {};
-
+process.env.NODE_ENV = "staging"
 config.botName = "DeezNuts";
 
 // Deploy Environment

@@ -301,7 +301,7 @@ videoSchema.statics.deleteOnPublish = function(callback) {
   fs.readdir(stream_path, function(err, items) {
     if (!items) return logger.warn("no streams found to delete");
     for (var i=0; i<items.length; i++) {
-      fs.unlinkSync(items[i]);
+      fs.unlinkSync(path.join(config.videosPath, '/live/stream', items[i]));
       logger.debug('deleted: %s', items[i]);
     }
     callback(null);
@@ -403,6 +403,7 @@ videoSchema.methods.archive = function(callback) {
 // uploads to Google Drive - OnlyFans folder
 videoSchema.methods.backup = function(callback) {
   var self = this;
+  if (!config.backup) return callback(`Skipping Backup: ${this.title}`);
   logger.log('Backing up: %s', self.title);
   // copy file to backup location
   var backup_path = path.join(config.videosPath, '/backup/', path.basename(self.path))
@@ -763,9 +764,17 @@ videoSchema.methods.upload = function(callback) {
   if (path_.indexOf(config.videosPath)==-1)
     path_ = path.join(config.videosPath, 'archived/stream', path_);
   logger.debug(path_)
-  OnlyFans.spawn(['-action','upload','-text',`DeezNuts - ${self.title}`,'-keywords','deeznuts','-skip-backup','-skip-reduce','-force-upload', path_], 
+  OnlyFans.spawn(['-action','post','-text',`DeezNuts - ${self.title}`,'-keywords','deeznuts','-force-upload', path_], 
     function (err) {
-      if (err) return callback(err)
+      if (err) {
+        if (config.backup_on_failure_to_upload) {
+          // attempt to backup for later upload
+          return self.backup(function (err) {
+            callback(err);
+          })
+        }
+        return callback(err)
+      }
       self.uploaded = true;
       self.save(function (err) {
         logger.log("Upload Successful");
