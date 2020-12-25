@@ -1,17 +1,6 @@
 #!/usr/bin/env node
 // menu for interacting with GoPro w/
 
-// Skeetzo
-// 2/12/2019
-// 7/18/2019 
-// 9/12/2019
-// 2/12/2020
-// 4/21/2020
-// 10/6/2020
-
-// todo:
-// need to figure out a way to have args from here -> deeznuts running process
-
 // process.env.NODE_ENV = "development";
 const async = require('async');
 const {PythonShell} = require('python-shell');
@@ -216,7 +205,8 @@ function checkWiFi(callback) {
       piWifi.check(GOPRO_SSID, function(err, result) {
         // if (err) return callback(err.message);
         if (err) return callback("Warning: Unable to Connect");
-        console.debug(result);
+        if (DEBUG)
+          console.debug(result);
         if (result&&result.selected) 
           WIFI = GOPRO_SSID;
         else
@@ -227,7 +217,8 @@ function checkWiFi(callback) {
     function (step) {
       piWifi.status(goProInterface, function (err, status) {
         if (err) return callback(err);
-        console.debug(status);
+        if (DEBUG)
+          console.debug(status);
         if (status.ssid && status.ssid == GOPRO_SSID && status.wpa_state && status.wpa_state == "COMPLETED")
           WIFI = GOPRO_SSID;
         step(null);

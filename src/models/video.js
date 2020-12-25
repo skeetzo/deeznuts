@@ -372,7 +372,15 @@ videoSchema.methods.archive = function(callback) {
       });
     },
     function (step) {
+      if (!config.trim_on_archive) return step(null);
+      self.trim(function (err) {
+        if (err) logger.warn(err);
+        step(null);
+      });
+    },
+    function (step) {
       if (!config.backup_on_archive) return step(null);
+      // if (!config.backup_on_archive) return callback('Skipping OnlyFans Folder Backup');
       self.backup(function (err) {
         if (err) logger.warn(err);
         step(null);
@@ -395,24 +403,27 @@ videoSchema.methods.archive = function(callback) {
 // uploads to Google Drive - OnlyFans folder
 videoSchema.methods.backup = function(callback) {
   var self = this;
-  if (!config.backup_on_archive) return callback('Skipping OnlyFans Folder Backup');
   logger.log('Backing up: %s', self.title);
-  if (self.backedUp) {
-    logger.debug('Skipping Backup: Already Backed Up');
-    return callback(null);
-  }
-  require('../modules/drive').backupVideo(self, function (err) {
-    if (err) return callback(err);
-    logger.log('Backed Up: %s', self.title);
-    self.backedUp = true;
-    self.save(function (err) {
-      if (err) logger.warn(err);
-      if (config.delete_on_backup)
-        self.delete(callback)
-      else
+  // copy file to backup location
+  var backup_path = path.join(config.videosPath, '/backup/', path.basename(self.path))
+  fss.copySync(self.path, backup_path);
+  logger.debug('file backed up: %s', backup_path)
+  if (config.backup_remotely) {
+    if (self.backedUp) {
+      logger.debug('Skipping: Remote Backup');
+      return callback(null);
+    }
+    require('../modules/drive').backupVideo(self, function (err) {
+      if (err) return callback(err);
+      self.backedUp = true;
+      self.save(function (err) {
+        if (err) logger.warn(err);
+        logger.log('Backed Up Remotely: %s', self.title);
         callback(null);
+      });
     });
-  });
+  }
+  else callback(null)
 }
 
 // get file at location
@@ -632,6 +643,43 @@ videoSchema.methods.thumbnail = function(callback) {
     filename: filename,
     folder: foldername
   });
+}
+
+// trim the first and last 2 minutes
+videoSchema.methods.trim = function(callback) {
+  var self = this;
+  logger.log('Trimming: %s', self.path);
+
+  self.backup()
+
+  var conversion_process = new FFmpeg({ 'source': self.path, 'timeout': 0 })
+  .format('mp4')
+  .videoCodec('libx264')
+  .seek('2:00')
+  .duration(self.duration-(120))
+  .toFormat('mp4')
+  .outputOptions('-strict -2')
+  .on('start', function (commandLine) {
+    logger.log("Trimming Started");
+  })
+  .on('error', function (err, stdout, stderr) {
+    logger.log("Trimming Failed");
+    if (stdout)
+      logger.log("stdout:\n" + stdout);
+    if (stderr)
+      logger.log("stderr:\n" + stderr);
+    callback(err);
+  })
+  .on('progress', function (progress) {
+    if (config.debugging)
+      process.stdout.write("Trimming...\033[0G");
+  })
+  .on('end', function () {
+    logger.log("Trim Finished");
+    logger.log('--- Trimmed: %s', self.title);
+    callback(null);
+  })
+  .saveToFile(self.path.replace('.mp4', '-t.mp4'));
 }
 
 videoSchema.methods.watermark = function(callback) {

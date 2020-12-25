@@ -1,0 +1,112 @@
+video is either:
+- recorded
+- streamed
+
+basically always of me in the shower
+i manually record on my phone all of the actual good stuff to be sold directly or via message
+if i recorded locally on a gopro while doing the above with a phone i could get two potential view sales from one
+- i could sell the gopro video as an edited teaser of a full video for 3-5x the price
+how would i want to automatically edit that teaser file from the gopro?
+- i don't want to show the end
+- i probably don't want the beginning
+-> i probably want a random short segment near the end
+and that would include in the message that the full video 
+
+well what's the point between posting to buy and just sending the video as a message cod
+really every good video should be mass messaged to max the spending potential for it but i really don't want to spam 2 messages for sale of the same set in a row in a day and this level isn't worth dragging out longer than a day of tease
+-> so i should post the teaser and mass message the good video
+
+so
+i want to do some video editing operations:
+- save complete untouched copy as backup
+- remove first 1-2 minutes of video
+- archive backup
+
+i want to label the file by who i'm showering with before I shower:
+- default: myself
+- enter: screen_names separated by commas
+
+i want to sort the file by what i did in the shower after the shower:
+- the action is applied to the title of the video so that the filename is used as text when uploading to OnlyFans automatically
+- 
+
+
+i can maybe pre set metadata for the file to be then read by the server to interpret as commands to edit, tweet, etc
+
+
+
+
+
+
+
+this records / streams from a GoPro without need of an sd card
+however,
+phone recording > gopro
+
+so the gopro footage is rather unnecessary and extra
+
+there's no reason to use it for teaser footage cause the camera footage can be edited for that anyways and still be better by default
+
+it requires an rpi and a laptop to run
+which is no big deal, but i could free up the rpi3
+and not bother bringing my laptop into the bathroom and just record/stream from my phone
+unless i want my laptop to play music at the same time which is nbg
+
+so this project's ultimate purpose is rather pointless
+the gopro overheats too easily to just use it to randomly stream
+the footage still needs to be tuned to be as good as a camera
+i don't need the website to sell clips of bad shower footage when i have onlyfans
+
+i could use the site as a backup source for providing my own material
+i should push the project towards being more of a backup for simply purchasing content from me
+
+so, say, i have a general repo of stuff that i think is worth being purchased as a video file or collection of images
+
+deeznuts can provide a structured way for fans to purchase specific content from me at any time regardless of onlyfans being up
+
+the site already has the basic structure to act as a streaming source for people to log into. I should add all the typical live cam features to it as preparation for the final sheelasites
+
+so really i need to restructure this to be more of a concerted personal site effort and also update my linkz.tree copy thing to be more mobile friendly and hide my projects better
+
+I could provide all the shower videos in their own category for free, and delete the oldest ones to maintain a low server presence
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

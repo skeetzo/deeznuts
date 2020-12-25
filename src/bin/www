@@ -30,10 +30,11 @@ async.series([
   function (step) {
     fss.ensureDirSync(config.videosPath);
     fss.ensureDirSync(config.imagesPath);
-    fss.ensureDirSync(path.join(config.videosPath, 'live'));
-    fss.ensureDirSync(path.join(config.videosPath, 'archived'));
-    fss.ensureDirSync(path.join(config.videosPath, 'previews'));
     fss.ensureDirSync(path.join(config.imagesPath, 'thumbnails'));
+    fss.ensureDirSync(path.join(config.videosPath, 'archived'));
+    fss.ensureDirSync(path.join(config.videosPath, 'backup'));
+    fss.ensureDirSync(path.join(config.videosPath, 'live'));
+    fss.ensureDirSync(path.join(config.videosPath, 'previews'));
     step(null);
   },
   function (step) {

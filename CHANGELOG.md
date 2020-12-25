@@ -108,6 +108,9 @@
 	- added BTC Wallet from Kairos
 	- added paginate: needs testing
 
+	****
+	- added video.trim, config.trim_on_archive, config.backup_remotely
+
 **?.0.0 : ??/??/??**
 	- next live @ & schedule
 **?.0.0 : Android App : ??/??/??**
