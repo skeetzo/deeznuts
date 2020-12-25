@@ -35,6 +35,7 @@ module.exports = {
       ssh_options: ssh_options,
       ref  : "origin/development",
       repo : repo,
+      interpreter : 'node@10.15.1',
       path : `/var/www/apps/${app}`,
       "pre-deploy" : 'nvm install 10.15.0',
       "post-deploy" : `nvm exec 10.15.0 npm install && \
