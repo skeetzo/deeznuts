@@ -5,8 +5,8 @@ module.exports = function Deploy_Config() {
 	if (!process.env.NODE_ENV) process.env.NODE_ENV = "development";
 
 	this.ssl = false;
-	this.local = false;
 	this.Blockchain = false;
+	this.local = false;
 	this.cron_enabled = false;
 	this.emailing_debugging = false;
 
@@ -76,13 +76,11 @@ module.exports = function Deploy_Config() {
 		this.cron_enabled = true;
 		// this.debugging = true;
 		this.debugging_live = true;
-		this.remoteDatabase = true;
 		this.debugging_address = true;
 		// this.debugging_reset_db = true;
 		// this.debugging_reset_files = true;
 		// this.debugging_reset_logs = true;
 		this.debugging_blockchain = true;
-		this.local = true;
 		this.backup = true;
 		this.delete_on_publish = true;
 		this.archive_on_publish = true;
@@ -159,7 +157,7 @@ module.exports = function Deploy_Config() {
 	else if (process.env.NODE_ENV=='pi') {
 		this.debugging = true;
 		this.database_redis = false;
-		this.local = true;
+		// this.local = true;
 		this.backup = true;
 		this.remoteDatabase = true;
 		this.archive_on_publish = true;

@@ -20,7 +20,7 @@ config.domain = "alexdeeznuts.com";
 config.ssl_key = `/etc/letsencrypt/live/${config.domain}/privkey.pem`;
 config.ssl_cert = `/etc/letsencrypt/live/${config.domain}/fullchain.pem`;
 
-if (config.local) config.domain = "localhost";
+if (config.debugging||config.local) config.domain = "localhost";
 var live_url = "wss://"+config.domain+":8443/live/stream.flv?sign=";
 // var live_url = "https://"+config.domain+":8443/live/stream/index.mpd";
 // var live_url = "https://"+config.domain+":8443/live/stream.flv?sign=";
