@@ -38,7 +38,7 @@ module.exports = {
       path : `/var/www/apps/${app}`,
       "pre-deploy" : 'nvm install 10.15.0',
       "post-deploy" : `nvm exec 10.15.0 npm install && \
-                       npm rebuild node-sass \
+                       nvm exec 10.15.0 npm rebuild node-sass \
                        chown -R ${user} . && \
                        pm2 startOrRestart ecosystem.config.js --env development --only ${app}`,
       env  : {
