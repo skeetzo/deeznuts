@@ -37,7 +37,7 @@ module.exports = {
       repo : repo,
       interpreter : 'node@10.15.1',
       path : `/var/www/apps/${app}`,
-      "pre-deploy" : 'npm install && \
+      "pre-deploy" : `npm install && \
                        chown -R ${user} . && \
                        pm2 startOrRestart ecosystem.config.js --env development --only ${app}`,
       env  : {
