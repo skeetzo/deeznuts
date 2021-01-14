@@ -37,9 +37,7 @@ module.exports = {
       repo : repo,
       interpreter : 'node@10.15.1',
       path : `/var/www/apps/${app}`,
-      "pre-deploy" : 'nvm install 10.15.0',
-      "post-deploy" : `nvm exec 10.15.0 npm install && \
-                       nvm exec 10.15.0 npm rebuild node-sass \
+      "pre-deploy" : 'npm install && \
                        chown -R ${user} . && \
                        pm2 startOrRestart ecosystem.config.js --env development --only ${app}`,
       env  : {
@@ -54,7 +52,7 @@ module.exports = {
       ref  : "origin/staging",
       repo : repo,
       path : `/var/www/apps/${app}`,
-      "post-deploy" : `nvm exec 10.15.0 npm install && \
+      "post-deploy" : `npm install && \
                        chown -R ${user} . && \
                        pm2 startOrRestart ecosystem.config.js --env staging --only ${app}`,
       env  : {
@@ -69,7 +67,7 @@ module.exports = {
       ref  : "origin/production",
       repo : repo,
       path : `/var/www/apps/${app}`,
-      "post-deploy" : `nvm exec 10.15.0 npm install && \
+      "post-deploy" : `npm install && \
                        chown -R ${user} . && \
                        pm2 startOrRestart ecosystem.config.js --env production --only ${app}`,
       env  : {
