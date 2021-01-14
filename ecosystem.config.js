@@ -1,5 +1,6 @@
 app = "deeznuts"
 host = "127.0.0.1"
+host = "192.168.1.60"
 port = 3020
 ssh_options = ["port=22"]
 repo = "git@github.com:skeetzo/deeznuts.git"
