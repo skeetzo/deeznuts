@@ -83,7 +83,7 @@
     "pug": "^2.0.4",
     "python-shell": "^1.0.8",
     "qrcode": "^1.4.2",
-    "socket.io": "^2.3.0",
+    "socket.io": "^2.4.0",
     "tracer": "^0.8.15",
     "twit": "^2.2.11",
     "underscore": "^1.9.1"
