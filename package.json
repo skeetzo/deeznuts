@@ -80,7 +80,7 @@
     "paypal-rest-sdk": "^1.8.1",
     "pi-wifi": "^1.2.0",
     "popper.js": "^1.16.1",
-    "pug": "^2.0.4",
+    "pug": "^3.0.1",
     "python-shell": "^1.0.8",
     "qrcode": "^1.4.2",
     "socket.io": "^2.3.0",
