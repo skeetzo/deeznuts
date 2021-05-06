@@ -86,6 +86,6 @@
     "socket.io": "^2.3.0",
     "tracer": "^0.8.15",
     "twit": "^2.2.11",
-    "underscore": "^1.9.1"
+    "underscore": "^1.12.1"
   }
 }
